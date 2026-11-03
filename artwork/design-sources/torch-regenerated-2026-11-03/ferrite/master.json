@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    266,
+    124,
+    760,
+    1425
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    8,
+    256,
+    229
+  ],
+  "colorFilename": "Lamp.png",
+  "maskFilename": "Lamp_m.png",
+  "sourceRepair": "Full generated sprite. Remove faint generated exterior alpha by mapping alpha below 32 to zero and linearly remapping remaining alpha to 0..255; crop around solid artwork with small padding. Original generation preserved alongside repair.",
+  "alphaHandling": "Preserve repaired alpha through uniform reduction; all materials fixed colour.",
+  "layers": [
+    {
+      "path": "repaired-alpha.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      85,
+      12,
+      171,
+      229
+    ],
+    "boundsTolerance": 20,
+    "footLine": 229,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1
+  },
+  "reviewJoins": {
+    "collar": [
+      266,
+      749,
+      760,
+      1016
+    ]
+  }
+}

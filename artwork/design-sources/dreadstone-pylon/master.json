@@ -1,0 +1,128 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    310,
+    45,
+    950,
+    1200
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    16,
+    512,
+    496
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Crop exterior faint alpha debris and retain source within crop.",
+  "alphaHandling": "Preserve source alpha and share uniform color/mask reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "left": [
+          [
+            310,
+            710
+          ],
+          [
+            475,
+            700
+          ],
+          [
+            500,
+            770
+          ],
+          [
+            555,
+            790
+          ],
+          [
+            558,
+            1050
+          ],
+          [
+            525,
+            1070
+          ],
+          [
+            500,
+            1060
+          ],
+          [
+            470,
+            1199
+          ],
+          [
+            310,
+            1199
+          ]
+        ],
+        "right": [
+          [
+            950,
+            710
+          ],
+          [
+            785,
+            700
+          ],
+          [
+            760,
+            770
+          ],
+          [
+            705,
+            790
+          ],
+          [
+            702,
+            1050
+          ],
+          [
+            735,
+            1070
+          ],
+          [
+            760,
+            1060
+          ],
+          [
+            790,
+            1199
+          ],
+          [
+            950,
+            1199
+          ]
+        ],
+        "plinth": [
+          [
+            450,
+            1050
+          ],
+          [
+            800,
+            1050
+          ],
+          [
+            800,
+            1199
+          ],
+          [
+            450,
+            1199
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask.png"
+}

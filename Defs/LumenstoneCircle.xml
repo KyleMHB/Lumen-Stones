@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>KM_LumenCircle</defName>
+    <label>Lumen ritual circle</label>
+    <description>A flat, rounded slab of raw Lumenstone set into the floor. Infusion goes more smoothly on a bed of Lumenstone than on bare ground.\n\nInfuses Lumenstone into researched stones. Infusion has no cooldown, and bills pause while a ceremony runs here. With Ideology, the circle also hosts a lesser Lumenstone ritual, which turns ordinary stone chunks into Lumenstone. It gains nothing from its room or from Lumenstone fixtures; a Lumenstone altar does.</description>
+    <thingClass>LumenStones.Building_LumenCircle</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Misc/LumenCircle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <passability>Standable</passability>
+    <size>(1,1)</size>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <designationCategory>Production</designationCategory>
+    <stuffCategories><li>Stony</li></stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList><KM_Lumenstone>5</KM_Lumenstone></costList>
+    <researchPrerequisites><li>Stonecutting</li></researchPrerequisites>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+      <ai_chillDestination>false</ai_chillDestination>
+      <buildingTags><li>Production</li></buildingTags>
+    </building>
+    <placeWorkers><li>PlaceWorker_PreventInteractionSpotOverlap</li></placeWorkers>
+  </ThingDef>
+
+  <WorkGiverDef>
+    <defName>KM_DoBillsLumenCircle</defName>
+    <label>infuse at Lumen ritual circle</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs><li>KM_LumenCircle</li></fixedBillGiverDefs>
+    <verb>infuse at</verb>
+    <gerund>infusing at</gerund>
+    <requiredCapacities><li>Manipulation</li></requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+</Defs>

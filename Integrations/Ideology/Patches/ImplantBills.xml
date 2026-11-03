@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- The altar only loads with Ideology, so light part bills add it here, as the infusion bills do. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RecipeDef[@Name="KM_LightPartCraftBase"]/recipeUsers</xpath>
+    <value>
+      <li>KM_LumenstoneAltar</li>
+    </value>
+  </Operation>
+
+  <!-- With Ideology the Twinstone cell replaces the Solar-only Sunstone cell, so only its bill is offered. -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName="KM_MakeSunstoneCell"]</xpath>
+  </Operation>
+</Patch>

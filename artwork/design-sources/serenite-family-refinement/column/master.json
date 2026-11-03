@@ -1,0 +1,338 @@
+{
+  "sourceSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    240,
+    111,
+    785,
+    1457
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    84,
+    20,
+    172,
+    236
+  ],
+  "colorFilename": "SereniteColumn.png",
+  "maskFilename": "SereniteColumn_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached faint exterior alpha debris; no source colour or internal alpha edits. Some faint alpha within the crop remains.",
+  "alphaHandling": "Preserve generated alpha, contours and RGB through one shared Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "capital": [
+          [
+            240,
+            111
+          ],
+          [
+            784,
+            111
+          ],
+          [
+            784,
+            298
+          ],
+          [
+            699,
+            377
+          ],
+          [
+            665,
+            390
+          ],
+          [
+            436,
+            390
+          ],
+          [
+            402,
+            428
+          ],
+          [
+            342,
+            371
+          ],
+          [
+            320,
+            329
+          ],
+          [
+            240,
+            279
+          ]
+        ],
+        "left-support": [
+          [
+            344,
+            345
+          ],
+          [
+            404,
+            377
+          ],
+          [
+            440,
+            389
+          ],
+          [
+            405,
+            452
+          ],
+          [
+            377,
+            520
+          ],
+          [
+            355,
+            601
+          ],
+          [
+            343,
+            680
+          ],
+          [
+            345,
+            797
+          ],
+          [
+            365,
+            946
+          ],
+          [
+            383,
+            1121
+          ],
+          [
+            403,
+            1234
+          ],
+          [
+            451,
+            1269
+          ],
+          [
+            365,
+            1269
+          ],
+          [
+            346,
+            1241
+          ],
+          [
+            352,
+            1158
+          ],
+          [
+            330,
+            1030
+          ],
+          [
+            291,
+            842
+          ],
+          [
+            252,
+            711
+          ],
+          [
+            249,
+            604
+          ],
+          [
+            274,
+            494
+          ],
+          [
+            309,
+            405
+          ]
+        ],
+        "right-support": [
+          [
+            662,
+            365
+          ],
+          [
+            697,
+            355
+          ],
+          [
+            705,
+            405
+          ],
+          [
+            737,
+            487
+          ],
+          [
+            760,
+            579
+          ],
+          [
+            779,
+            697
+          ],
+          [
+            774,
+            799
+          ],
+          [
+            750,
+            948
+          ],
+          [
+            709,
+            1128
+          ],
+          [
+            674,
+            1242
+          ],
+          [
+            666,
+            1265
+          ],
+          [
+            595,
+            1269
+          ],
+          [
+            593,
+            1243
+          ],
+          [
+            632,
+            1120
+          ],
+          [
+            673,
+            949
+          ],
+          [
+            702,
+            798
+          ],
+          [
+            710,
+            706
+          ],
+          [
+            699,
+            604
+          ],
+          [
+            678,
+            511
+          ],
+          [
+            644,
+            423
+          ]
+        ],
+        "foot": [
+          [
+            239,
+            1319
+          ],
+          [
+            278,
+            1281
+          ],
+          [
+            348,
+            1230
+          ],
+          [
+            365,
+            1261
+          ],
+          [
+            452,
+            1269
+          ],
+          [
+            595,
+            1269
+          ],
+          [
+            665,
+            1262
+          ],
+          [
+            676,
+            1233
+          ],
+          [
+            747,
+            1283
+          ],
+          [
+            784,
+            1323
+          ],
+          [
+            784,
+            1408
+          ],
+          [
+            730,
+            1444
+          ],
+          [
+            618,
+            1457
+          ],
+          [
+            401,
+            1457
+          ],
+          [
+            298,
+            1437
+          ],
+          [
+            240,
+            1401
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "replacement",
+    "boundsTolerance": 3,
+    "minSourceSize": 800,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_LumenSereniteColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ],
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/column/color.png",
+        "sha256": "40149427c17ddfe98ceac1aea6c35fb91c455889a8a416c807fb23d657de61ee"
+      },
+      "mask": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/column/mask.png",
+        "sha256": "3079bf0e49f35497ef75554b3a00dd7216cfb4b3a09eadd656d588eac0cdd66d"
+      }
+    }
+  },
+  "acceptance": {
+    "design": "user selected 2026-11-03",
+    "mask": "User finished and saved 2026-11-03; exact saved mask applied to source",
+    "inGame": "pending combined human review"
+  },
+  "paintedMask": "painted-mask.png"
+}

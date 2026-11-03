@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="DV_PyrinthBrazier"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace"><xpath>Defs/ThingDef[defName="DV_PyrinthBrazier"]/uiIconScale</xpath><value><uiIconScale>0.471958</uiIconScale></value></li>
+        <li Class="PatchOperationReplace"><xpath>Defs/ThingDef[defName="DV_PyrinthBrazier"]/uiIconOffset</xpath><value><uiIconOffset>(0,0.198594)</uiIconOffset></value></li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

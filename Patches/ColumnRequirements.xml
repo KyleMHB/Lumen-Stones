@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs//li[@Class="RoomRequirement_ThingCount"][thingDef="Column"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs//li[@Class="RoomRequirement_ThingCount"][thingDef="Column"]</xpath>
+          <value><things><li>Column</li></things></value>
+        </li>
+        <li Class="PatchOperationAttributeSet">
+          <xpath>Defs//li[@Class="RoomRequirement_ThingCount"][thingDef="Column"]</xpath>
+          <attribute>Class</attribute><value>RoomRequirement_ThingAnyOfCount</value>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs//li[@Class="RoomRequirement_ThingAnyOfCount"][things/li="Column"]/thingDef</xpath>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs//li[@Class="RoomRequirement_ThingAnyOfCount"][things/li="Column"]/things</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs//li[@Class="RoomRequirement_ThingAnyOfCount"][things/li="Column"]/things</xpath>
+      <value>
+        <li>KM_LumenFireflyColumn</li>
+        <li MayRequire="det.epochspyrinth">KM_LumenPyrinthColumn</li>
+        <li>KM_LumenGlaciteColumn</li>
+        <li>KM_LumenVitaliteColumn</li>
+        <li>KM_LumenSereniteColumn</li>
+        <li>KM_LumenVerditeColumn</li>
+        <li>KM_LumenAegiteColumn</li>
+        <li>KM_LumenFerriteColumn</li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

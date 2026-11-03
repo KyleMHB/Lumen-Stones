@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Vitalite</defName><label>Vitalite</label>
+    <description>Lumenstone steeped with herbal medicine takes in the healroot's mending. Built into a sickroom, it helps patients fight off disease.\n\nA pearl-white crystal with a pale rose core, infused from Lumenstone at a Lumen ritual circle. Used to construct restorative furnishings. Vitalite has no temperature effect and does not remove filth.</description>
+    <graphicData><texPath>Things/Item/Resource/Vitalite</texPath><graphicClass>Graphic_StackCount</graphicClass></graphicData>
+    <useHitPoints>false</useHitPoints><healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract><soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases><MarketValue>9</MarketValue><Mass>0.6</Mass><Flammability>0</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe><smeltable>false</smeltable><allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_VitalitePulse</defName><thingClass>MoteThrown</thingClass>
+    <graphicData><texPath>Things/Mote/VitalitePulse</texPath><shaderType>MoteGlow</shaderType></graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote><fadeInTime>0.1</fadeInTime><solidTime>0.3</solidTime><fadeOutTime>0.6</fadeOutTime></mote>
+  </ThingDef>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenVitaliteColumn</defName><label>Vitalite column</label><uiOrder>2044</uiOrder>
+    <researchPrerequisites><li>Stonecutting</li></researchPrerequisites>
+    <description>A roof-supporting Vitalite crystal between rounded caps.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+    <costList><KM_Vitalite>15</KM_Vitalite></costList>
+    <graphicData><texPath>Lumenstone/VitaliteColumn</texPath></graphicData>
+    <statBases><Cleanliness>2</Cleanliness><Flammability>0</Flammability></statBases>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>0</fixtureIndex><weight>0.2</weight></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef Name="KM_VitaliteFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass><techLevel>Medieval</techLevel><designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability><pathCost>14</pathCost><fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType><rotatable>false</rotatable>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>500</WorkToBuild><Mass>5</Mass><Flammability>0</Flammability><Beauty>5</Beauty></statBases>
+    <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType><drawSize>(1,1)</drawSize></graphicData>
+    <building><isInert>true</isInert></building>
+    <minifiedDef>MinifiedThing</minifiedDef><thingCategories><li>BuildingsFurniture</li></thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_VitaliteFixtureBase">
+  <defName>KM_VitaliteLamp</defName>
+  <label>Vitalite lamp</label>
+  <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+  <uiOrder>2803</uiOrder>
+  <researchPrerequisites>
+    <li>Stonecutting</li>
+  </researchPrerequisites>
+  <description>A rose-cored Vitalite crystal on a stand. Its light is easy on tired eyes.\n\nLights a room. Supports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+  <graphicData>
+    <texPath>Things/Building/Vitalite/Lamp</texPath>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <costList>
+      <WoodLog>5</WoodLog>
+    <KM_Vitalite>10</KM_Vitalite>
+  </costList>
+  <statBases>
+    <Cleanliness>0.5</Cleanliness>
+  </statBases>
+  <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+    <li Class="CompProperties_Glower">
+      <glowRadius>10</glowRadius>
+      <glowColor>(245,210,220,0)</glowColor>
+    </li>
+    <li Class="LumenStones.CompProperties_Vitalite">
+      <fixtureIndex>1</fixtureIndex><weight>0.1</weight>
+    </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+  </comps>
+</ThingDef>
+  <ThingDef ParentName="KM_VitaliteFixtureBase">
+    <defName>KM_VitaliteWallLamp</defName><label>Vitalite wall lamp</label><designatorDropdown>KM_LumenWallLamps</designatorDropdown><uiOrder>2804</uiOrder>
+    <researchPrerequisites><li>Stonecutting</li></researchPrerequisites>
+    <description>A wall-mounted Vitalite crystal, out of the way of beds and stretchers.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+    <rotatable>true</rotatable><altitudeLayer>BuildingBelowTop</altitudeLayer><passability>Standable</passability><pathCost>0</pathCost><terrainAffordanceNeeded IsNull="True" />
+    <graphicData><texPath>Things/Building/Vitalite/WallLamp</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>(1,1)</drawSize><drawRotated>false</drawRotated><drawOffsetNorth>(0,0,0.9)</drawOffsetNorth><drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth><drawOffsetEast>(0.9,0,0)</drawOffsetEast><drawOffsetWest>(-0.9,0,0)</drawOffsetWest></graphicData>
+    <uiIconPath>Things/Building/Vitalite/WallLamp</uiIconPath><uiIconScale>0.85</uiIconScale>
+    <costList><KM_Vitalite>8</KM_Vitalite><Steel>5</Steel></costList><statBases><Cleanliness>0.5</Cleanliness></statBases>
+    <building><isEdifice>false</isEdifice><isAttachment>true</isAttachment></building>
+    <placeWorkers><li>Placeworker_AttachedToWall</li></placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>9</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>1</fixtureIndex><weight>0.1</weight></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_VitaliteFixtureBase">
+    <defName>KM_VitalitePylon</defName>
+    <drawerType>RealtimeOnly</drawerType><label>Vitalite pylon</label><uiOrder>2822</uiOrder>
+    <size>(1,1)</size>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A short, exposed Vitalite shaft on a rounded base. Patients who can walk tend to rest a hand on it on their way past.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+    <graphicData><texPath>Things/Building/Vitalite/Pylon</texPath><drawSize>(1.08,2.16)</drawSize><drawOffset>(0,0,0.615625)</drawOffset></graphicData>
+    <uiIconScale>0.833333</uiIconScale>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories><costStuffCount>30</costStuffCount><costList><KM_Vitalite>25</KM_Vitalite></costList>
+    <statBases><Cleanliness>3</Cleanliness><WorkToBuild>1000</WorkToBuild><Beauty>8</Beauty></statBases>
+    <researchPrerequisites><li>KM_VitaliteRestoration</li></researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>2</fixtureIndex><weight>0.45</weight></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_VitaliteFixtureBase">
+    <defName>KM_VitaliteCluster</defName><label>Vitalite restorative cluster</label><uiOrder>2823</uiOrder>
+    <description>A group of Vitalite crystals in a low rounded housing.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+    <graphicData><texPath>Things/Building/Vitalite/Cluster</texPath><drawSize>(1,1.12)</drawSize></graphicData>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories><costStuffCount>30</costStuffCount><costList><KM_Vitalite>35</KM_Vitalite></costList>
+    <statBases><Cleanliness>4</Cleanliness><WorkToBuild>1200</WorkToBuild></statBases>
+    <researchPrerequisites><li>KM_VitaliteRestoration</li></researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>5</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>3</fixtureIndex><weight>0.25</weight></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef Name="KM_VitaliteBedBase" ParentName="BedWithQualityBase" Abstract="True">
+    <thingClass>Building_Bed</thingClass><techLevel>Medieval</techLevel><tickerType>Normal</tickerType>
+    <!-- BedBase's facility preview requires a facility component; these beds have no links. -->
+    <placeWorkers Inherit="False" />
+    <size>(1,2)</size><rotatable>true</rotatable>
+    <graphicData><graphicClass>Graphic_Multi</graphicClass><drawRotated>false</drawRotated><shaderType>CutoutComplex</shaderType><drawSize>(2,2)</drawSize></graphicData><defaultPlacingRot>South</defaultPlacingRot>
+    <statBases><MaxHitPoints>250</MaxHitPoints><Mass>80</Mass><Flammability>0</Flammability><BedRestEffectiveness>0.8</BedRestEffectiveness><ImmunityGainSpeedFactor>1.07</ImmunityGainSpeedFactor><SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor></statBases>
+    <stuffCategories><li>Stony</li></stuffCategories>
+    <building><bed_healPerDay>4</bed_healPerDay><bed_defaultMedical>true</bed_defaultMedical><bed_showSleeperBody>true</bed_showSleeperBody><bed_UseSheetColor>false</bed_UseSheetColor></building>
+    <researchPrerequisites><li>ComplexFurniture</li></researchPrerequisites>
+  </ThingDef>
+  <HediffDef>
+    <defName>KM_VitaliteSupport</defName>
+    <label>Vitalite support</label>
+    <description>Vitalite fixtures and the bed are supporting this resting patient. Hover for its current bonuses.</description>
+    <hediffClass>LumenStones.Hediff_Status</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+    <defaultLabelColor>(0.95,0.7,0.8)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="KM_VitaliteBedBase">
+    <defName>KM_VitaliteSlabBed</defName><label>Vitalite inlaid bed</label><uiOrder>2027</uiOrder>
+    <description>A stone slab bed with a Vitalite headboard and gold band, built for a sickroom.\n\nRaises its resting occupant's immunity, and with Solar energy also healing and infection prevention. Room support adds to this. Doctors and medicine remain useful. Ranks just above a hospital bed, so patients pick it over a normal bed.</description>
+    <graphicData><texPath>Things/Building/Vitalite/SlabBed</texPath></graphicData><uiIconScale>1</uiIconScale><costStuffCount>80</costStuffCount><costList><KM_Vitalite>20</KM_Vitalite></costList>
+    <statBases><WorkToBuild>1800</WorkToBuild><Comfort>0.45</Comfort><Beauty>4</Beauty><MedicalTendQualityOffset>0.10</MedicalTendQualityOffset><BedRestEffectiveness>1.02</BedRestEffectiveness></statBases>
+    <comps><li Class="LumenStones.CompProperties_Vitalite"><healingBonus>0.15</healingBonus><immunityBonus>0.05</immunityBonus><infectionPrevention>0.05</infectionPrevention></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_VitaliteBedBase">
+    <!-- Retain the former casket ID so existing beds and blueprints become full Vitalite beds. -->
+    <defName>KM_VitaliteCasket</defName><label>Vitalite bed</label><uiOrder>2028</uiOrder>
+    <description>A bed cut entirely from faceted Vitalite, crystal pillow included. It takes a great deal of stone, and patients leave it quickly.\n\nStrongly raises its resting occupant's immunity, and with Solar energy also healing and infection prevention. Room support adds to this. Ranks above a hospital bed, with better tend quality, rest, immunity and surgery, so patients pick it first. Cannot replace tending or medicine, heal permanent scars, restore missing limbs or resurrect the dead.</description>
+    <graphicData><texPath>Things/Building/Vitalite/FullBed</texPath><shaderType>Cutout</shaderType></graphicData><uiIconPath>Things/Building/Vitalite/FullBed</uiIconPath><stuffCategories Inherit="False" /><costStuffCount>0</costStuffCount><costList><KM_Vitalite>250</KM_Vitalite></costList>
+    <statBases><WorkToBuild>12000</WorkToBuild><Comfort>0.8</Comfort><Beauty>12</Beauty><MaxHitPoints>400</MaxHitPoints><MedicalTendQualityOffset>0.15</MedicalTendQualityOffset><BedRestEffectiveness>1.1</BedRestEffectiveness><ImmunityGainSpeedFactor>1.15</ImmunityGainSpeedFactor><SurgerySuccessChanceFactor>1.1</SurgerySuccessChanceFactor></statBases>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites Inherit="False"><li>ComplexFurniture</li><li>Stonecutting</li></researchPrerequisites>
+    <comps>
+      <li Class="LumenStones.CompProperties_Vitalite"><healingBonus>0.75</healingBonus><immunityBonus>0.2</immunityBonus><infectionPrevention>0.15</infectionPrevention></li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
+    </comps>
+  </ThingDef>
+
+</Defs>

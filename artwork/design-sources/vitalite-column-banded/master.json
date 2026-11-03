@@ -1,0 +1,89 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    385,
+    40,
+    870,
+    1185
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    65,
+    4,
+    191,
+    252
+  ],
+  "colorFilename": "VitaliteColumn.png",
+  "maskFilename": "VitaliteColumn_m.png",
+  "sourceRepair": "Crop accepted source; preserve colour and alpha.",
+  "alphaHandling": "Shared crop and uniform Lanczos reduction for colour and explicit cap ownership.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "top-cap": [
+          [
+            375,
+            40
+          ],
+          [
+            880,
+            40
+          ],
+          [
+            880,
+            235
+          ],
+          [
+            375,
+            235
+          ]
+        ],
+        "bottom-cap": [
+          [
+            375,
+            1038
+          ],
+          [
+            880,
+            1038
+          ],
+          [
+            880,
+            1190
+          ],
+          [
+            375,
+            1190
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      74,
+      4,
+      182,
+      252
+    ],
+    "boundsTolerance": 15,
+    "footLine": 252,
+    "minSourceSize": 1000,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_LumenVitaliteColumn",
+    "drawSize": [
+      1,
+      1.25
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

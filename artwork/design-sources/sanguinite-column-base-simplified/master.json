@@ -1,0 +1,178 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    370,
+    48,
+    884,
+    1208
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    36,
+    512,
+    490
+  ],
+  "colorFilename": "SanguiniteColumn.png",
+  "maskFilename": "SanguiniteColumn_m.png",
+  "sourceRepair": "Crop excludes faint exterior alpha debris; facet-edit source simplifies crystal and metal, original source retained.",
+  "alphaHandling": "Preserve source alpha within crop with one shared uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "facet-edit.png",
+      "ownership": {
+        "capital-and-talons": [
+          [
+            370,
+            48
+          ],
+          [
+            884,
+            48
+          ],
+          [
+            884,
+            425
+          ],
+          [
+            718,
+            425
+          ],
+          [
+            730,
+            373
+          ],
+          [
+            732,
+            320
+          ],
+          [
+            704,
+            270
+          ],
+          [
+            668,
+            250
+          ],
+          [
+            584,
+            250
+          ],
+          [
+            548,
+            270
+          ],
+          [
+            520,
+            320
+          ],
+          [
+            522,
+            373
+          ],
+          [
+            536,
+            425
+          ],
+          [
+            370,
+            425
+          ]
+        ],
+        "plinth-and-talons": [
+          [
+            370,
+            1207
+          ],
+          [
+            370,
+            855
+          ],
+          [
+            540,
+            855
+          ],
+          [
+            530,
+            910
+          ],
+          [
+            520,
+            970
+          ],
+          [
+            530,
+            1020
+          ],
+          [
+            565,
+            1070
+          ],
+          [
+            590,
+            1080
+          ],
+          [
+            665,
+            1080
+          ],
+          [
+            690,
+            1070
+          ],
+          [
+            724,
+            1020
+          ],
+          [
+            734,
+            970
+          ],
+          [
+            724,
+            910
+          ],
+          [
+            714,
+            855
+          ],
+          [
+            884,
+            855
+          ],
+          [
+            884,
+            1207
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      156,
+      36,
+      356,
+      490
+    ],
+    "boundsTolerance": 12,
+    "footLine": 490,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_LumenSanguiniteColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

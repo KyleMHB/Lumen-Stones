@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ModlistConfigurator.ModlistPresetDef>
+    <defName>LumenStonesAllColumns</defName>
+    <presetLabel>Lumen Stones - All content, mod-list balance</presetLabel>
+    <version>2.0.0</version>
+  </ModlistConfigurator.ModlistPresetDef>
+</Defs>

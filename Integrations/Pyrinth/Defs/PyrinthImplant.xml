@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Loads only with Epochs - Pyrinth. Uses the light part bases in Defs/StoneImplants.xml. -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_PyrinthImplant</defName>
+    <label>Pyrinth implant</label>
+    <description>A shard of Pyrinth set beside the heart. Once woken by Attunement, it keeps the body comfortable in bitter cold but makes heat harder to bear.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/PyrinthImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_PyrinthImplant</defName>
+    <label>Pyrinth implant</label>
+    <labelNoun>a Pyrinth implant</labelNoun>
+    <description>A shard of Pyrinth beside the heart. It keeps the body comfortable in bitter cold but makes heat harder to bear.</description>
+    <spawnThingOnRemoved>KM_PyrinthImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statOffsets><ComfyTemperatureMin>-30</ComfyTemperatureMin></statOffsets></benefit>
+        <drawback><statOffsets><ComfyTemperatureMax>-20</ComfyTemperatureMax></statOffsets></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakePyrinthImplant</defName>
+    <label>make Pyrinth implant</label>
+    <description>Shape Pyrinth and a component into a Pyrinth implant.</description>
+    <jobString>Making Pyrinth implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>DV_Pyrinth</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>DV_Pyrinth</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_PyrinthImplant>1</KM_PyrinthImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallPyrinthImplant</defName>
+    <label>install Pyrinth implant</label>
+    <description>Install a Pyrinth implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Pyrinth implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_PyrinthImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_PyrinthImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_PyrinthImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemovePyrinthImplant</defName>
+    <label>remove Pyrinth implant</label>
+    <description>Remove a Pyrinth implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Pyrinth implant.</jobString>
+    <removesHediff>KM_PyrinthImplant</removesHediff>
+  </RecipeDef>
+</Defs>

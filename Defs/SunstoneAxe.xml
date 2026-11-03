@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>KM_SunstoneAxe</defName>
+    <label>Sunstone axe</label>
+    <description>An axe with an amber-citrine Sunstone edge. Each solid hit releases some of the daylight stored in the edge.\n\nA damaging melee hit can flash-blind and briefly stun the target, and it cuts 50% deeper into Anomaly entities and mutants. Crafted from 100 Sunstone and 20 steel after Long blades, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>5000</WorkToMake><Mass>2.2</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/SunstoneAxe</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.3687,1.3687)</drawSize>
+    </graphicData>
+    <uiIconScale>0.85</uiIconScale>
+    <weaponTags><li>MedievalMeleeAdvanced</li></weaponTags>
+    <tools>
+      <li><label>handle</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>edge</label><capacities><li>Cut</li></capacities><power>23</power><cooldownTime>2.2</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>424</displayPriority>
+    </recipeMaker>
+    <costList><KM_Sunstone>100</KM_Sunstone><Steel>20</Steel></costList>
+  </ThingDef>
+
+  <!-- A hard cap on Sight, so bionic eyes and other bonuses cannot raise it. -->
+  <HediffDef>
+    <defName>KM_SolarBlindness</defName>
+    <label>solar blindness</label>
+    <description>Dazzled by a flash of Sunstone light. Sight is sharply reduced for a few seconds.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <capMods>
+          <li><capacity>Sight</capacity><setMax>0.2</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

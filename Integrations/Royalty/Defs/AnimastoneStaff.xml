@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>KM_AnimastoneStaff</defName>
+    <label>Animastone staff</label>
+    <description>A wooden focus staff crowned with Animastone. It takes some of the strain of a psycast onto itself.\n\nIt is a poor club, but while wielded it lowers neural heat gained by 20% and raises the neural heat limit by 15. A damaging melee hit can briefly stun the target, with a chance that grows with the wielder's psychic sensitivity. It needs no Solar energy. Crafted from 60 Animastone and 20 wood after anima attunement, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>5000</WorkToMake><Mass>1.8</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/AnimastoneStaff</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags><li>MedievalMeleeBasic</li></weaponTags>
+    <!-- PsychicEntropyGain has a base of 1, so -0.2 gives 80% of neural heat gained. -->
+    <equippedStatOffsets>
+      <PsychicEntropyGain>-0.2</PsychicEntropyGain>
+      <PsychicEntropyMaxOffset>15</PsychicEntropyMaxOffset>
+    </equippedStatOffsets>
+    <tools>
+      <li><label>shaft</label><capacities><li>Blunt</li></capacities><power>7</power><cooldownTime>2</cooldownTime></li>
+      <li><label>head</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2.2</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>KM_AnimaAttunement</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    </recipeMaker>
+    <costList><KM_Animastone>60</KM_Animastone><WoodLog>20</WoodLog></costList>
+  </ThingDef>
+</Defs>

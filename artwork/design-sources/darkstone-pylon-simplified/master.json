@@ -1,0 +1,234 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    367,
+    39,
+    885,
+    1215
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    16,
+    512,
+    496
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Crop excludes faint alpha debris; generated source preserved.",
+  "alphaHandling": "Preserve alpha inside crop and transform colour and ownership together.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "crown-left": [
+          [
+            367,
+            39
+          ],
+          [
+            590,
+            39
+          ],
+          [
+            590,
+            160
+          ],
+          [
+            570,
+            250
+          ],
+          [
+            605,
+            290
+          ],
+          [
+            590,
+            310
+          ],
+          [
+            367,
+            320
+          ]
+        ],
+        "crown-right": [
+          [
+            662,
+            39
+          ],
+          [
+            885,
+            39
+          ],
+          [
+            885,
+            320
+          ],
+          [
+            662,
+            310
+          ],
+          [
+            645,
+            290
+          ],
+          [
+            682,
+            250
+          ],
+          [
+            662,
+            160
+          ]
+        ],
+        "crown-center-top": [
+          [
+            590,
+            39
+          ],
+          [
+            662,
+            39
+          ],
+          [
+            662,
+            145
+          ],
+          [
+            626,
+            185
+          ],
+          [
+            590,
+            145
+          ]
+        ],
+        "base-left": [
+          [
+            367,
+            805
+          ],
+          [
+            500,
+            805
+          ],
+          [
+            535,
+            905
+          ],
+          [
+            610,
+            930
+          ],
+          [
+            590,
+            965
+          ],
+          [
+            570,
+            1020
+          ],
+          [
+            600,
+            1075
+          ],
+          [
+            600,
+            1215
+          ],
+          [
+            367,
+            1215
+          ]
+        ],
+        "base-right": [
+          [
+            752,
+            805
+          ],
+          [
+            885,
+            805
+          ],
+          [
+            885,
+            1215
+          ],
+          [
+            652,
+            1215
+          ],
+          [
+            652,
+            1075
+          ],
+          [
+            680,
+            1020
+          ],
+          [
+            662,
+            965
+          ],
+          [
+            642,
+            930
+          ],
+          [
+            716,
+            905
+          ]
+        ],
+        "base-center": [
+          [
+            600,
+            1085
+          ],
+          [
+            626,
+            1110
+          ],
+          [
+            652,
+            1085
+          ],
+          [
+            660,
+            1215
+          ],
+          [
+            592,
+            1215
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      150,
+      16,
+      362,
+      496
+    ],
+    "boundsTolerance": 16,
+    "footLine": 496,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_DarkStonePylon",
+    "drawSize": [
+      2.2,
+      2.2
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

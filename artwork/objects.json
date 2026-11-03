@@ -1,0 +1,2929 @@
+{
+  "schema": 1,
+  "renderer": {
+    "id": "installed-rimworld-1.7-waylith-2026-10-31",
+    "commandScale": 0.85,
+    "modeledBleedRadius": 4,
+    "modelLimits": "Independent 8-bit bilinear channel sampling, shader MaskGate, controlled four-source-pixel bleed approximation. Not a GPU capture or world-camera simulation.",
+    "sourceHashes": {
+      "Assembly-CSharp.dll": "56399b6144d9f1695f9c53d054dc82972f7ab35e68d1a19a7129f2f5860ccd21",
+      "Data/Core/Shaders/MaskGate.glsl": "776d5a721ce5e8280ccf5584681154bd8e29a19fefc7d170471cc315477d44e7",
+      "Data/Core/Shaders/Map/CutoutComplex.frag.glsl": "4e0aeb152c1333b1b4ec1f538711ab46656517962f55cec022d2cb345cc9c168",
+      "Data/Core/Shaders/Map/CutoutComplexUI.frag.glsl": "546c451bb49fd9e7c1538b8e819506d2e85fb6261b9ad57f0845d4477dbd9b80"
+    }
+  },
+  "materials": {
+    "neutral": [
+      1,
+      1,
+      1
+    ],
+    "steel": [
+      0.4117647058823529,
+      0.4117647058823529,
+      0.4117647058823529
+    ],
+    "sandstone": [
+      1,
+      0.95,
+      0.83
+    ]
+  },
+  "objects": [
+    {
+      "id": "KM_GlaciteWallLamp",
+      "label": "Glacite wall lamp",
+      "texture": "Things/Building/Misc/WallGlaciteTorch/WallGlaciteTorch",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Stepped Glacite wall lamp",
+        "geometry": "Blue stepped shard in a simple grey collar; south shows the wall-occluded tip.",
+        "materials": "Fixed crystal and grey collar.",
+        "camera": "Shallow north view and derived east, west and occluded south at existing wall anchors.",
+        "protected": "Accepted crystal shape and collar, wall-side placement and directional relationships.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/WallGlaciteTorch/WallGlaciteTorch_north.png",
+        "sha256": "423489cac554fe6cedffdf5af9d75381e68ee5d6f0ef0b2382c580f84d96a122",
+        "approvedBy": "user approved revised perspective and design; derived frames and in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/glacite-wall-lamp/north.json",
+        "east": "artwork/design-sources/glacite-wall-lamp/east.json",
+        "south": "artwork/design-sources/glacite-wall-lamp/south.json",
+        "west": "artwork/design-sources/glacite-wall-lamp/west.json"
+      }
+    },
+    {
+      "id": "KM_GlaciteCooler",
+      "label": "Glacite cooler",
+      "texture": "Things/Building/Misc/GlaciteCooler",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Two stepped blue ice crystals in a low continuous housing",
+        "geometry": "Two unequal crystals and simple angular supports on a continuous base",
+        "materials": "Blue crystals fixed; grey housing construction-tinted",
+        "camera": "Shallow view matching Glacite family",
+        "protected": "Accepted silhouette, facets, continuous housing and user-painted mask",
+        "allowedEdits": "Requested revisions only; final in-game review remains pending"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/GlaciteCooler.png",
+        "sha256": "b1084f0bff77a0f8b48fc86b391d6580d047648c1321c1b455770e726014db58",
+        "approvedBy": "user accepted design and painted mask on 2026-11-02; in-game review pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/glacite-cooler/master.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_GlacitePylon",
+      "label": "Glacite pylon",
+      "texture": "Things/Building/Misc/GlacitePylon/GlacitePylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "contract": {
+        "identity": "Blue fractured ice shard on angular supports",
+        "geometry": "One tall stepped crystal, two simple supports and a low slab",
+        "materials": "Blue/cyan crystal fixed; supports and slab construction-tinted",
+        "camera": "Approved north depth with fixed camera across directions",
+        "protected": "Silhouette, crystal/cradle proportions and intentional lower padding",
+        "allowedEdits": "Only the regions explicitly requested in the next ticket; approved master replacement requires recorded visual acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/GlacitePylon/GlacitePylon_north.png",
+        "sha256": "4377369a0fd42c254b365587be24fc58055ae6fad7d070183c26619b0b2fedf4",
+        "approvedBy": "user, accepted revised simplified pylon concept on 2026-11-02; in-game review pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.58,
+        0.79
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/glacite-pylon/master.json",
+        "south": "artwork/design-sources/glacite-pylon/master.json",
+        "east": "artwork/design-sources/glacite-pylon/mirror.json",
+        "west": "artwork/design-sources/glacite-pylon/mirror.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_VitalitePylon",
+      "label": "Vitalite pylon",
+      "texture": "Things/Building/Vitalite/Pylon",
+      "canvas": [
+        256,
+        512
+      ],
+      "contract": {
+        "identity": "Tall exposed rose/pearl crystal with a gold band on a shallow round base",
+        "geometry": "One tall broad shaft, one central gold band, no top cap",
+        "materials": "Pearl/rose crystal and gold band fixed; round base construction-tinted",
+        "camera": "Fixed camera and approved shallow base depth",
+        "protected": "Accepted crystal planes, gold band and smooth base",
+        "allowedEdits": "Only the regions explicitly requested in the next ticket; approved master replacement requires recorded visual acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Vitalite/Pylon.png",
+        "sha256": "682087893c87d8e09b56de9e5476dc9292dc3b80c2053ec18663f70d8a0af99c",
+        "approvedBy": "user: design acceptance; placement and material tint pending in-game review",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.72
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/vitalite-pylon-banded/master.json"
+      }
+    },
+    {
+      "id": "KM_VitaliteCluster",
+      "label": "Restorative cluster",
+      "texture": "Things/Building/Vitalite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "contract": {
+        "identity": "Three rose Vitalite crystals in a smooth bowl with a gold band",
+        "geometry": "Three crystal points in a rounded open bowl with one gold band",
+        "materials": "Stone housing accepts construction tint; crystals and gold band fixed",
+        "camera": "Approved cooler-family fixed camera",
+        "protected": "Accepted crystals, smooth bowl and gold band",
+        "allowedEdits": "Only the regions explicitly requested in the next ticket; approved master replacement requires recorded visual acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Vitalite/Cluster.png",
+        "sha256": "afc673210579683fd9660c9edd6a417baa71b175254e03347cd7247b04096988",
+        "approvedBy": "user: design accepted and source mask painted; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.76
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/vitalite-cluster-banded/master.json"
+      }
+    },
+    {
+      "id": "KM_VitaliteSlabBed",
+      "label": "Inlaid bed",
+      "texture": "Things/Building/Vitalite/SlabBed",
+      "canvas": [
+        512,
+        512
+      ],
+      "contract": {
+        "identity": "Stone restorative bed with Vitalite crystal headboard and gold band",
+        "geometry": "Plain slab with three large headboard crystals and three small foot-face crystals, with directional occlusion",
+        "materials": "Stone accepts construction tint; rose crystals and gold band fixed",
+        "camera": "Approved bed camera; south default; same physical object in four views",
+        "protected": "User-accepted headboard, foot details, gold band and bed proportions",
+        "allowedEdits": "Only the regions explicitly requested in the next ticket; approved master replacement requires recorded visual acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Vitalite/SlabBed_south.png",
+        "sha256": "497e647312e34689a4c1b987ee85df6ce8f59e2ffa3e52ca02a86592e577f347",
+        "approvedBy": "user: south and directional designs; hand-painted masks; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.7,
+        0.88
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "maskEncoding": "opaque-red",
+      "aliases": {
+        "Things/Building/Vitalite/SlabBed.png": "Things/Building/Vitalite/SlabBed_south.png",
+        "Things/Building/Vitalite/SlabBed_m.png": "Things/Building/Vitalite/SlabBed_southm.png"
+      },
+      "recipes": {
+        "north": "artwork/design-sources/vitalite-stone-bed/north.json",
+        "east": "artwork/design-sources/vitalite-stone-bed/east.json",
+        "south": "artwork/design-sources/vitalite-stone-bed/south.json",
+        "west": "artwork/design-sources/vitalite-stone-bed/west.json"
+      }
+    },
+    {
+      "id": "KM_VitaliteCasket",
+      "label": "Full Vitalite bed",
+      "texture": "Things/Building/Vitalite/FullBed",
+      "canvas": [
+        512,
+        512
+      ],
+      "contract": {
+        "identity": "Fully crystalline Vitalite bed with rose core and gold inlay",
+        "geometry": "Pillow-free 1x2 bed with one central crystal and branching gold bands",
+        "materials": "Pearl/rose crystal and gold fixed; no construction tint",
+        "camera": "Approved bed camera; south default; consistent directional depth",
+        "protected": "User-approved pillow-free design, central crystal, branching bands and bed framing",
+        "allowedEdits": "Maintain approved design across directions; in-game appearance awaits review."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Vitalite/FullBed_south.png",
+        "sha256": "4137fa2a729deb0b83b964daaed11cf22ae47de9c0dc7cb0d47ca2a3e3f1dc06",
+        "approvedBy": "user: south design acceptance; directional and in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.68,
+        0.9
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "aliases": {
+        "Things/Building/Vitalite/FullBed.png": "Things/Building/Vitalite/FullBed_south.png"
+      },
+      "recipes": {
+        "north": "artwork/design-sources/vitalite-full-bed-inlaid/north.json",
+        "east": "artwork/design-sources/vitalite-full-bed-inlaid/east.json",
+        "south": "artwork/design-sources/vitalite-full-bed-inlaid/south.json",
+        "west": "artwork/design-sources/vitalite-full-bed-inlaid/west.json"
+      }
+    },
+    {
+      "id": "DV_PyrinthBrazier",
+      "label": "Pyrinth pylon",
+      "texture": "Things/Building/Misc/PyrinthBrazier/PyrinthBrazier",
+      "canvas": [
+        512,
+        512
+      ],
+      "contract": {
+        "identity": "Optional upstream orange crystal pylon",
+        "geometry": "One tall crystal, cradle and two feet",
+        "materials": "Orange crystal fixed; cradle construction-tinted",
+        "camera": "Upstream north default and fixed directional camera",
+        "protected": "Upstream files read-only; preserve current framing until ticket 06",
+        "allowedEdits": "Only the regions explicitly requested in the next ticket; approved master replacement requires recorded visual acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/PyrinthBrazier/PyrinthBrazier_north.png",
+        "sha256": "f80755c744b1c21944ae75cbe5eb0eaaeb7607b1006ea4f3fd0c8cc85f49c7c8",
+        "approvedBy": "user: visual acceptance and ticket closure",
+        "approvedOn": "2026-10-29"
+      },
+      "iconHeightFraction": [
+        0.58,
+        0.79
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "maskEncoding": "legacy",
+      "external": "pyrinth",
+      "definitionFile": "1.6/Defs/ThingDefs_Buildings/Buildings_Furniture.xml",
+      "patch": "Integrations/Pyrinth/Patches/PylonIcon.xml"
+    },
+    {
+      "id": "KM_LumenSereniteColumn",
+      "label": "Serenite sanctuary-frame column",
+      "texture": "Lumenstone/SereniteColumn",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Tall sanctuary-frame column with one lavender crystal",
+        "geometry": "One long upright crystal between two bowed supports; broad elliptical capital and low foot",
+        "materials": "Grey housing construction-tinted; lavender crystal, dark material borders and openings fixed",
+        "camera": "Selected fixed shallow overhead/front camera",
+        "protected": "User-selected refined facets and silhouette; no black lines at same-material joins",
+        "allowedEdits": "User mask finishing and requested localized repairs; preserve selected design"
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/SereniteColumn.png",
+        "sha256": "40149427c17ddfe98ceac1aea6c35fb91c455889a8a416c807fb23d657de61ee",
+        "approvedBy": "User selected design in chat on 2026-11-03; coordinated export. Material mask review and in-game acceptance pending.",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.95
+      ],
+      "previousMasters": [
+        {
+          "path": "Lumenstone/SereniteColumn.png",
+          "sha256": "72b78845fc25f6dc3886da46bc7b94b2036731912a312b57d2ea0d0e43028bc6",
+          "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+          "approvedOn": "2026-10-31"
+        }
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/serenite-family-refinement/column/master.json"
+      }
+    },
+    {
+      "id": "KM_VitaliteLamp",
+      "label": "Vitalite floor lamp",
+      "texture": "Things/Building/Vitalite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Vitalite floor lamp",
+        "geometry": "One simple faceted crystal on the shared original Pyrinth wooden post and collar.",
+        "materials": "Crystal and original brown wooden post fixed; collar alone construction-tinted.",
+        "camera": "Existing fixed RimWorld furnishing camera",
+        "protected": "Shared Pyrinth base pixels, stone palette, charcoal contours, camera and canvas placement.",
+        "allowedEdits": "Only requested material-region/export corrections; new design requires acceptance"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Vitalite/Lamp.png",
+        "sha256": "d6d6aa7807e0a5ac3ac90e00ebe122be22b646e583abfa1556d09c70f40e58c1",
+        "approvedBy": "user, in-game review of the 2026-10-31 repair (artwork/layered/furnishing-repair-2026-10-31.py): acceptable, not perfect; see .scratch/layered-artwork-pipeline/acceptance.md",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.667,
+        0.708
+      ]
+    },
+    {
+      "id": "KM_SereniteLamp",
+      "label": "Serenite floor lamp",
+      "texture": "Things/Building/Serenite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Serenite floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, neutral collar and wooden post are fixed colors; no construction tint.",
+        "camera": "Existing fixed RimWorld furnishing camera",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Serenite/Lamp.png",
+        "sha256": "fc7aaa75406fa42cc7a8f558f57af4d049873ddfd35f79d49ea3897a1cb3ecdc",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.683,
+        0.723
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/serenite/master.json"
+      }
+    },
+    {
+      "id": "KM_SereniteCluster",
+      "label": "Serenite soothing cluster",
+      "texture": "Things/Building/Serenite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Low three-crystal soothing cluster with smooth horned frame",
+        "geometry": "One central upright crystal and two shorter outward-leaning crystals in a low oval housing",
+        "materials": "Grey housing construction-tinted; lavender crystal, dark material borders and openings fixed",
+        "camera": "Selected fixed shallow overhead/front camera",
+        "protected": "User-selected refined facets and silhouette; no black lines at same-material joins",
+        "allowedEdits": "User mask finishing and requested localized repairs; preserve selected design"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Serenite/Cluster.png",
+        "sha256": "24370f7105316c00bb7b79305b5a0c75962fd8e1c2934a8435e97b5d81da60ea",
+        "approvedBy": "User selected design in chat on 2026-11-03; coordinated export. Material mask review and in-game acceptance pending.",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.7
+      ],
+      "previousMasters": [
+        {
+          "path": "Things/Building/Serenite/Cluster.png",
+          "sha256": "48aae1f3cf6b12802e382a9423761b9cd14cb04f8699634da65aa7ffbc22ac16",
+          "approvedBy": "user, in-game review of the 2026-10-31 repair (artwork/layered/furnishing-repair-2026-10-31.py): acceptable, not perfect; see .scratch/layered-artwork-pipeline/acceptance.md",
+          "approvedOn": "2026-10-31"
+        }
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/serenite-family-refinement/cluster/master.json"
+      }
+    },
+    {
+      "id": "KM_SerenitePylon",
+      "label": "Serenite sanctuary shrine",
+      "texture": "Things/Building/Serenite/Pylon",
+      "canvas": [
+        256,
+        144
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Low 2x1 bedroom sanctuary shrine with three refined lavender crystals, two grey horns and a centre hoop",
+        "geometry": "Three broad clipped crystal peaks in a low oval cradle; base anchor at output y=134 with draw offset z=0.035",
+        "materials": "Grey housing construction-tinted; lavender crystal, dark material borders and openings fixed",
+        "camera": "Selected fixed shallow overhead/front camera",
+        "protected": "User-selected refined facets and silhouette; no black lines at same-material joins",
+        "allowedEdits": "User mask finishing and requested localized repairs; preserve selected design"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Serenite/Pylon.png",
+        "sha256": "862ad601c990494a4e3432e7a2cd50f214cc677cc043de383401a925912f0d90",
+        "approvedBy": "User selected design in chat on 2026-11-03; coordinated export. Material mask review and in-game acceptance pending.",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.38,
+        0.5
+      ],
+      "previousMasters": [
+        {
+          "path": "Things/Building/Serenite/Pylon.png",
+          "sha256": "1dbb78077ef1be089e0eb227974f1dfb04741a4337094af55763fd9bd0b946ee",
+          "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+          "approvedOn": "2026-10-31"
+        }
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/serenite-bedroom-shrine/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenVitaliteColumn",
+      "label": "Vitalite column",
+      "texture": "Lumenstone/VitaliteColumn",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Vitalite column with a gold band and rounded caps",
+        "geometry": "One faceted crystal shaft, one central gold band and two smooth rounded caps",
+        "materials": "Crystal and gold fixed; caps accept construction tint",
+        "camera": "Fixed elevated camera matching accepted Vitalite fixtures",
+        "protected": "Accepted crystal, gold band, smooth caps and proportions",
+        "allowedEdits": "Requested revisions only; in-game review pending"
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/VitaliteColumn.png",
+        "sha256": "1876d083cf8fe381d4007adb0c6dbbee4ea1a930453af2631bf73cd4ddebcbe6",
+        "approvedBy": "user: design accepted and mask painted; in-game review pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.99
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/vitalite-column-banded/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenGlaciteColumn",
+      "label": "Glacite column",
+      "texture": "Lumenstone/GlaciteColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Stepped blue Glacite column between a cap and pedestal.",
+        "geometry": "Stepped crystal with two plain rounded bands, a cap and a foot.",
+        "materials": "Blue crystal remains fixed; cap, collars and pedestal take construction tint.",
+        "camera": "Shallow fixed view matching the approved Glacite column.",
+        "protected": "Accepted design, broad blue facets, proportions and framing.",
+        "allowedEdits": "Requested revisions only; final in-game review remains pending."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/GlaciteColumn.png",
+        "sha256": "0d8b74358fb70eb6436fe2e399a30a40ebcdbeac43f7032f301145c2dd8c1430",
+        "approvedBy": "user approved stepped column and painted mask on 2026-11-02; in-game acceptance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.95
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/glacite-column-stepped/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenVerditeColumn",
+      "label": "Verdite root-clasped column",
+      "texture": "Lumenstone/VerditeColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite root-clasped column",
+        "geometry": "One peridot/chartreuse trunk between neutral-gray leaf/root clasps, capital and foot.",
+        "materials": "Gray construction regions tintable; green/gold crystal and charcoal contours protected.",
+        "camera": "Existing fixed shallow RimWorld camera; source framing retained.",
+        "protected": "Crystal palette, approved silhouette, feature count and export aspect.",
+        "allowedEdits": "Only requested material/export corrections; new design requires acceptance."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/VerditeColumn.png",
+        "sha256": "29d1090dc4250f6c6e4e4c8db810343bd8310629d1e12e0b751aae3038334c76",
+        "approvedBy": "User accepted the protected source-backed design and candidate mask on 2026-11-03; combined in-game acceptance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.95
+      ],
+      "maskEncoding": "opaque-red",
+      "previousMasters": [
+        {
+          "path": "Lumenstone/VerditeColumn.png",
+          "sha256": "0754e26ec6a70dca8266c743609cedf64dbcb5002181d7cbcde1687931ba97c8",
+          "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+          "approvedOn": "2026-10-31"
+        }
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/verdite-column-refresh/master.json"
+      }
+    },
+    {
+      "id": "KM_VerditeLamp",
+      "label": "Verdite floor lamp",
+      "texture": "Things/Building/Verdite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, neutral collar and wooden post are fixed colors; no construction tint.",
+        "camera": "Existing fixed shallow RimWorld camera; source framing retained.",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Verdite/Lamp.png",
+        "sha256": "ce22b80e68e0ed9f3065d72471a07570c3abbcca7346b40bd1644997e69c8767",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.699,
+        0.739
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/verdite/master.json"
+      }
+    },
+    {
+      "id": "KM_VerditeCluster",
+      "label": "Verdite natural spire cluster",
+      "texture": "Things/Building/Verdite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite natural spire cluster",
+        "geometry": "Exactly three interlocking uneven natural crystal spires; no housing, half the pylon visual height.",
+        "materials": "Entirely fixed peridot/golden-chartreuse crystal; no construction tint.",
+        "camera": "Existing fixed shallow RimWorld camera; source framing retained.",
+        "protected": "Crystal palette, approved silhouette, feature count and export aspect.",
+        "allowedEdits": "Only requested material/export corrections; new design requires acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Verdite/Cluster.png",
+        "sha256": "48d4709510b8709c93a56096bb61a3980de899ee1cec3b198c4e3ebefcd2f601",
+        "approvedBy": "user: resume after correction-preview review in this chat",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.55,
+        0.8
+      ]
+    },
+    {
+      "id": "KM_VerditePylon",
+      "label": "Verdite root-clasped pylon",
+      "texture": "Things/Building/Verdite/Pylon",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite root-clasped pylon",
+        "geometry": "Tall tapering green and chartreuse spire with neutral leaf and root clasps around the base.",
+        "materials": "Fixed green crystal and neutral gray fittings; mask records reviewed fitting coverage.",
+        "camera": "Shallow RimWorld camera; 1x1 footprint with tall artwork.",
+        "protected": "User-approved spire and leaf/root design, palette and reviewed mask.",
+        "allowedEdits": "Only approved corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Verdite/Pylon.png",
+        "sha256": "eedb7cf3b332d052d1a66349b690980aec7abbab9fecc10f7aae337bae266819",
+        "approvedBy": "User approved pylon design in chat; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.77,
+        0.86
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/verdite-pylon-redesign/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenAegiteColumn",
+      "label": "Aegite ward column",
+      "texture": "Lumenstone/AegiteColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite ward column",
+        "geometry": "One champagne-gold crystal shaft between a flat-topped low rectangular capital and a stepped plinth; no raised crown ends.",
+        "materials": "Gray construction surfaces tintable; champagne/white-gold crystal, charcoal contours and openings protected.",
+        "camera": "Approved shallow fixed RimWorld camera, whole-source proportions preserved.",
+        "protected": "Crystal colors, selected silhouette, feature count and charcoal contours.",
+        "allowedEdits": "Only approved material/export corrections; new design requires acceptance."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/AegiteColumn.png",
+        "sha256": "9d480d73b6414b0ae2809a8a8d6a753cf321493f5bdd865f6a43a3deb368f9d7",
+        "approvedBy": "user: resume after correction-preview review in this chat",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.82,
+        0.91
+      ],
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_AegiteLamp",
+      "label": "Aegite floor lamp",
+      "texture": "Things/Building/Aegite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, neutral collar and wooden post are fixed colors; no construction tint.",
+        "camera": "Approved shallow fixed RimWorld camera, whole-source proportions preserved.",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Aegite/Lamp.png",
+        "sha256": "66c1c4e38212efa7eab3193a85686628cf26a1604fc112bfc8bb08c33e04cddd",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.683,
+        0.723
+      ],
+      "maskEncoding": "opaque-red",
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/aegite/master.json"
+      }
+    },
+    {
+      "id": "KM_AegiteCluster",
+      "label": "Aegite tripod ward cluster",
+      "texture": "Things/Building/Aegite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite tripod ward cluster",
+        "geometry": "Three golden crystal points in a low gray tripod cradle.",
+        "materials": "Gray construction surfaces tintable; champagne/white-gold crystal, charcoal contours and openings protected.",
+        "camera": "Approved shallow fixed RimWorld camera, whole-source proportions preserved.",
+        "protected": "Crystal colors, selected silhouette, feature count and charcoal contours.",
+        "allowedEdits": "Only approved material/export corrections; new design requires acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Aegite/Cluster.png",
+        "sha256": "cb20f7e6c6b37513f9451fbfbb7e745ef602370595a8b4a1b701e684acba9d8e",
+        "approvedBy": "user, in-game review of the 2026-10-31 repair (artwork/layered/furnishing-repair-2026-10-31.py): acceptable, not perfect; see .scratch/layered-artwork-pipeline/acceptance.md",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.55,
+        0.64
+      ],
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_AegitePylon",
+      "label": "Aegite sentinel pylon",
+      "texture": "Things/Building/Aegite/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite sentinel pylon",
+        "geometry": "Three golden protective prisms held by two gray buttresses above one broad stepped foot.",
+        "materials": "Gray construction surfaces tintable; champagne/white-gold crystal, charcoal contours and openings protected.",
+        "camera": "Approved shallow fixed RimWorld camera, whole-source proportions preserved.",
+        "protected": "Crystal colors, selected silhouette, feature count and charcoal contours.",
+        "allowedEdits": "Only approved material/export corrections; new design requires acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Aegite/Pylon.png",
+        "sha256": "6c32d048e20dfe6a1853177512010e03b30f0828fceddc30937ab57a3d886da0",
+        "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.77,
+        0.86
+      ],
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_LumenFerriteColumn",
+      "label": "Ferrite maintenance column",
+      "texture": "Lumenstone/FerriteColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Ferrite maintenance column",
+        "geometry": "One slate-silver/copper crystal restrained by neutral-gray girder caps and side braces.",
+        "materials": "Gray construction geometry tintable; slate-silver and copper crystal, charcoal contours and gaps protected.",
+        "camera": "Approved shallow fixed RimWorld camera; normalized framing and draw size unchanged.",
+        "protected": "Crystal palette, silhouette and charcoal boundaries.",
+        "allowedEdits": "Source-backed proportional re-export and user-reviewed mask; preserve design, palette and camera."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/FerriteColumn.png",
+        "sha256": "b9ae16ba5ae69827b4db868f0b0cdce4af8f5caf1ca28cf0da2816f2c468b221",
+        "approvedBy": "User accepted the source-backed design and finished its construction mask on 2026-11-03; combined in-game acceptance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.8,
+        0.93
+      ],
+      "previousMasters": [
+        {
+          "path": "Lumenstone/FerriteColumn.png",
+          "sha256": "46a50b6b4c5e1e48a55ded3208938b4e0286a32e1855175a4f5788b94e1a6cfa",
+          "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+          "approvedOn": "2026-10-31"
+        }
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/ferrite-column-refresh/master.json"
+      }
+    },
+    {
+      "id": "KM_FerriteCluster",
+      "label": "Ferrite maintenance cluster",
+      "texture": "Things/Building/Ferrite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Ferrite maintenance cluster",
+        "geometry": "Three unequal slate-silver crystals with copper-red facets in a smooth low oval cradle with two side braces; no rivet rows or square clamps.",
+        "materials": "Cradle and braces accept construction tint using the user's saved mask; crystals retain fixed slate-silver and copper-red colours.",
+        "camera": "Shallow fixed RimWorld top/front view; 512px canvas with visible box approximately [36,78,476,434], bottom anchor 434, draw size 1x1.",
+        "protected": "Selected crystal silhouette, broad facets, smooth cradle and user-painted material boundaries.",
+        "allowedEdits": "Reproducible shared export and explicit user-reviewed mask edits."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Ferrite/Cluster.png",
+        "sha256": "c87cb453d2b887229c9ec7e022b17794288e0e2bf4a779c06b8ee2c4990b97d5",
+        "approvedBy": "user selected concept ('looks good') and finished its material mask ('done'); design and mask acceptance only, final in-game review pending; see artwork/design-sources/ferrite-cluster-rework-2026-11-03/acceptance.md",
+        "approvedOn": "2026-11-03"
+      },
+      "recipes": {
+        "single": "artwork/design-sources/ferrite-cluster-rework-2026-11-03/master.json"
+      },
+      "iconHeightFraction": [
+        0.54,
+        0.64
+      ]
+    },
+    {
+      "id": "KM_FerriteLamp",
+      "label": "Ferrite floor lamp",
+      "texture": "Things/Building/Ferrite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Ferrite floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, neutral collar and wooden post are fixed colors; no construction tint.",
+        "camera": "Approved shallow fixed RimWorld camera; unchanged source canvas and selected modeled draw proportions.",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Ferrite/Lamp.png",
+        "sha256": "18ab08c6ea7b489101eec15c05f7c3530e8a5d567dc02e0e22c38ee1b9abfe2b",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.691,
+        0.731
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/ferrite/master.json"
+      }
+    },
+    {
+      "id": "KM_FerritePylon",
+      "label": "Ferrite maintenance pylon",
+      "texture": "Things/Building/Ferrite/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Broad squat Ferrite maintenance forge",
+        "geometry": "One low slate-silver/copper crystalline core between two heavy gray side restraints on a broad low octagonal foot.",
+        "materials": "Only gray restraints and foot accept construction tint; all slate/copper crystal, charcoal contours and gaps protected.",
+        "camera": "User-approved shallow fixed RimWorld camera and squat broad proportions; draw size 2.2 by 2.2 on a two-tile footprint.",
+        "protected": "Selected silhouette, core, palette and broad facet geometry.",
+        "allowedEdits": "Only deliberate construction-mask regions and approved export framing; no repaint."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Ferrite/Pylon.png",
+        "sha256": "3041793a87feb465110160d7e79aabfa7cf393984391abac588879baef0f6b1c",
+        "approvedBy": "candidate restored from the combined layered review; user in-game acceptance pending, see .scratch/layered-artwork-pipeline/acceptance.md",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.77,
+        0.86
+      ]
+    },
+    {
+      "id": "KM_SerenitePendant",
+      "label": "Serenite pendant",
+      "texture": "Things/Item/Equipment/Utility/SerenitePendant",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Serenite pendant",
+        "geometry": "One faceted lavender teardrop in a silver bezel with its existing chain.",
+        "materials": "Fixed silver/gray fitting and lavender/amethyst crystal; no construction tint.",
+        "camera": "Existing angled inventory-item view; world draw size 0.4, with uiIconScale 2.5 retaining the native item/info-card icon scale; no worn or directional graphic.",
+        "protected": "Every original sprite byte, silhouette, palette and relative equipment proportions.",
+        "allowedEdits": "World draw size 0.4 with reciprocal native icon compensation; preserve every sprite byte and all gameplay fields."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Utility/SerenitePendant.png",
+        "sha256": "f33d2e475950641791d2e717ee61f3e55a3d7bca164d8ea84678b4b0823c59ce",
+        "approvedBy": "user: retain selected artwork per approved expansion specification and artwork decisions",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.68,
+        0.74
+      ],
+      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending."
+    },
+    {
+      "id": "KM_VerditeChew",
+      "label": "Verdite chew",
+      "texture": "Things/Item/Drug/VerditeChew",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite chew",
+        "geometry": "One low round wooden bowl holding bite-sized Verdite crystals that are the food itself.",
+        "materials": "Fixed brown wooden bowl with green and chartreuse Verdite crystals; no construction tint or mask.",
+        "camera": "Fixed slightly overhead inventory-item view; one nondirectional Graphic_Single sprite at default draw size.",
+        "protected": "The user-supplied Codex export: silhouette, palette, broad facets and charcoal contour.",
+        "allowedEdits": "Re-export from the recorded master recipe only; no repaint or redesign without user review."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Drug/VerditeChew.png",
+        "sha256": "dec781a027364a3d7ccd10158bbe1153dd7cf56b18f8e68f39c51721fcaae995",
+        "approvedBy": "user supplied the Codex export for the Verdite chew and asked for registration on 2026-11-03; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.56
+      ],
+      "framingScope": "Existing checker build-command framing model only; native item/info-card presentation remains pending.",
+      "recipes": {
+        "single": "artwork/design-sources/verdite-meal/master.json"
+      }
+    },
+    {
+      "id": "KM_VerditeScythe",
+      "label": "Verdite scythe",
+      "texture": "Things/Item/Equipment/WeaponMelee/VerditeScythe",
+      "canvas": [
+        296,
+        296
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Verdite scythe",
+        "geometry": "One broad curved blade, short connection and long diagonal dark shaft; original blade/shaft proportions.",
+        "materials": "Fixed peridot-green crystal, chartreuse highlights and dark shaft; no construction tint.",
+        "camera": "Horizontal tip-right melee view, draw size 1.3875 by 1.3875 and equipped angle offset -65.",
+        "protected": "Accepted design, palette, head/haft proportions, current orientation and vertical flip, canvas-centre pivot, draw size and exact historical outer bounds.",
+        "allowedEdits": "User-accepted source-backed contour export with historical outer framing; no repaint or redesign."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/VerditeScythe.png",
+        "sha256": "dc6dd59b3a4e4ff23d48757721984698055f01c900ae39f7829fde9c7177ab46",
+        "approvedBy": "user accepted the shown corrected exports on 2026-11-03; design acceptance only, final in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.4,
+        0.46
+      ],
+      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending.",
+      "recipes": {
+        "single": "artwork/design-sources/equipment-refresh-2026-11-03/scythe-master.json"
+      }
+    },
+    {
+      "id": "KM_AegiteWarhammer",
+      "label": "Aegite warhammer",
+      "texture": "Things/Item/Equipment/WeaponMelee/AegiteWarhammer",
+      "canvas": [
+        320,
+        320
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite warhammer",
+        "geometry": "One angled faceted striking head, short connection and diagonal shaft; original head width.",
+        "materials": "Fixed champagne/white-gold crystal, amber shadows and dark shaft; no construction tint.",
+        "camera": "Horizontal tip-right melee view, draw size 1.5 by 1.5 and equipped angle offset -65.",
+        "protected": "Accepted design, palette, head/haft proportions, current orientation and vertical flip, canvas-centre pivot, draw size and exact historical outer bounds.",
+        "allowedEdits": "User-accepted localized haft/pommel speckle cleanup and source-backed contour export; protected head, fittings and highlight preserved in the source repair."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/AegiteWarhammer.png",
+        "sha256": "ee1c21c288b0791bd7376a4f53a2fb09497bfffa02fe338e11e386051a8573c7",
+        "approvedBy": "user accepted the shown corrected exports on 2026-11-03; design acceptance only, final in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.4,
+        0.46
+      ],
+      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending.",
+      "recipes": {
+        "single": "artwork/design-sources/equipment-refresh-2026-11-03/hammer-master.json"
+      }
+    },
+    {
+      "id": "KM_FerriteShield",
+      "label": "Ferrite shield",
+      "texture": "Things/Item/Equipment/Shield/FerriteShield",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Ferrite shield",
+        "geometry": "Broad shoulders, tapered lower point and one central diamond-shaped copper boss.",
+        "materials": "Fixed slate-silver, copper and charcoal contours; no construction tint.",
+        "camera": "Existing angled inventory view; no worn or directional graphic.",
+        "protected": "Every original sprite byte, silhouette, palette and relative equipment proportions.",
+        "allowedEdits": "Registry and equivalent definition notation only; no repaint, resize or design change."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Shield/FerriteShield.png",
+        "sha256": "fcc095b79f1e498c4bd193138c556834f1f5dc0a7f70f1c02fc97f8fd7eefdb6",
+        "approvedBy": "user: retain selected artwork per approved expansion specification and artwork decisions",
+        "approvedOn": "2026-10-31"
+      },
+      "iconHeightFraction": [
+        0.69,
+        0.75
+      ],
+      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending."
+    },
+    {
+      "id": "KM_LumenstoneLamp",
+      "label": "Lumenstone floor lamp",
+      "texture": "Things/Building/Lumenstone/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Lumenstone floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, collar and wooden post are fixed; no construction-material tint.",
+        "camera": "Existing fixed RimWorld furnishing camera.",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Lumenstone/Lamp.png",
+        "sha256": "174b8f0c04cc41109d060b59a7f9480529db001bf69ac3995c8d3b029e99325b",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.76
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/lumenstone/master.json"
+      }
+    },
+    {
+      "id": "KM_DarkStoneLamp",
+      "label": "Dark Stone floor lamp",
+      "texture": "Things/Building/DarkStone/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dark Stone floor lamp",
+        "geometry": "Complete regenerated crystal floor torch with smooth neutral collar and wooden post; retain family crystal palette and simple facets.",
+        "materials": "Crystal, collar and wooden post are fixed; no construction-material tint.",
+        "camera": "Existing fixed RimWorld furnishing camera.",
+        "protected": "User-approved regenerated design and stone identity; fixed-colour wood and neutral collar.",
+        "allowedEdits": "Only approved local artwork corrections and export framing."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/DarkStone/Lamp.png",
+        "sha256": "05fcfabc9197c301214239e9f37423659d5419745c4a085e71e3525fe5384959",
+        "approvedBy": "user approved regenerated six-sprite comparison; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.65,
+        0.76
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/torch-regenerated-2026-11-03/darkstone/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenstoneColumn",
+      "label": "Lumenstone column",
+      "texture": "Lumenstone/LumenstoneColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Lumenstone column",
+        "geometry": "Straight pale crystal shaft between stone cap and base, with diamond accents.",
+        "materials": "Reviewed construction tint on stone housing; crystal and gold retain fixed colours.",
+        "camera": "Fixed shallow RimWorld camera with existing column draw size.",
+        "protected": "User-approved column silhouette and family palette.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/LumenstoneColumn.png",
+        "sha256": "3aabed353b8a8d3b04552a465ed61b60685a2253a1dd97a6eb091353cbb1fd6d",
+        "approvedBy": "user approved design and reviewed mask; in-game acceptance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.55,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/lumenstone-diamond-2026-11-03/column/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenDarkStoneColumn",
+      "label": "Dark Stone column",
+      "texture": "Lumenstone/DarkStoneColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dark Stone column",
+        "geometry": "Flat roof-bearing cap and plinth around one faceted crystal; Lumenstone has a round middle ring, Dark Stone has claws and no collar.",
+        "materials": "Construction material tints the neutral fittings; crystal remains fixed, including with wood.",
+        "camera": "Fixed shallow RimWorld camera with existing column draw size.",
+        "protected": "User-approved column silhouette and family palette.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/DarkStoneColumn.png",
+        "sha256": "406ba21ac1a1d5b02220931e66f482700be6d6bd68be866d5bc36e4e5c76edbb",
+        "approvedBy": "user approved column design; candidate awaits final in-game review",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.55,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/darkstone-column/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenstoneCluster",
+      "label": "Lumenstone cluster",
+      "texture": "Things/Building/Lumenstone/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Pale Lumenstone cluster in a low sacred stone ring",
+        "geometry": "Three pale crystals in low wide stone housing with radiating diamond motif.",
+        "materials": "Reviewed construction tint on stone housing; crystal and gold retain fixed colours.",
+        "camera": "Shallow fixed RimWorld fixture camera.",
+        "protected": "Crystal facets and silhouette; stone/crystal boundaries.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Lumenstone/Cluster.png",
+        "sha256": "8a216a33a13e71752ec46aaf459ab67f52d35bba2cf38645128e96bfdc5530ac",
+        "approvedBy": "user approved design and reviewed mask; in-game acceptance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/lumenstone-diamond-2026-11-03/cluster/master.json"
+      }
+    },
+    {
+      "id": "KM_DarkStoneCluster",
+      "label": "Dark Stone cluster",
+      "texture": "Things/Building/DarkStone/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dark Stone ritual monolith with smaller shards and spiked mount",
+        "geometry": "One asymmetric violet monolith with broad facets over smaller shards, a simple three-support base and front diamond; north/south lean right and east/west mirror the artwork and mask.",
+        "materials": "Neutral spiked housing accepts construction tint; violet crystal and inset remain fixed.",
+        "camera": "Shallow fixed RimWorld fixture camera.",
+        "protected": "User-approved simplified design and saved painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/DarkStone/Cluster_north.png",
+        "sha256": "2f4b62c1c052d7db04883bfa7e16e20f540fb7c513492e199ddd7b92f17bc831",
+        "approvedBy": "user approved simplified design and painted mask; mirrored view and in-game rotation pending review",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/darkstone-cluster-base-simplified/master.json",
+        "east": "artwork/design-sources/darkstone-cluster-base-simplified/mirror.json",
+        "south": "artwork/design-sources/darkstone-cluster-base-simplified/master.json",
+        "west": "artwork/design-sources/darkstone-cluster-base-simplified/mirror.json"
+      }
+    },
+    {
+      "id": "KM_LumenstonePylon",
+      "label": "Lumenstone pylon",
+      "texture": "Things/Building/Lumenstone/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Tall Lumenstone pylon in a sacred stone shrine mount.",
+        "geometry": "Tall pale crystal with softened angular stone supports and diamond accents, one-cell footprint.",
+        "materials": "Reviewed construction tint on stone housing; crystal and gold retain fixed colours.",
+        "camera": "Shallow fixed RimWorld fixture camera with a base anchor.",
+        "protected": "Crystal facets, openings, silhouette and material contours.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Lumenstone/Pylon.png",
+        "sha256": "67203d208eda44cac8c6ca959267305db80c4bf52d92909c6821d839bde41aae",
+        "approvedBy": "user approved design and reviewed mask; in-game acceptance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/lumenstone-diamond-2026-11-03/pylon/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenstoneWallLamp",
+      "label": "Lumenstone wall lamp",
+      "texture": "Things/Building/Lumenstone/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Lumenstone crystal wall lamp",
+        "geometry": "One faceted crystal in a neutral bracket; south shows only the wall-occluded tip.",
+        "materials": "Fixed crystal and grey wall bracket; no construction-material selection.",
+        "camera": "North, east, west and occluded south at established wall attachment anchors.",
+        "protected": "Crystal facets, wall-side placement and directional relationships.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Lumenstone/WallLamp_north.png",
+        "sha256": "c4b3a5ed1bfc8008a9b3e86b1f3317c5cf35bba59fef28e379b6d04075ef0d7c",
+        "approvedBy": "user approved family design; derived wall views await final in-game review",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/lumenstone-wall-lamp/north.json",
+        "east": "artwork/design-sources/lumenstone-wall-lamp/east.json",
+        "south": "artwork/design-sources/lumenstone-wall-lamp/south.json",
+        "west": "artwork/design-sources/lumenstone-wall-lamp/west.json"
+      }
+    },
+    {
+      "id": "KM_DarkStoneWallLamp",
+      "label": "DarkStone wall lamp",
+      "texture": "Things/Building/DarkStone/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "DarkStone crystal wall lamp",
+        "geometry": "One faceted crystal in a neutral bracket; south shows only the wall-occluded tip.",
+        "materials": "Fixed crystal and grey wall bracket; no construction-material selection.",
+        "camera": "North, east, west and occluded south at established wall attachment anchors.",
+        "protected": "Crystal facets, wall-side placement and directional relationships.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/DarkStone/WallLamp_north.png",
+        "sha256": "db35051433b0a974b233a342f2b99d17de04864938083d430988b21f090fd289",
+        "approvedBy": "user approved family design; derived wall views await final in-game review",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/darkstone-wall-lamp/north.json",
+        "east": "artwork/design-sources/darkstone-wall-lamp/east.json",
+        "south": "artwork/design-sources/darkstone-wall-lamp/south.json",
+        "west": "artwork/design-sources/darkstone-wall-lamp/west.json"
+      }
+    },
+    {
+      "id": "KM_DarkStonePylon",
+      "label": "Dark Stone pylon",
+      "texture": "Things/Building/DarkStone/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Tall Dark Stone ritual pylon.",
+        "geometry": "Jagged smoke-violet crystal, spiked base and floating crown; one-cell footprint with approximately one-by-two artwork.",
+        "materials": "Construction material tints neutral fittings; violet crystal and two insets stay fixed.",
+        "camera": "Shallow fixed RimWorld camera, anchored on the base.",
+        "protected": "User-approved crystal, crown, pedestal and user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/DarkStone/Pylon.png",
+        "sha256": "8b0a4392f3b6614d9ed1314de0820e43e0294514eaa07677aec0cff71939efff",
+        "approvedBy": "user approved simplified design and painted material mask; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/darkstone-pylon-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_SacrificialAltar",
+      "label": "Sacrificial altar",
+      "texture": "Things/Building/Dark/SacrificialAltar",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Thorn-carved sacrificial slab with skull frieze and four violet crystal posts.",
+        "geometry": "Wide slab drawn at 3x3 with a post at each corner.",
+        "materials": "Slab stone accepts construction tint; crystal posts stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Crystal posts, skull frieze and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dark/SacrificialAltar.png",
+        "sha256": "751565fe448633c0ba552f0cf1637ccabd83de4d7feedecb2445a68af8206079",
+        "approvedBy": "user approved altar concept and accepted the painted mask preview; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.97
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sacrificial-altar/master.json"
+      }
+    },
+    {
+      "id": "KM_BloodstoneVessel",
+      "label": "Bloodstone vessel",
+      "texture": "Things/Building/Dark/BloodstoneVessel",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Small Bloodstone vessel with four pedestal crystal indicators.",
+        "geometry": "One-cell vessel; the empty base is near black, with four separate charge layers lit at 25, 50, 75 and 100 percent.",
+        "materials": "Housing accepts construction tint; the four indicator crystals stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Indicator crystals and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dark/BloodstoneVessel.png",
+        "sha256": "e97ee2c8b4121ce3d0995eb22fda8c74f5be10aaf2551c601e391964f66f56f6",
+        "approvedBy": "user approved four-indicator design, empty state and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.97
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/bloodstone-vessel-gauge/master.json"
+      }
+    },
+    {
+      "id": "KM_BloodstoneObelisk",
+      "label": "Bloodstone obelisk",
+      "texture": "Things/Building/Dark/BloodstoneObelisk",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Tall Bloodstone obelisk with four pedestal crystal indicators.",
+        "geometry": "Tall shaft; the empty base is near black, with four separate charge layers lit at 25, 50, 75 and 100 percent.",
+        "materials": "Housing accepts construction tint; the four indicator crystals stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Indicator crystals and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dark/BloodstoneObelisk.png",
+        "sha256": "4d39737ca03dc4027378eab5065b339bee5e76952a1525f3c341087cd76a6449",
+        "approvedBy": "user approved simplified design and painted material mask; original indicator panel retained; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.97
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/bloodstone-obelisk-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_SunstoneCollector",
+      "label": "Sunstone collector",
+      "texture": "Things/Building/Misc/SunstoneCollector",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Sunstone collector: natural amber-citrine sunburst rosette.",
+        "geometry": "One-cell crystal rosette drawn at 1.5 by 1.5.",
+        "materials": "Crystal stays fixed; mask lets any construction material tint the base fittings.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Approved crystal design and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/SunstoneCollector.png",
+        "sha256": "15652e2e59abe860ab00750265c46cb8368c424b1b5b28215b57e7bf97cdeaf7",
+        "approvedBy": "user approved Sunstone direction and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.86,
+        0.96
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sunstone-collector/master.json"
+      }
+    },
+    {
+      "id": "KM_SunstoneArray",
+      "label": "Sunstone array",
+      "texture": "Things/Building/Misc/SunstoneArray",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Sunstone array: wide natural crown of amber-citrine prisms.",
+        "geometry": "Two-by-two crystal crown drawn at 2.5 by 2.5.",
+        "materials": "Crystal stays fixed; mask lets any construction material tint the base fittings.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Approved crystal design and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/SunstoneArray.png",
+        "sha256": "d68e814f2c5a406c79f8920209eea0a059e272e8e30a8686ffa2cb6b238f69f8",
+        "approvedBy": "user approved Sunstone direction and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.66,
+        0.76
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sunstone-array/master.json"
+      }
+    },
+    {
+      "id": "KM_SunstoneVessel",
+      "label": "Sunstone vessel",
+      "texture": "Things/Building/Misc/SunstoneVessel",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Low pointed Sunstone crystal cluster in a constructed cradle with four gauge insets.",
+        "geometry": "One-cell vessel; the empty base has four separate charge layers lit at 25, 50, 75 and 100 percent.",
+        "materials": "Housing accepts construction tint; the four gauge crystals stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "User-accepted pointed crystal design and user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/SunstoneVessel.png",
+        "sha256": "754fbd98b75e7d1077a92bb7eed906156d7dcdc3abd2856b795c70e381bffd1b",
+        "approvedBy": "user accepted collector-aligned design and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.74,
+        0.82
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sunstone-batteries-collector-aligned/vessel-candidate.json"
+      }
+    },
+    {
+      "id": "KM_SunstoneObelisk",
+      "label": "Sunstone obelisk",
+      "texture": "Things/Building/Misc/SunstoneObelisk",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Tall pointed Sunstone prism with smaller shards, constructed ring and four gauge insets.",
+        "geometry": "Two-by-two obelisk; the empty base has four separate charge layers lit at 25, 50, 75 and 100 percent.",
+        "materials": "Housing accepts construction tint; the four gauge crystals stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "User-accepted pointed crystal design and user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/SunstoneObelisk.png",
+        "sha256": "919d39b8a7b542edc0c0d678769a92e7e4778a96e89423d2aeaa16a281dff375",
+        "approvedBy": "user accepted collector-aligned design and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.79,
+        0.89
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sunstone-batteries-collector-aligned/obelisk-candidate.json"
+      }
+    },
+    {
+      "id": "KM_SunstoneAxe",
+      "label": "Sunstone axe",
+      "texture": "Things/Item/Equipment/WeaponMelee/SunstoneAxe",
+      "canvas": [
+        292,
+        292
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Sunstone axe: melee axe with an amber-citrine edge.",
+        "geometry": "Angled axe head on a short haft, rotated horizontal.",
+        "materials": "Fixed crystal and dark haft; no construction tint.",
+        "camera": "Horizontal tip-right melee view, draw size 1.3687 by 1.3687 and equipped angle offset -65.",
+        "protected": "Accepted design, palette, head/haft proportions, current orientation and vertical flip, canvas-centre pivot, draw size and exact historical outer bounds.",
+        "allowedEdits": "User-accepted source-backed contour export with historical outer framing; no repaint or redesign."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/SunstoneAxe.png",
+        "sha256": "159def598c68bf72a4ddcf6137cd902ad743085782792548cb5c32b20831a83f",
+        "approvedBy": "user accepted the shown corrected exports on 2026-11-03; design acceptance only, final in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.31,
+        0.37
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/equipment-refresh-2026-11-03/axe-master.json"
+      }
+    },
+    {
+      "id": "KM_LumenCircle",
+      "label": "Lumen ritual circle",
+      "texture": "Things/Building/Misc/LumenCircle",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Round, flattish slab of pale raw Lumenstone set into the floor as the Lumen ritual circle.",
+        "geometry": "A pale faceted Lumenstone chunk centred inside a two-ring rune circle (six diamonds, six arrow runes) that fills the 1x1 canvas.",
+        "materials": "Fixed pale grey-blue Lumenstone matching the Lumenstone resource stack palette with a charcoal building contour; no baked glow.",
+        "camera": "Fixed RimWorld top-down camera with shallow front/bottom thickness.",
+        "protected": "Round flattish silhouette, pale grey-blue resource palette, charcoal contour and transparent background.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/LumenCircle.png",
+        "sha256": "23e50d734864e6df15b81497c11ad1f9c4204c5d9d346bf198fc229477c00d3b",
+        "approvedBy": "user approved sprite in chat; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.78,
+        0.86
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/lumen-circle-runes/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenstoneAltar",
+      "label": "Lumenstone altar",
+      "texture": "Things/Building/Lumenstone/LumenstoneAltar",
+      "canvas": [
+        1256,
+        1256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Round stone altar with a central raw Lumenstone crystal, a carved starburst, a gold circular inlay and five crystals set in its side.",
+        "geometry": "Round slab drawn at 3x3 with its top ellipse above the texture centre.",
+        "materials": "Neutral stone and carved lines accept construction tint; the crystals and gold inlay stay fixed.",
+        "camera": "Shallow fixed RimWorld camera.",
+        "protected": "Central crystal, side crystals, gold inlay and the user-painted mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Lumenstone/LumenstoneAltar.png",
+        "sha256": "4a02f74546243ef9a9abb8bebc534647d93eec65b73d171ba998c3153bb76f1d",
+        "approvedBy": "user confirmed the altar artwork is finished and saved its mask review; this export only pads one transparent pixel per side and normalises invisible RGB; in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.97
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/lumenstone-altar/master.json"
+      }
+    },
+    {
+      "id": "KM_SanguinitePylon",
+      "label": "Sanguinite pylon",
+      "texture": "Things/Building/Sanguinite/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Sanguinite pylon with crimson crystal and surgical talons",
+        "geometry": "One tall blade-shaped crystal held by three inward talons on a plinth, 1x1 footprint.",
+        "materials": "Construction material tints the plinth and all three talons; crimson crystal remains fixed.",
+        "camera": "Shallow fixed RimWorld pylon camera, anchored at base.",
+        "protected": "User-approved silhouette and simplified facets; preserve the user-painted material mask pending review.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Sanguinite/Pylon.png",
+        "sha256": "c6dcbc5c09a9217e16fa8d8be98d73e84f89a1f444afa5e0ef5098a184764c3c",
+        "approvedBy": "user accepted crystal colour pass; crop correction and mask pending in-game review",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sanguinite-pylon-colour/master.json"
+      }
+    },
+    {
+      "id": "KM_HollowstoneCluster",
+      "label": "Hollowstone cluster",
+      "texture": "Things/Building/Hollowstone/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Hollowstone cluster with broken ivory arch and dark cyan hollow",
+        "geometry": "Low asymmetric broken arch surrounds a dark hollow with cyan facets, on a one-cell base. North and south have the taller left arch curving right; east and west mirror it, with the taller right arch curving left.",
+        "materials": "Construction material tints the base; ivory arch, cyan facets and dark hollow remain fixed.",
+        "camera": "Shallow fixed RimWorld cluster camera.",
+        "protected": "User-approved arch, hollow and painted material mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Hollowstone/Cluster_north.png",
+        "sha256": "c3628c682b4ec2d4aa7ac70f0eaa92c2105fc7ae403e09b1d24ef1e3a5f24c1b",
+        "approvedBy": "user approved broken arch design and painted mask; fixed ivory arch confirmed; mirrored views and in-game appearance pending",
+        "approvedOn": "2026-11-01"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.95
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/hollowstone-cluster/master.json",
+        "east": "artwork/design-sources/hollowstone-cluster/mirror.json",
+        "south": "artwork/design-sources/hollowstone-cluster/master.json",
+        "west": "artwork/design-sources/hollowstone-cluster/mirror.json"
+      }
+    },
+    {
+      "id": "KM_HollowstonePylon",
+      "label": "Hollowstone pylon",
+      "texture": "Things/Building/Hollowstone/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Hollowstone pylon with long cyan-edged hollow",
+        "geometry": "Tall stepped ivory monument surrounding a dark cyan-edged cavity; one-cell footprint.",
+        "materials": "Construction material tints the base; ivory, cyan facets and dark hollow remain fixed.",
+        "camera": "Shallow fixed RimWorld pylon camera, anchored at base.",
+        "protected": "User-approved silhouette, cavity and painted material mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Hollowstone/Pylon.png",
+        "sha256": "634ab0df3f0a91be3b53b223aa1adc7ba007418cf7dbc30607f26de13a519515",
+        "approvedBy": "user approved extended hollow design and painted base mask; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/hollowstone-pylon/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenHollowstoneColumn",
+      "label": "Hollowstone column",
+      "texture": "Lumenstone/HollowstoneColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Roof-bearing Hollowstone column with cyan-edged hollow",
+        "geometry": "Straight ivory split monolith with dark hollow, flat capital and plinth; no middle collar.",
+        "materials": "Construction material tints neutral cap and plinth; ivory shaft, cyan facets and dark hollow remain fixed.",
+        "camera": "Shallow fixed RimWorld roof-bearing column camera.",
+        "protected": "User-approved design and painted material mask.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/HollowstoneColumn.png",
+        "sha256": "385e04dd4f0874c6b81691f86598b66db203e1823ad0860b79761b1a749c5a24",
+        "approvedBy": "user approved column design, painted mask and strengthened lower borders; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/hollowstone-column-contour-repair/master.json"
+      }
+    },
+    {
+      "id": "KM_HollowstoneLamp",
+      "label": "Hollowstone floor lamp",
+      "texture": "Things/Building/Hollowstone/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Hollowstone floor lamp",
+        "geometry": "User-selected complete generated lamp with ivory split crystal, neutral collar and wooden post.",
+        "materials": "Crystal, collar and wooden post are fixed; no construction tint.",
+        "camera": "Existing fixed RimWorld furnishing camera.",
+        "protected": "Preserve the user-selected complete generated lamp including its post and collar; do not substitute a shared base.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Hollowstone/Lamp.png",
+        "sha256": "b9caf0f26d2c647d718f8ae60ad7d23ff20bca72aab6de53c0b23bb14d14fede",
+        "approvedBy": "user approved complete generated lamp including post and collar; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.6,
+        0.85
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/hollowstone-floor-lamp/full-master.json"
+      }
+    },
+    {
+      "id": "KM_HollowstoneWallLamp",
+      "label": "Hollowstone wall lamp",
+      "texture": "Things/Building/Hollowstone/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Hollowstone wall lamp",
+        "geometry": "Split ivory crystal around a cyan hollow in a neutral cup; south shows the wall-occluded tip.",
+        "materials": "Fixed ivory, cyan and grey cup; no construction tint.",
+        "camera": "North, east, west and occluded south at established wall attachment anchors.",
+        "protected": "Crystal facets, wall-side placement and directional relationships.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Hollowstone/WallLamp_north.png",
+        "sha256": "239ed05e0b5a3254b4f1c257b330c51a2b8fb3aa5dfae3692123540564511660",
+        "approvedBy": "user approved north concept; derived wall views await final in-game review",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/hollowstone-wall-lamp/north.json",
+        "east": "artwork/design-sources/hollowstone-wall-lamp/east.json",
+        "west": "artwork/design-sources/hollowstone-wall-lamp/west.json",
+        "south": "artwork/design-sources/hollowstone-wall-lamp/south.json"
+      }
+    },
+    {
+      "id": "KM_HollowstoneGlaive",
+      "label": "Hollowstone glaive",
+      "texture": "Things/Item/Equipment/WeaponMelee/HollowstoneGlaive",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Hollowstone glaive",
+        "geometry": "Long horizontal grey haft and broad ivory crescent blade with a jagged cyan glass edge, tip right.",
+        "materials": "Fixed ivory, cyan and grey metal; no construction tint.",
+        "camera": "Horizontal melee view, draw size 1.2 and equipped angle offset -65.",
+        "protected": "User-approved jagged blade and haft.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/HollowstoneGlaive.png",
+        "sha256": "eb0b3de024e40bcf6fbb6a3e04e0fa97baca4b70fcde31d9cf9cd41f837f4c74",
+        "approvedBy": "user approved jagged-edge design; in-game grip and size pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.38
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/hollowstone-glaive/master.json"
+      }
+    },
+    {
+      "id": "KM_LumenDreadstoneColumn",
+      "label": "Dreadstone column",
+      "texture": "Lumenstone/DreadstoneColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dreadstone column with obsidian shaft and ember seam",
+        "geometry": "Straight uninterrupted crystal shaft with shaped cap and plinth; no central collar or outward spikes.",
+        "materials": "Cap and plinth accept construction tint; crystal and ember remain fixed.",
+        "camera": "Shallow fixed RimWorld roof-bearing column camera.",
+        "protected": "User-approved unbanded design and shaped cap and base.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/DreadstoneColumn.png",
+        "sha256": "61dcc661e6115ce147037da92b5d81295f7fecd28b29b0e5c523e012ce871415",
+        "approvedBy": "user approved design; material tint and in-game appearance pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/dreadstone-column-unbanded/master.json"
+      }
+    },
+    {
+      "id": "KM_DreadstoneCluster",
+      "label": "Dreadstone cluster",
+      "texture": "Things/Building/Dreadstone/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dreadstone cluster",
+        "geometry": "Three unequal indigo crystals with orange cores on a continuous tall round band with three rivets.",
+        "materials": "Iron band accepts construction tint; crystals and ember facets remain fixed.",
+        "camera": "Shallow fixed RimWorld cluster camera.",
+        "protected": "Approved crystal arrangement and band.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dreadstone/Cluster.png",
+        "sha256": "355c45e89ff4554230c114a858f01baa7d4c74338ce4f3330a2ac02b70f21d6c",
+        "approvedBy": "user approved design and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/dreadstone-cluster-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_DreadstoneLamp",
+      "label": "Dreadstone lamp",
+      "texture": "Things/Building/Dreadstone/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dreadstone floor lamp",
+        "geometry": "Clustered indigo crystal with orange cores in a riveted collar on a wooden post.",
+        "materials": "Fixed crystal, neutral collar and wood.",
+        "camera": "Existing fixed RimWorld furnishing camera.",
+        "protected": "Approved complete lamp.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dreadstone/Lamp.png",
+        "sha256": "5b714240d791575a32610083686a181ffc7c3f93aad79ee4d6c56159efd0ee5b",
+        "approvedBy": "user approved complete design; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.6,
+        0.85
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/dreadstone-floor-lamp/master.json"
+      }
+    },
+    {
+      "id": "KM_DreadstoneWallLamp",
+      "label": "Dreadstone wall lamp",
+      "texture": "Things/Building/Dreadstone/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Dreadstone wall lamp",
+        "geometry": "Clustered indigo crystal and orange cores in a neutral riveted cup; south shows the wall-occluded tip.",
+        "materials": "Fixed crystal, ember and grey cup.",
+        "camera": "North, east, west and occluded south at established wall attachment anchors.",
+        "protected": "Crystal facets, wall-side placement and directional relationships.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dreadstone/WallLamp_north.png",
+        "sha256": "ca28e17600305df8c66780611f5f7edd3811c4f73d39434e887ffb12ed0cd0a1",
+        "approvedBy": "user approved concept; derived frames and in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/dreadstone-wall-lamp/north.json",
+        "east": "artwork/design-sources/dreadstone-wall-lamp/east.json",
+        "west": "artwork/design-sources/dreadstone-wall-lamp/west.json",
+        "south": "artwork/design-sources/dreadstone-wall-lamp/south.json"
+      }
+    },
+    {
+      "id": "KM_DreadstonePylon",
+      "label": "Dreadstone pylon",
+      "texture": "Things/Building/Dreadstone/Pylon",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Dreadstone pylon",
+        "geometry": "Tall uncollared obsidian-indigo crystal with orange core in pronged grey base.",
+        "materials": "Grey base takes construction tint; crystal and orange core fixed.",
+        "camera": "Shallow fixed RimWorld pylon camera, anchored at base.",
+        "protected": "User-approved collar-free crystal and aligned base.",
+        "allowedEdits": "Requested artwork corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Dreadstone/Pylon.png",
+        "sha256": "dfded13d7bc2518f33978d2a61bbc316bbb04417c4bb275f6c01eac23934744f",
+        "approvedBy": "user approved design and painted mask; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/dreadstone-pylon/master.json"
+      }
+    },
+    {
+      "id": "KM_DreadstoneArbalest",
+      "label": "Dreadstone arbalest",
+      "texture": "Things/Item/Equipment/WeaponRanged/DreadstoneArbalest",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Dreadstone arbalest",
+        "geometry": "Horizontal stock and rail aimed right, projected metal bow limbs, foreground string and shackle ring.",
+        "materials": "Fixed indigo Dreadstone stock, rail, grip and ring with a restrained orange inner facet; neutral iron bow limbs and joints, foreground string, wooden bolt and iron tip; no construction tint.",
+        "camera": "User-corrected rightward ranged view; draw size 1.2.",
+        "protected": "Accepted simplified Dreadstone-body design, corrected horizontal geometry, metal bow limbs, wooden bolt with iron tip and foreground string.",
+        "allowedEdits": "Uniform export of the user-accepted 2026-11-03 material revision; further design changes require acceptance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponRanged/DreadstoneArbalest.png",
+        "sha256": "5467ab176d6d9a685444d77db1e593e774b7d8e33eba55bd3e6a47a29d6347aa",
+        "approvedBy": "user accepted revised Dreadstone body, metal limbs and wooden bolt with iron tip; in-game aim, grip, size and icons pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.38,
+        0.53
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/equipment-refresh-2026-11-03/arbalest-master.json"
+      }
+    },
+    {
+      "id": "KM_LumenSanguiniteColumn",
+      "label": "Sanguinite column",
+      "texture": "Lumenstone/SanguiniteColumn",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Roof-bearing Sanguinite column",
+        "geometry": "Crimson double-helix crystal shaft between flat capital and plinth with curved surgical talons; no middle collar.",
+        "materials": "User-painted mask tints cap, plinth and talons; crimson crystal stays fixed.",
+        "camera": "Shallow fixed architectural view.",
+        "protected": "User-approved design and preserved painted mask, pending review against updated artwork.",
+        "allowedEdits": "Requested corrections only."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/SanguiniteColumn.png",
+        "sha256": "6ae944ec97c4065a16096296a4637c0647fee02dcae3df1a2a5df8cb0f558350",
+        "approvedBy": "user accepted simplified cap and base; mask and in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sanguinite-column-base-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_SanguiniteCluster",
+      "label": "Sanguinite cluster",
+      "texture": "Things/Building/Sanguinite/Cluster",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Low two-lump crimson cluster in surgical cradle",
+        "geometry": "Two unequal solid crimson lumps and three curved steel talons; north and south as drawn, east and west mirrored.",
+        "materials": "User-painted mask tints cradle and talons; crimson mineral remains fixed.",
+        "camera": "Shallow elevated cluster view, one-cell footprint.",
+        "protected": "User-approved simplified design and saved painted mask.",
+        "allowedEdits": "Requested corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Sanguinite/Cluster_north.png",
+        "sha256": "26e20ea11b4b43e48cc04ef7e2d164549d751e1d505ed81ac05c81108238cc86",
+        "approvedBy": "user accepted crystal colour pass; mask and in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.5,
+        0.95
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/sanguinite-cluster-colour/master.json",
+        "east": "artwork/design-sources/sanguinite-cluster-colour/mirror.json",
+        "south": "artwork/design-sources/sanguinite-cluster-colour/master.json",
+        "west": "artwork/design-sources/sanguinite-cluster-colour/mirror.json"
+      }
+    },
+    {
+      "id": "KM_SanguiniteLamp",
+      "label": "Sanguinite floor lamp",
+      "texture": "Things/Building/Sanguinite/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "maskEncoding": "opaque-red",
+      "contract": {
+        "identity": "Sanguinite floor lamp",
+        "geometry": "Single asymmetric crimson crystal in three surgical talons over neutral collar and plain wooden post.",
+        "materials": "Fixed crimson crystal, grey steel and wood; zero construction tint.",
+        "camera": "Existing shallow RimWorld furnishing view.",
+        "protected": "User-approved complete lamp including post and collar.",
+        "allowedEdits": "Requested corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Sanguinite/Lamp.png",
+        "sha256": "c6642159cd2ef55fdbb3e15bc2da7292f694cc881b7dd2ac1de8e88f5ee847ad",
+        "approvedBy": "user accepted simplified facets; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.6,
+        0.85
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sanguinite-floor-lamp-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_SanguiniteBlade",
+      "label": "Sanguinite flensing blade",
+      "texture": "Things/Item/Equipment/WeaponMelee/SanguiniteFlensingBlade",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Slim Sanguinite flensing blade",
+        "geometry": "Curved crimson crystal blade aimed horizontally right with neutral steel grip and one crescent talon guard.",
+        "materials": "Fixed crimson crystal and neutral steel; no construction tint.",
+        "camera": "Horizontal melee weapon, draw size 1.2 and equipped angle offset -65.",
+        "protected": "User-approved complete blade geometry and palette.",
+        "allowedEdits": "Requested corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/SanguiniteFlensingBlade.png",
+        "sha256": "84a840226008e736e91cdba61616c7fc9afd1f551180491e381e40b0ff779c57",
+        "approvedBy": "user accepted simplified facets; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.18,
+        0.32
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/sanguinite-flensing-blade-simplified/master.json"
+      }
+    },
+    {
+      "id": "KM_SanguiniteWallLamp",
+      "label": "Sanguinite wall lamp",
+      "texture": "Things/Building/Sanguinite/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Sanguinite wall lamp",
+        "geometry": "Single crimson crystal in three neutral surgical talons on short bracket; south shows wall-occluded tip.",
+        "materials": "Fixed red crystal and grey steel; no construction tint.",
+        "camera": "Derived north/east/mirrored west and occluded south at established wall anchors.",
+        "protected": "User-approved concept and recorded directional transforms.",
+        "allowedEdits": "Requested corrections only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Sanguinite/WallLamp_north.png",
+        "sha256": "f528e90776cc57b36b1abb89378c31a6a3d0cbc49a866a94a54c44b11a46b618",
+        "approvedBy": "user accepted simplified facets; in-game appearance pending",
+        "approvedOn": "2026-11-02"
+      },
+      "iconHeightFraction": [
+        0.25,
+        0.55
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/sanguinite-wall-lamp-simplified/north.json",
+        "east": "artwork/design-sources/sanguinite-wall-lamp-simplified/east.json",
+        "south": "artwork/design-sources/sanguinite-wall-lamp-simplified/south.json",
+        "west": "artwork/design-sources/sanguinite-wall-lamp-simplified/west.json"
+      }
+    },
+    {
+      "id": "KM_SereniteWallLamp",
+      "label": "Serenite wall lamp",
+      "texture": "Things/Building/Serenite/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Compact single-crystal wall lamp in a smooth grey cup",
+        "geometry": "One refined pointed crystal in one crescent cup; mirrored west and wall-occluded south tip",
+        "materials": "Lavender crystal and neutral grey cup fixed; no selectable construction material",
+        "camera": "Selected shallow overhead/front north view; derived attachment views pending in-game review",
+        "protected": "Selected broad crystal facets, neutral cup and existing wall attachment offsets",
+        "allowedEdits": "Only requested corrections to view placement and boundaries"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Serenite/WallLamp_north.png",
+        "sha256": "5cb8eac0526418e72c2f7ed81953fa80ad44c59a94cd5fd776706648568e1555",
+        "approvedBy": "User selected representative north design 2026-11-03; directional placement and game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.3,
+        0.38
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/serenite-family-refinement/wall-lamp/north.json",
+        "east": "artwork/design-sources/serenite-family-refinement/wall-lamp/east.json",
+        "south": "artwork/design-sources/serenite-family-refinement/wall-lamp/south.json",
+        "west": "artwork/design-sources/serenite-family-refinement/wall-lamp/west.json"
+      },
+      "iconModelNote": "Registry models the north frame for custom-path wall icons. Actual centred WallLamp.png is checked separately in this task; final native icon review pending."
+    },
+    {
+      "id": "KM_LumenAnimastoneColumn",
+      "label": "Animastone column",
+      "texture": "Lumenstone/AnimastoneColumn",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Natural seafoam mineral column with unworked opal seam, supporting a roof.",
+        "geometry": "One irregular grown crystal shaft, asymmetrical fused shoulders, rough neutral stone cap and foot; no manufactured frame or geometric gem emblem.",
+        "materials": "Fixed seafoam crystal and irregular opal seam; neutral grey stone cap/foot for later construction ownership.",
+        "camera": "Approved Verdite shallow game camera and Serenite broad flat shading.",
+        "protected": "Approved palette and existing column path, footprint and draw size. Verdite reference itself remains unchanged.",
+        "allowedEdits": "New derivative of the user-approved natural Animastone family."
+      },
+      "approvedMaster": {
+        "path": "Lumenstone/AnimastoneColumn.png",
+        "sha256": "d12d324a1c7e6f9e1ce78597280a46fa0594c0edcdcb4726b6ff45e4a4eee546",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.8116,
+        0.8916
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-column-natural/master.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_AnimastoneLamp",
+      "label": "Animastone lamp",
+      "texture": "Things/Building/Animastone/Lamp",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Existing shared floor torch with Animastone crystal.",
+        "geometry": "Exact Serenite floor torch silhouette, body, attachment and framing retained; only crystal pigment changes.",
+        "materials": "All fixed colour; existing wood and/or neutral collar/sconce unchanged.",
+        "camera": "Exact original sibling camera.",
+        "protected": "Every original non-violet visible pixel and all alpha values; shared torch/sconce body.",
+        "allowedEdits": "Only existing violet crystal pigment replaced with generated seafoam/opal RGB, with declared colour alignment/restoration in preservation.json."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Animastone/Lamp.png",
+        "sha256": "f863cddc9fc2ca8d2ef58783325d1f156492d2d18706d3fb833ea3719c167b3b",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.6709,
+        0.7509
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-floor-shared/master.json"
+      }
+    },
+    {
+      "id": "KM_AnimastoneWallLamp",
+      "label": "Animastone wall lamp",
+      "texture": "Things/Building/Animastone/WallLamp",
+      "canvas": [
+        512,
+        512
+      ],
+      "directions": [
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "contract": {
+        "identity": "Existing shared wall sconce with Animastone crystal.",
+        "geometry": "Exact Serenite wall sconce silhouette, body, attachment and framing retained; only crystal pigment changes.",
+        "materials": "All fixed colour; existing wood and/or neutral collar/sconce unchanged.",
+        "camera": "Exact original sibling camera.",
+        "protected": "Every original non-violet visible pixel and all alpha values; shared torch/sconce body.",
+        "allowedEdits": "Only existing violet crystal pigment replaced with generated seafoam/opal RGB, with declared colour alignment/restoration in preservation.json."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Animastone/WallLamp_north.png",
+        "sha256": "9bfb97260bc701b9014533cae088aad5c589acdd3609558c37a0783446c0ee2d",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.2959,
+        0.3759
+      ],
+      "recipes": {
+        "north": "artwork/design-sources/animastone-wall-shared/north.json",
+        "east": "artwork/design-sources/animastone-wall-shared/east.json",
+        "south": "artwork/design-sources/animastone-wall-shared/south.json",
+        "west": "artwork/design-sources/animastone-wall-shared/west.json"
+      },
+      "iconModelNote": "Custom fixed-colour icon is a separate preserved-sconce export (icon.json); checker models north view. Actual icon and wall attachment need final in-game review."
+    },
+    {
+      "id": "KM_AnimastoneCluster",
+      "label": "Animastone cluster",
+      "texture": "Things/Building/Animastone/Cluster",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Three unequal fused natural crystals in low rough grey stone cradle.",
+        "geometry": "Three unequal fused natural crystals in low rough grey stone cradle.",
+        "materials": "Grey cradle/slab construction tint; crystal fixed.",
+        "camera": "Shallow game camera following approved natural column and named sibling in request.json.",
+        "protected": "Approved seafoam/opal palette, raw crystal and opal-vein motif, complete outline; no glow.",
+        "allowedEdits": "Family derivative; construction ownership only where specified."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Animastone/Cluster.png",
+        "sha256": "06ef65120124b9c2c7089422fde852b14954f1dbc1430622704b728c498af362",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.4053,
+        0.4853
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-cluster/master.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_AnimastoneCirclet",
+      "label": "Animastone circlet",
+      "texture": "Things/Item/Equipment/Apparel/AnimastoneCirclet",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Thin gold inventory circlet with one natural seafoam crystal; fixed gold and crystal.",
+        "geometry": "Thin gold inventory circlet with one natural seafoam crystal; fixed gold and crystal.",
+        "materials": "All source colours fixed; no selectable stuff.",
+        "camera": "Shallow game camera following approved natural column and named sibling in request.json.",
+        "protected": "Approved seafoam/opal palette, raw crystal and opal-vein motif, complete outline; no glow.",
+        "allowedEdits": "Family derivative; construction ownership only where specified."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Apparel/AnimastoneCirclet.png",
+        "sha256": "ca90641cca1c3091af3f0babfc480f711d0feecedd42ab6aeee887fb0194dcab",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.2491,
+        0.3291
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-circlet/master.json"
+      }
+    },
+    {
+      "id": "KM_AnimastoneStaff",
+      "label": "Animastone staff",
+      "texture": "Things/Item/Equipment/WeaponMelee/AnimastoneStaff",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Horizontal wood focus staff; raw opal-veined seafoam crystal points right, fixed wood and neutral binding.",
+        "geometry": "Horizontal wood focus staff; raw opal-veined seafoam crystal points right, fixed wood and neutral binding.",
+        "materials": "All source colours fixed; no selectable stuff.",
+        "camera": "Shallow game camera following approved natural column and named sibling in request.json.",
+        "protected": "Approved seafoam/opal palette, raw crystal and opal-vein motif, complete outline; no glow.",
+        "allowedEdits": "Family derivative; construction ownership only where specified."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/AnimastoneStaff.png",
+        "sha256": "97ae50e421ed8117af9d70e1be28a2f8ed201ebd1ff4442f8e51557bebabdf1c",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.0772,
+        0.1572
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-staff/master.json"
+      }
+    },
+    {
+      "id": "KM_AnimastonePylon",
+      "label": "Animastone pylon",
+      "texture": "Things/Building/Animastone/Pylon",
+      "canvas": [
+        128,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Tall natural Animastone standing monument.",
+        "geometry": "One thick tapering asymmetrical raw crystal with blunt broken top, one small fused shoulder and low rough stone foot; no cap or frame. Visible source height/width 2.0603.",
+        "materials": "Seafoam crystal and opal vein fixed; neutral stone foot accepts construction tint.",
+        "camera": "Approved natural column shallow game camera, broad flat facets and charcoal contour.",
+        "protected": "Approved palette and natural mineral motif; target one-wide/two-high silhouette.",
+        "allowedEdits": "User-requested tall replacement for rejected low two-cell outcrop; explicit stone-foot ownership only."
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Animastone/Pylon.png",
+        "sha256": "4b0a81017a3cb58cc02c7d2a6a436cbfff66c806d996c1344668a38d8f0a3e7d",
+        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.4209,
+        0.5009
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/animastone-pylon-tall/master.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_DreadstoneSeedCrystal",
+      "label": "Dreadstone seed crystal",
+      "texture": "Things/Item/Health/LumenStones/DreadstoneSeedCrystal",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Dreadstone stake with three separately readable forward-pointing crystal claws",
+        "geometry": "Solid blunt heel, long pointed shaft, three roots evenly distributed around the rear circumference in perspective: left rear, visible front overlap and lower right.",
+        "materials": "Fixed charcoal-indigo crystal with one orange seam on the shaft and each claw; no construction tint.",
+        "camera": "User supplied three-claw concept, simplified into broad flat facets.",
+        "protected": "User-approved concept adaptation from attempt 0008, including all three visible claws.",
+        "allowedEdits": "Declared crop and uniform reduction only; retain selected source pixels and alpha inside crop."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Health/LumenStones/DreadstoneSeedCrystal.png",
+        "sha256": "82eca53ad5da727502fcc4b8e95f83d99d14c2b62602bb5a725e3163b164cfc2",
+        "approvedBy": "user: ok thats good",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.6,
+        0.95
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/dreadstone-seed/item.json"
+      },
+      "framingScope": "Custom 64px item/product icon; 32px health state icon; final native UI review pending."
+    },
+    {
+      "id": "KM_DreadstoneCudgel",
+      "label": "Dreadstone cudgel",
+      "texture": "Things/Item/Equipment/WeaponMelee/DreadstoneCudgel",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "dreadstone-cudgel",
+        "geometry": "a short blunt cudgel, horizontal with its grip on left and heavy blunt crystal head on right; dark neutral-grey metal grip and one shackle accent, obsidian-black Dreadstone head with restrained blood-orange core",
+        "materials": "Fixed colour crystal and neutral grey structure; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/DreadstoneCudgel.png",
+        "sha256": "cf99d0bd60146a76d62a0a49fed79f2e8cc97eebfbcac79aeadb485b05750c92",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.2953,
+        0.3453
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_SunstoneFlare",
+      "label": "Sunstone flare",
+      "texture": "Things/Item/Equipment/Misc/SunstoneFlare",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "sunstone-flare",
+        "geometry": "Rounded faceted amber Sunstone body with simple dark iron neck and short unlit rope fuse.",
+        "materials": "Fixed-colour stone and vine as applicable; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Misc/SunstoneFlare.png",
+        "sha256": "fc130dfd2e49dd5d97ab66443e442f66273fbe45be53985bfb74ed1c5c31e37c",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.7797,
+        0.8297
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_DreadstoneCollar",
+      "label": "Dreadstone collar",
+      "texture": "Things/Item/Equipment/Misc/DreadstoneCollar",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "dreadstone-collar",
+        "geometry": "Dark Dreadstone collar and shackle with orange core and continuous inset orange circumference.",
+        "materials": "Fixed-colour stone and vine as applicable; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Misc/DreadstoneCollar.png",
+        "sha256": "d52c978fec80f57515f7f9006629d6b9dc08793232882ca5c227f51dd3744c84",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.6781,
+        0.7281
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_VerditeBracer",
+      "label": "living vine bracer",
+      "texture": "Things/Item/Equipment/Misc/LivingVineBracer",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "verdite-bracer",
+        "geometry": "Verdite crystal cuff and setting with living vine and leaves.",
+        "materials": "Fixed-colour stone and vine as applicable; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Misc/LivingVineBracer.png",
+        "sha256": "29907fb1a345ab2bcaa213d471dff52bfa75a44dee58bac0ad51a5886f764d22",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.7797,
+        0.8297
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_VitaliteCirclet",
+      "label": "Vitalite circlet",
+      "texture": "Things/Item/Equipment/Apparel/VitaliteCirclet",
+      "canvas": [
+        128,
+        128
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "vitalite-circlet",
+        "geometry": "one simple wearable circlet, a narrow neutral-grey metal band with a single pearl-white Vitalite crystal and pale rose core at the front, headgear inventory icon",
+        "materials": "Fixed colour crystal and neutral grey structure; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Apparel/VitaliteCirclet.png",
+        "sha256": "1f1e8503e896378c82880816cfe73774790f9126fafc1da07c569c8e1b158060",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.2797,
+        0.3297
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_LumenstoneStaff",
+      "label": "Lumenstone staff",
+      "texture": "Things/Item/Equipment/WeaponMelee/LumenstoneStaff",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "lumenstone-staff",
+        "geometry": "a blunt quarterstaff horizontal with the grip at left and tip at right, neutral-grey metal shaft and a modest Lumenstone crystal core, simple and practical",
+        "materials": "Fixed colour crystal and neutral grey structure; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/LumenstoneStaff.png",
+        "sha256": "77a4ac6b72ecabe28717d2a5a5bf9f2ff83031a5f06dc746687605e5d2c4c074",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.0922,
+        0.1422
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_DarkStoneRitualKnife",
+      "label": "Dark Stone ritual knife",
+      "texture": "Things/Item/Equipment/WeaponMelee/DarkStoneRitualKnife",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "darkstone-knife",
+        "geometry": "a short ritual knife horizontal with its neutral-grey grip on left and pointed smoke-violet Dark Stone crystal blade on right, one restrained dark claw accent",
+        "materials": "Fixed colour crystal and neutral grey structure; no construction tint",
+        "camera": "Shallow overhead, consistent with approved equipment reference",
+        "protected": "User-approved current silhouette, palette, material choices and export framing.",
+        "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/WeaponMelee/DarkStoneRitualKnife.png",
+        "sha256": "6f2a0db169bf277cc10c4062f4ab539ae584b20cbd30ddcb906871ab543f7fc2",
+        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
+        "approvedOn": "2026-11-03"
+      },
+      "iconHeightFraction": [
+        0.2094,
+        0.2594
+      ],
+      "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
+      "provenance": "artwork/design-sources/new-equipment/approval.json"
+    }
+  ],
+  "oneCellTallPylons": [
+    "KM_GlacitePylon",
+    "KM_VitalitePylon",
+    "KM_SerenitePylon",
+    "KM_VerditePylon",
+    "KM_AegitePylon",
+    "KM_FerritePylon",
+    "KM_LumenstonePylon",
+    "KM_DarkStonePylon",
+    "KM_DreadstonePylon",
+    "KM_AnimastonePylon"
+  ],
+  "fixedWoodTorches": {
+    "KM_GlaciteLamp": 5,
+    "KM_VitaliteLamp": 5,
+    "KM_SereniteLamp": 5,
+    "KM_VerditeLamp": 5,
+    "KM_AegiteLamp": 5,
+    "KM_FerriteLamp": 5,
+    "KM_LumenstoneLamp": 5,
+    "KM_DarkStoneLamp": 5,
+    "KM_AnimastoneLamp": 5
+  },
+  "pylonFootprintExceptions": {
+    "KM_SerenitePylon": "(2,1)"
+  },
+  "iconSets": [
+    {
+      "id": "stone-implants",
+      "manifest": "artwork/design-sources/stone-implants/approved-assets.json",
+      "textureRoot": "Textures",
+      "approvedBy": "user: it all looks good",
+      "approvedOn": "2026-11-03"
+    }
+  ]
+}

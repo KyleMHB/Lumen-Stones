@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_LumenFireflyJar</defName><label>jar of fireflies</label>
+    <description>A small colony of fireflies fed on healroot and kept in a jar. They seem content, as far as anyone can tell.\n\nGives off green light without heat or refuelling. Used to build firefly columns.</description>
+    <thingClass>ThingWithComps</thingClass><drawerType>MapMeshAndRealTime</drawerType>
+    <uiIconPath>Lumenstone/FireflyJar</uiIconPath>
+    <graphicData><texPath>Lumenstone/FireflyJarBase</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.65</drawSize></graphicData>
+    <techLevel>Neolithic</techLevel><stackLimit>10</stackLimit><tickerType>Never</tickerType>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints><MarketValue>25</MarketValue><Mass>0.5</Mass><Flammability>0.3</Flammability>
+      <DeteriorationRate>2</DeteriorationRate><Beauty>2</Beauty><WorkToMake>2400</WorkToMake>
+    </statBases>
+    <thingCategories><li>Manufactured</li></thingCategories>
+    <costList><Steel>5</Steel><WoodLog>5</WoodLog><MedicineHerbal>1</MedicineHerbal></costList>
+    <recipeMaker><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><recipeUsers><li>CraftingSpot</li></recipeUsers></recipeMaker>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>3</glowRadius><glowColor>(155,225,100,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Fireflies" />
+    </comps>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,159 @@
+{
+  "sourceSize": [
+    724,
+    2172
+  ],
+  "crop": [
+    40,
+    115,
+    670,
+    2090
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    84,
+    20,
+    172,
+    236
+  ],
+  "colorFilename": "AnimastoneColumn.png",
+  "maskFilename": "AnimastoneColumn_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached faint exterior debris; preserve all meaningful object pixels and internal alpha. No colour repaint.",
+  "alphaHandling": "Preserve source alpha through shared Lanczos crop and reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "capital": [
+          [
+            20,
+            100
+          ],
+          [
+            700,
+            100
+          ],
+          [
+            700,
+            310
+          ],
+          [
+            535,
+            325
+          ],
+          [
+            500,
+            345
+          ],
+          [
+            442,
+            347
+          ],
+          [
+            383,
+            360
+          ],
+          [
+            315,
+            363
+          ],
+          [
+            247,
+            365
+          ],
+          [
+            210,
+            357
+          ],
+          [
+            171,
+            366
+          ],
+          [
+            145,
+            342
+          ],
+          [
+            90,
+            331
+          ],
+          [
+            20,
+            295
+          ]
+        ],
+        "foot": [
+          [
+            30,
+            1865
+          ],
+          [
+            133,
+            1840
+          ],
+          [
+            152,
+            1870
+          ],
+          [
+            242,
+            1912
+          ],
+          [
+            411,
+            1918
+          ],
+          [
+            556,
+            1875
+          ],
+          [
+            572,
+            1844
+          ],
+          [
+            660,
+            1900
+          ],
+          [
+            700,
+            2110
+          ],
+          [
+            20,
+            2110
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      93,
+      20,
+      163,
+      236
+    ],
+    "footLine": 236,
+    "boundsTolerance": 4,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "definition": "KM_LumenAnimastoneColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ]
+  },
+  "acceptance": {
+    "palette": "user approved 2026-11-03",
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Exact user-saved mask integrated; review history retained",
+    "inGame": "pending final combined human review"
+  },
+  "paintedMask": "painted-mask.png"
+}

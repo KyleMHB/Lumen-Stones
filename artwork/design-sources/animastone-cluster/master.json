@@ -1,0 +1,128 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    65,
+    281,
+    1189,
+    1025
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    26,
+    76,
+    230,
+    214
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached exterior alpha debris; source colour and internal alpha unchanged.",
+  "alphaHandling": "One uniform shared Lanczos crop/reduction with source alpha preserved.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "cradle": [
+          [
+            40,
+            810
+          ],
+          [
+            105,
+            770
+          ],
+          [
+            160,
+            745
+          ],
+          [
+            176,
+            790
+          ],
+          [
+            260,
+            822
+          ],
+          [
+            480,
+            851
+          ],
+          [
+            506,
+            855
+          ],
+          [
+            620,
+            849
+          ],
+          [
+            760,
+            848
+          ],
+          [
+            875,
+            835
+          ],
+          [
+            1008,
+            816
+          ],
+          [
+            1068,
+            796
+          ],
+          [
+            1075,
+            767
+          ],
+          [
+            1145,
+            790
+          ],
+          [
+            1220,
+            900
+          ],
+          [
+            1200,
+            1060
+          ],
+          [
+            40,
+            1060
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "boundsTolerance": 0,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_AnimastoneCluster",
+    "drawSize": [
+      1,
+      1
+    ],
+    "expectedBounds": [
+      26,
+      77,
+      230,
+      212
+    ],
+    "footLine": 212
+  },
+  "acceptance": {
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Exact user-saved mask integrated; review history retained",
+    "inGame": "pending final combined human review"
+  },
+  "paintedMask": "painted-mask.png"
+}

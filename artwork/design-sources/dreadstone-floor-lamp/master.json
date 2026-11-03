@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    462,
+    123,
+    809,
+    1133
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    12,
+    256,
+    229
+  ],
+  "colorFilename": "Lamp.png",
+  "maskFilename": "Lamp_m.png",
+  "sourceRepair": "Uniformly fit the complete approved lamp to the established floor-lamp frame; crop excludes faint exterior alpha debris.",
+  "alphaHandling": "Preserve alpha inside crop; fixed colors.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    70,
+    438,
+    1181,
+    875
+  ],
+  "canvas": [
+    128,
+    128
+  ],
+  "targetBox": [
+    8,
+    42,
+    120,
+    86
+  ],
+  "colorFilename": "AnimastoneCirclet.png",
+  "maskFilename": "AnimastoneCirclet_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached exterior alpha debris; source colour and internal alpha unchanged.",
+  "alphaHandling": "One uniform shared Lanczos crop/reduction with source alpha preserved.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "boundsTolerance": 0,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_AnimastoneCirclet",
+    "drawSize": [
+      1,
+      1
+    ],
+    "expectedBounds": [
+      8,
+      42,
+      120,
+      86
+    ],
+    "footLine": 86
+  },
+  "acceptance": {
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Fixed colour, no construction tint",
+    "inGame": "pending final combined human review"
+  }
+}

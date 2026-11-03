@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>KM_AegiteWarhammer</defName>
+    <label>Aegite warhammer</label>
+    <description>A champagne-gold crystal hammer on a dark haft. Fire won't take hold of anyone carrying it, which makes it popular with whoever has to fight near burning buildings.\n\nIts blunt melee strikes can stun living targets. While equipped, it prevents the wielder from catching fire; it does not extinguish an existing attached fire or grant armour. Crafted from 100 Aegite and 20 steel after Long blades, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>5500</WorkToMake><Mass>2.5</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/AegiteWarhammer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <!-- uiIconScale below keeps the wide horizontal art inside the build icon -->
+    </graphicData>
+    <uiIconScale>0.75</uiIconScale>
+    <weaponTags><li>MedievalMeleeAdvanced</li></weaponTags>
+    <tools>
+      <li><label>handle</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>head</label><capacities><li>Blunt</li></capacities><power>24</power><cooldownTime>2.6</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>423</displayPriority>
+    </recipeMaker>
+    <costList><KM_Aegite>100</KM_Aegite><Steel>20</Steel></costList>
+  </ThingDef>
+</Defs>

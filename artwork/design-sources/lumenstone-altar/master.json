@@ -1,0 +1,33 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "canvas": [
+    1256,
+    1256
+  ],
+  "targetBox": [
+    1,
+    1,
+    1255,
+    1255
+  ],
+  "colorFilename": "LumenstoneAltar.png",
+  "maskFilename": "LumenstoneAltar_m.png",
+  "paintedMask": "painted-mask.png",
+  "sourceRepair": "None; preserve the selected generated design.",
+  "alphaHandling": "Preserve source alpha without resizing; pad one transparent pixel per side so both dimensions divide by 4.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": true
+    }
+  ]
+}

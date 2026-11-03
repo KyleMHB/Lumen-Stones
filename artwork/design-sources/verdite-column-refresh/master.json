@@ -1,0 +1,70 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "layers": [
+    {
+      "path": "housing.png",
+      "constructionTint": true
+    },
+    {
+      "path": "crystal.png",
+      "constructionTint": false
+    },
+    {
+      "path": "contours.png",
+      "constructionTint": false
+    }
+  ],
+  "crop": [
+    346,
+    86,
+    910,
+    1178
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    144,
+    40,
+    368,
+    472
+  ],
+  "colorFilename": "VerditeColumn.png",
+  "maskFilename": "VerditeColumn_m.png",
+  "sourceRepair": "Material regions reconstructed from the approved flattened master with the declared polygons; the reviewed colour sprite remains protected.",
+  "alphaHandling": "Preserve authored layer alpha; export mask alpha opaque and keep color transparency independent.",
+  "candidateChecks": {
+    "mode": "replacement",
+    "baselineScale": 2,
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/verdite-column-refresh/preserved-production-color.png",
+        "sha256": "0754e26ec6a70dca8266c743609cedf64dbcb5002181d7cbcde1687931ba97c8"
+      },
+      "mask": {
+        "path": "artwork/design-sources/verdite-column-refresh/preserved-production-mask.png",
+        "sha256": "fee961b52d60d6cbbce2325fb8adb928bad898ebc61998861ac4195c51997f39"
+      }
+    },
+    "definition": "KM_LumenVerditeColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ],
+    "boundsTolerance": 2,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8
+  },
+  "paintedMask": "painted-mask.png",
+  "acceptance": {
+    "design": "User accepted protected source-backed design on 2026-11-03",
+    "mask": "User accepted candidate mask on 2026-11-03; saved review snapshot verified",
+    "inGame": "pending combined human review"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    40,
+    247,
+    1214,
+    1023
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    16,
+    24,
+    496,
+    488
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Accepted source mirrored horizontally; the user-painted output mask is mirrored exactly.",
+  "alphaHandling": "Preserve source alpha inside crop; colour and ownership share uniform reduction.",
+  "layers": [
+    {
+      "path": "mirror-source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      16,
+      97,
+      496,
+      414
+    ],
+    "boundsTolerance": 24,
+    "footLine": 414,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 20,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_HollowstoneCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "mirror-mask.png"
+}

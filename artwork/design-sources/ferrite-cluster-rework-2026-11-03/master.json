@@ -1,0 +1,191 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    139,
+    271,
+    1115,
+    1062
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    36,
+    78,
+    476,
+    434
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Remove only source alpha values <=8 to exclude faint exterior generation debris. Preserve all RGB values and alpha above 8. Unmodified generated.png retained.",
+  "alphaHandling": "Preserve remaining alpha and contours through one coordinated colour/ownership crop and uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "front-band": [
+          [
+            142,
+            834
+          ],
+          [
+            168,
+            811
+          ],
+          [
+            188,
+            801
+          ],
+          [
+            207,
+            859
+          ],
+          [
+            270,
+            907
+          ],
+          [
+            344,
+            899
+          ],
+          [
+            349,
+            882
+          ],
+          [
+            410,
+            891
+          ],
+          [
+            541,
+            895
+          ],
+          [
+            680,
+            896
+          ],
+          [
+            819,
+            895
+          ],
+          [
+            923,
+            883
+          ],
+          [
+            927,
+            902
+          ],
+          [
+            1001,
+            911
+          ],
+          [
+            1064,
+            879
+          ],
+          [
+            1066,
+            811
+          ],
+          [
+            1097,
+            837
+          ],
+          [
+            1115,
+            887
+          ],
+          [
+            1115,
+            1062
+          ],
+          [
+            139,
+            1062
+          ],
+          [
+            139,
+            887
+          ]
+        ],
+        "left-brace": [
+          [
+            189,
+            718
+          ],
+          [
+            247,
+            718
+          ],
+          [
+            274,
+            735
+          ],
+          [
+            353,
+            896
+          ],
+          [
+            273,
+            915
+          ],
+          [
+            189,
+            883
+          ]
+        ],
+        "right-brace": [
+          [
+            1009,
+            716
+          ],
+          [
+            1064,
+            721
+          ],
+          [
+            1067,
+            884
+          ],
+          [
+            999,
+            913
+          ],
+          [
+            925,
+            898
+          ],
+          [
+            971,
+            778
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      36,
+      78,
+      476,
+      434
+    ],
+    "boundsTolerance": 4,
+    "footLine": 434,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 16,
+    "definition": "KM_FerriteCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

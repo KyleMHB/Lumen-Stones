@@ -1,0 +1,152 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    120,
+    215,
+    1135,
+    1095
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    48,
+    48,
+    464,
+    464
+  ],
+  "colorFilename": "SunstoneVessel.png",
+  "maskFilename": "SunstoneVessel_m.png",
+  "sourceRepair": "Crop excludes distant generated alpha debris; otherwise original source pixels preserved.",
+  "alphaHandling": "Preserve source alpha within crop; one shared Lanczos reduction.",
+  "layers": [
+    {
+      "path": "vessel-source.png",
+      "ownership": {
+        "front": [
+          [
+            310,
+            822
+          ],
+          [
+            390,
+            850
+          ],
+          [
+            520,
+            864
+          ],
+          [
+            740,
+            864
+          ],
+          [
+            850,
+            850
+          ],
+          [
+            945,
+            820
+          ],
+          [
+            960,
+            1005
+          ],
+          [
+            900,
+            1040
+          ],
+          [
+            790,
+            1064
+          ],
+          [
+            460,
+            1064
+          ],
+          [
+            350,
+            1038
+          ],
+          [
+            300,
+            1005
+          ]
+        ],
+        "left": [
+          [
+            140,
+            670
+          ],
+          [
+            216,
+            655
+          ],
+          [
+            280,
+            785
+          ],
+          [
+            330,
+            815
+          ],
+          [
+            320,
+            1000
+          ],
+          [
+            250,
+            978
+          ],
+          [
+            180,
+            963
+          ],
+          [
+            135,
+            935
+          ]
+        ],
+        "right": [
+          [
+            1110,
+            670
+          ],
+          [
+            1038,
+            655
+          ],
+          [
+            975,
+            785
+          ],
+          [
+            924,
+            815
+          ],
+          [
+            934,
+            1000
+          ],
+          [
+            1004,
+            978
+          ],
+          [
+            1074,
+            963
+          ],
+          [
+            1119,
+            935
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask-2.png"
+}

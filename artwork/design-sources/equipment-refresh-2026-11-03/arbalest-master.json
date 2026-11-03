@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    0,
+    0,
+    1774,
+    887
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    8,
+    8,
+    248,
+    248
+  ],
+  "colorFilename": "DreadstoneArbalest.png",
+  "maskFilename": "DreadstoneArbalest_m.png",
+  "sourceRepair": "Generated Dreadstone body, metal bow limbs, wooden bolt and iron tip; user accepted design on 2026-11-03.",
+  "alphaHandling": "Preserve supplied alpha, including faint exterior pixels, with uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "arbalest-dreadstone.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/arbalest-baseline.png",
+        "sha256": "d1b1277048abc8df1c0f5920eca615dc5a3409ee91a9cc46c15ea90298903bdc"
+      },
+      "mask": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/arbalest-baseline-mask.png",
+        "sha256": "42c7d7a412f704e9468d9ba58292b23e1d659ddb4e839345ad08bb37b44ee2e5"
+      }
+    },
+    "definition": "KM_DreadstoneArbalest",
+    "drawSize": [
+      1.2,
+      1.2
+    ],
+    "boundsTolerance": 3,
+    "maxOpaqueSpread": 255,
+    "minSourceSize": 887,
+    "minSourcePixelsPerOutputPixel": 1
+  }
+}

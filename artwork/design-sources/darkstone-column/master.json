@@ -1,0 +1,235 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    400,
+    78,
+    856,
+    1177
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    36,
+    512,
+    490
+  ],
+  "colorFilename": "DarkStoneColumn.png",
+  "maskFilename": "DarkStoneColumn_m.png",
+  "sourceRepair": "Shared crop excludes faint exterior alpha debris; original source preserved.",
+  "alphaHandling": "Preserve source alpha inside crop and reduce colour and ownership together.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "cap": [
+          [
+            400,
+            78
+          ],
+          [
+            856,
+            78
+          ],
+          [
+            856,
+            215
+          ],
+          [
+            799,
+            215
+          ],
+          [
+            799,
+            279
+          ],
+          [
+            748,
+            336
+          ],
+          [
+            702,
+            320
+          ],
+          [
+            682,
+            224
+          ],
+          [
+            572,
+            224
+          ],
+          [
+            548,
+            324
+          ],
+          [
+            501,
+            335
+          ],
+          [
+            449,
+            277
+          ],
+          [
+            449,
+            215
+          ],
+          [
+            400,
+            215
+          ]
+        ],
+        "center-top-claw": [
+          [
+            577,
+            214
+          ],
+          [
+            678,
+            214
+          ],
+          [
+            678,
+            280
+          ],
+          [
+            626,
+            349
+          ],
+          [
+            575,
+            279
+          ]
+        ],
+        "plinth": [
+          [
+            400,
+            1058
+          ],
+          [
+            440,
+            1036
+          ],
+          [
+            440,
+            988
+          ],
+          [
+            469,
+            944
+          ],
+          [
+            506,
+            917
+          ],
+          [
+            546,
+            1007
+          ],
+          [
+            571,
+            1026
+          ],
+          [
+            626,
+            949
+          ],
+          [
+            682,
+            1025
+          ],
+          [
+            710,
+            1005
+          ],
+          [
+            748,
+            917
+          ],
+          [
+            786,
+            946
+          ],
+          [
+            814,
+            986
+          ],
+          [
+            814,
+            1036
+          ],
+          [
+            856,
+            1058
+          ],
+          [
+            856,
+            1177
+          ],
+          [
+            400,
+            1177
+          ]
+        ],
+        "cap-rear-left": [
+          [
+            551,
+            220
+          ],
+          [
+            578,
+            220
+          ],
+          [
+            578,
+            275
+          ],
+          [
+            551,
+            291
+          ]
+        ],
+        "cap-rear-right": [
+          [
+            677,
+            220
+          ],
+          [
+            704,
+            220
+          ],
+          [
+            704,
+            291
+          ],
+          [
+            677,
+            275
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      162,
+      36,
+      350,
+      490
+    ],
+    "boundsTolerance": 8,
+    "footLine": 490,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8
+  },
+  "paintedMask": "painted-mask.png"
+}

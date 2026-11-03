@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Pyrinth comes only from infusion. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="DV_MineablePyrinth"]/building/mineableScatterCommonality</xpath>
+    <value><mineableScatterCommonality>0</mineableScatterCommonality></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="DV_Pyrinth"]/deepCommonality</xpath>
+    <value><deepCommonality>0</deepCommonality></value>
+  </Operation>
+  <!-- The game rejects a lump size on a resource with no deep commonality. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="DV_Pyrinth"]/deepLumpSizeRange</xpath>
+    <value><deepLumpSizeRange>0~0</deepLumpSizeRange></value>
+  </Operation>
+  <!-- Odyssey's mineral-rich tiles pick from every resource rock regardless of commonality. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TileMutatorDef[defName="MineralRich"]/resourceBlacklist</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TileMutatorDef[defName="MineralRich"]/resourceBlacklist</xpath>
+      <value><li>DV_MineablePyrinth</li></value>
+    </match>
+  </Operation>
+</Patch>

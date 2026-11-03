@@ -1,0 +1,33 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    339,
+    60,
+    914,
+    1160
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    171,
+    18,
+    343,
+    334
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Horizontal mirror of the accepted source and hand-painted mask; original retained.",
+  "alphaHandling": "Preserve source alpha; colour and user-painted mask share crop, uniform reduction and placement.",
+  "layers": [
+    {
+      "path": "mirror-source.png",
+      "constructionTint": false
+    }
+  ],
+  "paintedMask": "mirror-mask.png"
+}

@@ -1,0 +1,52 @@
+{
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    116,
+    25,
+    1423,
+    954
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    16,
+    24,
+    496,
+    488
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Crop excludes faint exterior alpha debris; round-band source has simplified facets and a continuous taller band; earlier sources retained.",
+  "alphaHandling": "Preserve generated alpha within crop; shared uniform reduction.",
+  "layers": [
+    {
+      "path": "round-band.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      16,
+      78,
+      496,
+      434
+    ],
+    "boundsTolerance": 16,
+    "footLine": 426,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_DreadstoneCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

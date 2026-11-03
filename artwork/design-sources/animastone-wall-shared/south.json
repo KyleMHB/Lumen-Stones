@@ -1,0 +1,56 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_south.png",
+  "maskFilename": "WallLamp_southm.png",
+  "sourceRepair": "Generated crystal RGB aligned through existing Serenite directional recipes, then restored all original non-violet pixels and original alpha exactly per view. See preservation.json; original sconce body and attachment framing unchanged.",
+  "alphaHandling": "Exact original directional alpha; identity final export.",
+  "layers": [
+    {
+      "path": "restored-south.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      205,
+      0,
+      298,
+      84
+    ],
+    "footLine": 84,
+    "boundsTolerance": 0,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "definition": "KM_AnimastoneWallLamp",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "acceptance": {
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Fixed colour, no construction tint",
+    "inGame": "pending final combined human review"
+  }
+}

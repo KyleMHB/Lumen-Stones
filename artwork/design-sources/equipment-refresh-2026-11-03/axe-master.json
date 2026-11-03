@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1168,
+    1168
+  ],
+  "crop": [
+    20,
+    412,
+    1104,
+    824
+  ],
+  "canvas": [
+    292,
+    292
+  ],
+  "targetBox": [
+    5,
+    103,
+    276,
+    206
+  ],
+  "colorFilename": "SunstoneAxe.png",
+  "maskFilename": "SunstoneAxe_m.png",
+  "layers": [
+    {
+      "path": "axe-oriented.png",
+      "constructionTint": false
+    }
+  ],
+  "sourceRepair": "Recovered source with historical framing, premultiplied bicubic rotation and vertical flip. Restrict new resampling support to the immutable baseline envelope; hammer additionally has the user-authorized local RGB speckle repair. Reproduce with export.py.",
+  "alphaHandling": "One final Lanczos reduction inside the historical outer envelope. No alpha threshold, sharpening or contour thickening; original canvas-centre pivot is retained.",
+  "candidateChecks": {
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/axe-baseline.png",
+        "sha256": "6b16361be44e4dc7c070ace8236a39491dd3a8e0185554f75be8efffb214fe75"
+      },
+      "mask": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/axe-baseline-mask.png",
+        "sha256": "1ded030d609303765275f407d3f967475f25969242bfbb48df982d07235b0ff6"
+      }
+    },
+    "definition": "KM_SunstoneAxe",
+    "drawSize": [
+      1.3687,
+      1.3687
+    ],
+    "boundsTolerance": 0,
+    "maxOpaqueSpread": 255,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1
+  }
+}

@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Verdite</defName>
+    <label>Verdite</label>
+    <description>Lumenstone steeped with hay takes in green growth. Crops lean towards it the way they lean towards the sun.\n\nA spring peridot crystal with a sunlit golden-chartreuse core, infused from Lumenstone at a Lumen ritual circle. Its furnishings support farming indoors and outdoors.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Verdite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_VerditePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/VerditePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+      <acceleration>(0,0,-0.18)</acceleration>
+    </mote>
+  </ThingDef>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenVerditeColumn</defName>
+    <label>Verdite column</label>
+    <uiOrder>2044</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A peridot column with stone roots clasped around its base.\n\nSpeeds plant growth and farm work around it, indoors or outdoors. Only the strongest Verdite source applies. Provides ordinary illumination, not plant-capable light. No fuel or electricity.</description>
+    <costList>
+      <KM_Verdite>15</KM_Verdite>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/VerditeColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(190,245,140,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Verdite">
+        <radius>8</radius>
+        <growthBonus>0.1</growthBonus>
+        <workBonus>0.08</workBonus>
+        <yieldBonus>0.08</yieldBonus>
+      </li>
+    </comps>
+    <uiIconScale>1.02857</uiIconScale>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_VerditeRanges</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ThingDef Name="KM_VerditeFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_VerditeFixtureBase">
+    <defName>KM_VerditeLamp</defName>
+    <label>Verdite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2803</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A peridot Verdite lamp on a slim post. Moths like it.\n\nProvides ordinary visual illumination only, with no agricultural support, plant-capable light or pollen. No heat, fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Verdite/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Verdite>10</KM_Verdite>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(190,245,140,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_VerditeFixtureBase">
+    <defName>KM_VerditeWallLamp</defName>
+    <label>Verdite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2804</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A peridot Verdite wall lamp.\n\nProvides ordinary visual illumination only, with no agricultural support, plant-capable light or pollen. No heat, fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Verdite/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Verdite/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Verdite>8</KM_Verdite>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(190,245,140,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_VerditeFixtureBase">
+    <defName>KM_VerditePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Verdite spire pylon</label>
+    <uiOrder>2822</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A Verdite spire grown rather than cut, with stone leaves and roots holding it upright. It sheds a faint pollen that no plant on the rim produces.\n\nSpeeds plant growth and farm work around it, indoors or outdoors. Only the strongest Verdite source applies. With Solar energy, a separate plant-capable light follows the daily sun-lamp schedule. Green ring: farming support; gold ring: plant-capable light.</description>
+    <graphicData>
+      <texPath>Things/Building/Verdite/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <costList>
+      <KM_Verdite>60</KM_Verdite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>25</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_VerditeGrowth</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>13</glowRadius>
+        <glowColor>(190,245,140,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Overlight">
+        <glowRadius>6.5</glowRadius>
+        <glowColor>(370,370,300,0)</glowColor>
+        <overlightRadius>6.5</overlightRadius>
+        <solarDrain>120</solarDrain>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>plant-capable light</effect>
+      </li>
+      <li Class="LumenStones.CompProperties_Verdite">
+        <radius>8</radius>
+        <growthBonus>0.2</growthBonus>
+        <workBonus>0.15</workBonus>
+        <yieldBonus>0.15</yieldBonus>
+      </li>
+    </comps>
+    <size>(1,1)</size>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_VerditeRanges</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ThingDef ParentName="KM_VerditeFixtureBase">
+    <defName>KM_VerditeCluster</defName>
+    <label>Verdite spire cluster</label>
+    <uiOrder>2823</uiOrder>
+    <description>A small stand of Verdite spires, left without a housing so they can keep growing. They don't, but it seems to help.\n\nSpeeds plant growth and farm work around it, indoors or outdoors. Only the strongest Verdite source applies. With Solar energy, a separate plant-capable light follows the daily sun-lamp schedule. Green ring: farming support; gold ring: plant-capable light.</description>
+    <graphicData>
+      <texPath>Things/Building/Verdite/Cluster</texPath>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <costList>
+      <KM_Verdite>35</KM_Verdite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_VerditeGrowth</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(190,245,140,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Overlight">
+        <glowRadius>4.5</glowRadius>
+        <glowColor>(370,370,300,0)</glowColor>
+        <overlightRadius>4.5</overlightRadius>
+        <solarDrain>60</solarDrain>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>plant-capable light</effect>
+      </li>
+      <li Class="LumenStones.CompProperties_Verdite">
+        <radius>8</radius>
+        <growthBonus>0.15</growthBonus>
+        <workBonus>0.12</workBonus>
+        <yieldBonus>0.12</yieldBonus>
+      </li>
+    </comps>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_VerditeRanges</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ResearchProjectDef>
+    <defName>KM_VerditeGrowth</defName>
+    <label>Verdite growth</label>
+    <description>Learn to infuse Lumenstone with hay, and to grow the result into natural spires.\n\nShape Verdite into spire clusters and pylons for stronger agricultural support and scheduled plant-capable light. Unlocks Verdite infusion at the Lumen ritual circle.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>2</researchViewX>
+    <researchViewY>5</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+</Defs>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark content loads only with Ideology. Textures below are placeholders borrowed from Serenite until artwork ticket 06 delivers the final paths. -->
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_DarkStonePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/DarkStonePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenDarkStoneColumn</defName>
+    <label>Dark Stone column</label>
+    <uiOrder>2038</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A roof-supporting column set with raw Dark Stone. The light it gives seems to make the room darker.\n\nGives dim violet-indigo light. Raises the quality of sacrifices at a Sacrificial altar in the same room, with more Dark Stone converted and more Warp energy harvested. Each fixture type counts once. No fuel, electricity or Warp energy.</description>
+    <costList>
+      <KM_DarkStone>15</KM_DarkStone>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/DarkStoneColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(145,110,195,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>0</fixtureIndex>
+        <dark>true</dark>
+        <weight>0.2</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_DarkStoneFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DarkStoneFixtureBase">
+    <defName>KM_DarkStoneLamp</defName>
+    <label>Dark Stone lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2805</uiOrder>
+    <description>A raw Dark Stone crystal on a wooden post.\n\nGives dim violet-indigo light. Raises the quality of sacrifices at a Sacrificial altar in the same room, with more Dark Stone converted and more Warp energy harvested. Each fixture type counts once. No fuel, electricity or Warp energy.</description>
+    <graphicData>
+      <texPath>Things/Building/DarkStone/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_DarkStone>10</KM_DarkStone>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(145,110,195,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>1</fixtureIndex>
+        <dark>true</dark>
+        <weight>0.1</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DarkStoneFixtureBase">
+    <defName>KM_DarkStoneWallLamp</defName>
+    <label>Dark Stone wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2806</uiOrder>
+    <description>A raw Dark Stone crystal on a wall bracket.\n\nGives dim violet-indigo light. Raises the quality of sacrifices at a Sacrificial altar in the same room, with more Dark Stone converted and more Warp energy harvested. Each fixture type counts once. No fuel, electricity or Warp energy.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/DarkStone/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/DarkStone/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_DarkStone>8</KM_DarkStone>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(145,110,195,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>1</fixtureIndex>
+        <dark>true</dark>
+        <weight>0.1</weight>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DarkStoneFixtureBase">
+    <defName>KM_DarkStonePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Dark Stone pylon</label>
+    <uiOrder>2824</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall shaft of raw Dark Stone on a carved pedestal. Colonists find reasons to walk around it.\n\nGives dim violet-indigo light. Raises the quality of sacrifices at a Sacrificial altar in the same room, with more Dark Stone converted and more Warp energy harvested. Each fixture type counts once. No fuel, electricity or Warp energy.</description>
+    <graphicData>
+      <texPath>Things/Building/DarkStone/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_DarkStone>25</KM_DarkStone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(145,110,195,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>2</fixtureIndex>
+        <dark>true</dark>
+        <weight>0.45</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DarkStoneFixtureBase">
+    <defName>KM_DarkStoneCluster</defName>
+    <label>Dark Stone cluster</label>
+    <uiOrder>2825</uiOrder>
+    <rotatable>true</rotatable>
+    <description>A group of raw Dark Stone crystals in a low carved housing.\n\nGives dim violet-indigo light. Raises the quality of sacrifices at a Sacrificial altar in the same room, with more Dark Stone converted and more Warp energy harvested. Each fixture type counts once. No fuel, electricity or Warp energy.</description>
+    <graphicData>
+      <texPath>Things/Building/DarkStone/Cluster</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawRotated>false</drawRotated>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_DarkStone>35</KM_DarkStone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(145,110,195,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>3</fixtureIndex>
+        <dark>true</dark>
+        <weight>0.25</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+  </ThingDef>
+</Defs>

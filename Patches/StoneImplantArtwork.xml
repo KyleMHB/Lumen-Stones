@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_GlaciteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_GlaciteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/GlaciteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_PyrinthImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_PyrinthImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/PyrinthImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_VerditeImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_VerditeImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/VerditeImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_VitaliteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_VitaliteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/VitaliteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_SereniteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_SereniteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/SereniteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_AegiteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_AegiteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/AegiteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_FerriteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_FerriteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/FerriteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_SanguiniteImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_SanguiniteImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/SanguiniteImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_DreadstoneImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_DreadstoneImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/DreadstoneImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_HollowstoneImplant"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_HollowstoneImplant"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/HollowstoneImplant</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_FerriteArm"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_FerriteArm"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/FerriteArm</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_FerriteLeg"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_FerriteLeg"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/FerriteLeg</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_VitaliteHeart"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_VitaliteHeart"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/VitaliteHeart</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_AegiteEye"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_AegiteEye"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/AegiteEye</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_HollowstoneArm"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_HollowstoneArm"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/HollowstoneArm</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_HollowstoneLeg"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_HollowstoneLeg"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/HollowstoneLeg</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_DreadstoneJaw"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_DreadstoneJaw"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/DreadstoneJaw</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="KM_SanguiniteHeart"]/graphicData</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="KM_SanguiniteHeart"]/graphicData</xpath>
+      <value>
+        <graphicData>
+          <texPath>Things/Item/Health/LumenStones/SanguiniteHeart</texPath>
+          <color>(255,255,255)</color>
+        </graphicData>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/RitualPatternDef[defName="KM_AttunementCircle"]/iconPathOverride</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/RitualPatternDef[defName="KM_AttunementCircle"]/iconPathOverride</xpath>
+      <value>
+        <iconPathOverride>UI/Icons/Attunement</iconPathOverride>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PreceptDef[defName="KM_AttunementCircle"]/iconPath</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PreceptDef[defName="KM_AttunementCircle"]/iconPath</xpath>
+      <value>
+        <iconPath>UI/Icons/Attunement</iconPath>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/RitualPatternDef[defName="KM_AttunementAltar"]/iconPathOverride</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/RitualPatternDef[defName="KM_AttunementAltar"]/iconPathOverride</xpath>
+      <value>
+        <iconPathOverride>UI/Icons/Attunement</iconPathOverride>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PreceptDef[defName="KM_AttunementAltar"]/iconPath</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PreceptDef[defName="KM_AttunementAltar"]/iconPath</xpath>
+      <value>
+        <iconPath>UI/Icons/Attunement</iconPath>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/RitualPatternDef[defName="KM_Binding"]/iconPathOverride</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/RitualPatternDef[defName="KM_Binding"]/iconPathOverride</xpath>
+      <value>
+        <iconPathOverride>UI/Icons/Binding</iconPathOverride>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PreceptDef[defName="KM_Binding"]/iconPath</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PreceptDef[defName="KM_Binding"]/iconPath</xpath>
+      <value>
+        <iconPath>UI/Icons/Binding</iconPath>
+      </value>
+    </match>
+  </Operation>
+</Patch>

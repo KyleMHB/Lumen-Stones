@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_east.png",
+  "maskFilename": "WallLamp_eastm.png",
+  "sourceRepair": "Uniform reduction of the approved north concept crop (453,543,817,1100), placed on established wall-lamp anchors; west mirrored; south shows only the occluded tip.",
+  "alphaHandling": "Preserve source alpha with transparent padding.",
+  "layers": [
+    {
+      "path": "east-layer.png",
+      "constructionTint": false
+    }
+  ]
+}

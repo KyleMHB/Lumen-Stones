@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    8,
+    8,
+    248,
+    248
+  ],
+  "colorFilename": "HollowstoneGlaive.png",
+  "maskFilename": "HollowstoneGlaive_m.png",
+  "sourceRepair": "Uniformly fit the approved jagged glaive within an eight-pixel transparent margin.",
+  "alphaHandling": "Preserve alpha with uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="PlantWorkSpeed"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="PlantWorkSpeed"]/parts</xpath>
+      <value>
+        <li Class="LumenStones.StatPart_Verdite" />
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="PlantWorkSpeed"]</xpath>
+      <value>
+        <parts>
+          <li Class="LumenStones.StatPart_Verdite" />
+        </parts>
+      </value>
+    </nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="PlantHarvestYield"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="PlantHarvestYield"]/parts</xpath>
+      <value>
+        <li Class="LumenStones.StatPart_Verdite">
+          <harvest>true</harvest>
+        </li>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="PlantHarvestYield"]</xpath>
+      <value>
+        <parts>
+          <li Class="LumenStones.StatPart_Verdite">
+            <harvest>true</harvest>
+          </li>
+        </parts>
+      </value>
+    </nomatch>
+  </Operation>
+</Patch>

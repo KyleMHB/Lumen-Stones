@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfusePyrinth</defName>
+    <label>infuse Pyrinth</label>
+    <description>Infuse 10 Lumenstone and 20 wood into 10 Pyrinth.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>WoodLog</li></thingDefs></fixedIngredientFilter>
+    <products><DV_Pyrinth>10</DV_Pyrinth></products>
+    <researchPrerequisite>Stonecutting</researchPrerequisite>
+  </RecipeDef>
+</Defs>

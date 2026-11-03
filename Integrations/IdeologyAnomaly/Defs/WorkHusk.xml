@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Loads only with Ideology and Anomaly. Husk content may refer to Ideology defs, never the reverse. -->
+  <HediffDef>
+    <defName>KM_WorkHusk</defName>
+    <label>work husk</label>
+    <description>A body kept moving by Warp energy. It feels no pain. Without power it collapses, and it wakes when power returns.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+    <maxSeverity>2</maxSeverity>
+    <initialSeverity>0.5</initialSeverity>
+    <stages>
+      <li>
+        <label>bound</label>
+        <painFactor>0</painFactor>
+      </li>
+      <li>
+        <label>collapsed</label>
+        <minSeverity>1</minSeverity>
+        <painFactor>0</painFactor>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.1</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Vanilla BaseMutantEntity disables all work and shooting, so a husk takes its fields and puts them back. -->
+  <MutantDef ParentName="BaseMutantEntity">
+    <defName>KM_WorkHusk</defName>
+    <label>work husk</label>
+    <description>A sacrificed person hollowed out by Hollowstone and kept moving by Warp energy. There is nothing left inside to object.\n\nBound to a Hollowstone pylon. It hauls and cleans without rest, can be drafted to fight with its bare hands, and collapses if its pylon loses power.</description>
+    <hediff>KM_WorkHusk</hediff>
+    <thinkTree>KM_WorkHusk</thinkTree>
+    <thinkTreeConstant>KM_WorkHuskConstant</thinkTreeConstant>
+    <workDisables Inherit="False">
+      <li>ManualSkilled</li>
+      <li>Intellectual</li>
+      <li>Social</li>
+      <li>Caring</li>
+      <li>Animals</li>
+      <li>Artistic</li>
+      <li>Crafting</li>
+      <li>Cooking</li>
+      <li>Constructing</li>
+      <li>Mining</li>
+      <li>PlantWork</li>
+      <li>Firefighting</li>
+      <li>Hunting</li>
+    </workDisables>
+    <consideredSubhuman>false</consideredSubhuman>
+    <canBeDrafted>true</canBeDrafted>
+    <canGainXP>false</canGainXP>
+    <canTravelInCaravan>false</canTravelInCaravan>
+    <disablePolicies>false</disablePolicies>
+    <disableApparel>false</disableApparel>
+    <entitledToMedicalCare>true</entitledToMedicalCare>
+    <removeAllInjuries>true</removeAllInjuries>
+    <clearsEgo>false</clearsEgo>
+    <breathesAir>true</breathesAir>
+    <producesBioferrite>false</producesBioferrite>
+    <canBeCapturedToHoldingPlatform>false</canBeCapturedToHoldingPlatform>
+    <overrideLabel>false</overrideLabel>
+    <overrideInspectString>false</overrideInspectString>
+    <showJobReport>true</showJobReport>
+    <whitelistedFloatMenuProviders Inherit="False">
+      <li>FloatMenuOptionProvider_DraftedAttack</li>
+      <li>FloatMenuOptionProvider_DraftedMove</li>
+      <li>FloatMenuOptionProvider_WorkGivers</li>
+    </whitelistedFloatMenuProviders>
+    <deathLetter>One of your work husks has fallen.</deathLetter>
+    <deathLetterExtra>Its pylon is free to bind another.</deathLetterExtra>
+    <tools>
+      <li>
+        <label>left fist</label>
+        <labelNoLocation>fist</labelNoLocation>
+        <capacities><li>Blunt</li></capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>right fist</label>
+        <labelNoLocation>fist</labelNoLocation>
+        <capacities><li>Blunt</li></capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+    </tools>
+  </MutantDef>
+
+  <!-- The Ghoul's tree, which already handles queued jobs, drafted orders, downed and burning, plus work in place of wandering. No apparel givers, so a husk takes no new clothes. -->
+  <ThinkTreeDef>
+    <defName>KM_WorkHusk</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalMustKeepLyingDown">
+          <subNodes>
+            <li Class="ThinkNode_QueuedJob"><inBedOnly>true</inBedOnly></li>
+            <li Class="JobGiver_KeepLyingDown" />
+          </subNodes>
+        </li>
+        <li Class="ThinkNode_Subtree"><treeDef>Downed</treeDef></li>
+        <li Class="ThinkNode_Subtree"><treeDef>BurningResponse</treeDef></li>
+        <li Class="ThinkNode_Subtree"><treeDef>MentalStateCritical</treeDef></li>
+        <li Class="JobGiver_ReactToCloseMeleeThreat" />
+        <li Class="ThinkNode_QueuedJob" />
+        <li Class="ThinkNode_Subtree"><treeDef>MentalStateNonCritical</treeDef></li>
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>DraftedOrder</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_MoveToStandable" />
+                <li Class="JobGiver_Orders" />
+              </subNodes>
+            </li>
+          </subNodes>
+        </li>
+        <li Class="ThinkNode_Subtree"><treeDef>LordDuty</treeDef></li>
+        <li Class="JobGiver_SeekAllowedArea" />
+        <li Class="JobGiver_SeekSafeTemperature">
+          <requiresInjury>false</requiresInjury>
+          <waitInSafeTemp>false</waitInSafeTemp>
+          <maxRadius>15</maxRadius>
+        </li>
+        <li Class="JobGiver_AIFightEnemies">
+          <targetAcquireRadius>30</targetAcquireRadius>
+          <targetKeepRadius>35</targetKeepRadius>
+        </li>
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+            <li Class="JobGiver_Work">
+              <leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+            </li>
+          </subNodes>
+        </li>
+        <li Class="ThinkNode_Tagger">
+          <subNodes>
+            <li Class="JobGiver_ShamblerWander"><wanderRadius>12</wanderRadius></li>
+          </subNodes>
+        </li>
+        <li Class="JobGiver_IdleError"/>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <ThinkTreeDef>
+    <defName>KM_WorkHuskConstant</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_Subtree"><treeDef>Despawned</treeDef></li>
+        <li Class="ThinkNode_ConditionalCanDoLordJobNow">
+          <subNodes>
+            <li Class="ThinkNode_Subtree"><treeDef>LordDutyConstant</treeDef></li>
+          </subNodes>
+        </li>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+  <RitualBehaviorDef ParentName="KM_SacrificeBehaviorBase">
+    <defName>KM_RaiseWorkHusk</defName>
+    <workerClass>LumenStones.RitualBehaviorWorker_Raise</workerClass>
+  </RitualBehaviorDef>
+
+  <RitualOutcomeEffectDef ParentName="KM_SacrificeOutcomeBase">
+    <defName>KM_RaiseWorkHusk</defName>
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Raise</workerClass>
+    <description>A sacrifice that raises the victim as a work husk, bound to a Hollowstone pylon. The husk is raised at every quality.</description>
+    <outcomeChances>
+      <li><label>poor</label><description>The body rose slowly, but it rose.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>The body rose and took its place.</description><chance>0.6</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>exceptional</label><description>The body rose at once, and waits for orders.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+  <RitualPatternDef ParentName="KM_SacrificePatternBase">
+    <defName>KM_RaiseWorkHusk</defName>
+    <ritualBehavior>KM_RaiseWorkHusk</ritualBehavior>
+    <ritualOutcomeEffect>KM_RaiseWorkHusk</ritualOutcomeEffect>
+    <shortDescOverride>Raise a work husk</shortDescOverride>
+    <iconPathOverride>Things/Building/Hollowstone/Pylon</iconPathOverride>
+  </RitualPatternDef>
+
+  <PreceptDef ParentName="KM_SacrificePreceptBase">
+    <defName>KM_RaiseWorkHusk</defName>
+    <label>Raise a work husk</label>
+    <description>A sacrifice at a Sacrificial altar that raises the victim as a work husk bound to a Hollowstone pylon.</description>
+    <iconPath>Things/Building/Hollowstone/Pylon</iconPath>
+    <ritualPatternBase>KM_RaiseWorkHusk</ritualPatternBase>
+  </PreceptDef>
+</Defs>

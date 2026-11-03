@@ -1,0 +1,56 @@
+{
+  "sourceSize": [
+    2172,
+    724
+  ],
+  "crop": [
+    45,
+    221,
+    2126,
+    503
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    8,
+    112,
+    248,
+    144
+  ],
+  "colorFilename": "AnimastoneStaff.png",
+  "maskFilename": "AnimastoneStaff_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached exterior alpha debris; source colour and internal alpha unchanged.",
+  "alphaHandling": "One uniform shared Lanczos crop/reduction with source alpha preserved.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "boundsTolerance": 0,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_AnimastoneStaff",
+    "drawSize": [
+      1.2,
+      1.2
+    ],
+    "expectedBounds": [
+      10,
+      112,
+      246,
+      144
+    ],
+    "footLine": 144
+  },
+  "acceptance": {
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Fixed colour, no construction tint",
+    "inGame": "pending final combined human review"
+  }
+}

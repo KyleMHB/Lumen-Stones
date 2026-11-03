@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DesignatorDropdownGroupDef>
+    <defName>KM_LumenFloorLamps</defName>
+    <label>lumenstone floor lamps</label>
+    <iconSource>Placed</iconSource>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef>
+    <defName>KM_LumenWallLamps</defName>
+    <label>lumenstone wall lamps</label>
+    <iconSource>Placed</iconSource>
+  </DesignatorDropdownGroupDef>
+</Defs>

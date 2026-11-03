@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_GlaciteGlint</defName>
+    <graphicData>
+      <texPath>Things/Mote/GlaciteSpark</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <thingClass>MoteThrownAttached</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0.23</fadeInTime>
+      <solidTime>0.75</solidTime>
+      <fadeOutTime>0.40</fadeOutTime>
+      <attachedDrawOffset>(0,0,0.5)</attachedDrawOffset>
+    </mote>
+  </ThingDef>
+  <EffecterDef>
+    <defName>KM_GlaciteGlint</defName>
+    <children><li>
+      <subEffecterClass>SubEffecter_DrifterEmoteChance</subEffecterClass>
+      <scale>0.1~0.22</scale>
+      <chancePerTick>0.02</chancePerTick>
+      <positionRadius>0.4</positionRadius>
+      <burstCount>1~2</burstCount>
+      <moteDef>KM_Mote_GlaciteGlint</moteDef>
+      <speed>0.12</speed>
+      <rotation>0.1</rotation>
+    </li></children>
+  </EffecterDef>
+  <EffecterDef>
+    <defName>KM_GlaciteGlintSmall</defName>
+    <children><li>
+      <subEffecterClass>SubEffecter_DrifterEmoteChance</subEffecterClass>
+      <scale>0.06~0.17</scale>
+      <chancePerTick>0.01</chancePerTick>
+      <positionRadius>0.2</positionRadius>
+      <burstCount>1~2</burstCount>
+      <moteDef>KM_Mote_GlaciteGlint</moteDef>
+      <speed>0.1</speed>
+      <rotation>0.1</rotation>
+    </li></children>
+  </EffecterDef>
+</Defs>

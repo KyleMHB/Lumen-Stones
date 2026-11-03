@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark content loads only with Ideology. -->
+  <ResearchProjectDef>
+    <defName>KM_WarpSacrifice</defName>
+    <label>Warp sacrifice</label>
+    <description>Lumenstone present at a deliberate death takes in the dying instead of a reagent. What it learns from that is how to take.\n\nLearn the sacrificial rites that turn Lumenstone into Dark Stone and a victim's life into Warp energy. Unlocks the Sacrificial altar, Bloodstone, and the Bloodstone vessel and obelisk.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>4</researchViewX>
+    <researchViewY>4</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_DarkStone</defName>
+    <label>Dark Stone</label>
+    <description>Lumenstone that was present for a sacrifice and took something from it. It has a light of its own, but it gives off less than it takes in.\n\nA smoke-violet crystal with an eclipse-charcoal heart, crystallized from Lumenstone in a sacrifice. It never spawns and cannot be traded. It is refined into Bloodstone, Sanguinite, Dreadstone and Hollowstone at a Sacrificial altar.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/DarkStone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>25</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>KM_SacrificialAltar</defName>
+    <label>Sacrificial altar</label>
+    <description>A thorn-carved slab for dark ceremonies. The thorns serve no purpose except to make the slab look the way it is used.\n\nSacrifice a prisoner, slave or colonist to crystallize Lumenstone into Dark Stone, or to harvest Warp energy into Bloodstone batteries nearby. Its bills refine Dark Stone into the dark stones, and pause while a ceremony runs here.</description>
+    <thingClass>LumenStones.Building_SacrificialAltar</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Dark/SacrificialAltar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>2400</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <designationCategory>Production</designationCategory>
+    <stuffCategories><li>Stony</li></stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList><KM_Lumenstone>150</KM_Lumenstone></costList>
+    <researchPrerequisites><li>KM_WarpSacrifice</li></researchPrerequisites>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+      <ai_chillDestination>false</ai_chillDestination>
+      <buildingTags><li>Production</li></buildingTags>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>LumenStones.PlaceWorker_WarpLinkRing</li>
+      <li>LumenStones.PlaceWorker_DarkStoneSupportRing</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+  </ThingDef>
+
+  <WorkGiverDef>
+    <defName>KM_DoBillsSacrificialAltar</defName>
+    <label>refine at Sacrificial altar</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs><li>KM_SacrificialAltar</li></fixedBillGiverDefs>
+    <verb>refine at</verb>
+    <gerund>refining at</gerund>
+    <requiredCapacities><li>Manipulation</li></requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <ThoughtDef>
+    <defName>KM_WarpSacrifice</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>sacrifice at the altar</label>
+        <description>Someone was killed on the dark altar for its power. I cannot stop thinking about it.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>KM_WarpSacrificeApproved</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>sacrifice at the altar</label>
+        <description>A life was spilled on the dark altar. It felt right.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

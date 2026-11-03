@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="RestRateMultiplier"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="RestRateMultiplier"]/parts</xpath><value><li Class="LumenStones.StatPart_Serenite" /></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="RestRateMultiplier"]</xpath><value><parts><li Class="LumenStones.StatPart_Serenite" /></parts></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="Comfort"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="Comfort"]/parts</xpath><value><li Class="LumenStones.StatPart_Serenite"><comfort>true</comfort></li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="Comfort"]</xpath><value><parts><li Class="LumenStones.StatPart_Serenite"><comfort>true</comfort></li></parts></value></nomatch>
+  </Operation>
+</Patch>

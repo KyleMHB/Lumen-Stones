@@ -1,0 +1,155 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    384,
+    46,
+    868,
+    1210
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    36,
+    512,
+    490
+  ],
+  "colorFilename": "HollowstoneColumn.png",
+  "maskFilename": "HollowstoneColumn_m.png",
+  "sourceRepair": "Only the two polygons in contour-polygons.json take pixels from artwork/design-sources/hollowstone-column-border-repair/generated-edit.png; all other pixels come from artwork/design-sources/hollowstone-column/source.png. Shared crop excludes exterior alpha debris.",
+  "alphaHandling": "Preserve source alpha within crop and apply common uniform reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "capital": [
+          [
+            384,
+            46
+          ],
+          [
+            868,
+            46
+          ],
+          [
+            868,
+            195
+          ],
+          [
+            820,
+            245
+          ],
+          [
+            760,
+            280
+          ],
+          [
+            700,
+            260
+          ],
+          [
+            665,
+            200
+          ],
+          [
+            590,
+            200
+          ],
+          [
+            555,
+            260
+          ],
+          [
+            495,
+            280
+          ],
+          [
+            435,
+            245
+          ],
+          [
+            384,
+            195
+          ]
+        ],
+        "plinth": [
+          [
+            384,
+            1090
+          ],
+          [
+            430,
+            1040
+          ],
+          [
+            470,
+            1030
+          ],
+          [
+            520,
+            1080
+          ],
+          [
+            555,
+            1100
+          ],
+          [
+            700,
+            1100
+          ],
+          [
+            735,
+            1080
+          ],
+          [
+            785,
+            1030
+          ],
+          [
+            825,
+            1040
+          ],
+          [
+            868,
+            1090
+          ],
+          [
+            868,
+            1210
+          ],
+          [
+            384,
+            1210
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      161,
+      36,
+      351,
+      490
+    ],
+    "boundsTolerance": 14,
+    "footLine": 490,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_LumenHollowstoneColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ]
+  },
+  "paintedMask": "painted-mask.png",
+  "paintedColor": "painted-color.png"
+}

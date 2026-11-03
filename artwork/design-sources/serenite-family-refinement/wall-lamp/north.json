@@ -1,0 +1,54 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    442,
+    349,
+    808,
+    976
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    181,
+    206,
+    323,
+    447
+  ],
+  "colorFilename": "WallLamp_north.png",
+  "maskFilename": "WallLamp_northm.png",
+  "sourceRepair": "Explicit crop excludes detached alpha speckles outside the selected complete lamp.",
+  "alphaHandling": "Preserve alpha through uniform reduction and padding.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "replacement",
+    "boundsTolerance": 3,
+    "minSourceSize": 800,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "definition": "KM_SereniteWallLamp",
+    "drawSize": [
+      1,
+      1
+    ],
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/wall-north/color.png",
+        "sha256": "5cb8eac0526418e72c2f7ed81953fa80ad44c59a94cd5fd776706648568e1555"
+      },
+      "mask": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/wall-north/mask.png",
+        "sha256": "9bd3328ec2134686ac7ed072c42335bafefe086b6c493edb27c6890fac1b0d2a"
+      }
+    }
+  }
+}

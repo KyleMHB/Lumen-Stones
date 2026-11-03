@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    31,
+    328,
+    1219,
+    948
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    8,
+    140,
+    504,
+    372
+  ],
+  "colorFilename": "FullBed_west.png",
+  "maskFilename": "FullBed_westm.png",
+  "sourceRepair": "Crop excludes isolated generated alpha debris; source otherwise unchanged. West source mirrors east.",
+  "alphaHandling": "Uniform Lanczos reduction preserving source alpha; fixed colours, no construction tint.",
+  "layers": [
+    {
+      "path": "west-deep-source.png",
+      "constructionTint": false
+    }
+  ]
+}

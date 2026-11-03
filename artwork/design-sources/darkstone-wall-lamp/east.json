@@ -1,0 +1,46 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_east.png",
+  "maskFilename": "WallLamp_eastm.png",
+  "sourceRepair": "Uniform reduction of generated-source.png crop (467, 545, 785, 1059); positioned to existing east wall-lamp anchor. East/west are mirrors as in the existing reference; south exposes only the crystal tip.",
+  "alphaHandling": "Preserve source alpha with transparent padding.",
+  "layers": [
+    {
+      "path": "east-layer.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      0,
+      65,
+      132,
+      278
+    ],
+    "boundsTolerance": 8,
+    "footLine": 278,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "alphaDebrisTolerance": 8
+  }
+}

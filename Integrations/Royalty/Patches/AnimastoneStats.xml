@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="PsychicEntropyRecoveryRate"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="PsychicEntropyRecoveryRate"]/parts</xpath><value><li Class="LumenStones.StatPart_Animastone" /></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="PsychicEntropyRecoveryRate"]</xpath><value><parts><li Class="LumenStones.StatPart_Animastone" /></parts></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="MeditationFocusGain"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="MeditationFocusGain"]/parts</xpath><value><li Class="LumenStones.StatPart_Animastone"><focusGain>true</focusGain></li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="MeditationFocusGain"]</xpath><value><parts><li Class="LumenStones.StatPart_Animastone"><focusGain>true</focusGain></li></parts></value></nomatch>
+  </Operation>
+  <!-- Read on the anima tree, not the meditating pawn. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="MeditationPlantGrowthOffset"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="MeditationPlantGrowthOffset"]/parts</xpath><value><li Class="LumenStones.StatPart_AnimastoneGrowth" /></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="MeditationPlantGrowthOffset"]</xpath><value><parts><li Class="LumenStones.StatPart_AnimastoneGrowth" /></parts></value></nomatch>
+  </Operation>
+</Patch>

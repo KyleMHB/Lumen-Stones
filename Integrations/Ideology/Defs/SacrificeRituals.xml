@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RitualObligationTargetFilterDef>
+    <defName>KM_SacrificialAltar</defName>
+    <workerClass>LumenStones.RitualObligationTargetFilter_SacrificialAltar</workerClass>
+  </RitualObligationTargetFilterDef>
+  <RitualTargetFilterDef>
+    <defName>KM_SelectedAltar</defName>
+    <workerClass>RitualTargetFilter_SelectedThing</workerClass>
+  </RitualTargetFilterDef>
+
+  <!-- Both sacrifices share one four-stage structure: deliver, speech, sacrifice, closing.
+       InteractWithRole replaces InteractWithPrisoner, which fails for victims who are not prisoners. -->
+  <RitualBehaviorDef Name="KM_SacrificeBehaviorBase" Abstract="True">
+    <durationTicks>5000</durationTicks>
+    <roles>
+      <li Class="RitualRoleColonist"><label>ceremony leader</label><id>speaker</id><required>true</required><maxCount>1</maxCount><countsAsParticipant>true</countsAsParticipant><allowOtherIdeos>true</allowOtherIdeos><allowChild>false</allowChild><mustBeAbleToReachTarget>true</mustBeAbleToReachTarget></li>
+      <li Class="LumenStones.RitualRoleSacrificeVictim">
+        <label>victim</label>
+        <missingDesc>a prisoner, slave or colonist</missingDesc>
+        <id>victim</id>
+        <maxCount>1</maxCount>
+        <required>True</required>
+        <allowChild>false</allowChild>
+        <countsAsParticipant>False</countsAsParticipant>
+        <ignoreBleeding>true</ignoreBleeding>
+        <allowDowned>true</allowDowned>
+        <removeFromAssignmentsOnDeath>false</removeFromAssignmentsOnDeath>
+      </li>
+    </roles>
+    <stages>
+      <li Class="RitualStage_InteractWithRole">
+        <targetId>victim</targetId>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_PawnDeliveredOrNotValid"/>
+        </endTriggers>
+        <failTriggers>
+          <li Class="StageFailTrigger_TargetPawnUnreachable">
+            <takerId>speaker</takerId>
+            <takeeId>victim</takeeId>
+            <desc>Victim is not reachable.</desc>
+          </li>
+          <li Class="StageFailTrigger_PawnAsleep">
+            <desc>leader asleep</desc>
+            <pawnId>speaker</pawnId>
+          </li>
+        </failTriggers>
+        <roleBehaviors>
+          <li><roleId>speaker</roleId><dutyDef>DeliverPawnToAltar</dutyDef></li>
+          <li><roleId>victim</roleId><dutyDef>Idle</dutyDef></li>
+        </roleBehaviors>
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>0.5</percentage></li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>speaker</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_Sacrifice</speakerInteraction>
+            <customPositions><li Class="RitualPosition_OnInteractionCell" /></customPositions>
+          </li>
+          <li>
+            <roleId>victim</roleId>
+            <dutyDef>LayDownAwake</dutyDef>
+            <customPositions><li Class="LumenStones.RitualPosition_AltarCenter" /></customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+      <li Class="RitualStage_InteractWithRole">
+        <targetId>victim</targetId>
+        <defaultDuty>Spectate</defaultDuty>
+        <essential>True</essential>
+        <endTriggers>
+          <li Class="StageEndTrigger_PawnDead"><roleId>victim</roleId></li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>speaker</roleId>
+            <dutyDef>Sacrifice</dutyDef>
+            <customPositions><li Class="RitualPosition_OnInteractionCell" /></customPositions>
+          </li>
+          <li>
+            <roleId>victim</roleId>
+            <dutyDef>LayDownAwake</dutyDef>
+            <customPositions><li Class="LumenStones.RitualPosition_AltarCenter" /></customPositions>
+          </li>
+        </roleBehaviors>
+        <visualEffectDef>SacrificePrisoner</visualEffectDef>
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>0.5</percentage></li>
+        </endTriggers>
+        <failTriggers>
+          <li Class="StageFailTrigger_PawnAlive"><pawnId>victim</pawnId><desc>sacrifice no longer dead</desc></li>
+        </failTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>speaker</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_Sacrifice</speakerInteraction>
+            <customPositions><li Class="RitualPosition_OnInteractionCell" /></customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+  <RitualBehaviorDef ParentName="KM_SacrificeBehaviorBase">
+    <defName>KM_CrystallizeDarkStone</defName>
+    <workerClass>LumenStones.RitualBehaviorWorker_Crystallize</workerClass>
+  </RitualBehaviorDef>
+  <RitualBehaviorDef ParentName="KM_SacrificeBehaviorBase">
+    <defName>KM_HarvestWarpEnergy</defName>
+    <workerClass>LumenStones.RitualBehaviorWorker_Harvest</workerClass>
+  </RitualBehaviorDef>
+
+  <RitualOutcomeEffectDef Name="KM_SacrificeOutcomeBase" Abstract="True">
+    <startingQuality>0.2</startingQuality>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <givesDevelopmentPoints>false</givesDevelopmentPoints>
+    <comps>
+      <li Class="LumenStones.RitualOutcomeComp_StoneWeapon"><label>Dark Stone ritual knife</label><weapon>KM_DarkStoneRitualKnife</weapon><curve><points><li>(0,0)</li><li>(1,0.1)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_PawnStatScaled"><label>{PAWN_labelShort}'s social impact</label><labelAbstract>leader's social impact</labelAbstract><roleId>speaker</roleId><statDef>SocialImpact</statDef><curve><points><li>(0.2,0)</li><li>(1,0.3)</li><li>(1.5,0.4)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_ParticipantCount"><label>participants</label><curve><points><li>(1,0)</li><li>(2,0.15)</li><li>(3,0.3)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_RoomStat"><label>room impressiveness</label><statDef>Impressiveness</statDef><curve><points><li>(0,0)</li><li>(120,0.1)</li></points></curve></li>
+      <li Class="LumenStones.RitualOutcomeComp_FixtureSupport"><label>Dark Stone fixtures</label><dark>true</dark><curve><points><li>(0,0)</li><li>(1,0.2)</li></points></curve></li>
+    </comps>
+  </RitualOutcomeEffectDef>
+
+  <RitualOutcomeEffectDef ParentName="KM_SacrificeOutcomeBase">
+    <defName>KM_CrystallizeDarkStone</defName>
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Crystallize</workerClass>
+    <description>A sacrifice that crystallizes Lumenstone into Dark Stone. Quality and the victim's value and status decide how much converts, and the rest is returned. Each settlement must recover before the next sacrifice of this kind.</description>
+    <outcomeChances>
+      <li><label>poor</label><description>The stone resisted. Little of the Lumenstone crystallizes.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>The stone darkened and held. A good share of the Lumenstone crystallizes.</description><chance>0.6</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>exceptional</label><description>The stone drank deeply. Most of the Lumenstone crystallizes.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+  <RitualOutcomeEffectDef ParentName="KM_SacrificeOutcomeBase">
+    <defName>KM_HarvestWarpEnergy</defName>
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Harvest</workerClass>
+    <description>A sacrifice that harvests Warp energy into Bloodstone batteries near the altar. Quality and the victim's value and status decide how much is harvested, and anything beyond the batteries' spare capacity is lost.</description>
+    <comps Inherit="True">
+      <li Class="LumenStones.RitualOutcomeComp_WarpCapacity"><label>Battery space</label><curve><points><li>(0,0)</li><li>(1,0)</li></points></curve></li>
+    </comps>
+    <outcomeChances>
+      <li><label>poor</label><description>The life ebbed away slowly. The harvest is thin.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>The life poured out into the stone. The harvest is good.</description><chance>0.6</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>exceptional</label><description>The altar drank everything. The harvest is great.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+  <RitualPatternDef Name="KM_SacrificePatternBase" Abstract="True">
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+    <ritualObligationTargetFilter>KM_SacrificialAltar</ritualObligationTargetFilter>
+    <ritualTargetFilter>KM_SelectedAltar</ritualTargetFilter>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_SacrificePatternBase">
+    <defName>KM_CrystallizeDarkStone</defName>
+    <ritualBehavior>KM_CrystallizeDarkStone</ritualBehavior>
+    <ritualOutcomeEffect>KM_CrystallizeDarkStone</ritualOutcomeEffect>
+    <shortDescOverride>Crystallize Dark Stone</shortDescOverride>
+    <iconPathOverride>UI/Icons/CrystallizeDarkStone</iconPathOverride>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_SacrificePatternBase">
+    <defName>KM_HarvestWarpEnergy</defName>
+    <ritualBehavior>KM_HarvestWarpEnergy</ritualBehavior>
+    <ritualOutcomeEffect>KM_HarvestWarpEnergy</ritualOutcomeEffect>
+    <shortDescOverride>Harvest Warp Energy</shortDescOverride>
+    <iconPathOverride>UI/Icons/HarvestWarpEnergy</iconPathOverride>
+  </RitualPatternDef>
+
+  <PreceptDef Name="KM_SacrificePreceptBase" Abstract="True">
+    <issue>Ritual</issue>
+    <impact>Medium</impact>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <useRepeatPenalty>false</useRepeatPenalty>
+    <allowDuplicates>false</allowDuplicates>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visible>false</visible>
+    <selectionWeight>0</selectionWeight>
+    <classic>true</classic>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_SacrificePreceptBase">
+    <defName>KM_CrystallizeDarkStone</defName>
+    <label>Crystallize Dark Stone</label>
+    <description>A sacrifice at a Sacrificial altar that crystallizes Lumenstone into Dark Stone. Cancelled ceremonies return the Lumenstone.</description>
+    <iconPath>UI/Icons/CrystallizeDarkStone</iconPath>
+    <ritualPatternBase>KM_CrystallizeDarkStone</ritualPatternBase>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_SacrificePreceptBase">
+    <defName>KM_HarvestWarpEnergy</defName>
+    <label>Harvest Warp Energy</label>
+    <description>A sacrifice at a Sacrificial altar that harvests Warp energy into nearby Bloodstone batteries.</description>
+    <iconPath>UI/Icons/HarvestWarpEnergy</iconPath>
+    <ritualPatternBase>KM_HarvestWarpEnergy</ritualPatternBase>
+  </PreceptDef>
+</Defs>

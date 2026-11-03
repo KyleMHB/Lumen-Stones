@@ -1,0 +1,33 @@
+{
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    263,
+    177,
+    1274,
+    869
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    16,
+    16,
+    496,
+    496
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Remove alpha values at or below 8 and crop exterior debris; reviewed RGB and user outline edits preserved.",
+  "alphaHandling": "Shared uniform crop and Lanczos reduction for colour and user-reviewed red coverage.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "paintedMask": "painted-mask.png"
+}

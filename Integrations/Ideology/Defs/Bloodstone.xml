@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Bloodstone</defName>
+    <label>Bloodstone</label>
+    <description>Dark Stone refined until it holds what it takes. Each crystal keeps the life it was given, and gives it up only when another stone draws on it.\n\nA clotted-garnet crystal with a magenta-violet core, refined from Dark Stone at a Sacrificial altar. It builds the batteries that store Warp energy.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Bloodstone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>30</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseBloodstone</defName>
+    <label>refine Bloodstone</label>
+    <description>Refine 10 Dark Stone into 10 Bloodstone.</description>
+    <jobString>Refining Bloodstone.</jobString>
+    <recipeUsers Inherit="False"><li>KM_SacrificialAltar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_DarkStone</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DarkStone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Bloodstone>10</KM_Bloodstone></products>
+    <researchPrerequisite>KM_WarpSacrifice</researchPrerequisite>
+  </RecipeDef>
+
+  <ThingDef Name="KM_BloodstoneBatteryBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <designationCategory>Production</designationCategory>
+    <techLevel>Neolithic</techLevel>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
+    <researchPrerequisites><li>KM_WarpSacrifice</li></researchPrerequisites>
+    <building><isInert>true</isInert></building>
+    <placeWorkers><li>LumenStones.PlaceWorker_WarpLinkRing</li></placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_BloodstoneBatteryBase">
+    <defName>KM_BloodstoneVessel</defName>
+    <label>Bloodstone vessel</label>
+    <description>A small Bloodstone vessel, warm as skin.\n\nStores Warp energy harvested at a nearby Sacrificial altar. Stored energy is lost if it is destroyed or deconstructed. It cannot be moved, and loses no charge over time.</description>
+    <graphicData>
+      <texPath>Things/Building/Dark/BloodstoneVessel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+    <costList><KM_Bloodstone>15</KM_Bloodstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(185,65,125,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_WarpBattery">
+        <capacity>100</capacity>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_BloodstoneBatteryBase">
+    <defName>KM_BloodstoneObelisk</defName>
+    <label>Bloodstone obelisk</label>
+    <description>A tall Bloodstone obelisk. When it is full, a slow pulse can be felt through the floor nearby.\n\nStores Warp energy harvested at a nearby Sacrificial altar. Stored energy is lost if it is destroyed or deconstructed. It cannot be moved, and loses no charge over time.</description>
+    <graphicData>
+      <texPath>Things/Building/Dark/BloodstoneObelisk</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.4,2.4)</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
+    </graphicData>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <WorkToBuild>3000</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costStuffCount>60</costStuffCount>
+    <costList><KM_Bloodstone>60</KM_Bloodstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(185,65,125,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_WarpBattery">
+        <capacity>400</capacity>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

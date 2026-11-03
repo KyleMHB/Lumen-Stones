@@ -1,0 +1,106 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    400,
+    30,
+    850,
+    1215
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "GlaciteColumn.png",
+  "maskFilename": "GlaciteColumn_m.png",
+  "sourceRepair": "Crop excludes external faint alpha debris; preserve generated source.",
+  "alphaHandling": "Preserve generated alpha and reduce colour and ownership together.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "cap": [
+          [
+            400,
+            30
+          ],
+          [
+            850,
+            30
+          ],
+          [
+            850,
+            203
+          ],
+          [
+            400,
+            203
+          ]
+        ],
+        "upper-band": [
+          [
+            480,
+            410
+          ],
+          [
+            815,
+            410
+          ],
+          [
+            815,
+            488
+          ],
+          [
+            480,
+            488
+          ]
+        ],
+        "lower-band": [
+          [
+            462,
+            796
+          ],
+          [
+            815,
+            796
+          ],
+          [
+            815,
+            880
+          ],
+          [
+            462,
+            880
+          ]
+        ],
+        "foot": [
+          [
+            400,
+            1025
+          ],
+          [
+            850,
+            1025
+          ],
+          [
+            850,
+            1214
+          ],
+          [
+            400,
+            1214
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask.png"
+}

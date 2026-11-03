@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <InventoryStockGroupDef>
+    <defName>KM_SunstoneFlares</defName>
+    <label>Sunstone flares</label>
+    <min>0</min><max>25</max>
+    <thingDefs><li>KM_SunstoneFlare</li></thingDefs>
+  </InventoryStockGroupDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_SunstoneFlare</defName>
+    <label>Sunstone flare</label>
+    <description>A throwable Sunstone flash. Take a stack into a pawn's inventory, draft them and use Throw Sunstone flare. Keeps the equipped weapon in hand and consumes one flare per throw. Range 12, radius 2.9. Blinds for five seconds and stuns for one, without blast wounds. Anomaly entities and mutants also take 15 burn damage. The flash can affect allies.</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData><texPath>Things/Item/Equipment/Misc/SunstoneFlare</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>25</stackLimit>
+    <thingCategories><li>Manufactured</li></thingCategories>
+    <statBases><MaxHitPoints>60</MaxHitPoints><Mass>0.15</Mass><MarketValue>12</MarketValue><Flammability>0</Flammability></statBases>
+    <comps><li Class="LumenStones.CompProperties_InventoryFlare" /></comps>
+    <verbs>
+      <li>
+        <verbClass>LumenStones.Verb_ThrowSunstoneFlare</verbClass>
+        <label>throw Sunstone flare</label>
+        <isPrimary>true</isPrimary>
+        <warmupTime>0.75</warmupTime>
+        <range>12</range>
+        <defaultCooldownTime>2</defaultCooldownTime>
+        <defaultProjectile>KM_ThrownSunstoneFlare</defaultProjectile>
+        <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams>
+        <ai_IsWeapon>false</ai_IsWeapon>
+        <onlyManualCast>true</onlyManualCast>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>KM_ThrownSunstoneFlare</defName>
+    <label>Sunstone flare</label>
+    <thingClass>LumenStones.Projectile_SunstoneFlare</thingClass>
+    <graphicData><texPath>Things/Item/Equipment/Misc/SunstoneFlare</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(0.3,0.3)</drawSize></graphicData>
+    <projectile><damageDef>Burn</damageDef><damageAmountBase>0</damageAmountBase><speed>18</speed><flyOverhead>true</flyOverhead><arcHeightFactor>1</arcHeightFactor></projectile>
+  </ThingDef>
+  <RecipeDef>
+    <defName>KM_MakeSunstoneFlares</defName>
+    <label>make Sunstone flares x5</label>
+    <description>Shape five throwable Sunstone flashes.</description>
+    <jobString>Making Sunstone flares.</jobString>
+    <workAmount>2500</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <ingredients><li><filter><thingDefs><li>KM_Sunstone</li></thingDefs></filter><count>25</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Sunstone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_SunstoneFlare>5</KM_SunstoneFlare></products>
+    <recipeUsers><li>ElectricSmithy</li><li>FueledSmithy</li></recipeUsers>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <researchPrerequisite>KM_SunstoneChanneling</researchPrerequisite>
+  </RecipeDef>
+</Defs>

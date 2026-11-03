@@ -1,0 +1,70 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "layers": [
+    {
+      "path": "housing.png",
+      "constructionTint": true
+    },
+    {
+      "path": "crystal.png",
+      "constructionTint": false
+    },
+    {
+      "path": "seams.png",
+      "constructionTint": false
+    }
+  ],
+  "crop": [
+    358,
+    17,
+    896,
+    1239
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    144,
+    40,
+    368,
+    472
+  ],
+  "colorFilename": "FerriteColumn.png",
+  "maskFilename": "FerriteColumn_m.png",
+  "sourceRepair": "Declared housing, crystal and seam layers; no export-time repainting or edge expansion.",
+  "alphaHandling": "Preserve authored layer alpha; export mask alpha opaque and keep color transparency independent.",
+  "candidateChecks": {
+    "mode": "replacement",
+    "baselineScale": 2,
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/ferrite-column-refresh/preserved-production-color.png",
+        "sha256": "46a50b6b4c5e1e48a55ded3208938b4e0286a32e1855175a4f5788b94e1a6cfa"
+      },
+      "mask": {
+        "path": "artwork/design-sources/ferrite-column-refresh/preserved-production-mask.png",
+        "sha256": "cc6a0cd5ad79367110045da9a3a9dbfde8105f413eeaf128c0f49afa7435c840"
+      }
+    },
+    "definition": "KM_LumenFerriteColumn",
+    "drawSize": [
+      1.1667,
+      1.4583
+    ],
+    "boundsTolerance": 2,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8
+  },
+  "paintedMask": "painted-mask.png",
+  "acceptance": {
+    "design": "User accepted in chat on 2026-11-03",
+    "mask": "User finished saved mask in chat on 2026-11-03; exact saved snapshot verified",
+    "inGame": "pending combined human review"
+  }
+}

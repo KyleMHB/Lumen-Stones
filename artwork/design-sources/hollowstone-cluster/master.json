@@ -1,0 +1,294 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    40,
+    247,
+    1214,
+    1023
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    16,
+    24,
+    496,
+    488
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Crop excludes exterior faint alpha debris; generated source preserved.",
+  "alphaHandling": "Preserve source alpha inside crop; colour and ownership share uniform reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "base": [
+          [
+            40,
+            850
+          ],
+          [
+            150,
+            750
+          ],
+          [
+            260,
+            820
+          ],
+          [
+            625,
+            895
+          ],
+          [
+            730,
+            895
+          ],
+          [
+            1050,
+            825
+          ],
+          [
+            1160,
+            790
+          ],
+          [
+            1214,
+            870
+          ],
+          [
+            1214,
+            1023
+          ],
+          [
+            40,
+            1023
+          ]
+        ],
+        "left-arch": [
+          [
+            175,
+            740
+          ],
+          [
+            200,
+            655
+          ],
+          [
+            260,
+            490
+          ],
+          [
+            370,
+            420
+          ],
+          [
+            390,
+            350
+          ],
+          [
+            550,
+            270
+          ],
+          [
+            675,
+            247
+          ],
+          [
+            710,
+            280
+          ],
+          [
+            690,
+            320
+          ],
+          [
+            635,
+            350
+          ],
+          [
+            605,
+            390
+          ],
+          [
+            545,
+            430
+          ],
+          [
+            505,
+            500
+          ],
+          [
+            475,
+            590
+          ],
+          [
+            460,
+            640
+          ],
+          [
+            455,
+            700
+          ],
+          [
+            500,
+            755
+          ],
+          [
+            560,
+            810
+          ],
+          [
+            610,
+            850
+          ],
+          [
+            625,
+            890
+          ],
+          [
+            280,
+            890
+          ],
+          [
+            200,
+            820
+          ]
+        ],
+        "right-arch": [
+          [
+            710,
+            470
+          ],
+          [
+            750,
+            450
+          ],
+          [
+            830,
+            450
+          ],
+          [
+            895,
+            490
+          ],
+          [
+            910,
+            535
+          ],
+          [
+            900,
+            570
+          ],
+          [
+            925,
+            560
+          ],
+          [
+            1000,
+            590
+          ],
+          [
+            1050,
+            670
+          ],
+          [
+            1100,
+            810
+          ],
+          [
+            965,
+            855
+          ],
+          [
+            860,
+            830
+          ],
+          [
+            835,
+            735
+          ],
+          [
+            850,
+            690
+          ],
+          [
+            850,
+            625
+          ],
+          [
+            835,
+            590
+          ],
+          [
+            780,
+            555
+          ],
+          [
+            740,
+            530
+          ]
+        ],
+        "right-front": [
+          [
+            730,
+            875
+          ],
+          [
+            760,
+            835
+          ],
+          [
+            805,
+            740
+          ],
+          [
+            840,
+            720
+          ],
+          [
+            880,
+            770
+          ],
+          [
+            940,
+            790
+          ],
+          [
+            965,
+            845
+          ],
+          [
+            930,
+            880
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      16,
+      97,
+      496,
+      414
+    ],
+    "boundsTolerance": 24,
+    "footLine": 414,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 20,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_HollowstoneCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

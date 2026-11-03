@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- The altar only loads with Ideology, so the shared infusion base can't name it directly. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RecipeDef[@Name="KM_InfusionBase"]/recipeUsers</xpath>
+    <value>
+      <li>KM_LumenstoneAltar</li>
+    </value>
+  </Operation>
+</Patch>

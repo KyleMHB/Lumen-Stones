@@ -1,0 +1,54 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    442,
+    349,
+    808,
+    976
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    42,
+    136,
+    279
+  ],
+  "colorFilename": "WallLamp_east.png",
+  "maskFilename": "WallLamp_eastm.png",
+  "sourceRepair": "Explicit crop and uniform placement from selected north-facing concept. West mirrors source; south exposes only crystal tip above the wall. Icon centres the complete source. No perspective repaint; final attachment review pending.",
+  "alphaHandling": "Preserve source alpha through uniform Lanczos reduction and transparent padding.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "replacement",
+    "boundsTolerance": 3,
+    "minSourceSize": 800,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "definition": "KM_SereniteWallLamp",
+    "drawSize": [
+      1,
+      1
+    ],
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/wall-east/color.png",
+        "sha256": "79530781cdc1d505d6375546e3905e500e227653418b8ca089e942fd3d534b2f"
+      },
+      "mask": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/wall-east/mask.png",
+        "sha256": "9bd3328ec2134686ac7ed072c42335bafefe086b6c493edb27c6890fac1b0d2a"
+      }
+    }
+  }
+}

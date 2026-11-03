@@ -1,0 +1,146 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    275,
+    40,
+    980,
+    1190
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    48,
+    48,
+    464,
+    464
+  ],
+  "colorFilename": "SunstoneObelisk.png",
+  "maskFilename": "SunstoneObelisk_m.png",
+  "sourceRepair": "Crop excludes distant generated alpha debris; otherwise original source pixels preserved.",
+  "alphaHandling": "Preserve source alpha within crop; one shared Lanczos reduction.",
+  "layers": [
+    {
+      "path": "obelisk-source.png",
+      "ownership": {
+        "front": [
+          [
+            320,
+            949
+          ],
+          [
+            400,
+            975
+          ],
+          [
+            500,
+            1005
+          ],
+          [
+            750,
+            1005
+          ],
+          [
+            850,
+            975
+          ],
+          [
+            930,
+            949
+          ],
+          [
+            940,
+            1080
+          ],
+          [
+            870,
+            1140
+          ],
+          [
+            740,
+            1160
+          ],
+          [
+            510,
+            1160
+          ],
+          [
+            380,
+            1140
+          ],
+          [
+            310,
+            1080
+          ]
+        ],
+        "left": [
+          [
+            300,
+            940
+          ],
+          [
+            345,
+            855
+          ],
+          [
+            410,
+            840
+          ],
+          [
+            430,
+            952
+          ],
+          [
+            390,
+            983
+          ]
+        ],
+        "right": [
+          [
+            954,
+            940
+          ],
+          [
+            909,
+            855
+          ],
+          [
+            844,
+            840
+          ],
+          [
+            824,
+            952
+          ],
+          [
+            864,
+            983
+          ]
+        ],
+        "center": [
+          [
+            570,
+            958
+          ],
+          [
+            680,
+            958
+          ],
+          [
+            680,
+            1030
+          ],
+          [
+            570,
+            1030
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask.png"
+}

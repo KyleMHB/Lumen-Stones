@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>KM_DreadstoneCudgel</defName>
+    <label>Dreadstone cudgel</label>
+    <description>A slow capture cudgel with a Dreadstone head. Each damaging hit adds 25% pain to a living humanlike, up to four stacks, lasting 25 seconds after the last hit. Pain immunity still applies. A victim downed or captured under its agony remembers the torture for five days. It still inflicts blunt wounds.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <smeltable>false</smeltable>
+    <statBases>
+      <WorkToMake>8000</WorkToMake>
+      <Mass>1.5</Mass>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/DreadstoneCudgel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>KM_DreadstoneSubjugation</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <costList>
+      <KM_Dreadstone>100</KM_Dreadstone>
+      <Steel>20</Steel>
+    </costList>
+  </ThingDef>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_DreadstoneCollar</defName>
+    <label>Dreadstone collar</label>
+    <description>A Dreadstone shackle for player slaves. Suppression falls 25% slower, including in caravans, and map rebellions are twice as rare. Stronger column or pylon subjugation takes precedence. Wearing it gives -3 mood.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Misc/DreadstoneCollar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.3</Mass>
+      <WorkToMake>8000</WorkToMake>
+      <Flammability>0</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <costList>
+      <KM_Dreadstone>100</KM_Dreadstone>
+      <Steel>20</Steel>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>KM_DreadstoneSubjugation</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Neck</li>
+      </bodyPartGroups>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+    </tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>KM_DarkStoneRitualKnife</defName>
+    <label>Dark Stone ritual knife</label>
+    <description>A fast ritual knife with a smoke-violet crystal point. Adds 10 percentage points to sacrifice quality and 15% to Warp harvest when wielded by the leader. Executing a prisoner stores 10% of a normal sacrifice harvest in available Bloodstone batteries. Each damaging stab against a living humanlike tears away 5% consciousness and gives -4 mood, up to three stacks, lasting three days after the last hit.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <smeltable>false</smeltable>
+    <statBases>
+      <WorkToMake>8000</WorkToMake>
+      <Mass>1.5</Mass>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/DarkStoneRitualKnife</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.3</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>KM_WarpSacrifice</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <costList>
+      <KM_DarkStone>100</KM_DarkStone>
+      <Steel>20</Steel>
+    </costList>
+  </ThingDef>
+  <HediffDef>
+    <defName>KM_DreadAgony</defName>
+    <label>Dreadstone agony</label>
+    <description>Dreadstone agony inflicted by a stone weapon.</description>
+    <hediffClass>LumenStones.Hediff_DreadAgony</hediffClass>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>4</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1500~1500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>1</minSeverity>
+        <painOffset>0.25</painOffset>
+      </li>
+      <li>
+        <minSeverity>2</minSeverity>
+        <painOffset>0.5</painOffset>
+      </li>
+      <li>
+        <minSeverity>3</minSeverity>
+        <painOffset>0.75</painOffset>
+      </li>
+      <li>
+        <minSeverity>4</minSeverity>
+        <painOffset>1.0</painOffset>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>KM_SoulBlight</defName>
+    <label>soul blight</label>
+    <description>Soul blight inflicted by a stone weapon.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000~180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>1</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>2</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>KM_DreadstoneTorture</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>tortured with Dreadstone</label>
+        <description>I remember the pain of that Dreadstone cudgel.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>KM_SoulBlightMemory</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>something was torn out of me</label>
+        <description>That knife took something I cannot name.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>KM_DreadstoneCollarWorn</defName>
+    <workerClass>LumenStones.ThoughtWorker_DreadstoneCollar</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>wearing a Dreadstone collar</label>
+        <description>The shackle never lets me forget my place.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

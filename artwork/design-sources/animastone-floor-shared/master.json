@@ -1,0 +1,56 @@
+{
+  "sourceSize": [
+    256,
+    256
+  ],
+  "crop": [
+    0,
+    0,
+    256,
+    256
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    0,
+    256,
+    256
+  ],
+  "colorFilename": "Lamp.png",
+  "maskFilename": "Lamp_m.png",
+  "sourceRepair": "Explicit generated RGB alignment and violet-crystal-only replacement; protected reference body and original alpha restored exactly. See preservation.json.",
+  "alphaHandling": "Original shared torch alpha retained exactly; identity export.",
+  "layers": [
+    {
+      "path": "restored.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      85,
+      8,
+      171,
+      229
+    ],
+    "footLine": 229,
+    "boundsTolerance": 0,
+    "minSourceSize": 256,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "definition": "KM_AnimastoneLamp",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "acceptance": {
+    "design": "User accepted corrected family 2026-11-03: done",
+    "mask": "Fixed colour, no construction tint",
+    "inGame": "pending final combined human review"
+  }
+}

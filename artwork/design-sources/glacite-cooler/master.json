@@ -1,0 +1,112 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    145,
+    105,
+    1110,
+    1110
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    40,
+    8,
+    472,
+    488
+  ],
+  "colorFilename": "GlaciteCooler.png",
+  "maskFilename": "GlaciteCooler_m.png",
+  "sourceRepair": "Crop excludes faint external alpha debris; preserve selected design.",
+  "alphaHandling": "Preserve generated alpha and reduce colour and ownership together.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "left-support": [
+          [
+            145,
+            630
+          ],
+          [
+            319,
+            630
+          ],
+          [
+            338,
+            713
+          ],
+          [
+            386,
+            742
+          ],
+          [
+            391,
+            881
+          ],
+          [
+            145,
+            960
+          ]
+        ],
+        "right-support": [
+          [
+            1110,
+            630
+          ],
+          [
+            972,
+            650
+          ],
+          [
+            945,
+            711
+          ],
+          [
+            867,
+            742
+          ],
+          [
+            856,
+            881
+          ],
+          [
+            1110,
+            960
+          ]
+        ],
+        "base": [
+          [
+            145,
+            930
+          ],
+          [
+            391,
+            880
+          ],
+          [
+            856,
+            880
+          ],
+          [
+            1110,
+            930
+          ],
+          [
+            1110,
+            1110
+          ],
+          [
+            145,
+            1110
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask.png"
+}

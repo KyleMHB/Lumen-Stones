@@ -1,0 +1,46 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    164,
+    113,
+    1161,
+    1082
+  ],
+  "canvas": [
+    128,
+    128
+  ],
+  "targetBox": [
+    13,
+    13,
+    115,
+    115
+  ],
+  "colorFilename": "DreadstoneSeedCrystal.png",
+  "maskFilename": "DreadstoneSeedCrystal_m.png",
+  "sourceRepair": "Explicit crop [164, 113, 1161, 1082] removes exterior faint generation debris. Full original canvas retained in approved-source.png; no repainting or alpha thresholding inside crop.",
+  "alphaHandling": "Preserve generated alpha with one uniform Lanczos reduction; no sharpening.",
+  "layers": [
+    {
+      "path": "approved-source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      13,
+      14,
+      115,
+      113
+    ],
+    "boundsTolerance": 0,
+    "footLine": 113,
+    "minSourceSize": 1254,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8
+  }
+}

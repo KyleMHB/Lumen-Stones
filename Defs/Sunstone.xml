@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>KM_SunstoneChanneling</defName>
+    <label>Sunstone channeling</label>
+    <description>Learn to infuse Lumenstone with gold, and to gather and store the daylight it takes in.\n\nUnlocks Sunstone infusion at the Lumen ritual circle, and the collectors, arrays, vessels and obelisks that gather and store Solar energy.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>Stonecutting</li></prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>8</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Sunstone</defName>
+    <label>Sunstone</label>
+    <description>Lumenstone steeped with gold takes in gold's warmth and turns it towards daylight. It takes in sunlight and gives it back later, when it's needed.\n\nAn amber-citrine crystal with a blazing solar-gold core, infused from Lumenstone and gold at a Lumen ritual circle. Collectors turn daylight into Solar energy, which vessels and obelisks store for the active effects of other infused stones.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Sunstone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <ThingDef Name="KM_SunstoneBuildingBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <designationCategory>Power</designationCategory>
+    <techLevel>Neolithic</techLevel>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <tickerType>Never</tickerType>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsPower</li></thingCategories>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
+    <researchPrerequisites><li>KM_SunstoneChanneling</li></researchPrerequisites>
+    <building><isInert>true</isInert></building>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Mass>8</Mass>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_SunstoneCollector</defName>
+    <label>Sunstone collector</label>
+    <description>An open rosette of Sunstone crystals, angled to catch as much sky as it can.\n\nGathers daylight as Solar energy for the map's Solar network, less in bad weather or under a roof and none at night. Holds some charge itself and sends the surplus to the network's batteries. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/SunstoneCollector</texPath>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <uiIconScale>0.9</uiIconScale>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+    <costList><KM_Sunstone>25</KM_Sunstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(255,215,130,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Sunstone">
+        <capacity>50</capacity>
+        <output>100</output>
+        <minGlowFraction>0.5</minGlowFraction>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_SunstoneArray</defName>
+    <label>Sunstone array</label>
+    <description>A wide crown of Sunstone prisms. On a clear day it is hard to look at.\n\nGathers daylight as Solar energy for the map's Solar network, less in bad weather or under a roof and none at night. Holds some charge itself and sends the surplus to the network's batteries. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/SunstoneArray</texPath>
+      <drawSize>(2.5,2.5)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+    </statBases>
+    <costStuffCount>40</costStuffCount>
+    <costList><KM_Sunstone>60</KM_Sunstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(255,215,130,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Sunstone">
+        <capacity>150</capacity>
+        <output>300</output>
+        <minGlowFraction>0.5</minGlowFraction>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_SunstoneVessel</defName>
+    <label>Sunstone vessel</label>
+    <description>A cluster of Sunstone crystals that holds the day's light into the night. It glows brighter as it fills.\n\nStores Solar energy for the whole map, however far it is from the collectors. It glows brighter as it fills. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/SunstoneVessel</texPath>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <uiIconScale>0.9</uiIconScale>
+    <size>(1,1)</size>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+    <costList><KM_Sunstone>30</KM_Sunstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(255,215,130,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Sunstone">
+        <capacity>300</capacity>
+        <minGlowFraction>0.375</minGlowFraction>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_SunstoneObelisk</defName>
+    <label>Sunstone obelisk</label>
+    <description>A towering Sunstone crystal. A full one lights the base all night.\n\nStores Solar energy for the whole map, however far it is from the collectors. It glows brighter as it fills. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/SunstoneObelisk</texPath>
+      <drawSize>(2.5,2.5)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+    </statBases>
+    <costStuffCount>50</costStuffCount>
+    <costList><KM_Sunstone>75</KM_Sunstone></costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(255,215,130,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Sunstone">
+        <capacity>1000</capacity>
+        <minGlowFraction>0.4</minGlowFraction>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

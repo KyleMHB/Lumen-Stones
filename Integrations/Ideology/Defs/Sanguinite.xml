@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark content loads only with Ideology. Sanguinite artwork is integrated; final human in-game review is pending. -->
+  <ResearchProjectDef>
+    <defName>KM_SanguiniteFleshcraft</defName>
+    <label>Sanguinite fleshcraft</label>
+    <description>Learn to refine Dark Stone that takes flesh and blood and moves them to where they are missing.\n\nUnlocks Sanguinite refining at the Sacrificial altar and Sanguinite fixtures, which spend Warp energy to slow bleeding, heal scars and regrow lost parts.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>5</researchViewX>
+    <researchViewY>3</researchViewY>
+    <prerequisites>
+      <li>KM_WarpSacrifice</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Sanguinite</defName>
+    <label>Sanguinite</label>
+    <description>Sanguinite replaces what a body is missing, and it doesn't matter to the stone whose flesh it uses.\n\nAn arterial-crimson crystal with a scarlet-ruby core, refined from Dark Stone at a Sacrificial altar. Its fixtures spend Warp energy to treat patients resting in bed.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Sanguinite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>30</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseSanguinite</defName>
+    <label>refine Sanguinite</label>
+    <description>Refine 10 Dark Stone into 10 Sanguinite.</description>
+    <jobString>Refining Sanguinite.</jobString>
+    <recipeUsers Inherit="False"><li>KM_SacrificialAltar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_DarkStone</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DarkStone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Sanguinite>10</KM_Sanguinite></products>
+    <researchPrerequisite>KM_SanguiniteFleshcraft</researchPrerequisite>
+  </RecipeDef>
+
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenSanguiniteColumn</defName>
+    <label>Sanguinite column</label>
+    <uiOrder>2039</uiOrder>
+    <researchPrerequisites>
+      <li>KM_SanguiniteFleshcraft</li>
+    </researchPrerequisites>
+    <description>A roof-supporting column set with Sanguinite. Patients nearby bleed as if they had time to spare.\n\nGives dim crimson light. Warp energy: slows bleeding, heals scars and regrows missing parts of patients resting in bed in the same room. Only the strongest Sanguinite fixture treats a patient. Bionics are never touched.</description>
+    <costList>
+      <KM_Sanguinite>15</KM_Sanguinite>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/SanguiniteColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(200,60,75,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>1</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>treating patients in bed</effect></li>
+    </comps>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_SanguiniteFixtureBase" ParentName="KM_DarkStoneFixtureBase" Abstract="True">
+    <researchPrerequisites Inherit="False">
+      <li>KM_SanguiniteFleshcraft</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SanguiniteFixtureBase">
+    <defName>KM_SanguiniteLamp</defName>
+    <label>Sanguinite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2807</uiOrder>
+    <description>A Sanguinite crystal on a wooden post.\n\nGives dim crimson light and nothing else.</description>
+    <graphicData>
+      <texPath>Things/Building/Sanguinite/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Sanguinite>10</KM_Sanguinite>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(200,60,75,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SanguiniteFixtureBase">
+    <defName>KM_SanguiniteWallLamp</defName>
+    <label>Sanguinite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2808</uiOrder>
+    <description>A Sanguinite crystal on a wall bracket.\n\nGives dim crimson light and nothing else.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Sanguinite/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Sanguinite/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Sanguinite>8</KM_Sanguinite>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(200,60,75,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SanguiniteFixtureBase">
+    <defName>KM_SanguiniteCluster</defName>
+    <label>Sanguinite cluster</label>
+    <uiOrder>2826</uiOrder>
+    <rotatable>true</rotatable>
+    <description>A group of Sanguinite crystals in a low carved housing. Lost eyes come back the right colour, usually.\n\nGives crimson light. Warp energy: slows bleeding, heals scars and regrows missing parts of patients resting in bed in the same room. Only the strongest Sanguinite fixture treats a patient. Bionics are never touched.</description>
+    <graphicData>
+      <texPath>Things/Building/Sanguinite/Cluster</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawRotated>false</drawRotated>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Sanguinite>35</KM_Sanguinite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(200,60,75,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>2</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>treating patients in bed</effect></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_SanguiniteFixtureBase">
+    <defName>KM_SanguinitePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Sanguinite pylon</label>
+    <uiOrder>2827</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall shaft of Sanguinite on a carved pedestal. Given a week, it will grow a patient a new kidney.\n\nGives crimson light. Warp energy: slows bleeding, heals scars and regrows missing parts of patients resting in bed in the same room. Only the strongest Sanguinite fixture treats a patient. Bionics are never touched.</description>
+    <graphicData>
+      <texPath>Things/Building/Sanguinite/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Sanguinite>25</KM_Sanguinite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(200,60,75,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>3</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>treating patients in bed</effect></li>
+    </comps>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>KM_SanguiniteRegrowth</defName>
+    <hediffClass>LumenStones.Hediff_SanguiniteRegrowth</hediffClass>
+    <label>Sanguinite regrowth</label>
+    <description>A missing part is regrowing under Sanguinite treatment. Progress pauses when the patient leaves bed or Warp energy runs out, and is kept.</description>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.78,0.25,0.3)</defaultLabelColor>
+    <maxSeverity>1</maxSeverity>
+    <initialSeverity>0.001</initialSeverity>
+  </HediffDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>KM_SanguiniteBlade</defName>
+    <label>Sanguinite flensing blade</label>
+    <description>A fast, light blade with a Sanguinite edge. It draws blood from whatever it cuts, and steadies the wielder's own.\n\nEach damaging hit on a living target opens a hemorrhage that stacks to three and fades in about ten seconds. The wielder bleeds half as fast. It costs no Warp energy. Crafted from 100 Sanguinite and 20 steel after Long blades and Sanguinite fleshcraft, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>5000</WorkToMake><Mass>1.2</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/SanguiniteFlensingBlade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags><li>MedievalMeleeAdvanced</li></weaponTags>
+    <tools>
+      <li><label>handle</label><capacities><li>Blunt</li></capacities><power>6</power><cooldownTime>1.6</cooldownTime></li>
+      <li><label>edge</label><capacities><li>Cut</li></capacities><power>14</power><cooldownTime>1.4</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisites>
+        <li>LongBlades</li>
+        <li>KM_SanguiniteFleshcraft</li>
+      </researchPrerequisites>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>425</displayPriority>
+    </recipeMaker>
+    <costList><KM_Sanguinite>100</KM_Sanguinite><Steel>20</Steel></costList>
+    <comps>
+      <li Class="LumenStones.CompProperties_WielderHediff"><hediff>KM_FlensingWielder</hediff></li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>KM_Hemorrhage</defName>
+    <hediffClass>LumenStones.Hediff_Hemorrhage</hediffClass>
+    <label>hemorrhage</label>
+    <description>A wound opened by a Sanguinite blade keeps bleeding for a few seconds. Further hits deepen it, up to three times.</description>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <makesSickThought>false</makesSickThought>
+    <maxSeverity>3</maxSeverity>
+    <initialSeverity>1</initialSeverity>
+    <defaultLabelColor>(0.8,0.2,0.25)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>KM_SanguiniteTreatment</defName>
+    <label>Sanguinite treatment</label>
+    <description>A Sanguinite fixture is treating this patient while they rest in bed. Hover for its rates.</description>
+    <hediffClass>LumenStones.Hediff_Status</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+    <defaultLabelColor>(0.78,0.25,0.3)</defaultLabelColor>
+    <!-- Severity is the treating fixture's tier, or 0 when Warp energy couldn't pay for a bleeding patient. -->
+    <initialSeverity>0</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <stages>
+      <li><minSeverity>0</minSeverity></li>
+      <li><minSeverity>1</minSeverity><totalBleedFactor>0.7</totalBleedFactor></li>
+      <li><minSeverity>2</minSeverity><totalBleedFactor>0.5</totalBleedFactor></li>
+      <li><minSeverity>3</minSeverity><totalBleedFactor>0.3</totalBleedFactor></li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>KM_FlensingWielder</defName>
+    <label>flensing wielder</label>
+    <description>A Sanguinite blade thins the wielder's blood. Bleeding is halved while it is held.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <totalBleedFactor>0.5</totalBleedFactor>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

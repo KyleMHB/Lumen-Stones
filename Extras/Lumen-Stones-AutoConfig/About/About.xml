@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Lumen Stones - AutoConfig preset</name>
+  <author>KyleMHB</author>
+  <packageId>kylemhb.lumenstones.autoconfig</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <modDependencies>
+    <li><packageId>kylemhb.lumenstones</packageId><displayName>Lumen Stones</displayName></li>
+    <li><packageId>Garethp.ModlistConfigurator</packageId><displayName>Auto Mod Config (Continued)</displayName></li>
+  </modDependencies>
+  <loadAfter><li>kylemhb.lumenstones</li><li>Garethp.ModlistConfigurator</li></loadAfter>
+  <description>Optional example preset that enables Lumen Stones content and preserves the active mod list's balance. Base Epochs - Pyrinth overrides remain off. Pyrinth columns require Epochs - Pyrinth. Importing the preset replaces saved Lumen Stones settings. See docs/stone-settings.md in Lumen Stones for the settings format.</description>
+</ModMetaData>

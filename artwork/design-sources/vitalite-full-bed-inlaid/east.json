@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    35,
+    328,
+    1223,
+    948
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    8,
+    140,
+    504,
+    372
+  ],
+  "colorFilename": "FullBed_east.png",
+  "maskFilename": "FullBed_eastm.png",
+  "sourceRepair": "Crop excludes isolated generated alpha debris; source otherwise unchanged.",
+  "alphaHandling": "Uniform Lanczos reduction preserving source alpha; fixed colours, no construction tint.",
+  "layers": [
+    {
+      "path": "east-deep-source.png",
+      "constructionTint": false
+    }
+  ]
+}

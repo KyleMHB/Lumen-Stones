@@ -1,0 +1,122 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    392,
+    33,
+    862,
+    1176
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    16,
+    512,
+    496
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Colour-only remap of accepted source to match Sanguinite column; alpha and geometry preserved. Crop widened symmetrically to retain the outer talon outlines; painted mask retained.",
+  "alphaHandling": "Preserve generated alpha within crop; common uniform reduction of colour and ownership.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "base-left": [
+          [
+            445,
+            1070
+          ],
+          [
+            488,
+            1030
+          ],
+          [
+            534,
+            1057
+          ],
+          [
+            584,
+            1040
+          ],
+          [
+            584,
+            1070
+          ],
+          [
+            624,
+            1093
+          ],
+          [
+            624,
+            1175
+          ],
+          [
+            445,
+            1175
+          ]
+        ],
+        "base-right": [
+          [
+            809,
+            1070
+          ],
+          [
+            766,
+            1030
+          ],
+          [
+            720,
+            1057
+          ],
+          [
+            670,
+            1040
+          ],
+          [
+            670,
+            1070
+          ],
+          [
+            624,
+            1093
+          ],
+          [
+            624,
+            1175
+          ],
+          [
+            809,
+            1175
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      165,
+      16,
+      347,
+      496
+    ],
+    "boundsTolerance": 12,
+    "footLine": 496,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_SanguinitePylon",
+    "drawSize": [
+      2.2,
+      2.2
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Aegite</defName>
+    <label>Aegite</label>
+    <description>Lumenstone steeped with silver takes on silver's old reputation for purity. Shaped into wards, it smothers flame and keeps grime from settling.\n\nA champagne-gold crystal with a white-gold core, infused from Lumenstone at a Lumen ritual circle. Its wards gradually thin filth, and suppress fires while powered by Solar energy.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Aegite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_AegitePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/AegitePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>.15</solidTime>
+      <fadeOutTime>.35</fadeOutTime>
+    </mote>
+  </ThingDef>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenAegiteColumn</defName>
+    <label>Aegite ward column</label>
+    <uiOrder>2044</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A champagne and white-gold Aegite column, the smallest of the wards.\n\nA ward that thins filth around it, through walls. With Solar energy it suppresses fires instead. Only the strongest ward covering a target works on it. No fuel.</description>
+    <costList>
+      <KM_Aegite>15</KM_Aegite>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/AegiteColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>15</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Aegite">
+        <tier>1</tier>
+        <radius>8</radius>
+        <interval>360</interval>
+        <fireCount>2</fireCount>
+        <fireReduction>.5</fireReduction>
+        <filthLayers>1</filthLayers>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>fire suppression</effect>
+      </li>
+    </comps>
+    <uiIconScale>1.02857</uiIconScale>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_AegiteRange</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ThingDef Name="KM_AegiteFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_AegiteFixtureBase">
+    <defName>KM_AegiteLamp</defName>
+    <label>Aegite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2803</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A champagne-gold Aegite lamp. The crystal is too small to ward anything.\n\nProvides visual illumination only, without fire suppression, cleaning or ward sparkles. No heat, fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Aegite/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Aegite>10</KM_Aegite>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_AegiteFixtureBase">
+    <defName>KM_AegiteWallLamp</defName>
+    <label>Aegite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2804</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A champagne-gold Aegite wall lamp. The crystal is too small to ward anything.\n\nProvides visual illumination only, without fire suppression, cleaning or ward sparkles. No heat, fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Aegite/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Aegite/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Aegite>8</KM_Aegite>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_AegiteFixtureBase">
+    <defName>KM_AegitePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Aegite sentinel pylon</label>
+    <uiOrder>2822</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall Aegite sentinel, the strongest of the wards.\n\nA ward that thins filth around it, through walls. With Solar energy it suppresses fires instead. Only the strongest ward covering a target works on it. No fuel.</description>
+    <graphicData>
+      <texPath>Things/Building/Aegite/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.54)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <costList>
+      <KM_Aegite>60</KM_Aegite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>25</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_AegiteWarding</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Aegite">
+        <tier>3</tier>
+        <radius>10</radius>
+        <interval>180</interval>
+        <fireCount>4</fireCount>
+        <fireReduction>.75</fireReduction>
+        <filthLayers>2</filthLayers>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>fire suppression</effect>
+      </li>
+    </comps>
+    <size>(1,1)</size>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_AegiteRange</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+    <costStuffCount>30</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_AegiteFixtureBase">
+    <defName>KM_AegiteCluster</defName>
+    <label>Aegite ward cluster</label>
+    <uiOrder>2823</uiOrder>
+    <description>A tripod of Aegite crystals that keeps the ground around it oddly clean.\n\nA ward that thins filth around it, through walls. With Solar energy it suppresses fires instead. Only the strongest ward covering a target works on it. No fuel.</description>
+    <graphicData>
+      <texPath>Things/Building/Aegite/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <KM_Aegite>35</KM_Aegite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_AegiteWarding</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Aegite">
+        <tier>2</tier>
+        <radius>8</radius>
+        <interval>240</interval>
+        <fireCount>3</fireCount>
+        <fireReduction>.6</fireReduction>
+        <filthLayers>2</filthLayers>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>fire suppression</effect>
+      </li>
+    </comps>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_AegiteRange</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+  </ThingDef>
+  <ResearchProjectDef>
+    <defName>KM_AegiteWarding</defName>
+    <label>Aegite warding</label>
+    <description>Learn to infuse Lumenstone with silver, and to set the result as wards around a colony.\n\nShape Aegite into ward clusters and sentinel pylons that thin filth and, powered by Solar energy, suppress fire. Unlocks Aegite infusion at the Lumen ritual circle.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>2</researchViewX>
+    <researchViewY>6</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+</Defs>

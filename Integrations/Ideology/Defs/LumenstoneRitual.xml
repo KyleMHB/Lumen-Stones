@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RitualObligationTargetFilterDef>
+    <defName>KM_LumenCircle</defName>
+    <workerClass>LumenStones.RitualObligationTargetFilter_LumenCircle</workerClass>
+  </RitualObligationTargetFilterDef>
+  <RitualObligationTargetFilterDef>
+    <defName>KM_LumenstoneAltar</defName>
+    <workerClass>LumenStones.RitualObligationTargetFilter_LumenstoneAltar</workerClass>
+  </RitualObligationTargetFilterDef>
+  <RitualTargetFilterDef>
+    <defName>KM_LumenSelectedCircle</defName>
+    <workerClass>RitualTargetFilter_SelectedThing</workerClass>
+  </RitualTargetFilterDef>
+  <RitualBehaviorDef>
+    <defName>KM_LumenstoneRitual</defName>
+    <workerClass>LumenStones.RitualBehaviorWorker_Lumenstone</workerClass>
+    <durationTicks>5000</durationTicks>
+    <roles>
+      <li Class="RitualRoleColonist"><label>ceremony leader</label><id>speaker</id><required>true</required><maxCount>1</maxCount><countsAsParticipant>true</countsAsParticipant><allowOtherIdeos>true</allowOtherIdeos><allowChild>false</allowChild><mustBeAbleToReachTarget>true</mustBeAbleToReachTarget></li>
+    </roles>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty><spectateDistanceOverride>2</spectateDistanceOverride><spectatorsRequired>false</spectatorsRequired>
+        <endTriggers><li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li></endTriggers>
+        <roleBehaviors><li><roleId>speaker</roleId><dutyDef>SpeakOnCell</dutyDef><speakerInteraction>Speech_DateRitual</speakerInteraction><customPositions><li Class="RitualPosition_BesideThing" /></customPositions></li></roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+  <!-- The circle and altar share this base. Only the altar adds room and fixture quality. -->
+  <RitualOutcomeEffectDef Name="KM_LumenstoneOutcomeBase" Abstract="True">
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Lumenstone</workerClass>
+    <startingQuality>0.2</startingQuality>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <givesDevelopmentPoints>false</givesDevelopmentPoints>
+    <comps>
+      <li Class="LumenStones.RitualOutcomeComp_StoneWeapon"><label>Lumenstone staff</label><weapon>KM_LumenstoneStaff</weapon><curve><points><li>(0,0)</li><li>(1,0.1)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_PawnStatScaled"><label>{PAWN_labelShort}'s social impact</label><labelAbstract>leader's social impact</labelAbstract><roleId>speaker</roleId><statDef>SocialImpact</statDef><curve><points><li>(0.2,0)</li><li>(1,0.3)</li><li>(1.5,0.4)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_ParticipantCount"><label>participants</label><curve><points><li>(1,0)</li><li>(2,0.15)</li><li>(3,0.3)</li></points></curve></li>
+    </comps>
+    <outcomeChances>
+      <li><label>poor</label><description>The chunks gave up little of their light. The ceremony yields the lowest amount of Lumenstone.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>The chunks brightened and cleared. The ceremony yields a good amount of Lumenstone.</description><chance>0.6</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>exceptional</label><description>The chunks flared white. The ceremony yields the highest amount of Lumenstone.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+  <RitualOutcomeEffectDef ParentName="KM_LumenstoneOutcomeBase">
+    <defName>KM_LumenstoneRitual</defName>
+    <description>A ceremony at a Lumen ritual circle that draws the Lumenstone out of ordinary stone chunks. Quality and participation decide the yield, which is lower than at a Lumenstone altar. Each settlement must recover before the next ceremony.</description>
+  </RitualOutcomeEffectDef>
+  <RitualOutcomeEffectDef ParentName="KM_LumenstoneOutcomeBase">
+    <defName>KM_LumenstoneAltarRitual</defName>
+    <description>A ceremony at a Lumenstone altar that draws the Lumenstone out of ordinary stone chunks. Quality, participation and nearby Lumenstone fixtures decide the yield. Each settlement must recover before the next ceremony.</description>
+    <comps Inherit="True">
+      <li Class="RitualOutcomeComp_RoomStat"><label>room impressiveness</label><statDef>Impressiveness</statDef><curve><points><li>(0,0)</li><li>(120,0.1)</li></points></curve></li>
+      <li Class="LumenStones.RitualOutcomeComp_FixtureSupport"><label>Lumenstone fixtures</label><curve><points><li>(0,0)</li><li>(1,0.2)</li></points></curve></li>
+    </comps>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef Name="KM_LumenstonePatternBase" Abstract="True">
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+    <ritualTargetFilter>KM_LumenSelectedCircle</ritualTargetFilter>
+    <ritualBehavior>KM_LumenstoneRitual</ritualBehavior>
+    <shortDescOverride>Lumenstone ritual</shortDescOverride>
+    <iconPathOverride>UI/Icons/LumenstoneRitual</iconPathOverride>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_LumenstonePatternBase">
+    <defName>KM_LumenstoneRitual</defName>
+    <ritualObligationTargetFilter>KM_LumenCircle</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>KM_LumenstoneRitual</ritualOutcomeEffect>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_LumenstonePatternBase">
+    <defName>KM_LumenstoneAltarRitual</defName>
+    <ritualObligationTargetFilter>KM_LumenstoneAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>KM_LumenstoneAltarRitual</ritualOutcomeEffect>
+  </RitualPatternDef>
+  <PreceptDef Name="KM_LumenstonePreceptBase" Abstract="True">
+    <label>Lumenstone ritual</label>
+    <issue>Ritual</issue>
+    <impact>Medium</impact>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <useRepeatPenalty>false</useRepeatPenalty>
+    <iconPath>UI/Icons/LumenstoneRitual</iconPath>
+    <allowDuplicates>false</allowDuplicates>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visible>false</visible>
+    <selectionWeight>0</selectionWeight>
+    <classic>true</classic>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_LumenstonePreceptBase">
+    <defName>KM_LumenstoneRitual</defName>
+    <description>A two-hour ceremony at a Lumen ritual circle that draws the Lumenstone out of ordinary stone chunks. Quality and participation decide the yield, and each settlement must recover before the next ceremony. Cancelled ceremonies return their chunks.</description>
+    <ritualPatternBase>KM_LumenstoneRitual</ritualPatternBase>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_LumenstonePreceptBase">
+    <defName>KM_LumenstoneAltarRitual</defName>
+    <description>A two-hour ceremony at a Lumenstone altar that draws the Lumenstone out of ordinary stone chunks. Quality, participation and nearby Lumenstone fixtures decide the yield, and each settlement must recover before the next ceremony. Cancelled ceremonies return their chunks.</description>
+    <ritualPatternBase>KM_LumenstoneAltarRitual</ritualPatternBase>
+  </PreceptDef>
+</Defs>

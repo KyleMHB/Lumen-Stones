@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_SerenitePendant</defName>
+    <label>Serenite pendant</label>
+    <description>A silver-framed lavender teardrop. People who wear one say they don't notice it, which is the point.\n\nWhile worn in the utility slot, adds 15 percentage points to rest rate, lowers the mental break threshold by 12 percentage points and gives +4 mood. Its worn effects are separate from Serenite room support and the waking memory. Crafted at a smithy from 100 Serenite and 20 silver after Smithing, with Crafting 6.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Utility/SerenitePendant</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.4,0.4)</drawSize>
+    </graphicData>
+    <uiIconScale>2.5</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.25</Mass>
+      <WorkToMake>8000</WorkToMake>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <RestRateMultiplier>0.15</RestRateMultiplier>
+      <MentalBreakThreshold>-0.12</MentalBreakThreshold>
+    </equippedStatOffsets>
+    <costList><KM_Serenite>100</KM_Serenite><Silver>20</Silver></costList>
+    <recipeMaker>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers><li>ElectricSmithy</li><li>FueledSmithy</li></recipeUsers>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <thingCategories><li>ApparelUtility</li></thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups>
+      <layers><li>Belt</li></layers>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    </apparel>
+    <tradeTags><li>Clothing</li></tradeTags>
+  </ThingDef>
+  <ThoughtDef>
+    <defName>KM_SerenitePendantWorn</defName>
+    <workerClass>LumenStones.ThoughtWorker_SerenitePendant</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li><label>wearing Serenite pendant</label><description>The amethyst pendant helps me feel at peace.</description><baseMoodEffect>4</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+</Defs>

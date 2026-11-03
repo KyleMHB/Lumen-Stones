@@ -1,0 +1,111 @@
+{
+  "alphaHandling": "Preserve source alpha inside crop through shared Lanczos reduction.",
+  "sourceSize": [
+    887,
+    1774
+  ],
+  "colorFilename": "Pylon.png",
+  "targetBox": [
+    0,
+    14,
+    256,
+    242
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "layers": [
+    {
+      "ownership": {
+        "roots": [
+          [
+            65,
+            1010
+          ],
+          [
+            175,
+            1010
+          ],
+          [
+            189,
+            1100
+          ],
+          [
+            227,
+            1160
+          ],
+          [
+            301,
+            1220
+          ],
+          [
+            337,
+            1375
+          ],
+          [
+            443,
+            1284
+          ],
+          [
+            548,
+            1375
+          ],
+          [
+            581,
+            1220
+          ],
+          [
+            655,
+            1160
+          ],
+          [
+            697,
+            1100
+          ],
+          [
+            710,
+            1010
+          ],
+          [
+            823,
+            1010
+          ],
+          [
+            823,
+            1650
+          ],
+          [
+            65,
+            1650
+          ]
+        ]
+      },
+      "path": "source.png"
+    }
+  ],
+  "crop": [
+    65,
+    125,
+    823,
+    1650
+  ],
+  "candidateChecks": {
+    "maxOpaqueSpread": 8,
+    "expectedBounds": [
+      70,
+      14,
+      186,
+      242
+    ],
+    "footLine": 242,
+    "boundsTolerance": 10,
+    "alphaDebrisTolerance": 8,
+    "mode": "new-design",
+    "minSourcePixelsPerOutputPixel": 1,
+    "minSourceSize": 800
+  },
+  "sourceRepair": "Shared crop removes faint detached alpha debris outside the object.",
+  "maskFilename": "Pylon_m.png",
+  "paintedMask": "painted-mask.png"
+}

@@ -1,0 +1,50 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    432,
+    117,
+    830,
+    1124
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    12,
+    256,
+    229
+  ],
+  "colorFilename": "Lamp.png",
+  "maskFilename": "Lamp_m.png",
+  "sourceRepair": "Uniformly fit complete user-selected lamp master to the existing 256px lamp frame; crop excludes faint exterior alpha debris. The user prefers this complete post and collar over the shared-post composite.",
+  "alphaHandling": "Preserve generated alpha within crop; no construction tint.",
+  "layers": [
+    {
+      "path": "generated-source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      85,
+      12,
+      171,
+      229
+    ],
+    "boundsTolerance": 10,
+    "footLine": 229,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "definition": "KM_HollowstoneLamp",
+    "drawSize": [
+      1,
+      1
+    ]
+  }
+}

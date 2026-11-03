@@ -1,0 +1,52 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "BloodstoneObelisk.png",
+  "maskFilename": "BloodstoneObelisk_m.png",
+  "sourceRepair": "Candidate source uniformly reduced from 1254px generated master to fit [304,18,949,1217] into 512px frame, then original production pixels at y>=414 copied exactly to retain pedestal and charge-indicator alignment. See acceptance and generation ledger.",
+  "alphaHandling": "Preserve alpha from candidate and original pedestal; no additional resizing.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "paintedMask": "painted-mask.png",
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      127,
+      16,
+      385,
+      496
+    ],
+    "boundsTolerance": 16,
+    "footLine": 496,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "definition": "KM_BloodstoneObelisk",
+    "drawSize": [
+      2.4,
+      2.4
+    ]
+  }
+}

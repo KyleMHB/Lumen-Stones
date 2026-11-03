@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    35,
+    115,
+    1238,
+    1128
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    48,
+    48,
+    463,
+    463
+  ],
+  "colorFilename": "SunstoneArray.png",
+  "maskFilename": "SunstoneArray_m.png",
+  "sourceRepair": "Crop distant generated alpha debris outside the subject.",
+  "alphaHandling": "Preserve source alpha and apply one uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1280,
+    1280
+  ],
+  "crop": [
+    16,
+    288,
+    1088,
+    888
+  ],
+  "canvas": [
+    320,
+    320
+  ],
+  "targetBox": [
+    4,
+    72,
+    272,
+    222
+  ],
+  "colorFilename": "AegiteWarhammer.png",
+  "maskFilename": "AegiteWarhammer_m.png",
+  "layers": [
+    {
+      "path": "hammer-oriented.png",
+      "constructionTint": false
+    }
+  ],
+  "sourceRepair": "Recovered source with historical framing, premultiplied bicubic rotation and vertical flip. Restrict new resampling support to the immutable baseline envelope; hammer additionally has the user-authorized local RGB speckle repair. Reproduce with export.py.",
+  "alphaHandling": "One final Lanczos reduction inside the historical outer envelope. No alpha threshold, sharpening or contour thickening; original canvas-centre pivot is retained.",
+  "candidateChecks": {
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/hammer-baseline.png",
+        "sha256": "cfa707f806c4044e8386a8611d1646a1e5afb26a9dd36dc0da1ee897708687a8"
+      },
+      "mask": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/hammer-baseline-mask.png",
+        "sha256": "a7273525285f96bf63e489762ac803e964f3c2fb78f8f727663966ffe929692a"
+      }
+    },
+    "definition": "KM_AegiteWarhammer",
+    "drawSize": [
+      1.5,
+      1.5
+    ],
+    "boundsTolerance": 0,
+    "maxOpaqueSpread": 255,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1
+  }
+}

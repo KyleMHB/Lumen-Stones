@@ -1,0 +1,71 @@
+{
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    75,
+    110,
+    1695,
+    785
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    10,
+    130,
+    502,
+    382
+  ],
+  "colorFilename": "SlabBed_west.png",
+  "maskFilename": "SlabBed_westm.png",
+  "sourceRepair": "Crop to the visible generated sprite; exclude exterior alpha debris. Initial polygon is a neutral-stone diagnostic; user-painted mask is the complete ownership authority. Accepted generated stone is cool grey, with source-channel spread up to the declared limit; painted mask is preserved.",
+  "alphaHandling": "One uniform Lanczos reduction for colour and explicit stone ownership. Crystal and gold stay fixed.",
+  "layers": [
+    {
+      "path": "west-source.png",
+      "ownership": {
+        "stone-core-diagnostic": [
+          [
+            400,
+            360
+          ],
+          [
+            1200,
+            360
+          ],
+          [
+            1200,
+            540
+          ],
+          [
+            400,
+            540
+          ]
+        ]
+      }
+    }
+  ],
+  "paintedMask": "painted-mask-4.png",
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      10,
+      153,
+      502,
+      358
+    ],
+    "boundsTolerance": 8,
+    "footLine": 358,
+    "minSourceSize": 800,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 30,
+    "definition": "KM_VitaliteSlabBed",
+    "drawSize": [
+      2,
+      2
+    ]
+  }
+}

@@ -1,0 +1,619 @@
+{
+  "schema": 1,
+  "method": "Actual upstream box and prosthetic glyphs; generated shard glyph only; deterministic tint and composition.",
+  "baselineCommit": "89e4b8099b39187dbf3a6058ec5d829fbe48a0ad",
+  "status": "candidate; design and in-game review pending",
+  "contract": {
+    "identity": "Rounded part box with stone-core bottom band and readable body-part or crystal-shard glyph.",
+    "geometry": "Preserve the actual upstream Ultratech 64px box artwork, including rounded contours, shaded lid, stepped lower edges, original glowing band and alpha. No new stripe geometry.",
+    "materials": "Fixed pale stone for light parts; charcoal for dark parts; core-colour band. No construction masks.",
+    "camera": "Flat item icon matching Bionic Icons.",
+    "protected": "Upstream Ultratech box alpha, shading geometry and existing glow shape; upstream prosthetic mask placement. Twinstone cell excluded.",
+    "allowedEdits": "Continuous neutral/cyan palette remap and glyph overlay only; do not redraw the box."
+  },
+  "upstream": {
+    "workshopId": "1677616980",
+    "packageId": "automatic.bionicicons",
+    "author": "AUTOMATIC1111",
+    "license": "Licenses/BionicIcons-MIT.txt",
+    "files": {
+      "Box.png": "fda4e130039b403543ffa860d3b4b7211306b107686456c440978f92fbbd6dce",
+      "Eye.png": "afec5960edbd61013349eaea8a63a63b2c291418faac78fc345059b2224758ae",
+      "Heart.png": "d123c2f0ec847ed98709ea9144c745c004e768a88537830d4cadc9fe6ced8515",
+      "Jaw.png": "df1912b30e8ff8fd35d3a5e98ddc4bf7d9300316d9dea01d28495e2e35495507",
+      "Leg.png": "09eeb1bed7ad874f60c3cd4a6fc35f3d9e985aedf99febb746f26a08f02588ae",
+      "Shoulder.png": "91c734e39771fa96fc9abd92344fe57d98a26ad8529f7966579a014aaced066c",
+      "Ultratech.png": "02620b76038bdd15c1f680d17e2d2b8f1cff5bb22a42e7eb7e525dbbf59eb43a"
+    }
+  },
+  "boxes": {
+    "light": [
+      255,
+      250,
+      235
+    ],
+    "dark": [
+      95,
+      88,
+      105
+    ]
+  },
+  "cores": {
+    "Glacite": [
+      94,
+      188,
+      255
+    ],
+    "Pyrinth": [
+      255,
+      113,
+      37
+    ],
+    "Verdite": [
+      180,
+      224,
+      56
+    ],
+    "Vitalite": [
+      255,
+      196,
+      215
+    ],
+    "Serenite": [
+      178,
+      127,
+      230
+    ],
+    "Aegite": [
+      255,
+      231,
+      160
+    ],
+    "Ferrite": [
+      221,
+      116,
+      85
+    ],
+    "Sanguinite": [
+      236,
+      55,
+      75
+    ],
+    "Dreadstone": [
+      255,
+      126,
+      46
+    ],
+    "Hollowstone": [
+      85,
+      222,
+      230
+    ]
+  },
+  "parts": {
+    "GlaciteImplant": {
+      "stone": "Glacite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "PyrinthImplant": {
+      "stone": "Pyrinth",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "VerditeImplant": {
+      "stone": "Verdite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "VitaliteImplant": {
+      "stone": "Vitalite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "SereniteImplant": {
+      "stone": "Serenite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "AegiteImplant": {
+      "stone": "Aegite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "FerriteImplant": {
+      "stone": "Ferrite",
+      "side": "light",
+      "glyph": "Shard"
+    },
+    "SanguiniteImplant": {
+      "stone": "Sanguinite",
+      "side": "dark",
+      "glyph": "Shard"
+    },
+    "DreadstoneImplant": {
+      "stone": "Dreadstone",
+      "side": "dark",
+      "glyph": "Shard"
+    },
+    "HollowstoneImplant": {
+      "stone": "Hollowstone",
+      "side": "dark",
+      "glyph": "Shard"
+    },
+    "FerriteArm": {
+      "stone": "Ferrite",
+      "side": "light",
+      "glyph": "Shoulder"
+    },
+    "FerriteLeg": {
+      "stone": "Ferrite",
+      "side": "light",
+      "glyph": "Leg"
+    },
+    "VitaliteHeart": {
+      "stone": "Vitalite",
+      "side": "light",
+      "glyph": "Heart"
+    },
+    "AegiteEye": {
+      "stone": "Aegite",
+      "side": "light",
+      "glyph": "Eye"
+    },
+    "HollowstoneArm": {
+      "stone": "Hollowstone",
+      "side": "dark",
+      "glyph": "Shoulder"
+    },
+    "HollowstoneLeg": {
+      "stone": "Hollowstone",
+      "side": "dark",
+      "glyph": "Leg"
+    },
+    "DreadstoneJaw": {
+      "stone": "Dreadstone",
+      "side": "dark",
+      "glyph": "Jaw"
+    },
+    "SanguiniteHeart": {
+      "stone": "Sanguinite",
+      "side": "dark",
+      "glyph": "Heart"
+    }
+  },
+  "commandColors": {
+    "Attunement": [
+      245,
+      222,
+      156
+    ],
+    "Binding": [
+      204,
+      128,
+      234
+    ],
+    "AttunementSickness": [
+      207,
+      177,
+      230
+    ]
+  },
+  "symbols": {
+    "Attunement": [
+      {
+        "type": "line",
+        "points": [
+          [
+            15,
+            40
+          ],
+          [
+            12,
+            32
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            22,
+            14
+          ],
+          [
+            32,
+            11
+          ],
+          [
+            42,
+            14
+          ],
+          [
+            49,
+            21
+          ],
+          [
+            52,
+            32
+          ],
+          [
+            49,
+            40
+          ]
+        ],
+        "width": 3,
+        "alpha": 255
+      },
+      {
+        "type": "polygon",
+        "points": [
+          [
+            32,
+            19
+          ],
+          [
+            40,
+            29
+          ],
+          [
+            36,
+            40
+          ],
+          [
+            28,
+            45
+          ],
+          [
+            23,
+            33
+          ],
+          [
+            26,
+            25
+          ]
+        ],
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            16,
+            49
+          ],
+          [
+            25,
+            52
+          ],
+          [
+            39,
+            52
+          ],
+          [
+            48,
+            49
+          ]
+        ],
+        "width": 3,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            32,
+            3
+          ],
+          [
+            32,
+            7
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            4,
+            30
+          ],
+          [
+            8,
+            30
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            56,
+            30
+          ],
+          [
+            60,
+            30
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      }
+    ],
+    "Binding": [
+      {
+        "type": "line",
+        "points": [
+          [
+            20,
+            14
+          ],
+          [
+            12,
+            22
+          ],
+          [
+            12,
+            43
+          ],
+          [
+            21,
+            52
+          ],
+          [
+            43,
+            52
+          ],
+          [
+            52,
+            43
+          ],
+          [
+            52,
+            22
+          ],
+          [
+            44,
+            14
+          ]
+        ],
+        "width": 3,
+        "alpha": 255
+      },
+      {
+        "type": "polygon",
+        "points": [
+          [
+            32,
+            18
+          ],
+          [
+            40,
+            28
+          ],
+          [
+            36,
+            40
+          ],
+          [
+            28,
+            45
+          ],
+          [
+            23,
+            33
+          ],
+          [
+            26,
+            25
+          ]
+        ],
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            8,
+            22
+          ],
+          [
+            19,
+            22
+          ],
+          [
+            19,
+            29
+          ],
+          [
+            8,
+            29
+          ],
+          [
+            8,
+            22
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            45,
+            35
+          ],
+          [
+            56,
+            35
+          ],
+          [
+            56,
+            42
+          ],
+          [
+            45,
+            42
+          ],
+          [
+            45,
+            35
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            20,
+            14
+          ],
+          [
+            20,
+            6
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            44,
+            14
+          ],
+          [
+            44,
+            6
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      }
+    ],
+    "AttunementSickness": [
+      {
+        "type": "polygon",
+        "points": [
+          [
+            30,
+            13
+          ],
+          [
+            40,
+            24
+          ],
+          [
+            35,
+            31
+          ],
+          [
+            40,
+            36
+          ],
+          [
+            30,
+            47
+          ],
+          [
+            23,
+            33
+          ],
+          [
+            28,
+            29
+          ],
+          [
+            24,
+            24
+          ]
+        ],
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            12,
+            18
+          ],
+          [
+            9,
+            25
+          ],
+          [
+            13,
+            32
+          ],
+          [
+            9,
+            39
+          ],
+          [
+            12,
+            46
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      },
+      {
+        "type": "line",
+        "points": [
+          [
+            51,
+            18
+          ],
+          [
+            48,
+            25
+          ],
+          [
+            52,
+            32
+          ],
+          [
+            48,
+            39
+          ],
+          [
+            51,
+            46
+          ]
+        ],
+        "width": 2,
+        "alpha": 255
+      }
+    ]
+  },
+  "shard": {
+    "source": "shard.png",
+    "sha256": "6f55645c8fc4c8cbd18d17d21bbaab409a40b2b9664fbaa494a6ee6b371c5d11",
+    "crop": [
+      385,
+      171,
+      848,
+      1085
+    ],
+    "sourceRepair": "Explicit crop around the coherent shard excludes isolated alpha=1 background debris outside the crop; alpha inside the crop is retained.",
+    "fit": [
+      34,
+      26
+    ],
+    "top": 12,
+    "tool": "image_gen.imagegen built-in",
+    "request": "shard-request.json",
+    "status": "candidate; approval pending",
+    "rotation": -45,
+    "rotatedFraming": "Trim transparent padding to rotated alpha bounds before uniform fitting; centre horizontally. Target the box top face, x10..54 y10..39."
+  },
+  "boxSource": "upstream/Ultratech.png",
+  "boxRemap": "For each channel: (source.red * boxTint + (max(source.green, source.blue) - source.red) * coreTint) / 255. Preserve source alpha. No new band or glow is drawn."
+}

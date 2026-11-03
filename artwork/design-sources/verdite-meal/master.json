@@ -1,0 +1,11 @@
+{
+  "sourceSize": [1254, 1254],
+  "crop": [100, 290, 1135, 1060],
+  "canvas": [128, 128],
+  "targetBox": [8, 8, 120, 120],
+  "colorFilename": "VerditeMeal.png",
+  "maskFilename": "VerditeMeal_unused_m.png",
+  "sourceRepair": "Crop transparent padding around the complete bowl; excludes distant negligible-alpha generation debris. No repainting or thresholding.",
+  "alphaHandling": "Preserve generated RGBA and smooth alpha through one uniform Lanczos reduction. Fixed-colour object; exporter zero-coverage mask is unused.",
+  "layers": [{"path": "source.png", "constructionTint": false}]
+}

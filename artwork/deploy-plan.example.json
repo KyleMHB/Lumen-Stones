@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "path": "Defs/Vitalite.xml",
+      "xmlSelectors": [
+        "./ThingDef[defName='KM_VitalitePylon']/uiIconScale",
+        "./ThingDef[defName='KM_VitaliteSlabBed']/uiIconScale"
+      ]
+    },
+    {
+      "path": "Textures/Things/Building/Vitalite/Cluster_m.png"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    36,
+    510,
+    1236,
+    818
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    8,
+    8,
+    248,
+    248
+  ],
+  "colorFilename": "SanguiniteFlensingBlade.png",
+  "maskFilename": "SanguiniteFlensingBlade_m.png",
+  "sourceRepair": "Simplified accepted blade and fittings; original orientation and framing retained.",
+  "alphaHandling": "Preserve source alpha within declared crop with one uniform Lanczos reduction. Fixed-colour weapon; zero construction tint.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ]
+}

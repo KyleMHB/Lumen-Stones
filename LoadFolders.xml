@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <v1.7>
+    <li>/</li>
+    <li IfModActive="ludeon.rimworld.ideology">Integrations/Ideology</li>
+    <li IfModActiveAll="ludeon.rimworld.ideology,ludeon.rimworld.anomaly">Integrations/IdeologyAnomaly</li>
+    <li IfModActive="ludeon.rimworld.royalty">Integrations/Royalty</li>
+    <li IfModActive="det.epochspyrinth">Integrations/Pyrinth</li>
+    <li IfModActive="automatic.bionicicons">Integrations/BionicIcons</li>
+  </v1.7>
+</loadFolders>

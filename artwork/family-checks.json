@@ -1,0 +1,22 @@
+{
+  "outlineTolerancePx": 1.0,
+  "minHueGapDegrees": 20,
+  "exceptions": {
+    "outline:Aegite column": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Aegite Lamp": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Glacite column": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Lumenstone column": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Lumenstone Cluster": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Lumenstone Lamp": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Verdite column": "Protected artwork. Rule 2 names it as the tonal target but Serenite as the outline target; the two differ by 1.5px and the column stays as approved.",
+    "outline:Verdite Lamp": "Ticket 01 (unify outline and shading) redraws or retouches it.",
+    "outline:Vitalite column": "Ticket 16 uplifts Vitalite art below the detail floor.",
+    "outline:Vitalite Pylon": "Ticket 07 redesigns it.",
+    "outline:Sunstone stack of three": "Ticket 03 normalises small items.",
+    "hue:Aegite/Sunstone": "Ticket 15 shifts Aegite and Ferrite.",
+    "hue:Ferrite/Sunstone": "Ticket 15 shifts Aegite and Ferrite.",
+    "hue:Bloodstone/Vitalite": "Open: no ticket yet; Vitalite pink and Bloodstone crimson are 9 degrees apart.",
+    "hue:DarkStone/Serenite": "Open: no ticket yet; both read violet. Tickets 17 to 19 choose dark-stone hues apart from these.",
+    "hue:Glacite/Lumenstone": "Open: no ticket yet; Glacite and Lumenstone are both cool blue."
+  }
+}

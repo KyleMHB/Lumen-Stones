@@ -1,0 +1,316 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    121,
+    165,
+    1131,
+    1054
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    52,
+    84,
+    460,
+    428
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Explicit rectangular crop excludes detached faint exterior alpha debris; no source colour or internal alpha edits. Some faint alpha within the crop remains.",
+  "alphaHandling": "Preserve generated alpha, contours and RGB through one shared Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "left-arm": [
+          [
+            231,
+            408
+          ],
+          [
+            272,
+            389
+          ],
+          [
+            306,
+            392
+          ],
+          [
+            332,
+            413
+          ],
+          [
+            339,
+            442
+          ],
+          [
+            324,
+            472
+          ],
+          [
+            294,
+            505
+          ],
+          [
+            275,
+            551
+          ],
+          [
+            268,
+            602
+          ],
+          [
+            279,
+            660
+          ],
+          [
+            313,
+            720
+          ],
+          [
+            363,
+            788
+          ],
+          [
+            373,
+            824
+          ],
+          [
+            342,
+            864
+          ],
+          [
+            264,
+            865
+          ],
+          [
+            223,
+            827
+          ],
+          [
+            169,
+            739
+          ],
+          [
+            134,
+            652
+          ],
+          [
+            123,
+            562
+          ],
+          [
+            137,
+            503
+          ],
+          [
+            174,
+            454
+          ]
+        ],
+        "right-arm": [
+          [
+            920,
+            414
+          ],
+          [
+            952,
+            393
+          ],
+          [
+            985,
+            391
+          ],
+          [
+            1019,
+            405
+          ],
+          [
+            1069,
+            450
+          ],
+          [
+            1108,
+            513
+          ],
+          [
+            1126,
+            580
+          ],
+          [
+            1116,
+            666
+          ],
+          [
+            1077,
+            756
+          ],
+          [
+            1021,
+            839
+          ],
+          [
+            992,
+            864
+          ],
+          [
+            912,
+            865
+          ],
+          [
+            878,
+            825
+          ],
+          [
+            895,
+            790
+          ],
+          [
+            943,
+            723
+          ],
+          [
+            976,
+            656
+          ],
+          [
+            989,
+            598
+          ],
+          [
+            977,
+            548
+          ],
+          [
+            951,
+            502
+          ],
+          [
+            926,
+            472
+          ],
+          [
+            914,
+            445
+          ]
+        ],
+        "base": [
+          [
+            141,
+            891
+          ],
+          [
+            154,
+            860
+          ],
+          [
+            217,
+            827
+          ],
+          [
+            264,
+            863
+          ],
+          [
+            333,
+            866
+          ],
+          [
+            365,
+            826
+          ],
+          [
+            881,
+            827
+          ],
+          [
+            916,
+            866
+          ],
+          [
+            988,
+            866
+          ],
+          [
+            1020,
+            830
+          ],
+          [
+            1082,
+            861
+          ],
+          [
+            1098,
+            890
+          ],
+          [
+            1098,
+            981
+          ],
+          [
+            1059,
+            1019
+          ],
+          [
+            947,
+            1044
+          ],
+          [
+            730,
+            1053
+          ],
+          [
+            498,
+            1053
+          ],
+          [
+            303,
+            1044
+          ],
+          [
+            200,
+            1024
+          ],
+          [
+            144,
+            989
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "replacement",
+    "boundsTolerance": 3,
+    "minSourceSize": 800,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_SereniteCluster",
+    "drawSize": [
+      1,
+      1
+    ],
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/cluster/color.png",
+        "sha256": "24370f7105316c00bb7b79305b5a0c75962fd8e1c2934a8435e97b5d81da60ea"
+      },
+      "mask": {
+        "path": "artwork/design-sources/serenite-family-refinement/baselines/cluster/mask.png",
+        "sha256": "6c461c411842ea3e51ed453376ef33e79956c6e0c04d87ab03c21deebd3ec0e4"
+      }
+    }
+  },
+  "acceptance": {
+    "design": "user selected 2026-11-03",
+    "mask": "User finished and saved 2026-11-03; exact saved mask applied to source",
+    "inGame": "pending combined human review"
+  },
+  "paintedMask": "painted-mask.png"
+}

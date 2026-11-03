@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="KM_GlaciteBuildingBase" ParentName="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <techLevel>Neolithic</techLevel>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <fillPercent>0.15</fillPercent>
+    <selectable>true</selectable>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+    </graphicData>
+    <building><destroySound>BuildingDestroyed_Metal_Small</destroySound></building>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <designationCategory>Furniture</designationCategory>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <placeWorkers><li>PlaceWorker_GlowRadius</li></placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_GlaciteBuildingBase">
+    <defName>KM_GlaciteLamp</defName>
+    <label>Glacite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <description>A Glacite shard on a wooden stand. It lights a room and quietly takes some of the warmth out of it.\n\nAbsorbs a little heat while the surrounding air is above 17°C. Needs no fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/GlaciteLamp</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <uiOrder>2801</uiOrder>
+    <costList><KM_Glacite>15</KM_Glacite><WoodLog>5</WoodLog></costList>
+    <comps>
+      <li Class="LumenStones.CompProperties_FixtureEffecter"><effecterDef>KM_GlaciteGlintSmall</effecterDef></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(80,160,220,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-2.5</heatPerSecond>
+        <heatPushMinTemperature>17</heatPushMinTemperature>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_GlaciteBuildingBase">
+    <defName>KM_GlaciteWallLamp</defName>
+    <label>Glacite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <description>A wall-mounted Glacite shard. Frost gathers on the bracket in summer.\n\nAbsorbs a little heat while the surrounding air is above 17°C. Needs no fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <graphicData>
+      <texPath>Things/Building/Misc/WallGlaciteTorch/WallGlaciteTorch</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Misc/WallGlaciteTorch/WallGlaciteTorch_UI</uiIconPath>
+    <uiOrder>2802</uiOrder>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <terrainAffordanceNeeded IsNull="True" />
+    <pathCost>0</pathCost>
+    <statBases><MaxHitPoints>50</MaxHitPoints></statBases>
+    <costList><KM_Glacite>10</KM_Glacite><Steel>5</Steel></costList>
+    <building><isEdifice>false</isEdifice><isAttachment>true</isAttachment></building>
+    <placeWorkers Inherit="False"><li>Placeworker_AttachedToWall</li></placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(80,160,220,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-2.5</heatPerSecond>
+        <heatPushMinTemperature>17</heatPushMinTemperature>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_GlaciteBuildingBase">
+    <defName>KM_GlacitePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <size>(1,1)</size>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <uiIconScale>0.472574</uiIconScale><uiIconOffset>(0,0.199367)</uiIconOffset>
+    <label>Glacite pylon</label>
+    <description>A large Glacite crystal held in an iron cradle. Anyone who leans on it does so only once.\n\nLights its surroundings and absorbs heat above 10°C. Needs no fuel or electricity. Useful for keeping a small room cool, but cannot freeze food.</description>
+    <rotatable>true</rotatable>
+    <graphicData>
+      <texPath>Things/Building/Misc/GlacitePylon/GlacitePylon</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.7,2.7)</drawSize>
+    </graphicData>
+    <uiOrder>2821</uiOrder>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>1000</WorkToBuild><Mass>15</Mass><Beauty>8</Beauty></statBases>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <costList><KM_Glacite>25</KM_Glacite></costList>
+    <researchPrerequisites><li>ComplexFurniture</li></researchPrerequisites>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsFurniture</li></thingCategories>
+    <comps>
+      <li Class="LumenStones.CompProperties_FixtureEffecter"><effecterDef>KM_GlaciteGlint</effecterDef></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(80,160,220,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-3.5</heatPerSecond>
+        <heatPushMinTemperature>10</heatPushMinTemperature>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_GlaciteBuildingBase">
+    <defName>KM_GlaciteCooler</defName>
+    <label>Glacite cooler</label>
+    <description>Glacite crystals packed into a sturdy housing. Without a vent, the heat it takes in simply goes into the stone.\n\nAbsorbs heat without fuel, electricity or an exhaust vent, and with Solar energy keeps cooling past its own limit. A larger room or hotter weather may need more than one cooler. Severe damage can trigger a burst of freezing crystal fragments.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/GlaciteCooler</texPath>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <designationCategory>Temperature</designationCategory>
+    <statBases><MaxHitPoints>100</MaxHitPoints><WorkToBuild>1000</WorkToBuild><Mass>6</Mass></statBases>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>30</pathCost>
+    <blockWind>true</blockWind>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList><KM_Glacite>20</KM_Glacite></costList>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsTemperature</li></thingCategories>
+    <placeWorkers Inherit="False"><li>PlaceWorker_CoolerSimple</li></placeWorkers>
+    <comps>
+      <li Class="LumenStones.CompProperties_FixtureEffecter"><effecterDef>KM_GlaciteGlintSmall</effecterDef></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(80,160,220,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_GlaciteCooler">
+        <heatPerSecond>-14</heatPerSecond>
+        <heatPushMinTemperature>-10</heatPushMinTemperature>
+        <passiveCutoff>10</passiveCutoff>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>deep cooling</effect>
+        <description>Spend Solar energy to keep cooling below the passive limit, down to the cooler's active limit. This will freeze the room and everything in it. When off, the cooler stops at its passive limit.</description>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.1</explosiveRadius>
+        <explosiveDamageType>KM_GlaciteFrost</explosiveDamageType>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>70~150</wickTicks>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

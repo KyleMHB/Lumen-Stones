@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>KM_LumenstoneRites</defName>
+    <label>Lumenstone rites</label>
+    <description>Ordinary rock holds traces of Lumenstone too faint to mine. Because the mineral answers to people as well as reagents, a focused crowd can draw those traces together.\n\nUnlocks the Lumenstone altar, which yields more than a Lumen ritual circle and draws strength from its room and from Lumenstone fixtures.</description>
+    <baseCost>600</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>3</researchViewX>
+    <researchViewY>5</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>KM_LumenstoneAltar</defName>
+    <label>Lumenstone altar</label>
+    <description>A round stone altar crowned with raw Lumenstone and inlaid with gold. A good room and good company help the stone answer.\n\nHosts the Lumenstone ritual at full yield, and its room's impressiveness and nearby Lumenstone fixtures raise the ritual's quality and yield. It also works every infusion bill of a Lumen ritual circle, and bills pause while a ceremony runs here.</description>
+    <thingClass>LumenStones.Building_LumenstoneAltar</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Lumenstone/LumenstoneAltar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>2400</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <designationCategory>Production</designationCategory>
+    <stuffCategories><li>Stony</li></stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList><KM_Lumenstone>150</KM_Lumenstone><Gold>50</Gold></costList>
+    <researchPrerequisites><li>KM_LumenstoneRites</li></researchPrerequisites>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+      <ai_chillDestination>false</ai_chillDestination>
+      <buildingTags><li>Production</li></buildingTags>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+  </ThingDef>
+
+  <WorkGiverDef>
+    <defName>KM_DoBillsLumenstoneAltar</defName>
+    <label>infuse at Lumenstone altar</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs><li>KM_LumenstoneAltar</li></fixedBillGiverDefs>
+    <verb>infuse at</verb>
+    <gerund>infusing at</gerund>
+    <requiredCapacities><li>Manipulation</li></requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+</Defs>

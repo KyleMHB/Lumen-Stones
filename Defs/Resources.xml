@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Lumenstone</defName>
+    <label>Lumenstone</label>
+    <description>A rare mineral that forms in deep, slow-cooling rock and keeps a faint light of its own. On its own it does very little. Its value is that it takes on the character of whatever it is infused with, and keeps it.\n\nMine it from rare veins, find it on the surface or buy it from traders at a high price. Infuse it at a Lumen ritual circle to make any researched stone. Traders will not buy it.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Lumenstone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>14</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeability>Buyable</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <ThingDef ParentName="RockBase">
+    <defName>KM_MineableLumenstone</defName>
+    <label>Lumenstone deposit</label>
+    <description>A seam of Lumenstone in the rock. Miners usually find it by its glow before they find it by looking.\n\nMining yields raw Lumenstone. The deposit gives off a faint light.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Lumenstone_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases><MaxHitPoints>1000</MaxHitPoints></statBases>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>KM_Lumenstone</mineableThing>
+      <mineableYield>10</mineableYield>
+      <mineableScatterCommonality>0.1</mineableScatterCommonality>
+      <mineableScatterLumpSizeRange>5~6</mineableScatterLumpSizeRange>
+      <veinMineable>true</veinMineable>
+    </building>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(200,215,230,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Glacite</defName>
+    <label>Glacite</label>
+    <description>Lumenstone infused with nothing settles into its coldest state. It draws warmth from the air to feed its pale blue light, and stays cold in the height of summer.\n\nInfused from Lumenstone at a Lumen ritual circle with no reagent. Its shards light rooms, cool food stores and form the edge of a blade.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Glacite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>7</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <GenStepDef>
+    <defName>KM_LumenstoneSurface</defName>
+    <order>961</order>
+    <genStep Class="LumenStones.GenStep_LumenstoneSurface">
+      <thingDef>KM_Lumenstone</thingDef>
+      <chance>0.1</chance>
+      <stacks>1~2</stacks>
+      <stackSize>5~15</stackSize>
+      <spotMustBeStandable>true</spotMustBeStandable>
+      <allowRoofed>false</allowRoofed>
+      <skipRoofed>true</skipRoofed>
+      <allowInWaterBiome>false</allowInWaterBiome>
+      <minSpacing>20</minSpacing>
+      <avoidUsedRects>true</avoidUsedRects>
+      <warnOnFail>false</warnOnFail>
+    </genStep>
+  </GenStepDef>
+</Defs>

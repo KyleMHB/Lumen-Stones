@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>KM_VerditeChew</defName>
+    <label>Verdite chew</label>
+    <description>A wooden bowl of Verdite crystals, cooked soft enough to chew. A wanderer called Dusk asked so often whether the crystals could be eaten that someone finally cooked them. Farmers in lean years now swear by it, through bloody teeth.\n\nIt gives no nutrition, but halves the rate of hunger for two days. The sharp crystals make the gums bleed, which hurts mood, talking and social impact while the effect lasts. Taking another resets the duration.</description>
+    <descriptionHyperlinks>
+      <HediffDef>KM_VerditeChewed</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/VerditeChew</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <!-- Colony-made only: colonists may sell it, but traders never stock it. -->
+    <tradeability>Sellable</tradeability>
+    <tradeTags Inherit="False" />
+    <statBases>
+      <WorkToMake>300</WorkToMake>
+      <MarketValue>20</MarketValue>
+      <Mass>0.3</Mass>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <foodType>Processed</foodType>
+      <humanlikeOnly>true</humanlikeOnly>
+      <ingestSound>Meal_Eat</ingestSound>
+      <ingestCommandString>Eat {0}</ingestCommandString>
+      <ingestReportString>Eating {0}.</ingestReportString>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>KM_VerditeChewed</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>KM_VerditeGrowth</researchPrerequisite>
+      <workSpeedStat>CookSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+      <recipeUsers Inherit="False">
+        <li>Campfire</li>
+        <li>FueledStove</li>
+        <li>ElectricStove</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <KM_Verdite>1</KM_Verdite>
+      <WoodLog>2</WoodLog>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1010</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>KM_VerditeChewed</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>Verdite-chewed</label>
+    <description>Chewed Verdite crystals slow hunger to half its normal rate. Their sharp edges leave the gums bleeding, which makes talking and socialising harder.</description>
+    <defaultLabelColor>(0.6, 0.85, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1.0</initialSeverity>
+    <!-- Capping at 1 makes a repeat dose reset the two days instead of stacking. -->
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.5</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>bleeding gums</label>
+        <hungerRateFactor>0.5</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <SocialImpact>0.8</SocialImpact>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>KM_VerditeBleedingGums</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>KM_VerditeChewed</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>bleeding gums</label>
+        <description>Those Verdite crystals tore up my gums. Everything tastes of blood.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

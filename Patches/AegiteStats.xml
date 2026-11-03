@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="Flammability"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="Flammability"]/parts</xpath>
+      <value><li Class="LumenStones.StatPart_AegiteFireImmunity" /></value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="Flammability"]</xpath>
+      <value><parts><li Class="LumenStones.StatPart_AegiteFireImmunity" /></parts></value>
+    </nomatch>
+  </Operation>
+</Patch>

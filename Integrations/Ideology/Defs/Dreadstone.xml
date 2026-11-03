@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark content loads only with Ideology. Textures are Dark Stone placeholders until the Dreadstone artwork ticket delivers its own. -->
+  <ResearchProjectDef>
+    <defName>KM_DreadstoneSubjugation</defName>
+    <label>Dreadstone subjugation</label>
+    <description>Learn to refine Dark Stone that takes will: slowly from prisoners and slaves, and quickly from enemies in its sight.\n\nUnlocks Dreadstone refining at the Sacrificial altar and Dreadstone fixtures.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>5</researchViewX>
+    <researchViewY>4</researchViewY>
+    <prerequisites>
+      <li>KM_WarpSacrifice</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Dreadstone</defName>
+    <label>Dreadstone</label>
+    <description>Dark Stone refined to take will. Prisoners kept near it stop planning escapes, and enemies in its sight lose their nerve.\n\nAn obsidian-black crystal with a smoldering blood-orange core, refined from Dark Stone at a Sacrificial altar. Its fixtures spend Warp energy to subjugate prisoners and slaves and to unnerve enemies.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Dreadstone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>30</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseDreadstone</defName>
+    <label>refine Dreadstone</label>
+    <description>Refine 10 Dark Stone into 10 Dreadstone.</description>
+    <jobString>Refining Dreadstone.</jobString>
+    <recipeUsers Inherit="False"><li>KM_SacrificialAltar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_DarkStone</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DarkStone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Dreadstone>10</KM_Dreadstone></products>
+    <researchPrerequisite>KM_DreadstoneSubjugation</researchPrerequisite>
+  </RecipeDef>
+
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenDreadstoneColumn</defName>
+    <label>Dreadstone column</label>
+    <uiOrder>2040</uiOrder>
+    <researchPrerequisites>
+      <li>KM_DreadstoneSubjugation</li>
+    </researchPrerequisites>
+    <description>A roof-supporting column set with Dreadstone. Prisoners held near it give up on escape a little sooner each day.\n\nGives dim indigo light. Warp energy: wears down the resistance and will of the colony's prisoners and slaves in the same room, and makes prison breaks and slave rebellions rarer.</description>
+    <costList>
+      <KM_Dreadstone>15</KM_Dreadstone>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/DreadstoneColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(150,55,25,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Dreadstone</stone><tier>1</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>subjugating prisoners and slaves</effect></li>
+    </comps>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_DreadstoneFixtureBase" ParentName="KM_DarkStoneFixtureBase" Abstract="True">
+    <researchPrerequisites Inherit="False">
+      <li>KM_DreadstoneSubjugation</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DreadstoneFixtureBase">
+    <defName>KM_DreadstoneLamp</defName>
+    <label>Dreadstone lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2809</uiOrder>
+    <description>A Dreadstone crystal on a wooden post.\n\nGives dim indigo light and nothing else.</description>
+    <graphicData>
+      <texPath>Things/Building/Dreadstone/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Dreadstone>10</KM_Dreadstone>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(150,55,25,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Dreadstone</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DreadstoneFixtureBase">
+    <defName>KM_DreadstoneWallLamp</defName>
+    <label>Dreadstone wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2810</uiOrder>
+    <description>A Dreadstone crystal on a wall bracket.\n\nGives dim indigo light and nothing else.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Dreadstone/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Dreadstone/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Dreadstone>8</KM_Dreadstone>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(150,55,25,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Dreadstone</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DreadstoneFixtureBase">
+    <defName>KM_DreadstoneCluster</defName>
+    <label>Dreadstone cluster</label>
+    <uiOrder>2828</uiOrder>
+    <description>A group of Dreadstone crystals in a low carved housing. Raiders who can see it have trouble remembering why they came.\n\nGives indigo light. Warp energy: weakens hostile humanlikes in its sight. Mechanoids and animals are unaffected.</description>
+    <graphicData>
+      <texPath>Things/Building/Dreadstone/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Dreadstone>35</KM_Dreadstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(150,55,25,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Dreadstone</stone><tier>2</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>weakening hostile humanlikes</effect></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_DreadstoneFixtureBase">
+    <defName>KM_DreadstonePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Dreadstone pylon</label>
+    <uiOrder>2829</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall shaft of Dreadstone on a carved pedestal. It takes a little of every enemy who dies in its sight.\n\nGives indigo light. Warp energy: wears down prisoners and slaves in the same room faster than a column, weakens hostile humanlikes in its sight more than a cluster, and turns the deaths of weakened enemies into Warp energy.</description>
+    <graphicData>
+      <texPath>Things/Building/Dreadstone/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Dreadstone>25</KM_Dreadstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(150,55,25,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Dreadstone</stone><tier>3</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>subjugation, Dread and Death Siphon</effect></li>
+    </comps>
+    <size>(1,1)</size>
+  </ThingDef>
+
+<HediffDef>
+    <defName>KM_Dread</defName>
+    <label>dread</label>
+    <description>Dreadstone presses on this mind. Movement, awareness and aim are weakened while it lasts.</description>
+    <hediffClass>LumenStones.Hediff_Status</hediffClass>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+    <maxSeverity>2</maxSeverity>
+    <initialSeverity>0.5</initialSeverity>
+    <defaultLabelColor>(0.45,0.5,0.8)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_DreadSiphon" />
+    </comps>
+    <stages>
+      <li>
+        <label>cluster</label>
+        <becomeVisible>true</becomeVisible>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.85</postFactor></li>
+          <li><capacity>Consciousness</capacity><postFactor>0.9</postFactor></li>
+        </capMods>
+        <statFactors>
+          <ShootingAccuracyPawn>0.85</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <label>pylon</label>
+        <minSeverity>1</minSeverity>
+        <becomeVisible>true</becomeVisible>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.75</postFactor></li>
+          <li><capacity>Consciousness</capacity><postFactor>0.85</postFactor></li>
+        </capMods>
+        <statFactors>
+          <ShootingAccuracyPawn>0.75</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>KM_DreadstoneSubjugated</defName>
+    <label>Dreadstone subjugation</label>
+    <description>A Dreadstone fixture is wearing down this prisoner or slave. Hover for its rates.</description>
+    <hediffClass>LumenStones.Hediff_Status</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <makesSickThought>false</makesSickThought>
+    <defaultLabelColor>(0.8,0.4,0.2)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BaseWeaponNeolithic">
+    <defName>KM_DreadstoneArbalest</defName>
+    <label>Dreadstone arbalest</label>
+    <description>A fast, light bow with obsidian limbs. Anyone hit by one of its bolts loses their nerve for a while.\n\nIts bolts leave a hit humanlike dreadful for ten seconds, and if that enemy dies, a little Warp energy returns to the batteries. Firing costs no Warp energy. Crafted from 100 Dreadstone and 20 steel after Greatbow and Dreadstone subjugation, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/DreadstoneArbalest</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <soundInteract>Bow_Large</soundInteract>
+    <smeltable>false</smeltable>
+    <costList>
+      <KM_Dreadstone>100</KM_Dreadstone>
+      <Steel>20</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>2.2</Mass>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.82</AccuracyShort>
+      <AccuracyMedium>0.72</AccuracyMedium>
+      <AccuracyLong>0.45</AccuracyLong>
+      <RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
+    </statBases>
+    <weaponTags>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>KM_Bolt_Dread</defaultProjectile>
+        <warmupTime>1.3</warmupTime>
+        <range>26</range>
+        <soundCast>Bow_Large</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities><li>Blunt</li><li>Poke</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+      <recipeUsers><li>CraftingSpot</li></recipeUsers>
+      <researchPrerequisites>
+        <li>Greatbow</li>
+        <li>KM_DreadstoneSubjugation</li>
+      </researchPrerequisites>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>531</displayPriority>
+    </recipeMaker>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>KM_Bolt_Dread</defName>
+    <label>Dreadstone bolt</label>
+    <thingClass>LumenStones.Bullet_Dread</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Arrow_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Arrow</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <speed>52</speed>
+    </projectile>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Shared base for every stone implant and crystal prosthetic. Light content lives here; dark content is in Integrations/Ideology. -->
+
+  <ResearchProjectDef>
+    <defName>KM_LumenAttunement</defName>
+    <label>Lumen attunement</label>
+    <description>Shape infused Lumenstone into implants and crystal prosthetics, and wake them with Attunement. Unlocks light implant and prosthetic bills at the Lumen ritual circle, the Attunement ritual and, without Ideology, the attunement job at the circle.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>KM_VitaliteRestoration</li></prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>7</researchViewY>
+  </ResearchProjectDef>
+
+  <StatDef>
+    <defName>KM_RecreationGain</defName>
+    <label>recreation gain</label>
+    <description>A multiplier on how much recreation a person gains from any source.</description>
+    <category>PawnMisc</category>
+    <toStringStyle>PercentZero</toStringStyle>
+    <defaultBaseValue>1</defaultBaseValue>
+    <hideAtValue>1</hideAtValue>
+    <minValue>0</minValue>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <showOnDrones>false</showOnDrones>
+  </StatDef>
+
+  <HediffDef>
+    <defName>KM_AttunementSickness</defName>
+    <label>attunement sickness</label>
+    <description>A newly woken crystal is settling into the body. It aches and slows the step for about a day.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.7, 1.0)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Icons/AttunementSickness</texPath></li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painOffset>0.1</painOffset>
+        <capMods><li><capacity>Moving</capacity><offset>-0.15</offset></li></capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <JobDef>
+    <defName>KM_AttuneAtCircle</defName>
+    <driverClass>LumenStones.JobDriver_AttuneAtCircle</driverClass>
+    <reportString>attuning TargetB.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- Items -->
+
+  <ThingDef Name="KM_CrystalPartItemBase" ParentName="BodyPartBase" Abstract="True">
+    <techLevel>Neolithic</techLevel>
+    <thingCategories><li>BodyPartsProsthetic</li></thingCategories>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+  </ThingDef>
+
+  <ThingDef Name="KM_StoneImplantItemBase" ParentName="KM_CrystalPartItemBase" Abstract="True">
+    <statBases>
+      <MarketValue>350</MarketValue>
+      <Mass>0.3</Mass>
+    </statBases>
+    <modExtensions><li Class="LumenStones.CrystalPartItem" /></modExtensions>
+  </ThingDef>
+
+  <ThingDef Name="KM_CrystalProstheticItemBase" ParentName="KM_CrystalPartItemBase" Abstract="True">
+    <statBases>
+      <MarketValue>450</MarketValue>
+      <Mass>2</Mass>
+    </statBases>
+    <modExtensions><li Class="LumenStones.CrystalPartItem"><prosthetic>true</prosthetic></li></modExtensions>
+  </ThingDef>
+
+  <!-- Bills. Light bills are worked at the circle; an Ideology patch adds the Lumenstone altar. -->
+
+  <RecipeDef Name="KM_CrystalPartCraftBase" Abstract="True">
+    <workAmount>6000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <requiredGiverWorkType>Crafting</requiredGiverWorkType>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <skillRequirements><Crafting>5</Crafting></skillRequirements>
+    <researchPrerequisite>KM_LumenAttunement</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef Name="KM_LightPartCraftBase" ParentName="KM_CrystalPartCraftBase" Abstract="True">
+    <recipeUsers><li>KM_LumenCircle</li></recipeUsers>
+  </RecipeDef>
+
+  <!-- Hediffs and surgery -->
+
+  <HediffDef Name="KM_StoneImplantHediffBase" ParentName="ImplantHediffBase" Abstract="True">
+    <hediffClass>LumenStones.Hediff_StoneImplant</hediffClass>
+    <defaultLabelColor>(0.75, 0.65, 1.0)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef Name="KM_CrystalPartHediffBase" ParentName="AddedBodyPartBase" Abstract="True">
+    <hediffClass>LumenStones.Hediff_CrystalPart</hediffClass>
+    <defaultLabelColor>(0.75, 0.65, 1.0)</defaultLabelColor>
+  </HediffDef>
+
+  <RecipeDef Name="KM_InstallStoneImplantBase" ParentName="SurgeryInstallImplantBase" Abstract="True">
+    <workerClass>LumenStones.Recipe_InstallStoneImplant</workerClass>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+  </RecipeDef>
+
+  <RecipeDef Name="KM_RemoveStoneImplantBase" ParentName="SurgeryRemoveImplantBase" Abstract="True">
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+  </RecipeDef>
+
+  <RecipeDef Name="KM_InstallCrystalPartBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True" />
+
+  <!-- Glacite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_GlaciteImplant</defName>
+    <label>Glacite implant</label>
+    <description>A shard of Glacite set beside the heart. Once woken by Attunement, it keeps the body comfortable in great heat but makes cold harder to bear.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/GlaciteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_GlaciteImplant</defName>
+    <label>Glacite implant</label>
+    <labelNoun>a Glacite implant</labelNoun>
+    <description>A shard of Glacite beside the heart. It keeps the body comfortable in great heat but makes cold harder to bear.</description>
+    <spawnThingOnRemoved>KM_GlaciteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statOffsets><ComfyTemperatureMax>30</ComfyTemperatureMax></statOffsets></benefit>
+        <drawback><statOffsets><ComfyTemperatureMin>20</ComfyTemperatureMin></statOffsets></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeGlaciteImplant</defName>
+    <label>make Glacite implant</label>
+    <description>Shape Glacite and a component into a Glacite implant.</description>
+    <jobString>Making Glacite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Glacite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Glacite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_GlaciteImplant>1</KM_GlaciteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallGlaciteImplant</defName>
+    <label>install Glacite implant</label>
+    <description>Install a Glacite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Glacite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_GlaciteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_GlaciteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_GlaciteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveGlaciteImplant</defName>
+    <label>remove Glacite implant</label>
+    <description>Remove a Glacite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Glacite implant.</jobString>
+    <removesHediff>KM_GlaciteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Verdite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_VerditeImplant</defName>
+    <label>Verdite implant</label>
+    <description>A shard of Verdite set beside the stomach. Once woken by Attunement, it stores sunlight and feeds the body with it, so the bearer needs less food. A bearer kept from the sun for too long grows hungrier than normal.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/VerditeImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_VerditeImplant</defName>
+    <label>Verdite implant</label>
+    <labelNoun>a Verdite implant</labelNoun>
+    <description>A shard of Verdite beside the stomach. It stores sunlight in a reserve that feeds the body. Time in the sun fills it; time without sun drains it.</description>
+    <spawnThingOnRemoved>KM_VerditeImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <reserve>KM_SunlightReserve</reserve>
+      </li>
+    </comps>
+  </HediffDef>
+  <!-- Severity is the stored sunlight. Stages are ordered low to high; the lowest is the drawback that Solar energy relieves. -->
+  <HediffDef>
+    <defName>KM_SunlightReserve</defName>
+    <label>sunlight reserve</label>
+    <description>Sunlight stored in a Verdite implant. Clear sun fills it in a few hours, rain and fog more slowly, and Verdite overlight at half speed. Without sun it drains over about a day and a half.</description>
+    <hediffClass>LumenStones.Hediff_SunlightReserve</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>0.5</initialSeverity>
+    <minSeverity>0</minSeverity>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <label>sun-starved</label>
+        <hungerRateFactor>1.3</hungerRateFactor>
+        <extraTooltip>The crystal has gone dark. The body is hungry for light.</extraTooltip>
+      </li>
+      <li>
+        <minSeverity>0.15</minSeverity>
+        <label>fading</label>
+        <hungerRateFactor>0.85</hungerRateFactor>
+        <extraTooltip>The stored light is running low.</extraTooltip>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>sun-fed</label>
+        <hungerRateFactor>0.6</hungerRateFactor>
+        <extraTooltip>Sunlight stored in the Verdite crystal is feeding the body.</extraTooltip>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="LumenStones.SunlightReserveExtension">
+        <hoursToFill>4</hoursToFill>
+        <daysToDrain>1.5</daysToDrain>
+        <startSeverity>0.5</startSeverity>
+        <overlightRate>0.5</overlightRate>
+      </li>
+    </modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeVerditeImplant</defName>
+    <label>make Verdite implant</label>
+    <description>Shape Verdite and a component into a Verdite implant.</description>
+    <jobString>Making Verdite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Verdite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Verdite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_VerditeImplant>1</KM_VerditeImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallVerditeImplant</defName>
+    <label>install Verdite implant</label>
+    <description>Install a Verdite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Verdite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_VerditeImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_VerditeImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_VerditeImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveVerditeImplant</defName>
+    <label>remove Verdite implant</label>
+    <description>Remove a Verdite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Verdite implant.</jobString>
+    <removesHediff>KM_VerditeImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Vitalite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_VitaliteImplant</defName>
+    <label>Vitalite implant</label>
+    <description>A shard of Vitalite set beside the heart. Once woken by Attunement, wounds heal faster and disease is fought off sooner, but the body turns its strength away from bearing children. Without Biotech, it tires the body instead.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/VitaliteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_VitaliteImplant</defName>
+    <label>Vitalite implant</label>
+    <labelNoun>a Vitalite implant</labelNoun>
+    <description>A shard of Vitalite beside the heart. Wounds heal faster and disease is fought off sooner, at the cost of fertility. Without Biotech, it tires the body instead.</description>
+    <spawnThingOnRemoved>KM_VitaliteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statFactors><InjuryHealingFactor>1.5</InjuryHealingFactor><ImmunityGainSpeed>1.2</ImmunityGainSpeed></statFactors></benefit>
+        <sterile>true</sterile>
+        <drawbackWithoutBiotech><restFallFactor>1.2</restFallFactor></drawbackWithoutBiotech>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeVitaliteImplant</defName>
+    <label>make Vitalite implant</label>
+    <description>Shape Vitalite and a component into a Vitalite implant.</description>
+    <jobString>Making Vitalite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Vitalite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Vitalite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_VitaliteImplant>1</KM_VitaliteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallVitaliteImplant</defName>
+    <label>install Vitalite implant</label>
+    <description>Install a Vitalite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Vitalite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_VitaliteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_VitaliteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_VitaliteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveVitaliteImplant</defName>
+    <label>remove Vitalite implant</label>
+    <description>Remove a Vitalite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Vitalite implant.</jobString>
+    <removesHediff>KM_VitaliteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Serenite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_SereniteImplant</defName>
+    <label>Serenite implant</label>
+    <description>A shard of Serenite set beside the heart. Once woken by Attunement, it steadies the mind and lifts the mood, but slows the body and its work.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/SereniteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_SereniteImplant</defName>
+    <label>Serenite implant</label>
+    <labelNoun>a Serenite implant</labelNoun>
+    <description>A shard of Serenite beside the heart. It steadies the mind and lifts the mood, but slows the body and its work.</description>
+    <spawnThingOnRemoved>KM_SereniteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statOffsets><MentalBreakThreshold>-0.08</MentalBreakThreshold></statOffsets></benefit>
+        <drawback>
+          <statOffsets><WorkSpeedGlobal>-0.1</WorkSpeedGlobal></statOffsets>
+          <capMods><li><capacity>Moving</capacity><offset>-0.1</offset></li></capMods>
+        </drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>KM_SereniteImplantCalm</defName>
+    <workerClass>LumenStones.ThoughtWorker_StoneImplant</workerClass>
+    <thoughtClass>LumenStones.Thought_StoneImplant</thoughtClass>
+    <hediff>KM_SereniteImplant</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Serenite calm</label>
+        <description>A quiet light sits beside my heart.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeSereniteImplant</defName>
+    <label>make Serenite implant</label>
+    <description>Shape Serenite and a component into a Serenite implant.</description>
+    <jobString>Making Serenite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Serenite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Serenite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_SereniteImplant>1</KM_SereniteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallSereniteImplant</defName>
+    <label>install Serenite implant</label>
+    <description>Install a Serenite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Serenite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_SereniteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_SereniteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_SereniteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveSereniteImplant</defName>
+    <label>remove Serenite implant</label>
+    <description>Remove a Serenite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Serenite implant.</jobString>
+    <removesHediff>KM_SereniteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Aegite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_AegiteImplant</defName>
+    <label>Aegite implant</label>
+    <description>A shard of Aegite set beside the heart. Once woken by Attunement, the body barely burns, shrugs off food poisoning and resists toxins, but tires faster.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/AegiteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_AegiteImplant</defName>
+    <label>Aegite implant</label>
+    <labelNoun>an Aegite implant</labelNoun>
+    <description>A shard of Aegite beside the heart. The body barely burns, shrugs off food poisoning and resists toxins, but tires faster.</description>
+    <spawnThingOnRemoved>KM_AegiteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit>
+          <foodPoisoningChanceFactor>0</foodPoisoningChanceFactor>
+          <statFactors><Flammability>0.25</Flammability></statFactors>
+          <statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets>
+        </benefit>
+        <drawback><restFallFactor>1.25</restFallFactor></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeAegiteImplant</defName>
+    <label>make Aegite implant</label>
+    <description>Shape Aegite and a component into an Aegite implant.</description>
+    <jobString>Making Aegite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Aegite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Aegite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_AegiteImplant>1</KM_AegiteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallAegiteImplant</defName>
+    <label>install Aegite implant</label>
+    <description>Install an Aegite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Aegite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_AegiteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_AegiteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_AegiteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveAegiteImplant</defName>
+    <label>remove Aegite implant</label>
+    <description>Remove an Aegite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Aegite implant.</jobString>
+    <removesHediff>KM_AegiteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Ferrite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_FerriteImplant</defName>
+    <label>Ferrite implant</label>
+    <description>A shard of Ferrite set beside the spine. Once woken by Attunement, the skin hardens against blades and blows and worn apparel slowly mends, but the body moves heavily.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/FerriteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_FerriteImplant</defName>
+    <label>Ferrite implant</label>
+    <labelNoun>a Ferrite implant</labelNoun>
+    <description>A shard of Ferrite beside the spine. The skin hardens against blades and blows and worn apparel slowly mends, but the body moves heavily.</description>
+    <spawnThingOnRemoved>KM_FerriteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.1</ArmorRating_Blunt></statOffsets></benefit>
+        <drawback><capMods><li><capacity>Moving</capacity><offset>-0.15</offset></li></capMods></drawback>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_ApparelMending"><hitPointsPerDay>10</hitPointsPerDay></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeFerriteImplant</defName>
+    <label>make Ferrite implant</label>
+    <description>Shape Ferrite and a component into a Ferrite implant.</description>
+    <jobString>Making Ferrite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Ferrite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Ferrite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_FerriteImplant>1</KM_FerriteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallFerriteImplant</defName>
+    <label>install Ferrite implant</label>
+    <description>Install a Ferrite implant. It stays dormant until woken by Attunement.</description>
+    <jobString>Installing Ferrite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_FerriteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_FerriteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_FerriteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveFerriteImplant</defName>
+    <label>remove Ferrite implant</label>
+    <description>Remove a Ferrite implant. A dormant implant comes out whole; an active one crumbles to raw Lumenstone.</description>
+    <jobString>Removing Ferrite implant.</jobString>
+    <removesHediff>KM_FerriteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Light crystal prosthetics: a clean upgrade with no drawback. -->
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_FerriteArm</defName>
+    <label>Ferrite arm</label>
+    <description>An arm of grown Ferrite crystal. Once woken by Attunement, it is stronger than a natural arm, and injuries on it close by themselves.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/FerriteArm</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_FerriteArm</defName>
+    <label>Ferrite arm</label>
+    <labelNoun>a Ferrite arm</labelNoun>
+    <description>An arm of grown Ferrite crystal. Injuries on it close by themselves.</description>
+    <spawnThingOnRemoved>KM_FerriteArm</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shoulder</texPath></li>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools><li><label>fist</label><capacities><li>Blunt</li></capacities><power>10</power><cooldownTime>2</cooldownTime></li></tools>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_Attunement"><side>Light</side></li>
+      <li Class="LumenStones.HediffCompProperties_PartMending"><healPerDay>2</healPerDay></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeFerriteArm</defName>
+    <label>make Ferrite arm</label>
+    <description>Grow Ferrite and a component into a Ferrite arm.</description>
+    <jobString>Making Ferrite arm.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Ferrite</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Ferrite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_FerriteArm>1</KM_FerriteArm></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallFerriteArm</defName>
+    <label>install Ferrite arm</label>
+    <description>Install a Ferrite arm. It works as a simple prosthetic until woken by Attunement.</description>
+    <jobString>Installing Ferrite arm.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_FerriteArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_FerriteArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_FerriteArm</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_FerriteLeg</defName>
+    <label>Ferrite leg</label>
+    <description>A leg of grown Ferrite crystal. Once woken by Attunement, it is stronger than a natural leg, and injuries on it close by themselves.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/FerriteLeg</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_FerriteLeg</defName>
+    <label>Ferrite leg</label>
+    <labelNoun>a Ferrite leg</labelNoun>
+    <description>A leg of grown Ferrite crystal. Injuries on it close by themselves.</description>
+    <spawnThingOnRemoved>KM_FerriteLeg</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Leg</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement"><side>Light</side></li>
+      <li Class="LumenStones.HediffCompProperties_PartMending"><healPerDay>2</healPerDay></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeFerriteLeg</defName>
+    <label>make Ferrite leg</label>
+    <description>Grow Ferrite and a component into a Ferrite leg.</description>
+    <jobString>Making Ferrite leg.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Ferrite</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Ferrite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_FerriteLeg>1</KM_FerriteLeg></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallFerriteLeg</defName>
+    <label>install Ferrite leg</label>
+    <description>Install a Ferrite leg. It works as a simple prosthetic until woken by Attunement.</description>
+    <jobString>Installing Ferrite leg.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_FerriteLeg</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_FerriteLeg</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Leg</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_FerriteLeg</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_VitaliteHeart</defName>
+    <label>Vitalite heart</label>
+    <description>A heart of grown Vitalite crystal. Once woken by Attunement, it beats stronger than a natural heart and helps the body fight disease.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/VitaliteHeart</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_VitaliteHeart</defName>
+    <label>Vitalite heart</label>
+    <labelNoun>a Vitalite heart</labelNoun>
+    <description>A heart of grown Vitalite crystal. It helps the body fight disease.</description>
+    <spawnThingOnRemoved>KM_VitaliteHeart</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Heart</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <benefit><statFactors><ImmunityGainSpeed>1.1</ImmunityGainSpeed></statFactors></benefit>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeVitaliteHeart</defName>
+    <label>make Vitalite heart</label>
+    <description>Grow Vitalite and a component into a Vitalite heart.</description>
+    <jobString>Making Vitalite heart.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Vitalite</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Vitalite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_VitaliteHeart>1</KM_VitaliteHeart></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallVitaliteHeart</defName>
+    <label>install Vitalite heart</label>
+    <description>Install a Vitalite heart. It works as a simple prosthetic until woken by Attunement.</description>
+    <jobString>Installing Vitalite heart.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_VitaliteHeart</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_VitaliteHeart</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Heart</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_VitaliteHeart</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_AegiteEye</defName>
+    <label>Aegite eye</label>
+    <description>An eye of grown Aegite crystal. Once woken by Attunement, it sees better than a natural eye and can't be blinded by solar flashes.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/AegiteEye</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_AegiteEye</defName>
+    <label>Aegite eye</label>
+    <labelNoun>an Aegite eye</labelNoun>
+    <description>An eye of grown Aegite crystal. It can't be blinded by solar flashes.</description>
+    <spawnThingOnRemoved>KM_AegiteEye</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Eye</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Light</side>
+        <prevents><li>KM_SolarBlindness</li></prevents>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeAegiteEye</defName>
+    <label>make Aegite eye</label>
+    <description>Grow Aegite and a component into an Aegite eye.</description>
+    <jobString>Making Aegite eye.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Aegite</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Aegite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_AegiteEye>1</KM_AegiteEye></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallAegiteEye</defName>
+    <label>install Aegite eye</label>
+    <description>Install an Aegite eye. It works as a simple prosthetic until woken by Attunement.</description>
+    <jobString>Installing Aegite eye.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_AegiteEye</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_AegiteEye</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Eye</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_AegiteEye</addsHediff>
+  </RecipeDef>
+
+  <!-- Portable cells. Without Ideology the Sunstone cell carries Solar energy only. With Ideology the Twinstone cell
+       (Integrations/Ideology) adds a Warp pool and replaces the Sunstone cell's bill. -->
+
+  <ThingDef Name="KM_PortableCellBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <drawerType>MapMeshOnly</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <tickerType>Never</tickerType>
+    <alwaysHaulable>true</alwaysHaulable>
+    <rotatable>false</rotatable>
+    <pathCost>14</pathCost>
+    <stackLimit>1</stackLimit>
+    <techLevel>Neolithic</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <MarketValue>300</MarketValue>
+      <Mass>1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_PortableCellBase">
+    <defName>KM_SunstoneCell</defName>
+    <label>Sunstone cell</label>
+    <description>A sealed cell of two Sunstone crystals that stores Solar energy for implanted pawns away from home. It charges slowly from a home settlement's spare energy, and anywhere else it relieves the drawbacks of light implants on every pawn on its map or in its caravan.</description>
+    <graphicData><texPath>Things/Item/Misc/SunstoneCell</texPath></graphicData>
+    <comps>
+      <li Class="LumenStones.CompProperties_Twinstone"><capacity>60</capacity></li>
+    </comps>
+  </ThingDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeSunstoneCell</defName>
+    <label>make Sunstone cell</label>
+    <description>Seal Sunstone into a Sunstone cell.</description>
+    <jobString>Making Sunstone cell.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Sunstone</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Sunstone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_SunstoneCell>1</KM_SunstoneCell></products>
+    <researchPrerequisites><li>KM_SunstoneChanneling</li></researchPrerequisites>
+  </RecipeDef>
+</Defs>

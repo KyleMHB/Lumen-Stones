@@ -1,0 +1,51 @@
+{
+  "sourceSize": [
+    1402,
+    1122
+  ],
+  "crop": [
+    130,
+    60,
+    1290,
+    1060
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    41,
+    50,
+    481,
+    415
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Crop accepted source to exclude exterior debris; preserve user-painted source mask and apply the same crop and uniform reduction.",
+  "alphaHandling": "Single shared crop and uniform Lanczos reduction; opaque-red painted mask override.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "paintedMask": "painted-mask-output.png",
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      52,
+      53,
+      470,
+      414
+    ],
+    "boundsTolerance": 20,
+    "footLine": 415,
+    "minSourceSize": 1000,
+    "minSourcePixelsPerOutputPixel": 1,
+    "definition": "KM_VitaliteCluster",
+    "drawSize": [
+      1,
+      1.12
+    ]
+  }
+}

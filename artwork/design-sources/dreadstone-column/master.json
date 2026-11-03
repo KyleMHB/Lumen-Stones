@@ -1,0 +1,150 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    376,
+    72,
+    878,
+    1171
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    36,
+    512,
+    490
+  ],
+  "colorFilename": "DreadstoneColumn.png",
+  "maskFilename": "DreadstoneColumn_m.png",
+  "sourceRepair": "Crop faint external debris with the shared export crop; no source pixels edited.",
+  "alphaHandling": "Preserve source alpha inside the crop through one uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "cap": [
+          [
+            376,
+            72
+          ],
+          [
+            878,
+            72
+          ],
+          [
+            878,
+            254
+          ],
+          [
+            376,
+            254
+          ]
+        ],
+        "collar": [
+          [
+            390,
+            550
+          ],
+          [
+            448,
+            550
+          ],
+          [
+            453,
+            579
+          ],
+          [
+            501,
+            592
+          ],
+          [
+            751,
+            592
+          ],
+          [
+            799,
+            577
+          ],
+          [
+            804,
+            550
+          ],
+          [
+            862,
+            550
+          ],
+          [
+            862,
+            729
+          ],
+          [
+            390,
+            729
+          ]
+        ],
+        "plinth": [
+          [
+            376,
+            990
+          ],
+          [
+            457,
+            990
+          ],
+          [
+            464,
+            1018
+          ],
+          [
+            510,
+            1034
+          ],
+          [
+            744,
+            1034
+          ],
+          [
+            790,
+            1018
+          ],
+          [
+            799,
+            990
+          ],
+          [
+            878,
+            990
+          ],
+          [
+            878,
+            1170
+          ],
+          [
+            376,
+            1170
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      152,
+      36,
+      359,
+      490
+    ],
+    "boundsTolerance": 8,
+    "footLine": 490,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 8,
+    "alphaDebrisTolerance": 8
+  }
+}

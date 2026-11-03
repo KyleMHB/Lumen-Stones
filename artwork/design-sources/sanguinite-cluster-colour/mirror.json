@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    108,
+    85,
+    1424,
+    948
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    24,
+    60,
+    488,
+    452
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Colour-only remap of accepted source to match Sanguinite column; alpha and geometry preserved.",
+  "alphaHandling": "Preserve alpha in crop and apply one uniform reduction.",
+  "layers": [
+    {
+      "path": "mirror-source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      24,
+      100,
+      488,
+      412
+    ],
+    "boundsTolerance": 24,
+    "footLine": 408,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_SanguiniteCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "mirror-mask.png"
+}

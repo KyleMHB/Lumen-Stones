@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef/comps/li[@Class="CompProperties_MeditationFocus"][focusTypes/li="Flame"]/offsets/li[@Class="FocusStrengthOffset_BuildingDefsLit"]/defs</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/comps/li[@Class="CompProperties_MeditationFocus"][focusTypes/li="Flame"]/offsets/li[@Class="FocusStrengthOffset_BuildingDefsLit"]/defs</xpath>
+      <value><li>KM_LumenPyrinthColumn</li></value>
+    </match>
+  </Operation>
+</Patch>

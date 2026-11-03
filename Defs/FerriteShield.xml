@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_FerriteShield</defName>
+    <label>Ferrite shield</label>
+    <description>A slate-silver shield with a copper crystal boss. Left alone, its dents slowly fill back in.\n\nWorn in the utility slot alongside either a melee or ranged weapon. Adds 25 percentage points to sharp and blunt armour. While worn, it slowly mends itself and the wearer's worn apparel and equipped weapons. Stronger Ferrite maintenance nearby takes priority. Crafted at a smithy from 100 Ferrite and 20 steel after Long blades, which follows Smithing, with Crafting 6.</description>
+    <graphicData><texPath>Things/Item/Equipment/Shield/FerriteShield</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints><Mass>2</Mass><WorkToMake>12000</WorkToMake>
+      <Flammability>0</Flammability><EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><ArmorRating_Sharp>0.25</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt></equippedStatOffsets>
+    <costList><KM_Ferrite>100</KM_Ferrite><Steel>20</Steel></costList>
+    <recipeMaker>
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers><li>ElectricSmithy</li><li>FueledSmithy</li></recipeUsers>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements><unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <thingCategories><li>ApparelUtility</li></thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity><careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged><wearPerDay>0</wearPerDay>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups><layers><li>Belt</li></layers>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    </apparel>
+    <comps><li Class="LumenStones.CompProperties_Ferrite"><personal>true</personal><tier>0</tier><radius>0</radius><interval>300</interval><repairBudget>0.000225</repairBudget></li></comps>
+    <tradeTags><li>Clothing</li></tradeTags>
+  </ThingDef>
+</Defs>

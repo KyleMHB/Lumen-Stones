@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_VerditeBracer</defName>
+    <label>living vine bracer</label>
+    <description>A Verdite crystal bracer wrapped in living vines. While worn in the utility slot, reduces hunger rate by 33 percentage points, even in darkness. It competes with shields and pendants.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Misc/LivingVineBracer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.3</Mass>
+      <WorkToMake>8000</WorkToMake>
+      <Flammability>0</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <costList>
+      <KM_Verdite>100</KM_Verdite>
+      <Steel>20</Steel>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>KM_VerditeGrowth</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+    </tradeTags>
+    <comps>
+      <li Class="LumenStones.CompProperties_WielderHediff">
+        <hediff>KM_VerditeSustenance</hediff>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_VitaliteCirclet</defName>
+    <label>Vitalite circlet</label>
+    <description>A steel circlet set with pale Vitalite. While worn, adds 15 percentage points to immunity gain speed and 10 percentage points to medical tend quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Apparel/VitaliteCirclet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.3</Mass>
+      <WorkToMake>8000</WorkToMake>
+      <Flammability>0</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ImmunityGainSpeed>0.15</ImmunityGainSpeed>
+      <MedicalTendQuality>0.10</MedicalTendQuality>
+    </equippedStatOffsets>
+    <costList>
+      <KM_Vitalite>100</KM_Vitalite>
+      <Steel>20</Steel>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>KM_VitaliteRestoration</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <thingCategories>
+      <li>Headgear</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>UpperHead</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/VitaliteCirclet/VitaliteCirclet</wornGraphicPath>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+    </tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>KM_LumenstoneStaff</defName>
+    <label>Lumenstone staff</label>
+    <description>A steel quarterstaff with a Lumenstone striking core. Adds 15 percentage points to social impact and conversion power, and 8 to melee dodge before the native dodge curve. A ritual leader wielding it adds 10 percentage points to Lumenstone ritual quality.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <smeltable>false</smeltable>
+    <statBases>
+      <WorkToMake>8000</WorkToMake>
+      <Mass>1.5</Mass>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/LumenstoneStaff</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+    </tools>
+    <equippedStatOffsets>
+      <SocialImpact>0.15</SocialImpact>
+      <ConversionPower MayRequire="Ludeon.RimWorld.Ideology">0.15</ConversionPower>
+      <MeleeDodgeChance>8</MeleeDodgeChance>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>Smithing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <costList>
+      <KM_Lumenstone>100</KM_Lumenstone>
+      <Steel>20</Steel>
+    </costList>
+  </ThingDef>
+  <HediffDef>
+    <defName>KM_VerditeSustenance</defName>
+    <label>Verdite sustenance</label>
+    <description>The living vine bracer reduces hunger while worn.</description>
+    <hediffClass>Hediff</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <stages>
+      <li>
+        <hungerRateFactorOffset>-0.33</hungerRateFactorOffset>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

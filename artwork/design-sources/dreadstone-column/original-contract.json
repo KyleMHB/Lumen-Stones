@@ -1,0 +1,27 @@
+{
+  "id": "DreadstoneColumn-design-candidate",
+  "label": "Dreadstone column",
+  "canvas": [1254,1254],
+  "exportCanvas": [512,512],
+  "contract": {
+    "identity": "Dreadstone column: obsidian-black pillar with a smoldering blood-orange core",
+    "geometry": "One upright faceted crystal pillar with three simple neutral stone fittings: top cap, middle collar, bottom plinth. Exploratory silhouette, not a settled darkstone design.",
+    "materials": "Crystal fixed obsidian/charcoal with blood-orange core; cap, collar and plinth construction-tintable neutral greys",
+    "camera": "Approved Glacite column controls simple broad facets, charcoal contours, shallow visible top faces and camera",
+    "protected": "All existing production art and definitions",
+    "allowedEdits": "New candidate under work/dreadstone-column only"
+  },
+  "framing": {
+    "capBox": [375,140,879,280],
+    "collarBox": [397,610,857,730],
+    "plinthBox": [357,1080,897,1200],
+    "crystalBox": [420,220,834,1130],
+    "baseAnchor": [627,1200],
+    "placementScaleRange": [0.9,1],
+    "placement": "Generate on the same frame; assemble at scale 1 and offset [0,0]."
+  },
+  "placement": "Provisional 1x1 column; no runtime draw size or consumer defined. Do not invent a definition for checks.",
+  "sourceRepair": "None planned; inspect generated alpha and record actual repairs",
+  "alphaHandling": "Request true transparency, preserve the generated alpha",
+  "review": "Human review outstanding"
+}

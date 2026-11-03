@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Attunement wakes light parts at the circle or Lumenstone altar; Binding wakes dark parts at the Sacrificial altar.
+       Both deliver the recipient like the sacrifice victim, then the attuner works while the recipient lies on the host. -->
+  <RitualBehaviorDef Name="KM_AttunementBehaviorBase" Abstract="True">
+    <workerClass>LumenStones.RitualBehaviorWorker_Attunement</workerClass>
+    <durationTicks>5000</durationTicks>
+    <stages>
+      <li Class="RitualStage_InteractWithRole">
+        <targetId>recipient</targetId>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers><li Class="StageEndTrigger_PawnDeliveredOrNotValid"/></endTriggers>
+        <failTriggers>
+          <li Class="StageFailTrigger_TargetPawnUnreachable"><takerId>attuner</takerId><takeeId>recipient</takeeId><desc>Recipient is not reachable.</desc></li>
+          <li Class="StageFailTrigger_PawnAsleep"><desc>attuner asleep</desc><pawnId>attuner</pawnId></li>
+        </failTriggers>
+        <roleBehaviors>
+          <li><roleId>attuner</roleId><dutyDef>DeliverPawnToAltar</dutyDef></li>
+          <li><roleId>recipient</roleId><dutyDef>Idle</dutyDef></li>
+        </roleBehaviors>
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <spectateDistanceOverride>2</spectateDistanceOverride>
+        <endTriggers><li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li></endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>attuner</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_DateRitual</speakerInteraction>
+            <customPositions><li Class="RitualPosition_OnInteractionCell" /></customPositions>
+          </li>
+          <li>
+            <roleId>recipient</roleId>
+            <dutyDef>LayDownAwake</dutyDef>
+            <customPositions><li Class="LumenStones.RitualPosition_AltarCenter" /></customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+  <RitualBehaviorDef ParentName="KM_AttunementBehaviorBase">
+    <defName>KM_Attunement</defName>
+    <roles>
+      <li Class="RitualRoleColonist"><label>attuner</label><id>attuner</id><required>true</required><maxCount>1</maxCount><countsAsParticipant>true</countsAsParticipant><allowOtherIdeos>true</allowOtherIdeos><allowChild>false</allowChild><mustBeAbleToReachTarget>true</mustBeAbleToReachTarget></li>
+      <li Class="LumenStones.RitualRoleAttunementRecipient">
+        <label>recipient</label><missingDesc>a colonist, prisoner or slave with a dormant light part</missingDesc>
+        <id>recipient</id><side>Light</side><maxCount>1</maxCount><required>true</required><allowChild>false</allowChild>
+        <countsAsParticipant>false</countsAsParticipant><ignoreBleeding>true</ignoreBleeding><allowDowned>true</allowDowned>
+      </li>
+    </roles>
+  </RitualBehaviorDef>
+  <RitualBehaviorDef ParentName="KM_AttunementBehaviorBase">
+    <defName>KM_Binding</defName>
+    <roles>
+      <li Class="RitualRoleColonist"><label>attuner</label><id>attuner</id><required>true</required><maxCount>1</maxCount><countsAsParticipant>true</countsAsParticipant><allowOtherIdeos>true</allowOtherIdeos><allowChild>false</allowChild><mustBeAbleToReachTarget>true</mustBeAbleToReachTarget></li>
+      <li Class="LumenStones.RitualRoleAttunementRecipient">
+        <label>recipient</label><missingDesc>a colonist, prisoner or slave with a dormant dark part</missingDesc>
+        <id>recipient</id><side>Dark</side><maxCount>1</maxCount><required>true</required><allowChild>false</allowChild>
+        <countsAsParticipant>false</countsAsParticipant><ignoreBleeding>true</ignoreBleeding><allowDowned>true</allowDowned>
+      </li>
+    </roles>
+  </RitualBehaviorDef>
+
+  <!-- positivityIndex is the number of parts woken. Only the exceptional outcome spares attunement sickness. -->
+  <RitualOutcomeEffectDef Name="KM_AttunementOutcomeBase" Abstract="True">
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Attunement</workerClass>
+    <startingQuality>0.2</startingQuality>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <givesDevelopmentPoints>false</givesDevelopmentPoints>
+    <comps>
+      <li Class="RitualOutcomeComp_PawnSkill"><label>{PAWN_labelShort}'s medicine skill</label><labelAbstract>attuner's medicine skill</labelAbstract><roleId>attuner</roleId><skillDef>Medicine</skillDef><curve><points><li>(0,0)</li><li>(10,0.2)</li><li>(20,0.4)</li></points></curve></li>
+      <li Class="RitualOutcomeComp_ParticipantCount"><label>participants</label><curve><points><li>(1,0)</li><li>(2,0.1)</li><li>(4,0.2)</li></points></curve></li>
+    </comps>
+    <outcomeChances>
+      <li><label>poor</label><description>The crystal stayed asleep. Nothing woke, and the parts can be tried again after the cooldown.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>One dormant part woke.</description><chance>0.5</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>good</label><description>Two dormant parts woke.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+      <li><label>exceptional</label><description>Three dormant parts woke cleanly, without attunement sickness.</description><chance>0.1</chance><positivityIndex>3</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+  <RitualOutcomeEffectDef ParentName="KM_AttunementOutcomeBase">
+    <defName>KM_AttunementCircle</defName>
+    <description>A ceremony at a Lumen ritual circle that wakes dormant light implants and prosthetics. The attuner's Medicine skill and participants decide how many wake.</description>
+  </RitualOutcomeEffectDef>
+  <RitualOutcomeEffectDef ParentName="KM_AttunementOutcomeBase">
+    <defName>KM_AttunementAltar</defName>
+    <description>A ceremony at a Lumenstone altar that wakes dormant light implants and prosthetics. The attuner's Medicine skill, participants, the room and Lumenstone fixtures decide how many wake.</description>
+    <comps Inherit="True">
+      <li Class="RitualOutcomeComp_RoomStat"><label>room impressiveness</label><statDef>Impressiveness</statDef><curve><points><li>(0,0)</li><li>(120,0.1)</li></points></curve></li>
+      <li Class="LumenStones.RitualOutcomeComp_FixtureSupport"><label>Lumenstone fixtures</label><curve><points><li>(0,0)</li><li>(1,0.2)</li></points></curve></li>
+    </comps>
+  </RitualOutcomeEffectDef>
+  <RitualOutcomeEffectDef ParentName="KM_AttunementOutcomeBase">
+    <defName>KM_Binding</defName>
+    <description>A ceremony at a Sacrificial altar that wakes dormant dark implants and prosthetics. The attuner's Medicine skill, participants, the room and Dark Stone fixtures decide how many wake.</description>
+    <comps Inherit="True">
+      <li Class="RitualOutcomeComp_RoomStat"><label>room impressiveness</label><statDef>Impressiveness</statDef><curve><points><li>(0,0)</li><li>(120,0.1)</li></points></curve></li>
+      <li Class="LumenStones.RitualOutcomeComp_FixtureSupport"><label>Dark Stone fixtures</label><dark>true</dark><curve><points><li>(0,0)</li><li>(1,0.2)</li></points></curve></li>
+    </comps>
+  </RitualOutcomeEffectDef>
+
+  <RitualPatternDef Name="KM_AttunementPatternBase" Abstract="True">
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_AttunementPatternBase">
+    <defName>KM_AttunementCircle</defName>
+    <ritualObligationTargetFilter>KM_LumenCircle</ritualObligationTargetFilter>
+    <ritualTargetFilter>KM_LumenSelectedCircle</ritualTargetFilter>
+    <ritualBehavior>KM_Attunement</ritualBehavior>
+    <ritualOutcomeEffect>KM_AttunementCircle</ritualOutcomeEffect>
+    <shortDescOverride>Attunement</shortDescOverride>
+    <iconPathOverride>UI/Icons/Attunement</iconPathOverride>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_AttunementPatternBase">
+    <defName>KM_AttunementAltar</defName>
+    <ritualObligationTargetFilter>KM_LumenstoneAltar</ritualObligationTargetFilter>
+    <ritualTargetFilter>KM_LumenSelectedCircle</ritualTargetFilter>
+    <ritualBehavior>KM_Attunement</ritualBehavior>
+    <ritualOutcomeEffect>KM_AttunementAltar</ritualOutcomeEffect>
+    <shortDescOverride>Attunement</shortDescOverride>
+    <iconPathOverride>UI/Icons/Attunement</iconPathOverride>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_AttunementPatternBase">
+    <defName>KM_Binding</defName>
+    <ritualObligationTargetFilter>KM_SacrificialAltar</ritualObligationTargetFilter>
+    <ritualTargetFilter>KM_SelectedAltar</ritualTargetFilter>
+    <ritualBehavior>KM_Binding</ritualBehavior>
+    <ritualOutcomeEffect>KM_Binding</ritualOutcomeEffect>
+    <shortDescOverride>Binding</shortDescOverride>
+    <iconPathOverride>UI/Icons/Binding</iconPathOverride>
+  </RitualPatternDef>
+
+  <PreceptDef Name="KM_AttunementPreceptBase" Abstract="True">
+    <issue>Ritual</issue>
+    <impact>Medium</impact>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <useRepeatPenalty>false</useRepeatPenalty>
+    <allowDuplicates>false</allowDuplicates>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visible>false</visible>
+    <selectionWeight>0</selectionWeight>
+    <classic>true</classic>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_AttunementPreceptBase">
+    <defName>KM_AttunementCircle</defName>
+    <label>Attunement</label>
+    <description>A ceremony at a Lumen ritual circle that wakes dormant light implants and prosthetics.</description>
+    <iconPath>UI/Icons/Attunement</iconPath>
+    <ritualPatternBase>KM_AttunementCircle</ritualPatternBase>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_AttunementPreceptBase">
+    <defName>KM_AttunementAltar</defName>
+    <label>Attunement</label>
+    <description>A ceremony at a Lumenstone altar that wakes dormant light implants and prosthetics.</description>
+    <iconPath>UI/Icons/Attunement</iconPath>
+    <ritualPatternBase>KM_AttunementAltar</ritualPatternBase>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_AttunementPreceptBase">
+    <defName>KM_Binding</defName>
+    <label>Binding</label>
+    <description>A ceremony at a Sacrificial altar that wakes dormant dark implants and prosthetics.</description>
+    <iconPath>UI/Icons/Binding</iconPath>
+    <ritualPatternBase>KM_Binding</ritualPatternBase>
+  </PreceptDef>
+</Defs>

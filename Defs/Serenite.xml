@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Serenite</defName>
+    <label>Serenite</label>
+    <description>Lumenstone steeped with smokeleaf keeps the calm and leaves out the haze. Nobody hurries in a room with Serenite in it.\n\nA soft lavender crystal with a deep amethyst core, infused from Lumenstone at a Lumen ritual circle. It furnishes tranquil enclosed rooms.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Serenite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_SerenitePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/SerenitePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+    </mote>
+  </ThingDef>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenSereniteColumn</defName>
+    <label>Serenite column</label>
+    <uiOrder>2044</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A lavender Serenite column.\n\nSupports tranquility in an enclosed room: room support adds comfort to beds and seats and mood while present, and with Solar energy also faster sleep. Each fixture type counts once. No fuel or electricity.</description>
+    <costList>
+      <KM_Serenite>15</KM_Serenite>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/SereniteColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(205,175,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Serenite">
+        <fixtureIndex>0</fixtureIndex>
+        <weight>0.2</weight>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
+    </comps>
+    <uiIconScale>1.02857</uiIconScale>
+  </ThingDef>
+  <ThingDef Name="KM_SereniteFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_SereniteFixtureBase">
+    <defName>KM_SereniteLamp</defName>
+    <label>Serenite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2803</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A lavender Serenite lamp. Its light is low and even, and suits a bedroom.\n\nSupports tranquility in an enclosed room: room support adds comfort to beds and seats and mood while present, and with Solar energy also faster sleep. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Serenite/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Serenite>10</KM_Serenite>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(205,175,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Serenite">
+        <fixtureIndex>1</fixtureIndex>
+        <weight>0.1</weight>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_SereniteFixtureBase">
+    <defName>KM_SereniteWallLamp</defName>
+    <label>Serenite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2804</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A lavender Serenite wall lamp.\n\nSupports tranquility in an enclosed room: room support adds comfort to beds and seats and mood while present, and with Solar energy also faster sleep. Each fixture type counts once. No fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Serenite/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Serenite/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Serenite>8</KM_Serenite>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(205,175,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Serenite">
+        <fixtureIndex>1</fixtureIndex>
+        <weight>0.1</weight>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_SereniteFixtureBase">
+    <defName>KM_SerenitePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Serenite sanctuary shrine</label>
+    <uiOrder>2822</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A low, two-cell shrine holding three refined Serenite crystals in a horned cradle. Bedrooms with one feel settled.\n\nSuited to a bedroom. Supports tranquility in an enclosed room: room support adds comfort to beds and seats and mood while present, and with Solar energy also faster sleep. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Serenite/Pylon</texPath>
+      <drawSize>(2.2,1.2375)</drawSize>
+      <drawOffset>(0,0,0.035)</drawOffset>
+    </graphicData>
+    <uiIconScale>1</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Serenite>25</KM_Serenite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_SereniteTranquility</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(205,175,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Serenite">
+        <fixtureIndex>2</fixtureIndex>
+        <weight>0.45</weight>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
+    </comps>
+    <!-- Retain KM_SerenitePylon and fixture index 2 so existing shrines keep their identity and support. -->
+    <size>(2,1)</size>
+  </ThingDef>
+  <ThingDef ParentName="KM_SereniteFixtureBase">
+    <defName>KM_SereniteCluster</defName>
+    <label>Serenite soothing cluster</label>
+    <uiOrder>2823</uiOrder>
+    <description>A cluster of Serenite crystals.\n\nSupports tranquility in an enclosed room: room support adds comfort to beds and seats and mood while present, and with Solar energy also faster sleep. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Serenite/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Serenite>35</KM_Serenite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_SereniteTranquility</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(205,175,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Serenite">
+        <fixtureIndex>3</fixtureIndex>
+        <weight>0.25</weight>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
+    </comps>
+  </ThingDef>
+  <ResearchProjectDef>
+    <defName>KM_SereniteTranquility</defName>
+    <label>Serenite tranquility</label>
+    <description>Learn to infuse Lumenstone with smokeleaf, keeping its calm without its other effects.\n\nShape Serenite into soothing clusters and sanctuary shrines. Unlocks Serenite infusion at the Lumen ritual circle.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>2</researchViewX>
+    <researchViewY>4</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+  <ThoughtDef>
+    <defName>KM_SereniteRoom</defName>
+    <workerClass>LumenStones.ThoughtWorker_SereniteRoom</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Serenite tranquility</label>
+        <description>The lavender crystals bring a little peace to this enclosed room.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>KM_SereniteRested</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.0833333333</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>Serenite-rested</label>
+        <description>I woke refreshed after sleeping near soothing Serenite.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

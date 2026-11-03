@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_north.png",
+  "maskFilename": "WallLamp_northm.png",
+  "sourceRepair": "User-approved simplified source cropped to [338,163,919,1128], uniformly reduced into established wall anchors; west mirrors east and south is occluded.",
+  "alphaHandling": "Preserve source alpha inside crop with one uniform Lanczos reduction and transparent padding; fixed colours, zero construction tint.",
+  "layers": [
+    {
+      "path": "north-layer.png",
+      "constructionTint": false
+    }
+  ]
+}

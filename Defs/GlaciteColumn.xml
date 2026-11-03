@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenGlaciteColumn</defName><label>Glacite column</label><uiOrder>2043</uiOrder>
+    <description>A roof-supporting Glacite crystal between square caps, held by two rounded bands. Condensation runs down it on humid days.\n\nGives off blue light and absorbs a little heat above 17°C. Needs no fuel or electricity.</description>
+    <uiIconScale>1.02857</uiIconScale>
+    <costList><KM_Glacite>15</KM_Glacite></costList>
+    <graphicData><texPath>Lumenstone/GlaciteColumn</texPath></graphicData>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(80,160,220,0)</glowColor></li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass><heatPerSecond>-2.5</heatPerSecond><heatPushMinTemperature>17</heatPushMinTemperature>
+      </li>
+      <li Class="LumenStones.CompProperties_FixtureEffecter"><effecterDef>KM_GlaciteGlintSmall</effecterDef></li>
+    </comps>
+  </ThingDef>
+</Defs>

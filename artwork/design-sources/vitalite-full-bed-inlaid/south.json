@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    345,
+    53,
+    910,
+    1200
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    136,
+    21,
+    376,
+    491
+  ],
+  "colorFilename": "FullBed_south.png",
+  "maskFilename": "FullBed_southm.png",
+  "sourceRepair": "Crop excludes isolated generated alpha debris; source otherwise unchanged.",
+  "alphaHandling": "Uniform Lanczos reduction preserving source alpha; fixed colours, no construction tint.",
+  "layers": [
+    {
+      "path": "south-source.png",
+      "constructionTint": false
+    }
+  ]
+}

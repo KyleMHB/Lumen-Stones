@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Ferrite</defName>
+    <label>Ferrite</label>
+    <description>Lumenstone steeped with steel takes in steel's memory of its own shape. Over time it coaxes worn and dented things back to how they were made.\n\nA slate-silver crystal with a burnished-copper core, infused from Lumenstone at a Lumen ritual circle. It slowly maintains structures for free, and items and gear for Solar energy, without fuel.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Ferrite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_FerritePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/FerritePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>.15</solidTime>
+      <fadeOutTime>.35</fadeOutTime>
+    </mote>
+  </ThingDef>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenFerriteColumn</defName>
+    <label>Ferrite maintenance column</label>
+    <uiOrder>2044</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A slate-silver and copper Ferrite column. Cracks in nearby walls close so slowly that nobody sees it happen.\n\nSlowly repairs player-owned buildings and walls around it for free, through walls and during combat. No fuel.</description>
+    <costList>
+      <KM_Ferrite>15</KM_Ferrite>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/FerriteColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>15</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(210,190,175,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Ferrite">
+        <tier>1</tier>
+        <radius>8</radius>
+        <interval>300</interval>
+        <repairBudget>.00045</repairBudget>
+        <buildings>true</buildings>
+        <looseItems>false</looseItems>
+      </li>
+    </comps>
+    <uiIconScale>1.02857</uiIconScale>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_FerriteRange</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ThingDef Name="KM_FerriteFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_FerriteFixtureBase">
+    <defName>KM_FerriteLamp</defName>
+    <label>Ferrite lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2803</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A slate-silver and copper Ferrite lamp.\n\nProvides visual illumination only, without maintenance or forge sparks. No heat, fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Ferrite/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Ferrite>10</KM_Ferrite>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(210,190,175,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_FerriteFixtureBase">
+    <defName>KM_FerriteWallLamp</defName>
+    <label>Ferrite wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2804</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A slate-silver and copper Ferrite wall lamp.\n\nProvides visual illumination only, without maintenance or forge sparks. No heat, fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Ferrite/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Ferrite/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Ferrite>8</KM_Ferrite>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(210,190,175,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="KM_FerriteFixtureBase">
+    <defName>KM_FerriteCluster</defName>
+    <label>Ferrite maintenance cluster</label>
+    <uiOrder>2823</uiOrder>
+    <description>A cluster of Ferrite crystals. Things left beside it come back in better shape.\n\nSlowly repairs player-owned buildings and walls around it for free, through walls and during combat. No fuel. With Solar energy it also repairs damaged items stored or lying nearby.</description>
+    <graphicData>
+      <texPath>Things/Building/Ferrite/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <KM_Ferrite>35</KM_Ferrite>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>KM_FerriteForging</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(210,190,175,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_Ferrite">
+        <tier>2</tier>
+        <radius>8</radius>
+        <interval>300</interval>
+        <repairBudget>.00045</repairBudget>
+        <buildings>true</buildings>
+        <looseItems>true</looseItems>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>item and gear repair</effect></li>
+    </comps>
+    <placeWorkers Inherit="False">
+      <li>LumenStones.PlaceWorker_FerriteRange</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <specialDisplayRadius>0</specialDisplayRadius>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+  </ThingDef>
+  <ThingDef ParentName="KM_FerriteFixtureBase">
+    <defName>KM_FerritePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Ferrite maintenance pylon</label>
+    <uiOrder>2822</uiOrder>
+    <description>A broad Ferrite crystal held in heavy restraints. It sparks like a forge that nobody is working.\n\nSlowly repairs player-owned buildings and walls around it for free, through walls and during combat. No fuel. With Solar energy it also repairs damaged items nearby and the worn apparel and equipped weapons of colonists, slaves and prisoners. Enemy buildings and gear are never repaired.</description>
+    <size>(1,1)</size>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <graphicData>
+      <texPath>Things/Building/Ferrite/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.54)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <costList><KM_Ferrite>60</KM_Ferrite></costList>
+    <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints><WorkToBuild>1800</WorkToBuild><Beauty>25</Beauty><Flammability>0</Flammability>
+    </statBases>
+    <researchPrerequisites><li>KM_FerriteForging</li></researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(210,190,175,0)</glowColor></li>
+      <li Class="LumenStones.CompProperties_Ferrite">
+        <tier>3</tier><radius>10</radius><interval>180</interval><repairBudget>.00054</repairBudget>
+        <buildings>true</buildings><looseItems>true</looseItems><wornEquipment>true</wornEquipment>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>item and gear repair</effect></li>
+    </comps>
+    <placeWorkers Inherit="False"><li>LumenStones.PlaceWorker_FerriteRange</li></placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected><specialDisplayRadius>0</specialDisplayRadius>
+  </ThingDef>
+  <ResearchProjectDef>
+    <defName>KM_FerriteForging</defName>
+    <label>Ferrite forging</label>
+    <description>Learn to infuse Lumenstone with steel, and to shape the result into slow, patient menders.\n\nShape Ferrite into maintenance clusters and pylons that slowly mend structures for free, and loose items and colonists' worn gear with Solar energy. Unlocks Ferrite infusion at the Lumen ritual circle.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>2</researchViewX>
+    <researchViewY>7</researchViewY>
+    <prerequisites>
+      <li>Stonecutting</li>
+    </prerequisites>
+  </ResearchProjectDef>
+</Defs>

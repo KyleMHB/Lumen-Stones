@@ -1,0 +1,52 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    286,
+    53,
+    967,
+    1218
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    16,
+    24,
+    496,
+    488
+  ],
+  "colorFilename": "Cluster.png",
+  "maskFilename": "Cluster_m.png",
+  "sourceRepair": "Crop excludes faint exterior alpha debris; previous sources retained.",
+  "alphaHandling": "Preserve generated alpha within crop; shared uniform reduction.",
+  "layers": [
+    {
+      "path": "simplified-facets.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      120,
+      24,
+      392,
+      488
+    ],
+    "boundsTolerance": 20,
+    "footLine": 488,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 10,
+    "definition": "KM_DarkStoneCluster",
+    "drawSize": [
+      1,
+      1
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

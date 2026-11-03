@@ -1,0 +1,14 @@
+{
+  "sourceSize": [1024, 1024],
+  "crop": [0, 0, 1024, 1024],
+  "canvas": [512, 512],
+  "targetBox": [0, 0, 512, 512],
+  "colorFilename": "LumenCircle.png",
+  "maskFilename": "LumenCircle_m.png",
+  "sourceRepair": "Stone layer is the approved lumen-circle source (exterior background already removed there); ring layer drawn by make_ring.py.",
+  "alphaHandling": "Preserve layer alpha; stone layer is placed with one uniform Lanczos reduction (scale 0.6) over the ring.",
+  "layers": [
+    {"path": "ring.png", "constructionTint": false},
+    {"path": "source.png", "constructionTint": false, "scale": 0.6, "offset": [205, 205]}
+  ]
+}

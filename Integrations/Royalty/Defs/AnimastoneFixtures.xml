@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenAnimastoneColumn</defName>
+    <label>Animastone column</label>
+    <uiOrder>2044</uiOrder>
+    <tickerType>Never</tickerType>
+    <building><artificialForMeditationPurposes>false</artificialForMeditationPurposes></building>
+    <researchPrerequisites><li>KM_AnimaAttunement</li></researchPrerequisites>
+    <description>A seafoam-teal Animastone column. Close up, it hums at the edge of hearing.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once.</description>
+    <costList><KM_Animastone>15</KM_Animastone></costList>
+    <graphicData>
+      <texPath>Lumenstone/AnimastoneColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+      <MeditationFocusStrength>0.14</MeditationFocusStrength>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(127,216,192,0)</glowColor>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
+      </li>
+      <li Class="LumenStones.CompProperties_Animastone">
+        <fixtureIndex>1</fixtureIndex>
+        <weight>0.2</weight>
+      </li>
+    </comps>
+    <uiIconScale>1.02857</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_AnimastoneFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Never</tickerType>
+    <rotatable>false</rotatable>
+    <researchPrerequisites><li>KM_AnimaAttunement</li></researchPrerequisites>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <!-- Anima trees and other natural foci ignore Animastone, so it can decorate a grove. -->
+    <building>
+      <isInert>true</isInert>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_AnimastoneFixtureBase">
+    <defName>KM_AnimastoneLamp</defName>
+    <label>Animastone lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2803</uiOrder>
+    <description>A seafoam-teal Animastone lamp.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once.</description>
+    <graphicData>
+      <texPath>Things/Building/Animastone/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Animastone>10</KM_Animastone>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0</Flammability>
+      <MeditationFocusStrength>0.08</MeditationFocusStrength>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(127,216,192,0)</glowColor>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
+      </li>
+      <li Class="LumenStones.CompProperties_Animastone">
+        <fixtureIndex>0</fixtureIndex>
+        <weight>0.15</weight>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_AnimastoneFixtureBase">
+    <defName>KM_AnimastoneWallLamp</defName>
+    <label>Animastone wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2804</uiOrder>
+    <description>A seafoam-teal Animastone wall lamp.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Animastone/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Animastone/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Animastone>8</KM_Animastone>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+      <Flammability>0</Flammability>
+      <MeditationFocusStrength>0.08</MeditationFocusStrength>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(127,216,192,0)</glowColor>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
+      </li>
+      <li Class="LumenStones.CompProperties_Animastone">
+        <fixtureIndex>0</fixtureIndex>
+        <weight>0.15</weight>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_AnimastoneFixtureBase">
+    <defName>KM_AnimastonePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Animastone pylon</label>
+    <uiOrder>2822</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall standing monument of raw Animastone crystal. Its hum is the strongest of the Animastone fixtures.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once. With Solar energy, pawns meditating nearby recover neural heat faster and an anima tree in range grows anima grass faster.</description>
+    <graphicData>
+      <texPath>Things/Building/Animastone/Pylon</texPath>
+      <drawSize>(1.1,2.2)</drawSize>
+      <!-- Puts the visible foot at the Vitalite pylon's height in the cell. -->
+      <drawOffset>(0,0,0.574)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.545</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Animastone>25</KM_Animastone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+      <Flammability>0</Flammability>
+      <MeditationFocusStrength>0.22</MeditationFocusStrength>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(127,216,192,0)</glowColor>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
+      </li>
+      <li Class="LumenStones.CompProperties_Animastone">
+        <fixtureIndex>3</fixtureIndex>
+        <weight>0.4</weight>
+        <activeRadius>8</activeRadius>
+        <activeDrain>60</activeDrain>
+        <activeHeatRecovery>0.25</activeHeatRecovery>
+        <activeGrowth>0.5</activeGrowth>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>faster neural heat recovery and anima grass growth while a pawn meditates nearby</effect></li>
+    </comps>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_AnimastoneFixtureBase">
+    <defName>KM_AnimastoneCluster</defName>
+    <label>Animastone cluster</label>
+    <uiOrder>2823</uiOrder>
+    <description>A seafoam-teal Animastone cluster, quiet until someone sits beside it.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once. With Solar energy, it raises the focus strength of a pawn meditating nearby.</description>
+    <graphicData>
+      <texPath>Things/Building/Animastone/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Animastone>35</KM_Animastone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+      <Flammability>0</Flammability>
+      <MeditationFocusStrength>0.18</MeditationFocusStrength>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(127,216,192,0)</glowColor>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
+        <offsets><li Class="LumenStones.FocusStrengthOffset_AnimastoneActive" /></offsets>
+      </li>
+      <li Class="LumenStones.CompProperties_Animastone">
+        <fixtureIndex>2</fixtureIndex>
+        <weight>0.25</weight>
+        <activeRadius>6</activeRadius>
+        <activeDrain>30</activeDrain>
+        <activeFocusBonus>0.06</activeFocusBonus>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle"><effect>stronger meditation focus while a pawn meditates nearby</effect></li>
+    </comps>
+  </ThingDef>
+</Defs>

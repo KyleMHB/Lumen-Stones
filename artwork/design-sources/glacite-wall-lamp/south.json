@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallGlaciteTorch_south.png",
+  "maskFilename": "WallGlaciteTorch_southm.png",
+  "sourceRepair": "Uniform reduction of accepted source crop [450,282,838,1020], placed at existing attachment anchors; east and west mirror and south exposes only the occluded tip.",
+  "alphaHandling": "Preserve source alpha and transparent padding.",
+  "layers": [
+    {
+      "path": "south-layer.png",
+      "constructionTint": false
+    }
+  ]
+}

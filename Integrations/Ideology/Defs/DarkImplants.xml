@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark implants and prosthetics share the bases in Defs/StoneImplants.xml. They are made at the Sacrificial altar and woken by Binding. -->
+
+  <ResearchProjectDef>
+    <defName>KM_DarkAttunement</defName>
+    <label>Dark attunement</label>
+    <description>Shape the dark stones into implants and crystal prosthetics, and wake them with Binding. Unlocks dark implant and prosthetic bills at the Sacrificial altar and the Binding ritual.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>KM_WarpSacrifice</li><li>KM_LumenAttunement</li></prerequisites>
+    <researchViewX>6</researchViewX>
+    <researchViewY>4</researchViewY>
+  </ResearchProjectDef>
+
+  <RecipeDef Name="KM_DarkPartCraftBase" ParentName="KM_CrystalPartCraftBase" Abstract="True">
+    <recipeUsers><li>KM_SacrificialAltar</li></recipeUsers>
+    <researchPrerequisite>KM_DarkAttunement</researchPrerequisite>
+  </RecipeDef>
+
+  <!-- Sanguinite implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_SanguiniteImplant</defName>
+    <label>Sanguinite implant</label>
+    <description>A shard of Sanguinite set beside the heart. Once woken by Binding, wounds bleed far less and old scars slowly heal, but the body is always hungry.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/SanguiniteImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_SanguiniteImplant</defName>
+    <label>Sanguinite implant</label>
+    <labelNoun>a Sanguinite implant</labelNoun>
+    <description>A shard of Sanguinite beside the heart. Wounds bleed far less and old scars slowly heal, but the body is always hungry.</description>
+    <spawnThingOnRemoved>KM_SanguiniteImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <benefit><totalBleedFactor>0.5</totalBleedFactor></benefit>
+        <drawback><hungerRateFactor>1.4</hungerRateFactor></drawback>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_ScarMending"><daysPerScar>5</daysPerScar></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeSanguiniteImplant</defName>
+    <label>make Sanguinite implant</label>
+    <description>Shape Sanguinite and a component into a Sanguinite implant.</description>
+    <jobString>Making Sanguinite implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Sanguinite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Sanguinite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_SanguiniteImplant>1</KM_SanguiniteImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallSanguiniteImplant</defName>
+    <label>install Sanguinite implant</label>
+    <description>Install a Sanguinite implant. It stays dormant until woken by Binding.</description>
+    <jobString>Installing Sanguinite implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_SanguiniteImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_SanguiniteImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_SanguiniteImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveSanguiniteImplant</defName>
+    <label>remove Sanguinite implant</label>
+    <description>Remove a Sanguinite implant. A dormant implant comes out whole; an active one crumbles to raw Dark Stone.</description>
+    <jobString>Removing Sanguinite implant.</jobString>
+    <removesHediff>KM_SanguiniteImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Dreadstone implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_DreadstoneImplant</defName>
+    <label>Dreadstone implant</label>
+    <description>A shard of Dreadstone set beside the heart. Once woken by Binding, enemies near the bearer feel dread while the bearer is drafted or fighting, but others find the bearer cold company.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/DreadstoneImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_DreadstoneImplant</defName>
+    <label>Dreadstone implant</label>
+    <labelNoun>a Dreadstone implant</labelNoun>
+    <description>A shard of Dreadstone beside the heart. Enemies near the bearer feel dread while the bearer is drafted or fighting, but others find the bearer cold company.</description>
+    <spawnThingOnRemoved>KM_DreadstoneImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <drawback><statOffsets><SocialImpact>-0.2</SocialImpact></statOffsets></drawback>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_DreadAura"><radius>10</radius><whileDrafted>true</whileDrafted></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeDreadstoneImplant</defName>
+    <label>make Dreadstone implant</label>
+    <description>Shape Dreadstone and a component into a Dreadstone implant.</description>
+    <jobString>Making Dreadstone implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Dreadstone</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Dreadstone</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_DreadstoneImplant>1</KM_DreadstoneImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallDreadstoneImplant</defName>
+    <label>install Dreadstone implant</label>
+    <description>Install a Dreadstone implant. It stays dormant until woken by Binding.</description>
+    <jobString>Installing Dreadstone implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_DreadstoneImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DreadstoneImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_DreadstoneImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveDreadstoneImplant</defName>
+    <label>remove Dreadstone implant</label>
+    <description>Remove a Dreadstone implant. A dormant implant comes out whole; an active one crumbles to raw Dark Stone.</description>
+    <jobString>Removing Dreadstone implant.</jobString>
+    <removesHediff>KM_DreadstoneImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Hollowstone implant -->
+
+  <ThingDef ParentName="KM_StoneImplantItemBase">
+    <defName>KM_HollowstoneImplant</defName>
+    <label>Hollowstone implant</label>
+    <description>A shard of Hollowstone set beside the heart. Once woken by Binding, pain fades and the mind holds steady, but little brings joy any more.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/HollowstoneImplant</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_StoneImplantHediffBase">
+    <defName>KM_HollowstoneImplant</defName>
+    <label>Hollowstone implant</label>
+    <labelNoun>a Hollowstone implant</labelNoun>
+    <description>A shard of Hollowstone beside the heart. Pain fades and the mind holds steady, but little brings joy any more.</description>
+    <spawnThingOnRemoved>KM_HollowstoneImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shard</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <benefit>
+          <painFactor>0.4</painFactor>
+          <statOffsets><MentalBreakThreshold>-0.15</MentalBreakThreshold></statOffsets>
+        </benefit>
+        <drawback><statFactors><KM_RecreationGain>0.3</KM_RecreationGain></statFactors></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeHollowstoneImplant</defName>
+    <label>make Hollowstone implant</label>
+    <description>Shape Hollowstone and a component into a Hollowstone implant.</description>
+    <jobString>Making Hollowstone implant.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Hollowstone</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Hollowstone</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_HollowstoneImplant>1</KM_HollowstoneImplant></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallStoneImplantBase">
+    <defName>KM_InstallHollowstoneImplant</defName>
+    <label>install Hollowstone implant</label>
+    <description>Install a Hollowstone implant. It stays dormant until woken by Binding.</description>
+    <jobString>Installing Hollowstone implant.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_HollowstoneImplant</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_HollowstoneImplant</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>KM_HollowstoneImplant</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_RemoveStoneImplantBase">
+    <defName>KM_RemoveHollowstoneImplant</defName>
+    <label>remove Hollowstone implant</label>
+    <description>Remove a Hollowstone implant. A dormant implant comes out whole; an active one crumbles to raw Dark Stone.</description>
+    <jobString>Removing Hollowstone implant.</jobString>
+    <removesHediff>KM_HollowstoneImplant</removesHediff>
+  </RecipeDef>
+
+  <!-- Dark crystal prosthetics: stronger than light ones, each with a permanent drawback. -->
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_HollowstoneArm</defName>
+    <label>Hollowstone arm</label>
+    <description>An arm of grown Hollowstone crystal. Once woken by Binding, it is far stronger than a natural arm and never hurts, but it dulls the pleasure of recreation.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/HollowstoneArm</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_HollowstoneArm</defName>
+    <label>Hollowstone arm</label>
+    <labelNoun>a Hollowstone arm</labelNoun>
+    <description>An arm of grown Hollowstone crystal. It never hurts, but it dulls the pleasure of recreation.</description>
+    <spawnThingOnRemoved>KM_HollowstoneArm</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.5</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Shoulder</texPath></li>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools><li><label>fist</label><capacities><li>Blunt</li></capacities><power>11</power><cooldownTime>2</cooldownTime></li></tools>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <painless>true</painless>
+        <drawback><statOffsets><KM_RecreationGain>-0.1</KM_RecreationGain></statOffsets></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeHollowstoneArm</defName>
+    <label>make Hollowstone arm</label>
+    <description>Grow Hollowstone and a component into a Hollowstone arm.</description>
+    <jobString>Making Hollowstone arm.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Hollowstone</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Hollowstone</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_HollowstoneArm>1</KM_HollowstoneArm></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallHollowstoneArm</defName>
+    <label>install Hollowstone arm</label>
+    <description>Install a Hollowstone arm. It works as a simple prosthetic until woken by Binding.</description>
+    <jobString>Installing Hollowstone arm.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_HollowstoneArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_HollowstoneArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_HollowstoneArm</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_HollowstoneLeg</defName>
+    <label>Hollowstone leg</label>
+    <description>A leg of grown Hollowstone crystal. Once woken by Binding, it is far stronger than a natural leg and never hurts, but it dulls the pleasure of recreation.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/HollowstoneLeg</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_HollowstoneLeg</defName>
+    <label>Hollowstone leg</label>
+    <labelNoun>a Hollowstone leg</labelNoun>
+    <description>A leg of grown Hollowstone crystal. It never hurts, but it dulls the pleasure of recreation.</description>
+    <spawnThingOnRemoved>KM_HollowstoneLeg</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.5</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Leg</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <painless>true</painless>
+        <drawback><statOffsets><KM_RecreationGain>-0.1</KM_RecreationGain></statOffsets></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeHollowstoneLeg</defName>
+    <label>make Hollowstone leg</label>
+    <description>Grow Hollowstone and a component into a Hollowstone leg.</description>
+    <jobString>Making Hollowstone leg.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Hollowstone</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Hollowstone</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_HollowstoneLeg>1</KM_HollowstoneLeg></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallHollowstoneLeg</defName>
+    <label>install Hollowstone leg</label>
+    <description>Install a Hollowstone leg. It works as a simple prosthetic until woken by Binding.</description>
+    <jobString>Installing Hollowstone leg.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_HollowstoneLeg</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_HollowstoneLeg</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Leg</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_HollowstoneLeg</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_DreadstoneJaw</defName>
+    <label>Dreadstone jaw</label>
+    <description>A jaw of grown Dreadstone crystal. Once woken by Binding, it is far stronger than a natural jaw and enemies close to the bearer in combat feel dread, but others find the bearer cold company.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/DreadstoneJaw</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_DreadstoneJaw</defName>
+    <label>Dreadstone jaw</label>
+    <labelNoun>a Dreadstone jaw</labelNoun>
+    <description>A jaw of grown Dreadstone crystal. Enemies close to the bearer in combat feel dread, but others find the bearer cold company.</description>
+    <spawnThingOnRemoved>KM_DreadstoneJaw</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.5</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Jaw</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <drawback><statOffsets><SocialImpact>-0.2</SocialImpact></statOffsets></drawback>
+      </li>
+      <li Class="LumenStones.HediffCompProperties_DreadAura"><radius>6</radius><whileDrafted>false</whileDrafted></li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeDreadstoneJaw</defName>
+    <label>make Dreadstone jaw</label>
+    <description>Grow Dreadstone and a component into a Dreadstone jaw.</description>
+    <jobString>Making Dreadstone jaw.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Dreadstone</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Dreadstone</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_DreadstoneJaw>1</KM_DreadstoneJaw></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallDreadstoneJaw</defName>
+    <label>install Dreadstone jaw</label>
+    <description>Install a Dreadstone jaw. It works as a simple prosthetic until woken by Binding.</description>
+    <jobString>Installing Dreadstone jaw.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_DreadstoneJaw</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DreadstoneJaw</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Jaw</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_DreadstoneJaw</addsHediff>
+  </RecipeDef>
+
+  <ThingDef ParentName="KM_CrystalProstheticItemBase">
+    <defName>KM_SanguiniteHeart</defName>
+    <label>Sanguinite heart</label>
+    <description>A heart of grown Sanguinite crystal. Once woken by Binding, it beats far stronger than a natural heart and slows bleeding, but the body needs more food.</description>
+    <graphicData><texPath>Things/Item/Health/LumenStones/SanguiniteHeart</texPath><color>(255,255,255)</color></graphicData>
+  </ThingDef>
+  <HediffDef ParentName="KM_CrystalPartHediffBase">
+    <defName>KM_SanguiniteHeart</defName>
+    <label>Sanguinite heart</label>
+    <labelNoun>a Sanguinite heart</labelNoun>
+    <description>A heart of grown Sanguinite crystal. It slows bleeding, but the body needs more food.</description>
+    <spawnThingOnRemoved>KM_SanguiniteHeart</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.5</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <comps>
+      <li Class="LumenStones.HediffCompProperties_StateIcon"><texPath>UI/Health/LumenStones/Heart</texPath></li>
+      <li Class="LumenStones.HediffCompProperties_Attunement">
+        <side>Dark</side>
+        <benefit><totalBleedFactor>0.7</totalBleedFactor></benefit>
+        <drawback><hungerRateFactor>1.2</hungerRateFactor></drawback>
+      </li>
+    </comps>
+  </HediffDef>
+  <RecipeDef ParentName="KM_DarkPartCraftBase">
+    <defName>KM_MakeSanguiniteHeart</defName>
+    <label>make Sanguinite heart</label>
+    <description>Grow Sanguinite and a component into a Sanguinite heart.</description>
+    <jobString>Making Sanguinite heart.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Sanguinite</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Sanguinite</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><KM_SanguiniteHeart>1</KM_SanguiniteHeart></products>
+  </RecipeDef>
+  <RecipeDef ParentName="KM_InstallCrystalPartBase">
+    <defName>KM_InstallSanguiniteHeart</defName>
+    <label>install Sanguinite heart</label>
+    <description>Install a Sanguinite heart. It works as a simple prosthetic until woken by Binding.</description>
+    <jobString>Installing Sanguinite heart.</jobString>
+    <ingredients><li><filter><thingDefs><li>KM_SanguiniteHeart</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_SanguiniteHeart</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Heart</li></appliedOnFixedBodyParts>
+    <addsHediff>KM_SanguiniteHeart</addsHediff>
+  </RecipeDef>
+  <!-- Twinstone cell: replaces the Sunstone cell with Ideology. Its Warp pool feeds dark implants and prosthetics. -->
+  <ThingDef ParentName="KM_PortableCellBase">
+    <defName>KM_TwinstoneCell</defName>
+    <label>Twinstone cell</label>
+    <description>A sealed cell of Sunstone and Bloodstone that stores Solar and Warp energy in two separate pools, for implanted pawns away from home. It charges slowly from a home settlement's spare energy, and anywhere else it relieves the drawbacks of every implanted pawn on its map or in its caravan.</description>
+    <graphicData><texPath>Things/Item/Misc/TwinstoneCell</texPath></graphicData>
+    <comps>
+      <li Class="LumenStones.CompProperties_Twinstone"><capacity>60</capacity><warp>true</warp></li>
+    </comps>
+  </ThingDef>
+  <RecipeDef ParentName="KM_LightPartCraftBase">
+    <defName>KM_MakeTwinstoneCell</defName>
+    <label>make Twinstone cell</label>
+    <description>Seal Sunstone and Bloodstone into a Twinstone cell.</description>
+    <jobString>Making Twinstone cell.</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Sunstone</li></thingDefs></filter><count>5</count></li>
+      <li><filter><thingDefs><li>KM_Bloodstone</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Sunstone</li><li>KM_Bloodstone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_TwinstoneCell>1</KM_TwinstoneCell></products>
+    <researchPrerequisites><li>KM_SunstoneChanneling</li><li>KM_WarpSacrifice</li></researchPrerequisites>
+  </RecipeDef>
+</Defs>

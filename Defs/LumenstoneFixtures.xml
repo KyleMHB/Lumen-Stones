@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Textures below are placeholders borrowed from Serenite until artwork ticket 05 delivers the final paths. -->
+  <ThingDef ParentName="MoteBase">
+    <defName>KM_Mote_LumenstonePulse</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/LumenstonePulse</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenstoneColumn</defName>
+    <label>Lumenstone column</label>
+    <uiOrder>2039</uiOrder>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+    <description>A roof-supporting column set with raw Lumenstone. It gives a pale white-blue light.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <costList>
+      <KM_Lumenstone>15</KM_Lumenstone>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/LumenstoneColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>0</fixtureIndex>
+        <weight>0.2</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_LumenstoneFixtureBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <techLevel>Neolithic</techLevel>
+    <designationCategory>Furniture</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>14</pathCost>
+    <fillPercent>0.15</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>5</Beauty>
+    </statBases>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <researchPrerequisites>
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_LumenstoneFixtureBase">
+    <defName>KM_LumenstoneLamp</defName>
+    <label>Lumenstone lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2800</uiOrder>
+    <description>A raw Lumenstone crystal on a wooden post. It gives a pale white-blue light.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Lumenstone/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Lumenstone>10</KM_Lumenstone>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>1</fixtureIndex>
+        <weight>0.1</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_LumenstoneFixtureBase">
+    <defName>KM_LumenstoneWallLamp</defName>
+    <label>Lumenstone wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2801</uiOrder>
+    <description>A raw Lumenstone crystal on a wall bracket. It gives a pale white-blue light.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Lumenstone/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Lumenstone/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Lumenstone>8</KM_Lumenstone>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>1</fixtureIndex>
+        <weight>0.1</weight>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_LumenstoneFixtureBase">
+    <defName>KM_LumenstonePylon</defName>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Lumenstone pylon</label>
+    <uiOrder>2820</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall shaft of raw Lumenstone on a carved pedestal. Large unbroken shafts are rare, and most colonies would sooner cut one up than stand it on display.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Lumenstone/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Lumenstone>25</KM_Lumenstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>2</fixtureIndex>
+        <weight>0.45</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_LumenstoneFixtureBase">
+    <defName>KM_LumenstoneCluster</defName>
+    <label>Lumenstone cluster</label>
+    <uiOrder>2821</uiOrder>
+    <description>A group of raw Lumenstone crystals in a low carved housing, left as they grew.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <graphicData>
+      <texPath>Things/Building/Lumenstone/Cluster</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Lumenstone>35</KM_Lumenstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LumenstoneFixture">
+        <fixtureIndex>3</fixtureIndex>
+        <weight>0.25</weight>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
+    </placeWorkers>
+  </ThingDef>
+</Defs>

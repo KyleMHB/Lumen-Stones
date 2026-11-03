@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Dark content loads only with Ideology. Textures are Dark Stone placeholders until the Hollowstone artwork ticket delivers its own. -->
+  <ResearchProjectDef>
+    <defName>KM_HollowstoneServitude</defName>
+    <label>Hollowstone servitude</label>
+    <description>Learn to refine Dark Stone that takes pain and fear away and leaves nothing in their place.\n\nUnlocks Hollowstone refining at the Sacrificial altar and Hollowstone fixtures, which spend Warp energy to numb pain and steady minds.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>5</researchViewX>
+    <researchViewY>5</researchViewY>
+    <prerequisites>
+      <li>KM_WarpSacrifice</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Hollowstone</defName>
+    <label>Hollowstone</label>
+    <description>Dark Stone refined to take pain and fear. It doesn't give anything back for them, which is why people near it feel calm and slightly empty.\n\nA bleached bone-ivory crystal with an abyssal-cyan hollow core, refined from Dark Stone at a Sacrificial altar. Its fixtures spend Warp energy to dull pain and steady minds.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Hollowstone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>30</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseHollowstone</defName>
+    <label>refine Hollowstone</label>
+    <description>Refine 10 Dark Stone into 10 Hollowstone.</description>
+    <jobString>Refining Hollowstone.</jobString>
+    <recipeUsers Inherit="False"><li>KM_SacrificialAltar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_DarkStone</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_DarkStone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Hollowstone>10</KM_Hollowstone></products>
+    <researchPrerequisite>KM_HollowstoneServitude</researchPrerequisite>
+  </RecipeDef>
+
+  <ThingDef ParentName="LumenstoneColumnBase">
+    <defName>KM_LumenHollowstoneColumn</defName>
+    <label>Hollowstone column</label>
+    <uiOrder>2041</uiOrder>
+    <researchPrerequisites>
+      <li>KM_HollowstoneServitude</li>
+    </researchPrerequisites>
+    <description>A roof-supporting column set with Hollowstone.\n\nGives pale ivory light. Warp energy: dulls pain for colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture counts.</description>
+    <costList>
+      <KM_Hollowstone>15</KM_Hollowstone>
+    </costList>
+    <graphicData>
+      <texPath>Lumenstone/HollowstoneColumn</texPath>
+      <drawSize>(1.1667,1.4583)</drawSize>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>12</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(225,215,190,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Hollowstone</stone><tier>1</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>dulling pain and steadying minds</effect></li>
+    </comps>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+
+  <ThingDef Name="KM_HollowstoneFixtureBase" ParentName="KM_DarkStoneFixtureBase" Abstract="True">
+    <researchPrerequisites Inherit="False">
+      <li>KM_HollowstoneServitude</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_HollowstoneFixtureBase">
+    <defName>KM_HollowstoneLamp</defName>
+    <label>Hollowstone lamp</label>
+    <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
+    <uiOrder>2811</uiOrder>
+    <description>A Hollowstone crystal on a wooden post.\n\nGives dim ivory light and nothing else.</description>
+    <graphicData>
+      <texPath>Things/Building/Hollowstone/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <costList>
+      <WoodLog>5</WoodLog>
+      <KM_Hollowstone>10</KM_Hollowstone>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+    </statBases>
+    <comps>
+      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(225,215,190,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Hollowstone</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_HollowstoneFixtureBase">
+    <defName>KM_HollowstoneWallLamp</defName>
+    <label>Hollowstone wall lamp</label>
+    <designatorDropdown>KM_LumenWallLamps</designatorDropdown>
+    <uiOrder>2812</uiOrder>
+    <description>A Hollowstone crystal on a wall bracket.\n\nGives dim ivory light and nothing else.</description>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingBelowTop</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <terrainAffordanceNeeded IsNull="True" />
+    <graphicData>
+      <texPath>Things/Building/Hollowstone/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+    </graphicData>
+    <uiIconPath>Things/Building/Hollowstone/WallLamp</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <costList>
+      <KM_Hollowstone>8</KM_Hollowstone>
+      <Steel>5</Steel>
+    </costList>
+    <statBases>
+      <Beauty>6</Beauty>
+    </statBases>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>9</glowRadius>
+        <glowColor>(225,215,190,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Hollowstone</stone><tier>0</tier></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_HollowstoneFixtureBase">
+    <defName>KM_HollowstoneCluster</defName>
+    <label>Hollowstone cluster</label>
+    <uiOrder>2830</uiOrder>
+    <rotatable>true</rotatable>
+    <description>A group of Hollowstone crystals in a low carved housing. Arguments near it tend to fizzle out.\n\nGives ivory light. Warp energy: dulls pain for colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture counts. It also steadies minds against mental breaks.</description>
+    <graphicData>
+      <texPath>Things/Building/Hollowstone/Cluster</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawRotated>false</drawRotated>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Hollowstone>35</KM_Hollowstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>18</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(225,215,190,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Hollowstone</stone><tier>2</tier></li>
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>dulling pain and steadying minds</effect></li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="KM_HollowstoneFixtureBase">
+    <defName>KM_HollowstonePylon</defName>
+    <tickerType>Rare</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <label>Hollowstone pylon</label>
+    <uiOrder>2831</uiOrder>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <description>A tall shaft of Hollowstone on a carved pedestal. People working near it stop complaining about their injuries.\n\nGives ivory light. Warp energy: dulls pain for colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture counts. It also steadies minds against mental breaks.</description>
+    <graphicData>
+      <texPath>Things/Building/Hollowstone/Pylon</texPath>
+      <drawSize>(2.2,2.2)</drawSize>
+      <drawOffset>(0,0,0.56)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.5</uiIconScale>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList>
+      <KM_Hollowstone>25</KM_Hollowstone>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>30</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(225,215,190,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_DarkFixture"><stone>Hollowstone</stone><tier>3</tier></li>
+      <li Class="LumenStones.CompProperties_HollowstonePylon" />
+      <li Class="LumenStones.CompProperties_WarpToggle"><effect>dulling pain and steadying minds</effect></li>
+    </comps>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>KM_HollowstoneWard</defName>
+    <label>Hollowstone ward</label>
+    <description>Hollowstone dulls pain and steadies the mind while this pawn stays near it.</description>
+    <hediffClass>LumenStones.Hediff_Status</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <maxSeverity>3</maxSeverity>
+    <initialSeverity>0.5</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300~300</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>column</label>
+        <becomeVisible>true</becomeVisible>
+        <painFactor>0.9</painFactor>
+      </li>
+      <li>
+        <label>cluster</label>
+        <minSeverity>1</minSeverity>
+        <becomeVisible>true</becomeVisible>
+        <painFactor>0.8</painFactor>
+        <statOffsets><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets>
+      </li>
+      <li>
+        <label>pylon</label>
+        <minSeverity>2</minSeverity>
+        <becomeVisible>true</becomeVisible>
+        <painFactor>0.65</painFactor>
+        <statOffsets><MentalBreakThreshold>-0.1</MentalBreakThreshold></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>KM_GlaiveWielder</defName>
+    <label>glaive wielder</label>
+    <description>A Hollowstone glaive dulls the wielder's pain while it is held.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <painFactor>0.5</painFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>KM_HollowstoneGlaive</defName>
+    <label>Hollowstone glaive</label>
+    <description>A slow, heavy glaive with a bone-ivory Hollowstone blade. Its wielder keeps fighting long after they ought to have fallen.\n\nThe wielder feels half the pain and can take a quarter more before going into shock. It costs no Warp energy. Crafted from 100 Hollowstone and 20 steel after Long blades and Hollowstone servitude, with Crafting 6.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>6000</WorkToMake><Mass>3.5</Mass></statBases>
+    <equippedStatOffsets><PainShockThreshold>0.25</PainShockThreshold></equippedStatOffsets>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/HollowstoneGlaive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <weaponTags><li>MedievalMeleeAdvanced</li></weaponTags>
+    <tools>
+      <li><label>handle</label><capacities><li>Blunt</li></capacities><power>10</power><cooldownTime>2.4</cooldownTime></li>
+      <li><label>blade</label><capacities><li>Cut</li></capacities><power>28</power><cooldownTime>2.8</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisites>
+        <li>LongBlades</li>
+        <li>KM_HollowstoneServitude</li>
+      </researchPrerequisites>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>426</displayPriority>
+    </recipeMaker>
+    <costList><KM_Hollowstone>100</KM_Hollowstone><Steel>20</Steel></costList>
+    <comps>
+      <li Class="LumenStones.CompProperties_WielderHediff"><hediff>KM_GlaiveWielder</hediff></li>
+    </comps>
+  </ThingDef>
+</Defs>

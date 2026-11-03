@@ -1,0 +1,46 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_south.png",
+  "maskFilename": "WallLamp_southm.png",
+  "sourceRepair": "Uniform reduction of generated-source.png crop (467, 545, 785, 1059); positioned to existing south wall-lamp anchor. East/west are mirrors as in the existing reference; south exposes only the crystal tip.",
+  "alphaHandling": "Preserve source alpha with transparent padding.",
+  "layers": [
+    {
+      "path": "south-layer.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      203,
+      0,
+      308,
+      92
+    ],
+    "boundsTolerance": 8,
+    "footLine": 92,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "alphaDebrisTolerance": 8
+  }
+}

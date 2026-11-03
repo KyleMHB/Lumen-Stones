@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>KM_VitaliteRestoration</defName><label>Vitalite restoration</label>
+    <description>Learn to infuse Lumenstone with herbal medicine, and to shape the result into furnishings for a sickroom.\n\nShape Vitalite into restorative clusters and pylons. Unlocks Vitalite infusion at the Lumen ritual circle.</description>
+    <baseCost>1200</baseCost><techLevel>Neolithic</techLevel><prerequisites><li>Stonecutting</li></prerequisites><researchViewX>3</researchViewX><researchViewY>4</researchViewY>
+  </ResearchProjectDef>
+</Defs>

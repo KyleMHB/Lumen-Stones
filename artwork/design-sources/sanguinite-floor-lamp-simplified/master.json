@@ -1,0 +1,50 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    440,
+    117,
+    818,
+    1124
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    12,
+    256,
+    229
+  ],
+  "colorFilename": "Lamp.png",
+  "maskFilename": "Lamp_m.png",
+  "sourceRepair": "Simplified accepted head facets; original post and lower collar restored from previous approved source.",
+  "alphaHandling": "Preserve source alpha inside crop with one uniform Lanczos reduction; fixed colors, no construction tint.",
+  "layers": [
+    {
+      "path": "source.png",
+      "constructionTint": false
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      87,
+      12,
+      169,
+      229
+    ],
+    "boundsTolerance": 10,
+    "footLine": 229,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "definition": "KM_SanguiniteLamp",
+    "drawSize": [
+      1,
+      1
+    ]
+  }
+}

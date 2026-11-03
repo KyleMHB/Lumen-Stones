@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]</xpath>
+    <value><designatorDropdown>KM_LumenFloorLamps</designatorDropdown></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="DV_PyrinthWallLamp"]</xpath>
+    <value><designatorDropdown>KM_LumenWallLamps</designatorDropdown></value>
+  </Operation>
+</Patch>

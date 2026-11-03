@@ -1,0 +1,53 @@
+{
+  "sourceSize": [
+    1184,
+    1184
+  ],
+  "crop": [
+    16,
+    484,
+    1088,
+    1000
+  ],
+  "canvas": [
+    296,
+    296
+  ],
+  "targetBox": [
+    4,
+    121,
+    272,
+    250
+  ],
+  "colorFilename": "VerditeScythe.png",
+  "maskFilename": "VerditeScythe_m.png",
+  "layers": [
+    {
+      "path": "scythe-oriented.png",
+      "constructionTint": false
+    }
+  ],
+  "sourceRepair": "Recovered source with historical framing, premultiplied bicubic rotation and vertical flip. Restrict new resampling support to the immutable baseline envelope; hammer additionally has the user-authorized local RGB speckle repair. Reproduce with export.py.",
+  "alphaHandling": "One final Lanczos reduction inside the historical outer envelope. No alpha threshold, sharpening or contour thickening; original canvas-centre pivot is retained.",
+  "candidateChecks": {
+    "baseline": {
+      "color": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/scythe-baseline.png",
+        "sha256": "611fac89227fb2cf086c073807746006307adcb2f190446d0bbca59faa025574"
+      },
+      "mask": {
+        "path": "artwork/design-sources/equipment-refresh-2026-11-03/scythe-baseline-mask.png",
+        "sha256": "1f098069e86ac60f6a4c9475ffffd0c24fca89b6f3bf8e9c777e8ecd25369d8c"
+      }
+    },
+    "definition": "KM_VerditeScythe",
+    "drawSize": [
+      1.3875,
+      1.3875
+    ],
+    "boundsTolerance": 0,
+    "maxOpaqueSpread": 255,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1
+  }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_AnimastoneCirclet</defName>
+    <label>Animastone circlet</label>
+    <description>A thin gold band set with Animastone and worn over the brow. Wearers say the psychic field feels a little closer.\n\nRaises psychic sensitivity by 8% and neural heat recovery by about 10%. It needs no Solar energy. Crafted at a smithy from 30 Animastone and 10 gold after anima attunement, with Crafting 6.</description>
+    <thingCategories><li>Headgear</li></thingCategories>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Apparel/AnimastoneCirclet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.3</Mass>
+      <WorkToMake>8000</WorkToMake>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <!-- Neural heat recovery is an absolute rate (base 0.54 per second), so about 10% is a flat offset, as on the eltex helmet. -->
+    <equippedStatOffsets>
+      <PsychicSensitivityOffset>0.08</PsychicSensitivityOffset>
+      <PsychicEntropyRecoveryRate>0.054</PsychicEntropyRecoveryRate>
+    </equippedStatOffsets>
+    <costList><KM_Animastone>30</KM_Animastone><Gold>10</Gold></costList>
+    <recipeMaker>
+      <researchPrerequisite>KM_AnimaAttunement</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers><li>ElectricSmithy</li><li>FueledSmithy</li></recipeUsers>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <useIngredientsForColor>false</useIngredientsForColor>
+    </recipeMaker>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/AnimastoneCirclet/AnimastoneCirclet</wornGraphicPath>
+      <layers><li>Overhead</li></layers>
+    </apparel>
+    <tradeTags><li>Clothing</li></tradeTags>
+  </ThingDef>
+</Defs>

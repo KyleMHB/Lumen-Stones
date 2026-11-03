@@ -1,0 +1,104 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    313,
+    32,
+    941,
+    1223
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    16,
+    512,
+    496
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Crop excludes exterior faint alpha debris; generated source preserved.",
+  "alphaHandling": "Preserve alpha inside crop and apply shared uniform reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "base": [
+          [
+            313,
+            1030
+          ],
+          [
+            360,
+            970
+          ],
+          [
+            383,
+            970
+          ],
+          [
+            400,
+            1040
+          ],
+          [
+            470,
+            1100
+          ],
+          [
+            780,
+            1100
+          ],
+          [
+            854,
+            1040
+          ],
+          [
+            872,
+            970
+          ],
+          [
+            895,
+            970
+          ],
+          [
+            941,
+            1030
+          ],
+          [
+            941,
+            1223
+          ],
+          [
+            313,
+            1223
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      129,
+      16,
+      383,
+      496
+    ],
+    "boundsTolerance": 12,
+    "footLine": 496,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_HollowstonePylon",
+    "drawSize": [
+      2.2,
+      2.2
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

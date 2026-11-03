@@ -1,0 +1,329 @@
+{
+  "schema": 1,
+  "status": "design approved by user 2026-11-03; in-game review pending",
+  "recipe": "artwork/design-sources/stone-implants/icons.json",
+  "recipeSha256": "7a20816d0899e6b2aca5c2da7e50530a27a87b07af528581aef0a88cdefcbef9",
+  "integrationDefs": [
+    "Integrations/BionicIcons/Defs/StoneImplantIcons.xml"
+  ],
+  "assets": [
+    {
+      "texture": "Things/Item/Health/LumenStones/GlaciteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "b231687eace653d59c4d4a16e65b367b3a07859dfe9960cc642d039d89cb523e",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_GlaciteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/PyrinthImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "7c21ca1e5718804462a1b625dc80ac5232bd1cf812df7dc30fc087f9016ada3e",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_PyrinthImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/VerditeImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "2ed83d58eb511676b42b26b4448cd45d649dd3da5dbffbd6a8e137bfeaf9c834",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_VerditeImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/VitaliteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "5c6f112ed20cb949855a6aba610e6de6ccac4163d8c839957762b52ad1fd6518",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_VitaliteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/SereniteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "809bd67bc1bf91f6c5dc2f8891a8c2be8be16082a4fab67482b563390d1fe0a0",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_SereniteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/AegiteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "9369f542998a735e6a8fd77e3332483b1950a80a373f4b2e74969227db9af38c",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_AegiteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/FerriteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "486a7cb24a05ad732ac05fc892e3ec4c633059c077fd9142758f00b32ec2249a",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_FerriteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/SanguiniteImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "b1b58d6b49d52a6be59cabe6a77b4020030af0ca91a3bb66bb1b2db883823147",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_SanguiniteImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/DreadstoneImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "9670250b46a35ae475c88d3291d12aacf6e51d2b64b70bf6c94cb619787d485f",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_DreadstoneImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/HollowstoneImplant",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "5a8e0d272df49c9ac02dfbbe39a5bd3a3a2ae2b477ea54131b796911263e8e50",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_HollowstoneImplant",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/FerriteArm",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "08e99ea36aca33c82e04a91d78624c9c83a46063e0fe39076d82dfff9fe47b9a",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_FerriteArm",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/FerriteLeg",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "181f8ed18948b417575bea9136eb46ab434708a082ccb29a872cbe0a6962abcc",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_FerriteLeg",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/VitaliteHeart",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "9311d430861a4fc24d15330e923fc4ca2b1bc4daab5911c97e831f216ce0925e",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_VitaliteHeart",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/AegiteEye",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "5a1aa983aa261312c210a7e6f82c7ff1e02809eaf8bda4b36c12b99a7f860d77",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_AegiteEye",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/HollowstoneArm",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "ce9de1248afc95bc36f50b30a7690035ea0d469aa37e35e9c3dfa0b89b745cdb",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_HollowstoneArm",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/HollowstoneLeg",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "05d8769ab9915d45696dc469fafccdf78bb63a5591d321b4810dcb46306fc084",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_HollowstoneLeg",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/DreadstoneJaw",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "ed5b93221f9ae6c04870db8795a963207c0c330eb40269418320d6b305d89592",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_DreadstoneJaw",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "Things/Item/Health/LumenStones/SanguiniteHeart",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "4660e6edc7582261a54f0cfbb20f531cde038b2732d664ad57c5b97dcafe2440",
+      "consumer": {
+        "type": "ThingDef",
+        "defName": "KM_SanguiniteHeart",
+        "field": "graphicData/texPath"
+      }
+    },
+    {
+      "texture": "UI/Health/LumenStones/Shard",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "f5f1a718b247c72a28b972aed4fc0bd5bffd93d3cc771c5ca318f52a5675b735",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Health/LumenStones/Shoulder",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "ab248b0686ba326c1e7a35cdb3fb74c2c66079f4d386466fc3a55c6b1341f692",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Health/LumenStones/Leg",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "f9bc391e9223a30e842b541d8e954b400c8767a4e546cf022b07398ceb171bab",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Health/LumenStones/Heart",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "a8f67cbe0436cb65fb4aaebce583d66cdbcec5faef462e08bbf4d92fb04b2544",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Health/LumenStones/Eye",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "c8d3baefdc98210093007186b4f5817ccb627f32398785045da7f3389ca1e640",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Health/LumenStones/Jaw",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "920f85fb8bbddff561ddb3d5160877c6c67365187f42c0adae975e84411f5d26",
+      "role": "health-tab glyph; consumer HediffComp_StateIcon on each part hediff"
+    },
+    {
+      "texture": "UI/Icons/Attunement",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "10c601d031b8f7b51b63fb4a4fa22e15b8767d649aecad4f30475a09a7d48270",
+      "role": "ritual icon; consumers ritual pattern, precept and command"
+    },
+    {
+      "texture": "UI/Icons/Binding",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "33e1f3aac99464ac4d3283c467f62cfecbfea5c6d83922dc2af87e7c40317cdb",
+      "role": "ritual icon; consumers ritual pattern, precept and command"
+    },
+    {
+      "texture": "UI/Icons/AttunementSickness",
+      "canvas": [
+        64,
+        64
+      ],
+      "sha256": "94dfdaf64e075cf98e7c89ba71d19d60e863221dc86c74c07b87d080936ed0f6",
+      "role": "sickness icon; consumer HediffComp_StateIcon on KM_AttunementSickness"
+    }
+  ],
+  "approvedBy": "user: it all looks good",
+  "approvedOn": "2026-11-03",
+  "pendingConsumers": []
+}

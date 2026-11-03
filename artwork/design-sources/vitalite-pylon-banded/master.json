@@ -1,0 +1,86 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    335,
+    40,
+    919,
+    1208
+  ],
+  "canvas": [
+    256,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    256,
+    512
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Crop to a centred 1:2 source frame; retain generated artwork and its transparent alpha.",
+  "alphaHandling": "One uniform scale to a 1:2 canvas; no anisotropic scaling.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "rounded-base": [
+          [
+            350,
+            980
+          ],
+          [
+            459,
+            980
+          ],
+          [
+            545,
+            1034
+          ],
+          [
+            706,
+            1034
+          ],
+          [
+            791,
+            980
+          ],
+          [
+            905,
+            980
+          ],
+          [
+            905,
+            1207
+          ],
+          [
+            350,
+            1207
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "boundsTolerance": 8,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "definition": "KM_VitalitePylon",
+    "drawSize": [
+      1.08,
+      2.16
+    ],
+    "maxOpaqueSpread": 12,
+    "mode": "new-design",
+    "expectedBounds": [
+      20,
+      13,
+      239,
+      500
+    ],
+    "footLine": 500
+  }
+}

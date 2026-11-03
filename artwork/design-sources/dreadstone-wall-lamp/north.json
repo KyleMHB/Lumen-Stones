@@ -1,0 +1,32 @@
+{
+  "sourceSize": [
+    512,
+    512
+  ],
+  "crop": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "targetBox": [
+    0,
+    0,
+    512,
+    512
+  ],
+  "colorFilename": "WallLamp_north.png",
+  "maskFilename": "WallLamp_northm.png",
+  "sourceRepair": "Uniform reduction of approved north source crop (380, 186, 901, 1080), placed at established wall anchors; west mirrored and south exposes the wall-occluded tip.",
+  "alphaHandling": "Preserve source alpha with transparent padding.",
+  "layers": [
+    {
+      "path": "north-layer.png",
+      "constructionTint": false
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DamageDef>
+    <defName>KM_GlaciteFrost</defName>
+    <label>Glacite frost</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <hediff>Frostbite</hediff>
+    <externalViolence>true</externalViolence>
+    <makesBlood>false</makesBlood>
+    <armorCategory>Heat</armorCategory>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <defaultDamage>10</defaultDamage>
+    <explosionHeatEnergyPerCell>-10</explosionHeatEnergyPerCell>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+    <deathMessage>{0} has been killed by glacite frost.</deathMessage>
+  </DamageDef>
+
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>KM_GlaciteBlade</defName>
+    <label>Glacite blade</label>
+    <description>A long Glacite crystal set into an iron hilt. The blade stays cold enough to burn bare skin, so it is carried in a lined sheath.\n\nIts sharp edge cuts flesh, and the crystal's cold can cause frostbite with each strike.</description>
+    <techLevel>Medieval</techLevel>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <relicChance>2</relicChance>
+    <smeltable>false</smeltable>
+    <statBases><WorkToMake>5000</WorkToMake><Mass>2</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/GlaciteBlade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.2</drawSize>
+    </graphicData>
+    <weaponTags><li>MedievalMeleeAdvanced</li><li>LongSword</li></weaponTags>
+    <tools>
+      <li>
+        <label>handle</label><capacities><li>Blunt</li></capacities>
+        <power>9</power><cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label><capacities><li>Stab</li></capacities>
+        <power>23</power><cooldownTime>2.2</cooldownTime>
+        <extraMeleeDamages><li><def>KM_GlaciteFrost</def><amount>6</amount><chance>0.5</chance></li></extraMeleeDamages>
+      </li>
+      <li>
+        <label>edge</label><capacities><li>Cut</li></capacities>
+        <power>23</power><cooldownTime>2.2</cooldownTime>
+        <extraMeleeDamages><li><def>KM_GlaciteFrost</def><amount>6</amount><chance>0.4</chance></li></extraMeleeDamages>
+      </li>
+    </tools>
+    <recipeMaker>
+      <unfinishedThingDef IsNull="True" />
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>421</displayPriority>
+    </recipeMaker>
+    <costList><KM_Glacite>100</KM_Glacite><Steel>20</Steel></costList>
+  </ThingDef>
+</Defs>

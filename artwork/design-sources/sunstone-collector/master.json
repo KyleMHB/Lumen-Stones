@@ -1,0 +1,11 @@
+{
+  "sourceSize": [1254, 1254],
+  "crop": [220, 150, 1055, 1060],
+  "canvas": [512, 512],
+  "targetBox": [48, 48, 464, 464],
+  "colorFilename": "SunstoneCollector.png",
+  "maskFilename": "SunstoneCollector_m.png",
+  "sourceRepair": "Crop excludes distant low-alpha generated speckles; crystal contours are retained.",
+  "alphaHandling": "Preserve source alpha and apply one uniform Lanczos reduction.",
+  "layers": [{"path": "source.png", "constructionTint": false}]
+}

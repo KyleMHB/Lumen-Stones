@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef Name="KM_InfusionBase" Abstract="True">
+    <jobString>Infusing Lumenstone.</jobString>
+    <workAmount>400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <requiredGiverWorkType>Crafting</requiredGiverWorkType>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <targetCountAdjustment>10</targetCountAdjustment>
+    <recipeUsers><li>KM_LumenCircle</li></recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseGlacite</defName>
+    <label>infuse Glacite</label>
+    <description>Infuse 10 Lumenstone into 10 Glacite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Glacite>10</KM_Glacite></products>
+    <researchPrerequisite>Stonecutting</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseVitalite</defName>
+    <label>infuse Vitalite</label>
+    <description>Infuse 10 Lumenstone and 1 herbal medicine into 10 Vitalite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Vitalite>10</KM_Vitalite></products>
+    <researchPrerequisite>KM_VitaliteRestoration</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseSerenite</defName>
+    <label>infuse Serenite</label>
+    <description>Infuse 10 Lumenstone and 2 smokeleaf joints into 10 Serenite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>SmokeleafJoint</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>SmokeleafJoint</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Serenite>10</KM_Serenite></products>
+    <researchPrerequisite>KM_SereniteTranquility</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseVerdite</defName>
+    <label>infuse Verdite</label>
+    <description>Infuse 10 Lumenstone and 20 hay into 10 Verdite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>Hay</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>Hay</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Verdite>10</KM_Verdite></products>
+    <researchPrerequisite>KM_VerditeGrowth</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseAegite</defName>
+    <label>infuse Aegite</label>
+    <description>Infuse 10 Lumenstone and 20 silver into 10 Aegite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <!-- Recipe counts are volume and each piece of silver is 0.1, so this asks for 20 pieces. -->
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Aegite>10</KM_Aegite></products>
+    <researchPrerequisite>KM_AegiteWarding</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseFerrite</defName>
+    <label>infuse Ferrite</label>
+    <description>Infuse 10 Lumenstone and 10 steel into 10 Ferrite.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Ferrite>10</KM_Ferrite></products>
+    <researchPrerequisite>KM_FerriteForging</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseSunstone</defName>
+    <label>infuse Sunstone</label>
+    <description>Infuse 10 Lumenstone and 2 gold into 10 Sunstone.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <!-- Recipe counts are volume and each piece of gold is 0.1, so this asks for 2 pieces. -->
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>0.2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Sunstone>10</KM_Sunstone></products>
+    <researchPrerequisite>KM_SunstoneChanneling</researchPrerequisite>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,26 @@
+# Local editors and user settings
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Local captures, temporary work and packaged releases
+/work/
+/dist/
+/releases/
+/deploy/
+/ChatGPT Image*.png
+*.log
+*.tmp
+*.bak
+*.zip
+
+# Generated build output
+**/bin/
+**/obj/
+/Assemblies/
+
+# Python artwork tooling
+__pycache__/
+*.pyc

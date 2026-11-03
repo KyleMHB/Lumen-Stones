@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RoomRoleDef>
+    <defName>KM_DarkStoneShrine</defName>
+    <label>Dark Stone shrine</label>
+    <workerClass>LumenStones.RoomRoleWorker_DarkStoneShrine</workerClass>
+    <relatedStats>
+      <li>Impressiveness</li>
+      <li>Beauty</li>
+      <li>Wealth</li>
+      <li>Space</li>
+      <li>Cleanliness</li>
+    </relatedStats>
+  </RoomRoleDef>
+</Defs>

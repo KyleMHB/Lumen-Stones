@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>KM_AnimaAttunement</defName>
+    <label>anima attunement</label>
+    <description>Learn to infuse Lumenstone with jade until it takes in the psychic hum of anima trees.\n\nUnlocks Animastone infusion at the Lumen ritual circle, the Animastone lamps, columns, clusters and pylons that psycasters meditate to, and the Animastone circlet and staff.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>Stonecutting</li></prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>9</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Animastone</defName>
+    <label>Animastone</label>
+    <description>Lumenstone steeped with jade takes in the psychic hum of anima trees. The trees accept it as one of their own, and do not reject it the way they reject machines.\n\nA seafoam-teal crystal with a pale opal core, infused from Lumenstone and jade at a Lumen ritual circle. Psycasters of tribal or noble backgrounds meditate to it.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Animastone</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>9</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <RecipeDef ParentName="KM_InfusionBase">
+    <defName>KM_InfuseAnimastone</defName>
+    <label>infuse Animastone</label>
+    <description>Infuse 10 Lumenstone and 2 jade into 10 Animastone.</description>
+    <ingredients>
+      <li><filter><thingDefs><li>KM_Lumenstone</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>KM_Lumenstone</li><li>Jade</li></thingDefs></fixedIngredientFilter>
+    <products><KM_Animastone>10</KM_Animastone></products>
+    <researchPrerequisite>KM_AnimaAttunement</researchPrerequisite>
+  </RecipeDef>
+</Defs>
