@@ -1,4 +1,4 @@
-[img]docs/images/workshop/lumen-stones-description-wide.png[/img]
+[img]https://raw.githubusercontent.com/KyleMHB/Lumen-Stones/main/docs/images/workshop/lumen-stones-description-wide.png[/img]
 
 Lumenstone is rare. Find it, infuse it, then choose what your colony needs first. A hospital, a farm, a freezer and a shield dome all compete for your supply.
 
@@ -12,7 +12,7 @@ Stone research is neolithic. Later projects include Lunite stabilization and Aeg
 [b]Mod version:[/b] 1.0.0
 [b]Supported game version:[/b] RimWorld 1.7
 
-[img]docs/images/workshop/lumen-stones-features.png[/img]
+[img]https://raw.githubusercontent.com/KyleMHB/Lumen-Stones/main/docs/images/workshop/lumen-stones-features.png[/img]
 
 [h2]Getting started[/h2]
 Research Stonecutting, build a Lumen ritual circle from 5 Lumenstone, and add an infusion bill. Every stone except Glacite needs its own research and a reagent, and active effects wait until you research Sunstone and build collectors.
@@ -43,7 +43,7 @@ The Aegite shield adds 25 percentage points of sharp and blunt armour and preven
 Research Aegite bastion to build a shield projector. Its 10-tile dome stops incoming hostile shots fired from outside, mortar shells and orbital bombardments while colonists shoot out freely. It crushes hostile raid drop pods and tunneling infestations inside the dome at a cost in shield health. Friendly pods and mech-cluster skyfallers pass through. Upkeep and shield recovery spend Solar energy. A broken dome reboots for a day; EMP disarms it briefly. A linked Lunite stabilizer protects it during solar flares.
 
 [h2]The dark stones (Ideology)[/h2]
-[img]docs/images/workshop/gallery-intro-07-the-dark-path.png[/img]
+[img]https://raw.githubusercontent.com/KyleMHB/Lumen-Stones/main/docs/images/workshop/gallery-intro-07-the-dark-path.png[/img]
 
 The Sacrificial altar can also harvest Warp energy, which Bloodstone stores. Sanguinite, Dreadstone and Hollowstone fixtures only give light until they spend Warp energy:
 [list]
