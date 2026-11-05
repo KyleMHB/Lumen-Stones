@@ -1,0 +1,121 @@
+{
+  "sourceSize": [
+    887,
+    1774
+  ],
+  "crop": [
+    35,
+    75,
+    856,
+    1758
+  ],
+  "canvas": [
+    128,
+    256
+  ],
+  "targetBox": [
+    8,
+    10,
+    120,
+    246
+  ],
+  "colorFilename": "Pylon.png",
+  "maskFilename": "Pylon_m.png",
+  "sourceRepair": "Only contour-polygon.json receives pixels from generated-edit.png; every other source pixel and all original alpha are retained from ../animastone-pylon-tall/source.png. Identity transform; same dimensions. Original user-painted mask retained verbatim.",
+  "alphaHandling": "Preserve generated alpha through one shared uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source.png",
+      "ownership": {
+        "stone-foot": [
+          [
+            15,
+            1600
+          ],
+          [
+            105,
+            1530
+          ],
+          [
+            140,
+            1549
+          ],
+          [
+            219,
+            1572
+          ],
+          [
+            335,
+            1583
+          ],
+          [
+            450,
+            1613
+          ],
+          [
+            562,
+            1589
+          ],
+          [
+            648,
+            1556
+          ],
+          [
+            759,
+            1528
+          ],
+          [
+            774,
+            1558
+          ],
+          [
+            820,
+            1581
+          ],
+          [
+            872,
+            1760
+          ],
+          [
+            15,
+            1760
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "boundsTolerance": 0,
+    "minSourceSize": 512,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 12,
+    "expectedBounds": [
+      8,
+      13,
+      120,
+      243
+    ],
+    "footLine": 243
+  },
+  "acceptance": {
+    "design": "User approved localized border repair in chat 2026-11-04: thats good",
+    "mask": "Previous user-painted mask preserved byte-for-byte; user approved repaired join 2026-11-04",
+    "inGame": "pending final combined human review"
+  },
+  "runtimeContract": {
+    "definition": "KM_AnimastonePylon",
+    "texture": "Things/Building/Animastone/Pylon",
+    "footprint": [
+      1,
+      1
+    ],
+    "drawSize": [
+      1.1,
+      2.2
+    ],
+    "graphicClass": "Graphic_Single",
+    "consumerStatus": "Existing Royalty definition still uses low 2x1 contract; artwork ticket does not own Defs."
+  },
+  "paintedMask": "painted-mask.png"
+}

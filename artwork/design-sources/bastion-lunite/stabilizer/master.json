@@ -1,0 +1,92 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "crop": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "targetBox": [
+    0,
+    0,
+    256,
+    256
+  ],
+  "colorFilename": "LuniteStabilizer.png",
+  "maskFilename": "LuniteStabilizer_m.png",
+  "sourceRepair": "Remove exterior alpha values 1 or less from the approved source before the shared transform; original source.png retained.",
+  "alphaHandling": "Preserve source alpha through shared uniform Lanczos reduction.",
+  "layers": [
+    {
+      "path": "source-clean.png",
+      "ownership": {
+        "plinth": [
+          [
+            409,
+            749
+          ],
+          [
+            503,
+            749
+          ],
+          [
+            526,
+            814
+          ],
+          [
+            627,
+            855
+          ],
+          [
+            726,
+            814
+          ],
+          [
+            751,
+            749
+          ],
+          [
+            846,
+            749
+          ],
+          [
+            846,
+            990
+          ],
+          [
+            409,
+            990
+          ]
+        ]
+      }
+    }
+  ],
+  "candidateChecks": {
+    "mode": "new-design",
+    "expectedBounds": [
+      83,
+      48,
+      173,
+      202
+    ],
+    "boundsTolerance": 8,
+    "footLine": 204,
+    "minSourceSize": 1024,
+    "minSourcePixelsPerOutputPixel": 1,
+    "maxOpaqueSpread": 20,
+    "alphaDebrisTolerance": 8,
+    "definition": "KM_LuniteStabilizer",
+    "drawSize": [
+      1.25,
+      1.25
+    ]
+  },
+  "paintedMask": "painted-mask.png"
+}

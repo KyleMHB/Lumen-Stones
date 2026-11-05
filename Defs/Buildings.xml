@@ -130,7 +130,7 @@
   <ThingDef ParentName="KM_GlaciteBuildingBase">
     <defName>KM_GlaciteCooler</defName>
     <label>Glacite cooler</label>
-    <description>Glacite crystals packed into a sturdy housing. Without a vent, the heat it takes in simply goes into the stone.\n\nAbsorbs heat without fuel, electricity or an exhaust vent, and with Solar energy keeps cooling past its own limit. A larger room or hotter weather may need more than one cooler. Severe damage can trigger a burst of freezing crystal fragments.</description>
+    <description>Glacite crystals packed into a sturdy housing. Without a vent, the heat it takes in simply goes into the stone.\n\nAbsorbs heat without fuel, electricity or an exhaust vent. On its own it chills a room to 4°C, cold enough to slow food spoilage. With Solar energy it keeps cooling to -10°C, cold enough to freeze food. A larger room or hotter weather may need more than one cooler. Severe damage can trigger a burst of freezing crystal fragments.</description>
     <graphicData>
       <texPath>Things/Building/Misc/GlaciteCooler</texPath>
       <shaderType>CutoutComplex</shaderType>
@@ -156,7 +156,7 @@
       <li Class="LumenStones.CompProperties_GlaciteCooler">
         <heatPerSecond>-14</heatPerSecond>
         <heatPushMinTemperature>-10</heatPushMinTemperature>
-        <passiveCutoff>10</passiveCutoff>
+        <passiveCutoff>4</passiveCutoff>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle">
         <effect>deep cooling</effect>

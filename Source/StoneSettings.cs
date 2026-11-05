@@ -81,12 +81,14 @@ public static partial class StoneSettings
         Register("Verdite", false, "KM_Verdite", "KM_LumenVerditeColumn", "KM_VerditeLamp",
             "KM_VerditeWallLamp", "KM_VerditePylon", "KM_VerditeCluster", "KM_VerditeScythe");
         Register("Aegite", false, "KM_Aegite", "KM_LumenAegiteColumn", "KM_AegiteLamp",
-            "KM_AegiteWallLamp", "KM_AegitePylon", "KM_AegiteCluster", "KM_AegiteWarhammer");
+            "KM_AegiteWallLamp", "KM_AegitePylon", "KM_AegiteCluster", "KM_AegiteShield", "KM_AegiteShieldCharm");
         Register("Ferrite", false, "KM_Ferrite", "KM_LumenFerriteColumn", "KM_FerriteLamp",
-            "KM_FerriteWallLamp", "KM_FerriteCluster", "KM_FerritePylon", "KM_FerriteShield");
+            "KM_FerriteWallLamp", "KM_FerriteCluster", "KM_FerritePylon", "KM_FerriteWarhammer");
         Add("Sunstone", "Availability", "Sunstone.enabled", "Allow new Sunstone content, and require Solar energy for active effects", 1, toggle: true);
-        Register("Sunstone", false, "KM_Sunstone", "KM_SunstoneCollector", "KM_SunstoneArray", "KM_SunstoneVessel", "KM_SunstoneObelisk", "KM_SunstoneAxe");
+        Register("Sunstone", false, "KM_Sunstone", "KM_SunstoneCollector", "KM_SunstoneArray", "KM_SunstoneVessel", "KM_SunstoneObelisk", "KM_SunstoneAxe",
+            "KM_Lunite", "KM_LuniteStabilizer", "KM_AegiteShieldProjector");
         AddSunstone();
+        AddBastion();
         Register("Lumenstone", false, "KM_LumenstoneColumn", "KM_LumenstoneLamp", "KM_LumenstoneWallLamp",
             "KM_LumenstonePylon", "KM_LumenstoneCluster");
         var repairLumenstoneRanges = AddLumenstone();
@@ -142,10 +144,13 @@ public static partial class StoneSettings
             v => SunstoneAxe.BlindTicks = (int)v, min: 1, max: 60000, integer: true);
         Add("Sunstone", axe, "KM_SunstoneAxe.stunTicks", "Flash stun duration (ticks)", SunstoneAxe.StunTicks,
             v => SunstoneAxe.StunTicks = (int)v, min: 1, max: 60000, integer: true);
-        Add("Aegite", "Aegite warhammer", "KM_AegiteWarhammer.stunChance", "Stun chance on damaging melee hits (%)", AegiteWarhammer.StunChance,
-            v => AegiteWarhammer.StunChance = v, max: 1, percent: true);
-        Add("Aegite", "Aegite warhammer", "KM_AegiteWarhammer.stunTicks", "Stun duration (ticks)", AegiteWarhammer.StunTicks,
-            v => AegiteWarhammer.StunTicks = (int)v, min: 1, max: 60000, integer: true);
+        Add("Ferrite", "Ferrite warhammer", "KM_FerriteWarhammer.stunChance", "Stun chance on damaging melee hits (%)", FerriteWarhammer.StunChance,
+            v => FerriteWarhammer.StunChance = v, max: 1, percent: true);
+        Add("Ferrite", "Ferrite warhammer", "KM_FerriteWarhammer.stunTicks", "Stun duration (ticks)", FerriteWarhammer.StunTicks,
+            v => FerriteWarhammer.StunTicks = (int)v, min: 1, max: 60000, integer: true);
+        var hammerMending = FerriteWarhammer.Def.GetCompProperties<CompProperties_Ferrite>();
+        Add("Ferrite", "Ferrite warhammer", "KM_FerriteWarhammer.repairBudget", "Condition mended per pulse (% of maximum hit points)", hammerMending.repairBudget,
+            v => hammerMending.repairBudget = v, max: 1, percent: true);
         Add("Verdite", "Verdite scythe", "KM_VerditeScythe.farming", "Plant work speed and harvest yield bonus (%)", VerditeScythe.FarmingBonus,
             v => VerditeScythe.FarmingBonus = v, max: 10, percent: true);
         Add("Verdite", "Verdite scythe", "KM_VerditeScythe.lifeSteal", "Actual melee damage converted to healing (%)", VerditeScythe.LifeStealFraction,

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Lunite and the stabilizer -->
+  <ResearchProjectDef>
+    <defName>KM_LuniteStabilization</defName>
+    <label>Lunite stabilization</label>
+    <description>Learn to steep Sunstone in moonlight, and to set the result beside a fixture so that it keeps working when the sky goes wrong.\n\nUnlocks Lunite conversion at the Lumen ritual circle and Lumenstone altar, and the Lunite stabilizer.</description>
+    <baseCost>1800</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>KM_SunstoneChanneling</li></prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>8</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>KM_Lunite</defName>
+    <label>Lunite</label>
+    <description>Sunstone steeped in moonlight loses its heat and keeps its glow. It turns steady, and it holds still when everything around it is being shaken.\n\nA pale silver-blue crystal with a deep moonlit-indigo core, converted from Sunstone at night at a Lumen ritual circle or Lumenstone altar. Lunite stabilizers are made from it. It cannot be mined, found or bought.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Lunite</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <soundInteract>ChunkRock_Drop</soundInteract>
+    <soundDrop>ChunkRock_Drop</soundDrop>
+    <statBases>
+      <MarketValue>12</MarketValue>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <JobDef>
+    <defName>KM_ConvertLuniteAtCircle</defName>
+    <driverClass>LumenStones.JobDriver_ConvertLuniteAtCircle</driverClass>
+    <reportString>converting Sunstone into Lunite.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_LuniteStabilizer</defName>
+    <label>Lunite stabilizer</label>
+    <description>A small Lunite crystal on a plinth. It is calm in a way the things around it are not.\n\nLinks to one Solar or Warp active-effect fixture within 4 tiles, switched on or off, and keeps that fixture's active effect running through solar flares and other interruptions while network energy lasts. Draws no energy itself. It cannot link to Sunstone collectors or arrays.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/LuniteStabilizer</texPath>
+      <drawSize>(1.25,1.25)</drawSize>
+    </graphicData>
+    <uiIconScale>0.9</uiIconScale>
+    <size>(1,1)</size>
+    <researchPrerequisites Inherit="False"><li>KM_LuniteStabilization</li></researchPrerequisites>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>1200</WorkToBuild>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+    <costList><KM_Lunite>25</KM_Lunite></costList>
+    <placeWorkers><li>LumenStones.PlaceWorker_LuniteRing</li></placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(175,200,245,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_LuniteStabilizer" />
+    </comps>
+  </ThingDef>
+
+  <!-- Aegite defences -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>KM_AegiteShieldCharm</defName>
+    <label>Aegite shield charm</label>
+    <description>A champagne-gold crystal on a leather cord, humming faintly. It throws up a thin personal ward against incoming shots.\n\nA personal shield worn in the utility slot. It stops incoming ranged projectiles and shrapnel, but not melee attacks or heat. Like a shield belt, it prevents the wearer firing out, recharges slowly after breaking, and shuts down instantly if hit by EMP. Needs no Solar energy and ignores interruptions. Shares the belt slot with the Aegite shield. Crafted at a smithy from 100 Aegite and 20 steel after Aegite warding and Long blades, with Crafting 6.</description>
+    <thingClass>Apparel</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Equipment/Shield/AegiteShieldCharm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>1</Mass>
+      <WorkToMake>14000</WorkToMake>
+      <Flammability>0</Flammability>
+      <EnergyShieldRechargeRate>0.08</EnergyShieldRechargeRate>
+      <EnergyShieldEnergyMax>0.6</EnergyShieldEnergyMax>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <costList><KM_Aegite>100</KM_Aegite><Steel>20</Steel></costList>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <researchPrerequisites><li>KM_AegiteWarding</li><li>LongBlades</li></researchPrerequisites>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers><li>ElectricSmithy</li><li>FueledSmithy</li></recipeUsers>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <useIngredientsForColor>false</useIngredientsForColor>
+      <displayPriority>424</displayPriority>
+    </recipeMaker>
+    <thingCategories><li>ApparelUtility</li></thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity><careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged><wearPerDay>0</wearPerDay>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups><layers><li>Belt</li></layers>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Shield"><startingTicksToReset>4200</startingTicksToReset></li>
+    </comps>
+    <tradeTags><li>Clothing</li></tradeTags>
+  </ThingDef>
+
+  <ResearchProjectDef>
+    <defName>KM_AegiteBastion</defName>
+    <label>Aegite bastion</label>
+    <description>Learn to bind Aegite wards to the daylight itself and raise them as a dome over a whole colony.\n\nUnlocks the Aegite shield projector, which stops hostile projectiles, mortar shells and bombardments, and crushes hostile drop pods and infestations that land inside it.</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <prerequisites><li>KM_AegiteWarding</li><li>KM_SunstoneChanneling</li></prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>6</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="KM_SunstoneBuildingBase">
+    <defName>KM_AegiteShieldProjector</defName>
+    <label>Aegite shield projector</label>
+    <description>A champagne-gold crystal ring held between two plinths. When it wakes, the air around the colony takes on a faint shimmer.\n\nProjects a 10-tile dome that stops incoming hostile ground projectiles, mortar shells and orbital bombardments, while colonists shoot out freely. It also crushes hostile raid drop pods and tunneling infestations that land inside, at a cost to the dome. Spends Solar energy while up and for each point of shield recharged. When broken it reboots for a day. EMP disarms it briefly. Paused by solar flares unless a Lunite stabilizer is linked to it.</description>
+    <graphicData>
+      <texPath>Things/Building/Aegite/ShieldProjector</texPath>
+      <drawSize>(2.5,2.5)</drawSize>
+    </graphicData>
+    <designationCategory>Security</designationCategory>
+    <thingCategories Inherit="False"><li>BuildingsSecurity</li></thingCategories>
+    <researchPrerequisites Inherit="False"><li>KM_AegiteBastion</li></researchPrerequisites>
+    <size>(2,2)</size>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>3500</WorkToBuild>
+      <Beauty>20</Beauty>
+    </statBases>
+    <costStuffCount>60</costStuffCount>
+    <costList>
+      <KM_Aegite>150</KM_Aegite>
+      <KM_Sunstone>50</KM_Sunstone>
+      <Gold>2</Gold>
+    </costList>
+    <placeWorkers><li>PlaceWorker_ShowProjectileInterceptorRadius</li></placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(245,230,180,0)</glowColor>
+      </li>
+      <li Class="LumenStones.CompProperties_SolarToggle">
+        <effect>projectile and drop-pod shield dome</effect>
+      </li>
+      <li Class="LumenStones.CompProperties_AegiteShieldProjector">
+        <radius>10</radius>
+        <hitPoints>500</hitPoints>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <interceptAirProjectiles>true</interceptAirProjectiles>
+        <interceptNonHostileProjectiles>false</interceptNonHostileProjectiles>
+        <interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+        <color>(0.96, 0.9, 0.7)</color>
+        <hitPointsRestoreInstantlyAfterCharge>false</hitPointsRestoreInstantlyAfterCharge>
+        <startWithMaxHitPoints>true</startWithMaxHitPoints>
+        <chargeDurationTicks>60000</chargeDurationTicks>
+        <rechargeHitPointsIntervalTicks>240</rechargeHitPointsIntervalTicks>
+        <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+        <minIdleAlpha>0.05</minIdleAlpha>
+        <alwaysShowHitpointsGizmo>true</alwaysShowHitpointsGizmo>
+        <drawWithNoSelection>true</drawWithNoSelection>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

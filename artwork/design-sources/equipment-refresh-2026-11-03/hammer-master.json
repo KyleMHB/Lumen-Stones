@@ -19,8 +19,8 @@
     272,
     222
   ],
-  "colorFilename": "AegiteWarhammer.png",
-  "maskFilename": "AegiteWarhammer_m.png",
+  "colorFilename": "FerriteWarhammer.png",
+  "maskFilename": "FerriteWarhammer_m.png",
   "layers": [
     {
       "path": "hammer-oriented.png",
@@ -40,7 +40,7 @@
         "sha256": "a7273525285f96bf63e489762ac803e964f3c2fb78f8f727663966ffe929692a"
       }
     },
-    "definition": "KM_AegiteWarhammer",
+    "definition": "KM_FerriteWarhammer",
     "drawSize": [
       1.5,
       1.5

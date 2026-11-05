@@ -43,7 +43,7 @@ public class CompOverlight : CompGlower, ISolarConsumer
         }
     }
 
-    private bool ActiveEffect => !SolarRules.Enabled || Toggle.ToggledOn && powered;
+    private bool ActiveEffect => !SolarRules.Enabled || Toggle.Running && powered;
 
     public bool SolarPowered
     {
@@ -56,7 +56,7 @@ public class CompOverlight : CompGlower, ISolarConsumer
         }
     }
 
-    public float SolarDrainPerTick => !CompLumenDarklight.On(parent) && SolarRules.Enabled && parent.Spawned && Toggle.ToggledOn && InSchedule
+    public float SolarDrainPerTick => !CompLumenDarklight.On(parent) && SolarRules.Enabled && parent.Spawned && Toggle.Running && InSchedule
         ? Overlight.solarDrain / ((Overlight.endTime - Overlight.startTime) * GenDate.TicksPerDay) : 0;
 
     protected override bool ShouldBeLitNow => !CompLumenDarklight.On(parent) && base.ShouldBeLitNow && InSchedule && ActiveEffect;

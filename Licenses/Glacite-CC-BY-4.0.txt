@@ -1,0 +1,13 @@
+Lumen Stones: Glacite adaptation notice
+
+Lumen Stones as a whole is released under GPLv3 (see LICENSE). The Glacite definitions adapted from Epochs - Pyrinth by DetVisor retain Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+License terms: https://creativecommons.org/licenses/by/4.0/legalcode
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632
+Original source: https://github.com/DetVisor/EpochsPyrinth
+
+The Glacite adaptation and Lumenstone Columns content are maintained by KyleMHB. Glacite changes include cooling instead of heating, frost damage and new identifiers. Current Glacite artwork is original to Lumen Stones and is not derived from Pyrinth sprites. See CREDITS.md for attribution, ARTWORK.md for the Glacite generation record, and COLUMN-ART-PROMPTS.txt for column artwork provenance.
+
+RimWorld assets referenced at runtime remain the property of Ludeon Studios. Lumen Stones bundles no Pyrinth artwork; optional Pyrinth content is supplied by the installed Pyrinth mod.
+
+This notice preserves the inherited Glacite license. The linked CC BY 4.0 legal code contains the complete terms.

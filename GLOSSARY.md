@@ -73,6 +73,31 @@ A champagne-gold infused Lumenstone with a white-gold core, associated with fire
 **Aegite ward**:
 An active Aegite column, tripod cluster or sentinel pylon. The strongest covering tier alone services each fire or filth target; lamps provide illumination only.
 
+**Lunite**:
+A pale silver-blue crystal with a moonlit-indigo core, converted from Sunstone at night at a Lumen ritual circle or Lumenstone altar. It only goes into Lunite stabilizers.
+_Avoid_: Moonstone.
+
+**Lunite conversion**:
+The nocturnal turning of 25 Sunstone into 25 Lunite, startable between 20:00 and 04:00 and run as a ritual with Ideology or a four-hour job at the circle without. The Sunstone is spent only on success, which also starts a settlement cooldown.
+
+**Active effect interruption**:
+A map event, registered once for the Solar network, the Warp network or both, that pauses fixture active effects. A solar flare interrupts both networks and stops Sunstone collection. Passive effects, implants, prosthetics and worn gear are unaffected.
+
+**Lunite stabilizer**:
+A 1x1 fixture that links one-to-one to a Solar or Warp active-effect fixture within 4 tiles so that fixture keeps running through interruptions. It draws no energy and never links to collectors or arrays.
+
+**Ferrite warhammer**:
+The Ferrite melee weapon that can stun living targets and slowly mends itself and the wielder's worn apparel and weapons for free.
+
+**Aegite shield**:
+The Aegite utility-belt shield giving +25 percentage points of sharp and blunt armour and immunity to catching fire.
+
+**Aegite shield charm**:
+A smithy-made utility-belt personal shield in the style of a shield belt. It needs no Solar energy and ignores interruptions, and shares the belt slot with the Aegite shield.
+
+**Aegite shield projector**:
+The 2x2 Solar fixture, unlocked by Aegite bastion, that raises a 10-tile dome stopping hostile projectiles, mortar shells and bombardments and crushing hostile drop pods and tunneling infestations at a cost in dome hit points.
+
 **Sunstone**:
 An amber-citrine infused Lumenstone with a blazing solar-gold core, used to build sunlight-harvesting collectors (`Sunstone collector` and `Sunstone array`), wireless storage batteries (`Sunstone vessel` and `Sunstone obelisk`) and the `Sunstone axe` rather than decorative lamps or columns.
 

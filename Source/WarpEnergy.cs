@@ -214,15 +214,34 @@ public class CompWarpToggle : ThingComp
 
     public bool ToggledOn => on;
 
-    // True when the active effect may run: toggled on and the network has Warp energy.
-    public bool Active => on && WarpEnergyNetwork.For(parent.Map).Available;
+    // Toggled on and not paused by an interruption the fixture's stabilizer cannot ride out. Energy is checked separately.
+    public bool Running => on && !ActiveEffectInterruption.Blocked(parent, ActiveEffectNetworks.Warp);
 
-    // Pays a per-event cost. Refused when toggled off or when the network cannot cover it.
-    public bool TryPay(float amount) => on && WarpEnergyNetwork.For(parent.Map).TryConsume(amount);
+    // True when the active effect may run: running and the network has Warp energy.
+    public bool Active => Running && WarpEnergyNetwork.For(parent.Map).Available;
 
-    public string Status => !on ? "Toggled off" : WarpEnergyNetwork.For(parent.Map).Available ? "Powered" : "No Warp energy";
+    // Pays a per-event cost. Refused when paused or toggled off or when the network cannot cover it.
+    public bool TryPay(float amount) => Running && WarpEnergyNetwork.For(parent.Map).TryConsume(amount);
 
-    public override string CompInspectStringExtra() => parent.Spawned ? "Warp active effect: " + Status : null;
+    public string Status
+    {
+        get
+        {
+            if (!on) return "Toggled off";
+            if (ActiveEffectInterruption.BlockedReason(parent, ActiveEffectNetworks.Warp) is { } reason) return "Interrupted (" + reason + ")";
+            return WarpEnergyNetwork.For(parent.Map).Available ? "Powered" : "No Warp energy";
+        }
+    }
+
+    public override void PostSpawnSetup(bool respawningAfterLoad) => LuniteLinkTracker.For(parent.Map).RegisterFixture(parent, true);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => LuniteLinkTracker.For(map).RegisterFixture(parent, false);
+
+    public override string CompInspectStringExtra()
+    {
+        if (!parent.Spawned) return null;
+        string text = "Warp active effect: " + Status;
+        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\nStabilized by: Lunite stabilizer" : text;
+    }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {

@@ -108,7 +108,7 @@ public class RoomSupportCache : MapComponent
         var room = fixture.GetRoom();
         if (room == null || !room.ProperRoom || room.OpenRoofCount > 0) return;
         Raise(all, room, index, weight);
-        if (fixture.TryGetComp<CompSolarToggle>()?.ToggledOn ?? true) Raise(active, room, index, weight);
+        if (fixture.TryGetComp<CompSolarToggle>()?.Running ?? true) Raise(active, room, index, weight);
     }
 
     private static void Raise(Dictionary<Room, float[]> table, Room room, int index, float weight)
@@ -142,7 +142,7 @@ public class RoomSupportCache : MapComponent
     private void FindPatients(Building_Bed bed)
     {
         var comp = bed.GetComp<CompVitalite>();
-        bool bedOn = comp != null && comp.Props.fixtureIndex < 0 && (bed.GetComp<CompSolarToggle>()?.ToggledOn ?? true);
+        bool bedOn = comp != null && comp.Props.fixtureIndex < 0 && (bed.GetComp<CompSolarToggle>()?.Running ?? true);
         float roomActive = VitaliteSupport.Fraction(bed.GetRoom(), true);
         float healing = roomActive * StoneSettings.RoomHealingCap + (bedOn ? comp.Props.healingBonus : 0);
         // Infection prevention only works in an enclosed, roofed room, as before.
@@ -211,7 +211,7 @@ public class RoomSupportCache : MapComponent
             var props = comp.Props;
             comp.poweredNow = false;
             if (props.activeRadius <= 0 || !comp.parent.Spawned) continue;
-            if (SolarRules.Enabled && comp.parent.GetComp<CompSolarToggle>() is { ToggledOn: false }) continue;
+            if (SolarRules.Enabled && comp.parent.GetComp<CompSolarToggle>() is { Running: false }) continue;
             FindMeditators(comp.parent.Position, props.activeRadius);
             if (found.Count == 0) continue;
             float cost = props.activeDrain / GenDate.TicksPerDay * Interval;

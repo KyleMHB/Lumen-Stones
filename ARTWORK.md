@@ -2,6 +2,36 @@
 
 ## Current artwork workflow
 
+### Workshop gallery and description refresh, 2026-11-04
+
+The 24-image gallery now includes Lunite conversion and stabilization, Aegite personal shields and the shield projector, the Ferrite warhammer/Aegite shield swap, the simplified Sunstone flare and the Animastone pylon border repair. The lineage overview shows Sunstone turning into Lunite at night. The features illustration and Steam description cover solar-flare interruptions and Lunite's limits. The removed barricade is excluded.
+
+`scripts/render-stone-portraits.py` includes Lunite's recorded resource palette. `scripts/render-workshop-art.py --family all` rebuilds the gallery, gallery order and all three description illustrations. Runtime textures are preferred. The projector and stabilizer are now in `Textures/`, exported from their `artwork/design-sources/bastion-lunite/*/master.json` recipes; their reviewed masks are promoted. The projector uses the user's corrected source. This does not promote artwork, change masks or approve in-game appearance.
+
+Both local HTML previews under `artifacts/` were regenerated from `steam-description.md`; the full page follows `docs/images/workshop/gallery-order.txt` and uses `About/Preview.png`. These local changes have not been published to Steam.
+
+### Typeset Workshop cover, 2026-11-04
+
+The user requested a deterministic rebuild to remove the generated cover's checkering and use the actual RimWorld font, followed by release-ready polish. `scripts/render-workshop-cover.py --icon-only` composes a flat navy background, exact local RimWordFont outlines with independent ivory/gold crystal facets per letter, fine directional highlights, the original Glacite cooler, Vitalite cluster and Verdite pylon masters, and retained resource portraits. Visible lettering is centred and the three furnishings are optically balanced. The 1254px master is `artwork/workshop/lumen-stones-typeset-cover-master.png`; the full-resolution deliverable is `docs/images/workshop/lumen-stones-workshop-cover.png`. Source/font/output hashes and the method are recorded in `artwork/workshop/lumen-stones-crystal-cover.json`. The three local 512px preview/icon files use the rebuilt master. Earlier generated covers remain as history; revised appearance awaits review. Runtime textures are unchanged; no Steam publication was performed.
+
+### Animastone pylon border repair, 2026-11-04
+
+The user approved the continuous charcoal border between the tall crystal and its grey stone foot. The repaired source, exact imagegen request, contour patch, preservation evidence and export recipe are in `artwork/design-sources/animastone-pylon-border/`. Pixels outside the narrow contour patch and all source alpha are unchanged; the prior user-painted mask is preserved byte-for-byte. The approved export is integrated into `Textures/` and linked in the artwork registry. The colour texture and unchanged mask were deployed on 2026-11-04 and hash-verified against source; backups and the manifest are under `work/deployments/animastone-pylon-border-20261104/stage/`. Restart the game for the final combined human in-game review.
+
+### Simplified Sunstone flare, 2026-11-04
+
+The user selected the simpler Sunstone flare and requested production integration. The exact shown candidate now supplies the source master and 128px inventory texture: fewer broad amber facets, a smaller highlight, plain iron collar and simple unlit cord fuse. The built-in `image_gen.imagegen` request, original attempt and approval record are retained in `artwork/design-sources/new-equipment/sunstone-flare/revision-2026-11-04/`; the replaced source and export are preserved in `previous-2026-11-04/`. That archived source is the original edit target named by the request and its reference hash. The existing crop and single-reduction export method is retained. Design approval supersedes the flare entry from 2026-11-03; deployment and the final combined human in-game review remain pending.
+
+### High-resolution Workshop resource portraits, 2026-11-04
+
+The gallery renderer uses `artwork/workshop/stone-portraits/` for stone previews, including headers and the overview. `scripts/render-stone-portraits.py` derives the light stones from the retained 1254px Lumenstone portrait and each existing resource palette. Dark Stone, Bloodstone and Hollowstone use their recorded original resource-master crops; Sanguinite and Dreadstone apply their existing recolour recipes before reduction. `portraits.json` records source/output hashes, methods and native dimensions. These are Workshop-only portraits; the 128px game resources are unchanged.
+
+### Pyrinth resource stacks, 2026-11-04
+
+Pyrinth uses the shared Lumenstone one-, two- and three-piece silhouettes with an orange palette. `tools/export-pyrinth-resource.py` generates the three 128px resource textures while preserving source alpha, canvas and facets exactly. Source/output hashes, palette and the short object contract are recorded in `artwork/design-sources/pyrinth-resource/export.json`.
+
+`Integrations/Pyrinth/Patches/ResourceArtwork.xml` replaces only `DV_Pyrinth`'s graphic data when Epochs - Pyrinth is active. The original Workshop installation is unchanged. The overview uses the same single-piece resource texture. Generated at the user's request; visual and combined in-game review remain pending. No game deployment was performed.
+
 ### New equipment design approval, 2026-11-03
 
 The user approved all seven current equipment inventory designs after the medieval Sunstone flare revision. The Dreadstone collar is entirely dark crystal with an orange inset around its band; the Verdite bracer has a crystal cuff and living vines. Exact source and export hashes, including the derived Vitalite worn views, are in `artwork/design-sources/new-equipment/approval.json`. All seven inventory sprites are registered as approved masters. Head/hair fit, equipped appearance and gameplay remain for the final combined human in-game review. No deployment follows from this design approval.

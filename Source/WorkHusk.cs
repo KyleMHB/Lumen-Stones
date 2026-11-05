@@ -94,9 +94,9 @@ public class CompHollowstonePylon : ThingComp, IWarpConsumer
 
     public Pawn Husk => husk;
     private CompWarpToggle Toggle => toggle ??= parent.GetComp<CompWarpToggle>();
-    public bool CanBind => HuskRules.Available && Toggle.ToggledOn && warpPowered;
+    public bool CanBind => HuskRules.Available && Toggle.Running && warpPowered;
 
-    public float WarpDrainPerTick => husk != null && parent.Spawned && Toggle.ToggledOn ? HuskRules.HuskCostPerDay / GenDate.TicksPerDay : 0f;
+    public float WarpDrainPerTick => husk != null && parent.Spawned && Toggle.Running ? HuskRules.HuskCostPerDay / GenDate.TicksPerDay : 0f;
     public bool WarpPowered { get => warpPowered; set => warpPowered = value; }
 
     public override void PostSpawnSetup(bool respawningAfterLoad) => WarpEnergyNetwork.For(parent.Map).Register(this);
@@ -126,7 +126,7 @@ public class CompHollowstonePylon : ThingComp, IWarpConsumer
             husk = null;
             return;
         }
-        HuskRules.SetCollapsed(husk, !(Toggle.ToggledOn && warpPowered));
+        HuskRules.SetCollapsed(husk, !(Toggle.Running && warpPowered));
     }
 
     public override string CompInspectStringExtra() =>

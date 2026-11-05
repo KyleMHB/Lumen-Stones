@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
-    <defName>KM_AegiteWarhammer</defName>
-    <label>Aegite warhammer</label>
-    <description>A champagne-gold crystal hammer on a dark haft. Fire won't take hold of anyone carrying it, which makes it popular with whoever has to fight near burning buildings.\n\nIts blunt melee strikes can stun living targets. While equipped, it prevents the wielder from catching fire; it does not extinguish an existing attached fire or grant armour. Crafted from 100 Aegite and 20 steel after Long blades, with Crafting 6.</description>
+    <defName>KM_FerriteWarhammer</defName>
+    <label>Ferrite warhammer</label>
+    <description>A slate-silver hammer with a copper crystal head. Dents in its haft and head slowly fill back in, and so do the wielder's.\n\nIts blunt melee strikes can stun living targets. While equipped, it slowly mends itself and the wielder's worn apparel and equipped weapons, at no Solar energy cost. Stronger Ferrite maintenance nearby takes priority. Crafted from 100 Ferrite and 20 steel after Long blades, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <relicChance>2</relicChance>
     <smeltable>false</smeltable>
     <statBases><WorkToMake>5500</WorkToMake><Mass>2.5</Mass></statBases>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/AegiteWarhammer</texPath>
+      <texPath>Things/Item/Equipment/WeaponMelee/FerriteWarhammer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.5,1.5)</drawSize>
       <!-- uiIconScale below keeps the wide horizontal art inside the build icon -->
@@ -27,6 +27,7 @@
       <skillRequirements><Crafting>6</Crafting></skillRequirements>
       <displayPriority>423</displayPriority>
     </recipeMaker>
-    <costList><KM_Aegite>100</KM_Aegite><Steel>20</Steel></costList>
+    <costList><KM_Ferrite>100</KM_Ferrite><Steel>20</Steel></costList>
+    <comps><li Class="LumenStones.CompProperties_Ferrite"><personal>true</personal><tier>0</tier><radius>0</radius><interval>300</interval><repairBudget>0.000225</repairBudget></li></comps>
   </ThingDef>
 </Defs>

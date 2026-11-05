@@ -14,7 +14,7 @@ public static class GlaciteSolar
 // heatPushMinTemperature (the active limit) while its Solar active effect is powered.
 public class CompProperties_GlaciteCooler : CompProperties_HeatPusher
 {
-    public float passiveCutoff = 10f;
+    public float passiveCutoff = 4f;
     public CompProperties_GlaciteCooler() => compClass = typeof(CompGlaciteCooler);
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
@@ -38,10 +38,10 @@ public class CompGlaciteCooler : CompHeatPusher, ISolarConsumer
 
     private bool InBand(float temperature) => temperature <= Cooler.passiveCutoff && temperature > Cooler.heatPushMinTemperature;
 
-    public float SolarDrainPerTick => SolarRules.Enabled && parent.Spawned && Toggle.ToggledOn && InBand(parent.AmbientTemperature)
+    public float SolarDrainPerTick => SolarRules.Enabled && parent.Spawned && Toggle.Running && InBand(parent.AmbientTemperature)
         ? GlaciteSolar.FreezerDrain / GenDate.TicksPerDay : 0;
 
-    private bool ActiveEffect => !SolarRules.Enabled || Toggle.ToggledOn && SolarPowered;
+    private bool ActiveEffect => !SolarRules.Enabled || Toggle.Running && SolarPowered;
 
     public override bool ShouldPushHeatNow
     {

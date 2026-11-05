@@ -20,7 +20,7 @@ public class CompProperties_Ferrite : CompProperties
             "Fractional HP carries between pulses. Only the strongest covering Ferrite source repairs a target; overlap adds no repair. Works during combat.";
         var rows = new InfoStats();
         if (personal)
-            rows.Add("Mends", "itself and worn gear", "While worn, mends this item and the wearer's worn apparel and equipped weapons, including tainted apparel without removing the taint. Needs no Solar energy. " + budget);
+            rows.Add("Mends", "itself and worn gear", "While worn or wielded, mends this item and the wearer's worn apparel and equipped weapons, including tainted apparel without removing the taint. Needs no Solar energy. " + budget);
         else
         {
             rows.Add("Maintenance radius", InfoStats.Tiles(radius), "Works through walls. " + budget);
@@ -90,7 +90,7 @@ public class FerriteField : MapComponent
     private readonly List<CompFerrite> personal = new();
     private int personalTick = -1;
 
-    // Worn Ferrite found by walking every pawn's apparel. Ownership checks read it once per damaged target, so the walk
+    // Worn or wielded Ferrite found by walking every pawn's apparel and weapon. Ownership checks read it once per damaged target, so the walk
     // runs at most once a tick.
     private List<CompFerrite> PersonalSources
     {
@@ -103,9 +103,10 @@ public class FerriteField : MapComponent
             foreach (var pawn in map.mapPawns.AllPawnsSpawned)
             {
                 var worn = pawn.apparel?.WornApparel;
-                if (worn == null) continue;
-                for (int i = 0; i < worn.Count; i++)
-                    if (worn[i].TryGetComp<CompFerrite>() is { Props.personal: true } source) personal.Add(source);
+                if (worn != null)
+                    for (int i = 0; i < worn.Count; i++)
+                        if (worn[i].TryGetComp<CompFerrite>() is { Props.personal: true } source) personal.Add(source);
+                if (pawn.equipment?.Primary?.TryGetComp<CompFerrite>() is { Props.personal: true } held) personal.Add(held);
             }
             return personal;
         }
@@ -221,7 +222,7 @@ public class FerriteField : MapComponent
 public class CompFerrite : ThingComp
 {
     public CompProperties_Ferrite Props => (CompProperties_Ferrite)props;
-    public Pawn Wearer => (parent as Apparel)?.Wearer;
+    public Pawn Wearer => parent is Apparel apparel ? apparel.Wearer : (parent.ParentHolder as Pawn_EquipmentTracker)?.pawn;
     public bool Active => Props.personal ? Wearer?.Spawned == true : parent.Spawned;
 
     private int payTick = -1;
@@ -236,7 +237,7 @@ public class CompFerrite : ThingComp
             if (now == payTick) return payOk;
             payTick = now;
             var toggle = parent.GetComp<CompSolarToggle>();
-            return payOk = !SolarRules.Enabled || toggle is { ToggledOn: true } && SolarNetwork.For(parent.Map).CanDraw(FerriteSolar.CostPerHp);
+            return payOk = !SolarRules.Enabled || toggle is { Running: true } && SolarNetwork.For(parent.Map).CanDraw(FerriteSolar.CostPerHp);
         }
     }
 

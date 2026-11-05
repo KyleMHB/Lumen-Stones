@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Keep the upstream resource identity and replace only its presentation. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="DV_Pyrinth"]/graphicData</xpath>
+    <value>
+      <graphicData>
+        <texPath>Things/Item/Resource/LumenStonesPyrinth</texPath>
+        <graphicClass>Graphic_StackCount</graphicClass>
+        <color>(1,1,1)</color>
+      </graphicData>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Nocturnal Sunstone-to-Lunite ceremony at the circle or altar. Quality only changes the mood of those present;
+       the yield is fixed. The 20:00 to 04:00 start window and the cooldown live in LumenStones.LuniteRules. -->
+  <RitualBehaviorDef>
+    <defName>KM_LuniteRitual</defName>
+    <workerClass>LumenStones.RitualBehaviorWorker_Lunite</workerClass>
+    <durationTicks>2500</durationTicks>
+    <roles>
+      <li Class="RitualRoleColonist"><label>ceremony leader</label><id>speaker</id><required>true</required><maxCount>1</maxCount><countsAsParticipant>true</countsAsParticipant><allowOtherIdeos>true</allowOtherIdeos><allowChild>false</allowChild><mustBeAbleToReachTarget>true</mustBeAbleToReachTarget></li>
+    </roles>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty><spectateDistanceOverride>2</spectateDistanceOverride><spectatorsRequired>false</spectatorsRequired>
+        <endTriggers><li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li></endTriggers>
+        <roleBehaviors><li><roleId>speaker</roleId><dutyDef>SpeakOnCell</dutyDef><speakerInteraction>Speech_DateRitual</speakerInteraction><customPositions><li Class="RitualPosition_BesideThing" /></customPositions></li></roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+  <RitualOutcomeEffectDef>
+    <defName>KM_LuniteRitual</defName>
+    <description>A night ceremony that steeps Sunstone in moonlight and turns it into Lunite. Quality does not change the yield. Each settlement must recover before the next conversion.</description>
+    <workerClass>LumenStones.RitualOutcomeEffectWorker_Lunite</workerClass>
+    <startingQuality>0.2</startingQuality>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <givesDevelopmentPoints>false</givesDevelopmentPoints>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount"><label>participants</label><curve><points><li>(1,0)</li><li>(2,0.15)</li><li>(3,0.3)</li></points></curve></li>
+    </comps>
+    <outcomeChances>
+      <li><label>poor</label><description>The moonlight was thin. The ceremony still yields its full amount of Lunite.</description><chance>0.2</chance><positivityIndex>-1</positivityIndex></li>
+      <li><label>successful</label><description>The Sunstone paled and cleared. The ceremony yields its full amount of Lunite.</description><chance>0.6</chance><positivityIndex>1</positivityIndex></li>
+      <li><label>exceptional</label><description>The Sunstone turned silver all at once. The ceremony yields its full amount of Lunite.</description><chance>0.2</chance><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef Name="KM_LunitePatternBase" Abstract="True">
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+    <ritualTargetFilter>KM_LumenSelectedCircle</ritualTargetFilter>
+    <ritualBehavior>KM_LuniteRitual</ritualBehavior>
+    <ritualOutcomeEffect>KM_LuniteRitual</ritualOutcomeEffect>
+    <shortDescOverride>Lunite ritual</shortDescOverride>
+    <iconPathOverride>UI/Icons/LumenstoneRitual</iconPathOverride>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_LunitePatternBase">
+    <defName>KM_LuniteRitual</defName>
+    <ritualObligationTargetFilter>KM_LumenCircle</ritualObligationTargetFilter>
+  </RitualPatternDef>
+  <RitualPatternDef ParentName="KM_LunitePatternBase">
+    <defName>KM_LuniteAltarRitual</defName>
+    <ritualObligationTargetFilter>KM_LumenstoneAltar</ritualObligationTargetFilter>
+  </RitualPatternDef>
+  <PreceptDef Name="KM_LunitePreceptBase" ParentName="KM_LumenstonePreceptBase" Abstract="True">
+    <label>Lunite ritual</label>
+    <iconPath>UI/Icons/LumenstoneRitual</iconPath>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_LunitePreceptBase">
+    <defName>KM_LuniteRitual</defName>
+    <description>A one-hour night ceremony at a Lumen ritual circle that turns Sunstone into Lunite. It can only start between 20:00 and 04:00. Cancelled ceremonies return their Sunstone.</description>
+    <ritualPatternBase>KM_LuniteRitual</ritualPatternBase>
+  </PreceptDef>
+  <PreceptDef ParentName="KM_LunitePreceptBase">
+    <defName>KM_LuniteAltarRitual</defName>
+    <description>A one-hour night ceremony at a Lumenstone altar that turns Sunstone into Lunite. It can only start between 20:00 and 04:00. Cancelled ceremonies return their Sunstone.</description>
+    <ritualPatternBase>KM_LuniteAltarRitual</ritualPatternBase>
+  </PreceptDef>
+</Defs>

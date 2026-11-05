@@ -1,0 +1,7 @@
+{
+  "source": "user-corrected-original.png",
+  "sha256": "6fa7f3b448dc8cc03002ef4ef802174e51469afa8ed9ba85a4f3cd5839e0991f",
+  "date": "2026-11-04",
+  "author": "user",
+  "operation": "User corrected projector base chamfers and right-band border. Retain exact submitted pixels, pad canvas without scaling or shifting."
+}

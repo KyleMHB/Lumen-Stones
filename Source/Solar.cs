@@ -146,7 +146,8 @@ public class CompSunstone : ThingComp
         var network = parent.Map.GetComponent<SolarNetwork>();
         string text = "Solar energy: " + stored.ToString("0") + " / " + Props.capacity.ToString("0");
         if (IsCollector)
-            text += "\nGenerating " + (ratePerTick * GenDate.TicksPerDay).ToString("0") + " a day now (up to " + Props.output.ToString("0") + ")";
+            text += "\nGenerating " + (ratePerTick * GenDate.TicksPerDay).ToString("0") + " a day now (up to " + Props.output.ToString("0") + ")" +
+                (ActiveEffectInterruption.Reason(parent.Map, ActiveEffectNetworks.Solar) is { } reason ? "\nInterrupted: " + reason : "");
         text += "\nNetwork: " + network.TotalStored.ToString("0") + " / " + network.TotalCapacity.ToString("0");
         if (network.Depleted) text += "\nDepleted. Active effects resume at " + SolarRules.Hysteresis.ToString("0") + " stored.";
         return text;
@@ -221,13 +222,14 @@ public class SolarNetwork : MapComponent
     public override void MapComponentTick()
     {
         if ((collectors.Count == 0 && batteries.Count == 0 && consumers.Count == 0) || Find.TickManager.TicksGame % SolarRules.PassInterval != 0) return;
+        bool flared = ActiveEffectInterruption.Reason(map, ActiveEffectNetworks.Solar) != null;
         float sky = map.skyManager.CurSkyGlow, weather = SolarRules.WeatherFactor(map);
         int dayStep = sky >= SolarRules.DayGlow ? 1 : 0;
         float overflow = 0;
         foreach (var collector in collectors)
         {
             collector.RefreshUnroofed();
-            collector.ratePerTick = collector.Props.output / SolarRules.FullSunTicks * sky * weather * collector.UnroofedFraction;
+            collector.ratePerTick = flared ? 0 : collector.Props.output / SolarRules.FullSunTicks * sky * weather * collector.UnroofedFraction;
             float gain = collector.ratePerTick * SolarRules.PassInterval, taken = Mathf.Min(gain, collector.Spare);
             collector.stored += taken;
             overflow += gain - taken;
@@ -307,15 +309,34 @@ public class CompSolarToggle : ThingComp
 
     public bool ToggledOn => on;
 
-    // True when the active effect may run: always with Sunstone off, otherwise only toggled on and with Solar energy.
-    public bool Active => !SolarRules.Enabled || (on && SolarNetwork.For(parent.Map).Available);
+    // Toggled on and not paused by an interruption the fixture's stabilizer cannot ride out. Energy is checked separately.
+    public bool Running => on && !ActiveEffectInterruption.Blocked(parent, ActiveEffectNetworks.Solar);
 
-    // Pays a per-event cost. Free with Sunstone off, refused when toggled off or when the network cannot cover it.
-    public bool TryPay(float amount) => !SolarRules.Enabled || (on && SolarNetwork.For(parent.Map).TryConsume(amount));
+    // True when the active effect may run: always with Sunstone off, otherwise only running and with Solar energy.
+    public bool Active => !SolarRules.Enabled || (Running && SolarNetwork.For(parent.Map).Available);
 
-    public string Status => !on ? "Toggled off" : SolarNetwork.For(parent.Map).Available ? "Powered" : "No Solar energy";
+    // Pays a per-event cost. Free with Sunstone off, refused when paused or toggled off or when the network cannot cover it.
+    public bool TryPay(float amount) => !SolarRules.Enabled || (Running && SolarNetwork.For(parent.Map).TryConsume(amount));
 
-    public override string CompInspectStringExtra() => SolarRules.Visible && parent.Spawned ? "Solar active effect: " + Status : null;
+    public string Status
+    {
+        get
+        {
+            if (!on) return "Toggled off";
+            if (ActiveEffectInterruption.BlockedReason(parent, ActiveEffectNetworks.Solar) is { } reason) return "Interrupted (" + reason + ")";
+            return SolarNetwork.For(parent.Map).Available ? "Powered" : "No Solar energy";
+        }
+    }
+
+    public override void PostSpawnSetup(bool respawningAfterLoad) => LuniteLinkTracker.For(parent.Map).RegisterFixture(parent, true);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => LuniteLinkTracker.For(map).RegisterFixture(parent, false);
+
+    public override string CompInspectStringExtra()
+    {
+        if (!SolarRules.Visible || !parent.Spawned) return null;
+        string text = "Solar active effect: " + Status;
+        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\nStabilized by: Lunite stabilizer" : text;
+    }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {

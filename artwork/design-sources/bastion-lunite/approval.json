@@ -1,0 +1,36 @@
+{
+  "approvedBy": "user",
+  "approvedOn": "2026-11-04",
+  "scope": "Design approval for all shown candidates; mask and in-game reviews are separate.",
+  "selectedSources": {
+    "stabilizer": {
+      "path": "artwork/design-sources/bastion-lunite/stabilizer/source.png",
+      "sha256": "7c7f7e07ffc5aef4ea141311728d483b81fa6577ca04096cff394b061d0f35ea"
+    },
+    "barricade": {
+      "path": "artwork/design-sources/bastion-lunite/barricade/source.png",
+      "sha256": "f44c25a7564aa96896811283a5db6d3363d7e38a396cecbbef4c834a7a80dbd6"
+    },
+    "projector": {
+      "path": "artwork/design-sources/bastion-lunite/projector/source.png",
+      "sha256": "cd3facd96584b8e613a24f2fd515a4a87dc49566bbe3e9626320bd493eb23f60"
+    },
+    "charm": {
+      "path": "artwork/design-sources/bastion-lunite/charm/source.png",
+      "sha256": "be597620599e16c31b3490092680bf2e6c658da5454689f014b491d31d9e8224"
+    }
+  },
+  "fixedOutputs": {
+    "Textures/Things/Item/Equipment/Shield/AegiteShieldCharm.png": "af435c41813d652b18f7dcc49e8ccf079487f043b7b9f7a7e99df02bf079677e",
+    "Textures/Things/Item/Equipment/Shield/AegiteShield.png": "839be5cbc8d3740777eb67a1083ca940f68a45cb24d310d82e8a4e8f2a25ba7b",
+    "Textures/Things/Item/Equipment/WeaponMelee/FerriteWarhammer.png": "cd73a7a0a20997292f3f067baa8617ceaccac14f418ab1b8a12decd589935a9f",
+    "Textures/Things/Item/Resource/Lunite/Lunite_a.png": "81f076113b897cf78ad2f0fd22b785c092728aa571b0403c482e28a2ca68208f",
+    "Textures/Things/Item/Resource/Lunite/Lunite_b.png": "ac39aacc28628b3435cf570d097b7ef12f6c7b935b54546848851653c0a2c91a",
+    "Textures/Things/Item/Resource/Lunite/Lunite_c.png": "f52452c47154b5e129319137a7198eccf944c29316724b6bbe57a97545763626"
+  },
+  "notes": {
+    "projector": "User approved attempt 0007, including its changed pixels; original design reference and selected attempt retained.",
+    "charm": "Crop alpha above 8 bounding box, uniformly reduce into 224x224 and center on 256x256; original alpha retained through Lanczos.",
+    "equipment": "Localized HSV palette changes on existing fixed-colour equipment, with source geometry and alpha unchanged. Recolor script retained."
+  }
+}

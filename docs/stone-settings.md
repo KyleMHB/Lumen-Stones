@@ -96,11 +96,15 @@ Sunstone collects daylight as Solar energy. Collectors and arrays gather it into
 - **Items:** every Sunstone item has the usual availability, light, cost and material settings. Light settings are the radius at full glow: collectors and arrays dim to half at night, and batteries grow from about 40% to full as they fill.
 - **Sunstone axe:** `KM_SunstoneAxe.baneMultiplier` (damage multiplier against Anomaly entities and mutants, default 1.5), `.procChance` (25%) and `.procChanceUnnatural` (50%) for the blind and stun proc, `.blindTicks` (300) and `.stunTicks` (60), plus the usual damage and cost settings.
 
+- **Interruptions:** `Interruptions.enabled` (default on) lets map events pause active effects. A solar flare stops every Solar and Warp active effect and Sunstone collection; stored energy, passive effects, implants, prosthetics and worn gear are unaffected. A fixture linked to a Lunite stabilizer keeps running. With Sunstone off there are no interruptions.
+- **Lunite:** `Lunite.sunstoneCost` (25 Sunstone) and `.yield` (25 Lunite) per conversion, and `.cooldownDays` (5, started only by a successful conversion). A conversion can only start between 20:00 and 04:00. `Lunite.linkRadius` (4 tiles) is how far a Lunite stabilizer reaches, measured to the fixture's nearest cell.
+- **Aegite shield projector:** `KM_AegiteShieldProjector.radius` (10 tiles), `.hitPoints` (500), `.upkeep` (150 Solar energy per day while up), `.solarPerHp` (0.5 per hit point recharged), `.crushCost` (150 hit points per crushed hostile drop pod or infestation), `.rebootTicks` (60000 after breaking) and `.empTicks` (1500). Recharge speed is fixed at 1 hit point per 240 ticks.
+
 When stored energy falls below 0.01, or a continuous drain cannot be paid, the network is depleted: every draw fails until stored energy reaches `Sunstone.solarHysteresis`.
 
 Active-effect costs live with the stones that use them:
 
-- `Glacite.freezerSolarDrain` (default 40 a day while the cooler is cooling between its two limits). `KM_GlaciteCooler.cutoff` is the active limit (-10 C by default) and `KM_GlaciteCooler.passiveCutoff` the limit it reaches without Solar energy (10 C). `.heat` applies to both.
+- `Glacite.freezerSolarDrain` (default 40 a day while the cooler is cooling between its two limits). `KM_GlaciteCooler.cutoff` is the active limit (-10 C by default) and `KM_GlaciteCooler.passiveCutoff` the limit it reaches without Solar energy (4 C, refrigeration). `.heat` applies to both.
 - `Verdite.clusterSolarDrain` and `Verdite.pylonSolarDrain` (60 and 120 per lit schedule). For clusters and pylons, `.light` is the ordinary green glow, which is always on, and `.plantLight` is the plant-capable light, which runs only during the 25% to 80% schedule while powered.
 - `Ferrite.solarCostPerHp` (0.5 per HP of items or worn gear repaired). Buildings and walls are repaired for free.
 - `Aegite.solarCostPerFire` (2.0 per fire suppressed).
@@ -108,6 +112,12 @@ Active-effect costs live with the stones that use them:
 - `Serenite.sleeperSolarDrain` (10 a day for each sleeper in a room with active support).
 
 Passive effects always count every fixture. Active room bonuses count only fixtures whose toggle is on. A Vitalite bed's toggle controls only its own occupant bonus.
+
+## Ferrite warhammer and Aegite defences
+
+- **Ferrite warhammer:** `KM_FerriteWarhammer.stunChance` (20%) and `.stunTicks` (120) for the stun on damaging melee hits, and `.repairBudget` (0.0225% of maximum hit points per pulse, every 300 ticks) for the free mending of the hammer and the wielder's worn apparel and weapons. Replaces the old Aegite warhammer; the settings keys were renamed with it.
+- **Aegite shield:** replaces the old Ferrite shield, with the usual availability, cost and material settings.
+- **Aegite shield charm:** `KM_AegiteShieldCharm.energyMax` (0.60), `.rechargeRate` (0.08) and `.resetTicks` (4200).
 
 ## Animastone
 

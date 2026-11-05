@@ -4,7 +4,8 @@
   <author>KyleMHB</author>
   <packageId>kylemhb.lumenstones</packageId>
   <supportedVersions><li>1.7</li></supportedVersions>
-  <modVersion>2.0.0</modVersion>
+  <modVersion>1.0.0</modVersion>
+  <url>https://github.com/KyleMHB/Lumen-Stones</url>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
@@ -21,27 +22,23 @@
   <incompatibleWith>
     <li>kylemhb.lumenstonecolumns</li>
   </incompatibleWith>
-  <description>Version 2.0 changes where every stone comes from and does not work with existing saves. Start a new colony.
+  <description>Freeze your food, speed your healing and grow crops under crystal light, long before you have electricity.
 
-Lumenstone is a rare natural mineral that holds a faint light. Infused with a reagent, it takes on that reagent's character and keeps it: herbal medicine gives Vitalite its mending, and steel gives Ferrite its slow repairs. With Ideology, a life offered in place of a reagent corrupts it into Dark Stone, which works only by taking.
+Deep in the rock lies Lumenstone, a rare mineral that holds a faint light. Infuse it with a reagent and it takes on that reagent's character for good. Herbal medicine gives Vitalite its mending, steel gives Ferrite its slow repairs, and Glacite needs nothing added and runs cold. Each stone becomes lamps, columns, pylons and furnishings that need no fuel or power.
 
-Every stone now starts as one raw resource, Lumenstone. Mine it from rare veins, find it on the surface or buy it at a high price from traders. Build a Lumen ritual circle with Stonecutting, then infuse 10 Lumenstone and a simple reagent into 10 of any researched stone. Infusion has no cooldown. With Ideology, the circle also hosts the Lumenstone ritual, which turns 5 ordinary stone chunks into 15 to 25 Lumenstone once every five days per settlement.
+Every stone family has a passive effect that works on its own. Most also have a stronger active effect that spends energy, which you switch on or off per fixture. Light stones draw Solar energy gathered by Sunstone, and dark stones draw Warp energy stored in Bloodstone.
 
-Infuse blue Glacite, which needs no reagent, to build cooling lamps, pylons and coolers, or forge a frost blade. Build roof-supporting columns lit by Glacite or animated fireflies.
+All of it sits at the neolithic tech level and needs only Stonecutting, so a tribal or medieval colony can run a freezer, a grow room, a better hospital and fire suppression.
 
-Infuse Vitalite for restorative columns, lamps, pylons and crystal clusters. Four fixture categories add up to the full +10% immunity support, and +25% healing with Solar energy, for patients resting in the same enclosed, roofed room: pylon 45%, cluster 25%, column 20% and lamp 10%. A floor lamp and a wall lamp share the lamp category. Duplicate fixtures add no medical benefit. Vitalite improves room cleanliness without removing filth and has no temperature effect.
+Lumenstone is scarce, so your first stones go to whatever your colony needs most. Every stone except Glacite needs its own research and a reagent, and active effects wait until you research Sunstone. The rest comes over a long game.
 
-Vitalite also reduces new wound-infection risk for patients resting in enclosed, roofed rooms. Each distinct fixture type provides 2% prevention, capped at 10% for the room. Inlaid beds provide 5% occupant protection and full Vitalite beds provide 15%. Bed and room protection combine multiplicatively. Existing infections are unaffected.
+Glacite cools rooms. Its coolers keep a fridge at 4 C on their own, and with Solar energy they can run a freezer. Vitalite helps patients heal and resist disease in an enclosed hospital. Serenite improves rest and mood. Verdite speeds plant growth and farming, and becomes a grow light with Solar energy. Aegite thins filth and suppresses fires. Ferrite slowly repairs buildings, items and gear. With Royalty, Animastone improves meditation.
 
-The affordable inlaid bed is a stone slab with a Vitalite headboard and gold band. The full Vitalite bed is made entirely from crystal and provides stronger healing and immunity support. Room support adds to bed treatment. Doctors and medicine remain useful. Furnishings need no fuel or electricity.
+With Ideology, a life offered in place of a reagent corrupts Lumenstone into Dark Stone, which works only by taking. Sacrifice at a Sacrificial altar turns Lumenstone into Dark Stone and harvests Warp energy. Bloodstone stores it, and Sanguinite, Dreadstone and Hollowstone spend it on regrowth, subjugation and endurance. With Anomaly, Hollowstone can bind a work husk.
 
-Sunstone gathers daylight into Solar energy with collectors and arrays, and stores it in vessels and obelisks. Every infused stone keeps a passive effect that needs no energy. Its active effect, such as deep cooling, healing, faster rest, plant-capable light, item repair or fire suppression, spends Solar energy and can be toggled per building. Sunstone also makes an axe that blinds and stuns.
+Stones also make weapons, gear, implants and crystal prosthetics. Firefly columns add animated green light, and Epochs - Pyrinth, if installed, adds warm orange columns.
 
-Four more stones each have their own research. Serenite furnishes restful rooms and a pendant. Verdite adds farming fixtures with scheduled growing light and a healing scythe. Aegite wards suppress fires and thin filth, alongside a stunning warhammer. Ferrite slowly repairs buildings, items and worn gear, and forges a mending shield.
+To start, gather Lumenstone from rare veins, surface stacks or traders. Research Stonecutting, build a Lumen ritual circle and infuse 10 Lumenstone with a reagent into 10 of any researched stone. Glacite needs no reagent.
 
-With Ideology, a sacrifice at a Sacrificial altar turns Lumenstone into Dark Stone. Refine it into Bloodstone batteries for Warp energy, and into Sanguinite, Dreadstone and Hollowstone furnishings and weapons that spend it. With Royalty, Animastone gives psycasters fixtures to meditate to.
-
-Configure Lumenstone supply, stone and item availability, effects and costs in Mod options. Untouched values follow the active mod list. Balance changes require a restart. Disabling content preserves existing items and blueprints. External Pyrinth overrides are optional and start off. With Epochs - Pyrinth, Pyrinth no longer spawns and is infused from Lumenstone too. Requires Harmony.
-
-Combines Glacite and Lumenstone Columns. Disable those separate mods when using Lumen Stones. Glacite is adapted from Epochs - Pyrinth by DetVisor.</description>
+Configure availability, effects and costs in Mod options. Requires Harmony. Glacite is adapted from Epochs - Pyrinth by DetVisor.</description>
 </ModMetaData>

@@ -78,6 +78,7 @@ public class LumenstoneMod : Mod
     {
         base.WriteSettings();
         StoneSettings.RefreshAvailability();
+        ActiveEffectInterruption.SettingsChanged();
     }
 
     public override void DoSettingsWindowContents(Rect area)

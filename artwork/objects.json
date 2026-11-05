@@ -1049,59 +1049,56 @@
       }
     },
     {
-      "id": "KM_AegiteWarhammer",
-      "label": "Aegite warhammer",
-      "texture": "Things/Item/Equipment/WeaponMelee/AegiteWarhammer",
+      "id": "KM_FerriteWarhammer",
+      "label": "Ferrite warhammer",
+      "texture": "Things/Item/Equipment/WeaponMelee/FerriteWarhammer",
       "canvas": [
         320,
         320
       ],
       "directions": [],
       "contract": {
-        "identity": "Aegite warhammer",
+        "identity": "Ferrite warhammer",
         "geometry": "One angled faceted striking head, short connection and diagonal shaft; original head width.",
-        "materials": "Fixed champagne/white-gold crystal, amber shadows and dark shaft; no construction tint.",
+        "materials": "Fixed Ferrite slate-silver and copper crystal on neutral haft.",
         "camera": "Horizontal tip-right melee view, draw size 1.5 by 1.5 and equipped angle offset -65.",
-        "protected": "Accepted design, palette, head/haft proportions, current orientation and vertical flip, canvas-centre pivot, draw size and exact historical outer bounds.",
-        "allowedEdits": "User-accepted localized haft/pommel speckle cleanup and source-backed contour export; protected head, fittings and highlight preserved in the source repair."
+        "protected": "Approved recolored design and source silhouette.",
+        "allowedEdits": "Palette swap; alpha and geometry preserved."
       },
       "approvedMaster": {
-        "path": "Things/Item/Equipment/WeaponMelee/AegiteWarhammer.png",
-        "sha256": "ee1c21c288b0791bd7376a4f53a2fb09497bfffa02fe338e11e386051a8573c7",
-        "approvedBy": "user accepted the shown corrected exports on 2026-11-03; design acceptance only, final in-game review pending",
-        "approvedOn": "2026-11-03"
+        "path": "Things/Item/Equipment/WeaponMelee/FerriteWarhammer.png",
+        "sha256": "cd73a7a0a20997292f3f067baa8617ceaccac14f418ab1b8a12decd589935a9f",
+        "approvedBy": "user approved artwork designs on 2026-11-04; in-game review pending",
+        "approvedOn": "2026-11-04"
       },
       "iconHeightFraction": [
         0.4,
         0.46
       ],
-      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending.",
-      "recipes": {
-        "single": "artwork/design-sources/equipment-refresh-2026-11-03/hammer-master.json"
-      }
+      "framingScope": "Existing checker build-command framing model only; native item/info-card/equipped presentation remains pending."
     },
     {
-      "id": "KM_FerriteShield",
-      "label": "Ferrite shield",
-      "texture": "Things/Item/Equipment/Shield/FerriteShield",
+      "id": "KM_AegiteShield",
+      "label": "Aegite shield",
+      "texture": "Things/Item/Equipment/Shield/AegiteShield",
       "canvas": [
         256,
         256
       ],
       "directions": [],
       "contract": {
-        "identity": "Ferrite shield",
+        "identity": "Aegite shield",
         "geometry": "Broad shoulders, tapered lower point and one central diamond-shaped copper boss.",
-        "materials": "Fixed slate-silver, copper and charcoal contours; no construction tint.",
+        "materials": "Neutral metal shield with champagne-gold Aegite crystal boss.",
         "camera": "Existing angled inventory view; no worn or directional graphic.",
-        "protected": "Every original sprite byte, silhouette, palette and relative equipment proportions.",
-        "allowedEdits": "Registry and equivalent definition notation only; no repaint, resize or design change."
+        "protected": "Approved recolored design and source silhouette.",
+        "allowedEdits": "Palette swap; alpha and geometry preserved."
       },
       "approvedMaster": {
-        "path": "Things/Item/Equipment/Shield/FerriteShield.png",
-        "sha256": "fcc095b79f1e498c4bd193138c556834f1f5dc0a7f70f1c02fc97f8fd7eefdb6",
-        "approvedBy": "user: retain selected artwork per approved expansion specification and artwork decisions",
-        "approvedOn": "2026-10-31"
+        "path": "Things/Item/Equipment/Shield/AegiteShield.png",
+        "sha256": "839be5cbc8d3740777eb67a1083ca940f68a45cb24d310d82e8a4e8f2a25ba7b",
+        "approvedBy": "user approved artwork designs on 2026-11-04; in-game review pending",
+        "approvedOn": "2026-11-04"
       },
       "iconHeightFraction": [
         0.69,
@@ -2635,16 +2632,16 @@
       },
       "approvedMaster": {
         "path": "Things/Building/Animastone/Pylon.png",
-        "sha256": "4b0a81017a3cb58cc02c7d2a6a436cbfff66c806d996c1344668a38d8f0a3e7d",
-        "approvedBy": "user: done after corrected family and mask review; in-game review pending",
-        "approvedOn": "2026-11-03"
+        "sha256": "46850332c84aa5898eed95a4dcdd88053a035b0832c1f36270acc9e30bc71a23",
+        "approvedBy": "User approved base/crystal border repair in chat 2026-11-04: thats good; original saved mask preserved; in-game review pending",
+        "approvedOn": "2026-11-04"
       },
       "iconHeightFraction": [
         0.4209,
         0.5009
       ],
       "recipes": {
-        "single": "artwork/design-sources/animastone-pylon-tall/master.json"
+        "single": "artwork/design-sources/animastone-pylon-border/master.json"
       },
       "maskEncoding": "opaque-red"
     },
@@ -2721,17 +2718,17 @@
       "directions": [],
       "contract": {
         "identity": "sunstone-flare",
-        "geometry": "Rounded faceted amber Sunstone body with simple dark iron neck and short unlit rope fuse.",
-        "materials": "Fixed-colour stone and vine as applicable; no construction tint",
+        "geometry": "Slightly irregular rounded amber Sunstone body with few broad facets, small highlight, plain iron collar and simple unlit cord fuse.",
+        "materials": "Fixed amber-citrine crystal, neutral dark iron and tan cord; no construction tint",
         "camera": "Shallow overhead, consistent with approved equipment reference",
         "protected": "User-approved current silhouette, palette, material choices and export framing.",
         "allowedEdits": "Only user-requested corrections; retain the exact accepted source and its provenance."
       },
       "approvedMaster": {
         "path": "Things/Item/Equipment/Misc/SunstoneFlare.png",
-        "sha256": "fc130dfd2e49dd5d97ab66443e442f66273fbe45be53985bfb74ed1c5c31e37c",
-        "approvedBy": "user: all approved after medieval Sunstone flare revision; design approval, in-game review pending",
-        "approvedOn": "2026-11-03"
+        "sha256": "ed8723eaa78cf1d1ecc7380e2789e806f2c2b6ac628ef8d027dad40ca4bb2c67",
+        "approvedBy": "user: simplified candidate approved for production artwork; in-game review pending",
+        "approvedOn": "2026-11-04"
       },
       "iconHeightFraction": [
         0.7797,
@@ -2889,6 +2886,98 @@
       ],
       "framingScope": "Measured from approved inventory framing using the existing CPU icon model; actual equipped/worn appearance remains for final in-game review.",
       "provenance": "artwork/design-sources/new-equipment/approval.json"
+    },
+    {
+      "id": "KM_AegiteShieldCharm",
+      "label": "Aegite shield charm",
+      "texture": "Things/Item/Equipment/Shield/AegiteShieldCharm",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Aegite shield charm on a leather cord",
+        "geometry": "Single faceted crystal and cord loop",
+        "materials": "Fixed champagne-gold crystal and leather; no material mask",
+        "camera": "Inventory view",
+        "protected": "Approved design, outline and palette",
+        "allowedEdits": "Uniform reduction and centering"
+      },
+      "approvedMaster": {
+        "path": "Things/Item/Equipment/Shield/AegiteShieldCharm.png",
+        "sha256": "af435c41813d652b18f7dcc49e8ccf079487f043b7b9f7a7e99df02bf079677e",
+        "approvedBy": "user; design approval, in-game review pending",
+        "approvedOn": "2026-11-04"
+      },
+      "iconHeightFraction": [
+        0.72,
+        0.77
+      ]
+    },
+    {
+      "id": "KM_LuniteStabilizer",
+      "label": "Lunite stabilizer",
+      "texture": "Things/Building/Misc/LuniteStabilizer",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Small moonlit Lunite crystal on a stone plinth",
+        "geometry": "One crystal cluster on a low single-cell plinth",
+        "materials": "Lunite crystal fixed; plinth construction-tinted",
+        "camera": "Shallow view matching the fixture family",
+        "protected": "Approved design, silhouette and palette",
+        "allowedEdits": "Mask finishing and requested revisions only; in-game review pending"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Misc/LuniteStabilizer.png",
+        "sha256": "16d0383aca66d2fa0a5092e3ae38c62a8bd0cb75578354ef77720b9a9b77d68c",
+        "approvedBy": "user design approval 2026-11-04 (artwork/design-sources/bastion-lunite/approval.json); mask and in-game review pending",
+        "approvedOn": "2026-11-04"
+      },
+      "iconHeightFraction": [
+        0.55,
+        0.6
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/bastion-lunite/stabilizer/master.json"
+      },
+      "maskEncoding": "opaque-red"
+    },
+    {
+      "id": "KM_AegiteShieldProjector",
+      "label": "Aegite shield projector",
+      "texture": "Things/Building/Aegite/ShieldProjector",
+      "canvas": [
+        256,
+        256
+      ],
+      "directions": [],
+      "contract": {
+        "identity": "Champagne-gold Aegite crystal ring held between two plinths",
+        "geometry": "Banded crystal ring on a chamfered 2x2 base",
+        "materials": "Aegite crystal fixed; plinths and base construction-tinted",
+        "camera": "Shallow view matching the fixture family",
+        "protected": "User-corrected base chamfers and band border (user-correction.json)",
+        "allowedEdits": "Mask finishing and requested revisions only; in-game review pending"
+      },
+      "approvedMaster": {
+        "path": "Things/Building/Aegite/ShieldProjector.png",
+        "sha256": "a693133c26e680adb137208e2fb47b96f7114d628229b23cb7597d7ef05c2928",
+        "approvedBy": "user design approval and user correction 2026-11-04 (artwork/design-sources/bastion-lunite/approval.json, projector/user-correction.json); mask and in-game review pending",
+        "approvedOn": "2026-11-04"
+      },
+      "iconHeightFraction": [
+        0.57,
+        0.62
+      ],
+      "recipes": {
+        "single": "artwork/design-sources/bastion-lunite/projector/master.json"
+      },
+      "maskEncoding": "opaque-red"
     }
   ],
   "oneCellTallPylons": [

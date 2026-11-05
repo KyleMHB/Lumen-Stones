@@ -1,17 +1,35 @@
 # Lumen Stones
 
-Lumen Stones combines Glacite and Lumenstone Columns for RimWorld 1.7, and adds Vitalite, Serenite, Verdite, Aegite, Ferrite and Sunstone furnishings and equipment. Each infused stone has a passive effect and an active effect powered by Solar energy from Sunstone collectors and batteries.
+Lumenstone is a rare mineral that holds a faint light. Infused with a reagent, it takes on that reagent's character: herbal medicine gives Vitalite its mending, and steel gives Ferrite its slow repairs. Glacite needs no reagent and simply runs cold. With Ideology, a sacrifice corrupts Lumenstone into Dark Stone instead.
+
+Lumen Stones for RimWorld 1.7 turns those stones into lamps, columns, pylons, furnishings, weapons, implants and crystal prosthetics that need no fuel or electricity:
+
+- **Glacite** cools rooms and keeps a 4 C fridge without power. **Vitalite** supports hospitals. **Serenite** improves rest and mood. **Verdite** helps farming. **Aegite** thins filth and suppresses fires. **Ferrite** slowly repairs buildings and gear.
+- **Sunstone** gathers daylight as Solar energy, which powers each stone's stronger active effect.
+- With Royalty, **Animastone** improves meditation.
+- With Ideology, sacrifice yields Dark Stone and Warp energy. **Bloodstone** stores the energy, and **Sanguinite**, **Dreadstone** and **Hollowstone** spend it on regrowth, subjugation and endurance.
+- Firefly columns add animated green light, and [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) adds optional warm orange columns.
+
+## Balance
+
+Every stone has a price and a ceiling:
+
+- **Scarce supply.** Lumenstone veins and surface finds are rare. Traders charge about seven times its value and never buy it back. The Ideology ritual is the only steady source, once every five days per settlement.
+- **Earned stones.** Each stone except Glacite needs its own research and a reagent.
+- **Sunstone unlocks the major benefits.** Passive effects are rewarding but not overpowered. Each family's full potential needs Solar energy from Sunstone, which needs open sky, drops in bad weather and stops at night.
+- **No stacking.** Room bonuses are capped and each fixture category counts once. Wards and farm fixtures use only the strongest source, and Ferrite fixtures share one repair budget.
+- **Trade-offs.** Every implant has a drawback. The dark stones cost lives, carry a mood penalty and spend Warp energy as they work.
+- **Vanilla-level gear.** Weapons and equipment match comparable vanilla items in damage, armor and stats, and add utility such as a stun, a bleed or self-repair.
+- **Configurable.** Costs, caps, energy use and supply can be changed in Mod options. See [stone settings](docs/stone-settings.md) for every value.
 
 ## Installation
 
 1. Install and enable [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077).
 2. Copy the built mod into `RimWorld/Mods/Lumen-Stones`. `About`, `Defs`, `Textures`, `Assemblies` and `LoadFolders.xml` must be directly inside that folder.
-3. Disable the separate Glacite and Lumenstone Columns mods. Enable Lumen Stones after Harmony, then restart RimWorld.
+3. Enable Lumen Stones after Harmony, then restart RimWorld.
 4. Optionally enable [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) before Lumen Stones for pyrinth columns. Neither Pyrinth nor DLC is required for the core mod.
 
 Every stone starts as Lumenstone. Mine it from rare veins, find it on the surface or buy it from traders at a high price. With Ideology, the Lumenstone ritual turns stone chunks into more. Research Stonecutting, build a Lumen ritual circle and infuse 10 Lumenstone with a simple reagent into 10 of any researched stone.
-
-Version 2.0 does not work with existing saves. Start a new colony.
 
 Open Options > Mod options > Lumen Stones to configure stone and item availability, effects, costs and Lumenstone supply. Balance changes require a restart. Disabling content preserves existing items, buildings and blueprints. Untouched balance values follow the active mod list. See [stone settings](docs/stone-settings.md) for controls, resets and AutoConfig keys.
 
@@ -39,7 +57,11 @@ Contributions, issues, and feature requests are welcome.
 
 ## License
 
-Glacite's adapted content retains Epochs - Pyrinth's Creative Commons Attribution 4.0 International license. See [LICENSE](LICENSE) and [CREDITS.md](CREDITS.md) for terms and attribution.
+Released under the **GNU General Public License v3.0**. See [`LICENSE`](LICENSE) for details.
+
+Commercial use is allowed under GPLv3. Distributed modified versions must remain under GPLv3 and make corresponding source available as required by the license.
+
+Glacite's definitions adapted from Epochs - Pyrinth retain Creative Commons Attribution 4.0 International; see [Licenses/Glacite-CC-BY-4.0.txt](Licenses/Glacite-CC-BY-4.0.txt). Icon artwork derived from Bionic Icons includes its MIT notice in [Licenses/BionicIcons-MIT.txt](Licenses/BionicIcons-MIT.txt). See [CREDITS.md](CREDITS.md) for attribution.
 
 ## Links
 

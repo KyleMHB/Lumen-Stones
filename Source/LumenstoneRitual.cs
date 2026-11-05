@@ -104,6 +104,11 @@ public abstract class Building_LumenstoneRitualHost : Building_WorkTable, IBillG
                 yield return AttunementRules.Command(this, StoneSide.Light, this is Building_LumenCircle ? "KM_AttunementCircle" : "KM_AttunementAltar");
             else if (this is Building_LumenCircle circle) yield return AttunementRules.JobCommand(circle);
         }
+        if (Faction == Faction.OfPlayer && SolarRules.Enabled)
+        {
+            if (ModsConfig.IdeologyActive) yield return LuniteRules.RitualCommand(this, this is Building_LumenCircle ? "KM_LuniteRitual" : "KM_LuniteAltarRitual");
+            else if (this is Building_LumenCircle luniteCircle) yield return LuniteRules.JobCommand(luniteCircle);
+        }
         if (!ModsConfig.IdeologyActive || Faction != Faction.OfPlayer) yield break;
         float factor = LumenstoneRitual.YieldFactor(this);
         var command = new Command_Action
@@ -215,11 +220,14 @@ public class LordJob_LumenstoneRitual : LordJob_Ritual
         List<RitualStage> stages, RitualRoleAssignments assignments, Pawn organizer)
         : base(target, ritual, obligation, stages, assignments, organizer) { }
 
+    protected virtual int Cost => LumenstoneRitual.ChunkCost;
+    protected virtual IEnumerable<Thing> Candidates => LumenstoneRitual.Chunks(selectedTarget);
+
     public void ReserveChunks()
     {
         // Hold the payment for the ceremony; cancellation returns it to the circle.
-        int remaining = LumenstoneRitual.ChunkCost;
-        foreach (var thing in LumenstoneRitual.Chunks(selectedTarget))
+        int remaining = Cost;
+        foreach (var thing in Candidates)
         {
             if (remaining == 0) break;
             int count = Math.Min(remaining, thing.stackCount);
@@ -229,6 +237,9 @@ public class LordJob_LumenstoneRitual : LordJob_Ritual
     }
 
     public IEnumerable<Thing> Chunks => chunks;
+
+    // Hands the held stacks to the caller, which destroys or uses them.
+    public void ClearReserved() => chunks.Clear();
 
     public void ConsumeChunks()
     {
