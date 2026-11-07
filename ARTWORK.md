@@ -2,6 +2,10 @@
 
 ## Current artwork workflow
 
+### Animastone column proportions, 2026-11-07
+
+The user reported that the column was too skinny beside the other stones. Its draw width is now 1.6 cells instead of 1.1667, a 37% increase; height remains 1.4583. The native menu scale is adjusted to preserve visible icon height. Source colour and the user-painted mask are unchanged. The recipe's framing record and registry contract reflect the new draw width. The user approved the comparison preview on 2026-11-07: "looks great". Deployment and human in-game review remain pending.
+
 ### Workshop gallery and description refresh, 2026-11-04
 
 The 24-image gallery now includes Lunite conversion and stabilization, Aegite personal shields and the shield projector, the Ferrite warhammer/Aegite shield swap, the simplified Sunstone flare and the Animastone pylon border repair. The lineage overview shows Sunstone turning into Lunite at night. The features illustration and Steam description cover solar-flare interruptions and Lunite's limits. The removed barricade is excluded.
@@ -83,6 +87,10 @@ The user approved the full icon sheet on 2026-11-03 after the larger shard revis
 ### Sunstone and Twinstone cells, 2026-11-03
 
 The user approved twin canisters with shared neutral metal caps, a central divider, a middle retaining band and one squared handle: amber and garnet crystals for the Twinstone cell and two Sunstone crystals for the Solar-only Sunstone cell. Both were made with the built-in `image_gen.imagegen` tool; requests, candidates, design notes and approval hashes are in [twinstone-cell](artwork/design-sources/twinstone-cell/). Each approved image was cropped to its visible pixels, centred on a square and resized once to the 128x128 item textures `Textures/Things/Item/Misc/TwinstoneCell.png` and `SunstoneCell.png`, with fixed colours and no mask. The export hashes are in the approval files. In-game review pending.
+
+### Solar and fixture-animation toggle icons, 2026-11-07
+
+The Solar active-effect and fixture-animation toggles no longer borrow vanilla's forbid icon. `UI/Commands/SolarActiveEffect` recolours the Warp toggle's crystal and power ring onto a Sunstone gold ramp. `UI/Commands/FixtureAnimation` redraws the same crystal without the ring on a pale Lumenstone ramp and adds four-point glints. Both are deterministic derivatives of `UI/Commands/WarpActiveEffect`, not new paintings; the recipe is `artwork/design-sources/gizmo-icons/derive.py`. Appearance and gizmo framing await the combined in-game review.
 
 ### Infused dark-stone motes and husk icons, 2026-11-02
 
@@ -378,7 +386,7 @@ The Glacite cooler now uses the user-accepted two-shard design in a continuous a
 
 The Vitalite pylon uses the user-accepted tall rose crystal, smooth base and central gold band. Its source and uniform 1:2 export recipe are in `artwork/design-sources/vitalite-pylon-banded/`. The base accepts construction tint; the crystal and gold band retain their colours. Draw size `(1.08,2.16)` matches the 256x512 canvas without anisotropic stretching, and offset `(0,0,0.615625)` preserves the previous calculated foot position. The native icon scale is adjusted to preserve its previous effective size. The generated source has faint low-alpha debris outside its substantial bounds; candidate diagnostics and tint previews are under `work/vitalite-fixtures/pylon-resolved/`. The exact runtime appearance, mask edge and placement await the combined in-game review.
 
-The full Vitalite bed uses the user-accepted pillow-free pearl and rose crystal design with a central gem and branching gold inlay. North shares the south design; east is a generated horizontal view and west mirrors it. Sources, prompts and uniform export recipes are in `artwork/design-sources/vitalite-full-bed-inlaid/`. All four views and the south icon alias are integrated in source; directional proportions, placement and appearance await the combined in-game review.
+The full Vitalite bed uses the rose crystalline version of the stone bed accepted on 2026-11-05: a pale pink slab with broad subtle facets, three-crystal headboard, gold band and small foot crystals where visible. All four directions retain the corresponding stone-bed geometry. Sources, exact requests, attempt records and uniform export recipes are in `artwork/design-sources/vitalite-crystal-stone-bed/`. The south view is also the menu alias. Crystal and gold colours are fixed, so this Cutout graphic needs no construction mask. The earlier central-gem and branching-inlay design is retained as history in `artwork/design-sources/vitalite-full-bed-inlaid/`. Directional appearance and placement await the final in-game review.
 
 The user accepted the Vitalite inlaid bed with a flat stone slab, three-crystal headboard, gold band and three small foot-face crystals where visible. Four directional sources, user-painted masks and uniform export recipes are in `artwork/design-sources/vitalite-stone-bed/`. Source exports and menu alias are integrated; placement, proportions, construction tints and appearance await the combined in-game review. North, east and west contain cool-grey stone with channel spread up to 30; their painted masks override diagnostic ownership polygons.
 

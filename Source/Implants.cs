@@ -118,6 +118,8 @@ public class HediffComp_Attunement : HediffComp
     public void Dirty()
     {
         stage = null;
+        // RimWorld's immutable-stat scan cannot see modifiers in our runtime-built stages.
+        RecreationGain.Stat.Worker.ClearCacheForThing(Pawn);
         Pawn.health.Notify_HediffChanged(parent);
     }
 
@@ -144,6 +146,7 @@ public class HediffComp_Attunement : HediffComp
 
     public override void CompPostPostRemoved()
     {
+        RecreationGain.Stat.Worker.ClearCacheForThing(Pawn);
         if (Props.reserve != null) Hediff_SunlightReserve.Stop(Pawn, Props.reserve);
         ImplantRules.Refresh(Pawn);
     }

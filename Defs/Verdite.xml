@@ -213,7 +213,7 @@
         <glowColor>(190,245,140,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Overlight">
-        <glowRadius>6.5</glowRadius>
+        <glowRadius>13</glowRadius>
         <glowColor>(370,370,300,0)</glowColor>
         <overlightRadius>6.5</overlightRadius>
         <solarDrain>120</solarDrain>
@@ -261,7 +261,7 @@
         <glowColor>(190,245,140,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Overlight">
-        <glowRadius>4.5</glowRadius>
+        <glowRadius>9</glowRadius>
         <glowColor>(370,370,300,0)</glowColor>
         <overlightRadius>4.5</overlightRadius>
         <solarDrain>60</solarDrain>

@@ -1,6 +1,7 @@
 using Verse;
 using RimWorld;
 using UnityEngine;
+using System.Linq;
 
 namespace LumenStones;
 
@@ -9,7 +10,7 @@ public static class HollowstoneRules
     public const int WardOffset = 20;
     public static float Radius = 8f;
     // Warp per covered pawn per day.
-    public static float WardCostPerDay = 3f;
+    public static float WardCostPerDay = 1f;
     // The ward outlasts a 250-tick pass by 50 ticks, so it clears soon after a pawn leaves reach.
     public const int WardLingerTicks = 300;
 
@@ -32,11 +33,11 @@ public class HollowstoneWard : MapComponent
         var cache = DarkFixtureCache.For(map);
         if (!cache.AnyActive(DarkStoneKind.Hollowstone)) return;
         var warp = WarpEnergyNetwork.For(map);
-        Pass(map.mapPawns.FreeColonistsSpawned, cache, warp);
-        Pass(map.mapPawns.SlavesOfColonySpawned, cache, warp);
+        // FreeColonistsSpawned also includes player-faction slaves in RimWorld 1.7.
+        Pass(map.mapPawns.FreeColonistsSpawned.Concat(map.mapPawns.SlavesOfColonySpawned).Distinct(), cache, warp);
     }
 
-    private static void Pass(System.Collections.Generic.List<Pawn> pawns, DarkFixtureCache cache, WarpEnergyNetwork warp)
+    private static void Pass(System.Collections.Generic.IEnumerable<Pawn> pawns, DarkFixtureCache cache, WarpEnergyNetwork warp)
     {
         float cost = HollowstoneRules.WardCostPerDay * WarpRules.PassInterval / GenDate.TicksPerDay;
         foreach (var pawn in pawns)

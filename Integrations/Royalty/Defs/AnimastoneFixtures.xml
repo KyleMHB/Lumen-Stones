@@ -11,7 +11,7 @@
     <costList><KM_Animastone>15</KM_Animastone></costList>
     <graphicData>
       <texPath>Lumenstone/AnimastoneColumn</texPath>
-      <drawSize>(1.1667,1.4583)</drawSize>
+      <drawSize>(1.6,1.4583)</drawSize>
     </graphicData>
     <statBases>
       <Flammability>0</Flammability>
@@ -32,7 +32,7 @@
         <weight>0.2</weight>
       </li>
     </comps>
-    <uiIconScale>1.02857</uiIconScale>
+    <uiIconScale>0.90286</uiIconScale>
   </ThingDef>
 
   <ThingDef Name="KM_AnimastoneFixtureBase" ParentName="BuildingBase" Abstract="True">

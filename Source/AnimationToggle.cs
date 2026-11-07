@@ -31,11 +31,13 @@ public class CompAnimationToggle : ThingComp
         {
             defaultLabel = "Fixture animation",
             defaultDesc = "Show this fixture's pulses, glints and drifting lights. Turning it off changes nothing else it does.",
-            icon = TexCommand.ForbidOn,
+            icon = icon ??= ContentFinder<Texture2D>.Get("UI/Commands/FixtureAnimation"),
             isActive = () => on,
             toggleAction = () => { on = !on; parent.BroadcastCompSignal(Signal); }
         };
     }
+
+    private static Texture2D icon;
 }
 
 // Decorative pulse motes. They are skipped when the map already has many motes, as vanilla does for its own low-priority motes.

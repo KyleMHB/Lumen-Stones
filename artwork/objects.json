@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "renderer": {
-    "id": "installed-rimworld-1.7-waylith-2026-10-31",
+    "id": "installed-rimworld-1.7.5000-waylith-2026-11-06",
     "commandScale": 0.85,
     "modeledBleedRadius": 4,
     "modelLimits": "Independent 8-bit bilinear channel sampling, shader MaskGate, controlled four-source-pixel bleed approximation. Not a GPU capture or world-camera simulation.",
     "sourceHashes": {
-      "Assembly-CSharp.dll": "56399b6144d9f1695f9c53d054dc82972f7ab35e68d1a19a7129f2f5860ccd21",
+      "Assembly-CSharp.dll": "d55aa8e47fa3c5463ca85b0eccd51f195b4bbcd04f56da3af21c2f6688a81254",
       "Data/Core/Shaders/MaskGate.glsl": "776d5a721ce5e8280ccf5584681154bd8e29a19fefc7d170471cc315477d44e7",
       "Data/Core/Shaders/Map/CutoutComplex.frag.glsl": "4e0aeb152c1333b1b4ec1f538711ab46656517962f55cec022d2cb345cc9c168",
       "Data/Core/Shaders/Map/CutoutComplexUI.frag.glsl": "546c451bb49fd9e7c1538b8e819506d2e85fb6261b9ad57f0845d4477dbd9b80"
@@ -256,18 +256,18 @@
         512
       ],
       "contract": {
-        "identity": "Fully crystalline Vitalite bed with rose core and gold inlay",
-        "geometry": "Pillow-free 1x2 bed with one central crystal and branching gold bands",
+        "identity": "Rose crystalline version of the Vitalite stone bed with a gold band",
+        "geometry": "Pillow-free 1x2 slab bed with a three-crystal headboard and three foot crystals where visible",
         "materials": "Pearl/rose crystal and gold fixed; no construction tint",
         "camera": "Approved bed camera; south default; consistent directional depth",
-        "protected": "User-approved pillow-free design, central crystal, branching bands and bed framing",
-        "allowedEdits": "Maintain approved design across directions; in-game appearance awaits review."
+        "protected": "Accepted rose slab, broad subtle facets, three-crystal headboard, gold band and stone-bed directional geometry",
+        "allowedEdits": "Maintain approved design across directions; deployed appearance accepted by the user on 2026-11-05."
       },
       "approvedMaster": {
         "path": "Things/Building/Vitalite/FullBed_south.png",
-        "sha256": "4137fa2a729deb0b83b964daaed11cf22ae47de9c0dc7cb0d47ca2a3e3f1dc06",
-        "approvedBy": "user: south design acceptance; directional and in-game appearance pending",
-        "approvedOn": "2026-11-02"
+        "sha256": "7e0b9cc28df17750d61675e211632fca42646b09651ee753d758349198a91005",
+        "approvedBy": "user: rose stone-bed design and deployed appearance accepted",
+        "approvedOn": "2026-11-05"
       },
       "iconHeightFraction": [
         0.68,
@@ -283,10 +283,10 @@
         "Things/Building/Vitalite/FullBed.png": "Things/Building/Vitalite/FullBed_south.png"
       },
       "recipes": {
-        "north": "artwork/design-sources/vitalite-full-bed-inlaid/north.json",
-        "east": "artwork/design-sources/vitalite-full-bed-inlaid/east.json",
-        "south": "artwork/design-sources/vitalite-full-bed-inlaid/south.json",
-        "west": "artwork/design-sources/vitalite-full-bed-inlaid/west.json"
+        "north": "artwork/design-sources/vitalite-crystal-stone-bed/north.json",
+        "east": "artwork/design-sources/vitalite-crystal-stone-bed/east.json",
+        "south": "artwork/design-sources/vitalite-crystal-stone-bed/south.json",
+        "west": "artwork/design-sources/vitalite-crystal-stone-bed/west.json"
       }
     },
     {
@@ -2430,8 +2430,8 @@
         "geometry": "One irregular grown crystal shaft, asymmetrical fused shoulders, rough neutral stone cap and foot; no manufactured frame or geometric gem emblem.",
         "materials": "Fixed seafoam crystal and irregular opal seam; neutral grey stone cap/foot for later construction ownership.",
         "camera": "Approved Verdite shallow game camera and Serenite broad flat shading.",
-        "protected": "Approved palette and existing column path, footprint and draw size. Verdite reference itself remains unchanged.",
-        "allowedEdits": "New derivative of the user-approved natural Animastone family."
+        "protected": "Approved palette, colour pixels, user-painted mask, column path, footprint and rendered height. Verdite reference itself remains unchanged.",
+        "allowedEdits": "2026-11-07: widen rendered column from 1.1667 to 1.6 cells at unchanged 1.4583 height after user reported skinny proportions; compensate native icon scale to retain visible icon height. User approved comparison preview: looks great. In-game review pending."
       },
       "approvedMaster": {
         "path": "Lumenstone/AnimastoneColumn.png",

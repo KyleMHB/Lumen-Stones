@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.Glow;
 
 namespace LumenStones;
 
@@ -88,4 +90,15 @@ public class CompOverlight : CompGlower, ISolarConsumer
     public override string CompInspectStringExtra() => CompLumenDarklight.On(parent)
         ? "Darklight: always on; plant-capable light disabled"
         : "Plant-capable light: " + (ShouldBeLitNow ? "on" : !InSchedule ? "off until " + (Overlight.startTime * 24).ToString("0") + ":00" : "off, active effect not running");
+}
+
+// Keep settings, range rings and reserve checks in tile distances. RimWorld's light
+// flood starts at distance 1 on the source tile, rather than 0.
+[HarmonyPatch(typeof(GlowLight), MethodType.Constructor, typeof(CompGlower), typeof(int))]
+public static class VerditeOverlightDistance
+{
+    public static void Postfix(CompGlower glower, ref float ___overlightRadius)
+    {
+        if (glower is CompOverlight && ___overlightRadius > 0f) ___overlightRadius += 1f;
+    }
 }

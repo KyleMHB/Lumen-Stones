@@ -3,7 +3,7 @@
   <ThingDef ParentName="ApparelBase">
     <defName>KM_AnimastoneCirclet</defName>
     <label>Animastone circlet</label>
-    <description>A thin gold band set with Animastone and worn over the brow. Wearers say the psychic field feels a little closer.\n\nRaises psychic sensitivity by 8% and neural heat recovery by about 10%. It needs no Solar energy. Crafted at a smithy from 30 Animastone and 10 gold after anima attunement, with Crafting 6.</description>
+    <description>A thin gold band set with Animastone and worn over the brow. Wearers say the psychic field feels a little closer.\n\nRaises psychic sensitivity by 8% at normal quality (more at higher quality) and neural heat recovery by about 10%. It needs no Solar energy. Crafted at a smithy from 30 Animastone and 10 gold after anima attunement, with Crafting 6.</description>
     <thingCategories><li>Headgear</li></thingCategories>
     <graphicData>
       <texPath>Things/Item/Equipment/Apparel/AnimastoneCirclet</texPath>
@@ -18,9 +18,10 @@
       <Beauty>2</Beauty>
       <EquipDelay>1</EquipDelay>
     </statBases>
+    <!-- Vanilla scales PsychicSensitivityOffset by quality (normal x0.83), so 0.0964 reads 8% at normal quality. -->
     <!-- Neural heat recovery is an absolute rate (base 0.54 per second), so about 10% is a flat offset, as on the eltex helmet. -->
     <equippedStatOffsets>
-      <PsychicSensitivityOffset>0.08</PsychicSensitivityOffset>
+      <PsychicSensitivityOffset>0.0964</PsychicSensitivityOffset>
       <PsychicEntropyRecoveryRate>0.054</PsychicEntropyRecoveryRate>
     </equippedStatOffsets>
     <costList><KM_Animastone>30</KM_Animastone><Gold>10</Gold></costList>

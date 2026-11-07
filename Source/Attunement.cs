@@ -212,6 +212,15 @@ public class RitualBehaviorWorker_Attunement : RitualBehaviorWorker
         Dictionary<string, Pawn> forcedForRole = null) =>
         AttunementRules.Blocked(target.Thing, Side) ?? base.CanStartRitualNow(target, ritual, selectedPawn, forcedForRole);
 
+    public override void Cleanup(LordJob_Ritual ritual)
+    {
+        base.Cleanup(ritual);
+        // Lord.Cleanup releases pawns between Cleanup and PostCleanup, and a released prisoner picks its next job then.
+        // The grace must already be set, or a prisoner near the map edge starts escaping (as vanilla's Trial avoids).
+        var recipient = ritual.PawnWithRole("recipient");
+        if (recipient != null && !recipient.Dead && recipient.IsPrisonerOfColony) recipient.guest.WaitInsteadOfEscapingFor(1250);
+    }
+
     public override void PostCleanup(LordJob_Ritual ritual)
     {
         base.PostCleanup(ritual);
@@ -220,7 +229,6 @@ public class RitualBehaviorWorker_Attunement : RitualBehaviorWorker
         var attuner = ritual.PawnWithRole("attuner");
         if (recipient == null || recipient.Dead || !recipient.IsPrisonerOfColony || attuner == null) return;
         WorkGiver_Warden_TakeToBed.TryTakePrisonerToBed(recipient, attuner);
-        recipient.guest.WaitInsteadOfEscapingFor(1250);
     }
 }
 

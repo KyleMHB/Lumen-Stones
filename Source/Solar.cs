@@ -345,9 +345,11 @@ public class CompSolarToggle : ThingComp
         {
             defaultLabel = "Solar active effect",
             defaultDesc = Props.description ?? "Spend Solar energy on " + Props.effect + ". When off, only the passive effect works.",
-            icon = TexCommand.ForbidOn,
+            icon = icon ??= ContentFinder<Texture2D>.Get("UI/Commands/SolarActiveEffect"),
             isActive = () => on,
             toggleAction = () => { on = !on; parent.BroadcastCompSignal(SolarRules.ToggledSignal); }
         };
     }
+
+    private static Texture2D icon;
 }

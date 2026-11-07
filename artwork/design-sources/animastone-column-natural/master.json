@@ -145,13 +145,13 @@
     "maxOpaqueSpread": 8,
     "definition": "KM_LumenAnimastoneColumn",
     "drawSize": [
-      1.1667,
+      1.6,
       1.4583
     ]
   },
   "acceptance": {
     "palette": "user approved 2026-11-03",
-    "design": "User accepted corrected family 2026-11-03: done",
+    "design": "User accepted corrected family 2026-11-03: done; approved wider 1.6 by 1.4583 rendered proportions in comparison preview 2026-11-07: looks great",
     "mask": "Exact user-saved mask integrated; review history retained",
     "inGame": "pending final combined human review"
   },

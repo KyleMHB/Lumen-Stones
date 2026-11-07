@@ -281,6 +281,14 @@ public abstract class RitualBehaviorWorker_Sacrifice : RitualBehaviorWorker
         return job;
     }
 
+    public override void Cleanup(LordJob_Ritual ritual)
+    {
+        base.Cleanup(ritual);
+        // Set the grace before Lord.Cleanup releases pawns; a released prisoner picks its next job before PostCleanup runs.
+        var victim = ritual.PawnWithRole("victim");
+        if (victim != null && !victim.Dead && victim.IsPrisonerOfColony) victim.guest.WaitInsteadOfEscapingFor(1250);
+    }
+
     public override void PostCleanup(LordJob_Ritual ritual)
     {
         base.PostCleanup(ritual);
@@ -289,7 +297,6 @@ public abstract class RitualBehaviorWorker_Sacrifice : RitualBehaviorWorker
         var warden = ritual.PawnWithRole("speaker");
         if (victim == null || victim.Dead || !victim.IsPrisonerOfColony || warden == null) return;
         WorkGiver_Warden_TakeToBed.TryTakePrisonerToBed(victim, warden);
-        victim.guest.WaitInsteadOfEscapingFor(1250);
     }
 }
 

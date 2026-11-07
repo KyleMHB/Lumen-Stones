@@ -498,7 +498,7 @@ public static partial class StoneSettings
                 if (overlight != null)
                 {
                     Add(group, section, name + ".plantLight", "Plant-capable lighting radius", overlight.overlightRadius,
-                        v => overlight.overlightRadius = overlight.glowRadius = v, max: 40);
+                        v => { overlight.overlightRadius = v; overlight.glowRadius = 2f * v; }, max: 40);
                     Add(group, section, name.EndsWith("Pylon") ? "Verdite.pylonSolarDrain" : "Verdite.clusterSolarDrain",
                         "Solar energy per lit schedule", overlight.solarDrain, v => overlight.solarDrain = v);
                 }

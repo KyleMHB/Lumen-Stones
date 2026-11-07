@@ -24,3 +24,6 @@
 # Python artwork tooling
 __pycache__/
 *.pyc
+
+# Scraped third-party base screenshots and pages (distilled notes live in docs/base-references/)
+/.scratch/dlc-base-references/
