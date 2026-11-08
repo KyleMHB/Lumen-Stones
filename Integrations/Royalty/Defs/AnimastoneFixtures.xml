@@ -28,7 +28,7 @@
         <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
       </li>
       <li Class="LumenStones.CompProperties_Animastone">
-        <fixtureIndex>1</fixtureIndex>
+        <category>Column</category>
         <weight>0.2</weight>
       </li>
     </comps>
@@ -98,7 +98,7 @@
         <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
       </li>
       <li Class="LumenStones.CompProperties_Animastone">
-        <fixtureIndex>0</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.15</weight>
       </li>
     </comps>
@@ -153,7 +153,7 @@
         <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
       </li>
       <li Class="LumenStones.CompProperties_Animastone">
-        <fixtureIndex>0</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.15</weight>
       </li>
     </comps>
@@ -197,7 +197,7 @@
         <focusTypes><li>Natural</li><li>Dignified</li></focusTypes>
       </li>
       <li Class="LumenStones.CompProperties_Animastone">
-        <fixtureIndex>3</fixtureIndex>
+        <category>Pylon</category>
         <weight>0.4</weight>
         <activeRadius>8</activeRadius>
         <activeDrain>60</activeDrain>
@@ -243,7 +243,7 @@
         <offsets><li Class="LumenStones.FocusStrengthOffset_AnimastoneActive" /></offsets>
       </li>
       <li Class="LumenStones.CompProperties_Animastone">
-        <fixtureIndex>2</fixtureIndex>
+        <category>Cluster</category>
         <weight>0.25</weight>
         <activeRadius>6</activeRadius>
         <activeDrain>30</activeDrain>

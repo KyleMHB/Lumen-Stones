@@ -10,6 +10,27 @@ public static class DreadstoneRules
 {
     public const int SubjugationOffset = 60, DreadOffset = 190;
     public static float Radius = 8f;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var reach = s.In("Reach and cost");
+        var subjugation = s.In("Subjugation");
+        var dread = s.In("Dread and Death Siphon");
+        reach.Add("Dreadstone.radius", "Fixture radius (tiles)", Radius, v => Radius = v, Limit.Number(1, 100));
+        reach.Add("Dreadstone.subjugationCost", "Warp energy per covered prisoner or slave per day", SubjugationCost, v => SubjugationCost = v);
+        subjugation.Add("Dreadstone.resistancePerDay", "Resistance lost per day (column)", ResistancePerDay, v => ResistancePerDay = v);
+        subjugation.Add("Dreadstone.willPerDay", "Will lost per day (column)", WillPerDay, v => WillPerDay = v);
+        subjugation.Add("Dreadstone.suppressionPerDay", "Slave suppression gained per day (column, %)", SuppressionPerDay,
+            v => SuppressionPerDay = v, Limit.Percent());
+        subjugation.Add("Dreadstone.pylonErosionFactor", "Pylon erosion multiplier", PylonErosionFactor, v => PylonErosionFactor = v, Limit.Number(1, 10));
+        subjugation.Add("Dreadstone.breakMtbFactor", "Prison break and rebellion rarity multiplier", BreakMtbFactor,
+            v => BreakMtbFactor = v, Limit.Number(1, 100));
+        dread.Add("Dreadstone.dreadCostPerPass", "Warp energy per hostile per pass", DreadCostPerPass, v => DreadCostPerPass = v);
+        dread.Add("Dreadstone.siphonFraction", "Market value returned as Warp energy on a marked death (%)", SiphonFraction,
+            v => SiphonFraction = v, Limit.Percent());
+        dread.Add("Dreadstone.arbalestDreadSeconds", "Arbalest Dread duration (seconds)", ArbalestDreadSeconds,
+            v => ArbalestDreadSeconds = v, Limit.Number(1, 600));
+    }
     // Warp per prisoner or slave per day.
     public static float SubjugationCost = 2f;
     // Per-day erosion from a column. A pylon multiplies each by PylonErosionFactor.

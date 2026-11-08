@@ -2,4 +2,4 @@
 set -eu
 root=$(git rev-parse --show-toplevel)
 python=$(git config --get lumen.artworkPython || command -v python3 || command -v python)
-exec "$python" "$root/tools/artwork.py" check --staged
+exec "$python" "$root/tools/check.py" --staged

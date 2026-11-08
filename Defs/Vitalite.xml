@@ -25,7 +25,7 @@
     <statBases><Cleanliness>2</Cleanliness><Flammability>0</Flammability></statBases>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>0</fixtureIndex><weight>0.2</weight></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><category>Column</category><weight>0.2</weight></li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
     </comps>
   </ThingDef>
@@ -65,7 +65,7 @@
       <glowColor>(245,210,220,0)</glowColor>
     </li>
     <li Class="LumenStones.CompProperties_Vitalite">
-      <fixtureIndex>1</fixtureIndex><weight>0.1</weight>
+      <category>Lamp</category><weight>0.1</weight>
     </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
   </comps>
@@ -82,7 +82,7 @@
     <placeWorkers><li>Placeworker_AttachedToWall</li></placeWorkers>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>9</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>1</fixtureIndex><weight>0.1</weight></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><category>Lamp</category><weight>0.1</weight></li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
     </comps>
   </ThingDef>
@@ -99,7 +99,7 @@
     <researchPrerequisites><li>KM_VitaliteRestoration</li></researchPrerequisites>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>2</fixtureIndex><weight>0.45</weight></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><category>Pylon</category><weight>0.45</weight></li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
     </comps>
   </ThingDef>
@@ -112,7 +112,7 @@
     <researchPrerequisites><li>KM_VitaliteRestoration</li></researchPrerequisites>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>5</glowRadius><glowColor>(245,210,220,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Vitalite"><fixtureIndex>3</fixtureIndex><weight>0.25</weight></li>
+      <li Class="LumenStones.CompProperties_Vitalite"><category>Cluster</category><weight>0.25</weight></li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>healing and infection prevention</effect></li>
     </comps>
   </ThingDef>

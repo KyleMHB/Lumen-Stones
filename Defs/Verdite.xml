@@ -217,6 +217,7 @@
         <glowColor>(370,370,300,0)</glowColor>
         <overlightRadius>6.5</overlightRadius>
         <solarDrain>120</solarDrain>
+        <solarDrainKey>Verdite.pylonSolarDrain</solarDrainKey>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle">
         <effect>plant-capable light</effect>
@@ -265,6 +266,7 @@
         <glowColor>(370,370,300,0)</glowColor>
         <overlightRadius>4.5</overlightRadius>
         <solarDrain>60</solarDrain>
+        <solarDrainKey>Verdite.clusterSolarDrain</solarDrainKey>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle">
         <effect>plant-capable light</effect>

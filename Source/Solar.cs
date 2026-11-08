@@ -7,7 +7,7 @@ namespace LumenStones;
 
 public static class SolarRules
 {
-    public const float FullSunTicks = 33000f, DepletedBelow = 0.01f, DayGlow = 0.4f;
+    public const float FullSunTicks = 33000f, DepletedBelow = ActiveEffectCore.DepletedBelow, DayGlow = 0.4f;
     public const int PassInterval = 250, GlowSteps = 4;
     // Broadcast to a fixture's comps when its Solar active effect is toggled, so lights can react at once.
     public const string ToggledSignal = "SolarToggled";
@@ -24,8 +24,34 @@ public static class SolarRules
     public static ResearchProjectDef Research => research ??= DefDatabase<ResearchProjectDef>.GetNamed("KM_SunstoneChanneling");
 
     // With Sunstone off, active effects are free and nothing about Solar energy is shown.
-    public static bool Enabled => LumenstoneMod.Settings.Value("Sunstone.enabled", 1) != 0;
+    public static bool Enabled => StoneTabs.Sunstone.Enabled.On;
     public static bool Visible => Enabled && Research.IsFinished;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var network = s.In("Solar network");
+        foreach (var (key, label, name) in new[] {
+            ("collectorOutput", "Collector output per day at full sun", "KM_SunstoneCollector"),
+            ("arrayOutput", "Array output per day at full sun", "KM_SunstoneArray") })
+        {
+            var comp = DefDatabase<ThingDef>.GetNamed(name).GetCompProperties<CompProperties_Sunstone>();
+            network.Add("Sunstone." + key, label, comp.output, v => comp.output = v, Limit.Number(0.01f));
+        }
+        foreach (var (key, label, name) in new[] {
+            ("vesselCapacity", "Vessel capacity", "KM_SunstoneVessel"),
+            ("obeliskCapacity", "Obelisk capacity", "KM_SunstoneObelisk") })
+        {
+            var comp = DefDatabase<ThingDef>.GetNamed(name).GetCompProperties<CompProperties_Sunstone>();
+            network.Add("Sunstone." + key, label, comp.capacity, v => comp.capacity = v, Limit.Number(1));
+        }
+        network.Add("Sunstone.solarHysteresis", "Stored energy needed to recover from depletion", Hysteresis, v => Hysteresis = v, Limit.Number(0.02f));
+        string[] weather = { "Fog", "Rain and gentle snow", "Thunderstorms", "Foggy rain and hard snow" };
+        for (int i = 0; i < weather.Length; i++)
+        {
+            int tier = i;
+            network.Add("Sunstone.weather" + tier, weather[i] + " output factor (%)", WeatherFactors[tier], v => WeatherFactors[tier] = v, Limit.Percent());
+        }
+    }
 
     public static float WeatherFactor(Map map) =>
         weatherTier.TryGetValue(map.weatherManager.curWeather.defName, out int tier) ? WeatherFactors[tier] : 1f;
@@ -161,26 +187,16 @@ public class CompSunstone : ThingComp
     }
 }
 
-// A continuous drain. The network asks once per pass for the rate and charges the elapsed interval, then caches whether it was paid.
-public interface ISolarConsumer
-{
-    // Solar energy wanted per tick right now, or 0 when idle.
-    float SolarDrainPerTick { get; }
-    // Set by the network each pass. False until the first pass, and when a draw is refused.
-    bool SolarPowered { get; set; }
-}
-
 // One network per map. Collectors fill their own buffers first and spill into batteries. Draws take buffers first, then batteries.
-public class SolarNetwork : MapComponent
+public class SolarNetwork : MapComponent, IEnergyStore
 {
     private readonly List<CompSunstone> collectors = new(), batteries = new();
-    private readonly List<ISolarConsumer> consumers = new();
-    private bool depleted;
+    public readonly EnergyAccount Account;
 
-    public SolarNetwork(Map map) : base(map) { }
+    public SolarNetwork(Map map) : base(map) => Account = new(ActiveEffectKind.Solar, this);
 
-    public bool Depleted => depleted;
-    public bool Available => !depleted && TotalStored >= SolarRules.DepletedBelow;
+    public bool Depleted => Account.Depleted;
+    public bool Available => Account.Available;
     public static SolarNetwork For(Map map) => map.GetComponent<SolarNetwork>();
 
     public float TotalStored => Sum(collectors) + Sum(batteries);
@@ -210,18 +226,11 @@ public class SolarNetwork : MapComponent
 
     public void Unregister(CompSunstone comp) => (comp.IsCollector ? collectors : batteries).Remove(comp);
 
-    public void Register(ISolarConsumer consumer)
-    {
-        if (!consumers.Contains(consumer)) consumers.Add(consumer);
-    }
-
-    public void Unregister(ISolarConsumer consumer) => consumers.Remove(consumer);
-
-    public override void ExposeData() => Scribe_Values.Look(ref depleted, "solarDepleted");
+    public override void ExposeData() => Account.ExposeData("solarDepleted");
 
     public override void MapComponentTick()
     {
-        if ((collectors.Count == 0 && batteries.Count == 0 && consumers.Count == 0) || Find.TickManager.TicksGame % SolarRules.PassInterval != 0) return;
+        if ((collectors.Count == 0 && batteries.Count == 0 && !Account.HasDrains) || Find.TickManager.TicksGame % SolarRules.PassInterval != 0) return;
         bool flared = ActiveEffectInterruption.Reason(map, ActiveEffectNetworks.Solar) != null;
         float sky = map.skyManager.CurSkyGlow, weather = SolarRules.WeatherFactor(map);
         int dayStep = sky >= SolarRules.DayGlow ? 1 : 0;
@@ -243,44 +252,22 @@ public class SolarNetwork : MapComponent
             if (deposit > 0) battery.stored = Mathf.Min(battery.Props.capacity, battery.stored + deposit * battery.Spare / spare);
             battery.UpdateGlow(battery.FillStep());
         }
-        UpdateDepletion();
-        // Idle consumers are powered when the network is. A refused draw leaves that consumer unpowered until the next pass.
-        foreach (var consumer in consumers)
-        {
-            float want = consumer.SolarDrainPerTick * SolarRules.PassInterval;
-            consumer.SolarPowered = want > 0 ? TryConsumeContinuous(want) : Available;
-        }
+        Account.RefreshDepletion();
+        Account.PollDrains(SolarRules.PassInterval);
     }
 
-    private void UpdateDepletion()
+    public bool CanDraw(float amount) => Account.CanDraw(amount);
+    public bool TryConsume(float amount) => Account.TryDraw(amount);
+    public bool TryConsumeContinuous(float amount) => Account.TryDrawContinuous(amount);
+
+    float IEnergyStore.Stored => TotalStored;
+
+    // Collectors pay first, then batteries.
+    void IEnergyStore.Withdraw(float amount)
     {
-        float stored = TotalStored;
-        if (depleted) { if (stored >= SolarRules.Hysteresis) depleted = false; }
-        else if (stored < SolarRules.DepletedBelow) depleted = true;
-    }
-
-    // Read-only check for ownership decisions. Free when Sunstone is off.
-    public bool CanDraw(float amount) => !SolarRules.Enabled || amount <= 0 || (!depleted && amount <= TotalStored);
-
-    // All or nothing, for per-event costs. A refusal does not deplete the network.
-    public bool TryConsume(float amount) => Draw(amount, false);
-
-    // For costs charged over time. A refusal marks the network depleted until it recovers.
-    public bool TryConsumeContinuous(float amount) => Draw(amount, true);
-
-    private bool Draw(float amount, bool continuous)
-    {
-        if (!SolarRules.Enabled || amount <= 0) return true;
-        if (depleted || amount > TotalStored)
-        {
-            if (continuous) depleted = true;
-            return false;
-        }
         float fromCollectors = Mathf.Min(amount, Sum(collectors));
         Take(collectors, fromCollectors);
         Take(batteries, amount - fromCollectors);
-        UpdateDepletion();
-        return true;
     }
 
     private static void Take(List<CompSunstone> list, float amount)
@@ -289,67 +276,4 @@ public class SolarNetwork : MapComponent
         if (amount <= 0 || total <= 0) return;
         foreach (var c in list) c.stored = Mathf.Max(0, c.stored - amount * c.stored / total);
     }
-}
-
-public class CompProperties_SolarToggle : CompProperties
-{
-    public string effect = "its active effect";
-    // Replaces the default description when an effect needs a warning.
-    public string description;
-    public CompProperties_SolarToggle() => compClass = typeof(CompSolarToggle);
-}
-
-// Attached to every fixture that has an active effect. Consumers ask Active before spending Solar energy.
-public class CompSolarToggle : ThingComp
-{
-    private bool on = true;
-    public CompProperties_SolarToggle Props => (CompProperties_SolarToggle)props;
-
-    public override void PostExposeData() => Scribe_Values.Look(ref on, "solarActiveOn", true);
-
-    public bool ToggledOn => on;
-
-    // Toggled on and not paused by an interruption the fixture's stabilizer cannot ride out. Energy is checked separately.
-    public bool Running => on && !ActiveEffectInterruption.Blocked(parent, ActiveEffectNetworks.Solar);
-
-    // True when the active effect may run: always with Sunstone off, otherwise only running and with Solar energy.
-    public bool Active => !SolarRules.Enabled || (Running && SolarNetwork.For(parent.Map).Available);
-
-    // Pays a per-event cost. Free with Sunstone off, refused when paused or toggled off or when the network cannot cover it.
-    public bool TryPay(float amount) => !SolarRules.Enabled || (Running && SolarNetwork.For(parent.Map).TryConsume(amount));
-
-    public string Status
-    {
-        get
-        {
-            if (!on) return "Toggled off";
-            if (ActiveEffectInterruption.BlockedReason(parent, ActiveEffectNetworks.Solar) is { } reason) return "Interrupted (" + reason + ")";
-            return SolarNetwork.For(parent.Map).Available ? "Powered" : "No Solar energy";
-        }
-    }
-
-    public override void PostSpawnSetup(bool respawningAfterLoad) => LuniteLinkTracker.For(parent.Map).RegisterFixture(parent, true);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => LuniteLinkTracker.For(map).RegisterFixture(parent, false);
-
-    public override string CompInspectStringExtra()
-    {
-        if (!SolarRules.Visible || !parent.Spawned) return null;
-        string text = "Solar active effect: " + Status;
-        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\nStabilized by: Lunite stabilizer" : text;
-    }
-
-    public override IEnumerable<Gizmo> CompGetGizmosExtra()
-    {
-        if (!SolarRules.Visible) yield break;
-        yield return new Command_Toggle
-        {
-            defaultLabel = "Solar active effect",
-            defaultDesc = Props.description ?? "Spend Solar energy on " + Props.effect + ". When off, only the passive effect works.",
-            icon = icon ??= ContentFinder<Texture2D>.Get("UI/Commands/SolarActiveEffect"),
-            isActive = () => on,
-            toggleAction = () => { on = !on; parent.BroadcastCompSignal(SolarRules.ToggledSignal); }
-        };
-    }
-
-    private static Texture2D icon;
 }

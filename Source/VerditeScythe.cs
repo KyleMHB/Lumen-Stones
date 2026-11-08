@@ -12,6 +12,13 @@ public static class VerditeScythe
     private static ThingDef def;
     public static ThingDef Def => def ??= DefDatabase<ThingDef>.GetNamed("KM_VerditeScythe");
     public static bool Equipped(Pawn pawn) => pawn.equipment?.Primary is { } weapon && weapon.def == Def;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var scythe = s.In("Verdite scythe");
+        scythe.Add("KM_VerditeScythe.farming", "Plant work speed and harvest yield bonus (%)", FarmingBonus, v => FarmingBonus = v, Limit.Percent(10));
+        scythe.Add("KM_VerditeScythe.lifeSteal", "Actual melee damage converted to healing (%)", LifeStealFraction, v => LifeStealFraction = v, Limit.Percent());
+    }
 }
 
 [HarmonyPatch(typeof(Thing), nameof(Thing.TakeDamage))]

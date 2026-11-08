@@ -11,6 +11,16 @@ public static class FerriteWarhammer
     private static ThingDef def;
     public static ThingDef Def => def ??= DefDatabase<ThingDef>.GetNamed("KM_FerriteWarhammer");
     public static bool Equipped(Pawn pawn) => pawn.equipment?.Primary is { } weapon && weapon.def == Def;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var hammer = s.In("Ferrite warhammer");
+        hammer.Add("KM_FerriteWarhammer.stunChance", "Stun chance on damaging melee hits (%)", StunChance, v => StunChance = v, Limit.Percent());
+        hammer.Add("KM_FerriteWarhammer.stunTicks", "Stun duration (ticks)", StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
+        var hammerMending = Def.GetCompProperties<CompProperties_Ferrite>();
+        hammer.Add("KM_FerriteWarhammer.repairBudget", "Condition mended per pulse (% of maximum hit points)", hammerMending.repairBudget,
+            v => hammerMending.repairBudget = v, Limit.Percent());
+    }
 }
 
 [HarmonyPatch(typeof(Thing), nameof(Thing.TakeDamage))]

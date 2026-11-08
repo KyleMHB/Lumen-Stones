@@ -6,11 +6,21 @@ using Verse;
 
 namespace LumenStones;
 
-public class CompProperties_Aegite : CompProperties
+public class CompProperties_Aegite : CompProperties, ITunableProps
 {
     public int tier = 1, interval = 360, fireCount = 2, filthLayers = 1;
     public float radius = 8f, fireReduction = 0.5f;
     public CompProperties_Aegite() => compClass = typeof(CompAegite);
+
+    public void DeclareTunables(TunableScope s, Def owner)
+    {
+        string name = owner.defName;
+        s.Add(name + ".radius", "Ward radius", radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".interval", "Ticks between ward pulses", interval, v => interval = (int)v, Limit.Integer(1));
+        s.Add(name + ".fireCount", "Maximum fires per pulse", fireCount, v => fireCount = (int)v, Limit.Integer());
+        s.Add(name + ".fireReduction", "Fire size reduction per service", fireReduction, v => fireReduction = v, Limit.Number(max: 10));
+        s.Add(name + ".filthLayers", "Maximum filth layers per pulse", filthLayers, v => filthLayers = (int)v, Limit.Integer());
+    }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
@@ -30,6 +40,9 @@ public class CompProperties_Aegite : CompProperties
 public static class AegiteSolar
 {
     public static float CostPerFire = 2f;
+
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Solar energy").Add("Aegite.solarCostPerFire", "Solar energy per fire suppressed", CostPerFire, v => CostPerFire = v);
 }
 
 public class AegiteField : MapComponent

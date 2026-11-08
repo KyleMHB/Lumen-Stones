@@ -6,12 +6,15 @@ using Verse;
 
 namespace LumenStones;
 
-public class CompProperties_WarpBattery : CompProperties
+public class CompProperties_WarpBattery : CompProperties, ITunableProps
 {
     public float capacity = 100f;
     // Gauge crystals are full-canvas layers named <texPath>Charge1..N, drawn over the base sprite as the charge reaches each Nth.
     public int chargeLayers = 4;
     public CompProperties_WarpBattery() => compClass = typeof(CompWarpBattery);
+
+    public void DeclareTunables(TunableScope s, Def owner) =>
+        s.Add(owner.defName + ".capacity", "Warp energy capacity", capacity, v => capacity = v, Limit.Number(1));
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
@@ -61,34 +64,28 @@ public class CompWarpBattery : ThingComp
 
 public static class WarpRules
 {
-    public const float DepletedBelow = 0.01f;
+    public const float DepletedBelow = ActiveEffectCore.DepletedBelow;
     public const int PassInterval = 250;
     // Broadcast to a fixture's comps when its Warp active effect is toggled, so caches and lights can react at once.
     public const string ToggledSignal = "WarpToggled";
 
     public static float Hysteresis = 5f;
-}
 
-// A continuous drain. The network asks once per pass for the rate and charges the elapsed interval, then caches whether it was paid.
-public interface IWarpConsumer
-{
-    // Warp energy wanted per tick right now, or 0 when idle.
-    float WarpDrainPerTick { get; }
-    // Set by the network each pass. False until the first pass, and when a draw is refused.
-    bool WarpPowered { get; set; }
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Warp network").Add("DarkStone.warpHysteresis", "Stored Warp energy needed to recover from depletion", Hysteresis,
+            v => Hysteresis = v, Limit.Number(0.02f));
 }
 
 // One network per map, behaving like SolarNetwork: shared draws, depletion with hysteresis and a pass for continuous consumers.
-public class WarpEnergyNetwork : MapComponent
+public class WarpEnergyNetwork : MapComponent, IEnergyStore
 {
     private readonly List<CompWarpBattery> batteries = new();
-    private readonly List<IWarpConsumer> consumers = new();
-    private bool depleted;
+    public readonly EnergyAccount Account;
 
-    public WarpEnergyNetwork(Map map) : base(map) { }
+    public WarpEnergyNetwork(Map map) : base(map) => Account = new(ActiveEffectKind.Warp, this);
 
-    public bool Depleted => depleted;
-    public bool Available => !depleted && TotalStored >= WarpRules.DepletedBelow;
+    public bool Depleted => Account.Depleted;
+    public bool Available => Account.Available;
     public static WarpEnergyNetwork For(Map map) => map.GetComponent<WarpEnergyNetwork>();
 
     public float TotalStored
@@ -118,32 +115,13 @@ public class WarpEnergyNetwork : MapComponent
 
     public void Unregister(CompWarpBattery battery) => batteries.Remove(battery);
 
-    public void Register(IWarpConsumer consumer)
-    {
-        if (!consumers.Contains(consumer)) consumers.Add(consumer);
-    }
-
-    public void Unregister(IWarpConsumer consumer) => consumers.Remove(consumer);
-
-    public override void ExposeData() => Scribe_Values.Look(ref depleted, "warpDepleted");
+    public override void ExposeData() => Account.ExposeData("warpDepleted");
 
     public override void MapComponentTick()
     {
-        if ((batteries.Count == 0 && consumers.Count == 0) || Find.TickManager.TicksGame % WarpRules.PassInterval != 0) return;
-        UpdateDepletion();
-        // Idle consumers are powered when the network is. A refused draw leaves that consumer unpowered until the next pass.
-        foreach (var consumer in consumers)
-        {
-            float want = consumer.WarpDrainPerTick * WarpRules.PassInterval;
-            consumer.WarpPowered = want > 0 ? TryConsumeContinuous(want) : Available;
-        }
-    }
-
-    private void UpdateDepletion()
-    {
-        float stored = TotalStored;
-        if (depleted) { if (stored >= WarpRules.Hysteresis) depleted = false; }
-        else if (stored < WarpRules.DepletedBelow) depleted = true;
+        if ((batteries.Count == 0 && !Account.HasDrains) || Find.TickManager.TicksGame % WarpRules.PassInterval != 0) return;
+        Account.RefreshDepletion();
+        Account.PollDrains(WarpRules.PassInterval);
     }
 
     // Centre to centre, so walls do not matter.
@@ -169,90 +147,17 @@ public class WarpEnergyNetwork : MapComponent
         return deposited;
     }
 
-    // Read-only check for ownership decisions.
-    public bool CanDraw(float amount) => amount <= 0 || (!depleted && amount <= TotalStored);
+    public bool CanDraw(float amount) => Account.CanDraw(amount);
+    public bool TryConsume(float amount) => Account.TryDraw(amount);
+    public bool TryConsumeContinuous(float amount) => Account.TryDrawContinuous(amount);
 
-    // All or nothing, for per-event costs. A refusal does not deplete the network.
-    public bool TryConsume(float amount) => Draw(amount, false);
-
-    // For costs charged over time. A refusal marks the network depleted until it recovers.
-    public bool TryConsumeContinuous(float amount) => Draw(amount, true);
+    float IEnergyStore.Stored => TotalStored;
 
     // Fixtures draw from any battery on the map, in proportion to what each holds.
-    private bool Draw(float amount, bool continuous)
+    void IEnergyStore.Withdraw(float amount)
     {
-        if (amount <= 0) return true;
         float total = TotalStored;
-        if (depleted || amount > total)
-        {
-            if (continuous) depleted = true;
-            return false;
-        }
         foreach (var b in batteries) b.stored = Mathf.Max(0, b.stored - amount * b.stored / total);
-        UpdateDepletion();
-        return true;
-    }
-}
-
-public class CompProperties_WarpToggle : CompProperties
-{
-    public string effect = "its active effect";
-    // Replaces the default description when an effect needs a warning.
-    public string description;
-    public CompProperties_WarpToggle() => compClass = typeof(CompWarpToggle);
-}
-
-// Attached to every dark fixture that has an active effect. Consumers ask Active before spending Warp energy.
-[StaticConstructorOnStartup]
-public class CompWarpToggle : ThingComp
-{
-    private bool on = true;
-    private static Texture2D icon;
-    public CompProperties_WarpToggle Props => (CompProperties_WarpToggle)props;
-
-    public override void PostExposeData() => Scribe_Values.Look(ref on, "warpActiveOn", true);
-
-    public bool ToggledOn => on;
-
-    // Toggled on and not paused by an interruption the fixture's stabilizer cannot ride out. Energy is checked separately.
-    public bool Running => on && !ActiveEffectInterruption.Blocked(parent, ActiveEffectNetworks.Warp);
-
-    // True when the active effect may run: running and the network has Warp energy.
-    public bool Active => Running && WarpEnergyNetwork.For(parent.Map).Available;
-
-    // Pays a per-event cost. Refused when paused or toggled off or when the network cannot cover it.
-    public bool TryPay(float amount) => Running && WarpEnergyNetwork.For(parent.Map).TryConsume(amount);
-
-    public string Status
-    {
-        get
-        {
-            if (!on) return "Toggled off";
-            if (ActiveEffectInterruption.BlockedReason(parent, ActiveEffectNetworks.Warp) is { } reason) return "Interrupted (" + reason + ")";
-            return WarpEnergyNetwork.For(parent.Map).Available ? "Powered" : "No Warp energy";
-        }
-    }
-
-    public override void PostSpawnSetup(bool respawningAfterLoad) => LuniteLinkTracker.For(parent.Map).RegisterFixture(parent, true);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => LuniteLinkTracker.For(map).RegisterFixture(parent, false);
-
-    public override string CompInspectStringExtra()
-    {
-        if (!parent.Spawned) return null;
-        string text = "Warp active effect: " + Status;
-        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\nStabilized by: Lunite stabilizer" : text;
-    }
-
-    public override IEnumerable<Gizmo> CompGetGizmosExtra()
-    {
-        yield return new Command_Toggle
-        {
-            defaultLabel = "Warp active effect",
-            defaultDesc = Props.description ?? "Spend Warp energy on " + Props.effect + ". When off, the fixture only gives light.",
-            icon = icon ??= ContentFinder<Texture2D>.Get("UI/Commands/WarpActiveEffect"),
-            isActive = () => on,
-            toggleAction = () => { on = !on; parent.BroadcastCompSignal(WarpRules.ToggledSignal); }
-        };
     }
 }
 

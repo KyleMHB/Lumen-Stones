@@ -13,6 +13,26 @@ public static class DarkSeedRules
     private const float LastStage = 0.75f;
     private const int CutCheckInterval = 250;
 
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var seedCrystal = DefDatabase<RecipeDef>.GetNamedSilentFail("KM_CraftDreadstoneSeedCrystal");
+        if (seedCrystal == null) return;
+        // The crystal is made from Dreadstone, so it follows the Dreadstone toggle.
+        s.Gate("KM_DreadstoneSeedCrystal", "Dreadstone");
+        var seed = s.In("Dreadstone seed");
+        seed.Add("DarkSeed.crystalCost", "Dreadstone per seed crystal", seedCrystal.ingredients[0].GetBaseCount(), v =>
+        {
+            seedCrystal.ingredients[0].SetBaseCount(v);
+            seedCrystal.description = "Shape " + v + " Dreadstone into a dreadstone seed crystal.";
+        }, Limit.Integer(1));
+        seed.Add("DarkSeed.days", "Days to full growth", Days, v => Days = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.maxPain", "Maximum seed pain (%)", MaxPain, v => MaxPain = v, Limit.Percent());
+        seed.Add("DarkSeed.cutIntervalStart", "Mean hours between cuts when bound", CutIntervalStart, v => CutIntervalStart = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.cutIntervalEnd", "Mean hours between cuts in the last stage", CutIntervalEnd, v => CutIntervalEnd = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.cutSeverity", "Cut damage multiplier", CutSeverity, v => CutSeverity = v, Limit.Number(max: 10));
+        seed.Add("DarkSeed.baseYield", "Dark Stone at full growth, before the victim factor", BaseYield, v => BaseYield = v, Limit.Number(1));
+    }
+
     private static HediffDef seed;
     // Null without Ideology, where the seed doesn't exist.
     public static HediffDef Seed => seed ??= DefDatabase<HediffDef>.GetNamedSilentFail("KM_DreadstoneSeed");

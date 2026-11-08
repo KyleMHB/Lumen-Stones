@@ -16,6 +16,44 @@ public static class AltarRules
     public static float HarvestPoor = 50f, HarvestSuccess = 100f, HarvestExceptional = 150f, HarvestCooldownDays = 0.25f;
     public static float LinkRadius = 15f, StatusSlave = 1.25f, StatusColonist = 1.5f;
 
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var crystallize = s.In("Crystallize Dark Stone");
+        crystallize.Add("DarkStone.crystallizeInput", "Lumenstone input", CrystallizeInput, v => CrystallizeInput = (int)v, Limit.Integer(1));
+        crystallize.Add("DarkStone.crystallizePoor", "Poor outcome conversion share (%)", CrystallizePoor, v => CrystallizePoor = v, Limit.Percent());
+        crystallize.Add("DarkStone.crystallizeSuccess", "Successful outcome conversion share (%)", CrystallizeSuccess, v => CrystallizeSuccess = v, Limit.Percent());
+        crystallize.Add("DarkStone.crystallizeExceptional", "Exceptional outcome conversion share (%)", CrystallizeExceptional,
+            v => CrystallizeExceptional = v, Limit.Percent());
+        crystallize.Add("DarkStone.crystallizeCooldown", "Cooldown (days)", CrystallizeCooldownDays, v => CrystallizeCooldownDays = v);
+        var harvest = s.In("Harvest Warp Energy");
+        harvest.Add("DarkStone.harvestPoor", "Poor outcome Warp energy", HarvestPoor, v => HarvestPoor = v);
+        harvest.Add("DarkStone.harvestSuccess", "Successful outcome Warp energy", HarvestSuccess, v => HarvestSuccess = v);
+        harvest.Add("DarkStone.harvestExceptional", "Exceptional outcome Warp energy", HarvestExceptional, v => HarvestExceptional = v);
+        harvest.Add("DarkStone.harvestCooldown", "Cooldown (days)", HarvestCooldownDays, v => HarvestCooldownDays = v);
+        var link = s.In("Link and victims");
+        link.Add("DarkStone.linkRadius", "Altar to battery link radius (tiles)", LinkRadius, v => LinkRadius = v, Limit.Number(1, 100));
+        link.Add("DarkStone.statusSlave", "Slave victim factor multiplier", StatusSlave, v => StatusSlave = v, Limit.Number(max: 10));
+        link.Add("DarkStone.statusColonist", "Colonist victim factor multiplier", StatusColonist, v => StatusColonist = v, Limit.Number(max: 10));
+    }
+
+    // The ritual support caps and the altar's build cost.
+    internal static void DeclareSupportTunables(TunableScope s)
+    {
+        var support = s.In("Ritual support");
+        support.Add("DarkStone.ritualQualityCap", "Fixture support quality bonus at full support (%)", SupportStone.DarkStone.Quality.Cap,
+            v => SupportStone.DarkStone.Quality.Cap = v, Limit.Percent(10));
+        support.Add("DarkStone.ritualYieldCap", "Fixture support conversion and harvest bonus at full support (%)", SupportStone.DarkStone.Yield.Cap,
+            v => SupportStone.DarkStone.Yield.Cap = v, Limit.Percent(10));
+        support.Add("DarkStone.ritualSupportRadius", "Fixture support radius (tiles)", SupportStone.DarkStone.Radius,
+            v => SupportStone.DarkStone.Radius = v, Limit.Number(1, 50));
+
+        var altar = DefDatabase<ThingDef>.GetNamed("KM_SacrificialAltar");
+        var altarCost = altar.costList.First(c => c.thingDef.defName == "KM_Lumenstone");
+        var building = s.In("Sacrificial altar");
+        building.Add("DarkStone.altarCost", "Lumenstone quantity", altarCost.count, v => altarCost.count = (int)v, Limit.Integer());
+        building.Add("DarkStone.altarStuff", "Stone block quantity", altar.costStuffCount, v => altar.costStuffCount = (int)v, Limit.Integer(1));
+    }
+
     // First proposal: pawn market values were not measured, so these points need tuning against real prisoners.
     private static readonly SimpleCurve VictimCurve = new()
     {
@@ -48,7 +86,7 @@ public static class AltarRules
     {
         if (!ModsConfig.IdeologyActive || target.Thing is not Building_SacrificialAltar altar || altar.Faction != Faction.OfPlayer)
             return "Requires a player-owned Sacrificial altar and Ideology.";
-        var reason = target.Map.GetComponent<SacrificeRitualState>().CooldownReason(harvest);
+        var reason = target.Map.GetComponent<SacrificeRitualState>().For(harvest).Reason;
         if (reason != null) return reason;
         if (Find.IdeoManager.GetActiveRituals(target.Map).Any(r => r is LordJob_SacrificeRitual))
             return "Another sacrifice is already underway in this settlement.";
@@ -65,36 +103,18 @@ public static class AltarRules
 
 public class SacrificeRitualState : MapComponent
 {
-    public int nextCrystallizeTick, nextHarvestTick, nextRaiseTick;
+    public readonly SettlementCooldown Crystallize = new("nextCrystallizeTick", "Crystallize Dark Stone", "altar", () => AltarRules.CrystallizeCooldownDays);
+    public readonly SettlementCooldown Harvest = new("nextHarvestTick", "Harvest Warp Energy", "altar", () => AltarRules.HarvestCooldownDays);
+    public readonly SettlementCooldown Raise = new("nextRaiseTick", "Raise a work husk", "altar", () => HuskRules.RaiseCooldownDays);
     public SacrificeRitualState(Map map) : base(map) { }
+
+    public SettlementCooldown For(bool harvest) => harvest ? Harvest : Crystallize;
 
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref nextCrystallizeTick, "nextCrystallizeTick");
-        Scribe_Values.Look(ref nextHarvestTick, "nextHarvestTick");
-        Scribe_Values.Look(ref nextRaiseTick, "nextRaiseTick");
-    }
-
-    public string CooldownReason(bool harvest)
-    {
-        int remaining = (harvest ? nextHarvestTick : nextCrystallizeTick) - Find.TickManager.TicksGame;
-        return remaining > 0 ? (harvest ? "Harvest Warp Energy" : "Crystallize Dark Stone") + " is recharging: " +
-            remaining.ToStringTicksToPeriod() + " remaining (shared by every altar in this settlement)." : null;
-    }
-
-    public string RaiseCooldownReason()
-    {
-        int remaining = nextRaiseTick - Find.TickManager.TicksGame;
-        return remaining > 0 ? "Raise a work husk is recharging: " + remaining.ToStringTicksToPeriod() + " remaining (shared by every altar in this settlement)." : null;
-    }
-
-    public void StartRaiseCooldown() => nextRaiseTick = Find.TickManager.TicksGame + Mathf.RoundToInt(HuskRules.RaiseCooldownDays * GenDate.TicksPerDay);
-
-    public void StartCooldown(bool harvest)
-    {
-        int next = Find.TickManager.TicksGame + Mathf.RoundToInt((harvest ? AltarRules.HarvestCooldownDays : AltarRules.CrystallizeCooldownDays) * GenDate.TicksPerDay);
-        if (harvest) nextHarvestTick = next;
-        else nextCrystallizeTick = next;
+        Crystallize.ExposeData();
+        Harvest.ExposeData();
+        Raise.ExposeData();
     }
 }
 
@@ -134,8 +154,8 @@ public class Building_SacrificialAltar : Building_WorkTable, IBillGiver, IRitual
         if (!ModsConfig.IdeologyActive) return text;
         var state = Map.GetComponent<SacrificeRitualState>();
         var network = Map.GetComponent<WarpEnergyNetwork>();
-        string status = (state.CooldownReason(false) ?? "Crystallize Dark Stone ready.") + "\n" +
-            (state.CooldownReason(true) ?? "Harvest Warp Energy ready.") + "\nBatteries in range: " +
+        string status = (state.Crystallize.Reason ?? "Crystallize Dark Stone ready.") + "\n" +
+            (state.Harvest.Reason ?? "Harvest Warp Energy ready.") + "\nBatteries in range: " +
             network.InRangeOf(this).Count + " (" + network.SpareInRange(this).ToString("0") + " spare capacity)\nDark Stone fixtures: " +
             RitualSupport.Describe(this, true);
         return string.IsNullOrEmpty(text) ? status : text + "\n" + status;
@@ -157,7 +177,8 @@ public class Building_SacrificialAltar : Building_WorkTable, IBillGiver, IRitual
                 action = () =>
                 {
                     var state = Map.GetComponent<SacrificeRitualState>();
-                    state.nextCrystallizeTick = state.nextHarvestTick = 0;
+                    state.Crystallize.Reset();
+                    state.Harvest.Reset();
                 }
             };
     }
@@ -176,7 +197,7 @@ public class Building_SacrificialAltar : Building_WorkTable, IBillGiver, IRitual
                     (AltarRules.HarvestCooldownDays * 24f).ToString("0.#") + " hours."
                 : "Sacrifice a prisoner, slave or colonist to convert " + AltarRules.CrystallizeInput + " Lumenstone into Dark Stone by outcome and victim. " +
                     "Unconverted Lumenstone is returned. Recovers for " + AltarRules.CrystallizeCooldownDays + " days.") +
-                "\n" + RitualSupport.Describe(this, true) + ". Dark Stone fixtures within " + DarkStoneSupport.RitualSupportRadius +
+                "\n" + RitualSupport.Describe(this, true) + ". Dark Stone fixtures within " + SupportStone.DarkStone.Radius +
                 " tiles in this room raise quality and output.",
             icon = ContentFinder<Texture2D>.Get(harvest ? "UI/Commands/HarvestWarpEnergy" : "UI/Commands/CrystallizeDarkStone"),
             action = () => StartRitual(precept)
@@ -435,7 +456,7 @@ public abstract class RitualOutcomeEffectWorker_Sacrifice : RitualOutcomeEffectW
     protected abstract string Resolve(LordJob_SacrificeRitual job, int tier);
 
     protected static string SupportNote(float support) =>
-        support > 0 ? " (nearby Dark Stone fixtures: +" + (support * DarkStoneSupport.RitualYieldCap).ToStringPercent() + ")" : "";
+        support > 0 ? " (nearby Dark Stone fixtures: +" + (support * SupportStone.DarkStone.Yield.Cap).ToStringPercent() + ")" : "";
 
     protected override void ApplyExtraOutcome(Dictionary<Pawn, int> totalPresence, LordJob_Ritual jobRitual,
         RitualOutcomePossibility outcome, out string extraOutcomeDesc, ref LookTargets letterLookTargets)
@@ -455,13 +476,13 @@ public class RitualOutcomeEffectWorker_Crystallize : RitualOutcomeEffectWorker_S
         float share = tier == 0 ? AltarRules.CrystallizePoor : tier == 2 ? AltarRules.CrystallizeExceptional : AltarRules.CrystallizeSuccess;
         int baseConverted = Math.Clamp(Mathf.FloorToInt(input * share * job.VictimFactor), 1, input);
         // Sampled once here, so a fixture removed before the ceremony ends no longer counts.
-        float support = RitualSupport.Fraction(job.selectedTarget.Thing as Building, true);
-        int converted = Math.Clamp(Mathf.FloorToInt(baseConverted * (1f + support * DarkStoneSupport.RitualYieldCap)), 1, input);
+        float support = FixtureSupport.Of(SupportStone.DarkStone, job.selectedTarget.Thing).Passive;
+        int converted = Math.Clamp(Mathf.FloorToInt(baseConverted * (1f + support * SupportStone.DarkStone.Yield.Cap)), 1, input);
         job.ConsumeReserved();
         var cell = job.selectedTarget.Cell;
         AltarRules.PlaceStacks(AltarRules.DarkStone, converted, cell, job.Map);
         if (converted < input) AltarRules.PlaceStacks(DefDatabase<ThingDef>.GetNamed("KM_Lumenstone"), input - converted, cell, job.Map);
-        job.Map.GetComponent<SacrificeRitualState>().StartCooldown(false);
+        job.Map.GetComponent<SacrificeRitualState>().Crystallize.Start();
         return "The ceremony turned " + converted + " of " + input + " Lumenstone into Dark Stone and returned " + (input - converted) +
             " Lumenstone" + SupportNote(support) + ". Crystallizing now recovers for " + AltarRules.CrystallizeCooldownDays + " days.";
     }
@@ -475,11 +496,11 @@ public class RitualOutcomeEffectWorker_Harvest : RitualOutcomeEffectWorker_Sacri
     protected override string Resolve(LordJob_SacrificeRitual job, int tier)
     {
         float baseWarp = tier == 0 ? AltarRules.HarvestPoor : tier == 2 ? AltarRules.HarvestExceptional : AltarRules.HarvestSuccess;
-        float support = RitualSupport.Fraction(job.selectedTarget.Thing as Building, true);
+        float support = FixtureSupport.Of(SupportStone.DarkStone, job.selectedTarget.Thing).Passive;
         float knifeFactor = NewEquipment.Wields(job.PawnWithRole("speaker"), "KM_DarkStoneRitualKnife") ? 1.15f : 1f;
-        float energy = baseWarp * job.VictimFactor * (1f + support * DarkStoneSupport.RitualYieldCap) * knifeFactor;
+        float energy = baseWarp * job.VictimFactor * (1f + support * SupportStone.DarkStone.Yield.Cap) * knifeFactor;
         float deposited = job.Map.GetComponent<WarpEnergyNetwork>().Deposit(energy, job.selectedTarget.Thing as Building);
-        job.Map.GetComponent<SacrificeRitualState>().StartCooldown(true);
+        job.Map.GetComponent<SacrificeRitualState>().Harvest.Start();
         return "The ceremony harvested " + energy.ToString("0") + " Warp energy: " + deposited.ToString("0") + " stored in batteries and " +
             (energy - deposited).ToString("0") + " lost" + SupportNote(support) + ". Harvesting now recovers for " + (AltarRules.HarvestCooldownDays * 24f).ToString("0.#") + " hours.";
     }

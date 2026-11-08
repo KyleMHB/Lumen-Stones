@@ -63,7 +63,7 @@
         <glowColor>(205,175,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Serenite">
-        <fixtureIndex>0</fixtureIndex>
+        <category>Column</category>
         <weight>0.2</weight>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
@@ -127,7 +127,7 @@
         <glowColor>(205,175,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Serenite">
-        <fixtureIndex>1</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.1</weight>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
@@ -180,7 +180,7 @@
         <glowColor>(205,175,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Serenite">
-        <fixtureIndex>1</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.1</weight>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
@@ -221,7 +221,7 @@
         <glowColor>(205,175,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Serenite">
-        <fixtureIndex>2</fixtureIndex>
+        <category>Pylon</category>
         <weight>0.45</weight>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>
@@ -260,7 +260,7 @@
         <glowColor>(205,175,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_Serenite">
-        <fixtureIndex>3</fixtureIndex>
+        <category>Cluster</category>
         <weight>0.25</weight>
       </li>
       <li Class="LumenStones.CompProperties_SolarToggle"><effect>sleep restoration</effect></li>

@@ -6,11 +6,22 @@ using Verse;
 
 namespace LumenStones;
 
-public class CompProperties_Verdite : CompProperties
+public class CompProperties_Verdite : CompProperties, ITunableProps
 {
     public float radius = 8f;
     public float growthBonus, workBonus, yieldBonus;
     public CompProperties_Verdite() => compClass = typeof(CompVerdite);
+
+    public void DeclareTunables(TunableScope s, Def owner)
+    {
+        string name = owner.defName;
+        s.Add(name + ".radius", "Agricultural support radius", radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".growth", "Plant growth bonus (%)", growthBonus, v => growthBonus = v, Limit.Percent(10));
+        s.Add(name + ".work", "PlantWorkSpeed bonus (%)", workBonus, v => workBonus = v, Limit.Percent(10));
+        s.Add(name + ".yield", "PlantHarvestYield bonus (%)", yieldBonus, v => yieldBonus = v, Limit.Percent(10));
+        // The overlight comes before this comp in the def, but its rows follow these, so it is declared from here rather than as a comp of its own.
+        ((ThingDef)owner).GetCompProperties<CompProperties_Overlight>()?.DeclareOverlight(s, owner);
+    }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {

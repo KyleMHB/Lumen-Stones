@@ -26,8 +26,11 @@ public static class ActiveEffectInterruption
             ActiveEffectNetworks.Solar | ActiveEffectNetworks.Warp)
     };
 
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Interruptions").Add(StoneTabs.Interruptions, "Pause active effects and Solar collection during solar flares");
+
     // Master switch from the settings window. Interruptions also need Sunstone, since Lunite is the only counterplay.
-    private static bool SettingEnabled => SolarRules.Enabled && LumenstoneMod.Settings.Value("Interruptions.enabled", 1) != 0;
+    private static bool SettingEnabled => SolarRules.Enabled && StoneTabs.Interruptions.On;
 
     // Bumped when the settings window closes, so cached reasons pick up the switches without waiting for the next pass.
     private static int settingsVersion;

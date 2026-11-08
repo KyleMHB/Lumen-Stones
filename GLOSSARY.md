@@ -58,6 +58,16 @@ A stone bed with a Vitalite crystal headboard and gold band.
 A bed made entirely from crystalline Vitalite, with stronger restorative support than the inlaid bed.
 _Avoid_: Restorative casket, coffin.
 
+**Fixture category**:
+One of the four kinds a supporting fixture counts as: column, lamp (floor or wall), pylon (or Serenite's sanctuary shrine) and cluster. Support takes the highest weight in each category and adds them. Vitalite beds have no category: they give their own bonus but don't count towards support.
+_Avoid_: fixture index.
+
+**Support kind**:
+Whether support comes from an enclosed room or a ritual radius. Room support is zero outside an enclosed roofed room. Ritual support counts fixtures in the host's room within its radius and is halved when that room isn't enclosed.
+
+**Settings tab**:
+A group of tunables in the mod settings window, such as Sunstone or Implants. Each tunable belongs to exactly one tab, and resetting a tab removes only the overrides it owns. A tab's availability switch is separate from the stone that gates an item: implant parts sit on the Implants tab but follow their stone's switch.
+
 **Room support**:
 The weighted restorative benefit supplied by an enclosed room's distinct Vitalite fixture categories: pylon, restorative cluster, column, and lamp (floor or wall).
 
@@ -79,6 +89,16 @@ _Avoid_: Moonstone.
 
 **Lunite conversion**:
 The nocturnal turning of 25 Sunstone into 25 Lunite, startable between 20:00 and 04:00 and run as a ritual with Ideology or a four-hour job at the circle without. The Sunstone is spent only on success, which also starts a settlement cooldown.
+
+**Active-effect gate**:
+The single rule, per fixture, that decides whether its active effect may run and who pays: toggled on, not interrupted, and paid from its network's energy account. With Sunstone off, Solar active effects are free; Warp ones never are. A fixture with a continuous drain is polled by its network every pass.
+_Avoid_: Solar toggle logic, powered check.
+
+**Energy account**:
+The per-map ledger behind each network (Solar or Warp) that holds the depletion state and takes payments per event or continuously. The network decides only where stored energy lives and how a withdrawal is spread across its collectors and batteries.
+
+**Settlement cooldown**:
+A ritual recharge shared by every circle or altar on one map, such as the Lumenstone ritual, Lunite conversion, Crystallize Dark Stone, Harvest Warp Energy, Raise a work husk, Attunement and Binding.
 
 **Active effect interruption**:
 A map event, registered once for the Solar network, the Warp network or both, that pauses fixture active effects. A solar flare interrupts both networks and stops Sunstone collection. Passive effects, implants, prosthetics and worn gear are unaffected.

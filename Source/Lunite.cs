@@ -24,6 +24,15 @@ public static class LuniteRules
 
     private static ResearchProjectDef research;
     private static ThingDef sunstone, lunite;
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var lunite = s.In("Lunite");
+        lunite.Add("Lunite.sunstoneCost", "Sunstone spent per conversion", SunstoneCost, v => SunstoneCost = (int)v, Limit.Integer(1));
+        lunite.Add("Lunite.yield", "Lunite produced per conversion", Yield, v => Yield = (int)v, Limit.Integer(1));
+        lunite.Add("Lunite.cooldownDays", "Cooldown after a conversion (days)", CooldownDays, v => CooldownDays = v);
+        s.In("Lunite stabilizer").Add("Lunite.linkRadius", "Link radius (tiles)", LinkRadius, v => LinkRadius = v, Limit.Number(1, 30));
+    }
+
     public static ResearchProjectDef Research => research ??= DefDatabase<ResearchProjectDef>.GetNamed("KM_LuniteStabilization");
     public static ThingDef Sunstone => sunstone ??= DefDatabase<ThingDef>.GetNamed("KM_Sunstone");
     public static ThingDef Lunite => lunite ??= DefDatabase<ThingDef>.GetNamed("KM_Lunite");
@@ -74,7 +83,7 @@ public static class LuniteRules
             remaining -= stack.stackCount;
             GenPlace.TryPlaceThing(stack, cell, map, ThingPlaceMode.Near);
         }
-        map.GetComponent<LuniteState>().nextTick = Find.TickManager.TicksGame + Mathf.RoundToInt(CooldownDays * GenDate.TicksPerDay);
+        map.GetComponent<LuniteState>().Cooldown.Start();
     }
 
     // Shared by the ritual and the job. Null when a conversion can start.
@@ -84,7 +93,7 @@ public static class LuniteRules
         if (host is not Building_LumenstoneRitualHost || host.Faction != Faction.OfPlayer)
             return "Requires a player-owned Lumen ritual circle" + (ModsConfig.IdeologyActive ? " or Lumenstone altar." : ".");
         if (!Research.IsFinished) return "Requires the " + Research.label + " research.";
-        if (host.Map.GetComponent<LuniteState>().CooldownReason is { } cooldown) return cooldown;
+        if (host.Map.GetComponent<LuniteState>().Cooldown.Reason is { } cooldown) return cooldown;
         if (!NightNow(host.Map)) return "Can only start between 20:00 and 04:00.";
         if (ModsConfig.IdeologyActive && Find.IdeoManager.GetActiveRituals(host.Map).Any(r => r is LordJob_LumenstoneRitual))
             return "A ritual is already underway in this settlement.";
@@ -134,11 +143,9 @@ public static class LuniteRules
 
 public class LuniteState : MapComponent
 {
-    public int nextTick;
+    public readonly SettlementCooldown Cooldown = new("nextLuniteTick", "Lunite conversion", "circle and altar", () => LuniteRules.CooldownDays);
     public LuniteState(Map map) : base(map) { }
-    public override void ExposeData() => Scribe_Values.Look(ref nextTick, "nextLuniteTick");
-    public string CooldownReason => nextTick > Find.TickManager.TicksGame
-        ? "Lunite conversion is recharging: " + (nextTick - Find.TickManager.TicksGame).ToStringTicksToPeriod() + " remaining (shared by every circle and altar in this settlement)." : null;
+    public override void ExposeData() => Cooldown.ExposeData();
 }
 
 // Without Ideology: one colonist stands at the circle for four hours. The Sunstone is set aside once the work starts.
@@ -162,7 +169,7 @@ public class JobDriver_ConvertLuniteAtCircle : JobDriver
         this.FailOnDespawnedOrNull(TargetIndex.A);
         this.FailOn(() => !SolarRules.Enabled);
         // Anyone else finishing first starts the cooldown, which ends this attempt without spending anything.
-        this.FailOn(() => !done && held.Count == 0 && Circle.Map.GetComponent<LuniteState>().CooldownReason != null);
+        this.FailOn(() => !done && held.Count == 0 && Circle.Map.GetComponent<LuniteState>().Cooldown.Reason != null);
         AddFinishAction(_ =>
         {
             if (!done && held.Count > 0 && Circle is { Spawned: true }) LuniteRules.Return(held, Circle);

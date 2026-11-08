@@ -41,7 +41,7 @@
         <glowColor>(215,230,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_LumenstoneFixture">
-        <fixtureIndex>0</fixtureIndex>
+        <category>Column</category>
         <weight>0.2</weight>
       </li>
     </comps>
@@ -109,7 +109,7 @@
         <glowColor>(215,230,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_LumenstoneFixture">
-        <fixtureIndex>1</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.1</weight>
       </li>
     </comps>
@@ -162,7 +162,7 @@
         <glowColor>(215,230,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_LumenstoneFixture">
-        <fixtureIndex>1</fixtureIndex>
+        <category>Lamp</category>
         <weight>0.1</weight>
       </li>
     </comps>
@@ -199,7 +199,7 @@
         <glowColor>(215,230,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_LumenstoneFixture">
-        <fixtureIndex>2</fixtureIndex>
+        <category>Pylon</category>
         <weight>0.45</weight>
       </li>
     </comps>
@@ -236,7 +236,7 @@
         <glowColor>(215,230,245,0)</glowColor>
       </li>
       <li Class="LumenStones.CompProperties_LumenstoneFixture">
-        <fixtureIndex>3</fixtureIndex>
+        <category>Cluster</category>
         <weight>0.25</weight>
       </li>
     </comps>

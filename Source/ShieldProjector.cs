@@ -12,6 +12,22 @@ public static class BastionRules
     public static float UpkeepPerDay = 150f, SolarPerHp = 0.5f;
     // Shield hit points spent when a hostile drop pod or infestation spawner is crushed.
     public static float CrushHpCost = 150f;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var projector = s.In("Aegite shield projector");
+        var props = DefDatabase<ThingDef>.GetNamed("KM_AegiteShieldProjector").GetCompProperties<CompProperties_AegiteShieldProjector>();
+        projector.Add("KM_AegiteShieldProjector.radius", "Dome radius (tiles)", props.radius, v => props.radius = v, Limit.Number(1, 40));
+        projector.Add("KM_AegiteShieldProjector.hitPoints", "Dome hit points", props.hitPoints, v => props.hitPoints = (int)v, Limit.Integer(1));
+        projector.Add("KM_AegiteShieldProjector.upkeep", "Solar energy per day while up", UpkeepPerDay, v => UpkeepPerDay = v);
+        projector.Add("KM_AegiteShieldProjector.solarPerHp", "Solar energy per hit point recharged", SolarPerHp, v => SolarPerHp = v);
+        projector.Add("KM_AegiteShieldProjector.crushCost", "Hit points spent crushing a hostile drop pod or infestation", CrushHpCost,
+            v => CrushHpCost = v);
+        projector.Add("KM_AegiteShieldProjector.rebootTicks", "Reboot time after breaking (ticks)", props.chargeDurationTicks,
+            v => props.chargeDurationTicks = (int)v, Limit.Integer(1));
+        projector.Add("KM_AegiteShieldProjector.empTicks", "Time disarmed by EMP (ticks)", props.disarmedByEmpForTicks,
+            v => props.disarmedByEmpForTicks = (int)v, Limit.Integer(1));
+    }
 }
 
 public class CompProperties_AegiteShieldProjector : CompProperties_ProjectileInterceptor
@@ -37,39 +53,19 @@ public class CompProperties_AegiteShieldProjector : CompProperties_ProjectileInt
 
 // A vanilla interceptor that only runs while its Solar active effect is on, powered and not interrupted. Vanilla finds it
 // through the projectile interceptor thing group, so no projectile code is patched.
-public class CompAegiteShieldProjector : CompProjectileInterceptor, ISolarConsumer
+public class CompAegiteShieldProjector : CompProjectileInterceptor, IActiveEffectDrain
 {
     private CompSolarToggle toggle;
     public CompSolarToggle Toggle => toggle ??= parent.GetComp<CompSolarToggle>();
 
-    // True until the first Solar pass, so a new or loaded dome is not down for a pass before the network is asked.
-    public bool SolarPowered { get; set; } = true;
-
-    public float SolarDrainPerTick => SolarRules.Enabled && parent.Spawned && currentHitPoints > 0 && Toggle.Running
-        ? BastionRules.UpkeepPerDay / GenDate.TicksPerDay : 0;
+    public float DrainPerTick => currentHitPoints > 0 ? BastionRules.UpkeepPerDay / GenDate.TicksPerDay : 0;
 
     // Read by the Active postfix. Losing power or toggling off drops the dome without starting a reboot.
-    public bool Allowed => Toggle.Active && SolarPowered;
+    public bool Allowed => Toggle.Active && Toggle.Powered;
 
     // Vanilla asks once per recharge interval. One point costs Solar energy, and none is gained without it.
     protected override int HitPointsPerInterval =>
-        currentHitPoints < HitPointsMax && Toggle.Active && network.TryConsume(BastionRules.SolarPerHp) ? 1 : 0;
-
-    private SolarNetwork network;
-
-    public override void PostSpawnSetup(bool respawningAfterLoad)
-    {
-        base.PostSpawnSetup(respawningAfterLoad);
-        network = SolarNetwork.For(parent.Map);
-        network.Register(this);
-    }
-
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
-    {
-        SolarNetwork.For(map).Unregister(this);
-        network = null;
-        base.PostDeSpawn(map, mode);
-    }
+        currentHitPoints < HitPointsMax && Toggle.Active && Toggle.Account.TryDraw(BastionRules.SolarPerHp) ? 1 : 0;
 
     private static readonly System.Reflection.FieldInfo startedCharging = AccessTools.Field(typeof(CompProjectileInterceptor), "startedChargingTick");
 

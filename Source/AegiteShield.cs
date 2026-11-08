@@ -8,6 +8,19 @@ public static class AegiteShield
 {
     private static ThingDef def;
     public static ThingDef Def => def ??= DefDatabase<ThingDef>.GetNamed("KM_AegiteShield");
+
+    internal static void DeclareCharmTunables(TunableScope s)
+    {
+        var charm = s.In("Aegite shield charm");
+        var charmDef = DefDatabase<ThingDef>.GetNamed("KM_AegiteShieldCharm");
+        var shield = charmDef.GetCompProperties<CompProperties_Shield>();
+        charm.Add("KM_AegiteShieldCharm.energyMax", "Maximum shield energy", charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldEnergyMax),
+            v => charmDef.SetStatBaseValue(StatDefOf.EnergyShieldEnergyMax, v), Limit.Number(0.01f, 10));
+        charm.Add("KM_AegiteShieldCharm.rechargeRate", "Energy recharge rate per second", charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldRechargeRate),
+            v => charmDef.SetStatBaseValue(StatDefOf.EnergyShieldRechargeRate, v), Limit.Number(0.001f, 10));
+        charm.Add("KM_AegiteShieldCharm.resetTicks", "Ticks to reset after breaking", shield.startingTicksToReset,
+            v => shield.startingTicksToReset = (int)v, Limit.Integer(1, 60000));
+    }
     // Read by the FlammableNow patch, so it compares a def reference, not a name.
     public static bool Worn(Pawn pawn)
     {

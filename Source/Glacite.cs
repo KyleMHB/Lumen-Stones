@@ -8,14 +8,23 @@ public static class GlaciteSolar
 {
     // Solar energy per day while the cooler is cooling between its passive and active limits.
     public static float FreezerDrain = 40f;
+
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Solar energy").Add("Glacite.freezerSolarDrain", "Solar energy per day while cooling between the two limits", FreezerDrain, v => FreezerDrain = v);
 }
 
 // The native heat pusher reads one cutoff per def. This one cools to passiveCutoff on its own, and down to
 // heatPushMinTemperature (the active limit) while its Solar active effect is powered.
-public class CompProperties_GlaciteCooler : CompProperties_HeatPusher
+public class CompProperties_GlaciteCooler : CompProperties_HeatPusher, ITunableProps, IHeatCutoffLabel
 {
     public float passiveCutoff = 4f;
     public CompProperties_GlaciteCooler() => compClass = typeof(CompGlaciteCooler);
+
+    public string CutoffLabel => "Active temperature cutoff (C)";
+
+    // The registry's heat rows come first, so this follows the active cutoff.
+    public void DeclareTunables(TunableScope s, Def owner) =>
+        s.Add(owner.defName + ".passiveCutoff", "Passive temperature cutoff (C)", passiveCutoff, v => passiveCutoff = v, Limit.Number(-273.15f, 1000));
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
@@ -28,20 +37,17 @@ public class CompProperties_GlaciteCooler : CompProperties_HeatPusher
     }
 }
 
-public class CompGlaciteCooler : CompHeatPusher, ISolarConsumer
+public class CompGlaciteCooler : CompHeatPusher, IActiveEffectDrain
 {
     private CompSolarToggle toggle;
     private CompProperties_GlaciteCooler Cooler => (CompProperties_GlaciteCooler)props;
     private CompSolarToggle Toggle => toggle ??= parent.GetComp<CompSolarToggle>();
 
-    public bool SolarPowered { get; set; }
-
     private bool InBand(float temperature) => temperature <= Cooler.passiveCutoff && temperature > Cooler.heatPushMinTemperature;
 
-    public float SolarDrainPerTick => SolarRules.Enabled && parent.Spawned && Toggle.Running && InBand(parent.AmbientTemperature)
-        ? GlaciteSolar.FreezerDrain / GenDate.TicksPerDay : 0;
+    public float DrainPerTick => InBand(parent.AmbientTemperature) ? GlaciteSolar.FreezerDrain / GenDate.TicksPerDay : 0;
 
-    private bool ActiveEffect => !SolarRules.Enabled || Toggle.Running && SolarPowered;
+    private bool ActiveEffect => Toggle.Powered;
 
     public override bool ShouldPushHeatNow
     {
@@ -53,9 +59,6 @@ public class CompGlaciteCooler : CompHeatPusher, ISolarConsumer
             return temperature > Cooler.passiveCutoff || temperature > Cooler.heatPushMinTemperature && ActiveEffect;
         }
     }
-
-    public override void PostSpawnSetup(bool respawningAfterLoad) => SolarNetwork.For(parent.Map).Register(this);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => SolarNetwork.For(map).Unregister(this);
 
     public override string CompInspectStringExtra() =>
         "Cooling to " + (ActiveEffect ? Cooler.heatPushMinTemperature : Cooler.passiveCutoff).ToStringTemperature("F0") + (ShouldPushHeatNow ? "" : ", idle");

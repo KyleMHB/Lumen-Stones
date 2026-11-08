@@ -14,6 +14,42 @@ public static class LumenstoneRitual
     public static int ChunkCost = 5, PoorYield = 18, SuccessYield = 25, ExceptionalYield = 30;
     public static float CooldownDays = 5, CircleYieldFactor = 0.7f;
 
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var stone = DefDatabase<ThingDef>.GetNamed("KM_Lumenstone");
+        if (ModsConfig.IdeologyActive)
+        {
+            var ritual = s.In("Ritual");
+            ritual.Add("Lumenstone.ritualPoor", "Poor yield", PoorYield, v => PoorYield = (int)v, Limit.Integer(1));
+            ritual.Add("Lumenstone.ritualSuccess", "Successful yield", SuccessYield, v => SuccessYield = (int)v, Limit.Integer(1));
+            ritual.Add("Lumenstone.ritualExceptional", "Exceptional yield", ExceptionalYield, v => ExceptionalYield = (int)v, Limit.Integer(1));
+            ritual.Add("Lumenstone.ritualCircleYield", "Yield at a Lumen ritual circle (% of altar yield)", CircleYieldFactor,
+                v => CircleYieldFactor = v, Limit.Percent());
+            ritual.Add("Lumenstone.ritualCooldown", "Cooldown (days)", CooldownDays, v => CooldownDays = v);
+            ritual.Add("Lumenstone.ritualQualityCap", "Fixture support quality bonus at full support (%)", SupportStone.Lumenstone.Quality.Cap,
+                v => SupportStone.Lumenstone.Quality.Cap = v, Limit.Percent(10));
+            ritual.Add("Lumenstone.ritualYieldCap", "Fixture support yield bonus at full support (%)", SupportStone.Lumenstone.Yield.Cap,
+                v => SupportStone.Lumenstone.Yield.Cap = v, Limit.Percent(10));
+            ritual.Add("Lumenstone.ritualSupportRadius", "Fixture support radius (tiles)", SupportStone.Lumenstone.Radius,
+                v => SupportStone.Lumenstone.Radius = v, Limit.Number(1, 50));
+            ritual.Add("Lumenstone.ritualChunks", "Stone chunk cost", ChunkCost, v => ChunkCost = (int)v, Limit.Integer());
+
+            var altar = DefDatabase<ThingDef>.GetNamed("KM_LumenstoneAltar");
+            var altarCost = altar.costList.First(c => c.thingDef == stone);
+            var altarGold = altar.costList.First(c => c.thingDef == ThingDefOf.Gold);
+            var building = s.In("Lumenstone altar");
+            building.Add("Lumenstone.altarCost", "Lumenstone quantity", altarCost.count, v => altarCost.count = (int)v, Limit.Integer());
+            building.Add("Lumenstone.altarGold", "Gold quantity", altarGold.count, v => altarGold.count = (int)v, Limit.Integer());
+            building.Add("Lumenstone.altarStuff", "Stone block quantity", altar.costStuffCount, v => altar.costStuffCount = (int)v, Limit.Integer(1));
+        }
+
+        var circle = DefDatabase<ThingDef>.GetNamed("KM_LumenCircle");
+        var circleCost = circle.costList.First(c => c.thingDef == stone);
+        var circleRow = s.In("Ritual circle");
+        circleRow.Add("Lumenstone.circleCost", "Lumenstone quantity", circleCost.count, v => circleCost.count = (int)v, Limit.Integer());
+        circleRow.Add("Lumenstone.circleStuff", "Stone block quantity", circle.costStuffCount, v => circle.costStuffCount = (int)v, Limit.Integer(1));
+    }
+
     public static float YieldFactor(Thing host) => host is Building_LumenCircle ? CircleYieldFactor : 1f;
 
     // The nudge stops float error flooring an exact product one lower: 30 * 0.7f must give 21.
@@ -27,7 +63,7 @@ public static class LumenstoneRitual
     {
         if (!ModsConfig.IdeologyActive || target.Thing is not Building_LumenstoneRitualHost || target.Thing.Faction != Faction.OfPlayer)
             return "Requires a player-owned Lumen ritual circle or Lumenstone altar, and Ideology.";
-        var reason = target.Map.GetComponent<LumenstoneRitualState>().CooldownReason;
+        var reason = target.Map.GetComponent<LumenstoneRitualState>().Cooldown.Reason;
         if (reason != null) return reason;
         if (Find.IdeoManager.GetActiveRituals(target.Map).Any(r => r is LordJob_LumenstoneRitual))
             return "Another Lumenstone ritual is already underway in this settlement.";
@@ -39,11 +75,9 @@ public static class LumenstoneRitual
 
 public class LumenstoneRitualState : MapComponent
 {
-    public int nextRitualTick;
+    public readonly SettlementCooldown Cooldown = new("nextLumenstoneRitualTick", "The Lumenstone ritual", "circle and altar", () => LumenstoneRitual.CooldownDays);
     public LumenstoneRitualState(Map map) : base(map) { }
-    public override void ExposeData() => Scribe_Values.Look(ref nextRitualTick, "nextLumenstoneRitualTick");
-    public string CooldownReason => nextRitualTick > Find.TickManager.TicksGame
-        ? "The Lumenstone ritual is recharging: " + (nextRitualTick - Find.TickManager.TicksGame).ToStringTicksToPeriod() + " remaining (shared by every circle and altar in this settlement)." : null;
+    public override void ExposeData() => Cooldown.ExposeData();
 }
 
 // Re-lists IBillGiver because the base usability checks are not virtual.
@@ -85,7 +119,7 @@ public abstract class Building_LumenstoneRitualHost : Building_WorkTable, IBillG
     {
         string text = base.GetInspectString();
         if (!ModsConfig.IdeologyActive) return text;
-        string status = Map.GetComponent<LumenstoneRitualState>().CooldownReason ?? "Lumenstone ritual ready.";
+        string status = Map.GetComponent<LumenstoneRitualState>().Cooldown.Reason ?? "Lumenstone ritual ready.";
         if (this is IRitualSupportHost) status += "\nLumenstone fixtures: " + RitualSupport.Describe(this, false);
         return string.IsNullOrEmpty(text) ? status : text + "\n" + status;
     }
@@ -142,7 +176,7 @@ public abstract class Building_LumenstoneRitualHost : Building_WorkTable, IBillG
             yield return new Command_Action
             {
                 defaultLabel = "DEV: reset cooldown",
-                action = () => Map.GetComponent<LumenstoneRitualState>().nextRitualTick = 0
+                action = () => Map.GetComponent<LumenstoneRitualState>().Cooldown.Reset()
             };
     }
 }
@@ -163,7 +197,7 @@ public class Building_LumenstoneAltar : Building_LumenstoneRitualHost, IRitualSu
     bool IRitualSupportHost.Dark => false;
     protected override string PreceptDefName => "KM_LumenstoneAltarRitual";
     protected override string RitualNote => RitualSupport.Describe(this, false) + ". Lumenstone fixtures within " +
-        LumenstoneSupport.RitualSupportRadius + " tiles in this room raise quality and yield.";
+        SupportStone.Lumenstone.Radius + " tiles in this room raise quality and yield.";
     // Between the central crystal and the gold inlay of the sprite's slab, which sits above the texture's centre.
     protected override Vector3 ChunkRingCenter => new(0f, 0f, 0.21f);
     protected override float ChunkRingRadiusX => 0.65f;
@@ -280,8 +314,9 @@ public class RitualOutcomeEffectWorker_Lumenstone : RitualOutcomeEffectWorker_Fr
         bool leaderPresent = leader != null && totalPresence.ContainsKey(leader);
         float participation = participants == 1 ? 0.5f : participants == 2 || !leaderPresent ? 0.75f : 1f;
         // Sampled once here, so a fixture removed before the ceremony ends no longer counts.
-        float support = RitualSupport.Fraction(job.selectedTarget.Thing as Building, false);
-        float factor = LumenstoneRitual.YieldFactor(job.selectedTarget.Thing) * participation * (1f + support * LumenstoneSupport.RitualYieldCap);
+        var reading = FixtureSupport.Of(SupportStone.Lumenstone, job.selectedTarget.Thing);
+        float support = reading.Passive;
+        float factor = LumenstoneRitual.YieldFactor(job.selectedTarget.Thing) * participation * (1f + reading.Bonus(SupportStone.Lumenstone.Yield));
         int count = Math.Max(1, LumenstoneRitual.ScaledYield(qualityYield, factor));
         job.ConsumeChunks();
         var stone = DefDatabase<ThingDef>.GetNamed("KM_Lumenstone");
@@ -292,7 +327,7 @@ public class RitualOutcomeEffectWorker_Lumenstone : RitualOutcomeEffectWorker_Fr
             remaining -= stack.stackCount;
             GenPlace.TryPlaceThing(stack, job.selectedTarget.Cell, job.Map, ThingPlaceMode.Near);
         }
-        job.Map.GetComponent<LumenstoneRitualState>().nextRitualTick = Find.TickManager.TicksGame + Mathf.RoundToInt(LumenstoneRitual.CooldownDays * GenDate.TicksPerDay);
-        extraOutcomeDesc = "The ceremony produced " + count + " " + stone.label + (support > 0 ? " (nearby fixtures: +" + (support * LumenstoneSupport.RitualYieldCap).ToStringPercent() + ")" : "") + ". Lumenstone rituals in this settlement now recover for " + LumenstoneRitual.CooldownDays + " days.";
+        job.Map.GetComponent<LumenstoneRitualState>().Cooldown.Start();
+        extraOutcomeDesc = "The ceremony produced " + count + " " + stone.label + (support > 0 ? " (nearby fixtures: +" + reading.Bonus(SupportStone.Lumenstone.Yield).ToStringPercent() + ")" : "") + ". Lumenstone rituals in this settlement now recover for " + LumenstoneRitual.CooldownDays + " days.";
     }
 }

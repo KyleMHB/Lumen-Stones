@@ -10,6 +10,25 @@ public static class SanguiniteRules
 {
     public const int PassOffset = 125;
     public static float Radius = 8f;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var reach = s.In("Treatment");
+        var costs = s.In("Warp energy costs");
+        var times = s.In("Regrowth time");
+        reach.Add("Sanguinite.radius", "Treatment radius (tiles)", Radius, v => Radius = v, Limit.Number(1, 100));
+        costs.Add("Sanguinite.bleedCost", "Slowed bleeding, per bleeding patient per pass", BleedCost, v => BleedCost = v);
+        costs.Add("Sanguinite.scarCost", "Scar", ScarCost, v => ScarCost = v);
+        costs.Add("Sanguinite.digitCost", "Digit", DigitCost, v => DigitCost = v, Limit.Number(0.01f));
+        costs.Add("Sanguinite.smallPartCost", "Small part (eye, ear, nose, jaw)", SmallPartCost, v => SmallPartCost = v, Limit.Number(0.01f));
+        costs.Add("Sanguinite.organCost", "Internal organ", OrganCost, v => OrganCost = v, Limit.Number(0.01f));
+        times.Add("Sanguinite.digitDays", "Digit (days)", DigitDays, v => DigitDays = v, Limit.Number(0.1f));
+        times.Add("Sanguinite.smallPartDays", "Small part (days)", SmallPartDays, v => SmallPartDays = v, Limit.Number(0.1f));
+        // Declared between the regrowth times, as it always was, so the apply order is unchanged.
+        SanguiniteBlade.DeclareTunables(s);
+        times.Add("Sanguinite.organDays", "Internal organ (days)", OrganDays, v => OrganDays = v, Limit.Number(0.1f));
+    }
+
     public static float BleedCost = 1f, ScarCost = 5f, DigitCost = 5f, SmallPartCost = 20f, OrganCost = 100f;
     public static float DigitDays = 1f, SmallPartDays = 3f, OrganDays = 7f;
 

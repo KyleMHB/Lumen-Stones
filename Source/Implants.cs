@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +20,119 @@ public static class ImplantRules
     public static float AttunementCooldownDays = 3f, BindingCooldownDays = 3f;
     // About what a Hollowstone ward costs one pawn, so an implant weighs like a small fixture.
     public static float DrainPerDay = 3f, ReliefFactor = 0.25f, PairedBenefitFactor = 0.8f;
+
+    // The Implants tab: shared rules, the portable cells, then one section per implant or prosthetic.
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var shared = s.In("Shared rules");
+        var recipes = DefDatabase<RecipeDef>.AllDefsListForReading
+            .Where(r => r.products?.Count == 1 && r.products[0].thingDef.GetModExtension<CrystalPartItem>() != null).ToList();
+        if (recipes.Count == 0) return;
+        foreach (bool prosthetic in new[] { false, true })
+        {
+            var matching = recipes.Where(r => r.products[0].thingDef.GetModExtension<CrystalPartItem>().prosthetic == prosthetic).ToList();
+            if (matching.Count == 0) continue;
+            shared.Add(prosthetic ? "Prosthetics.stoneCost" : "Implants.stoneCost", (prosthetic ? "Prosthetic" : "Implant") + " stone cost",
+                matching[0].ingredients[0].GetBaseCount(), v => matching.ForEach(r => r.ingredients[0].SetBaseCount(v)), Limit.Integer(1));
+        }
+        shared.Add("Prosthetics.dormantEfficiency", "Dormant prosthetic efficiency (%)", DormantEfficiency,
+            v => DormantEfficiency = v, Limit.Percent(5));
+        shared.Add("Implants.attunementCooldownDays", "Attunement cooldown (days)", AttunementCooldownDays,
+            v => AttunementCooldownDays = v);
+        if (ModsConfig.IdeologyActive)
+            shared.Add("Implants.bindingCooldownDays", "Binding cooldown (days)", BindingCooldownDays,
+                v => BindingCooldownDays = v);
+        shared.Add("Implants.drainPerDay", "Solar or Warp energy per active part per day", DrainPerDay,
+            v => DrainPerDay = v);
+        shared.Add("Implants.reliefFactor", "Drawback reduction while energy is paid (%)", ReliefFactor,
+            v => ReliefFactor = v, Limit.Percent());
+        shared.Add("Implants.pairedBenefitFactor", "Benefit with both a light and a dark implant (%)", PairedBenefitFactor,
+            v => PairedBenefitFactor = v, Limit.Percent());
+
+        // One capacity for both cells, so a Twinstone cell's Solar pool matches a Sunstone cell's.
+        var cells = TwinstoneCell.Defs.Select(d => d.GetCompProperties<CompProperties_Twinstone>()).ToList();
+        if (cells.Count > 0)
+            s.In("Portable cells").Add("Twinstone.capacity", "Capacity of each pool (Sunstone and Twinstone cells)", cells[0].capacity,
+                v => cells.ForEach(c => c.capacity = v), Limit.Number(1));
+
+        foreach (var recipe in recipes)
+        {
+            var item = recipe.products[0].thingDef;
+            // A part needs its stone, so it follows that stone's availability toggles.
+            var stone = recipe.ingredients[0].FixedIngredient;
+            if (stone != null) s.Gate(item.defName, stone.defName);
+            var hediff = DefDatabase<HediffDef>.AllDefsListForReading.FirstOrDefault(h => h.spawnThingOnRemoved == item);
+            var props = hediff?.CompProps<HediffCompProperties_Attunement>();
+            if (props == null) continue;
+            var part = s.In(hediff.LabelCap);
+            string key = hediff.defName;
+            if (hediff.addedPartProps != null)
+                part.Add(key + ".efficiency", "Part efficiency (%)", hediff.addedPartProps.partEfficiency,
+                    v => hediff.addedPartProps.partEfficiency = v, Limit.Percent(5));
+            DeclareStage(part, key + ".benefit", "Benefit", props.benefit);
+            if (props.reserve?.GetModExtension<SunlightReserveExtension>() is { } reserve)
+            {
+                part.Add(key + ".hoursToFill", "Sunlight reserve: hours of clear sun to fill", reserve.hoursToFill, v => reserve.hoursToFill = v, Limit.Number(0.1f));
+                part.Add(key + ".daysToDrain", "Sunlight reserve: days without sun to empty", reserve.daysToDrain, v => reserve.daysToDrain = v, Limit.Number(0.1f));
+                part.Add(key + ".startReserve", "Sunlight reserve on waking (%)", reserve.startSeverity, v => reserve.startSeverity = v, Limit.Percent());
+                part.Add(key + ".overlightRate", "Fill rate under Verdite overlight (% of clear sun)", reserve.overlightRate, v => reserve.overlightRate = v, Limit.Percent());
+                foreach (var stage in props.reserve.stages)
+                    part.Add(key + ".hunger." + stage.label.Replace(" ", "").Replace("-", ""), "Hunger while " + stage.label + " (%)", stage.hungerRateFactor,
+                        v => stage.hungerRateFactor = v, Limit.Percent(10));
+            }
+            DeclareStage(part, key + ".drawback", "Drawback", props.drawback);
+            DeclareStage(part, key + ".drawbackNoBiotech", "Drawback without Biotech", ModsConfig.BiotechActive ? null : props.drawbackWithoutBiotech);
+            if (hediff.CompProps<HediffCompProperties_DreadAura>() is { } dread)
+                part.Add(key + ".dreadRadius", "Dread radius (tiles)", dread.radius, v => dread.radius = v, Limit.Number(1, 50));
+            if (hediff.CompProps<HediffCompProperties_ScarMending>() is { } scars)
+                part.Add(key + ".daysPerScar", "Days to heal a scar", scars.daysPerScar, v => scars.daysPerScar = v, Limit.Number(0.1f));
+            if (hediff.CompProps<HediffCompProperties_ApparelMending>() is { } apparel)
+                part.Add(key + ".apparelRepair", "Apparel hit points repaired per day", apparel.hitPointsPerDay, v => apparel.hitPointsPerDay = v);
+            if (hediff.CompProps<HediffCompProperties_PartMending>() is { } mending)
+                part.Add(key + ".partHealing", "Injury healed on the part per day", mending.healPerDay, v => mending.healPerDay = v);
+            var thought = DefDatabase<ThoughtDef>.AllDefsListForReading.FirstOrDefault(t => t.hediff == hediff && t.workerClass == typeof(ThoughtWorker_StoneImplant));
+            if (thought != null)
+            {
+                var stage = thought.stages[0];
+                part.Add(key + ".mood", "Benefit: mood", stage.baseMoodEffect, v => stage.baseMoodEffect = v, Limit.Number(-100, 100));
+            }
+        }
+    }
+
+    // Lists every effect the stage sets, so each implant's numbers can be tuned without knowing its fields.
+    private static void DeclareStage(TunableScope part, string key, string prefix, HediffStage stage)
+    {
+        if (stage == null) return;
+        void Factor(string name, string label, Func<float> get, Action<float> set)
+        {
+            if (get() != 1f) part.Add(key + "." + name, prefix + ": " + label + " (%)", get(), set, Limit.Percent(10));
+        }
+        Factor("pain", "pain factor", () => stage.painFactor, v => stage.painFactor = v);
+        Factor("bleeding", "bleeding factor", () => stage.totalBleedFactor, v => stage.totalBleedFactor = v);
+        Factor("hunger", "hunger factor", () => stage.hungerRateFactor, v => stage.hungerRateFactor = v);
+        Factor("restFall", "rest fall factor", () => stage.restFallFactor, v => stage.restFallFactor = v);
+        Factor("fertility", "fertility factor", () => stage.fertilityFactor, v => stage.fertilityFactor = v);
+        Factor("foodPoisoning", "food poisoning chance factor", () => stage.foodPoisoningChanceFactor, v => stage.foodPoisoningChanceFactor = v);
+        if (stage.statOffsets != null)
+            foreach (var mod in stage.statOffsets)
+            {
+                bool percent = mod.stat.toStringStyle.ToString().StartsWith("Percent");
+                part.Add(key + ".offset." + mod.stat.defName, prefix + ": " + mod.stat.label + " offset" + (percent ? " (%)" : ""), mod.value,
+                    v => mod.value = v, percent ? Limit.Percent(1000, -1000) : Limit.Number(-1000, 1000));
+            }
+        if (stage.statFactors != null)
+            foreach (var mod in stage.statFactors)
+                part.Add(key + ".factor." + mod.stat.defName, prefix + ": " + mod.stat.label + " factor (%)", mod.value, v => mod.value = v, Limit.Percent(10));
+        foreach (var mod in stage.capMods)
+        {
+            if (mod.offset != 0f)
+                part.Add(key + ".cap." + mod.capacity.defName, prefix + ": " + mod.capacity.label + " offset (%)", mod.offset,
+                    v => mod.offset = v, Limit.Percent(1, -1));
+            if (mod.postFactor != 1f)
+                part.Add(key + ".capFactor." + mod.capacity.defName, prefix + ": " + mod.capacity.label + " factor (%)", mod.postFactor,
+                    v => mod.postFactor = v, Limit.Percent(10));
+        }
+    }
 
     public static ThingDef RawStone(StoneSide side) => DefDatabase<ThingDef>.GetNamed(side == StoneSide.Light ? "KM_Lumenstone" : "KM_DarkStone");
     public static string Label(StoneSide side) => side == StoneSide.Light ? "light" : "dark";
@@ -70,10 +184,11 @@ public static class ImplantEnergy
 {
     public static bool TryDraw(Pawn pawn, StoneSide side, float amount)
     {
-        if (side == StoneSide.Light && !SolarRules.Enabled) return true;
+        var kind = side == StoneSide.Light ? ActiveEffectKind.Solar : ActiveEffectKind.Warp;
+        // Decided before routing, so unmetered light parts stay free away from home too.
+        if (!kind.Metered) return true;
         var map = pawn.MapHeld;
-        if (map != null && map.IsPlayerHome)
-            return side == StoneSide.Light ? SolarNetwork.For(map).TryConsumeContinuous(amount) : WarpEnergyNetwork.For(map).TryConsumeContinuous(amount);
+        if (map != null && map.IsPlayerHome) return kind.For(map).TryDrawContinuous(amount);
         return TwinstoneCell.TryFeed(pawn, side, amount);
     }
 }

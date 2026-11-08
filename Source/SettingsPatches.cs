@@ -106,7 +106,7 @@ public static class ResourceGenerationAvailability
 public static class VitaliteInfectionPrevention
 {
     public static float AdjustChance(float chance, HediffComp_Infecter infecter) =>
-        infecter.fromScaria ? chance : Mathf.Clamp01(chance) * VitaliteSupport.InfectionChanceFactor(infecter.Pawn);
+        infecter.fromScaria ? chance : Mathf.Clamp01(chance) * (1f - FixtureSupport.Bonus(infecter.Pawn, SupportEffect.VitaliteInfection).Value);
 
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {

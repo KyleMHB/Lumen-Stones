@@ -45,21 +45,7 @@ public class LumenstoneSettings : ModSettings
         base.ExposeData();
     }
 
-    public float Value(string key, float fallback) => overrides.TryGetValue(key, out float value) &&
-        !float.IsNaN(value) && !float.IsInfinity(value) ? value : fallback;
-
-    public void Reset(string group)
-    {
-        foreach (var key in overrides.Keys.Where(key => key.IndexOf(group, System.StringComparison.OrdinalIgnoreCase) >= 0).ToList())
-            overrides.Remove(key);
-        // Item keys such as KM_BloodstoneVessel.capacity do not contain the group name.
-        foreach (var key in StoneSettings.Entries.Where(e => e.Group == group).Select(e => e.Key).ToList())
-            overrides.Remove(key);
-        if (group == "Firefly") firefly = true;
-        if (group == "Glacite") glacite = true;
-        if (group == "Vitalite") vitalite = true;
-        if (group == "Pyrinth") { pyrinth = pyrinthHeat = true; overridePyrinth = false; }
-    }
+    public float Value(string key, float fallback) => TunableRules.Resolve(overrides, key, fallback);
 }
 
 public class LumenstoneMod : Mod
@@ -77,47 +63,32 @@ public class LumenstoneMod : Mod
     public override void WriteSettings()
     {
         base.WriteSettings();
-        StoneSettings.RefreshAvailability();
-        ActiveEffectInterruption.SettingsChanged();
+        Tunables.Edit().Refresh();
     }
 
     public override void DoSettingsWindowContents(Rect area)
     {
+        var edit = Tunables.Edit();
         var list = new Listing_Standard();
         list.Begin(area);
         list.Label("Balance and effects require a restart, including for existing items. Generation affects future maps.");
         list.Label("Availability applies immediately. Existing items, buildings and blueprints remain usable.");
-        list.CheckboxLabeled("Fixture animation", ref Settings.fixtureAnimation,
+        bool animation = edit.Animation;
+        list.CheckboxLabeled("Fixture animation", ref animation,
             "Allow fixtures to show pulses, glints and fireflies. Each fixture's animation starts off and is switched on with its button. Turning this off removes the button and stops every fixture's animation. It changes nothing else a fixture does.");
-        var groups = new List<string> { "Lumenstone", "Firefly", "Glacite", "Vitalite", "Serenite", "Verdite", "Aegite", "Ferrite", "Sunstone", "Pyrinth", "Darklight" };
-        if (ModsConfig.RoyaltyActive) groups.Add("Animastone");
-        if (ModsConfig.IdeologyActive) groups.Add("DarkStone");
-        if (StoneSettings.Entries.Any(e => e.Group == "Implants")) groups.Add("Implants");
+        edit.Animation = animation;
+        var groups = Tunables.Tabs;
         var tabs = list.GetRect(32 * ((groups.Count + 3) / 4));
         for (int i = 0; i < groups.Count; i++)
-            if (Widgets.ButtonText(new Rect(tabs.x + i % 4 * tabs.width / 4, tabs.y + i / 4 * 32, tabs.width / 4 - 4, 30), groups[i]))
-            { selectedStone = groups[i]; selectedItem = null; scroll = Vector2.zero; }
+            if (Widgets.ButtonText(new Rect(tabs.x + i % 4 * tabs.width / 4, tabs.y + i / 4 * 32, tabs.width / 4 - 4, 30), groups[i].Name))
+            { selectedStone = groups[i].Name; selectedItem = null; scroll = Vector2.zero; }
         list.Gap();
+        var tab = groups.FirstOrDefault(t => t.Name == selectedStone);
+        if (tab == null) { list.End(); return; }
         if (list.ButtonText("Reset " + selectedStone + " to active mod list"))
-        { Settings.Reset(selectedStone); buffers.Clear(); }
-        if (selectedStone == "Darklight")
-        {
-            string[] modes = { "Off (Normal light)", "Auto (by Ideoligion)", "Always Darklight" };
-            list.Label("Default light mode for newly placed player fixtures and jars of fireflies. Existing fixtures keep their chosen mode.");
-            if (list.ButtonText(modes[CompLumenDarklight.DefaultMode]))
-                Find.WindowStack.Add(new FloatMenu(Enumerable.Range(0, modes.Length).Select(mode =>
-                    new FloatMenuOption(modes[mode], () => Settings.overrides["Darklight.defaultMode"] = mode)).ToList()));
-            list.End();
-            return;
-        }
-        if (selectedStone == "Pyrinth")
-        {
-            list.CheckboxLabeled("Override Epochs - Pyrinth balance (restart required)", ref Settings.overridePyrinth);
-            list.Label(StoneSettings.PyrinthPresent ? "Base Pyrinth content only. Add-ons keep their own settings." :
-                "Epochs - Pyrinth is not loaded. Its column and external controls appear when its definitions are present.");
-        }
-        var sections = StoneSettings.Entries.Where(e => e.Group == selectedStone && (!e.External || Settings.overridePyrinth))
-            .Select(e => e.Section).Distinct().ToList();
+        { edit.Reset(tab); buffers.Clear(); }
+        tab.Header?.Invoke(list);
+        var sections = tab.Sections(edit.OverridePyrinth);
         if (sections.Count == 0) { list.End(); return; }
         if (!sections.Contains(selectedItem)) selectedItem = sections[0];
         if (list.ButtonText("Section: " + selectedItem))
@@ -126,45 +97,45 @@ public class LumenstoneMod : Mod
         list.Label("Checked balance overrides use your value; Reset restores the loaded mod list. Enter percentages as percentages.");
         float top = list.CurHeight;
         list.End();
-        var entries = StoneSettings.Entries.Where(e => e.Group == selectedStone && e.Section == selectedItem &&
-            (!e.External || Settings.overridePyrinth)).ToList();
+        var entries = tab.Rows(selectedItem, edit.OverridePyrinth);
         var outer = new Rect(area.x, area.y + top, area.width, Mathf.Max(40, area.height - top));
         var inner = new Rect(0, 0, outer.width - 20, entries.Count * 66);
         Widgets.BeginScrollView(outer, ref scroll, inner);
         list.Begin(inner);
         foreach (var entry in entries)
         {
-            if (entry.Toggle)
+            if (entry.Limit.IsToggle)
             {
-                bool enabled = Settings.Value(entry.Key, entry.Default) != 0;
+                bool enabled = entry.Raw != 0;
                 bool before = enabled;
                 list.CheckboxLabeled(entry.Label, ref enabled);
-                if (enabled != before) Settings.overrides[entry.Key] = enabled ? 1 : 0;
+                if (enabled != before) edit.Set(entry.Key, enabled ? 1 : 0);
                 list.Gap(36);
                 continue;
             }
-            bool useOverride = Settings.overrides.ContainsKey(entry.Key), wasOverride = useOverride;
+            bool useOverride = edit.Has(entry.Key), wasOverride = useOverride;
             var row = list.GetRect(30);
             Widgets.CheckboxLabeled(new Rect(row.x, row.y, row.width - 215, 30), entry.Label, ref useOverride);
             if (useOverride != wasOverride)
             {
-                if (useOverride) Settings.overrides[entry.Key] = entry.Default;
-                else { Settings.overrides.Remove(entry.Key); buffers.Remove(entry.Key); }
+                if (useOverride) edit.Set(entry.Key, entry.Default);
+                else { edit.Set(entry.Key, null); buffers.Remove(entry.Key); }
             }
-            float value = entry.Clamp(Settings.Value(entry.Key, entry.Default));
-            float display = value * entry.DisplayScale;
+            float scale = entry.Limit.DisplayScale;
+            float value = entry.Limit.Clamp(entry.Raw);
+            float display = value * scale;
             if (useOverride)
             {
                 if (!buffers.TryGetValue(entry.Key, out string buffer)) buffer = display.ToString("0.###");
                 Widgets.TextFieldNumeric(new Rect(row.xMax - 205, row.y, 110, 28), ref display, ref buffer,
-                    entry.Min * entry.DisplayScale, entry.Max * entry.DisplayScale);
+                    entry.Limit.Min * scale, entry.Limit.Max * scale);
                 buffers[entry.Key] = buffer;
-                Settings.overrides[entry.Key] = entry.Clamp(display / entry.DisplayScale);
+                edit.Set(entry.Key, display / scale);
             }
             else Widgets.Label(new Rect(row.xMax - 205, row.y, 110, 28), display.ToString("0.###"));
             if (Widgets.ButtonText(new Rect(row.xMax - 88, row.y, 88, 28), "Reset"))
-            { Settings.overrides.Remove(entry.Key); buffers.Remove(entry.Key); }
-            list.Label("Mod list: " + (entry.Default * entry.DisplayScale).ToString("0.###") + entry.Unit);
+            { edit.Set(entry.Key, null); buffers.Remove(entry.Key); }
+            list.Label("Mod list: " + (entry.Default * scale).ToString("0.###") + entry.Limit.Unit);
             list.Gap(10);
         }
         list.End();
@@ -195,6 +166,6 @@ public static class Startup
         }
         new Harmony("kylemhb.lumenstones").PatchAll(Assembly.GetExecutingAssembly());
         // Capture after other mods' startup patches, not from upstream XML or saved fallback values.
-        LongEventHandler.ExecuteWhenFinished(StoneSettings.Initialize);
+        LongEventHandler.ExecuteWhenFinished(Tunables.Initialize);
     }
 }

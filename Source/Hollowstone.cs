@@ -9,6 +9,15 @@ public static class HollowstoneRules
 {
     public const int WardOffset = 20;
     public static float Radius = 8f;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var ward = s.In("Pain suppression");
+        ward.Add("Hollowstone.radius", "Fixture radius (tiles)", Radius, v => Radius = v, Limit.Number(1, 100));
+        // The husk rows sit between the ward's, as they always did.
+        HuskRules.DeclareTunables(s);
+        ward.Add("Hollowstone.wardCostPerDay", "Warp energy per covered pawn per day", WardCostPerDay, v => WardCostPerDay = v);
+    }
     // Warp per covered pawn per day.
     public static float WardCostPerDay = 1f;
     // The ward outlasts a 250-tick pass by 50 ticks, so it clears soon after a pawn leaves reach.

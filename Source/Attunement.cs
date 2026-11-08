@@ -27,7 +27,7 @@ public static class AttunementRules
 
     // A dormant Dreadstone seed can be bound without the research or the cooldown. Other parts need both.
     public static bool PartsAllowed(Map map, StoneSide side) =>
-        map != null && Research(side)?.IsFinished == true && map.GetComponent<AttunementState>().CooldownReason(side) == null;
+        map != null && Research(side)?.IsFinished == true && map.GetComponent<AttunementState>().For(side).Ready;
 
     private static Hediff_DreadstoneSeed Seed(Pawn pawn, StoneSide side) => side == StoneSide.Dark ? DarkSeedRules.Dormant(pawn) : null;
 
@@ -49,7 +49,7 @@ public static class AttunementRules
         if (Recipients(host.Map, side).Any()) return null;
         var research = Research(side);
         if (research == null || !research.IsFinished) return "Requires the " + (research?.label ?? "attunement") + " research.";
-        return host.Map.GetComponent<AttunementState>().CooldownReason(side) ??
+        return host.Map.GetComponent<AttunementState>().For(side).Reason ??
             "Requires a colonist, prisoner or slave with a dormant " + ImplantRules.Label(side) + " implant or prosthetic.";
     }
 
@@ -145,28 +145,16 @@ public static class AttunementRules
 // Per map and per ritual. Separate from the Lumenstone ritual and Crystallize.
 public class AttunementState : MapComponent
 {
-    public int nextAttunementTick, nextBindingTick;
+    public readonly SettlementCooldown Attunement = new("nextAttunementTick", AttunementRules.RitualName(StoneSide.Light), "circle and altar", () => ImplantRules.AttunementCooldownDays);
+    public readonly SettlementCooldown Binding = new("nextBindingTick", AttunementRules.RitualName(StoneSide.Dark), "altar", () => ImplantRules.BindingCooldownDays);
     public AttunementState(Map map) : base(map) { }
+
+    public SettlementCooldown For(StoneSide side) => side == StoneSide.Light ? Attunement : Binding;
 
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref nextAttunementTick, "nextAttunementTick");
-        Scribe_Values.Look(ref nextBindingTick, "nextBindingTick");
-    }
-
-    public string CooldownReason(StoneSide side)
-    {
-        int remaining = (side == StoneSide.Light ? nextAttunementTick : nextBindingTick) - Find.TickManager.TicksGame;
-        return remaining > 0 ? AttunementRules.RitualName(side) + " is recharging: " + remaining.ToStringTicksToPeriod() +
-            " remaining (shared by every " + (side == StoneSide.Light ? "circle and altar" : "altar") + " in this settlement)." : null;
-    }
-
-    public void StartCooldown(StoneSide side)
-    {
-        float days = side == StoneSide.Light ? ImplantRules.AttunementCooldownDays : ImplantRules.BindingCooldownDays;
-        int next = Find.TickManager.TicksGame + Mathf.RoundToInt(days * GenDate.TicksPerDay);
-        if (side == StoneSide.Light) nextAttunementTick = next;
-        else nextBindingTick = next;
+        Attunement.ExposeData();
+        Binding.ExposeData();
     }
 }
 
@@ -250,7 +238,7 @@ public class RitualOutcomeEffectWorker_Attunement : RitualOutcomeEffectWorker_Fr
         var woken = AttunementRules.Activate(recipient, side, count, outcome.positivityIndex < 3, out bool counted);
         extraOutcomeDesc = AttunementRules.Describe(recipient, woken);
         if (!counted) return;
-        jobRitual.Map.GetComponent<AttunementState>().StartCooldown(side);
+        jobRitual.Map.GetComponent<AttunementState>().For(side).Start();
         float days = side == StoneSide.Light ? ImplantRules.AttunementCooldownDays : ImplantRules.BindingCooldownDays;
         extraOutcomeDesc += " " + AttunementRules.RitualName(side) + " in this settlement now recovers for " + days + " days.";
     }
@@ -276,7 +264,7 @@ public class JobDriver_AttuneAtCircle : JobDriver
         this.FailOnAggroMentalStateAndHostile(RecipientIndex);
         this.FailOn(() => !AttunementRules.CanReceive(Recipient, StoneSide.Light));
         // Another attuner may finish first and start the cooldown while this job is under way.
-        this.FailOn(() => State.CooldownReason(StoneSide.Light) != null);
+        this.FailOn(() => !State.Attunement.Ready);
         var attune = Toils_General.Wait(AttunementRules.JobTicks).WithProgressBarToilDelay(CircleIndex)
             .FailOn(() => Recipient.Position != Circle.Position);
         var carry = Toils_Goto.GotoThing(RecipientIndex, PathEndMode.OnCell).FailOnSomeonePhysicallyInteracting(RecipientIndex);
@@ -299,7 +287,7 @@ public class JobDriver_AttuneAtCircle : JobDriver
         yield return Toils_General.Do(() =>
         {
             var woken = AttunementRules.Activate(Recipient, StoneSide.Light, 1, true, out _);
-            State.StartCooldown(StoneSide.Light);
+            State.Attunement.Start();
             Recipient.jobs.EndCurrentJob(JobCondition.Succeeded);
             Messages.Message(AttunementRules.Describe(Recipient, woken), Recipient, MessageTypeDefOf.PositiveEvent);
         });

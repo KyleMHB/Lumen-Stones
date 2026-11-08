@@ -10,6 +10,14 @@ namespace LumenStones;
 public static class HuskRules
 {
     public static float RaiseCost = 50f, HuskCostPerDay = 10f, RaiseCooldownDays = 0.25f;
+
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var husk = s.In("Work husks");
+        husk.Add("Hollowstone.raiseCost", "Warp energy to raise a husk", RaiseCost, v => RaiseCost = v);
+        husk.Add("Hollowstone.huskCostPerDay", "Warp energy per husk per day", HuskCostPerDay, v => HuskCostPerDay = v);
+        husk.Add("Hollowstone.raiseCooldown", "Raise cooldown (days)", RaiseCooldownDays, v => RaiseCooldownDays = v);
+    }
     // Severity picks the hediff stage: below 1 the husk works, from 1 it has collapsed.
     public const float BoundSeverity = 0.5f, CollapsedSeverity = 1.5f;
 
@@ -54,7 +62,7 @@ public static class HuskRules
         if (!ModsConfig.IdeologyActive || target.Thing is not Building_SacrificialAltar altar || altar.Faction != Faction.OfPlayer)
             return "Requires a player-owned Sacrificial altar and Ideology.";
         if (!Available) return "Requires Anomaly.";
-        var reason = target.Map.GetComponent<SacrificeRitualState>().RaiseCooldownReason();
+        var reason = target.Map.GetComponent<SacrificeRitualState>().Raise.Reason;
         if (reason != null) return reason;
         if (Find.IdeoManager.GetActiveRituals(target.Map).Any(r => r is LordJob_SacrificeRitual))
             return "Another sacrifice is already underway in this settlement.";
@@ -85,25 +93,19 @@ public class CompProperties_HollowstonePylon : CompProperties
 }
 
 // Holds the pylon's one husk and charges its upkeep. A husk without power, or without a pylon, collapses alive.
-public class CompHollowstonePylon : ThingComp, IWarpConsumer
+public class CompHollowstonePylon : ThingComp, IActiveEffectDrain
 {
     private Pawn husk;
-    // True until the first pass, so a loaded save doesn't collapse a husk before the network has been asked.
-    private bool warpPowered = true;
     private CompWarpToggle toggle;
 
     public Pawn Husk => husk;
     private CompWarpToggle Toggle => toggle ??= parent.GetComp<CompWarpToggle>();
-    public bool CanBind => HuskRules.Available && Toggle.Running && warpPowered;
+    public bool CanBind => HuskRules.Available && Toggle.Powered;
 
-    public float WarpDrainPerTick => husk != null && parent.Spawned && Toggle.Running ? HuskRules.HuskCostPerDay / GenDate.TicksPerDay : 0f;
-    public bool WarpPowered { get => warpPowered; set => warpPowered = value; }
-
-    public override void PostSpawnSetup(bool respawningAfterLoad) => WarpEnergyNetwork.For(parent.Map).Register(this);
+    public float DrainPerTick => husk != null ? HuskRules.HuskCostPerDay / GenDate.TicksPerDay : 0f;
 
     public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
-        WarpEnergyNetwork.For(map).Unregister(this);
         if (husk == null) return;
         if (!husk.Dead) HuskRules.SetCollapsed(husk, true);
         husk = null;
@@ -126,7 +128,7 @@ public class CompHollowstonePylon : ThingComp, IWarpConsumer
             husk = null;
             return;
         }
-        HuskRules.SetCollapsed(husk, !(Toggle.Running && warpPowered));
+        HuskRules.SetCollapsed(husk, !Toggle.Powered);
     }
 
     public override string CompInspectStringExtra() =>
@@ -177,7 +179,7 @@ public class RitualOutcomeEffectWorker_Raise : RitualOutcomeEffectWorker_Sacrifi
         var victim = job.PawnWithRole("victim");
         bool raised = victim != null && HuskRules.Raise(victim);
         job.raised = raised;
-        job.Map.GetComponent<SacrificeRitualState>().StartRaiseCooldown();
+        job.Map.GetComponent<SacrificeRitualState>().Raise.Start();
         return raised ? victim.LabelShortCap + " rose as a work husk and was bound to a Hollowstone pylon."
             : "The body did not rise. " + HuskRules.RaiseCost.ToString("0") + " Warp energy was spent.";
     }

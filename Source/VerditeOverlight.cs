@@ -14,7 +14,24 @@ public class CompProperties_Overlight : CompProperties_Glower
     public float startTime = 0.25f, endTime = 0.8f;
     // Solar energy per lit schedule, spread evenly over its length.
     public float solarDrain;
+    // The settings key of the drain, one per fixture kind.
+    public string solarDrainKey;
     public CompProperties_Overlight() => compClass = typeof(CompOverlight);
+
+    public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
+    {
+        foreach (var error in base.ConfigErrors(parentDef)) yield return error;
+        if (solarDrain > 0 && string.IsNullOrEmpty(solarDrainKey)) yield return "a Solar drain needs a solarDrainKey";
+    }
+
+    // Declared by CompProperties_Verdite, after its own rows, so this is not an ITunableProps.
+    internal void DeclareOverlight(TunableScope s, Def owner)
+    {
+        s.Add(owner.defName + ".plantLight", "Plant-capable lighting radius", overlightRadius,
+            v => { overlightRadius = v; glowRadius = 2f * v; }, Limit.Number(max: 40));
+        if (!string.IsNullOrEmpty(solarDrainKey))
+            s.Add(solarDrainKey, "Solar energy per lit schedule", solarDrain, v => solarDrain = v);
+    }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
@@ -29,9 +46,8 @@ public class CompProperties_Overlight : CompProperties_Glower
     }
 }
 
-public class CompOverlight : CompGlower, ISolarConsumer
+public class CompOverlight : CompGlower, IActiveEffectDrain
 {
-    private bool powered;
     private CompSolarToggle toggle;
     private CompProperties_Overlight Overlight => (CompProperties_Overlight)props;
     private CompSolarToggle Toggle => toggle ??= parent.GetComp<CompSolarToggle>();
@@ -45,35 +61,10 @@ public class CompOverlight : CompGlower, ISolarConsumer
         }
     }
 
-    private bool ActiveEffect => !SolarRules.Enabled || Toggle.Running && powered;
-
-    public bool SolarPowered
-    {
-        get => powered;
-        set
-        {
-            if (powered == value) return;
-            powered = value;
-            if (parent.Spawned) UpdateLit(parent.Map);
-        }
-    }
-
-    public float SolarDrainPerTick => !CompLumenDarklight.On(parent) && SolarRules.Enabled && parent.Spawned && Toggle.Running && InSchedule
+    public float DrainPerTick => !CompLumenDarklight.On(parent) && InSchedule
         ? Overlight.solarDrain / ((Overlight.endTime - Overlight.startTime) * GenDate.TicksPerDay) : 0;
 
-    protected override bool ShouldBeLitNow => !CompLumenDarklight.On(parent) && base.ShouldBeLitNow && InSchedule && ActiveEffect;
-
-    public override void PostSpawnSetup(bool respawningAfterLoad)
-    {
-        base.PostSpawnSetup(respawningAfterLoad);
-        SolarNetwork.For(parent.Map).Register(this);
-    }
-
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
-    {
-        SolarNetwork.For(map).Unregister(this);
-        base.PostDeSpawn(map, mode);
-    }
+    protected override bool ShouldBeLitNow => !CompLumenDarklight.On(parent) && base.ShouldBeLitNow && InSchedule && Toggle.Powered;
 
     // Schedule edges are noticed within one interval. UpdateLit does nothing when the lit state is unchanged.
     public override void CompTick()
@@ -84,7 +75,7 @@ public class CompOverlight : CompGlower, ISolarConsumer
     public override void ReceiveCompSignal(string signal)
     {
         base.ReceiveCompSignal(signal);
-        if (signal == SolarRules.ToggledSignal && parent.Spawned) UpdateLit(parent.Map);
+        if ((signal == ActiveEffectKind.Solar.ToggledSignal || signal == ActiveEffectKind.Solar.PoweredSignal) && parent.Spawned) UpdateLit(parent.Map);
     }
 
     public override string CompInspectStringExtra() => CompLumenDarklight.On(parent)

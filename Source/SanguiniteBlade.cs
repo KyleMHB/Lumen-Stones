@@ -8,6 +8,9 @@ namespace LumenStones;
 public static class SanguiniteBlade
 {
     public static int MaxStacks = 3;
+
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Flensing Blade").Add("Sanguinite.hemorrhageMaxStacks", "Maximum Hemorrhage stacks", MaxStacks, v => MaxStacks = (int)v, Limit.Integer(1, 10));
     public const int StackTicks = 600;
     // Bleed rate of one stack, a little under a fresh cut of the same size.
     public const float BleedPerStack = 0.04f;

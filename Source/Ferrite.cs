@@ -7,12 +7,21 @@ using Verse;
 
 namespace LumenStones;
 
-public class CompProperties_Ferrite : CompProperties
+public class CompProperties_Ferrite : CompProperties, ITunableProps
 {
     public int tier = 1, interval = 300;
     public float radius = 8f, repairBudget = 0.00045f;
     public bool buildings, looseItems, wornEquipment, personal;
     public CompProperties_Ferrite() => compClass = typeof(CompFerrite);
+
+    public void DeclareTunables(TunableScope s, Def owner)
+    {
+        string name = owner.defName;
+        if (!personal)
+            s.Add(name + ".radius", "Maintenance radius", radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".interval", "Ticks between repair pulses", interval, v => interval = (int)v, Limit.Integer(1));
+        s.Add(name + ".budget", "Shared condition budget per pulse (%)", repairBudget, v => repairBudget = v, Limit.Percent());
+    }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
@@ -56,6 +65,9 @@ public class FerriteRepairCredit : IExposable
 public static class FerriteSolar
 {
     public static float CostPerHp = 0.5f;
+
+    internal static void DeclareTunables(TunableScope s) =>
+        s.In("Solar energy").Add("Ferrite.solarCostPerHp", "Solar energy per HP of item or gear repaired", CostPerHp, v => CostPerHp = v);
 }
 
 public class FerriteField : MapComponent
@@ -236,8 +248,8 @@ public class CompFerrite : ThingComp
             int now = Find.TickManager.TicksGame;
             if (now == payTick) return payOk;
             payTick = now;
-            var toggle = parent.GetComp<CompSolarToggle>();
-            return payOk = !SolarRules.Enabled || toggle is { Running: true } && SolarNetwork.For(parent.Map).CanDraw(FerriteSolar.CostPerHp);
+            // Without a toggle, repair is free only while Solar energy is unmetered.
+            return payOk = parent.GetComp<CompSolarToggle>()?.CanPay(FerriteSolar.CostPerHp) ?? !ActiveEffectKind.Solar.Metered;
         }
     }
 

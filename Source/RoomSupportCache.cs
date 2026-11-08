@@ -16,8 +16,6 @@ namespace LumenStones;
 public class RoomSupportCache : MapComponent
 {
     public const int Interval = 250;
-    public const int Categories = 4;
-    private static readonly float[] None = new float[Categories];
 
     // Cached per-pawn result of the last interval. Values are what the stat parts add, already gated on being powered.
     public class Occupant
@@ -26,11 +24,26 @@ public class RoomSupportCache : MapComponent
         public bool powered, seen;
     }
 
-    private readonly List<CompVitalite> vitalite = new();
-    private readonly List<CompSerenite> serenite = new();
-    private readonly List<CompAnimastone> animastone = new();
-    private readonly Dictionary<Room, float[]> vitaliteAll = new(), vitaliteActive = new(), sereniteAll = new(), sereniteActive = new(),
-        animastoneAll = new(), animastoneActive = new();
+    // Rooms' category weights: every fixture, and only the running ones for stones whose effects read them.
+    private sealed class RoomWeights
+    {
+        public readonly CategoryWeights All = new();
+        public CategoryWeights Active;
+    }
+
+    private sealed class Table
+    {
+        public readonly List<CompRoomFixture> Fixtures = new();
+        public readonly Dictionary<Room, RoomWeights> Rooms = new();
+        // Rooms with a running fixture, in the order the first one was seen. Occupants are found and charged in this
+        // order, so it decides who stays powered when the network can't pay everyone.
+        public readonly List<Room> RunningRooms = new();
+    }
+
+    private readonly Dictionary<SupportStone, Table> tables = new()
+    {
+        [SupportStone.Vitalite] = new(), [SupportStone.Serenite] = new(), [SupportStone.Animastone] = new()
+    };
     private readonly Dictionary<Pawn, Occupant> patients = new(), sleepers = new(), meditators = new();
     private readonly List<Pawn> stale = new(), found = new();
     private readonly List<CompAnimastone> poweredGrowth = new();
@@ -38,38 +51,28 @@ public class RoomSupportCache : MapComponent
 
     public RoomSupportCache(Map map) : base(map) { }
 
-    public void Register(CompVitalite comp) { vitalite.Add(comp); dirty = true; }
-    public void Unregister(CompVitalite comp) { vitalite.Remove(comp); dirty = true; }
-    public void Register(CompSerenite comp) { serenite.Add(comp); dirty = true; }
-    public void Unregister(CompSerenite comp) { serenite.Remove(comp); dirty = true; }
-    public void Register(CompAnimastone comp) { animastone.Add(comp); dirty = true; }
-    public void Unregister(CompAnimastone comp) { animastone.Remove(comp); dirty = true; }
+    public void Register(SupportStone stone, CompRoomFixture comp) { tables[stone].Fixtures.Add(comp); dirty = true; }
+    public void Unregister(SupportStone stone, CompRoomFixture comp) { tables[stone].Fixtures.Remove(comp); dirty = true; }
 
-    // Highest weight of each category in the room, or all zeros when the room is not enclosed and roofed.
-    public static float[] VitaliteWeights(Room room, bool activeOnly) =>
-        room?.Map == null ? None : Lookup(activeOnly ? Of(room).vitaliteActive : Of(room).vitaliteAll, room);
-    public static float[] SereniteWeights(Room room, bool activeOnly) =>
-        room?.Map == null ? None : Lookup(activeOnly ? Of(room).sereniteActive : Of(room).sereniteAll, room);
-    public static float[] AnimastoneWeights(Room room, bool activeOnly) =>
-        room?.Map == null ? None : Lookup(activeOnly ? Of(room).animastoneActive : Of(room).animastoneAll, room);
-
-    // A plain loop: stats and thoughts read this often, and LINQ Sum allocates on the game's runtime.
-    public static float Total(float[] weights)
+    // Highest weight of each category in the room, or nothing when the room is not enclosed and roofed.
+    internal SupportReading Read(SupportStone stone, Room room)
     {
-        float total = 0;
-        for (int i = 0; i < weights.Length; i++) total += weights[i];
-        return total;
+        if (!tables[stone].Rooms.TryGetValue(room, out var entry)) return SupportReading.Empty(stone);
+        float passive = SupportCore.Fraction(SupportKind.Room, entry.All, true);
+        float active = entry.Active != null && SupportCore.UseActiveSet(true, ActiveEffectKind.Solar.Metered)
+            ? SupportCore.Fraction(SupportKind.Room, entry.Active, true) : passive;
+        return new SupportReading(stone, entry.All, passive, active, true);
     }
 
-    private static RoomSupportCache Of(Room room) => room.Map.GetComponent<RoomSupportCache>();
-    private static float[] Lookup(Dictionary<Room, float[]> table, Room room) => table.TryGetValue(room, out var weights) ? weights : None;
-
     // Cached state for a patient (Vitalite) or sleeper (Serenite), or null when the pawn has no active treatment.
-    public static Occupant Patient(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().patients.GetValueOrDefault(pawn);
-    public static Occupant Sleeper(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().sleepers.GetValueOrDefault(pawn);
+    internal static Occupant Patient(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().patients.GetValueOrDefault(pawn);
+    internal static Occupant Sleeper(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().sleepers.GetValueOrDefault(pawn);
     // Cached state for a pawn meditating with Animastone support, or null. Primary is room support, and secondary is
     // the extra neural heat recovery from a powered fixture in range.
-    public static Occupant Meditator(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().meditators.GetValueOrDefault(pawn);
+    internal static Occupant Meditator(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().meditators.GetValueOrDefault(pawn);
+
+    // Extra neural heat recovery from a powered Animastone pylon in range, on top of room support.
+    public static float ActiveHeatRecovery(Pawn pawn) => pawn.CurJobDef == JobDefOf.Meditate ? Meditator(pawn)?.secondary ?? 0 : 0;
 
     // Highest growth bonus from a powered Animastone fixture whose active radius covers the thing.
     public static float ActiveGrowth(Thing thing)
@@ -95,32 +98,32 @@ public class RoomSupportCache : MapComponent
 
     private void RefreshWeights()
     {
-        vitaliteAll.Clear(); vitaliteActive.Clear(); sereniteAll.Clear(); sereniteActive.Clear(); animastoneAll.Clear(); animastoneActive.Clear();
-        foreach (var comp in vitalite)
-            if (comp.Props.fixtureIndex >= 0) Add(vitaliteAll, vitaliteActive, comp.parent, comp.Props.fixtureIndex, comp.Props.weight);
-        foreach (var comp in serenite) Add(sereniteAll, sereniteActive, comp.parent, comp.Props.fixtureIndex, comp.Props.weight);
-        foreach (var comp in animastone) Add(animastoneAll, animastoneActive, comp.parent, comp.Props.fixtureIndex, comp.Props.weight);
+        foreach (var pair in tables)
+        {
+            pair.Value.Rooms.Clear();
+            pair.Value.RunningRooms.Clear();
+            foreach (var comp in pair.Value.Fixtures) Add(pair.Key, pair.Value, comp);
+        }
     }
 
-    private static void Add(Dictionary<Room, float[]> all, Dictionary<Room, float[]> active, Thing fixture, int index, float weight)
+    private static void Add(SupportStone stone, Table table, CompRoomFixture comp)
     {
-        if (!fixture.Spawned) return;
+        var props = comp.Fixture;
+        var fixture = comp.parent;
+        if (props.category == FixtureCategory.None || !fixture.Spawned) return;
         var room = fixture.GetRoom();
-        if (room == null || !room.ProperRoom || room.OpenRoofCount > 0) return;
-        Raise(all, room, index, weight);
-        if (fixture.TryGetComp<CompSolarToggle>()?.Running ?? true) Raise(active, room, index, weight);
-    }
-
-    private static void Raise(Dictionary<Room, float[]> table, Room room, int index, float weight)
-    {
-        if (!table.TryGetValue(room, out var entry)) table[room] = entry = new float[Categories];
-        entry[index] = Mathf.Max(entry[index], weight);
+        if (!FixtureSupport.Enclosed(room)) return;
+        if (!table.Rooms.TryGetValue(room, out var entry)) table.Rooms[room] = entry = new RoomWeights { Active = stone.TracksActive ? new CategoryWeights() : null };
+        entry.All.Raise(props.category, props.weight);
+        if (entry.Active == null || !(fixture.TryGetComp<CompSolarToggle>()?.Running ?? true)) return;
+        entry.Active.Raise(props.category, props.weight);
+        if (!table.RunningRooms.Contains(room)) table.RunningRooms.Add(room);
     }
 
     private void RefreshOccupants()
     {
         RefreshMeditators();
-        if (!SolarRules.Enabled)
+        if (!ActiveEffectKind.Solar.Metered)
         {
             // Active effects are free and ungated, so nobody needs tracking or charging.
             patients.Clear();
@@ -130,39 +133,33 @@ public class RoomSupportCache : MapComponent
         foreach (var occupant in patients.Values) occupant.seen = false;
         foreach (var occupant in sleepers.Values) occupant.seen = false;
 
-        foreach (var room in vitaliteActive.Keys) foreach (var bed in room.ContainedBeds) FindPatients(bed);
-        foreach (var comp in vitalite)
-            if (comp.Props.fixtureIndex < 0 && comp.parent is Building_Bed bed) FindPatients(bed);
-        foreach (var room in sereniteActive.Keys) foreach (var bed in room.ContainedBeds) FindSleepers(bed);
+        var vitalite = tables[SupportStone.Vitalite];
+        foreach (var room in vitalite.RunningRooms) foreach (var bed in room.ContainedBeds) FindPatients(bed);
+        foreach (var comp in vitalite.Fixtures)
+            if (comp.Fixture.category == FixtureCategory.None && comp.parent is Building_Bed bed) FindPatients(bed);
+        foreach (var room in tables[SupportStone.Serenite].RunningRooms) foreach (var bed in room.ContainedBeds) FindSleepers(bed);
 
-        Sweep(patients, VitaliteSupport.PatientSolarDrain);
-        Sweep(sleepers, SereniteSupport.SleeperSolarDrain);
+        Sweep(patients, SupportStone.Vitalite.OccupantDrain);
+        Sweep(sleepers, SupportStone.Serenite.OccupantDrain);
     }
 
     private void FindPatients(Building_Bed bed)
     {
-        var comp = bed.GetComp<CompVitalite>();
-        bool bedOn = comp != null && comp.Props.fixtureIndex < 0 && (bed.GetComp<CompSolarToggle>()?.Running ?? true);
-        float roomActive = VitaliteSupport.Fraction(bed.GetRoom(), true);
-        float healing = roomActive * StoneSettings.RoomHealingCap + (bedOn ? comp.Props.healingBonus : 0);
-        // Infection prevention only works in an enclosed, roofed room, as before.
-        var room = bed.GetRoom();
-        bool enclosed = room != null && room.ProperRoom && room.OpenRoofCount == 0;
-        float infection = !enclosed ? 0 : 1 - (1 - (bedOn ? Mathf.Clamp01(comp.Props.infectionPrevention) : 0)) * (1 - roomActive * StoneSettings.RoomInfectionPreventionCap);
-        if (healing <= 0 && infection <= 0) return;
+        var treatment = FixtureSupport.Treat(bed.GetRoom(), bed);
+        if (treatment.Healing <= 0 && treatment.InfectionPrevention <= 0) return;
         foreach (var pawn in bed.CurOccupants)
         {
             if (!pawn.InBed() || !Injured(pawn)) continue;
             var occupant = Entry(patients, pawn);
-            occupant.primary = healing;
-            occupant.secondary = infection;
+            occupant.primary = treatment.Healing;
+            occupant.secondary = treatment.InfectionPrevention;
             occupant.seen = true;
         }
     }
 
     private void FindSleepers(Building_Bed bed)
     {
-        float support = SereniteSupport.Fraction(bed.GetRoom(), true);
+        float support = FixtureSupport.Of(SupportStone.Serenite, bed.GetRoom()).Active;
         if (support <= 0) return;
         foreach (var pawn in bed.CurOccupants)
         {
@@ -178,11 +175,11 @@ public class RoomSupportCache : MapComponent
     private void RefreshMeditators()
     {
         foreach (var occupant in meditators.Values) { occupant.seen = false; occupant.primary = occupant.secondary = 0; }
-        foreach (var pair in animastoneAll)
+        foreach (var room in tables[SupportStone.Animastone].Rooms.Keys)
         {
-            float support = AnimastoneSupport.Fraction(pair.Key);
+            float support = FixtureSupport.Of(SupportStone.Animastone, room).Passive;
             if (support <= 0) continue;
-            var regions = pair.Key.Regions;
+            var regions = room.Regions;
             for (int i = 0; i < regions.Count; i++)
             {
                 var pawns = regions[i].ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
@@ -206,16 +203,17 @@ public class RoomSupportCache : MapComponent
     private void RefreshAnimastoneActive()
     {
         poweredGrowth.Clear();
-        foreach (var comp in animastone)
+        foreach (var fixture in tables[SupportStone.Animastone].Fixtures)
         {
+            if (fixture is not CompAnimastone comp) continue;
             var props = comp.Props;
             comp.poweredNow = false;
             if (props.activeRadius <= 0 || !comp.parent.Spawned) continue;
-            if (SolarRules.Enabled && comp.parent.GetComp<CompSolarToggle>() is { Running: false }) continue;
+            if (comp.parent.GetComp<CompSolarToggle>() is { Permitted: false }) continue;
             FindMeditators(comp.parent.Position, props.activeRadius);
             if (found.Count == 0) continue;
             float cost = props.activeDrain / GenDate.TicksPerDay * Interval;
-            if (SolarRules.Enabled && !SolarNetwork.For(map).TryConsumeContinuous(cost)) continue;
+            if (!SolarNetwork.For(map).Account.TryDrawContinuous(cost)) continue;
             comp.poweredNow = true;
             if (props.activeGrowth > 0) poweredGrowth.Add(comp);
             if (props.activeHeatRecovery <= 0) continue;

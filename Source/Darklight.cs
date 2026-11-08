@@ -26,7 +26,7 @@ public class CompLumenDarklight : ThingComp
     private bool Enabled => !Props.external || LumenstoneMod.Settings.overridePyrinth;
     public bool Active => darklight && Enabled;
     public static bool On(Thing thing) => (thing as ThingWithComps)?.GetComp<CompLumenDarklight>()?.Active == true;
-    public static int DefaultMode => Mathf.Clamp(Mathf.RoundToInt(LumenstoneMod.Settings.Value("Darklight.defaultMode", 1)), 0, 2);
+    public static int DefaultMode => Mathf.Clamp(Mathf.RoundToInt(StoneTabs.DarklightMode.Value), 0, 2);
 
     public override void PostExposeData()
     {

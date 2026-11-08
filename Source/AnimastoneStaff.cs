@@ -9,6 +9,13 @@ public static class AnimastoneStaff
     public static float StunChance = 0.15f;
     public static int StunTicks = 60;
 
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var staff = s.In("Animastone staff");
+        staff.Add("KM_AnimastoneStaff.stunChance", "Stun chance at 100% psychic sensitivity (%)", StunChance, v => StunChance = v, Limit.Percent());
+        staff.Add("KM_AnimastoneStaff.stunTicks", "Stun duration (ticks)", StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
+    }
+
     // Null without Royalty, so the hit check below never matches.
     private static ThingDef def;
     private static bool looked;

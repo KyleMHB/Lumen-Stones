@@ -1,5 +1,6 @@
 """Regression cases from the mask/icon/deployment failures, using isolated fixtures."""
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -175,14 +176,18 @@ class WorkflowTests(unittest.TestCase):
     def test_real_hook_uses_staged_content_and_rejects_staged_bad_mask(self):
         tools = self.root / "tools"
         self.linkRecipe()
-        for module in ("artwork.py", "artwork_family.py", "artwork_measure.py", "artwork_silhouettes.py"):
+        for module in ("check.py", "artwork.py", "artwork_family.py", "artwork_measure.py", "artwork_silhouettes.py"):
             shutil.copy2(artwork.ROOT / "tools" / module, tools / module)
+        (tools / "tests").mkdir()
         hooks = self.root / ".githooks"
         hooks.mkdir()
         shutil.copy2(artwork.ROOT / ".githooks/pre-commit", hooks / "pre-commit")
         (hooks / "pre-commit").chmod(0o755)
+        # Inside a pre-commit hook, GIT_INDEX_FILE and friends point at the outer commit; drop them so this
+        # fixture repository doesn't write its entries into that index.
+        env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
         def git(*args, check=True):
-            return subprocess.run(["git", *args], cwd=self.root, capture_output=True, text=True, check=check)
+            return subprocess.run(["git", *args], cwd=self.root, capture_output=True, text=True, check=check, env=env)
         git("init", "-q")
         git("config", "core.hooksPath", ".githooks")
         git("config", "lumen.artworkPython", Path(sys.executable).as_posix())
