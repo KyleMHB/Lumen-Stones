@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Lunite_Section>Lunite</Lumen_Lunite_Section>
+	<Lumen_Lunite_SunstoneCost>Sunstone spent per conversion</Lumen_Lunite_SunstoneCost>
+	<Lumen_Lunite_Yield>Lunite produced per conversion</Lumen_Lunite_Yield>
+	<Lumen_Lunite_Cooldown>Cooldown after a conversion (days)</Lumen_Lunite_Cooldown>
+	<Lumen_Lunite_NightStart>Conversion window opens (hour)</Lumen_Lunite_NightStart>
+	<Lumen_Lunite_NightEnd>Conversion window closes (hour)</Lumen_Lunite_NightEnd>
+	<Lumen_Lunite_StabilizerSection>Lunite stabilizer</Lumen_Lunite_StabilizerSection>
+	<Lumen_Lunite_LinkRadius>Link radius (tiles)</Lumen_Lunite_LinkRadius>
+	<Lumen_Lunite_Window>{0} and {1}</Lumen_Lunite_Window>
+	<Lumen_Lunite_NeedsSunstone>Requires Sunstone content to be enabled.</Lumen_Lunite_NeedsSunstone>
+	<Lumen_Lunite_NeedsHostIdeology>Requires a player-owned Lumen ritual circle or Lumenstone altar.</Lumen_Lunite_NeedsHostIdeology>
+	<Lumen_Lunite_NeedsCircle>Requires a player-owned Lumen ritual circle.</Lumen_Lunite_NeedsCircle>
+	<Lumen_NeedsResearch>Requires the {0} research.</Lumen_NeedsResearch>
+	<Lumen_Lunite_OnlyBetween>Can only start between {0}.</Lumen_Lunite_OnlyBetween>
+	<Lumen_Lunite_Underway>A ritual is already underway in this settlement.</Lumen_Lunite_Underway>
+	<Lumen_Lunite_NeedsSunstoneStock>Requires {0} accessible, unforbidden Sunstone.</Lumen_Lunite_NeedsSunstoneStock>
+	<Lumen_Lunite_Summary>Turns {0} Sunstone into {1} Lunite. Starts only between {2} and may finish after dawn. The Sunstone is spent only on success. Each settlement recovers for {3} days.</Lumen_Lunite_Summary>
+	<Lumen_Lunite_RitualDesc>A ceremony of about 1 hour: choose participants in the native ritual dialog.</Lumen_Lunite_RitualDesc>
+	<Lumen_Lunite_Convert>Convert Lunite</Lumen_Lunite_Convert>
+	<Lumen_Lunite_JobDesc>One colonist works at the circle for {0} hours.</Lumen_Lunite_JobDesc>
+	<Lumen_Lunite_NoColonist>No colonist can work at the circle.</Lumen_Lunite_NoColonist>
+	<Lumen_Lunite_CouldNotStart>The Lunite conversion could not start: {0}</Lumen_Lunite_CouldNotStart>
+	<Lumen_Lunite_SunstoneGone>Sunstone is no longer available.</Lumen_Lunite_SunstoneGone>
+	<Lumen_Lunite_Converted>Converted {0} Sunstone into {1} Lunite.</Lumen_Lunite_Converted>
+	<Lumen_Lunite_Result>The ceremony produced {0} {1}. Lunite conversion in this settlement now recovers for {2} days.</Lumen_Lunite_Result>
+</LanguageData>

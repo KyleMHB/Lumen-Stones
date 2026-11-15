@@ -15,22 +15,22 @@ public class CompProperties_Verdite : CompProperties, ITunableProps
     public void DeclareTunables(TunableScope s, Def owner)
     {
         string name = owner.defName;
-        s.Add(name + ".radius", "Agricultural support radius", radius, v => radius = v, Limit.Number(max: 100));
-        s.Add(name + ".growth", "Plant growth bonus (%)", growthBonus, v => growthBonus = v, Limit.Percent(10));
-        s.Add(name + ".work", "PlantWorkSpeed bonus (%)", workBonus, v => workBonus = v, Limit.Percent(10));
-        s.Add(name + ".yield", "PlantHarvestYield bonus (%)", yieldBonus, v => yieldBonus = v, Limit.Percent(10));
+        s.Add(name + ".radius", "Lumen_Verdite_SupportRadius".Translate(), radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".growth", "Lumen_Verdite_GrowthBonus".Translate(), growthBonus, v => growthBonus = v, Limit.Percent(10));
+        s.Add(name + ".work", "Lumen_Verdite_WorkBonus".Translate(), workBonus, v => workBonus = v, Limit.Percent(10));
+        s.Add(name + ".yield", "Lumen_Verdite_YieldBonus".Translate(), yieldBonus, v => yieldBonus = v, Limit.Percent(10));
         // The overlight comes before this comp in the def, but its rows follow these, so it is declared from here rather than as a comp of its own.
         ((ThingDef)owner).GetCompProperties<CompProperties_Overlight>()?.DeclareOverlight(s, owner);
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string rule = "Applies to plants and farmers within the green ring, indoors or outdoors. Only the strongest Verdite source applies to each benefit, and a Verdite scythe counts as a source.";
+        string rule = "Lumen_Verdite_Rule".Translate();
         return new InfoStats()
-            .Add("Farming radius", InfoStats.Tiles(radius), rule)
-            .Add("Plant growth", InfoStats.Plus(growthBonus), rule)
-            .Add("Plant work speed", InfoStats.Plus(workBonus), rule)
-            .Add("Plant harvest yield", InfoStats.Plus(yieldBonus), rule)
+            .Add("Lumen_Verdite_FarmingRadius".Translate(), InfoStats.Tiles(radius), rule)
+            .Add(Effects.VerditeGrowth, "Lumen_Verdite_PlantGrowth".Translate(), InfoStats.Plus(growthBonus), rule)
+            .Add(Effects.VerditeWorkSpeed, "Lumen_Verdite_PlantWorkSpeed".Translate(), InfoStats.Plus(workBonus), rule)
+            .Add(Effects.VerditeHarvestYield, "Lumen_Verdite_PlantHarvestYield".Translate(), InfoStats.Plus(yieldBonus), rule)
             .Rows;
     }
 }
@@ -45,23 +45,8 @@ public class CompVerdite : ThingComp
 {
     public CompProperties_Verdite Props => (CompProperties_Verdite)props;
 
-    public override void PostSpawnSetup(bool respawningAfterLoad) => parent.Map.GetComponent<VerditeField>().fixtures.Add(this);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => map.GetComponent<VerditeField>().fixtures.Remove(this);
-
-    public override void CompTick()
-    {
-        if (!parent.Spawned) return;
-        if (!parent.IsHashIntervalTick(360) || parent.Position.Fogged(parent.Map) || !CompAnimationToggle.On(parent)) return;
-        var mote = FixtureMotes.Make("KM_Mote_VerditePulse", parent.Map);
-        if (mote == null) return;
-        mote.exactPosition = parent.DrawPos + parent.def.graphicData.drawOffset;
-        mote.exactPosition.y = AltitudeLayer.MoteOverhead.AltitudeFor();
-        mote.Scale = 0.07f;
-        mote.instanceColor = new Color(0.76f, 0.95f, 0.32f);
-        mote.airTimeLeft = 1.5f;
-        mote.SetVelocity(parent.thingIDNumber % 2 == 0 ? 55 : 305, 0.22f);
-        GenSpawn.Spawn(mote, parent.Position, parent.Map);
-    }
+    public override void PostSpawnSetup(bool respawningAfterLoad) => MapState.Of<VerditeField>(parent.Map).fixtures.Add(this);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => MapState.Of<VerditeField>(map).fixtures.Remove(this);
 
 }
 
@@ -70,8 +55,9 @@ public static class VerditeSupport
     public static float FixtureBonus(Map map, IntVec3 position, bool growth, bool harvest = false)
     {
         if (map == null) return 0;
+        if (!(growth ? Effects.VerditeGrowth : harvest ? Effects.VerditeHarvestYield : Effects.VerditeWorkSpeed).On) return 0;
         float strongest = 0;
-        foreach (var fixture in map.GetComponent<VerditeField>().fixtures)
+        foreach (var fixture in MapState.Of<VerditeField>(map).fixtures)
         {
             if (!fixture.parent.Spawned || fixture.parent.Position.DistanceToSquared(position) > fixture.Props.radius * fixture.Props.radius) continue;
             strongest = Mathf.Max(strongest, growth ? fixture.Props.growthBonus : harvest ? fixture.Props.yieldBonus : fixture.Props.workBonus);
@@ -83,7 +69,7 @@ public static class VerditeSupport
     {
         if (pawn.Dead) return 0;
         float fixture = pawn.Spawned ? FixtureBonus(pawn.Map, pawn.Position, false, harvest) : 0;
-        return Mathf.Max(fixture, VerditeScythe.Equipped(pawn) ? VerditeScythe.FarmingBonus : 0);
+        return Mathf.Max(fixture, Effects.VerditeScytheFarming.On && VerditeScythe.Equipped(pawn) ? VerditeScythe.FarmingBonus : 0);
     }
 
     public static void DrawRanges(ThingDef def, IntVec3 center, Thing thing = null)
@@ -109,7 +95,7 @@ public class StatPart_Verdite : StatPart
     public override string ExplanationPart(StatRequest req)
     {
         float bonus = req.Thing is Pawn pawn ? VerditeSupport.FarmerBonus(pawn, harvest) : 0;
-        return bonus > 0 ? "Strongest Verdite support: +" + bonus.ToStringPercent() : null;
+        return bonus > 0 ? "Lumen_Verdite_StrongestSupport".Translate(bonus.ToStringPercent()).ToString() : null;
     }
 }
 
@@ -128,6 +114,6 @@ public static class VerditeGrowthDescription
     public static void Postfix(Plant __instance, ref string __result)
     {
         float bonus = __instance.Spawned ? VerditeSupport.FixtureBonus(__instance.Map, __instance.Position, true) : 0;
-        if (bonus > 0) __result += "\nStrongest Verdite growth support: +" + bonus.ToStringPercent();
+        if (bonus > 0) __result += "\n" + "Lumen_Verdite_StrongestGrowth".Translate(bonus.ToStringPercent());
     }
 }

@@ -16,14 +16,14 @@ public static class SunstoneAxe
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var axe = s.In("Sunstone axe");
-        axe.Add("KM_SunstoneAxe.baneMultiplier", "Melee damage multiplier against Anomaly entities and mutants", UnnaturalDamageMultiplier,
+        var axe = s.In("Lumen_SunstoneAxe_Section".Translate()).PerItem();
+        axe.Add("KM_SunstoneAxe.baneMultiplier", "Lumen_SunstoneAxe_Bane".Translate(), UnnaturalDamageMultiplier,
             v => UnnaturalDamageMultiplier = v, Limit.Number(1, 10));
-        axe.Add("KM_SunstoneAxe.procChance", "Blind and stun chance on damaging melee hits (%)", ProcChance, v => ProcChance = v, Limit.Percent());
-        axe.Add("KM_SunstoneAxe.procChanceUnnatural", "Blind and stun chance against Anomaly entities and mutants (%)", UnnaturalProcChance,
+        axe.Add("KM_SunstoneAxe.procChance", "Lumen_SunstoneAxe_ProcChance".Translate(), ProcChance, v => ProcChance = v, Limit.Percent());
+        axe.Add("KM_SunstoneAxe.procChanceUnnatural", "Lumen_SunstoneAxe_ProcChanceUnnatural".Translate(), UnnaturalProcChance,
             v => UnnaturalProcChance = v, Limit.Percent());
-        axe.Add("KM_SunstoneAxe.blindTicks", "Solar blindness duration (ticks)", BlindTicks, v => BlindTicks = (int)v, Limit.Integer(1, 60000));
-        axe.Add("KM_SunstoneAxe.stunTicks", "Flash stun duration (ticks)", StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
+        axe.Add("KM_SunstoneAxe.blindTicks", "Lumen_SunstoneAxe_BlindTicks".Translate(), BlindTicks, v => BlindTicks = (int)v, Limit.Integer(1, 60000));
+        axe.Add("KM_SunstoneAxe.stunTicks", "Lumen_SunstoneAxe_StunTicks".Translate(), StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
     }
 }
 
@@ -33,13 +33,13 @@ public static class SunstoneAxeHit
 {
     public static void Prefix(Thing __instance, ref DamageInfo dinfo)
     {
-        if (dinfo.Weapon != SunstoneAxe.Def || __instance is not Pawn victim || !SunstoneAxe.Unnatural(victim)) return;
+        if (dinfo.Weapon != SunstoneAxe.Def || !Effects.SunstoneAxeBane.On || __instance is not Pawn victim || !SunstoneAxe.Unnatural(victim)) return;
         dinfo.SetAmount(dinfo.Amount * SunstoneAxe.UnnaturalDamageMultiplier);
     }
 
     public static void Postfix(Thing __instance, DamageInfo dinfo, DamageWorker.DamageResult __result)
     {
-        if (dinfo.Weapon != SunstoneAxe.Def || __result.totalDamageDealt <= 0 || __instance is not Pawn { Dead: false } victim) return;
+        if (dinfo.Weapon != SunstoneAxe.Def || __result.totalDamageDealt <= 0 || !Effects.SunstoneAxeProc.On || __instance is not Pawn { Dead: false } victim) return;
         if (!Rand.Chance(SunstoneAxe.Unnatural(victim) ? SunstoneAxe.UnnaturalProcChance : SunstoneAxe.ProcChance)) return;
         var blindness = DefDatabase<HediffDef>.GetNamed("KM_SolarBlindness");
         var existing = victim.health.hediffSet.GetFirstHediffOfDef(blindness);

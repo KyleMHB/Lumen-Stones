@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Seed_Section>恐惧石种子</Lumen_Seed_Section>
+	<Lumen_Seed_CrystalCost>每颗种子晶体所需的恐惧石</Lumen_Seed_CrystalCost>
+	<Lumen_Seed_RecipeDesc>将{0}恐惧石塑造成一颗恐惧石种子晶体。</Lumen_Seed_RecipeDesc>
+	<Lumen_Seed_Days>完全生长所需天数</Lumen_Seed_Days>
+	<Lumen_Seed_MaxPain>种子最大疼痛（%）</Lumen_Seed_MaxPain>
+	<Lumen_Seed_CutStart>被束缚时切割的平均间隔（小时）</Lumen_Seed_CutStart>
+	<Lumen_Seed_CutEnd>最后阶段切割的平均间隔（小时）</Lumen_Seed_CutEnd>
+	<Lumen_Seed_CutSeverity>切割伤害倍率</Lumen_Seed_CutSeverity>
+	<Lumen_Seed_BaseYield>完全生长时的暗石产量（未计受害者系数）</Lumen_Seed_BaseYield>
+	<Lumen_Seed_Dormant>休眠</Lumen_Seed_Dormant>
+	<Lumen_Seed_DormantTip>休眠：等待在献祭祭坛上通过束缚仪式被束缚。</Lumen_Seed_DormantTip>
+	<Lumen_Seed_GrowthTip>生长度：{0}。除非小人先死去，它将在{1}后吞噬身体。</Lumen_Seed_GrowthTip>
+	<Lumen_Seed_LetterText>{PAWN_labelShort}的胸口埋着一根恐惧石尖桩，深入{PAWN_possessive}血肉。在它穿过{PAWN_objective}的身体生长时，会让{PAWN_objective}一直活着。没有什么能止住疼痛。</Lumen_Seed_LetterText>
+	<Lumen_Seed_CutLabel>恐惧石切割</Lumen_Seed_CutLabel>
+	<Lumen_Seed_CutText>恐惧石种子撕裂了{PAWN_labelShort}的{PART}。它会随着生长不断切割。请包扎伤口，否则{PAWN_objective}会在它完成前失血而死。</Lumen_Seed_CutText>
+	<Lumen_Seed_ConsumedLabel>被吞噬</Lumen_Seed_ConsumedLabel>
+	<Lumen_Seed_ConsumedText>恐惧石已从{0}身上夺走了一切。剩下的只有{1}块暗石。</Lumen_Seed_ConsumedText>
+</LanguageData>

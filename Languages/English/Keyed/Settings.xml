@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Setting_StunTicks>Stun duration (ticks)</Lumen_Setting_StunTicks>
+	<Lumen_Setting_FixtureRadius>Fixture radius (tiles)</Lumen_Setting_FixtureRadius>
+	<Lumen_Section_Effects>Effects</Lumen_Section_Effects>
+	<Lumen_Section_Availability>Availability</Lumen_Section_Availability>
+	<Lumen_Section_General>General</Lumen_Section_General>
+	<Lumen_Effect_RestartRequired>{0} (restart required)</Lumen_Effect_RestartRequired>
+	<Lumen_Tab_Allow>Allow new {0} content</Lumen_Tab_Allow>
+	<Lumen_Tab_AllowSunstone>Allow new Sunstone content, and require Solar energy for active effects</Lumen_Tab_AllowSunstone>
+	<Lumen_Pyrinth_Override>Override Epochs - Pyrinth balance (restart required)</Lumen_Pyrinth_Override>
+	<Lumen_Pyrinth_Present>Base Pyrinth content only. Add-ons keep their own settings.</Lumen_Pyrinth_Present>
+	<Lumen_Pyrinth_Missing>Epochs - Pyrinth is not loaded. Its column and external controls appear when its definitions are present.</Lumen_Pyrinth_Missing>
+	<Lumen_DarklightMode_Off>Off (Normal light)</Lumen_DarklightMode_Off>
+	<Lumen_DarklightMode_Auto>Auto (by Ideoligion)</Lumen_DarklightMode_Auto>
+	<Lumen_DarklightMode_Always>Always Darklight</Lumen_DarklightMode_Always>
+	<Lumen_DarklightMode_Desc>Default light mode for newly placed player fixtures and jars of fireflies. Existing fixtures keep their chosen mode.</Lumen_DarklightMode_Desc>
+	<Lumen_Tab_Lumenstone>Lumenstone</Lumen_Tab_Lumenstone>
+	<Lumen_Tab_Firefly>Firefly</Lumen_Tab_Firefly>
+	<Lumen_Tab_Glacite>Glacite</Lumen_Tab_Glacite>
+	<Lumen_Tab_Vitalite>Vitalite</Lumen_Tab_Vitalite>
+	<Lumen_Tab_Serenite>Serenite</Lumen_Tab_Serenite>
+	<Lumen_Tab_Verdite>Verdite</Lumen_Tab_Verdite>
+	<Lumen_Tab_Aegite>Aegite</Lumen_Tab_Aegite>
+	<Lumen_Tab_Ferrite>Ferrite</Lumen_Tab_Ferrite>
+	<Lumen_Tab_Sunstone>Sunstone</Lumen_Tab_Sunstone>
+	<Lumen_Tab_Pyrinth>Pyrinth</Lumen_Tab_Pyrinth>
+	<Lumen_Tab_Darklight>Darklight</Lumen_Tab_Darklight>
+	<Lumen_Tab_Animastone>Animastone</Lumen_Tab_Animastone>
+	<Lumen_Tab_DarkStone>DarkStone</Lumen_Tab_DarkStone>
+	<Lumen_Tab_Sanguinite>Sanguinite</Lumen_Tab_Sanguinite>
+	<Lumen_Tab_Dreadstone>Dreadstone</Lumen_Tab_Dreadstone>
+	<Lumen_Tab_Hollowstone>Hollowstone</Lumen_Tab_Hollowstone>
+	<Lumen_Tab_Implants>Implants</Lumen_Tab_Implants>
+	<Lumen_Settings_BalanceNote>Balance values require a restart, including for existing items. Generation affects future maps.</Lumen_Settings_BalanceNote>
+	<Lumen_Settings_EffectNote>Effect switches apply at once, except those marked restart required. Switching an effect off also stops it on existing items.</Lumen_Settings_EffectNote>
+	<Lumen_Settings_AvailabilityNote>Availability applies immediately. Existing items, buildings and blueprints remain usable.</Lumen_Settings_AvailabilityNote>
+	<Lumen_Settings_Advanced>Show advanced settings</Lumen_Settings_Advanced>
+	<Lumen_Settings_AdvancedDesc>Also lists each item's own numbers: costs, damage, light radius, support weight, recipe quantities and the values of its health effects and moods. Hidden values still apply.</Lumen_Settings_AdvancedDesc>
+	<Lumen_Settings_AdvancedHidden>{0} advanced values are set in this tab. Show advanced settings to see or change them.</Lumen_Settings_AdvancedHidden>
+	<Lumen_Settings_ResetTab>Reset {0} to active mod list</Lumen_Settings_ResetTab>
+	<Lumen_Settings_Section>Section: {0}</Lumen_Settings_Section>
+	<Lumen_Settings_OverrideNote>Checked balance overrides use your value; Reset restores the loaded mod list. Enter percentages as percentages.</Lumen_Settings_OverrideNote>
+	<Lumen_Settings_Reset>Reset</Lumen_Settings_Reset>
+	<Lumen_Settings_ModList>Mod list: {0}</Lumen_Settings_ModList>
+	<Lumen_Stage_Percent>{0}: {1} (%)</Lumen_Stage_Percent>
+	<Lumen_Stage_PainFactor>pain factor</Lumen_Stage_PainFactor>
+	<Lumen_Stage_PainOffset>pain offset</Lumen_Stage_PainOffset>
+	<Lumen_Stage_BleedingFactor>bleeding factor</Lumen_Stage_BleedingFactor>
+	<Lumen_Stage_HungerFactor>hunger factor</Lumen_Stage_HungerFactor>
+	<Lumen_Stage_HungerOffset>hunger offset</Lumen_Stage_HungerOffset>
+	<Lumen_Stage_RestFallFactor>rest fall factor</Lumen_Stage_RestFallFactor>
+	<Lumen_Stage_FertilityFactor>fertility factor</Lumen_Stage_FertilityFactor>
+	<Lumen_Stage_FoodPoisoningFactor>food poisoning chance factor</Lumen_Stage_FoodPoisoningFactor>
+	<Lumen_Stage_Offset>{0}: {1} offset</Lumen_Stage_Offset>
+	<Lumen_Stage_OffsetPercent>{0}: {1} offset (%)</Lumen_Stage_OffsetPercent>
+	<Lumen_Stage_FactorPercent>{0}: {1} factor (%)</Lumen_Stage_FactorPercent>
+	<Lumen_Stage_Number>Stage {0}</Lumen_Stage_Number>
+	<Lumen_Stage_Mood>Mood: {0}</Lumen_Stage_Mood>
+	<Lumen_Stage_MemoryDays>Memory duration (days): {0}</Lumen_Stage_MemoryDays>
+	<Lumen_Section_Moods>Moods</Lumen_Section_Moods>
+	<Lumen_Setting_WearsOffPerDay>Wears off per day (severity)</Lumen_Setting_WearsOffPerDay>
+	<Lumen_Setting_AllowItem>Allow new {0}</Lumen_Setting_AllowItem>
+	<Lumen_Setting_AllowDeposits>Allow new {0} deposits</Lumen_Setting_AllowDeposits>
+	<Lumen_Setting_EquippedOffset>{0} offset while equipped</Lumen_Setting_EquippedOffset>
+	<Lumen_Setting_LightRadius>Light radius</Lumen_Setting_LightRadius>
+	<Lumen_Setting_CoolingStrength>Cooling strength (heat / second)</Lumen_Setting_CoolingStrength>
+	<Lumen_Setting_HeatingStrength>Heating strength (heat / second)</Lumen_Setting_HeatingStrength>
+	<Lumen_Setting_TemperatureCutoff>Temperature cutoff (C)</Lumen_Setting_TemperatureCutoff>
+	<Lumen_Setting_Quantity>{0} quantity</Lumen_Setting_Quantity>
+	<Lumen_Setting_StuffQuantity>Construction material quantity</Lumen_Setting_StuffQuantity>
+	<Lumen_Setting_ToolDamage>{0} damage</Lumen_Setting_ToolDamage>
+	<Lumen_Setting_ExtraDamage>{0} {1} damage</Lumen_Setting_ExtraDamage>
+	<Lumen_Setting_ExtraDamageChance>{0} {1} chance (%)</Lumen_Setting_ExtraDamageChance>
+	<Lumen_Section_Acquisition>Acquisition</Lumen_Section_Acquisition>
+	<Lumen_Setting_SizeMin>Minimum deposit size</Lumen_Setting_SizeMin>
+	<Lumen_Setting_SizeMax>Maximum deposit size</Lumen_Setting_SizeMax>
+	<Lumen_Setting_MiningYield>Mining yield</Lumen_Setting_MiningYield>
+	<Lumen_Setting_RecipeQuantity>{0} quantity (recipe)</Lumen_Setting_RecipeQuantity>
+</LanguageData>

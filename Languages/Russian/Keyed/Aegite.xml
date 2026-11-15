@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Aegite_WardRadius>Радиус защиты</Lumen_Aegite_WardRadius>
+	<Lumen_Aegite_Interval>Тиков между защитными импульсами</Lumen_Aegite_Interval>
+	<Lumen_Aegite_FireCount>Максимум очагов огня за импульс</Lumen_Aegite_FireCount>
+	<Lumen_Aegite_FireReduction>Уменьшение размера огня за обработку</Lumen_Aegite_FireReduction>
+	<Lumen_Aegite_FilthLayers>Максимум слоёв грязи за импульс</Lumen_Aegite_FilthLayers>
+	<Lumen_Aegite_WardRule>Каждый очаг огня или грязи обрабатывает только сильнейший накрывающий его уровень защиты, а среди равных — только одна защита. Перекрытие защит ничего не добавляет.</Lumen_Aegite_WardRule>
+	<Lumen_Aegite_FireRule>Каждый импульс тушит огонь на своей территории вместо очистки грязи.</Lumen_Aegite_FireRule>
+	<Lumen_Aegite_WardRadiusDesc>Работает в помещении, на улице и сквозь стены.</Lumen_Aegite_WardRadiusDesc>
+	<Lumen_Aegite_PulseInterval>Интервал импульса</Lumen_Aegite_PulseInterval>
+	<Lumen_Aegite_FilthThinned>Слоёв грязи за импульс</Lumen_Aegite_FilthThinned>
+	<Lumen_Aegite_FilthThinnedDesc>Используется, когда нет огня или активный эффект солнечной энергии не может работать.</Lumen_Aegite_FilthThinnedDesc>
+	<Lumen_Aegite_FiresSuppressed>Потушенных очагов за импульс</Lumen_Aegite_FiresSuppressed>
+	<Lumen_Aegite_FireSizeRemoved>Уменьшение размера огня</Lumen_Aegite_FireSizeRemoved>
+	<Lumen_Aegite_SolarPerFire>Солнечная энергия за очаг огня</Lumen_Aegite_SolarPerFire>
+	<Lumen_Aegite_SolarPerFireSetting>Солнечная энергия за потушенный очаг</Lumen_Aegite_SolarPerFireSetting>
+</LanguageData>

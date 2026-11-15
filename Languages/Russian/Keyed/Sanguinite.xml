@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sanguinite_Treatment>Лечение</Lumen_Sanguinite_Treatment>
+	<Lumen_Sanguinite_Costs>Расход энергии варпа</Lumen_Sanguinite_Costs>
+	<Lumen_Sanguinite_Times>Время отращивания</Lumen_Sanguinite_Times>
+	<Lumen_Sanguinite_Radius>Радиус лечения (клеток)</Lumen_Sanguinite_Radius>
+	<Lumen_Sanguinite_BleedCost>Замедление кровотечения, на кровоточащего пациента за проход</Lumen_Sanguinite_BleedCost>
+	<Lumen_Sanguinite_Scar>Шрам</Lumen_Sanguinite_Scar>
+	<Lumen_Sanguinite_Digit>Палец</Lumen_Sanguinite_Digit>
+	<Lumen_Sanguinite_SmallPart>Мелкая часть (глаз, ухо, нос, челюсть)</Lumen_Sanguinite_SmallPart>
+	<Lumen_Sanguinite_Organ>Внутренний орган</Lumen_Sanguinite_Organ>
+	<Lumen_Sanguinite_DigitDays>Палец (дн.)</Lumen_Sanguinite_DigitDays>
+	<Lumen_Sanguinite_SmallPartDays>Мелкая часть (дн.)</Lumen_Sanguinite_SmallPartDays>
+	<Lumen_Sanguinite_OrganDays>Внутренний орган (дн.)</Lumen_Sanguinite_OrganDays>
+	<Lumen_Sanguinite_BleedNote>Кровотечение замедлено до {0} за {1} энергии варпа за проход, пока идёт кровь.</Lumen_Sanguinite_BleedNote>
+	<Lumen_Sanguinite_ScarNote>Лечит один постоянный шрам за проход за {0} энергии варпа.</Lumen_Sanguinite_ScarNote>
+	<Lumen_Sanguinite_ScarNoteSurface>Лечит один постоянный шрам за проход за {0} энергии варпа (только поверхностные шрамы).</Lumen_Sanguinite_ScarNoteSurface>
+	<Lumen_Sanguinite_Digits>пальцы</Lumen_Sanguinite_Digits>
+	<Lumen_Sanguinite_SmallParts>мелкие части</Lumen_Sanguinite_SmallParts>
+	<Lumen_Sanguinite_Organs>внутренние органы</Lumen_Sanguinite_Organs>
+	<Lumen_Sanguinite_Regrows>Отращивает: {0}.</Lumen_Sanguinite_Regrows>
+	<Lumen_Sanguinite_Regrown>{1} ({0}) отрос.</Lumen_Sanguinite_Regrown>
+</LanguageData>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_HollowstoneWard.label>空虚石守护</KM_HollowstoneWard.label>
+	<KM_HollowstoneWard.description>这名小人留在空虚石附近时，空虚石会减轻疼痛并稳定心神。</KM_HollowstoneWard.description>
+	<KM_HollowstoneWard.stages.0.label>柱</KM_HollowstoneWard.stages.0.label>
+	<KM_HollowstoneWard.stages.1.label>晶簇</KM_HollowstoneWard.stages.1.label>
+	<KM_HollowstoneWard.stages.2.label>塔</KM_HollowstoneWard.stages.2.label>
+	<KM_GlaiveWielder.label>长柄刀持有者</KM_GlaiveWielder.label>
+	<KM_GlaiveWielder.description>持握空虚石长柄刀时，它会减轻持有者的疼痛。</KM_GlaiveWielder.description>
+</LanguageData>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Altar_Crystallize>凝结暗石</Lumen_Altar_Crystallize>
+	<Lumen_Altar_CrystallizeInput>流明石投入量</Lumen_Altar_CrystallizeInput>
+	<Lumen_Altar_CrystallizePoor>结果差时的转化比例（%）</Lumen_Altar_CrystallizePoor>
+	<Lumen_Altar_CrystallizeSuccess>成功时的转化比例（%）</Lumen_Altar_CrystallizeSuccess>
+	<Lumen_Altar_CrystallizeExceptional>卓越时的转化比例（%）</Lumen_Altar_CrystallizeExceptional>
+	<Lumen_Setting_CooldownDays>冷却时间（天）</Lumen_Setting_CooldownDays>
+	<Lumen_Altar_Harvest>收割扭曲能量</Lumen_Altar_Harvest>
+	<Lumen_Altar_HarvestPoor>结果差时的扭曲能量</Lumen_Altar_HarvestPoor>
+	<Lumen_Altar_HarvestSuccess>成功时的扭曲能量</Lumen_Altar_HarvestSuccess>
+	<Lumen_Altar_HarvestExceptional>卓越时的扭曲能量</Lumen_Altar_HarvestExceptional>
+	<Lumen_Altar_LinkSection>连接与受害者</Lumen_Altar_LinkSection>
+	<Lumen_Altar_LinkRadius>祭坛与电池的连接半径（格）</Lumen_Altar_LinkRadius>
+	<Lumen_Altar_StatusSlave>奴隶受害者系数倍率</Lumen_Altar_StatusSlave>
+	<Lumen_Altar_StatusColonist>殖民者受害者系数倍率</Lumen_Altar_StatusColonist>
+	<Lumen_Section_RitualSupport>仪式支援</Lumen_Section_RitualSupport>
+	<Lumen_Setting_SupportQualityCap>满支援时装置支援的品质加成（%）</Lumen_Setting_SupportQualityCap>
+	<Lumen_Altar_SupportYieldCap>满支援时装置支援的转化和收割加成（%）</Lumen_Altar_SupportYieldCap>
+	<Lumen_Setting_SupportRadius>装置支援半径（格）</Lumen_Setting_SupportRadius>
+	<Lumen_Altar_Building>献祭祭坛</Lumen_Altar_Building>
+	<Lumen_Setting_LumenstoneQuantity>流明石数量</Lumen_Setting_LumenstoneQuantity>
+	<Lumen_Setting_StoneBlockQuantity>石砖数量</Lumen_Setting_StoneBlockQuantity>
+	<Lumen_Altar_VictimLow>价值为0时的受害者系数</Lumen_Altar_VictimLow>
+	<Lumen_Altar_VictimMidValue>中间点的价值（市场价值 x 身份）</Lumen_Altar_VictimMidValue>
+	<Lumen_Altar_VictimMid>中间点的受害者系数</Lumen_Altar_VictimMid>
+	<Lumen_Altar_VictimHighValue>最高点的价值（市场价值 x 身份）</Lumen_Altar_VictimHighValue>
+	<Lumen_Altar_VictimHigh>最高点及以上的受害者系数</Lumen_Altar_VictimHigh>
+	<Lumen_Altar_NeedsBattery>需要祭坛{0}格范围内有一个血石电池。</Lumen_Altar_NeedsBattery>
+	<Lumen_Altar_NeedsLumenstone>需要{0}个可到达且未被禁用的流明石。</Lumen_Altar_NeedsLumenstone>
+	<Lumen_Altar_CrystallizeOff>凝结暗石：已在模组设置中关闭。</Lumen_Altar_CrystallizeOff>
+	<Lumen_Altar_CrystallizeReady>凝结暗石已就绪。</Lumen_Altar_CrystallizeReady>
+	<Lumen_Altar_HarvestOff>收割扭曲能量：已在模组设置中关闭。</Lumen_Altar_HarvestOff>
+	<Lumen_Altar_HarvestReady>收割扭曲能量已就绪。</Lumen_Altar_HarvestReady>
+	<Lumen_Altar_Batteries>范围内电池：{0}（剩余容量{1}）</Lumen_Altar_Batteries>
+	<Lumen_Altar_Fixtures>暗石装置：{0}</Lumen_Altar_Fixtures>
+	<Lumen_Altar_HarvestDesc>献祭一名囚犯、奴隶或殖民者，为{0}格范围内的血石电池充能。按结果产出{1}/{2}/{3}扭曲能量，并按受害者的价值和身份缩放。范围内剩余容量：{4}；多余部分会损失。需恢复{5}小时。</Lumen_Altar_HarvestDesc>
+	<Lumen_Altar_CrystallizeDesc>献祭一名囚犯、奴隶或殖民者，按结果和受害者将{0}流明石转化为暗石。未转化的流明石会被返还。需恢复{1}天。</Lumen_Altar_CrystallizeDesc>
+	<Lumen_Altar_SupportDesc>{0}。此房间内{1}格范围内的暗石装置会提高品质和产出。</Lumen_Altar_SupportDesc>
+	<Lumen_Altar_Raise>唤起劳役躯壳</Lumen_Altar_Raise>
+	<Lumen_Altar_RaiseDesc>献祭一名囚犯、奴隶或殖民者，将其唤起为绑定到空虚石塔的劳役躯壳。消耗{0}扭曲能量，仪式取消时返还。躯壳每日消耗{1}扭曲能量。需恢复{2}小时。</Lumen_Altar_RaiseDesc>
+	<Lumen_Altar_VictimRole>必须是囚犯、奴隶或殖民者。</Lumen_Altar_VictimRole>
+	<Lumen_Altar_NotLeader>不能是仪式主持者。</Lumen_Altar_NotLeader>
+	<Lumen_Altar_SupportNote>（附近暗石装置：+{0}）</Lumen_Altar_SupportNote>
+	<Lumen_Altar_CrystallizeResult>仪式将{1}流明石中的{0}转化为暗石，并返还了{2}流明石{3}。凝结现在需恢复{4}天。</Lumen_Altar_CrystallizeResult>
+	<Lumen_Altar_HarvestResult>仪式收割了{0}扭曲能量：{1}储存进电池，{2}损失{3}。收割现在需恢复{4}小时。</Lumen_Altar_HarvestResult>
+	<Lumen_Altar_Free>剩余{0}</Lumen_Altar_Free>
+	<Lumen_Altar_FreeTooltip>{0}格范围内血石电池的剩余容量。收割超出此值的部分会损失，但仪式仍会进行。</Lumen_Altar_FreeTooltip>
+</LanguageData>

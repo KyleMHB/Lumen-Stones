@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneFlare_Section>Sunstone flare</Lumen_SunstoneFlare_Section>
+	<Lumen_SunstoneFlare_Radius>Flash radius (tiles)</Lumen_SunstoneFlare_Radius>
+	<Lumen_SunstoneFlare_Burn>Burn damage to Anomaly entities and mutants</Lumen_SunstoneFlare_Burn>
+	<Lumen_SunstoneFlare_Throw>Throw Sunstone flare</Lumen_SunstoneFlare_Throw>
+	<Lumen_SunstoneFlare_CannotThrow>Cannot throw a flare right now.</Lumen_SunstoneFlare_CannotThrow>
+	<Lumen_SunstoneFlare_Take>Take Sunstone flares ({0})</Lumen_SunstoneFlare_Take>
+</LanguageData>

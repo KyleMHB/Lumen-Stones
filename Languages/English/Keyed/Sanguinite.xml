@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sanguinite_Treatment>Treatment</Lumen_Sanguinite_Treatment>
+	<Lumen_Sanguinite_Costs>Warp energy costs</Lumen_Sanguinite_Costs>
+	<Lumen_Sanguinite_Times>Regrowth time</Lumen_Sanguinite_Times>
+	<Lumen_Sanguinite_Radius>Treatment radius (tiles)</Lumen_Sanguinite_Radius>
+	<Lumen_Sanguinite_BleedCost>Slowed bleeding, per bleeding patient per pass</Lumen_Sanguinite_BleedCost>
+	<Lumen_Sanguinite_Scar>Scar</Lumen_Sanguinite_Scar>
+	<Lumen_Sanguinite_Digit>Digit</Lumen_Sanguinite_Digit>
+	<Lumen_Sanguinite_SmallPart>Small part (eye, ear, nose, jaw)</Lumen_Sanguinite_SmallPart>
+	<Lumen_Sanguinite_Organ>Internal organ</Lumen_Sanguinite_Organ>
+	<Lumen_Sanguinite_DigitDays>Digit (days)</Lumen_Sanguinite_DigitDays>
+	<Lumen_Sanguinite_SmallPartDays>Small part (days)</Lumen_Sanguinite_SmallPartDays>
+	<Lumen_Sanguinite_OrganDays>Internal organ (days)</Lumen_Sanguinite_OrganDays>
+	<Lumen_Sanguinite_BleedNote>Bleeding slowed to {0} for {1} Warp energy per pass while bleeding.</Lumen_Sanguinite_BleedNote>
+	<Lumen_Sanguinite_ScarNote>Heals one permanent scar per pass for {0} Warp energy.</Lumen_Sanguinite_ScarNote>
+	<Lumen_Sanguinite_ScarNoteSurface>Heals one permanent scar per pass for {0} Warp energy (surface scars only).</Lumen_Sanguinite_ScarNoteSurface>
+	<Lumen_Sanguinite_Digits>digits</Lumen_Sanguinite_Digits>
+	<Lumen_Sanguinite_SmallParts>small parts</Lumen_Sanguinite_SmallParts>
+	<Lumen_Sanguinite_Organs>internal organs</Lumen_Sanguinite_Organs>
+	<Lumen_Sanguinite_Regrows>Regrows {0}.</Lumen_Sanguinite_Regrows>
+	<Lumen_Sanguinite_Regrown>{0}'s {1} has regrown.</Lumen_Sanguinite_Regrown>
+</LanguageData>

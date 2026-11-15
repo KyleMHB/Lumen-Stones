@@ -29,27 +29,27 @@ public static class SolarRules
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var network = s.In("Solar network");
+        var network = s.In("Lumen_Solar_Section".Translate());
         foreach (var (key, label, name) in new[] {
-            ("collectorOutput", "Collector output per day at full sun", "KM_SunstoneCollector"),
-            ("arrayOutput", "Array output per day at full sun", "KM_SunstoneArray") })
+            ("collectorOutput", "Lumen_Solar_CollectorOutput", "KM_SunstoneCollector"),
+            ("arrayOutput", "Lumen_Solar_ArrayOutput", "KM_SunstoneArray") })
         {
             var comp = DefDatabase<ThingDef>.GetNamed(name).GetCompProperties<CompProperties_Sunstone>();
-            network.Add("Sunstone." + key, label, comp.output, v => comp.output = v, Limit.Number(0.01f));
+            network.Add("Sunstone." + key, label.Translate(), comp.output, v => comp.output = v, Limit.Number(0.01f));
         }
         foreach (var (key, label, name) in new[] {
-            ("vesselCapacity", "Vessel capacity", "KM_SunstoneVessel"),
-            ("obeliskCapacity", "Obelisk capacity", "KM_SunstoneObelisk") })
+            ("vesselCapacity", "Lumen_Solar_VesselCapacity", "KM_SunstoneVessel"),
+            ("obeliskCapacity", "Lumen_Solar_ObeliskCapacity", "KM_SunstoneObelisk") })
         {
             var comp = DefDatabase<ThingDef>.GetNamed(name).GetCompProperties<CompProperties_Sunstone>();
-            network.Add("Sunstone." + key, label, comp.capacity, v => comp.capacity = v, Limit.Number(1));
+            network.Add("Sunstone." + key, label.Translate(), comp.capacity, v => comp.capacity = v, Limit.Number(1));
         }
-        network.Add("Sunstone.solarHysteresis", "Stored energy needed to recover from depletion", Hysteresis, v => Hysteresis = v, Limit.Number(0.02f));
-        string[] weather = { "Fog", "Rain and gentle snow", "Thunderstorms", "Foggy rain and hard snow" };
+        network.Add("Sunstone.solarHysteresis", "Lumen_Solar_Hysteresis".Translate(), Hysteresis, v => Hysteresis = v, Limit.Number(0.02f));
+        string[] weather = { "Lumen_Solar_WeatherFog", "Lumen_Solar_WeatherRain", "Lumen_Solar_WeatherThunder", "Lumen_Solar_WeatherHard" };
         for (int i = 0; i < weather.Length; i++)
         {
             int tier = i;
-            network.Add("Sunstone.weather" + tier, weather[i] + " output factor (%)", WeatherFactors[tier], v => WeatherFactors[tier] = v, Limit.Percent());
+            network.Add("Sunstone.weather" + tier, "Lumen_Solar_WeatherFactor".Translate(weather[i].Translate()), WeatherFactors[tier], v => WeatherFactors[tier] = v, Limit.Percent());
         }
     }
 
@@ -92,11 +92,10 @@ public class CompProperties_Sunstone : CompProperties
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string keep = "Every Sunstone collector and battery on a map shares one Solar network, however far apart. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.";
-        var rows = new InfoStats().Add("Solar energy capacity", capacity.ToString("0"), keep);
+        string keep = "Lumen_Solar_NetworkRule".Translate();
+        var rows = new InfoStats().Add("Lumen_Solar_Capacity".Translate(), capacity.ToString("0"), keep);
         if (output > 0)
-            rows.Add("Solar energy per day", output.ToString("0"),
-                "Under a clear midday sky. Less in fog, rain and storms, at dawn and dusk, and under a roof, and none at night. Surplus fills the network's batteries. " + keep);
+            rows.Add("Lumen_Info_SolarPerDay".Translate(), output.ToString("0"), "Lumen_Solar_OutputDesc".Translate() + " " + keep);
         return rows.Rows;
     }
 }
@@ -115,12 +114,12 @@ public class CompSunstone : ThingComp
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
-        parent.Map.GetComponent<SolarNetwork>().Register(this);
+        MapState.Of<SolarNetwork>(parent.Map).Register(this);
         RefreshUnroofed();
         UpdateGlow(IsCollector ? (parent.Map.skyManager.CurSkyGlow >= SolarRules.DayGlow ? 1 : 0) : FillStep());
     }
 
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => map.GetComponent<SolarNetwork>().Unregister(this);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => MapState.Of<SolarNetwork>(map).Unregister(this);
     public override void PostExposeData() => Scribe_Values.Look(ref stored, "solarStored");
 
     // Same layering as the Warp batteries: the base sprite is empty and each lit gauge is drawn over it.
@@ -169,21 +168,21 @@ public class CompSunstone : ThingComp
     public override string CompInspectStringExtra()
     {
         if (!parent.Spawned) return null;
-        var network = parent.Map.GetComponent<SolarNetwork>();
-        string text = "Solar energy: " + stored.ToString("0") + " / " + Props.capacity.ToString("0");
+        var network = MapState.Of<SolarNetwork>(parent.Map);
+        string text = "Lumen_Twinstone_Solar".Translate(stored.ToString("0"), Props.capacity.ToString("0"));
         if (IsCollector)
-            text += "\nGenerating " + (ratePerTick * GenDate.TicksPerDay).ToString("0") + " a day now (up to " + Props.output.ToString("0") + ")" +
-                (ActiveEffectInterruption.Reason(parent.Map, ActiveEffectNetworks.Solar) is { } reason ? "\nInterrupted: " + reason : "");
-        text += "\nNetwork: " + network.TotalStored.ToString("0") + " / " + network.TotalCapacity.ToString("0");
-        if (network.Depleted) text += "\nDepleted. Active effects resume at " + SolarRules.Hysteresis.ToString("0") + " stored.";
+            text += "\n" + "Lumen_Solar_Generating".Translate((ratePerTick * GenDate.TicksPerDay).ToString("0"), Props.output.ToString("0")) +
+                (ActiveEffectInterruption.Reason(parent.Map, ActiveEffectNetworks.Solar) is { } reason ? "\n" + "Lumen_Solar_Interrupted".Translate(reason).ToString() : "");
+        text += "\n" + "Lumen_Warp_Network".Translate(network.TotalStored.ToString("0"), network.TotalCapacity.ToString("0"));
+        if (network.Depleted) text += "\n" + "Lumen_Warp_Depleted".Translate(SolarRules.Hysteresis.ToString("0"));
         return text;
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         if (!Prefs.DevMode) yield break;
-        yield return new Command_Action { defaultLabel = "DEV: +25 Solar", action = () => stored = Mathf.Min(Props.capacity, stored + 25f) };
-        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => stored = 0 };
+        yield return new Command_Action { defaultLabel = "DEV: +25 Solar", action = () => stored = Mathf.Min(Props.capacity, stored + 25f) }; // not translated
+        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => stored = 0 }; // not translated
     }
 }
 
@@ -197,7 +196,7 @@ public class SolarNetwork : MapComponent, IEnergyStore
 
     public bool Depleted => Account.Depleted;
     public bool Available => Account.Available;
-    public static SolarNetwork For(Map map) => map.GetComponent<SolarNetwork>();
+    public static SolarNetwork For(Map map) => MapState.Of<SolarNetwork>(map);
 
     public float TotalStored => Sum(collectors) + Sum(batteries);
     public float TotalCapacity

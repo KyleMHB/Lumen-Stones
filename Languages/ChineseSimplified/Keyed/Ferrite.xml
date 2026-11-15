@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ferrite_Radius>维护半径</Lumen_Ferrite_Radius>
+	<Lumen_Ferrite_Interval>修复脉冲间隔（刻）</Lumen_Ferrite_Interval>
+	<Lumen_Ferrite_BudgetSetting>每次脉冲共享的耐久度预算（%）</Lumen_Ferrite_BudgetSetting>
+	<Lumen_Ferrite_BudgetRule>每次脉冲将一份耐久度预算平均分配给分配到此来源的受损目标，因此目标越多修复越慢。不足1点的耐久度会累积到下次脉冲。每个目标只由覆盖它的最强铁晶石来源修复；重叠不会增加修复量。战斗中同样有效。</Lumen_Ferrite_BudgetRule>
+	<Lumen_Ferrite_Mends>修补</Lumen_Ferrite_Mends>
+	<Lumen_Ferrite_MendsSelf>自身和穿戴的装备</Lumen_Ferrite_MendsSelf>
+	<Lumen_Ferrite_MendsSelfDesc>穿戴或持握时，修补此物品以及穿戴者身上的衣物和装备的武器，包括带有尸衣标记的衣物（不会移除该标记）。不需要太阳能。</Lumen_Ferrite_MendsSelfDesc>
+	<Lumen_Ferrite_RadiusDesc>可穿墙生效。</Lumen_Ferrite_RadiusDesc>
+	<Lumen_Ferrite_MendsFree>免费修补</Lumen_Ferrite_MendsFree>
+	<Lumen_Ferrite_Buildings>建筑</Lumen_Ferrite_Buildings>
+	<Lumen_Ferrite_BuildingsDesc>玩家拥有的可修理建筑和墙壁。</Lumen_Ferrite_BuildingsDesc>
+	<Lumen_Ferrite_MendsItems>修补物品</Lumen_Ferrite_MendsItems>
+	<Lumen_Ferrite_LooseItems>散落物品</Lumen_Ferrite_LooseItems>
+	<Lumen_Ferrite_LooseItemsDesc>修补地面、储存区和货架上不会腐烂的物品。</Lumen_Ferrite_LooseItemsDesc>
+	<Lumen_Ferrite_MendsGear>修补穿戴的装备</Lumen_Ferrite_MendsGear>
+	<Lumen_Ferrite_ColonistGear>殖民者的装备</Lumen_Ferrite_ColonistGear>
+	<Lumen_Ferrite_ColonistGearDesc>修补殖民者、奴隶和囚犯穿戴的衣物和装备的武器，保留尸衣标记。敌人的装备永远不会被修复。</Lumen_Ferrite_ColonistGearDesc>
+	<Lumen_Ferrite_SolarPerHp>每点耐久的太阳能</Lumen_Ferrite_SolarPerHp>
+	<Lumen_Ferrite_SolarPerHpDesc>物品每恢复一点耐久度支付一次。</Lumen_Ferrite_SolarPerHpDesc>
+	<Lumen_Ferrite_Budget>每次脉冲的耐久度预算</Lumen_Ferrite_Budget>
+	<Lumen_Ferrite_BudgetDesc>每个目标最大耐久度的一部分。</Lumen_Ferrite_BudgetDesc>
+	<Lumen_Ferrite_SolarPerHpSetting>修复物品或装备每点耐久消耗的太阳能</Lumen_Ferrite_SolarPerHpSetting>
+</LanguageData>

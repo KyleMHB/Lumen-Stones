@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Category_Column>column</Lumen_Category_Column>
+	<Lumen_Category_Lamp>lamp</Lumen_Category_Lamp>
+	<Lumen_Category_Pylon>pylon</Lumen_Category_Pylon>
+	<Lumen_Category_Cluster>cluster</Lumen_Category_Cluster>
+	<Lumen_Category_RestorativeCluster>restorative cluster</Lumen_Category_RestorativeCluster>
+	<Lumen_Category_SanctuaryShrine>sanctuary shrine</Lumen_Category_SanctuaryShrine>
+	<Lumen_Category_SoothingCluster>soothing cluster</Lumen_Category_SoothingCluster>
+</LanguageData>

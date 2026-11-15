@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Ferrite.label>铁晶石</KM_Ferrite.label>
+	<KM_Ferrite.description>浸入钢铁的流明石吸收了钢铁对自身形状的记忆。随着时间推移，它会把磨损和凹陷的东西慢慢引回原本的模样。\n\n一种石板银色的晶体，带有抛光铜色的核心，在流明仪式圈由流明石灌注而成。它免费缓慢维护建筑，并消耗太阳能维护物品和装备，无需燃料。</KM_Ferrite.description>
+	<KM_LumenFerriteColumn.label>铁晶石维护柱</KM_LumenFerriteColumn.label>
+	<KM_LumenFerriteColumn.description>一根石板银色与铜色相间的铁晶石柱。附近墙上的裂缝愈合得如此缓慢，以至于没人能看到它发生。\n\n免费、穿墙、即使在战斗中也能缓慢修复周围玩家拥有的建筑和墙壁。无需燃料。</KM_LumenFerriteColumn.description>
+	<KM_FerriteLamp.label>铁晶石灯</KM_FerriteLamp.label>
+	<KM_FerriteLamp.description>一盏石板银色与铜色相间的铁晶石灯。\n\n仅提供照明，没有维护效果或锻炉火花。不发热，不需要燃料或电力。</KM_FerriteLamp.description>
+	<KM_FerriteWallLamp.label>铁晶石壁灯</KM_FerriteWallLamp.label>
+	<KM_FerriteWallLamp.description>一盏石板银色与铜色相间的铁晶石壁灯。\n\n仅提供照明，没有维护效果或锻炉火花。不发热，不需要燃料或电力。</KM_FerriteWallLamp.description>
+	<KM_FerriteCluster.label>铁晶石维护晶簇</KM_FerriteCluster.label>
+	<KM_FerriteCluster.description>一簇铁晶石晶体。放在它旁边的东西会恢复得更好。\n\n免费、穿墙、即使在战斗中也能缓慢修复周围玩家拥有的建筑和墙壁。无需燃料。有太阳能时，还会修复附近储存或散落的受损物品。</KM_FerriteCluster.description>
+	<KM_FerriteCluster.comps.2.effect>物品和装备修复</KM_FerriteCluster.comps.2.effect>
+	<KM_FerritePylon.label>铁晶石维护塔</KM_FerritePylon.label>
+	<KM_FerritePylon.description>一块被沉重束具固定的宽大铁晶石晶体。它像一座无人工作的锻炉一样迸出火花。\n\n免费、穿墙、即使在战斗中也能缓慢修复周围玩家拥有的建筑和墙壁。无需燃料。有太阳能时，还会修复附近的受损物品，以及殖民者、奴隶和囚犯穿戴的衣物和装备的武器。敌人的建筑和装备永远不会被修复。</KM_FerritePylon.description>
+	<KM_FerritePylon.comps.2.effect>物品和装备修复</KM_FerritePylon.comps.2.effect>
+</LanguageData>

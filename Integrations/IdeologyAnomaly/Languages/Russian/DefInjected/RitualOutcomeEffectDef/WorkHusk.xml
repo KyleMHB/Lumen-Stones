@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_RaiseWorkHusk.comps.0.label>Ритуальный нож из тёмного камня</KM_RaiseWorkHusk.comps.0.label>
+	<KM_RaiseWorkHusk.comps.1.label>социальное влияние ({PAWN_labelShort})</KM_RaiseWorkHusk.comps.1.label>
+	<KM_RaiseWorkHusk.comps.1.labelAbstract>социальное влияние ведущего</KM_RaiseWorkHusk.comps.1.labelAbstract>
+	<KM_RaiseWorkHusk.comps.2.label>участники</KM_RaiseWorkHusk.comps.2.label>
+	<KM_RaiseWorkHusk.comps.3.label>впечатляющность комнаты</KM_RaiseWorkHusk.comps.3.label>
+	<KM_RaiseWorkHusk.comps.4.label>светильники из тёмного камня</KM_RaiseWorkHusk.comps.4.label>
+	<KM_RaiseWorkHusk.description>Жертвоприношение, поднимающее жертву рабочей оболочкой, привязанной к пилону из пустокамня. Оболочка поднимается при любом качестве.</KM_RaiseWorkHusk.description>
+	<KM_RaiseWorkHusk.outcomeChances.0.label>плохо</KM_RaiseWorkHusk.outcomeChances.0.label>
+	<KM_RaiseWorkHusk.outcomeChances.0.description>Тело поднялось медленно, но поднялось.</KM_RaiseWorkHusk.outcomeChances.0.description>
+	<KM_RaiseWorkHusk.outcomeChances.1.label>успешно</KM_RaiseWorkHusk.outcomeChances.1.label>
+	<KM_RaiseWorkHusk.outcomeChances.1.description>Тело поднялось и заняло своё место.</KM_RaiseWorkHusk.outcomeChances.1.description>
+	<KM_RaiseWorkHusk.outcomeChances.2.label>исключительно</KM_RaiseWorkHusk.outcomeChances.2.label>
+	<KM_RaiseWorkHusk.outcomeChances.2.description>Тело поднялось сразу и ждёт приказов.</KM_RaiseWorkHusk.outcomeChances.2.description>
+</LanguageData>

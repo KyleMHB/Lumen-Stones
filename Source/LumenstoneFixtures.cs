@@ -13,21 +13,19 @@ public class CompProperties_LumenstoneFixture : CompProperties_Fixture, ITunable
     public CompProperties_LumenstoneFixture() => compClass = typeof(CompLumenstoneFixture);
 
     public void DeclareTunables(TunableScope s, Def owner) =>
-        s.Add(owner.defName + ".support", "Category ritual support contribution (%)", weight, v => weight = v, Limit.Percent());
+        s.Add(owner.defName + ".support", "Lumen_Fixtures_CategoryContribution".Translate(), weight, v => weight = v, Limit.Percent());
 
     // Ritual support only exists with Ideology. Without it these fixtures are lamps.
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
         if (!ModsConfig.IdeologyActive) yield break;
         var stone = SupportStone.Ritual(dark);
-        string altar = dark ? "Sacrificial altar" : "Lumenstone altar";
-        string rule = $"Fixtures in the same room as a {altar} and within reach raise its ritual's quality and yield. Support is full in an enclosed, roofed room and half outdoors. " +
-            "Each fixture category counts once, at its highest weight, and floor and wall lamps share the lamp category.";
+        string rule = (dark ? "Lumen_Fixtures_RuleDark" : "Lumen_Fixtures_RuleLight").Translate();
         foreach (var row in new InfoStats()
-                     .Add("Ritual support weight", weight.ToStringPercent(), rule)
-                     .Add("Ritual support reach", InfoStats.Tiles(stone.Radius), rule)
-                     .Add("Ritual quality at full support", InfoStats.Plus(stone.Quality.Cap), rule)
-                     .Add(dark ? "Conversion and harvest at full support" : "Ritual yield at full support", InfoStats.Plus(stone.Yield.Cap), rule)
+                     .Add("Lumen_Fixtures_Weight".Translate(), weight.ToStringPercent(), rule)
+                     .Add("Lumen_Fixtures_Reach".Translate(), InfoStats.Tiles(stone.Radius), rule)
+                     .Add(stone.Quality.Switch, "Lumen_Fixtures_Quality".Translate(), InfoStats.Plus(stone.Quality.Cap), rule)
+                     .Add(stone.Yield.Switch, (dark ? "Lumen_Fixtures_YieldDark" : "Lumen_Fixtures_YieldLight").Translate(), InfoStats.Plus(stone.Yield.Cap), rule)
                      .Rows)
             yield return row;
     }
@@ -41,21 +39,8 @@ public class CompLumenstoneFixture : ThingComp
     {
         if (!ModsConfig.IdeologyActive || !parent.Spawned) return null;
         var host = RitualSupport.NearestHost(parent, Props.dark);
-        return host == null ? "No " + (Props.dark ? "Sacrificial" : "Lumenstone") + " altar in reach" : host.LabelCap + ": " + RitualSupport.Describe(host, Props.dark);
-    }
-
-    public override void CompTick()
-    {
-        if (!parent.Spawned || !parent.IsHashIntervalTick(300) || parent.Position.Fogged(parent.Map) || !CompAnimationToggle.On(parent)) return;
-        var mote = FixtureMotes.Make(Props.dark ? "KM_Mote_DarkStonePulse" : "KM_Mote_LumenstonePulse", parent.Map);
-        if (mote == null) return;
-        mote.exactPosition = parent.DrawPos + parent.def.graphicData.drawOffset;
-        mote.exactPosition.y = AltitudeLayer.MoteOverhead.AltitudeFor();
-        mote.Scale = 0.08f;
-        mote.instanceColor = Props.dark ? new Color(0.60f, 0.42f, 0.82f) : new Color(0.88f, 0.94f, 1f);
-        mote.airTimeLeft = 1.8f;
-        mote.SetVelocity(0, 0.12f);
-        GenSpawn.Spawn(mote, parent.Position, parent.Map);
+        return host == null ? (Props.dark ? "Lumen_Fixtures_NoAltarDark" : "Lumen_Fixtures_NoAltarLight").Translate().ToString()
+            : host.LabelCap + ": " + RitualSupport.Describe(host, Props.dark);
     }
 }
 
@@ -84,9 +69,9 @@ public static class RitualSupport
     {
         var stone = SupportStone.Ritual(dark);
         var support = FixtureSupport.Of(stone, host);
-        string where = FixtureSupport.Enclosed(host.GetRoom()) ? "enclosed, roofed room" : "outdoors or unroofed, half strength";
-        return "Ritual support " + support.Passive.ToStringPercent() + " (" + where + "): quality +" +
-            support.Bonus(stone.Quality).ToStringPercent() + ", yield +" + support.Bonus(stone.Yield).ToStringPercent();
+        string where = (FixtureSupport.Enclosed(host.GetRoom()) ? "Lumen_Fixtures_Enclosed" : "Lumen_Fixtures_Outdoors").Translate();
+        return "Lumen_Fixtures_Describe".Translate(support.Passive.ToStringPercent(), where,
+            support.Bonus(stone.Quality).ToStringPercent(), support.Bonus(stone.Yield).ToStringPercent());
     }
 }
 
@@ -115,7 +100,7 @@ public class RitualOutcomeComp_FixtureSupport : RitualOutcomeComp_Quality
 
     // Vanilla's summary prints the maximum for comps that don't say otherwise. Show what this ceremony actually got.
     public override string GetDesc(LordJob_Ritual ritual = null, RitualOutcomeComp_Data data = null) =>
-        ritual == null ? base.GetDesc(ritual, data) : label + ": +" + QualityOffset(ritual, data).ToStringPercent() + " quality";
+        ritual == null ? base.GetDesc(ritual, data) : "Lumen_Ritual_QualityDesc".Translate(label, QualityOffset(ritual, data).ToStringPercent()).ToString();
 
     public override QualityFactor GetQualityFactor(Precept_Ritual ritual, TargetInfo ritualTarget, RitualObligation obligation,
         RitualRoleAssignments assignments, RitualOutcomeComp_Data data)
@@ -126,12 +111,12 @@ public class RitualOutcomeComp_FixtureSupport : RitualOutcomeComp_Quality
         return new QualityFactor
         {
             label = label,
-            count = support.ToStringPercent() + " support",
+            count = "Lumen_Fixtures_SupportCount".Translate(support.ToStringPercent()),
             qualityChange = "+" + offset.ToStringPercent(),
             positive = true,
             quality = offset,
             priority = 3f,
-            toolTip = "Fixtures of the matching stone in this room within " + SupportStone.Ritual(dark).Radius + " tiles. Full strength in an enclosed, roofed room and half outdoors."
+            toolTip = "Lumen_Fixtures_Tooltip".Translate(SupportStone.Ritual(dark).Radius)
         };
     }
 }

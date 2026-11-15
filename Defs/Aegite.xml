@@ -24,20 +24,6 @@
     <smeltable>false</smeltable>
     <allowedArchonexusCount>80</allowedArchonexusCount>
   </ThingDef>
-  <ThingDef ParentName="MoteBase">
-    <defName>KM_Mote_AegitePulse</defName>
-    <thingClass>MoteThrown</thingClass>
-    <graphicData>
-      <texPath>Things/Mote/AegitePulse</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <mote>
-      <fadeInTime>0.1</fadeInTime>
-      <solidTime>.15</solidTime>
-      <fadeOutTime>.35</fadeOutTime>
-    </mote>
-  </ThingDef>
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenAegiteColumn</defName>
     <label>Aegite ward column</label>
@@ -112,6 +98,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_AegiteFixtureBase">
     <defName>KM_AegiteLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Aegite lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2803</uiOrder>
@@ -123,8 +110,12 @@
       <texPath>Things/Building/Aegite/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Aegite>10</KM_Aegite>
     </costList>
     <statBases>
@@ -132,7 +123,6 @@
       <Flammability>0</Flammability>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(245,230,180,0)</glowColor>
@@ -189,6 +179,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_AegiteFixtureBase">
     <defName>KM_AegitePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Aegite sentinel pylon</label>
     <uiOrder>2822</uiOrder>
@@ -204,7 +195,7 @@
       <KM_Aegite>60</KM_Aegite>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>25</Beauty>
       <Flammability>0</Flammability>
     </statBases>
@@ -242,18 +233,22 @@
   </ThingDef>
   <ThingDef ParentName="KM_AegiteFixtureBase">
     <defName>KM_AegiteCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Aegite ward cluster</label>
     <uiOrder>2823</uiOrder>
     <description>A tripod of Aegite crystals that keeps the ground around it oddly clean.\n\nA ward that thins filth around it, through walls. With Solar energy it suppresses fires instead. Only the strongest ward covering a target works on it. No fuel.</description>
+    <uiIconScale>0.8696</uiIconScale>
     <graphicData>
       <texPath>Things/Building/Aegite/Cluster</texPath>
-      <drawSize>(1,1)</drawSize>
+      <!-- 2026-11-14 size pass: keeps the visible cluster near the other families' size; offset keeps the foot in place. -->
+      <drawSize>(1.15,1.15)</drawSize>
+      <drawOffset>(0,0,0.06)</drawOffset>
     </graphicData>
     <costList>
       <KM_Aegite>35</KM_Aegite>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
       <Flammability>0</Flammability>
     </statBases>

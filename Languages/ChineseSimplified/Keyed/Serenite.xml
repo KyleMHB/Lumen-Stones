@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Setting_CategoryContribution>类别房间贡献（%）</Lumen_Setting_CategoryContribution>
+	<Lumen_Serenite_RoomRule>随房间支援度变化。作用于同一封闭房间内的小人。</Lumen_Serenite_RoomRule>
+	<Lumen_Serenite_SleeperDrain>每名睡眠者每日消耗{0}太阳能。</Lumen_Serenite_SleeperDrain>
+	<Lumen_Info_SupportWeight>支援权重</Lumen_Info_SupportWeight>
+	<Lumen_Serenite_SupportWeightDesc>该装置在宁静石房间支援中所占的份额。</Lumen_Serenite_SupportWeightDesc>
+	<Lumen_Serenite_Comfort>满支援时的舒适度</Lumen_Serenite_Comfort>
+	<Lumen_Serenite_ComfortDesc>加到现有床和座椅的舒适度上。</Lumen_Serenite_ComfortDesc>
+	<Lumen_Serenite_Mood>满支援时的心情</Lumen_Serenite_Mood>
+	<Lumen_Serenite_MoodDesc>在房间内时获得心情加成。</Lumen_Serenite_MoodDesc>
+	<Lumen_Serenite_Sleep>满支援时的睡眠恢复</Lumen_Serenite_Sleep>
+	<Lumen_Serenite_SleepDesc>睡眠时休息更快，醒来后一段时间内获得休憩心情记忆。随主动效果开启的装置的房间支援度变化。</Lumen_Serenite_SleepDesc>
+	<Lumen_Serenite_Inspect>房间支援：{0}。舒适度 +{1}，心情 +{2}，睡眠恢复 +{3}</Lumen_Serenite_Inspect>
+	<Lumen_Serenite_RoomSupport>宁静石房间支援：+{0}</Lumen_Serenite_RoomSupport>
+	<Lumen_Section_RoomSupport>房间支援</Lumen_Section_RoomSupport>
+	<Lumen_Serenite_SleeperDrainSetting>每名受支援睡眠者每日的太阳能</Lumen_Serenite_SleeperDrainSetting>
+	<Lumen_Serenite_SleepCap>睡眠恢复上限（%）</Lumen_Serenite_SleepCap>
+	<Lumen_Serenite_ComfortCap>床/座椅舒适度上限</Lumen_Serenite_ComfortCap>
+	<Lumen_Serenite_MoodCap>房间心情上限</Lumen_Serenite_MoodCap>
+</LanguageData>

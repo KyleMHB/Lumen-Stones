@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Dread.label>ужас</KM_Dread.label>
+	<KM_Dread.description>Камень ужаса давит на этот разум. Пока действует, ослаблены движение, восприятие и меткость.</KM_Dread.description>
+	<KM_Dread.stages.0.label>друза</KM_Dread.stages.0.label>
+	<KM_Dread.stages.1.label>пилон</KM_Dread.stages.1.label>
+	<KM_DreadstoneSubjugated.label>Подчинение камнем ужаса</KM_DreadstoneSubjugated.label>
+	<KM_DreadstoneSubjugated.description>Светильник из камня ужаса подтачивает этого заключённого или раба. Наведите курсор, чтобы увидеть скорость.</KM_DreadstoneSubjugated.description>
+</LanguageData>

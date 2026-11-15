@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AegiteShield.label>庇护石盾牌</KM_AegiteShield.label>
+	<KM_AegiteShield.description>一面带有香槟金色晶体盾心的浅色盾牌。持有者身上的火焰无法燃起，因此深受需要在燃烧建筑附近战斗的人欢迎。\n\n穿戴在工具栏位，可与近战或远程武器同时使用，但双手冰晶石巨剑除外。锐器和钝器护甲增加25个百分点。佩戴时，穿戴者不会着火；但不会扑灭已附着的火焰。与其他腰带和庇护石盾牌护符共享腰带栏位。在锻造台使用100庇护石和20钢铁制作，需要研究长剑（前置为锻造）并拥有6级手工。</KM_AegiteShield.description>
+</LanguageData>

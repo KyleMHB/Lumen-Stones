@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Aegite.label>庇护石</KM_Aegite.label>
+	<KM_Aegite.description>浸入银的流明石继承了银自古以来的纯净之名。被塑造成守护物后，它能扼杀火焰，让污垢无法沉积。\n\n一种香槟金色的晶体，带有白金色的核心，在流明仪式圈由流明石灌注而成。它的守护会逐渐清除污物，并在有太阳能供能时扑灭火焰。</KM_Aegite.description>
+	<KM_LumenAegiteColumn.label>庇护石守护柱</KM_LumenAegiteColumn.label>
+	<KM_LumenAegiteColumn.description>一根香槟色与白金色相间的庇护石柱，是最小的守护物。\n\n一种可穿墙清除周围污物的守护物。有太阳能时则改为扑灭火焰。每个目标只受覆盖它的最强守护作用。无需燃料。</KM_LumenAegiteColumn.description>
+	<KM_LumenAegiteColumn.comps.3.effect>灭火</KM_LumenAegiteColumn.comps.3.effect>
+	<KM_AegiteLamp.label>庇护石灯</KM_AegiteLamp.label>
+	<KM_AegiteLamp.description>一盏香槟金色的庇护石灯。晶体太小，无法守护任何东西。\n\n仅提供照明，没有灭火、清洁或守护闪光效果。不发热，不需要燃料或电力。</KM_AegiteLamp.description>
+	<KM_AegiteWallLamp.label>庇护石壁灯</KM_AegiteWallLamp.label>
+	<KM_AegiteWallLamp.description>一盏香槟金色的庇护石壁灯。晶体太小，无法守护任何东西。\n\n仅提供照明，没有灭火、清洁或守护闪光效果。不发热，不需要燃料或电力。</KM_AegiteWallLamp.description>
+	<KM_AegitePylon.label>庇护石哨兵塔</KM_AegitePylon.label>
+	<KM_AegitePylon.description>一座高大的庇护石哨兵，是最强的守护物。\n\n一种可穿墙清除周围污物的守护物。有太阳能时则改为扑灭火焰。每个目标只受覆盖它的最强守护作用。无需燃料。</KM_AegitePylon.description>
+	<KM_AegitePylon.comps.2.effect>灭火</KM_AegitePylon.comps.2.effect>
+	<KM_AegiteCluster.label>庇护石守护晶簇</KM_AegiteCluster.label>
+	<KM_AegiteCluster.description>一组三脚架形的庇护石晶体，让周围的地面出奇地干净。\n\n一种可穿墙清除周围污物的守护物。有太阳能时则改为扑灭火焰。每个目标只受覆盖它的最强守护作用。无需燃料。</KM_AegiteCluster.description>
+	<KM_AegiteCluster.comps.2.effect>灭火</KM_AegiteCluster.comps.2.effect>
+</LanguageData>

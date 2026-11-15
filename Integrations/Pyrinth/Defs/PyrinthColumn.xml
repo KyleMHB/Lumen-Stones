@@ -6,12 +6,13 @@
     <statBases><MeditationFocusStrength>0</MeditationFocusStrength></statBases>
     <costList><DV_Pyrinth>15</DV_Pyrinth></costList>
     <graphicData><texPath>Lumenstone/PyrinthColumn</texPath></graphicData>
+    <!-- The 2026-11-14 art fills the full canvas height; 1.17 keeps the build icon inside its frame. -->
+    <uiIconScale>1.17</uiIconScale>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(192,117,77,0)</glowColor></li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass><heatPerSecond>2.5</heatPerSecond><heatPushMaxTemperature>23</heatPushMaxTemperature>
       </li>
-      <li Class="LumenStones.CompProperties_FixtureEffecter"><effecterDef>DV_PyrinthSparkingEffectSmall</effecterDef></li>
       <li Class="CompProperties_MeditationFocus">
         <statDef>MeditationFocusStrength</statDef><focusTypes><li>Flame</li></focusTypes>
         <offsets>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Projector_Section>Эгитовый щитовой проектор</Lumen_Projector_Section>
+	<Lumen_Projector_RadiusSetting>Радиус купола (клеток)</Lumen_Projector_RadiusSetting>
+	<Lumen_Projector_HitPointsSetting>Прочность купола</Lumen_Projector_HitPointsSetting>
+	<Lumen_Projector_Upkeep>Солнечная энергия в день, пока купол поднят</Lumen_Projector_Upkeep>
+	<Lumen_Projector_SolarPerHpSetting>Солнечная энергия за восстановленное очко прочности</Lumen_Projector_SolarPerHpSetting>
+	<Lumen_Projector_RechargeTicks>Тиков между восстановлением очков прочности</Lumen_Projector_RechargeTicks>
+	<Lumen_Projector_CrushCost>Прочности на уничтожение вражеской капсулы или заражения</Lumen_Projector_CrushCost>
+	<Lumen_Projector_RebootTicks>Время перезагрузки после пробития (тиков)</Lumen_Projector_RebootTicks>
+	<Lumen_Projector_EmpTicks>Время отключения от ЭМИ (тиков)</Lumen_Projector_EmpTicks>
+	<Lumen_Projector_Radius>Радиус купола</Lumen_Projector_Radius>
+	<Lumen_Projector_RadiusDesc>Останавливает вражеские наземные снаряды, миномётные снаряды и орбитальные бомбардировки, выпущенные снаружи. Колонисты свободно стреляют изнутри.</Lumen_Projector_RadiusDesc>
+	<Lumen_Projector_HitPoints>Прочность щита</Lumen_Projector_HitPoints>
+	<Lumen_Projector_HitPointsDesc>Уменьшается от того, что останавливает купол. При 0 отключается и перезагружается {0} дн., затем восстанавливается каждые {1}.</Lumen_Projector_HitPointsDesc>
+	<Lumen_Projector_Crushes>Давит</Lumen_Projector_Crushes>
+	<Lumen_Projector_CrushesValue>вражеские капсулы и заражения</Lumen_Projector_CrushesValue>
+	<Lumen_Projector_CrushesDesc>Вражеская десантная капсула или прорывающееся заражение внутри купола уничтожается, это стоит {0} прочности щита. Пешки в капсуле погибают, их снаряжение уничтожается. Капсулы беженцев, торговли, ресурсов и заданий не затрагиваются.</Lumen_Projector_CrushesDesc>
+	<Lumen_Projector_Emp>ЭМИ</Lumen_Projector_Emp>
+	<Lumen_Projector_EmpValue>ненадолго отключает</Lumen_Projector_EmpValue>
+	<Lumen_Projector_EmpDesc>Сохраняет прочность.</Lumen_Projector_EmpDesc>
+	<Lumen_Projector_UpkeepDesc>Тратится, пока купол поднят.</Lumen_Projector_UpkeepDesc>
+	<Lumen_Projector_SolarPerHp>Солнечная энергия за очко прочности</Lumen_Projector_SolarPerHp>
+	<Lumen_Projector_SolarPerHpDesc>Тратится за каждое восстановленное очко прочности щита. С лунитовым стабилизатором купол держится и во время солнечных вспышек.</Lumen_Projector_SolarPerHpDesc>
+	<Lumen_Projector_Crushed>Эгитовый купол раздавил {0}.</Lumen_Projector_Crushed>
+	<Lumen_Projector_CrushedBroke>Эгитовый купол раздавил {0} и пробит.</Lumen_Projector_CrushedBroke>
+	<Lumen_Projector_DropPod>вражескую десантную капсулу</Lumen_Projector_DropPod>
+	<Lumen_Projector_Infestation>прорывающееся заражение</Lumen_Projector_Infestation>
+</LanguageData>

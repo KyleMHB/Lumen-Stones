@@ -2,8 +2,10 @@
 <Defs>
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
     <defName>KM_DreadstoneCudgel</defName>
+    <!-- 1.2 / 0.9: keeps the inventory icon at its approved size after the draw size shrank. -->
+    <uiIconScale>1.3333</uiIconScale>
     <label>Dreadstone cudgel</label>
-    <description>A slow capture cudgel with a Dreadstone head. Each damaging hit adds 25% pain to a living humanlike, up to four stacks, lasting 25 seconds after the last hit. Pain immunity still applies. A victim downed or captured under its agony remembers the torture for five days. It still inflicts blunt wounds.</description>
+    <description>A slow capture cudgel with a Dreadstone head. Its blows hurt far more than they should, and those taken with it do not forget.\n\nEach damaging hit adds 25% pain to a living humanlike, up to four stacks, lasting 25 seconds after the last hit. Pain immunity still applies. A victim downed or captured under its agony remembers the torture for five days. It still inflicts blunt wounds. Crafted from 100 Dreadstone and 20 steel after Dreadstone subjugation, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <smeltable>false</smeltable>
@@ -12,9 +14,12 @@
       <Mass>1.5</Mass>
     </statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/DreadstoneCudgel</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.2,1.2)</drawSize>
+      <!-- 0.9 (was 1.2, user 2026-11-14): at 1.2 the one-handed club was as long as the staffs and glaive. -->
+      <drawSize>(0.9,0.9)</drawSize>
     </graphicData>
     <weaponTags>
       <li>MedievalMeleeAdvanced</li>
@@ -44,7 +49,7 @@
   <ThingDef ParentName="ApparelBase">
     <defName>KM_DreadstoneCollar</defName>
     <label>Dreadstone collar</label>
-    <description>A Dreadstone shackle for player slaves. Suppression falls 25% slower, including in caravans, and map rebellions are twice as rare. Stronger column or pylon subjugation takes precedence. Wearing it gives -3 mood.</description>
+    <description>A Dreadstone shackle that sits cold against the throat. Slaves who wear one think less often of running.\n\nWorn by player slaves. Suppression falls 25% slower, including in caravans, and map rebellions are twice as rare. Stronger column or pylon subjugation takes precedence. Wearing it gives -3 mood. Crafted at a smithy from 100 Dreadstone and 20 steel after Dreadstone subjugation, with Crafting 6.</description>
     <graphicData>
       <texPath>Things/Item/Equipment/Misc/DreadstoneCollar</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -87,8 +92,9 @@
       <bodyPartGroups>
         <li>Neck</li>
       </bodyPartGroups>
+      <!-- Overhead, like the vanilla slave collar: on OnSkin it shared Neck with shirts and stripped them. -->
       <layers>
-        <li>OnSkin</li>
+        <li>Overhead</li>
       </layers>
     </apparel>
     <tradeTags>
@@ -97,8 +103,10 @@
   </ThingDef>
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>KM_DarkStoneRitualKnife</defName>
+    <!-- 1.2 / 0.85: keeps the inventory icon at its approved size after the draw size shrank. -->
+    <uiIconScale>1.4118</uiIconScale>
     <label>Dark Stone ritual knife</label>
-    <description>A fast ritual knife with a smoke-violet crystal point. Adds 10 percentage points to sacrifice quality and 15% to Warp harvest when wielded by the leader. Executing a prisoner stores 10% of a normal sacrifice harvest in available Bloodstone batteries. Each damaging stab against a living humanlike tears away 5% consciousness and gives -4 mood, up to three stacks, lasting three days after the last hit.</description>
+    <description>A fast ritual knife with a smoke-violet crystal point. It was made for the altar, and it cuts deeper than the flesh.\n\nAdds 10 percentage points to sacrifice quality and 15% to Warp harvest when wielded by the leader. Executing a prisoner stores 10% of a normal sacrifice harvest in available Bloodstone batteries. Each damaging stab against a living humanlike tears away 5% consciousness and gives -4 mood, up to three stacks, lasting three days after the last hit. Crafted from 100 Dark Stone and 20 steel after Warp sacrifice, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <smeltable>false</smeltable>
@@ -107,9 +115,12 @@
       <Mass>1.5</Mass>
     </statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/DarkStoneRitualKnife</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.2,1.2)</drawSize>
+      <!-- 0.85 (was 1.2, user 2026-11-14): at sword size it read as a sword in hand, not a knife. -->
+      <drawSize>(0.85,0.85)</drawSize>
     </graphicData>
     <weaponTags>
       <li>MedievalMeleeAdvanced</li>

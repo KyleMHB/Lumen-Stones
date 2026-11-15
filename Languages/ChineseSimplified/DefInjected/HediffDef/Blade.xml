@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteChill.label>冰晶石寒意</KM_GlaciteChill.label>
+	<KM_GlaciteChill.description>冰晶石刀刃的寒气冻麻了血肉，使行动迟缓、双手僵钝。再次受击会加深寒意，一分钟内消退。</KM_GlaciteChill.description>
+	<KM_GlaciteChill.stages.0.label>发冷</KM_GlaciteChill.stages.0.label>
+	<KM_GlaciteChill.stages.1.label>麻木</KM_GlaciteChill.stages.1.label>
+	<KM_GlaciteChill.stages.2.label>冻僵</KM_GlaciteChill.stages.2.label>
+</LanguageData>

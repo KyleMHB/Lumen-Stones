@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Solar_Section>太阳能网络</Lumen_Solar_Section>
+	<Lumen_Solar_CollectorOutput>全日照时收集器每日产出</Lumen_Solar_CollectorOutput>
+	<Lumen_Solar_ArrayOutput>全日照时阵列每日产出</Lumen_Solar_ArrayOutput>
+	<Lumen_Solar_VesselCapacity>容器容量</Lumen_Solar_VesselCapacity>
+	<Lumen_Solar_ObeliskCapacity>方尖碑容量</Lumen_Solar_ObeliskCapacity>
+	<Lumen_Solar_Hysteresis>从耗尽中恢复所需的储存能量</Lumen_Solar_Hysteresis>
+	<Lumen_Solar_WeatherFog>雾</Lumen_Solar_WeatherFog>
+	<Lumen_Solar_WeatherRain>雨和小雪</Lumen_Solar_WeatherRain>
+	<Lumen_Solar_WeatherThunder>雷暴</Lumen_Solar_WeatherThunder>
+	<Lumen_Solar_WeatherHard>雾雨和大雪</Lumen_Solar_WeatherHard>
+	<Lumen_Solar_WeatherFactor>{0}产出系数（%）</Lumen_Solar_WeatherFactor>
+	<Lumen_Solar_NetworkRule>地图上所有太阳石收集器和电池共享一个太阳能网络，无论相距多远。被摧毁或拆除时电量会丢失，被打包后重新安装则保留。</Lumen_Solar_NetworkRule>
+	<Lumen_Solar_Capacity>太阳能容量</Lumen_Solar_Capacity>
+	<Lumen_Solar_OutputDesc>在晴朗正午的天空下。雾、雨、风暴、黎明和黄昏以及屋顶下产出更少，夜间没有产出。盈余会充入网络中的电池。</Lumen_Solar_OutputDesc>
+	<Lumen_Solar_Generating>当前每日产出{0}（最多{1}）</Lumen_Solar_Generating>
+	<Lumen_Solar_Interrupted>已中断：{0}</Lumen_Solar_Interrupted>
+</LanguageData>

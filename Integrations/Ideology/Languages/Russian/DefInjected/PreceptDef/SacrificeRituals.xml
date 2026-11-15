@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CrystallizeDarkStone.label>Кристаллизовать тёмный камень</KM_CrystallizeDarkStone.label>
+	<KM_CrystallizeDarkStone.description>Жертвоприношение на жертвенном алтаре, кристаллизующее люменит в тёмный камень. Отменённая церемония возвращает люменит.</KM_CrystallizeDarkStone.description>
+	<KM_HarvestWarpEnergy.label>Собрать энергию варпа</KM_HarvestWarpEnergy.label>
+	<KM_HarvestWarpEnergy.description>Жертвоприношение на жертвенном алтаре, собирающее энергию варпа в батареи из кровавика рядом.</KM_HarvestWarpEnergy.description>
+</LanguageData>

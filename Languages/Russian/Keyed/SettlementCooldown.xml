@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cooldown_Attunement>Настройка восстанавливается: осталось {0} (общее для всех кругов и алтарей поселения).</Lumen_Cooldown_Attunement>
+	<Lumen_Cooldown_Binding>Связывание восстанавливается: осталось {0} (общее для всех алтарей поселения).</Lumen_Cooldown_Binding>
+	<Lumen_Cooldown_LumenstoneRitual>Ритуал люменита восстанавливается: осталось {0} (общее для всех кругов и алтарей поселения).</Lumen_Cooldown_LumenstoneRitual>
+	<Lumen_Cooldown_Lunite>Превращение в лунит восстанавливается: осталось {0} (общее для всех кругов и алтарей поселения).</Lumen_Cooldown_Lunite>
+	<Lumen_Cooldown_Crystallize>Кристаллизация тёмного камня восстанавливается: осталось {0} (общее для всех алтарей поселения).</Lumen_Cooldown_Crystallize>
+	<Lumen_Cooldown_Harvest>Сбор энергии варпа восстанавливается: осталось {0} (общее для всех алтарей поселения).</Lumen_Cooldown_Harvest>
+	<Lumen_Cooldown_RaiseHusk>Поднятие рабочей оболочки восстанавливается: осталось {0} (общее для всех алтарей поселения).</Lumen_Cooldown_RaiseHusk>
+</LanguageData>

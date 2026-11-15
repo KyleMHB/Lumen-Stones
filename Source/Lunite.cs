@@ -18,7 +18,7 @@ public static class LuniteRules
 
     public static int SunstoneCost = 25, Yield = 25;
     public static float CooldownDays = 5f;
-    public const float NightStart = 20f, NightEnd = 4f;
+    public static float NightStart = 20f, NightEnd = 4f;
     // The job without Ideology: one worker at the circle for this long.
     public const int JobTicks = 4 * GenDate.TicksPerHour;
 
@@ -26,23 +26,28 @@ public static class LuniteRules
     private static ThingDef sunstone, lunite;
     internal static void DeclareTunables(TunableScope s)
     {
-        var lunite = s.In("Lunite");
-        lunite.Add("Lunite.sunstoneCost", "Sunstone spent per conversion", SunstoneCost, v => SunstoneCost = (int)v, Limit.Integer(1));
-        lunite.Add("Lunite.yield", "Lunite produced per conversion", Yield, v => Yield = (int)v, Limit.Integer(1));
-        lunite.Add("Lunite.cooldownDays", "Cooldown after a conversion (days)", CooldownDays, v => CooldownDays = v);
-        s.In("Lunite stabilizer").Add("Lunite.linkRadius", "Link radius (tiles)", LinkRadius, v => LinkRadius = v, Limit.Number(1, 30));
+        var lunite = s.In("Lumen_Lunite_Section".Translate());
+        lunite.Add("Lunite.sunstoneCost", "Lumen_Lunite_SunstoneCost".Translate(), SunstoneCost, v => SunstoneCost = (int)v, Limit.Integer(1));
+        lunite.Add("Lunite.yield", "Lumen_Lunite_Yield".Translate(), Yield, v => Yield = (int)v, Limit.Integer(1));
+        lunite.Add("Lunite.cooldownDays", "Lumen_Lunite_Cooldown".Translate(), CooldownDays, v => CooldownDays = v);
+        lunite.Add("Lunite.nightStart", "Lumen_Lunite_NightStart".Translate(), NightStart, v => NightStart = v, Limit.Number(0, 24));
+        lunite.Add("Lunite.nightEnd", "Lumen_Lunite_NightEnd".Translate(), NightEnd, v => NightEnd = v, Limit.Number(0, 24));
+        s.In("Lumen_Lunite_StabilizerSection".Translate()).Add("Lunite.linkRadius", "Lumen_Lunite_LinkRadius".Translate(), LinkRadius, v => LinkRadius = v, Limit.Number(1, 30));
     }
 
     public static ResearchProjectDef Research => research ??= DefDatabase<ResearchProjectDef>.GetNamed("KM_LuniteStabilization");
     public static ThingDef Sunstone => sunstone ??= DefDatabase<ThingDef>.GetNamed("KM_Sunstone");
     public static ThingDef Lunite => lunite ??= DefDatabase<ThingDef>.GetNamed("KM_Lunite");
 
-    // A conversion can only start between 20:00 and 04:00 local time. Once started it may finish after dawn.
+    // A conversion can only start inside the window, 20:00 to 04:00 local time by default. Once started it may finish after dawn.
     public static bool NightNow(Map map)
     {
         float hour = GenLocalDate.HourFloat(map);
-        return hour >= NightStart || hour < NightEnd;
+        return NightStart <= NightEnd ? hour >= NightStart && hour < NightEnd : hour >= NightStart || hour < NightEnd;
     }
+
+    public static string Window => "Lumen_Lunite_Window".Translate(Hour(NightStart), Hour(NightEnd));
+    private static string Hour(float hour) => Mathf.FloorToInt(hour).ToString("00") + ":" + Mathf.RoundToInt(hour % 1f * 60f).ToString("00");
 
     public static List<Thing> SunstoneStacks(Thing host) => host.Map.listerThings.ThingsOfDef(Sunstone)
         .Where(t => !t.IsForbidden(Faction.OfPlayer) &&
@@ -83,36 +88,35 @@ public static class LuniteRules
             remaining -= stack.stackCount;
             GenPlace.TryPlaceThing(stack, cell, map, ThingPlaceMode.Near);
         }
-        map.GetComponent<LuniteState>().Cooldown.Start();
+        MapState.Of<LuniteState>(map).Cooldown.Start();
     }
 
     // Shared by the ritual and the job. Null when a conversion can start.
     public static string Blocked(Thing host)
     {
-        if (!SolarRules.Enabled) return "Requires Sunstone content to be enabled.";
+        if (!SolarRules.Enabled) return "Lumen_Lunite_NeedsSunstone".Translate();
         if (host is not Building_LumenstoneRitualHost || host.Faction != Faction.OfPlayer)
-            return "Requires a player-owned Lumen ritual circle" + (ModsConfig.IdeologyActive ? " or Lumenstone altar." : ".");
-        if (!Research.IsFinished) return "Requires the " + Research.label + " research.";
-        if (host.Map.GetComponent<LuniteState>().Cooldown.Reason is { } cooldown) return cooldown;
-        if (!NightNow(host.Map)) return "Can only start between 20:00 and 04:00.";
+            return (ModsConfig.IdeologyActive ? "Lumen_Lunite_NeedsHostIdeology" : "Lumen_Lunite_NeedsCircle").Translate();
+        if (!Research.IsFinished) return "Lumen_NeedsResearch".Translate(Research.label);
+        if (MapState.Of<LuniteState>(host.Map).Cooldown.Reason is { } cooldown) return cooldown;
+        if (!NightNow(host.Map)) return "Lumen_Lunite_OnlyBetween".Translate(Window);
         if (ModsConfig.IdeologyActive && Find.IdeoManager.GetActiveRituals(host.Map).Any(r => r is LordJob_LumenstoneRitual))
-            return "A ritual is already underway in this settlement.";
+            return "Lumen_Lunite_Underway".Translate();
         if (SunstoneStacks(host).Sum(t => t.stackCount) < SunstoneCost)
-            return "Requires " + SunstoneCost + " accessible, unforbidden Sunstone.";
+            return "Lumen_Lunite_NeedsSunstoneStock".Translate(SunstoneCost);
         return null;
     }
 
-    public static string Summary => "Turns " + SunstoneCost + " Sunstone into " + Yield + " Lunite. Starts only between 20:00 and 04:00 and may finish after dawn. " +
-        "The Sunstone is spent only on success. Each settlement recovers for " + CooldownDays + " days.";
+    public static string Summary => "Lumen_Lunite_Summary".Translate(SunstoneCost, Yield, Window, CooldownDays);
 
-    public static Command_Action RitualCommand(Building host, string precept)
+    public static Command_Action RitualCommand(Building_LumenstoneRitualHost host)
     {
-        var command = new Command_Action
+        var command = new Command_AutoRitual("Lumen_AutoRitual_Lunite".Translate(), () => host.AutoLunite, v => host.AutoLunite = v)
         {
-            defaultLabel = "Lunite ritual",
-            defaultDesc = Summary + " A ceremony of about 1 hour: choose participants in the native ritual dialog.",
-            icon = ContentFinder<Texture2D>.Get("UI/Commands/LumenstoneRitual"),
-            action = () => AttunementRules.StartRitual(host, precept)
+            defaultLabel = "Lumen_AutoRitual_Lunite".Translate().CapitalizeFirst(),
+            defaultDesc = Summary + " " + "Lumen_Lunite_RitualDesc".Translate(),
+            icon = ContentFinder<Texture2D>.Get("UI/Commands/LuniteRitual"),
+            action = () => AttunementRules.StartRitual(host, host.LunitePrecept)
         };
         if (Blocked(host) is { } reason) command.Disable(reason);
         return command;
@@ -122,9 +126,9 @@ public static class LuniteRules
     {
         var command = new Command_Action
         {
-            defaultLabel = "Convert Lunite",
-            defaultDesc = Summary + " One colonist works at the circle for " + JobTicks / GenDate.TicksPerHour + " hours.",
-            icon = ContentFinder<Texture2D>.Get("UI/Commands/LumenstoneRitual"),
+            defaultLabel = "Lumen_Lunite_Convert".Translate(),
+            defaultDesc = Summary + " " + "Lumen_Lunite_JobDesc".Translate(JobTicks / GenDate.TicksPerHour),
+            icon = ContentFinder<Texture2D>.Get("UI/Commands/LuniteRitual"),
             action = () =>
             {
                 var options = circle.Map.mapPawns.FreeColonistsSpawned
@@ -132,7 +136,7 @@ public static class LuniteRules
                     .Select(p => new FloatMenuOption(p.LabelShortCap, () =>
                         p.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("KM_ConvertLuniteAtCircle"), circle))))
                     .ToList();
-                if (options.Count == 0) Messages.Message("No colonist can work at the circle.", circle, MessageTypeDefOf.RejectInput, false);
+                if (options.Count == 0) Messages.Message("Lumen_Lunite_NoColonist".Translate(), circle, MessageTypeDefOf.RejectInput, false);
                 else Find.WindowStack.Add(new FloatMenu(options));
             }
         };
@@ -143,7 +147,7 @@ public static class LuniteRules
 
 public class LuniteState : MapComponent
 {
-    public readonly SettlementCooldown Cooldown = new("nextLuniteTick", "Lunite conversion", "circle and altar", () => LuniteRules.CooldownDays);
+    public readonly SettlementCooldown Cooldown = new("nextLuniteTick", "Lumen_Cooldown_Lunite", () => LuniteRules.CooldownDays);
     public LuniteState(Map map) : base(map) { }
     public override void ExposeData() => Cooldown.ExposeData();
 }
@@ -169,7 +173,7 @@ public class JobDriver_ConvertLuniteAtCircle : JobDriver
         this.FailOnDespawnedOrNull(TargetIndex.A);
         this.FailOn(() => !SolarRules.Enabled);
         // Anyone else finishing first starts the cooldown, which ends this attempt without spending anything.
-        this.FailOn(() => !done && held.Count == 0 && Circle.Map.GetComponent<LuniteState>().Cooldown.Reason != null);
+        this.FailOn(() => !done && held.Count == 0 && MapState.Of<LuniteState>(Circle.Map).Cooldown.Reason != null);
         AddFinishAction(_ =>
         {
             if (!done && held.Count > 0 && Circle is { Spawned: true }) LuniteRules.Return(held, Circle);
@@ -180,7 +184,7 @@ public class JobDriver_ConvertLuniteAtCircle : JobDriver
             var set = LuniteRules.Blocked(Circle) == null ? LuniteRules.SetAside(Circle) : null;
             if (set == null)
             {
-                Messages.Message("The Lunite conversion could not start: " + (LuniteRules.Blocked(Circle) ?? "Sunstone is no longer available."), Circle, MessageTypeDefOf.RejectInput, false);
+                Messages.Message("Lumen_Lunite_CouldNotStart".Translate(LuniteRules.Blocked(Circle) ?? "Lumen_Lunite_SunstoneGone".Translate()), Circle, MessageTypeDefOf.RejectInput, false);
                 EndJobWith(JobCondition.Incompletable);
                 return;
             }
@@ -191,7 +195,7 @@ public class JobDriver_ConvertLuniteAtCircle : JobDriver
         {
             done = true;
             LuniteRules.Complete(held, Circle.Map, Circle.Position);
-            Messages.Message("Converted " + LuniteRules.SunstoneCost + " Sunstone into " + LuniteRules.Yield + " Lunite.", Circle, MessageTypeDefOf.PositiveEvent);
+            Messages.Message("Lumen_Lunite_Converted".Translate(LuniteRules.SunstoneCost, LuniteRules.Yield), Circle, MessageTypeDefOf.PositiveEvent);
         });
     }
 }
@@ -240,6 +244,6 @@ public class RitualOutcomeEffectWorker_Lunite : RitualOutcomeEffectWorker_FromQu
         var held = job.Chunks.ToList();
         job.ClearReserved();
         LuniteRules.Complete(held, job.Map, job.selectedTarget.Cell);
-        extraOutcomeDesc = "The ceremony produced " + LuniteRules.Yield + " " + LuniteRules.Lunite.label + ". Lunite conversion in this settlement now recovers for " + LuniteRules.CooldownDays + " days.";
+        extraOutcomeDesc = "Lumen_Lunite_Result".Translate(LuniteRules.Yield, LuniteRules.Lunite.label, LuniteRules.CooldownDays);
     }
 }

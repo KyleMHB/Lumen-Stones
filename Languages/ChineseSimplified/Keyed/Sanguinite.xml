@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sanguinite_Treatment>治疗</Lumen_Sanguinite_Treatment>
+	<Lumen_Sanguinite_Costs>扭曲能量消耗</Lumen_Sanguinite_Costs>
+	<Lumen_Sanguinite_Times>再生时间</Lumen_Sanguinite_Times>
+	<Lumen_Sanguinite_Radius>治疗半径（格）</Lumen_Sanguinite_Radius>
+	<Lumen_Sanguinite_BleedCost>减缓出血，每名出血病人每轮</Lumen_Sanguinite_BleedCost>
+	<Lumen_Sanguinite_Scar>疤痕</Lumen_Sanguinite_Scar>
+	<Lumen_Sanguinite_Digit>手指/脚趾</Lumen_Sanguinite_Digit>
+	<Lumen_Sanguinite_SmallPart>小部件（眼睛、耳朵、鼻子、下颌）</Lumen_Sanguinite_SmallPart>
+	<Lumen_Sanguinite_Organ>内脏器官</Lumen_Sanguinite_Organ>
+	<Lumen_Sanguinite_DigitDays>手指/脚趾（天）</Lumen_Sanguinite_DigitDays>
+	<Lumen_Sanguinite_SmallPartDays>小部件（天）</Lumen_Sanguinite_SmallPartDays>
+	<Lumen_Sanguinite_OrganDays>内脏器官（天）</Lumen_Sanguinite_OrganDays>
+	<Lumen_Sanguinite_BleedNote>出血时，每轮消耗{1}扭曲能量将出血减缓至{0}。</Lumen_Sanguinite_BleedNote>
+	<Lumen_Sanguinite_ScarNote>每轮治愈一处永久疤痕，消耗{0}扭曲能量。</Lumen_Sanguinite_ScarNote>
+	<Lumen_Sanguinite_ScarNoteSurface>每轮治愈一处永久疤痕，消耗{0}扭曲能量（仅限表层疤痕）。</Lumen_Sanguinite_ScarNoteSurface>
+	<Lumen_Sanguinite_Digits>手指和脚趾</Lumen_Sanguinite_Digits>
+	<Lumen_Sanguinite_SmallParts>小部件</Lumen_Sanguinite_SmallParts>
+	<Lumen_Sanguinite_Organs>内脏器官</Lumen_Sanguinite_Organs>
+	<Lumen_Sanguinite_Regrows>再生{0}。</Lumen_Sanguinite_Regrows>
+	<Lumen_Sanguinite_Regrown>{0}的{1}已再生。</Lumen_Sanguinite_Regrown>
+</LanguageData>

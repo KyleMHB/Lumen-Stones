@@ -14,14 +14,14 @@ public class CompProperties_WarpBattery : CompProperties, ITunableProps
     public CompProperties_WarpBattery() => compClass = typeof(CompWarpBattery);
 
     public void DeclareTunables(TunableScope s, Def owner) =>
-        s.Add(owner.defName + ".capacity", "Warp energy capacity", capacity, v => capacity = v, Limit.Number(1));
+        s.Add(owner.defName + ".capacity", "Lumen_Warp_Capacity".Translate(), capacity, v => capacity = v, Limit.Number(1));
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string rule = "Every Bloodstone battery on a map shares one Warp network. Stored energy is lost if the battery is destroyed or deconstructed. It cannot be moved, and loses no charge over time.";
+        string rule = "Lumen_Warp_BatteryRule".Translate();
         return new InfoStats()
-            .Add("Warp energy capacity", capacity.ToString("0"), rule)
-            .Add("Sacrificial altar reach", InfoStats.Tiles(AltarRules.LinkRadius), "A Harvest Warp Energy sacrifice fills only batteries within this distance of the altar. " + rule)
+            .Add("Lumen_Warp_Capacity".Translate(), capacity.ToString("0"), rule)
+            .Add("Lumen_Warp_AltarReach".Translate(), InfoStats.Tiles(AltarRules.LinkRadius), "Lumen_Warp_AltarReachDesc".Translate() + " " + rule)
             .Rows;
     }
 }
@@ -33,26 +33,26 @@ public class CompWarpBattery : ThingComp
     public CompProperties_WarpBattery Props => (CompProperties_WarpBattery)props;
     public float Spare => Mathf.Max(0, Props.capacity - stored);
 
-    public override void PostSpawnSetup(bool respawningAfterLoad) => parent.Map.GetComponent<WarpEnergyNetwork>().Register(this);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => map.GetComponent<WarpEnergyNetwork>().Unregister(this);
+    public override void PostSpawnSetup(bool respawningAfterLoad) => MapState.Of<WarpEnergyNetwork>(parent.Map).Register(this);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => MapState.Of<WarpEnergyNetwork>(map).Unregister(this);
     public override void PostExposeData() => Scribe_Values.Look(ref stored, "warpStored");
 
     public override string CompInspectStringExtra()
     {
-        var network = parent.Map.GetComponent<WarpEnergyNetwork>();
+        var network = MapState.Of<WarpEnergyNetwork>(parent.Map);
         bool altarInRange = parent.Map.listerBuildings.AllBuildingsColonistOfClass<Building_SacrificialAltar>()
             .Any(altar => WarpEnergyNetwork.InRange(altar, parent));
-        return "Warp energy: " + stored.ToString("0") + " / " + Props.capacity.ToString("0") +
-            "\nSacrificial altar in range: " + (altarInRange ? "yes" : "no") +
-            "\nNetwork: " + network.TotalStored.ToString("0") + " / " + network.TotalCapacity.ToString("0") +
-            (network.Depleted ? "\nDepleted. Active effects resume at " + WarpRules.Hysteresis.ToString("0") + " stored." : "");
+        return "Lumen_Warp_Stored".Translate(stored.ToString("0"), Props.capacity.ToString("0")) +
+            "\n" + "Lumen_Warp_AltarInRange".Translate((altarInRange ? "Lumen_Yes" : "Lumen_No").Translate()) +
+            "\n" + "Lumen_Warp_Network".Translate(network.TotalStored.ToString("0"), network.TotalCapacity.ToString("0")) +
+            (network.Depleted ? "\n" + "Lumen_Warp_Depleted".Translate(WarpRules.Hysteresis.ToString("0")).ToString() : "");
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         if (!Prefs.DevMode) yield break;
-        yield return new Command_Action { defaultLabel = "DEV: +25 Warp", action = () => stored = Mathf.Min(Props.capacity, stored + 25f) };
-        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => stored = 0 };
+        yield return new Command_Action { defaultLabel = "DEV: +25 Warp", action = () => stored = Mathf.Min(Props.capacity, stored + 25f) }; // not translated
+        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => stored = 0 }; // not translated
     }
 
     public override void PostDraw()
@@ -72,7 +72,7 @@ public static class WarpRules
     public static float Hysteresis = 5f;
 
     internal static void DeclareTunables(TunableScope s) =>
-        s.In("Warp network").Add("DarkStone.warpHysteresis", "Stored Warp energy needed to recover from depletion", Hysteresis,
+        s.In("Lumen_Warp_Section".Translate()).Add("DarkStone.warpHysteresis", "Lumen_Warp_Hysteresis".Translate(), Hysteresis,
             v => Hysteresis = v, Limit.Number(0.02f));
 }
 
@@ -86,7 +86,7 @@ public class WarpEnergyNetwork : MapComponent, IEnergyStore
 
     public bool Depleted => Account.Depleted;
     public bool Available => Account.Available;
-    public static WarpEnergyNetwork For(Map map) => map.GetComponent<WarpEnergyNetwork>();
+    public static WarpEnergyNetwork For(Map map) => MapState.Of<WarpEnergyNetwork>(map);
 
     public float TotalStored
     {

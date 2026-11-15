@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Fixtures_CategoryContribution>Category ritual support contribution (%)</Lumen_Fixtures_CategoryContribution>
+	<Lumen_Fixtures_RuleLight>Fixtures in the same room as a Lumenstone altar and within reach raise its ritual's quality and yield. Support is full in an enclosed, roofed room and half outdoors. Each fixture category counts once, at its highest weight, and floor and wall lamps share the lamp category.</Lumen_Fixtures_RuleLight>
+	<Lumen_Fixtures_RuleDark>Fixtures in the same room as a Sacrificial altar and within reach raise its ritual's quality and yield. Support is full in an enclosed, roofed room and half outdoors. Each fixture category counts once, at its highest weight, and floor and wall lamps share the lamp category.</Lumen_Fixtures_RuleDark>
+	<Lumen_Fixtures_Weight>Ritual support weight</Lumen_Fixtures_Weight>
+	<Lumen_Fixtures_Reach>Ritual support reach</Lumen_Fixtures_Reach>
+	<Lumen_Fixtures_Quality>Ritual quality at full support</Lumen_Fixtures_Quality>
+	<Lumen_Fixtures_YieldDark>Conversion and harvest at full support</Lumen_Fixtures_YieldDark>
+	<Lumen_Fixtures_YieldLight>Ritual yield at full support</Lumen_Fixtures_YieldLight>
+	<Lumen_Fixtures_NoAltarDark>No Sacrificial altar in reach</Lumen_Fixtures_NoAltarDark>
+	<Lumen_Fixtures_NoAltarLight>No Lumenstone altar in reach</Lumen_Fixtures_NoAltarLight>
+	<Lumen_Fixtures_Enclosed>enclosed, roofed room</Lumen_Fixtures_Enclosed>
+	<Lumen_Fixtures_Outdoors>outdoors or unroofed, half strength</Lumen_Fixtures_Outdoors>
+	<Lumen_Fixtures_Describe>Ritual support {0} ({1}): quality +{2}, yield +{3}</Lumen_Fixtures_Describe>
+	<Lumen_Ritual_QualityDesc>{0}: +{1} quality</Lumen_Ritual_QualityDesc>
+	<Lumen_Fixtures_SupportCount>{0} support</Lumen_Fixtures_SupportCount>
+	<Lumen_Fixtures_Tooltip>Fixtures of the matching stone in this room within {0} tiles. Full strength in an enclosed, roofed room and half outdoors.</Lumen_Fixtures_Tooltip>
+</LanguageData>

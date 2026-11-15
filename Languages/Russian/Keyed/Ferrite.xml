@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ferrite_Radius>Радиус обслуживания</Lumen_Ferrite_Radius>
+	<Lumen_Ferrite_Interval>Тиков между ремонтными импульсами</Lumen_Ferrite_Interval>
+	<Lumen_Ferrite_BudgetSetting>Общий бюджет прочности на импульс (%)</Lumen_Ferrite_BudgetSetting>
+	<Lumen_Ferrite_BudgetRule>Каждый импульс делит один бюджет прочности поровну между повреждёнными целями этого источника, поэтому чем больше целей, тем медленнее ремонт. Дробные очки прочности переносятся между импульсами. Цель чинит только сильнейший накрывающий ферритовый источник; перекрытие ремонта не добавляет. Работает и в бою.</Lumen_Ferrite_BudgetRule>
+	<Lumen_Ferrite_Mends>Чинит</Lumen_Ferrite_Mends>
+	<Lumen_Ferrite_MendsSelf>себя и надетое снаряжение</Lumen_Ferrite_MendsSelf>
+	<Lumen_Ferrite_MendsSelfDesc>Пока надет или в руках, чинит этот предмет, а также одежду и оружие владельца, включая одежду с трупов (метка не снимается). Не требует солнечной энергии.</Lumen_Ferrite_MendsSelfDesc>
+	<Lumen_Ferrite_RadiusDesc>Работает сквозь стены.</Lumen_Ferrite_RadiusDesc>
+	<Lumen_Ferrite_MendsFree>Бесплатно чинит</Lumen_Ferrite_MendsFree>
+	<Lumen_Ferrite_Buildings>постройки</Lumen_Ferrite_Buildings>
+	<Lumen_Ferrite_BuildingsDesc>Ремонтируемые постройки и стены игрока.</Lumen_Ferrite_BuildingsDesc>
+	<Lumen_Ferrite_MendsItems>Чинит предметы</Lumen_Ferrite_MendsItems>
+	<Lumen_Ferrite_LooseItems>лежащие предметы</Lumen_Ferrite_LooseItems>
+	<Lumen_Ferrite_LooseItemsDesc>Чинит непортящиеся предметы на земле, в складах и на полках.</Lumen_Ferrite_LooseItemsDesc>
+	<Lumen_Ferrite_MendsGear>Чинит надетое снаряжение</Lumen_Ferrite_MendsGear>
+	<Lumen_Ferrite_ColonistGear>снаряжение колонистов</Lumen_Ferrite_ColonistGear>
+	<Lumen_Ferrite_ColonistGearDesc>Чинит одежду и оружие колонистов, рабов и заключённых, сохраняя метку одежды с трупов. Снаряжение врагов не чинится.</Lumen_Ferrite_ColonistGearDesc>
+	<Lumen_Ferrite_SolarPerHp>Солнечная энергия за очко прочности</Lumen_Ferrite_SolarPerHp>
+	<Lumen_Ferrite_SolarPerHpDesc>Платится за каждое восстановленное очко прочности предмета.</Lumen_Ferrite_SolarPerHpDesc>
+	<Lumen_Ferrite_Budget>Бюджет прочности за импульс</Lumen_Ferrite_Budget>
+	<Lumen_Ferrite_BudgetDesc>Доля максимальной прочности каждой цели.</Lumen_Ferrite_BudgetDesc>
+	<Lumen_Ferrite_SolarPerHpSetting>Солнечная энергия за очко прочности предмета или снаряжения</Lumen_Ferrite_SolarPerHpSetting>
+</LanguageData>

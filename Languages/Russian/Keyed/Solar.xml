@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Solar_Section>Солнечная сеть</Lumen_Solar_Section>
+	<Lumen_Solar_CollectorOutput>Выработка сборщика в день при полном солнце</Lumen_Solar_CollectorOutput>
+	<Lumen_Solar_ArrayOutput>Выработка массива в день при полном солнце</Lumen_Solar_ArrayOutput>
+	<Lumen_Solar_VesselCapacity>Ёмкость сосуда</Lumen_Solar_VesselCapacity>
+	<Lumen_Solar_ObeliskCapacity>Ёмкость обелиска</Lumen_Solar_ObeliskCapacity>
+	<Lumen_Solar_Hysteresis>Запас энергии, нужный для выхода из истощения</Lumen_Solar_Hysteresis>
+	<Lumen_Solar_WeatherFog>Туман</Lumen_Solar_WeatherFog>
+	<Lumen_Solar_WeatherRain>Дождь и лёгкий снег</Lumen_Solar_WeatherRain>
+	<Lumen_Solar_WeatherThunder>Грозы</Lumen_Solar_WeatherThunder>
+	<Lumen_Solar_WeatherHard>Туманный дождь и сильный снег</Lumen_Solar_WeatherHard>
+	<Lumen_Solar_WeatherFactor>{0}: множитель выработки (%)</Lumen_Solar_WeatherFactor>
+	<Lumen_Solar_NetworkRule>Все сборщики и батареи из солнечного камня на карте образуют одну солнечную сеть, как бы далеко они ни стояли. Заряд теряется при разрушении или разборе и сохраняется при упаковке и повторной установке.</Lumen_Solar_NetworkRule>
+	<Lumen_Solar_Capacity>Ёмкость солнечной энергии</Lumen_Solar_Capacity>
+	<Lumen_Solar_OutputDesc>Под ясным полуденным небом. Меньше в туман, дождь и грозу, на рассвете и закате и под крышей; ночью — ноль. Излишек идёт в батареи сети.</Lumen_Solar_OutputDesc>
+	<Lumen_Solar_Generating>Сейчас вырабатывает {0} в день (до {1})</Lumen_Solar_Generating>
+	<Lumen_Solar_Interrupted>Прервано: {0}</Lumen_Solar_Interrupted>
+</LanguageData>

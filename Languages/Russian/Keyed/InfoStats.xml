@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Info_SupportRule>В закрытой комнате каждая категория светильников учитывается один раз, по наибольшему весу. Напольные и настенные лампы — одна категория, повторы ничего не добавляют. Поддержка ограничена 100%.</Lumen_Info_SupportRule>
+	<Lumen_Info_SolarLabel>{0} (солнце)</Lumen_Info_SolarLabel>
+	<Lumen_Info_SolarRule>Это активный эффект солнечной энергии: он работает, только пока активный эффект у светильника включён и на карте есть солнечная энергия.</Lumen_Info_SolarRule>
+	<Lumen_Info_Seconds>{0} с</Lumen_Info_Seconds>
+	<Lumen_Info_Tiles>{0} клеток</Lumen_Info_Tiles>
+	<Lumen_Info_PainFactor>боль x{0}</Lumen_Info_PainFactor>
+</LanguageData>

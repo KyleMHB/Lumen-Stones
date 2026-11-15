@@ -15,35 +15,83 @@
     <deathMessage>{0} has been killed by glacite frost.</deathMessage>
   </DamageDef>
 
+  <!-- Applied by LumenStones.GlaciteBladeHit; decays through SeverityPerDay. 60000 ticks is one day, so -25 clears 1.0 in about 40 seconds. -->
+  <HediffDef>
+    <defName>KM_GlaciteChill</defName>
+    <label>Glacite chill</label>
+    <description>Cold from a Glacite blade has numbed the flesh, slowing movement and dulling the hands. Further strikes deepen it, and it fades within a minute.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <tendable>false</tendable>
+    <makesSickThought>false</makesSickThought>
+    <maxSeverity>1</maxSeverity>
+    <initialSeverity>0.01</initialSeverity>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-25</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>chilled</label>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.9</postFactor></li>
+          <li><capacity>Manipulation</capacity><postFactor>0.95</postFactor></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>numbed</label>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.8</postFactor></li>
+          <li><capacity>Manipulation</capacity><postFactor>0.9</postFactor></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.75</minSeverity>
+        <label>frozen stiff</label>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.7</postFactor></li>
+          <li><capacity>Manipulation</capacity><postFactor>0.85</postFactor></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- The defName stays KM_GlaciteBlade so saved blades, bills and settings carry over to the greatsword. -->
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>KM_GlaciteBlade</defName>
-    <label>Glacite blade</label>
-    <description>A long Glacite crystal set into an iron hilt. The blade stays cold enough to burn bare skin, so it is carried in a lined sheath.\n\nIts sharp edge cuts flesh, and the crystal's cold can cause frostbite with each strike.</description>
+    <label>Glacite greatsword</label>
+    <description>A long, broad Glacite crystal set into an iron hilt, made to be swung with both hands. The blade stays cold enough to burn bare skin, so it is carried in a lined sheath.\n\nEvery strike that wounds living flesh chills it, slowing movement and weakening melee strikes and dodges. Further strikes deepen the chill to numbed and then frozen stiff, and it fades within a minute. It can't be wielded with a shield. Crafted from 100 Glacite and 20 steel after Long blades, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <relicChance>2</relicChance>
     <smeltable>false</smeltable>
-    <statBases><WorkToMake>5000</WorkToMake><Mass>2</Mass></statBases>
+    <statBases><WorkToMake>6000</WorkToMake><Mass>3.5</Mass></statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/GlaciteBlade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>1.2</drawSize>
+      <!-- 1.6 gives the greatsword about 1.5 cells of length; the outline pass in its recipe is drawn for this size -->
+      <drawSize>(1.6,1.6)</drawSize>
+      <!-- uiIconScale below keeps the wide horizontal art inside the icon -->
     </graphicData>
+    <uiIconScale>0.7</uiIconScale>
     <weaponTags><li>MedievalMeleeAdvanced</li><li>LongSword</li></weaponTags>
     <tools>
       <li>
         <label>handle</label><capacities><li>Blunt</li></capacities>
-        <power>9</power><cooldownTime>2</cooldownTime>
+        <power>10</power><cooldownTime>2.4</cooldownTime>
       </li>
       <li>
         <label>point</label><capacities><li>Stab</li></capacities>
-        <power>23</power><cooldownTime>2.2</cooldownTime>
-        <extraMeleeDamages><li><def>KM_GlaciteFrost</def><amount>6</amount><chance>0.5</chance></li></extraMeleeDamages>
+        <power>24</power><cooldownTime>2.8</cooldownTime>
       </li>
       <li>
         <label>edge</label><capacities><li>Cut</li></capacities>
-        <power>23</power><cooldownTime>2.2</cooldownTime>
-        <extraMeleeDamages><li><def>KM_GlaciteFrost</def><amount>6</amount><chance>0.4</chance></li></extraMeleeDamages>
+        <power>28</power><cooldownTime>2.8</cooldownTime>
       </li>
     </tools>
     <recipeMaker>

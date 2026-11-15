@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Twinstone_Solar>Солнечная энергия: {0} / {1}</Lumen_Twinstone_Solar>
+	<Lumen_Twinstone_Warp>Энергия варпа: {0} / {1}</Lumen_Twinstone_Warp>
+	<Lumen_Twinstone_Charging>Заряжается от сетей этого поселения.</Lumen_Twinstone_Charging>
+	<Lumen_Twinstone_NoPawns>Здесь некого питать: нет пешек с имплантами.</Lumen_Twinstone_NoPawns>
+	<Lumen_Twinstone_SolarLastsOne>Солнечной энергии хватит на {0} дн. для {1} части</Lumen_Twinstone_SolarLastsOne>
+	<Lumen_Twinstone_SolarLastsMany>Солнечной энергии хватит на {0} дн. для частей: {1}</Lumen_Twinstone_SolarLastsMany>
+	<Lumen_Twinstone_WarpLastsOne>Энергии варпа хватит на {0} дн. для {1} части</Lumen_Twinstone_WarpLastsOne>
+	<Lumen_Twinstone_WarpLastsMany>Энергии варпа хватит на {0} дн. для частей: {1}</Lumen_Twinstone_WarpLastsMany>
+</LanguageData>

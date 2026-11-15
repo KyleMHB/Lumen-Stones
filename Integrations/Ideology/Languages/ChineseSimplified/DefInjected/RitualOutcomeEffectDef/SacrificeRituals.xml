@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CrystallizeDarkStone.comps.0.label>暗石仪式匕首</KM_CrystallizeDarkStone.comps.0.label>
+	<KM_CrystallizeDarkStone.comps.1.label>{PAWN_labelShort}的社交影响</KM_CrystallizeDarkStone.comps.1.label>
+	<KM_CrystallizeDarkStone.comps.1.labelAbstract>主持者的社交影响</KM_CrystallizeDarkStone.comps.1.labelAbstract>
+	<KM_CrystallizeDarkStone.comps.2.label>参与者</KM_CrystallizeDarkStone.comps.2.label>
+	<KM_CrystallizeDarkStone.comps.3.label>房间印象</KM_CrystallizeDarkStone.comps.3.label>
+	<KM_CrystallizeDarkStone.comps.4.label>暗石装置</KM_CrystallizeDarkStone.comps.4.label>
+	<KM_CrystallizeDarkStone.description>一场将流明石凝结为暗石的献祭。品质以及受害者的价值和身份决定转化量，其余部分会被返还。每个定居点需要恢复后才能进行下一次同类献祭。</KM_CrystallizeDarkStone.description>
+	<KM_CrystallizeDarkStone.outcomeChances.0.label>差</KM_CrystallizeDarkStone.outcomeChances.0.label>
+	<KM_CrystallizeDarkStone.outcomeChances.0.description>石头抗拒了。只有少量流明石凝结。</KM_CrystallizeDarkStone.outcomeChances.0.description>
+	<KM_CrystallizeDarkStone.outcomeChances.1.label>成功</KM_CrystallizeDarkStone.outcomeChances.1.label>
+	<KM_CrystallizeDarkStone.outcomeChances.1.description>石头变暗并稳住了。相当一部分流明石凝结。</KM_CrystallizeDarkStone.outcomeChances.1.description>
+	<KM_CrystallizeDarkStone.outcomeChances.2.label>卓越</KM_CrystallizeDarkStone.outcomeChances.2.label>
+	<KM_CrystallizeDarkStone.outcomeChances.2.description>石头畅饮了一番。大部分流明石凝结。</KM_CrystallizeDarkStone.outcomeChances.2.description>
+	<KM_HarvestWarpEnergy.description>一场将扭曲能量收割进祭坛附近血石电池的献祭。品质以及受害者的价值和身份决定收割量，超出电池剩余容量的部分会损失。</KM_HarvestWarpEnergy.description>
+	<KM_HarvestWarpEnergy.comps.0.label>暗石仪式匕首</KM_HarvestWarpEnergy.comps.0.label>
+	<KM_HarvestWarpEnergy.comps.1.label>{PAWN_labelShort}的社交影响</KM_HarvestWarpEnergy.comps.1.label>
+	<KM_HarvestWarpEnergy.comps.1.labelAbstract>主持者的社交影响</KM_HarvestWarpEnergy.comps.1.labelAbstract>
+	<KM_HarvestWarpEnergy.comps.2.label>参与者</KM_HarvestWarpEnergy.comps.2.label>
+	<KM_HarvestWarpEnergy.comps.3.label>房间印象</KM_HarvestWarpEnergy.comps.3.label>
+	<KM_HarvestWarpEnergy.comps.4.label>暗石装置</KM_HarvestWarpEnergy.comps.4.label>
+	<KM_HarvestWarpEnergy.comps.5.label>电池空间</KM_HarvestWarpEnergy.comps.5.label>
+	<KM_HarvestWarpEnergy.outcomeChances.0.label>差</KM_HarvestWarpEnergy.outcomeChances.0.label>
+	<KM_HarvestWarpEnergy.outcomeChances.0.description>生命缓缓流逝。收获微薄。</KM_HarvestWarpEnergy.outcomeChances.0.description>
+	<KM_HarvestWarpEnergy.outcomeChances.1.label>成功</KM_HarvestWarpEnergy.outcomeChances.1.label>
+	<KM_HarvestWarpEnergy.outcomeChances.1.description>生命倾泻进石头。收获丰厚。</KM_HarvestWarpEnergy.outcomeChances.1.description>
+	<KM_HarvestWarpEnergy.outcomeChances.2.label>卓越</KM_HarvestWarpEnergy.outcomeChances.2.label>
+	<KM_HarvestWarpEnergy.outcomeChances.2.description>祭坛饮尽了一切。收获极丰。</KM_HarvestWarpEnergy.outcomeChances.2.description>
+</LanguageData>

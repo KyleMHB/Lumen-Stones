@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Dreadstone_ReachSection>Радиус и стоимость</Lumen_Dreadstone_ReachSection>
+	<Lumen_Dreadstone_SubjugationSection>Подчинение</Lumen_Dreadstone_SubjugationSection>
+	<Lumen_Dreadstone_DreadSection>Ужас и Похищение смерти</Lumen_Dreadstone_DreadSection>
+	<Lumen_Dreadstone_SubjugationCost>Энергия варпа в день на каждого охваченного заключённого или раба</Lumen_Dreadstone_SubjugationCost>
+	<Lumen_Dreadstone_Resistance>Потеря сопротивления в день (колонна)</Lumen_Dreadstone_Resistance>
+	<Lumen_Dreadstone_Will>Потеря воли в день (колонна)</Lumen_Dreadstone_Will>
+	<Lumen_Dreadstone_Suppression>Прирост подавления рабов в день (колонна, %)</Lumen_Dreadstone_Suppression>
+	<Lumen_Dreadstone_PylonErosion>Множитель подтачивания для пилона</Lumen_Dreadstone_PylonErosion>
+	<Lumen_Dreadstone_BreakFactor>Множитель редкости побегов и восстаний</Lumen_Dreadstone_BreakFactor>
+	<Lumen_Dreadstone_DreadCost>Энергия варпа на врага за проход</Lumen_Dreadstone_DreadCost>
+	<Lumen_Dreadstone_Siphon>Доля рыночной стоимости, возвращаемая энергией варпа при смерти помеченного (%)</Lumen_Dreadstone_Siphon>
+	<Lumen_Dreadstone_ArbalestSeconds>Длительность ужаса от арбалета (сек.)</Lumen_Dreadstone_ArbalestSeconds>
+	<Lumen_Dreadstone_DreadNote>Тратит {0} энергии варпа за проход, пока в радиусе.</Lumen_Dreadstone_DreadNote>
+	<Lumen_Dreadstone_SiphonNote>Если умрёт помеченным, {0} его стоимости вернётся энергией варпа.</Lumen_Dreadstone_SiphonNote>
+	<Lumen_Dreadstone_ResistanceNote>Сопротивление: -{0} в день</Lumen_Dreadstone_ResistanceNote>
+	<Lumen_Dreadstone_WillNote>Воля: -{0} в день</Lumen_Dreadstone_WillNote>
+	<Lumen_Dreadstone_SuppressionNote>Подавление: +{0} в день</Lumen_Dreadstone_SuppressionNote>
+	<Lumen_Dreadstone_BreakNote>Побеги и восстания в {0} раза реже (результат виден на вкладке заключённого).</Lumen_Dreadstone_BreakNote>
+	<Lumen_Dreadstone_CostNote>Тратит {0} энергии варпа в день.</Lumen_Dreadstone_CostNote>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteRegrowth.label>血晶石再生</KM_SanguiniteRegrowth.label>
+	<KM_SanguiniteRegrowth.description>一个缺失的部件正在血晶石治疗下再生。病人离开床或扭曲能量耗尽时进度暂停，但会保留。</KM_SanguiniteRegrowth.description>
+	<KM_Hemorrhage.label>出血</KM_Hemorrhage.label>
+	<KM_Hemorrhage.description>血晶石刃造成的伤口会持续流血几秒。后续命中会加深伤口，最多三次。</KM_Hemorrhage.description>
+	<KM_SanguiniteTreatment.label>血晶石治疗</KM_SanguiniteTreatment.label>
+	<KM_SanguiniteTreatment.description>一座血晶石装置正在治疗这名卧床休息的病人。悬停查看其速率。</KM_SanguiniteTreatment.description>
+	<KM_FlensingWielder.label>剥皮刃持有者</KM_FlensingWielder.label>
+	<KM_FlensingWielder.description>血晶石刃会稀释持有者的血液。持握时出血减半。</KM_FlensingWielder.description>
+</LanguageData>

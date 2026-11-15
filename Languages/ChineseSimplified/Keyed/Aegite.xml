@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Aegite_WardRadius>守护半径</Lumen_Aegite_WardRadius>
+	<Lumen_Aegite_Interval>守护脉冲间隔（刻）</Lumen_Aegite_Interval>
+	<Lumen_Aegite_FireCount>每次脉冲最多处理的火焰数</Lumen_Aegite_FireCount>
+	<Lumen_Aegite_FireReduction>每次处理减少的火焰大小</Lumen_Aegite_FireReduction>
+	<Lumen_Aegite_FilthLayers>每次脉冲最多清除的污物层数</Lumen_Aegite_FilthLayers>
+	<Lumen_Aegite_WardRule>每个火焰或污物目标只由覆盖它的最强守护等级处理，同等级中也只有一个守护生效。守护重叠不会叠加效果。</Lumen_Aegite_WardRule>
+	<Lumen_Aegite_FireRule>每次脉冲改为扑灭己方区域的火焰，而不是清理污物。</Lumen_Aegite_FireRule>
+	<Lumen_Aegite_WardRadiusDesc>在室内、室外均有效，并可穿墙。</Lumen_Aegite_WardRadiusDesc>
+	<Lumen_Aegite_PulseInterval>脉冲间隔</Lumen_Aegite_PulseInterval>
+	<Lumen_Aegite_FilthThinned>每次脉冲清理的污物层数</Lumen_Aegite_FilthThinned>
+	<Lumen_Aegite_FilthThinnedDesc>在没有火焰需要扑灭，或太阳能主动效果无法运行时使用。</Lumen_Aegite_FilthThinnedDesc>
+	<Lumen_Aegite_FiresSuppressed>每次脉冲扑灭的火焰数</Lumen_Aegite_FiresSuppressed>
+	<Lumen_Aegite_FireSizeRemoved>扑灭的火焰大小</Lumen_Aegite_FireSizeRemoved>
+	<Lumen_Aegite_SolarPerFire>每处火焰的太阳能</Lumen_Aegite_SolarPerFire>
+	<Lumen_Aegite_SolarPerFireSetting>每扑灭一处火焰消耗的太阳能</Lumen_Aegite_SolarPerFireSetting>
+</LanguageData>

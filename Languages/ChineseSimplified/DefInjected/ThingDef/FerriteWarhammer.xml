@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_FerriteWarhammer.label>铁晶石战锤</KM_FerriteWarhammer.label>
+	<KM_FerriteWarhammer.description>一把带有铜色晶体锤头的石板银色战锤。锤柄和锤头上的凹痕会慢慢恢复，持有者身上的也一样。\n\n钝击近战攻击可以眩晕活体目标。装备时，它会缓慢修补自身以及持有者穿戴的衣物和装备的武器，不消耗太阳能。附近更强的铁晶石维护优先生效。研究长剑后，使用100铁晶石和20钢铁制作，需要6级手工。</KM_FerriteWarhammer.description>
+	<KM_FerriteWarhammer.tools.0.label>柄</KM_FerriteWarhammer.tools.0.label>
+	<KM_FerriteWarhammer.tools.1.label>锤头</KM_FerriteWarhammer.tools.1.label>
+</LanguageData>

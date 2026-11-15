@@ -5,10 +5,14 @@
     <label>Animastone staff</label>
     <description>A wooden focus staff crowned with Animastone. It takes some of the strain of a psycast onto itself.\n\nIt is a poor club, but while wielded it lowers neural heat gained by 20% and raises the neural heat limit by 15. A damaging melee hit can briefly stun the target, with a chance that grows with the wielder's psychic sensitivity. It needs no Solar energy. Crafted from 60 Animastone and 20 wood after anima attunement, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
+    <!-- The art lies horizontal with the crown on the right, like the Lumenstone staff; -65 holds it upright. -->
+    <equippedAngleOffset>-65</equippedAngleOffset>
     <relicChance>2</relicChance>
     <smeltable>false</smeltable>
     <statBases><WorkToMake>5000</WorkToMake><Mass>1.8</Mass></statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/AnimastoneStaff</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.2,1.2)</drawSize>

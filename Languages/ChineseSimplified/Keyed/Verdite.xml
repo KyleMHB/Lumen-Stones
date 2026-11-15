@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Verdite_SupportRadius>农业支援半径</Lumen_Verdite_SupportRadius>
+	<Lumen_Verdite_GrowthBonus>植物生长加成（%）</Lumen_Verdite_GrowthBonus>
+	<Lumen_Verdite_WorkBonus>种植工作速度加成（%）</Lumen_Verdite_WorkBonus>
+	<Lumen_Verdite_YieldBonus>植物收获产量加成（%）</Lumen_Verdite_YieldBonus>
+	<Lumen_Verdite_Rule>作用于绿色光环内的植物和农夫，室内室外均可。每项收益只取最强的翠绿石来源，翠绿石镰刀也算作一个来源。</Lumen_Verdite_Rule>
+	<Lumen_Verdite_FarmingRadius>农耕半径</Lumen_Verdite_FarmingRadius>
+	<Lumen_Verdite_PlantGrowth>植物生长</Lumen_Verdite_PlantGrowth>
+	<Lumen_Verdite_PlantWorkSpeed>种植工作速度</Lumen_Verdite_PlantWorkSpeed>
+	<Lumen_Verdite_PlantHarvestYield>植物收获产量</Lumen_Verdite_PlantHarvestYield>
+	<Lumen_Verdite_StrongestSupport>最强翠绿石支援：+{0}</Lumen_Verdite_StrongestSupport>
+	<Lumen_Verdite_StrongestGrowth>最强翠绿石生长支援：+{0}</Lumen_Verdite_StrongestGrowth>
+</LanguageData>

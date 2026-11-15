@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_RaiseWorkHusk.roles.0.label>ведущий церемонии</KM_RaiseWorkHusk.roles.0.label>
+	<KM_RaiseWorkHusk.roles.1.label>жертва</KM_RaiseWorkHusk.roles.1.label>
+	<KM_RaiseWorkHusk.roles.1.missingDesc>заключённый, раб или колонист</KM_RaiseWorkHusk.roles.1.missingDesc>
+	<KM_RaiseWorkHusk.stages.0.failTriggers.0.desc>Жертва недоступна.</KM_RaiseWorkHusk.stages.0.failTriggers.0.desc>
+	<KM_RaiseWorkHusk.stages.0.failTriggers.1.desc>ведущий спит</KM_RaiseWorkHusk.stages.0.failTriggers.1.desc>
+	<KM_RaiseWorkHusk.stages.3.failTriggers.0.desc>жертва больше не мертва</KM_RaiseWorkHusk.stages.3.failTriggers.0.desc>
+</LanguageData>

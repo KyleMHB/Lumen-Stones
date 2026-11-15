@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Overlight_SolarPerSchedule>Solar energy per lit schedule</Lumen_Overlight_SolarPerSchedule>
+	<Lumen_Overlight_Rule>A separate gold ring of plant-capable light that follows the daily sun-lamp schedule. Plants keep their usual light, temperature and growing needs. The fixture's ordinary green light is always on.</Lumen_Overlight_Rule>
+	<Lumen_Overlight_Radius>Plant-capable light radius</Lumen_Overlight_Radius>
+	<Lumen_Overlight_Hours>Plant-capable light hours</Lumen_Overlight_Hours>
+	<Lumen_Overlight_HoursValue>{0} to {1}</Lumen_Overlight_HoursValue>
+	<Lumen_Overlight_SolarPerDayDesc>Spent evenly while the light is lit.</Lumen_Overlight_SolarPerDayDesc>
+	<Lumen_Overlight_Status>Plant-capable light: {0}</Lumen_Overlight_Status>
+	<Lumen_Overlight_Darklight>Darklight: always on; plant-capable light disabled</Lumen_Overlight_Darklight>
+	<Lumen_Overlight_On>on</Lumen_Overlight_On>
+	<Lumen_Overlight_OffUntil>off until {0}</Lumen_Overlight_OffUntil>
+	<Lumen_Overlight_NotRunning>off, active effect not running</Lumen_Overlight_NotRunning>
+	<Lumen_Overlight_RadiusSetting>Plant-capable lighting radius</Lumen_Overlight_RadiusSetting>
+</LanguageData>

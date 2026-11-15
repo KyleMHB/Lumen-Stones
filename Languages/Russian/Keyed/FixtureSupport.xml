@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Category_Column>колонна</Lumen_Category_Column>
+	<Lumen_Category_Lamp>лампа</Lumen_Category_Lamp>
+	<Lumen_Category_Pylon>пилон</Lumen_Category_Pylon>
+	<Lumen_Category_Cluster>друза</Lumen_Category_Cluster>
+	<Lumen_Category_RestorativeCluster>целебная друза</Lumen_Category_RestorativeCluster>
+	<Lumen_Category_SanctuaryShrine>святилище</Lumen_Category_SanctuaryShrine>
+	<Lumen_Category_SoothingCluster>успокаивающая друза</Lumen_Category_SoothingCluster>
+</LanguageData>

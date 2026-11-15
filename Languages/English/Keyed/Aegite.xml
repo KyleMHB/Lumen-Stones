@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Aegite_WardRadius>Ward radius</Lumen_Aegite_WardRadius>
+	<Lumen_Aegite_Interval>Ticks between ward pulses</Lumen_Aegite_Interval>
+	<Lumen_Aegite_FireCount>Maximum fires per pulse</Lumen_Aegite_FireCount>
+	<Lumen_Aegite_FireReduction>Fire size reduction per service</Lumen_Aegite_FireReduction>
+	<Lumen_Aegite_FilthLayers>Maximum filth layers per pulse</Lumen_Aegite_FilthLayers>
+	<Lumen_Aegite_WardRule>Only the strongest covering ward tier services each fire or filth target, and among equal tiers only one ward does. Overlapping wards add nothing.</Lumen_Aegite_WardRule>
+	<Lumen_Aegite_FireRule>Each pulse suppresses owned fires instead of thinning filth.</Lumen_Aegite_FireRule>
+	<Lumen_Aegite_WardRadiusDesc>Works indoors, outdoors and through walls.</Lumen_Aegite_WardRadiusDesc>
+	<Lumen_Aegite_PulseInterval>Pulse interval</Lumen_Aegite_PulseInterval>
+	<Lumen_Aegite_FilthThinned>Filth layers thinned per pulse</Lumen_Aegite_FilthThinned>
+	<Lumen_Aegite_FilthThinnedDesc>Used when there is no fire to suppress, or the Solar active effect can't run.</Lumen_Aegite_FilthThinnedDesc>
+	<Lumen_Aegite_FiresSuppressed>Fires suppressed per pulse</Lumen_Aegite_FiresSuppressed>
+	<Lumen_Aegite_FireSizeRemoved>Fire size removed</Lumen_Aegite_FireSizeRemoved>
+	<Lumen_Aegite_SolarPerFire>Solar energy per fire</Lumen_Aegite_SolarPerFire>
+	<Lumen_Aegite_SolarPerFireSetting>Solar energy per fire suppressed</Lumen_Aegite_SolarPerFireSetting>
+</LanguageData>

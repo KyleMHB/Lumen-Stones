@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_DreadstoneSeedConsumed.label>被恐惧石种子吞噬</KM_DreadstoneSeedConsumed.label>
+	<KM_DreadstoneSeedConsumed.deathMessage>{0}被恐惧石种子吞噬了。</KM_DreadstoneSeedConsumed.deathMessage>
+</LanguageData>

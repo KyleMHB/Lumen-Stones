@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteRitual.label>月石仪式</KM_LuniteRitual.label>
+	<KM_LuniteRitual.description>在流明仪式圈举行的一小时夜间仪式，将太阳石转化为月石。只能在20:00至04:00之间开始。取消的仪式会返还太阳石。</KM_LuniteRitual.description>
+	<KM_LuniteAltarRitual.label>月石仪式</KM_LuniteAltarRitual.label>
+	<KM_LuniteAltarRitual.description>在流明石祭坛举行的一小时夜间仪式，将太阳石转化为月石。只能在20:00至04:00之间开始。取消的仪式会返还太阳石。</KM_LuniteAltarRitual.description>
+</LanguageData>

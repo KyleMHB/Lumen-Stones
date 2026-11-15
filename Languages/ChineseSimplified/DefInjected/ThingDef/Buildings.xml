@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteLamp.label>冰晶石灯</KM_GlaciteLamp.label>
+	<KM_GlaciteLamp.description>一块立在石座上的冰晶石碎片。它照亮房间，并悄悄带走一些热量。\n\n当周围空气高于17°C时吸收少量热量。不需要燃料或电力。</KM_GlaciteLamp.description>
+	<KM_GlaciteWallLamp.label>冰晶石壁灯</KM_GlaciteWallLamp.label>
+	<KM_GlaciteWallLamp.description>一块挂在墙上的冰晶石碎片。夏天时支架上会结霜。\n\n当周围空气高于17°C时吸收少量热量。不需要燃料或电力。</KM_GlaciteWallLamp.description>
+	<KM_GlacitePylon.label>冰晶石塔</KM_GlacitePylon.label>
+	<KM_GlacitePylon.description>一大块冰晶石晶体，安放在铁制底座中。靠在它上面的人只会靠一次。\n\n照亮周围，并在高于10°C时吸收热量。不需要燃料或电力。适合为小房间降温，但无法冷冻食物。</KM_GlacitePylon.description>
+	<KM_GlaciteCooler.label>冰晶石冷却器</KM_GlaciteCooler.label>
+	<KM_GlaciteCooler.description>装在坚固外壳中的冰晶石晶体。没有排气口，它吸收的热量只会进入石头里。\n\n无需燃料、电力或排气口即可吸收热量。仅靠自身就能把房间冷却到4°C，足以减缓食物腐败。有太阳能时可继续冷却到-10°C，足以冷冻食物。较大的房间或更炎热的天气可能需要多台冷却器。严重损坏时可能会爆出一阵冰冻晶体碎片。</KM_GlaciteCooler.description>
+	<KM_GlaciteCooler.comps.2.effect>深度制冷</KM_GlaciteCooler.comps.2.effect>
+	<KM_GlaciteCooler.comps.2.description>消耗太阳能，在被动界限之下继续制冷，直到冷却器的主动界限。这会让房间和里面的一切结冰。关闭时，冷却器停在被动界限。</KM_GlaciteCooler.comps.2.description>
+</LanguageData>

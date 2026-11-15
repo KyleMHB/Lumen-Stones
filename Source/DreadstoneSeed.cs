@@ -19,18 +19,18 @@ public static class DarkSeedRules
         if (seedCrystal == null) return;
         // The crystal is made from Dreadstone, so it follows the Dreadstone toggle.
         s.Gate("KM_DreadstoneSeedCrystal", "Dreadstone");
-        var seed = s.In("Dreadstone seed");
-        seed.Add("DarkSeed.crystalCost", "Dreadstone per seed crystal", seedCrystal.ingredients[0].GetBaseCount(), v =>
+        var seed = s.In("Lumen_Seed_Section".Translate());
+        seed.Add("DarkSeed.crystalCost", "Lumen_Seed_CrystalCost".Translate(), seedCrystal.ingredients[0].GetBaseCount(), v =>
         {
             seedCrystal.ingredients[0].SetBaseCount(v);
-            seedCrystal.description = "Shape " + v + " Dreadstone into a dreadstone seed crystal.";
+            seedCrystal.description = "Lumen_Seed_RecipeDesc".Translate(v);
         }, Limit.Integer(1));
-        seed.Add("DarkSeed.days", "Days to full growth", Days, v => Days = v, Limit.Number(0.1f));
-        seed.Add("DarkSeed.maxPain", "Maximum seed pain (%)", MaxPain, v => MaxPain = v, Limit.Percent());
-        seed.Add("DarkSeed.cutIntervalStart", "Mean hours between cuts when bound", CutIntervalStart, v => CutIntervalStart = v, Limit.Number(0.1f));
-        seed.Add("DarkSeed.cutIntervalEnd", "Mean hours between cuts in the last stage", CutIntervalEnd, v => CutIntervalEnd = v, Limit.Number(0.1f));
-        seed.Add("DarkSeed.cutSeverity", "Cut damage multiplier", CutSeverity, v => CutSeverity = v, Limit.Number(max: 10));
-        seed.Add("DarkSeed.baseYield", "Dark Stone at full growth, before the victim factor", BaseYield, v => BaseYield = v, Limit.Number(1));
+        seed.Add("DarkSeed.days", "Lumen_Seed_Days".Translate(), Days, v => Days = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.maxPain", "Lumen_Seed_MaxPain".Translate(), MaxPain, v => MaxPain = v, Limit.Percent());
+        seed.Add("DarkSeed.cutIntervalStart", "Lumen_Seed_CutStart".Translate(), CutIntervalStart, v => CutIntervalStart = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.cutIntervalEnd", "Lumen_Seed_CutEnd".Translate(), CutIntervalEnd, v => CutIntervalEnd = v, Limit.Number(0.1f));
+        seed.Add("DarkSeed.cutSeverity", "Lumen_Seed_CutSeverity".Translate(), CutSeverity, v => CutSeverity = v, Limit.Number(max: 10));
+        seed.Add("DarkSeed.baseYield", "Lumen_Seed_BaseYield".Translate(), BaseYield, v => BaseYield = v, Limit.Number(1));
     }
 
     private static HediffDef seed;
@@ -39,7 +39,8 @@ public static class DarkSeedRules
 
     public static Hediff_DreadstoneSeed On(Pawn pawn) => Seed == null ? null : pawn.health.hediffSet.GetFirstHediffOfDef(Seed) as Hediff_DreadstoneSeed;
 
-    public static Hediff_DreadstoneSeed Dormant(Pawn pawn) => On(pawn) is { dormant: true } found ? found : null;
+    // Binding only offers a dormant seed while the seed effect is switched on.
+    public static Hediff_DreadstoneSeed Dormant(Pawn pawn) => Effects.DreadstoneSeed.On && On(pawn) is { dormant: true } found ? found : null;
 
     public static float CutIntervalHours(float severity) => Mathf.Lerp(CutIntervalStart, CutIntervalEnd, Mathf.InverseLerp(0f, LastStage, severity));
 
@@ -60,16 +61,16 @@ public class Hediff_DreadstoneSeed : HediffWithComps
     public override float PainOffset => 0f;
     public float SeedPain => Mathf.Min(CurStage?.painOffset ?? 0f, DarkSeedRules.MaxPain);
 
-    public override string LabelInBrackets => dormant ? "dormant" : base.LabelInBrackets;
+    public override string LabelInBrackets => dormant ? "Lumen_Seed_Dormant".Translate().ToString() : base.LabelInBrackets;
 
     public override string TipStringExtra
     {
         get
         {
             string own = dormant
-                ? "Dormant: it waits to be bound by Binding at a Sacrificial altar."
-                : "Growth: " + Severity.ToStringPercent("0") + ". It consumes the body in " +
-                  Mathf.CeilToInt((1f - Severity) * DarkSeedRules.Days * GenDate.TicksPerDay).ToStringTicksToPeriod() + " unless the pawn dies first.";
+                ? "Lumen_Seed_DormantTip".Translate().ToString()
+                : "Lumen_Seed_GrowthTip".Translate(Severity.ToStringPercent("0"),
+                    Mathf.CeilToInt((1f - Severity) * DarkSeedRules.Days * GenDate.TicksPerDay).ToStringTicksToPeriod()).ToString();
             string text = base.TipStringExtra;
             return string.IsNullOrEmpty(text) ? own : text + "\n" + own;
         }
@@ -80,15 +81,15 @@ public class Hediff_DreadstoneSeed : HediffWithComps
         dormant = false;
         pawn.health.Notify_HediffChanged(this);
         if (pawn.IsColonist && PawnUtility.ShouldSendNotificationAbout(pawn))
-            Find.LetterStack.ReceiveLetter("Dreadstone seed", pawn.LabelShortCap + " has a stake of dreadstone buried in " + pawn.Possessive() +
-                " chest. It will keep " + pawn.gender.GetObjective() + " alive while it grows through " + pawn.gender.GetObjective() + ". Nothing will stop the pain.",
+            Find.LetterStack.ReceiveLetter("Lumen_Seed_Section".Translate(), "Lumen_Seed_LetterText".Translate(pawn.Named("PAWN")).CapitalizeFirst(),
                 LetterDefOf.NegativeEvent, pawn);
     }
 
     public override void TickInterval(int delta)
     {
         base.TickInterval(delta);
-        if (dormant) return;
+        // Switched off, a bound seed holds still: no growth, no cuts, and it never consumes the pawn.
+        if (dormant || !Effects.DreadstoneSeed.On) return;
         Severity += delta / (DarkSeedRules.Days * GenDate.TicksPerDay);
         if (Severity >= 1f)
         {
@@ -113,8 +114,7 @@ public class Hediff_DreadstoneSeed : HediffWithComps
         pawn.health.AddHediff(cut, part, new DamageInfo(DamageDefOf.Cut, cut.Severity, hitPart: part));
         if (cutLetterSent || !pawn.IsColonist || !PawnUtility.ShouldSendNotificationAbout(pawn)) return;
         cutLetterSent = true;
-        Find.LetterStack.ReceiveLetter("Dreadstone cut", "The dreadstone seed tore through " + pawn.LabelShort + "'s " + part.Label +
-            ". It will keep cutting as it grows. Tend the wounds or " + pawn.gender.GetObjective() + " will bleed out before it finishes.", LetterDefOf.NegativeEvent, pawn);
+        Find.LetterStack.ReceiveLetter("Lumen_Seed_CutLabel".Translate(), "Lumen_Seed_CutText".Translate(pawn.Named("PAWN"), part.Label.Named("PART")), LetterDefOf.NegativeEvent, pawn);
     }
 
     private void Consume()
@@ -133,7 +133,7 @@ public class Hediff_DreadstoneSeed : HediffWithComps
         AltarRules.PlaceStacks(AltarRules.DarkStone, yield, cell, map);
         SacrificeThoughts.Give(map, pawn);
         if (notify)
-            Find.LetterStack.ReceiveLetter("Consumed", "The dreadstone has taken everything it can from " + name + ". All that remains is " + yield + " Dark Stone.",
+            Find.LetterStack.ReceiveLetter("Lumen_Seed_ConsumedLabel".Translate(), "Lumen_Seed_ConsumedText".Translate(name, yield),
                 LetterDefOf.NeutralEvent, new TargetInfo(cell, map));
     }
 

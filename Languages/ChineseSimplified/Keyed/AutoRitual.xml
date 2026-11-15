@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AutoRitual_On>自动开始已开启：仪式一旦就绪，就会由一名主持者和最多两名清醒、健康且未受命令的殖民者开始。右键点击可关闭。</Lumen_AutoRitual_On>
+	<Lumen_AutoRitual_Off>右键点击，在仪式就绪时自动开始。</Lumen_AutoRitual_Off>
+	<Lumen_AutoRitual_Stop>停止自动开始{0}</Lumen_AutoRitual_Stop>
+	<Lumen_AutoRitual_Start>就绪时自动开始{0}</Lumen_AutoRitual_Start>
+	<Lumen_AutoRitual_TurnedOff>自动开始已关闭：{0}。</Lumen_AutoRitual_TurnedOff>
+	<Lumen_AutoRitual_TurnedOn>自动开始已开启：{0}。</Lumen_AutoRitual_TurnedOn>
+	<Lumen_AutoRitual_Lumenstone>流明石仪式</Lumen_AutoRitual_Lumenstone>
+	<Lumen_AutoRitual_Lunite>月石仪式</Lumen_AutoRitual_Lunite>
+	<Lumen_AutoRitual_Started>已在{1}自动开始{0}。</Lumen_AutoRitual_Started>
+</LanguageData>

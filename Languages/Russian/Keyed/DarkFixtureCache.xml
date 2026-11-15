@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Info_WarpRule>Это активный эффект варпа: он работает, только пока активный эффект варпа у светильника включён и на карте есть энергия варпа.</Lumen_Info_WarpRule>
+	<Lumen_DarkInfo_SanguiniteRule>Лечит колонистов, рабов и заключённых, отдыхающих в кровати в той же комнате. Пациента лечит только сильнейший сангвинитовый светильник в радиусе; бионика не затрагивается.</Lumen_DarkInfo_SanguiniteRule>
+	<Lumen_DarkInfo_TreatmentReach>Радиус лечения</Lumen_DarkInfo_TreatmentReach>
+	<Lumen_DarkInfo_BleedingRate>Скорость кровотечения</Lumen_DarkInfo_BleedingRate>
+	<Lumen_DarkInfo_BleedingRateDesc>Раны остаются необработанными и продолжают кровоточить, но медленнее.</Lumen_DarkInfo_BleedingRateDesc>
+	<Lumen_DarkInfo_BleedCost>Энергия варпа на кровоточащего пациента</Lumen_DarkInfo_BleedCost>
+	<Lumen_DarkInfo_Every>{0} каждые {1}</Lumen_DarkInfo_Every>
+	<Lumen_DarkInfo_HealsScars>Лечит шрамы</Lumen_DarkInfo_HealsScars>
+	<Lumen_DarkInfo_SurfaceScars>поверхностные шрамы</Lumen_DarkInfo_SurfaceScars>
+	<Lumen_DarkInfo_EveryScar>любые шрамы</Lumen_DarkInfo_EveryScar>
+	<Lumen_DarkInfo_ScarDesc>Один шрам за проход, {0} энергии варпа за каждый.</Lumen_DarkInfo_ScarDesc>
+	<Lumen_DarkInfo_Regrows>Отращивает</Lumen_DarkInfo_Regrows>
+	<Lumen_DarkInfo_RegrowDigits>пальцы рук и ног</Lumen_DarkInfo_RegrowDigits>
+	<Lumen_DarkInfo_RegrowAll>мелкие части и органы</Lumen_DarkInfo_RegrowAll>
+	<Lumen_DarkInfo_RegrowDesc>Отращивание оплачивается постепенно и приостанавливается, если пациент встаёт с кровати или кончается энергия варпа. Пальцы: {0} дн. и {1} энергии варпа; глаза, уши, носы и челюсти: {2} дн. и {3}; внутренние органы: {4} дн. и {5}.</Lumen_DarkInfo_RegrowDesc>
+	<Lumen_DarkInfo_DreadstoneReach>Учитывается только сильнейший накрывающий светильник из камня ужаса.</Lumen_DarkInfo_DreadstoneReach>
+	<Lumen_DarkInfo_Reach>Радиус</Lumen_DarkInfo_Reach>
+	<Lumen_DarkInfo_SubjugationRule>Действует на заключённых и рабов колонии в той же комнате.</Lumen_DarkInfo_SubjugationRule>
+	<Lumen_DarkInfo_Resistance>Потеря сопротивления в день</Lumen_DarkInfo_Resistance>
+	<Lumen_DarkInfo_Will>Потеря воли в день</Lumen_DarkInfo_Will>
+	<Lumen_DarkInfo_Suppression>Подавление рабов в день</Lumen_DarkInfo_Suppression>
+	<Lumen_DarkInfo_Breaks>Побеги и восстания</Lumen_DarkInfo_Breaks>
+	<Lumen_DarkInfo_Rarer>в {0} раза реже</Lumen_DarkInfo_Rarer>
+	<Lumen_DarkInfo_PerPawnPerDay>Энергия варпа на пешку в день</Lumen_DarkInfo_PerPawnPerDay>
+	<Lumen_DarkInfo_DreadRule>Действует на враждебных гуманоидов в прямой видимости. Механоиды и животные невосприимчивы. Без врагов в радиусе ничего не тратится.</Lumen_DarkInfo_DreadRule>
+	<Lumen_DarkInfo_SiphonRule>Когда ослабленный враг умирает, {0} его рыночной стоимости возвращается энергией варпа.</Lumen_DarkInfo_SiphonRule>
+	<Lumen_DarkInfo_DreadOnHostiles>Ужас на врагах</Lumen_DarkInfo_DreadOnHostiles>
+	<Lumen_DarkInfo_PerHostile>Энергия варпа на врага</Lumen_DarkInfo_PerHostile>
+	<Lumen_DarkInfo_HollowstoneRule>Действует на колонистов и рабов в той же комнате. Рабочие оболочки не затрагиваются. Учитывается только сильнейший светильник из пустокамня в радиусе.</Lumen_DarkInfo_HollowstoneRule>
+	<Lumen_DarkInfo_Ward>Защита</Lumen_DarkInfo_Ward>
+</LanguageData>

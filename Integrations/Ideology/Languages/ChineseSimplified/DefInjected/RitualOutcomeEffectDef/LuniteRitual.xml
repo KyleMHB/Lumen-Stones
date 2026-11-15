@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteRitual.description>一场夜间仪式，将太阳石浸入月光并转化为月石。品质不影响产量。每个定居点需要恢复后才能进行下一次转化。</KM_LuniteRitual.description>
+	<KM_LuniteRitual.comps.0.label>参与者</KM_LuniteRitual.comps.0.label>
+	<KM_LuniteRitual.outcomeChances.0.label>差</KM_LuniteRitual.outcomeChances.0.label>
+	<KM_LuniteRitual.outcomeChances.0.description>月光很稀薄。仪式仍产出全额的月石。</KM_LuniteRitual.outcomeChances.0.description>
+	<KM_LuniteRitual.outcomeChances.1.label>成功</KM_LuniteRitual.outcomeChances.1.label>
+	<KM_LuniteRitual.outcomeChances.1.description>太阳石变淡并变得清澈。仪式产出全额的月石。</KM_LuniteRitual.outcomeChances.1.description>
+	<KM_LuniteRitual.outcomeChances.2.label>卓越</KM_LuniteRitual.outcomeChances.2.label>
+	<KM_LuniteRitual.outcomeChances.2.description>太阳石瞬间变成了银色。仪式产出全额的月石。</KM_LuniteRitual.outcomeChances.2.description>
+</LanguageData>

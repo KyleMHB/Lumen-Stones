@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ritual_Section>仪式</Lumen_Ritual_Section>
+	<Lumen_Ritual_PoorYield>差时的产量</Lumen_Ritual_PoorYield>
+	<Lumen_Ritual_SuccessYield>成功时的产量</Lumen_Ritual_SuccessYield>
+	<Lumen_Ritual_ExceptionalYield>卓越时的产量</Lumen_Ritual_ExceptionalYield>
+	<Lumen_Ritual_CircleYield>在流明仪式圈的产量（祭坛产量的%）</Lumen_Ritual_CircleYield>
+	<Lumen_Ritual_SupportYieldCap>满支援时装置支援的产量加成（%）</Lumen_Ritual_SupportYieldCap>
+	<Lumen_Ritual_ChunkCost>石块消耗</Lumen_Ritual_ChunkCost>
+	<Lumen_Ritual_Altar>流明石祭坛</Lumen_Ritual_Altar>
+	<Lumen_Ritual_GoldQuantity>黄金数量</Lumen_Ritual_GoldQuantity>
+	<Lumen_Ritual_CircleSection>仪式圈</Lumen_Ritual_CircleSection>
+	<Lumen_Ritual_NeedsHost>需要一座玩家拥有的流明仪式圈或流明石祭坛，以及Ideology。</Lumen_Ritual_NeedsHost>
+	<Lumen_Ritual_Underway>本定居点已有一场流明石仪式正在进行。</Lumen_Ritual_Underway>
+	<Lumen_Ritual_NeedsChunks>需要{0}块可到达且未被禁用的石块。</Lumen_Ritual_NeedsChunks>
+	<Lumen_Ritual_Ready>流明石仪式已就绪。</Lumen_Ritual_Ready>
+	<Lumen_Ritual_Fixtures>流明石装置：{0}</Lumen_Ritual_Fixtures>
+	<Lumen_Ritual_Label>流明石仪式</Lumen_Ritual_Label>
+	<Lumen_Ritual_Desc>在原版仪式对话框中选择参与者。仪式持续5000刻，消耗{0}块石块。按品质产出{1}/{2}/{3}流明石，并按参与人数缩放（一人：50%，两人：75%，主持者加两人：100%）。每个定居点需恢复{4}天。</Lumen_Ritual_Desc>
+	<Lumen_Ritual_CircleNote>仪式圈的产量为祭坛流明石产量的{0}，且不受房间或流明石装置的加成。</Lumen_Ritual_CircleNote>
+	<Lumen_Ritual_AltarNote>{0}。此房间内{1}格范围内的流明石装置会提高品质和产量。</Lumen_Ritual_AltarNote>
+	<Lumen_Ritual_Circle>流明仪式圈</Lumen_Ritual_Circle>
+	<Lumen_Ritual_Result>仪式产出了{0}{1}{2}。本定居点的流明石仪式现在需恢复{3}天。</Lumen_Ritual_Result>
+	<Lumen_Ritual_ResultSupport>（附近装置：+{0}）</Lumen_Ritual_ResultSupport>
+</LanguageData>

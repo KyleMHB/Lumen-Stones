@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Projector_Section>庇护石护盾投射器</Lumen_Projector_Section>
+	<Lumen_Projector_RadiusSetting>护罩半径（格）</Lumen_Projector_RadiusSetting>
+	<Lumen_Projector_HitPointsSetting>护罩耐久</Lumen_Projector_HitPointsSetting>
+	<Lumen_Projector_Upkeep>护罩开启时每日消耗的太阳能</Lumen_Projector_Upkeep>
+	<Lumen_Projector_SolarPerHpSetting>每恢复一点护盾耐久消耗的太阳能</Lumen_Projector_SolarPerHpSetting>
+	<Lumen_Projector_RechargeTicks>恢复护盾耐久的间隔（刻）</Lumen_Projector_RechargeTicks>
+	<Lumen_Projector_CrushCost>碾碎一个敌方空投舱或虫巢消耗的耐久</Lumen_Projector_CrushCost>
+	<Lumen_Projector_RebootTicks>破碎后的重启时间（刻）</Lumen_Projector_RebootTicks>
+	<Lumen_Projector_EmpTicks>被EMP瘫痪的时间（刻）</Lumen_Projector_EmpTicks>
+	<Lumen_Projector_Radius>护罩半径</Lumen_Projector_Radius>
+	<Lumen_Projector_RadiusDesc>阻挡从外部发射的敌方地面弹药、迫击炮弹和轨道轰炸。殖民者可以自由向外射击。</Lumen_Projector_RadiusDesc>
+	<Lumen_Projector_HitPoints>护盾耐久</Lumen_Projector_HitPoints>
+	<Lumen_Projector_HitPointsDesc>护罩阻挡攻击时减少。降至0时会关闭并重启{0}天，之后每{1}恢复一次。</Lumen_Projector_HitPointsDesc>
+	<Lumen_Projector_Crushes>碾碎</Lumen_Projector_Crushes>
+	<Lumen_Projector_CrushesValue>敌方空投舱和虫巢</Lumen_Projector_CrushesValue>
+	<Lumen_Projector_CrushesDesc>降落在护罩内的敌方袭击空投舱或钻地虫巢会被碾碎，消耗{0}点护盾耐久。空投舱内的小人会死亡，其装备会被摧毁。难民、交易、资源和任务空投舱不受影响。</Lumen_Projector_CrushesDesc>
+	<Lumen_Projector_Emp>EMP</Lumen_Projector_Emp>
+	<Lumen_Projector_EmpValue>短暂瘫痪</Lumen_Projector_EmpValue>
+	<Lumen_Projector_EmpDesc>保留其耐久。</Lumen_Projector_EmpDesc>
+	<Lumen_Projector_UpkeepDesc>护罩开启时消耗。</Lumen_Projector_UpkeepDesc>
+	<Lumen_Projector_SolarPerHp>每点护盾耐久的太阳能</Lumen_Projector_SolarPerHp>
+	<Lumen_Projector_SolarPerHpDesc>每恢复一点护盾耐久时消耗。搭配月石稳定器可在太阳耀斑期间保持护罩开启。</Lumen_Projector_SolarPerHpDesc>
+	<Lumen_Projector_Crushed>庇护石护罩碾碎了{0}。</Lumen_Projector_Crushed>
+	<Lumen_Projector_CrushedBroke>庇护石护罩碾碎了{0}并破碎了。</Lumen_Projector_CrushedBroke>
+	<Lumen_Projector_DropPod>一个敌方空投舱</Lumen_Projector_DropPod>
+	<Lumen_Projector_Infestation>一个钻地虫巢</Lumen_Projector_Infestation>
+</LanguageData>

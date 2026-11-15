@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Sanguinite.label>血晶石</KM_Sanguinite.label>
+	<KM_Sanguinite.description>血晶石会补上身体所缺失的部分，至于用的是谁的血肉，石头并不在乎。\n\n一种动脉血红色的晶体，带有猩红宝石色核心，在献祭祭坛由暗石精炼而成。它的装置消耗扭曲能量来治疗卧床休息的病人。</KM_Sanguinite.description>
+	<KM_LumenSanguiniteColumn.label>血晶石柱</KM_LumenSanguiniteColumn.label>
+	<KM_LumenSanguiniteColumn.description>一根镶嵌着血晶石的屋顶支柱。附近的病人流血时仿佛时间充裕。\n\n发出昏暗的深红色光。扭曲能量：减缓同一房间内卧床休息病人的出血、治愈疤痕并再生缺失部件。每名病人只由最强的血晶石装置治疗。仿生部件永远不会受影响。</KM_LumenSanguiniteColumn.description>
+	<KM_LumenSanguiniteColumn.comps.3.effect>治疗卧床病人</KM_LumenSanguiniteColumn.comps.3.effect>
+	<KM_SanguiniteLamp.label>血晶石灯</KM_SanguiniteLamp.label>
+	<KM_SanguiniteLamp.description>一块立在石座上的血晶石晶体。\n\n发出昏暗的深红色光，除此之外别无他用。</KM_SanguiniteLamp.description>
+	<KM_SanguiniteWallLamp.label>血晶石壁灯</KM_SanguiniteWallLamp.label>
+	<KM_SanguiniteWallLamp.description>一块装在墙架上的血晶石晶体。\n\n发出昏暗的深红色光，除此之外别无他用。</KM_SanguiniteWallLamp.description>
+	<KM_SanguiniteCluster.label>血晶石晶簇</KM_SanguiniteCluster.label>
+	<KM_SanguiniteCluster.description>一组安放在低矮雕花底座中的血晶石晶体。失去的眼睛长回来时，颜色通常是对的。\n\n发出深红色光。扭曲能量：减缓同一房间内卧床休息病人的出血、治愈疤痕并再生缺失部件。每名病人只由最强的血晶石装置治疗。仿生部件永远不会受影响。</KM_SanguiniteCluster.description>
+	<KM_SanguiniteCluster.comps.2.effect>治疗卧床病人</KM_SanguiniteCluster.comps.2.effect>
+	<KM_SanguinitePylon.label>血晶石塔</KM_SanguinitePylon.label>
+	<KM_SanguinitePylon.description>一根立在雕花基座上的高大血晶石柱。给它一周时间，它就能为病人长出一个新肾。\n\n发出深红色光。扭曲能量：减缓同一房间内卧床休息病人的出血、治愈疤痕并再生缺失部件。每名病人只由最强的血晶石装置治疗。仿生部件永远不会受影响。</KM_SanguinitePylon.description>
+	<KM_SanguinitePylon.comps.2.effect>治疗卧床病人</KM_SanguinitePylon.comps.2.effect>
+	<KM_SanguiniteBlade.label>血晶石剥皮刃</KM_SanguiniteBlade.label>
+	<KM_SanguiniteBlade.description>一把带有血晶石刃口的快速轻刃。它会让所切之物流血，同时稳住持有者自己的血。\n\n每次对活体目标造成伤害的命中都会造成一处出血，最多叠加三层，约十秒后消退。持有者的出血速度减半。不消耗扭曲能量。研究长剑和血晶石血肉工艺后，使用100血晶石和20钢铁制作，需要6级手工。</KM_SanguiniteBlade.description>
+	<KM_SanguiniteBlade.tools.0.label>柄</KM_SanguiniteBlade.tools.0.label>
+	<KM_SanguiniteBlade.tools.1.label>刃</KM_SanguiniteBlade.tools.1.label>
+</LanguageData>

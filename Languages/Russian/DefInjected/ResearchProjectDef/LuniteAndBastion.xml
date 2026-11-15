@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteStabilization.label>Лунитовая стабилизация</KM_LuniteStabilization.label>
+	<KM_LuniteStabilization.description>Научиться вымачивать солнечный камень в лунном свете и ставить результат рядом со светильником, чтобы тот работал, когда с небом что-то не так.\n\nОткрывает превращение в лунит у люменового ритуального круга и люменитового алтаря, а также лунитовый стабилизатор.</KM_LuniteStabilization.description>
+	<KM_AegiteBastion.label>Эгитовый бастион</KM_AegiteBastion.label>
+	<KM_AegiteBastion.description>Научиться связывать эгитовые обереги с самим дневным светом и поднимать их куполом над всей колонией.\n\nОткрывает эгитовый щитовой проектор, который останавливает вражеские снаряды, миномётные снаряды и бомбардировки, а также давит вражеские десантные капсулы и заражения внутри.</KM_AegiteBastion.description>
+</LanguageData>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_DreadstoneSeed.label>семя камня ужаса</KM_DreadstoneSeed.label>
+	<KM_DreadstoneSeed.labelNoun>семя камня ужаса</KM_DreadstoneSeed.labelNoun>
+	<KM_DreadstoneSeed.description>Кол из камня ужаса в груди. После связывания за несколько дней прорастает сквозь тело, оставляя его живым лишь затем, чтобы поглотить. Ничто не притупит его боль и ничто его не удалит. Если он завершит рост, останется лишь тёмный камень.</KM_DreadstoneSeed.description>
+	<KM_DreadstoneSeed.stages.0.label>засел</KM_DreadstoneSeed.stages.0.label>
+	<KM_DreadstoneSeed.stages.0.extraTooltip>В груди засел кол из камня ужаса. Он только начал укореняться.</KM_DreadstoneSeed.stages.0.extraTooltip>
+	<KM_DreadstoneSeed.stages.1.label>укореняется</KM_DreadstoneSeed.stages.1.label>
+	<KM_DreadstoneSeed.stages.1.extraTooltip>Кристаллические нити проросли в рёбра и лёгкие. Боль растёт с каждым часом.</KM_DreadstoneSeed.stages.1.extraTooltip>
+	<KM_DreadstoneSeed.stages.2.label>разрывает</KM_DreadstoneSeed.stages.2.label>
+	<KM_DreadstoneSeed.stages.2.extraTooltip>Кристалл прорастает сквозь органы и рвёт мышцы. Он не даёт телу отказать.</KM_DreadstoneSeed.stages.2.extraTooltip>
+	<KM_DreadstoneSeed.stages.3.label>поглощает</KM_DreadstoneSeed.stages.3.label>
+	<KM_DreadstoneSeed.stages.3.extraTooltip>Большая часть туловища теперь кристалл. Камень ужаса держит пешку живой лишь затем, чтобы поглотить больше.</KM_DreadstoneSeed.stages.3.extraTooltip>
+</LanguageData>

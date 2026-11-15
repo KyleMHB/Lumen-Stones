@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenstoneRitual.comps.0.label>流明石法杖</KM_LumenstoneRitual.comps.0.label>
+	<KM_LumenstoneRitual.comps.1.label>{PAWN_labelShort}的社交影响</KM_LumenstoneRitual.comps.1.label>
+	<KM_LumenstoneRitual.comps.1.labelAbstract>主持者的社交影响</KM_LumenstoneRitual.comps.1.labelAbstract>
+	<KM_LumenstoneRitual.comps.2.label>参与者</KM_LumenstoneRitual.comps.2.label>
+	<KM_LumenstoneRitual.outcomeChances.0.label>差</KM_LumenstoneRitual.outcomeChances.0.label>
+	<KM_LumenstoneRitual.outcomeChances.0.description>石块几乎没有释放出光芒。仪式产出最少量的流明石。</KM_LumenstoneRitual.outcomeChances.0.description>
+	<KM_LumenstoneRitual.outcomeChances.1.label>成功</KM_LumenstoneRitual.outcomeChances.1.label>
+	<KM_LumenstoneRitual.outcomeChances.1.description>石块变亮并变得清澈。仪式产出可观数量的流明石。</KM_LumenstoneRitual.outcomeChances.1.description>
+	<KM_LumenstoneRitual.outcomeChances.2.label>卓越</KM_LumenstoneRitual.outcomeChances.2.label>
+	<KM_LumenstoneRitual.outcomeChances.2.description>石块爆发出白光。仪式产出最大量的流明石。</KM_LumenstoneRitual.outcomeChances.2.description>
+	<KM_LumenstoneRitual.description>在流明仪式圈举行的仪式，从普通石块中提取流明石。品质和参与人数决定产量，低于流明石祭坛。每个定居点需要恢复后才能举行下一次仪式。</KM_LumenstoneRitual.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.0.label>差</KM_LumenstoneAltarRitual.outcomeChances.0.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.0.description>石块几乎没有释放出光芒。仪式产出最少量的流明石。</KM_LumenstoneAltarRitual.outcomeChances.0.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.1.label>成功</KM_LumenstoneAltarRitual.outcomeChances.1.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.1.description>石块变亮并变得清澈。仪式产出可观数量的流明石。</KM_LumenstoneAltarRitual.outcomeChances.1.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.2.label>卓越</KM_LumenstoneAltarRitual.outcomeChances.2.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.2.description>石块爆发出白光。仪式产出最大量的流明石。</KM_LumenstoneAltarRitual.outcomeChances.2.description>
+	<KM_LumenstoneAltarRitual.description>在流明石祭坛举行的仪式，从普通石块中提取流明石。品质、参与人数和附近的流明石装置决定产量。每个定居点需要恢复后才能举行下一次仪式。</KM_LumenstoneAltarRitual.description>
+	<KM_LumenstoneAltarRitual.comps.0.label>流明石法杖</KM_LumenstoneAltarRitual.comps.0.label>
+	<KM_LumenstoneAltarRitual.comps.1.label>{PAWN_labelShort}的社交影响</KM_LumenstoneAltarRitual.comps.1.label>
+	<KM_LumenstoneAltarRitual.comps.1.labelAbstract>主持者的社交影响</KM_LumenstoneAltarRitual.comps.1.labelAbstract>
+	<KM_LumenstoneAltarRitual.comps.2.label>参与者</KM_LumenstoneAltarRitual.comps.2.label>
+	<KM_LumenstoneAltarRitual.comps.3.label>房间印象</KM_LumenstoneAltarRitual.comps.3.label>
+	<KM_LumenstoneAltarRitual.comps.4.label>流明石装置</KM_LumenstoneAltarRitual.comps.4.label>
+</LanguageData>

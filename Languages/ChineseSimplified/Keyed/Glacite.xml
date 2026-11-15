@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Section_SolarEnergy>太阳能</Lumen_Section_SolarEnergy>
+	<Lumen_Glacite_FreezerDrain>在两个温度界限之间制冷时每日消耗的太阳能</Lumen_Glacite_FreezerDrain>
+	<Lumen_Glacite_ActiveCutoff>主动温度下限（C）</Lumen_Glacite_ActiveCutoff>
+	<Lumen_Glacite_CoolsTo>冷却至</Lumen_Glacite_CoolsTo>
+	<Lumen_Glacite_CoolsToDesc>无需燃料、电力或排气口即可自行吸收热量。较大的房间或更炎热的天气可能需要多台冷却器。</Lumen_Glacite_CoolsToDesc>
+	<Lumen_Glacite_CoolsToActive>开启主动效果时冷却至</Lumen_Glacite_CoolsToActive>
+	<Lumen_Glacite_CoolsToActiveDesc>在自身界限以下继续制冷，直到此温度。</Lumen_Glacite_CoolsToActiveDesc>
+	<Lumen_Info_SolarPerDay>每日太阳能</Lumen_Info_SolarPerDay>
+	<Lumen_Glacite_SolarPerDayDesc>只在气温处于两个界限之间时消耗。</Lumen_Glacite_SolarPerDayDesc>
+	<Lumen_Glacite_Cooling>制冷：{0}</Lumen_Glacite_Cooling>
+	<Lumen_Glacite_NotRunning>主动效果未运行</Lumen_Glacite_NotRunning>
+	<Lumen_Glacite_CoolingTo>正在冷却至{0}</Lumen_Glacite_CoolingTo>
+	<Lumen_Glacite_CoolingToIdle>正在冷却至{0}，闲置</Lumen_Glacite_CoolingToIdle>
+	<Lumen_Glacite_PassiveCutoff>被动温度下限（C）</Lumen_Glacite_PassiveCutoff>
+</LanguageData>

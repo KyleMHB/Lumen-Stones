@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CrystallizeDarkStone.label>凝结暗石</KM_CrystallizeDarkStone.label>
+	<KM_CrystallizeDarkStone.description>在献祭祭坛进行的献祭，将流明石凝结为暗石。取消的仪式会返还流明石。</KM_CrystallizeDarkStone.description>
+	<KM_HarvestWarpEnergy.label>收割扭曲能量</KM_HarvestWarpEnergy.label>
+	<KM_HarvestWarpEnergy.description>在献祭祭坛进行的献祭，将扭曲能量收割进附近的血石电池。</KM_HarvestWarpEnergy.description>
+</LanguageData>

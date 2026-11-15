@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- Textures below are placeholders borrowed from Serenite until artwork ticket 05 delivers the final paths. -->
-  <ThingDef ParentName="MoteBase">
-    <defName>KM_Mote_LumenstonePulse</defName>
-    <thingClass>MoteThrown</thingClass>
-    <graphicData>
-      <texPath>Things/Mote/LumenstonePulse</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <mote>
-      <fadeInTime>0.1</fadeInTime>
-      <solidTime>0.3</solidTime>
-      <fadeOutTime>0.6</fadeOutTime>
-    </mote>
-  </ThingDef>
 
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenstoneColumn</defName>
+    <!-- The shared 0.9 divided by the 1.25 width stretch, so the build-menu icon keeps its size. -->
+    <uiIconScale>0.72</uiIconScale>
+    <tickerType>Never</tickerType>
     <label>Lumenstone column</label>
     <uiOrder>2039</uiOrder>
     <researchPrerequisites>
@@ -28,8 +17,11 @@
       <KM_Lumenstone>15</KM_Lumenstone>
     </costList>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.284)</drawOffset>
       <texPath>Lumenstone/LumenstoneColumn</texPath>
-      <drawSize>(1.1667,1.4583)</drawSize>
+      <!-- 25% wider than the 1.1667 shared column width (user, 2026-11-14): its pinched crystal read thin beside the others. -->
+      <drawSize>(1.4583,1.4583)</drawSize>
     </graphicData>
     <statBases>
       <Flammability>0</Flammability>
@@ -58,7 +50,7 @@
     <passability>PassThroughOnly</passability>
     <pathCost>14</pathCost>
     <fillPercent>0.15</fillPercent>
-    <tickerType>Normal</tickerType>
+    <tickerType>Never</tickerType>
     <rotatable>false</rotatable>
     <statBases>
       <MaxHitPoints>150</MaxHitPoints>
@@ -87,23 +79,27 @@
 
   <ThingDef ParentName="KM_LumenstoneFixtureBase">
     <defName>KM_LumenstoneLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Lumenstone lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2800</uiOrder>
-    <description>A raw Lumenstone crystal on a wooden post. It gives a pale white-blue light.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
+    <description>A raw Lumenstone crystal on a stone plinth. It gives a pale white-blue light.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
     <graphicData>
       <texPath>Things/Building/Lumenstone/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Lumenstone>10</KM_Lumenstone>
     </costList>
     <statBases>
       <Beauty>8</Beauty>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(215,230,245,0)</glowColor>
@@ -170,6 +166,7 @@
 
   <ThingDef ParentName="KM_LumenstoneFixtureBase">
     <defName>KM_LumenstonePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Lumenstone pylon</label>
     <uiOrder>2820</uiOrder>
@@ -178,7 +175,8 @@
     <graphicData>
       <texPath>Things/Building/Lumenstone/Pylon</texPath>
       <drawSize>(2.2,2.2)</drawSize>
-      <drawOffset>(0,0,0.56)</drawOffset>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.627)</drawOffset>
     </graphicData>
     <uiIconScale>0.5</uiIconScale>
     <stuffCategories>
@@ -190,8 +188,8 @@
       <KM_Lumenstone>25</KM_Lumenstone>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
-      <Beauty>30</Beauty>
+      <WorkToBuild>3500</WorkToBuild>
+      <Beauty>25</Beauty>
     </statBases>
     <comps>
       <li Class="CompProperties_Glower">
@@ -211,10 +209,13 @@
 
   <ThingDef ParentName="KM_LumenstoneFixtureBase">
     <defName>KM_LumenstoneCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Lumenstone cluster</label>
     <uiOrder>2821</uiOrder>
     <description>A group of raw Lumenstone crystals in a low carved housing, left as they grew.\n\nGives pale white-blue light. With Ideology, it raises the quality and yield of a Lumenstone ritual held at an altar in the same room. Each fixture type counts once. No fuel or electricity.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.082)</drawOffset>
       <texPath>Things/Building/Lumenstone/Cluster</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
@@ -227,7 +228,7 @@
       <KM_Lumenstone>35</KM_Lumenstone>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
     </statBases>
     <comps>

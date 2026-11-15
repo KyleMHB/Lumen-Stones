@@ -13,10 +13,10 @@ public static class HuskRules
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var husk = s.In("Work husks");
-        husk.Add("Hollowstone.raiseCost", "Warp energy to raise a husk", RaiseCost, v => RaiseCost = v);
-        husk.Add("Hollowstone.huskCostPerDay", "Warp energy per husk per day", HuskCostPerDay, v => HuskCostPerDay = v);
-        husk.Add("Hollowstone.raiseCooldown", "Raise cooldown (days)", RaiseCooldownDays, v => RaiseCooldownDays = v);
+        var husk = s.In("Lumen_Husk_Section".Translate());
+        husk.Add("Hollowstone.raiseCost", "Lumen_Husk_RaiseCost".Translate(), RaiseCost, v => RaiseCost = v);
+        husk.Add("Hollowstone.huskCostPerDay", "Lumen_Husk_CostPerDay".Translate(), HuskCostPerDay, v => HuskCostPerDay = v);
+        husk.Add("Hollowstone.raiseCooldown", "Lumen_Husk_Cooldown".Translate(), RaiseCooldownDays, v => RaiseCooldownDays = v);
     }
     // Severity picks the hediff stage: below 1 the husk works, from 1 it has collapsed.
     public const float BoundSeverity = 0.5f, CollapsedSeverity = 1.5f;
@@ -60,18 +60,18 @@ public static class HuskRules
     public static string Blocked(TargetInfo target)
     {
         if (!ModsConfig.IdeologyActive || target.Thing is not Building_SacrificialAltar altar || altar.Faction != Faction.OfPlayer)
-            return "Requires a player-owned Sacrificial altar and Ideology.";
-        if (!Available) return "Requires Anomaly.";
-        var reason = target.Map.GetComponent<SacrificeRitualState>().Raise.Reason;
+            return "Lumen_Husk_NeedsAltar".Translate();
+        if (!Available) return "Lumen_Husk_NeedsAnomaly".Translate();
+        if (!Effects.HollowstoneHusks.On) return "Lumen_SwitchedOff".Translate();
+        var reason = MapState.Of<SacrificeRitualState>(target.Map).Raise.Reason;
         if (reason != null) return reason;
         if (Find.IdeoManager.GetActiveRituals(target.Map).Any(r => r is LordJob_SacrificeRitual))
-            return "Another sacrifice is already underway in this settlement.";
-        if (FreePylon(target.Map) == null) return "Requires a powered Hollowstone pylon switched on and with no husk.";
-        if (!WarpEnergyNetwork.For(target.Map).CanDraw(RaiseCost)) return "Requires " + RaiseCost.ToString("0") + " Warp energy.";
+            return "Lumen_Husk_SacrificeUnderway".Translate();
+        if (FreePylon(target.Map) == null) return "Lumen_Husk_NeedsPylon".Translate();
+        if (!WarpEnergyNetwork.For(target.Map).CanDraw(RaiseCost)) return "Lumen_RequiresWarp".Translate(RaiseCost.ToString("0"));
         return null;
     }
 
-    // The conversion order comes from the game's call lists and has not been run in game.
     public static bool Raise(Pawn victim)
     {
         var pylon = FreePylon(victim.MapHeld);
@@ -132,7 +132,8 @@ public class CompHollowstonePylon : ThingComp, IActiveEffectDrain
     }
 
     public override string CompInspectStringExtra() =>
-        HuskRules.Available ? (husk == null ? "Work husk: none" : "Work husk: " + husk.LabelShortCap + (HuskRules.Collapsed(husk) ? " (collapsed)" : "")) : null;
+        HuskRules.Available ? (husk == null ? "Lumen_Husk_None".Translate()
+            : (HuskRules.Collapsed(husk) ? "Lumen_Husk_Collapsed" : "Lumen_Husk_Bound").Translate(husk.LabelShortCap)).ToString() : null;
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
@@ -140,8 +141,8 @@ public class CompHollowstonePylon : ThingComp, IActiveEffectDrain
         var map = parent.Map;
         var command = new Command_Action
         {
-            defaultLabel = "Rebind a husk",
-            defaultDesc = "Bind a collapsed work husk with no pylon to this one. It wakes once the pylon is powered.",
+            defaultLabel = "Lumen_Husk_Rebind".Translate(),
+            defaultDesc = "Lumen_Husk_RebindDesc".Translate(),
             icon = parent.def.uiIcon,
             action = () =>
             {
@@ -152,11 +153,11 @@ public class CompHollowstonePylon : ThingComp, IActiveEffectDrain
                         var husk = pawn;
                         options.Add(new FloatMenuOption(husk.LabelShortCap, () => Bind(husk)));
                     }
-                if (options.Count == 0) options.Add(new FloatMenuOption("No collapsed husk without a pylon", null));
+                if (options.Count == 0) options.Add(new FloatMenuOption("Lumen_Husk_NoneToBind".Translate(), null));
                 Find.WindowStack.Add(new FloatMenu(options));
             }
         };
-        if (!CanBind) command.Disable("This pylon needs Warp energy and its active effect switched on.");
+        if (!CanBind) command.Disable("Lumen_Husk_PylonNeedsWarp".Translate());
         yield return command;
     }
 }
@@ -179,8 +180,8 @@ public class RitualOutcomeEffectWorker_Raise : RitualOutcomeEffectWorker_Sacrifi
         var victim = job.PawnWithRole("victim");
         bool raised = victim != null && HuskRules.Raise(victim);
         job.raised = raised;
-        job.Map.GetComponent<SacrificeRitualState>().Raise.Start();
-        return raised ? victim.LabelShortCap + " rose as a work husk and was bound to a Hollowstone pylon."
-            : "The body did not rise. " + HuskRules.RaiseCost.ToString("0") + " Warp energy was spent.";
+        MapState.Of<SacrificeRitualState>(job.Map).Raise.Start();
+        return raised ? "Lumen_Husk_Rose".Translate(victim.LabelShortCap).ToString()
+            : "Lumen_Husk_DidNotRise".Translate(HuskRules.RaiseCost.ToString("0")).ToString();
     }
 }

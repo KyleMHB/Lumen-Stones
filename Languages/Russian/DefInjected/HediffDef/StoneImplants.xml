@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementSickness.label>недомогание от настройки</KM_AttunementSickness.label>
+	<KM_AttunementSickness.description>Только что пробуждённый кристалл приживается в теле. Около суток он ноет и замедляет шаг.</KM_AttunementSickness.description>
+	<KM_GlaciteImplant.label>Гляцитовый имплант</KM_GlaciteImplant.label>
+	<KM_GlaciteImplant.labelNoun>гляцитовый имплант</KM_GlaciteImplant.labelNoun>
+	<KM_GlaciteImplant.description>Осколок гляцита у сердца. Помогает телу переносить сильную жару, но холод становится тяжелее.</KM_GlaciteImplant.description>
+	<KM_VerditeImplant.label>Вердитовый имплант</KM_VerditeImplant.label>
+	<KM_VerditeImplant.labelNoun>вердитовый имплант</KM_VerditeImplant.labelNoun>
+	<KM_VerditeImplant.description>Осколок вердита у желудка. Запасает солнечный свет в резерве, который питает тело. Время на солнце его наполняет, время без солнца — опустошает.</KM_VerditeImplant.description>
+	<KM_SunlightReserve.label>запас солнечного света</KM_SunlightReserve.label>
+	<KM_SunlightReserve.description>Солнечный свет, запасённый вердитовым имплантом. Ясное солнце заполняет его за несколько часов, дождь и туман — медленнее, вердитовый досвет — вдвое медленнее. Без солнца он иссякает примерно за полтора дня.</KM_SunlightReserve.description>
+	<KM_SunlightReserve.stages.0.label>без солнца</KM_SunlightReserve.stages.0.label>
+	<KM_SunlightReserve.stages.0.extraTooltip>Кристалл потемнел. Тело жаждет света.</KM_SunlightReserve.stages.0.extraTooltip>
+	<KM_SunlightReserve.stages.1.label>угасает</KM_SunlightReserve.stages.1.label>
+	<KM_SunlightReserve.stages.1.extraTooltip>Запас света подходит к концу.</KM_SunlightReserve.stages.1.extraTooltip>
+	<KM_SunlightReserve.stages.2.label>напитан солнцем</KM_SunlightReserve.stages.2.label>
+	<KM_SunlightReserve.stages.2.extraTooltip>Солнечный свет, запасённый в вердитовом кристалле, питает тело.</KM_SunlightReserve.stages.2.extraTooltip>
+	<KM_VitaliteImplant.label>Виталитовый имплант</KM_VitaliteImplant.label>
+	<KM_VitaliteImplant.labelNoun>виталитовый имплант</KM_VitaliteImplant.labelNoun>
+	<KM_VitaliteImplant.description>Осколок виталита у сердца. Раны заживают быстрее, болезни отступают раньше — ценой фертильности. Без Biotech вместо этого утомляет тело.</KM_VitaliteImplant.description>
+	<KM_SereniteImplant.label>Серенитовый имплант</KM_SereniteImplant.label>
+	<KM_SereniteImplant.labelNoun>серенитовый имплант</KM_SereniteImplant.labelNoun>
+	<KM_SereniteImplant.description>Осколок серенита у сердца. Успокаивает разум и поднимает настроение, но замедляет тело и работу.</KM_SereniteImplant.description>
+	<KM_AegiteImplant.label>Эгитовый имплант</KM_AegiteImplant.label>
+	<KM_AegiteImplant.labelNoun>эгитовый имплант</KM_AegiteImplant.labelNoun>
+	<KM_AegiteImplant.description>Осколок эгита у сердца. Тело почти не горит, не боится пищевого отравления и сопротивляется токсинам, но быстрее устаёт.</KM_AegiteImplant.description>
+	<KM_FerriteImplant.label>Ферритовый имплант</KM_FerriteImplant.label>
+	<KM_FerriteImplant.labelNoun>ферритовый имплант</KM_FerriteImplant.labelNoun>
+	<KM_FerriteImplant.description>Осколок феррита у позвоночника. Кожа твердеет против клинков и ударов, а надетая одежда медленно чинится, но тело становится тяжёлым.</KM_FerriteImplant.description>
+	<KM_FerriteArm.label>Ферритовая рука</KM_FerriteArm.label>
+	<KM_FerriteArm.labelNoun>ферритовая рука</KM_FerriteArm.labelNoun>
+	<KM_FerriteArm.description>Рука из выращенного кристалла феррита. Раны на ней затягиваются сами.</KM_FerriteArm.description>
+	<KM_FerriteArm.comps.1.tools.0.label>кулак</KM_FerriteArm.comps.1.tools.0.label>
+	<KM_FerriteLeg.label>Ферритовая нога</KM_FerriteLeg.label>
+	<KM_FerriteLeg.labelNoun>ферритовая нога</KM_FerriteLeg.labelNoun>
+	<KM_FerriteLeg.description>Нога из выращенного кристалла феррита. Раны на ней затягиваются сами.</KM_FerriteLeg.description>
+	<KM_VitaliteHeart.label>Виталитовое сердце</KM_VitaliteHeart.label>
+	<KM_VitaliteHeart.labelNoun>виталитовое сердце</KM_VitaliteHeart.labelNoun>
+	<KM_VitaliteHeart.description>Сердце из выращенного кристалла виталита. Помогает телу бороться с болезнями.</KM_VitaliteHeart.description>
+	<KM_AegiteEye.label>Эгитовый глаз</KM_AegiteEye.label>
+	<KM_AegiteEye.labelNoun>эгитовый глаз</KM_AegiteEye.labelNoun>
+	<KM_AegiteEye.description>Глаз из выращенного кристалла эгита. Солнечные вспышки его не ослепляют.</KM_AegiteEye.description>
+</LanguageData>

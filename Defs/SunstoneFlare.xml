@@ -9,7 +9,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>KM_SunstoneFlare</defName>
     <label>Sunstone flare</label>
-    <description>A throwable Sunstone flash. Take a stack into a pawn's inventory, draft them and use Throw Sunstone flare. Keeps the equipped weapon in hand and consumes one flare per throw. Range 12, radius 2.9. Blinds for five seconds and stuns for one, without blast wounds. Anomaly entities and mutants also take 15 burn damage. The flash can affect allies.</description>
+    <description>A palm-sized shard of Sunstone packed to burst. Thrown, it gives up its stored daylight in one blinding flash.\n\nCarry a stack in a pawn's inventory, draft them and use Throw Sunstone flare. They keep their equipped weapon and use one flare per throw. Range 12, radius 2.9. Blinds for five seconds and stuns for one, without blast wounds. Anomaly entities and mutants also take 15 burn damage. The flash can affect allies. Made at a smithy in batches of five from 25 Sunstone after Sunstone channeling, with Crafting 6.</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData><texPath>Things/Item/Equipment/Misc/SunstoneFlare</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <stackLimit>25</stackLimit>

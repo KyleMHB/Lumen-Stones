@@ -13,22 +13,22 @@ public static class DreadstoneRules
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var reach = s.In("Reach and cost");
-        var subjugation = s.In("Subjugation");
-        var dread = s.In("Dread and Death Siphon");
-        reach.Add("Dreadstone.radius", "Fixture radius (tiles)", Radius, v => Radius = v, Limit.Number(1, 100));
-        reach.Add("Dreadstone.subjugationCost", "Warp energy per covered prisoner or slave per day", SubjugationCost, v => SubjugationCost = v);
-        subjugation.Add("Dreadstone.resistancePerDay", "Resistance lost per day (column)", ResistancePerDay, v => ResistancePerDay = v);
-        subjugation.Add("Dreadstone.willPerDay", "Will lost per day (column)", WillPerDay, v => WillPerDay = v);
-        subjugation.Add("Dreadstone.suppressionPerDay", "Slave suppression gained per day (column, %)", SuppressionPerDay,
+        var reach = s.In("Lumen_Dreadstone_ReachSection".Translate());
+        var subjugation = s.In("Lumen_Dreadstone_SubjugationSection".Translate());
+        var dread = s.In("Lumen_Dreadstone_DreadSection".Translate());
+        reach.Add("Dreadstone.radius", "Lumen_Setting_FixtureRadius".Translate(), Radius, v => Radius = v, Limit.Number(1, 100));
+        reach.Add("Dreadstone.subjugationCost", "Lumen_Dreadstone_SubjugationCost".Translate(), SubjugationCost, v => SubjugationCost = v);
+        subjugation.Add("Dreadstone.resistancePerDay", "Lumen_Dreadstone_Resistance".Translate(), ResistancePerDay, v => ResistancePerDay = v);
+        subjugation.Add("Dreadstone.willPerDay", "Lumen_Dreadstone_Will".Translate(), WillPerDay, v => WillPerDay = v);
+        subjugation.Add("Dreadstone.suppressionPerDay", "Lumen_Dreadstone_Suppression".Translate(), SuppressionPerDay,
             v => SuppressionPerDay = v, Limit.Percent());
-        subjugation.Add("Dreadstone.pylonErosionFactor", "Pylon erosion multiplier", PylonErosionFactor, v => PylonErosionFactor = v, Limit.Number(1, 10));
-        subjugation.Add("Dreadstone.breakMtbFactor", "Prison break and rebellion rarity multiplier", BreakMtbFactor,
+        subjugation.Add("Dreadstone.pylonErosionFactor", "Lumen_Dreadstone_PylonErosion".Translate(), PylonErosionFactor, v => PylonErosionFactor = v, Limit.Number(1, 10));
+        subjugation.Add("Dreadstone.breakMtbFactor", "Lumen_Dreadstone_BreakFactor".Translate(), BreakMtbFactor,
             v => BreakMtbFactor = v, Limit.Number(1, 100));
-        dread.Add("Dreadstone.dreadCostPerPass", "Warp energy per hostile per pass", DreadCostPerPass, v => DreadCostPerPass = v);
-        dread.Add("Dreadstone.siphonFraction", "Market value returned as Warp energy on a marked death (%)", SiphonFraction,
+        dread.Add("Dreadstone.dreadCostPerPass", "Lumen_Dreadstone_DreadCost".Translate(), DreadCostPerPass, v => DreadCostPerPass = v);
+        dread.Add("Dreadstone.siphonFraction", "Lumen_Dreadstone_Siphon".Translate(), SiphonFraction,
             v => SiphonFraction = v, Limit.Percent());
-        dread.Add("Dreadstone.arbalestDreadSeconds", "Arbalest Dread duration (seconds)", ArbalestDreadSeconds,
+        dread.Add("Dreadstone.arbalestDreadSeconds", "Lumen_Dreadstone_ArbalestSeconds".Translate(), ArbalestDreadSeconds,
             v => ArbalestDreadSeconds = v, Limit.Number(1, 600));
     }
     // Warp per prisoner or slave per day.
@@ -51,12 +51,13 @@ public static class DreadstoneRules
         var hediff = pawn.health.hediffSet.GetFirstHediffOfDef(Dread) ?? pawn.health.AddHediff(Dread);
         hediff.Severity = Mathf.Max(hediff.Severity, severity);
         if (hediff.TryGetComp<HediffComp_Disappears>() is { } timer) timer.ticksToDisappear = Mathf.Max(timer.ticksToDisappear, ticks);
+        siphon &= Effects.DreadstoneSiphon.On;
         if (siphon && hediff.TryGetComp<HediffComp_DreadSiphon>() is { } mark) mark.Mark(pawn.MarketValue);
         if (hediff is Hediff_Status status)
         {
             status.bracket = hediff.CurStage?.label;
-            status.note = Hediff_Status.Describe(hediff.CurStage) + "\nCosts " + DreadCostPerPass.ToString("0.##") + " Warp energy per pass while in reach.";
-            if (siphon) status.note += "\nIf it dies marked, " + SiphonFraction.ToStringPercent("0.#") + " of its value returns as Warp energy.";
+            status.note = Hediff_Status.Describe(hediff.CurStage) + "\n" + "Lumen_Dreadstone_DreadNote".Translate(DreadCostPerPass.ToString("0.##"));
+            if (siphon) status.note += "\n" + "Lumen_Dreadstone_SiphonNote".Translate(SiphonFraction.ToStringPercent("0.#"));
         }
     }
 
@@ -89,7 +90,7 @@ public class HediffComp_DreadSiphon : HediffComp
 
     public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null)
     {
-        if (!marked || Pawn.MapHeld == null) return;
+        if (!marked || Pawn.MapHeld == null || !Effects.DreadstoneSiphon.On) return;
         WarpEnergyNetwork.For(Pawn.MapHeld).DepositAnywhere(value * DreadstoneRules.SiphonFraction);
     }
 }
@@ -108,6 +109,7 @@ public class DreadstoneSubjugation : MapComponent
     {
         if (Find.TickManager.TicksGame % WarpRules.PassInterval != DreadstoneRules.SubjugationOffset) return;
         covered.Clear();
+        if (!Effects.DreadstoneSubjugation.On) return;
         var cache = DarkFixtureCache.For(map);
         if (!cache.AnyActive(DarkStoneKind.Dreadstone)) return;
         var warp = WarpEnergyNetwork.For(map);
@@ -134,12 +136,12 @@ public class DreadstoneSubjugation : MapComponent
             if (suppression != null) suppression.CurLevelPercentage = Mathf.Min(1f, suppression.CurLevelPercentage + DreadstoneRules.SuppressionPerDay * scale);
             float perDay = scale / days;
             var note = new System.Text.StringBuilder();
-            note.AppendLine("Resistance: -" + (DreadstoneRules.ResistancePerDay * perDay).ToString("0.##") + " a day");
-            note.AppendLine("Will: -" + (DreadstoneRules.WillPerDay * perDay).ToString("0.##") + " a day");
-            if (suppression != null) note.AppendLine("Suppression: +" + (DreadstoneRules.SuppressionPerDay * perDay).ToStringPercent("0.#") + " a day");
-            note.AppendLine("Prison break and rebellion are " + DreadstoneRules.BreakMtbFactor.ToString("0.#") + "x rarer (the prisoner tab shows the result).");
-            note.Append("Costs " + DreadstoneRules.SubjugationCost.ToString("0.##") + " Warp energy a day.");
-            Hediff_Status.Apply(pawn, DreadstoneRules.Subjugation, tier == 3 ? "pylon" : "column", note.ToString(), DreadstoneRules.DreadLingerTicks);
+            note.AppendLine("Lumen_Dreadstone_ResistanceNote".Translate((DreadstoneRules.ResistancePerDay * perDay).ToString("0.##")));
+            note.AppendLine("Lumen_Dreadstone_WillNote".Translate((DreadstoneRules.WillPerDay * perDay).ToString("0.##")));
+            if (suppression != null) note.AppendLine("Lumen_Dreadstone_SuppressionNote".Translate((DreadstoneRules.SuppressionPerDay * perDay).ToStringPercent("0.#")));
+            note.AppendLine("Lumen_Dreadstone_BreakNote".Translate(DreadstoneRules.BreakMtbFactor.ToString("0.#")));
+            note.Append("Lumen_Dreadstone_CostNote".Translate(DreadstoneRules.SubjugationCost.ToString("0.##")));
+            Hediff_Status.Apply(pawn, DreadstoneRules.Subjugation, (tier == 3 ? "Lumen_Category_Pylon" : "Lumen_Category_Column").Translate(), note.ToString(), DreadstoneRules.DreadLingerTicks);
         }
     }
 }
@@ -151,7 +153,7 @@ public static class DreadstoneMtb
     {
         if (result <= 0f) return;
         if (NewEquipment.Subjugated(pawn)) result *= DreadstoneRules.BreakMtbFactor;
-        else if (NewEquipment.Collared(pawn)) result *= 2f;
+        else if (NewEquipment.Collared(pawn)) result *= NewEquipment.CollarBreakFactor;
     }
 }
 
@@ -178,7 +180,7 @@ public class DreadstoneDread : MapComponent
 
     public override void MapComponentTick()
     {
-        if (Find.TickManager.TicksGame % WarpRules.PassInterval != DreadstoneRules.DreadOffset) return;
+        if (Find.TickManager.TicksGame % WarpRules.PassInterval != DreadstoneRules.DreadOffset || !Effects.DreadstoneDread.On) return;
         var cache = DarkFixtureCache.For(map);
         if (cache.StrongestActiveTier(DarkStoneKind.Dreadstone) < 2) return;
         var warp = WarpEnergyNetwork.For(map);
@@ -198,7 +200,7 @@ public class Bullet_Dread : Bullet
 {
     protected override void Impact(Thing hitThing, bool blockedByShield = false)
     {
-        if (hitThing is Pawn { Dead: false } pawn && pawn.RaceProps.Humanlike && launcher != null && pawn.HostileTo(launcher))
+        if (Effects.DreadstoneArbalest.On && hitThing is Pawn { Dead: false } pawn && pawn.RaceProps.Humanlike && launcher != null && pawn.HostileTo(launcher))
             DreadstoneRules.ApplyDread(pawn, DreadstoneRules.ClusterSeverity, Mathf.RoundToInt(DreadstoneRules.ArbalestDreadSeconds * 60f), true);
         base.Impact(hitThing, blockedByShield);
     }

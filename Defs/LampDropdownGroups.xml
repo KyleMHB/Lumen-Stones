@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <!-- Each button always shows its Lumenstone variant (DropdownFace) and names its group. -->
+  <!-- Stuff-made members still get the material menu; see FixtureDropdownStuffMenu. -->
   <DesignatorDropdownGroupDef>
     <defName>KM_LumenFloorLamps</defName>
     <label>lumenstone floor lamps</label>
     <iconSource>Placed</iconSource>
+    <modExtensions><li Class="LumenStones.DropdownFace"><face>KM_LumenstoneLamp</face></li></modExtensions>
   </DesignatorDropdownGroupDef>
   <DesignatorDropdownGroupDef>
     <defName>KM_LumenWallLamps</defName>
     <label>lumenstone wall lamps</label>
     <iconSource>Placed</iconSource>
+    <modExtensions><li Class="LumenStones.DropdownFace"><face>KM_LumenstoneWallLamp</face></li></modExtensions>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef>
+    <defName>KM_LumenColumns</defName>
+    <label>lumenstone columns</label>
+    <iconSource>Placed</iconSource>
+    <modExtensions><li Class="LumenStones.DropdownFace"><face>KM_LumenstoneColumn</face></li></modExtensions>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef>
+    <defName>KM_LumenPylons</defName>
+    <label>lumenstone pylons</label>
+    <iconSource>Placed</iconSource>
+    <modExtensions><li Class="LumenStones.DropdownFace"><face>KM_LumenstonePylon</face></li></modExtensions>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef>
+    <defName>KM_LumenClusters</defName>
+    <label>lumenstone clusters</label>
+    <iconSource>Placed</iconSource>
+    <modExtensions><li Class="LumenStones.DropdownFace"><face>KM_LumenstoneCluster</face></li></modExtensions>
   </DesignatorDropdownGroupDef>
 </Defs>

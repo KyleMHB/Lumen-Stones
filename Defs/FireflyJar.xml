@@ -16,7 +16,6 @@
     <recipeMaker><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><recipeUsers><li>CraftingSpot</li></recipeUsers></recipeMaker>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>3</glowRadius><glowColor>(155,225,100,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Fireflies" />
     </comps>
   </ThingDef>
 </Defs>

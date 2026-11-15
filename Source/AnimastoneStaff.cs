@@ -11,9 +11,9 @@ public static class AnimastoneStaff
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var staff = s.In("Animastone staff");
-        staff.Add("KM_AnimastoneStaff.stunChance", "Stun chance at 100% psychic sensitivity (%)", StunChance, v => StunChance = v, Limit.Percent());
-        staff.Add("KM_AnimastoneStaff.stunTicks", "Stun duration (ticks)", StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
+        var staff = s.In("Lumen_AnimastoneStaff_Section".Translate()).PerItem();
+        staff.Add("KM_AnimastoneStaff.stunChance", "Lumen_AnimastoneStaff_StunChance".Translate(), StunChance, v => StunChance = v, Limit.Percent());
+        staff.Add("KM_AnimastoneStaff.stunTicks", "Lumen_Setting_StunTicks".Translate(), StunTicks, v => StunTicks = (int)v, Limit.Integer(1, 60000));
     }
 
     // Null without Royalty, so the hit check below never matches.
@@ -35,7 +35,7 @@ public static class AnimastoneStaffHit
 {
     public static void Postfix(Thing __instance, DamageInfo dinfo, DamageWorker.DamageResult __result)
     {
-        if (dinfo.Weapon == null || dinfo.Weapon != AnimastoneStaff.Def || __result.totalDamageDealt <= 0) return;
+        if (dinfo.Weapon == null || dinfo.Weapon != AnimastoneStaff.Def || __result.totalDamageDealt <= 0 || !Effects.AnimastoneStaffStun.On) return;
         if (__instance is not Pawn { Dead: false } victim || dinfo.Instigator is not Pawn wielder) return;
         if (!Rand.Chance(AnimastoneStaff.StunChance * wielder.GetStatValue(StatDefOf.PsychicSensitivity))) return;
         victim.stances?.stunner?.StunFor(AnimastoneStaff.StunTicks, wielder);

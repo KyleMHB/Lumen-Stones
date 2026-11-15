@@ -18,53 +18,61 @@ public class CompProperties_DarkFixture : CompProperties
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
         if (tier == 0) yield break;
-        string warp = " This is a Warp active effect: it runs only while the fixture's Warp active effect is toggled on and the map has Warp energy.";
+        string warp = " " + "Lumen_Info_WarpRule".Translate();
         var rows = new InfoStats();
         switch (stone)
         {
             case DarkStoneKind.Sanguinite:
             {
-                string rule = "Treats colonists, slaves and prisoners resting in a bed in the same room. Only the strongest Sanguinite fixture in reach treats a patient, and bionics are never touched." + warp;
-                rows.Add("Treatment reach", InfoStats.Tiles(SanguiniteRules.Radius), rule)
-                    .Add("Bleeding rate", SanguiniteRules.BleedFactor(tier).ToStringPercent("0"), "Wounds stay untended and keep bleeding, only slower. " + rule)
-                    .Add("Warp energy per bleeding patient", SanguiniteRules.BleedCost.ToString("0.##") + " every " + InfoStats.Seconds(WarpRules.PassInterval), rule)
-                    .Add("Heals scars", tier == 1 ? "surface scars" : "every scar", $"One scar per pass, for {SanguiniteRules.ScarCost:0.##} Warp energy each. " + rule)
-                    .Add("Regrows", tier switch { 1 => "fingers and toes", 2 => "small parts", _ => "small parts and organs" },
-                        $"Regrowth is paid gradually and pauses when the patient leaves bed or Warp energy runs out. Fingers and toes take {SanguiniteRules.DigitDays:0.#} day and {SanguiniteRules.DigitCost:0.##} Warp energy; " +
-                        $"eyes, ears, noses and jaws {SanguiniteRules.SmallPartDays:0.#} days and {SanguiniteRules.SmallPartCost:0.##}; " +
-                        $"internal organs {SanguiniteRules.OrganDays:0.#} days and {SanguiniteRules.OrganCost:0.##}. " + rule);
+                string rule = "Lumen_DarkInfo_SanguiniteRule".Translate() + warp;
+                rows.Add("Lumen_DarkInfo_TreatmentReach".Translate(), InfoStats.Tiles(SanguiniteRules.Radius), rule)
+                    .Add(Effects.SanguiniteBleeding, "Lumen_DarkInfo_BleedingRate".Translate(), SanguiniteRules.BleedFactor(tier).ToStringPercent("0"), "Lumen_DarkInfo_BleedingRateDesc".Translate() + " " + rule)
+                    .Add(Effects.SanguiniteBleeding, "Lumen_DarkInfo_BleedCost".Translate(), "Lumen_DarkInfo_Every".Translate(SanguiniteRules.BleedCost.ToString("0.##"), InfoStats.Seconds(WarpRules.PassInterval)), rule)
+                    .Add(Effects.SanguiniteScars, "Lumen_DarkInfo_HealsScars".Translate(), (tier == 1 ? "Lumen_DarkInfo_SurfaceScars" : "Lumen_DarkInfo_EveryScar").Translate(),
+                        "Lumen_DarkInfo_ScarDesc".Translate(SanguiniteRules.ScarCost.ToString("0.##")) + " " + rule)
+                    .Add(Effects.SanguiniteDigits.On || Effects.SanguiniteSmallParts.On || Effects.SanguiniteOrgans.On ? null : Effects.SanguiniteDigits,
+                        "Lumen_DarkInfo_Regrows".Translate(), (tier switch { 1 => "Lumen_DarkInfo_RegrowDigits", 2 => "Lumen_Sanguinite_SmallParts", _ => "Lumen_DarkInfo_RegrowAll" }).Translate(),
+                        "Lumen_DarkInfo_RegrowDesc".Translate(SanguiniteRules.DigitDays.ToString("0.#"), SanguiniteRules.DigitCost.ToString("0.##"),
+                            SanguiniteRules.SmallPartDays.ToString("0.#"), SanguiniteRules.SmallPartCost.ToString("0.##"),
+                            SanguiniteRules.OrganDays.ToString("0.#"), SanguiniteRules.OrganCost.ToString("0.##")) + " " + rule);
                 break;
             }
             case DarkStoneKind.Dreadstone:
             {
-                string reach = "Only the strongest covering Dreadstone fixture counts." + warp;
-                rows.Add("Reach", InfoStats.Tiles(DreadstoneRules.Radius), reach);
+                string reach = "Lumen_DarkInfo_DreadstoneReach".Translate() + warp;
+                rows.Add("Lumen_DarkInfo_Reach".Translate(), InfoStats.Tiles(DreadstoneRules.Radius), reach);
                 if (tier != 2)
                 {
                     float scale = tier == 3 ? DreadstoneRules.PylonErosionFactor : 1f;
-                    string subjugation = "Applies to the colony's prisoners and slaves in the same room. " + reach;
-                    rows.Add("Resistance lost per day", (DreadstoneRules.ResistancePerDay * scale).ToString("0.##"), subjugation)
-                        .Add("Will lost per day", (DreadstoneRules.WillPerDay * scale).ToString("0.##"), subjugation)
-                        .Add("Slave suppression per day", InfoStats.Plus(DreadstoneRules.SuppressionPerDay * scale), subjugation)
-                        .Add("Prison breaks and rebellions", DreadstoneRules.BreakMtbFactor.ToString("0.#") + "x rarer", subjugation)
-                        .Add("Warp energy per pawn per day", DreadstoneRules.SubjugationCost.ToString("0.##"), subjugation);
+                    string subjugation = "Lumen_DarkInfo_SubjugationRule".Translate() + " " + reach;
+                    var on = Effects.DreadstoneSubjugation;
+                    rows.Add(on, "Lumen_DarkInfo_Resistance".Translate(), (DreadstoneRules.ResistancePerDay * scale).ToString("0.##"), subjugation)
+                        .Add(on, "Lumen_DarkInfo_Will".Translate(), (DreadstoneRules.WillPerDay * scale).ToString("0.##"), subjugation)
+                        .Add(on, "Lumen_DarkInfo_Suppression".Translate(), InfoStats.Plus(DreadstoneRules.SuppressionPerDay * scale), subjugation)
+                        .Add(on, "Lumen_DarkInfo_Breaks".Translate(), "Lumen_DarkInfo_Rarer".Translate(DreadstoneRules.BreakMtbFactor.ToString("0.#")), subjugation)
+                        .Add(on, "Lumen_DarkInfo_PerPawnPerDay".Translate(), DreadstoneRules.SubjugationCost.ToString("0.##"), subjugation);
                 }
                 if (tier >= 2)
                 {
-                    string dread = "Applies to hostile humanlikes in line of sight. Mechanoids and animals are immune. Nothing is spent with no hostiles in reach." +
-                        (tier == 3 ? $" When a weakened enemy dies, {DreadstoneRules.SiphonFraction.ToStringPercent()} of its market value returns as Warp energy." : "") + " " + reach;
+                    string dread = "Lumen_DarkInfo_DreadRule".Translate() +
+                        (tier == 3 ? " " + "Lumen_DarkInfo_SiphonRule".Translate(DreadstoneRules.SiphonFraction.ToStringPercent()).ToString() : "") + " " + reach;
                     var stage = StageAt(DreadstoneRules.Dread, tier == 3 ? DreadstoneRules.PylonSeverity : DreadstoneRules.ClusterSeverity);
-                    if (stage != null) rows.Add("Dread on hostiles", InfoStats.Stage(stage), dread);
-                    rows.Add("Warp energy per hostile", DreadstoneRules.DreadCostPerPass.ToString("0.##") + " every " + InfoStats.Seconds(WarpRules.PassInterval), dread);
+                    if (stage != null) rows.Add(Effects.DreadstoneDread, "Lumen_DarkInfo_DreadOnHostiles".Translate(), InfoStats.Stage(stage), dread);
+                    rows.Add(Effects.DreadstoneDread, "Lumen_DarkInfo_PerHostile".Translate(), "Lumen_DarkInfo_Every".Translate(DreadstoneRules.DreadCostPerPass.ToString("0.##"), InfoStats.Seconds(WarpRules.PassInterval)), dread);
                 }
                 break;
             }
             case DarkStoneKind.Hollowstone:
             {
-                string rule = "Applies to colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture in reach counts." + warp;
-                rows.Add("Reach", InfoStats.Tiles(HollowstoneRules.Radius), rule);
-                if (HollowstoneRules.Ward.stages is { } stages && tier - 1 < stages.Count) rows.Add("Ward", InfoStats.Stage(stages[tier - 1]), rule);
-                rows.Add("Warp energy per pawn per day", HollowstoneRules.WardCostPerDay.ToString("0.##"), rule);
+                string rule = "Lumen_DarkInfo_HollowstoneRule".Translate() + warp;
+                rows.Add("Lumen_DarkInfo_Reach".Translate(), InfoStats.Tiles(HollowstoneRules.Radius), rule);
+                if (HollowstoneRules.Ward.stages is { } stages && tier - 1 < stages.Count)
+                {
+                    var ward = HollowstoneRules.WardStage(stages[tier - 1]);
+                    string text = InfoStats.Stage(ward);
+                    rows.Add("Lumen_DarkInfo_Ward".Translate(), text.NullOrEmpty() ? EffectSwitch.OffText : text, rule);
+                }
+                rows.Add("Lumen_DarkInfo_PerPawnPerDay".Translate(), HollowstoneRules.WardCostPerDay.ToString("0.##"), rule);
                 break;
             }
         }
@@ -113,7 +121,7 @@ public class DarkFixtureCache : MapComponent
         strongestActive = new int[Stones];
     }
 
-    public static DarkFixtureCache For(Map map) => map.GetComponent<DarkFixtureCache>();
+    public static DarkFixtureCache For(Map map) => MapState.Of<DarkFixtureCache>(map);
 
     public List<CompDarkFixture> Fixtures(DarkStoneKind stone, int tier) => fixtures[(int)stone, tier];
 

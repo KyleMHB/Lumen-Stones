@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Info_SupportRule>在封闭房间中，每种装置类别只按其最高权重计算一次。落地灯和壁灯同属灯类，重复的装置不会增加效果。支援度上限为100%。</Lumen_Info_SupportRule>
+	<Lumen_Info_SolarLabel>{0}（太阳能）</Lumen_Info_SolarLabel>
+	<Lumen_Info_SolarRule>这是太阳能主动效果：只有在装置的太阳能主动效果开启且地图上有太阳能时才会运行。</Lumen_Info_SolarRule>
+	<Lumen_Info_Seconds>{0}秒</Lumen_Info_Seconds>
+	<Lumen_Info_Tiles>{0}格</Lumen_Info_Tiles>
+	<Lumen_Info_PainFactor>疼痛 x{0}</Lumen_Info_PainFactor>
+</LanguageData>

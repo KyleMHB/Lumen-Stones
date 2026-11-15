@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SanguiniteBlade_Section>Свежевальный клинок</Lumen_SanguiniteBlade_Section>
+	<Lumen_SanguiniteBlade_MaxStacks>Максимум стаков кровоизлияния</Lumen_SanguiniteBlade_MaxStacks>
+	<Lumen_SanguiniteBlade_StackTicks>Длительность стака кровоизлияния (тиков)</Lumen_SanguiniteBlade_StackTicks>
+	<Lumen_SanguiniteBlade_Bleed>Скорость кровотечения на стак кровоизлияния</Lumen_SanguiniteBlade_Bleed>
+</LanguageData>

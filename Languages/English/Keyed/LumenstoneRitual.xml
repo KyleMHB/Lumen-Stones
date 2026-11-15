@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ritual_Section>Ritual</Lumen_Ritual_Section>
+	<Lumen_Ritual_PoorYield>Poor yield</Lumen_Ritual_PoorYield>
+	<Lumen_Ritual_SuccessYield>Successful yield</Lumen_Ritual_SuccessYield>
+	<Lumen_Ritual_ExceptionalYield>Exceptional yield</Lumen_Ritual_ExceptionalYield>
+	<Lumen_Ritual_CircleYield>Yield at a Lumen ritual circle (% of altar yield)</Lumen_Ritual_CircleYield>
+	<Lumen_Ritual_SupportYieldCap>Fixture support yield bonus at full support (%)</Lumen_Ritual_SupportYieldCap>
+	<Lumen_Ritual_ChunkCost>Stone chunk cost</Lumen_Ritual_ChunkCost>
+	<Lumen_Ritual_Altar>Lumenstone altar</Lumen_Ritual_Altar>
+	<Lumen_Ritual_GoldQuantity>Gold quantity</Lumen_Ritual_GoldQuantity>
+	<Lumen_Ritual_CircleSection>Ritual circle</Lumen_Ritual_CircleSection>
+	<Lumen_Ritual_NeedsHost>Requires a player-owned Lumen ritual circle or Lumenstone altar, and Ideology.</Lumen_Ritual_NeedsHost>
+	<Lumen_Ritual_Underway>Another Lumenstone ritual is already underway in this settlement.</Lumen_Ritual_Underway>
+	<Lumen_Ritual_NeedsChunks>Requires {0} accessible, unforbidden stone chunks.</Lumen_Ritual_NeedsChunks>
+	<Lumen_Ritual_Ready>Lumenstone ritual ready.</Lumen_Ritual_Ready>
+	<Lumen_Ritual_Fixtures>Lumenstone fixtures: {0}</Lumen_Ritual_Fixtures>
+	<Lumen_Ritual_Label>Lumenstone ritual</Lumen_Ritual_Label>
+	<Lumen_Ritual_Desc>Choose participants in the native ritual dialog. The ceremony lasts 5000 ticks and uses {0} stone chunks. Quality yields {1}/{2}/{3} Lumenstone, scaled by participation (one: 50%, two: 75%, leader plus two others: 100%). Each settlement recovers for {4} days.</Lumen_Ritual_Desc>
+	<Lumen_Ritual_CircleNote>A circle yields {0} of an altar's Lumenstone and gains nothing from its room or from Lumenstone fixtures.</Lumen_Ritual_CircleNote>
+	<Lumen_Ritual_AltarNote>{0}. Lumenstone fixtures within {1} tiles in this room raise quality and yield.</Lumen_Ritual_AltarNote>
+	<Lumen_Ritual_Circle>Lumen ritual circle</Lumen_Ritual_Circle>
+	<Lumen_Ritual_Result>The ceremony produced {0} {1}{2}. Lumenstone rituals in this settlement now recover for {3} days.</Lumen_Ritual_Result>
+	<Lumen_Ritual_ResultSupport>(nearby fixtures: +{0})</Lumen_Ritual_ResultSupport>
+</LanguageData>

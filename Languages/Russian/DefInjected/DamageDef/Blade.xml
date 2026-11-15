@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteFrost.label>Гляцитовый мороз</KM_GlaciteFrost.label>
+	<KM_GlaciteFrost.deathMessage>{0} погибает от гляцитового мороза.</KM_GlaciteFrost.deathMessage>
+</LanguageData>

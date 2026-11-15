@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,8 +14,8 @@ public class LumenstoneSettings : ModSettings
     // Retain the old fields for settings files and AutoConfig presets written before schema 1.
     public bool firefly = true, pyrinth = true, glacite = true, vitalite = true, pyrinthHeat = true;
     public bool overridePyrinth;
-    // Off hides every fixture's animation switch and stops all fixture animation.
-    public bool fixtureAnimation = true;
+    // Whether the settings window also lists per-item numbers. Only the view: hidden values still apply.
+    public bool advancedView;
     public int settingsVersion = 1;
     public Dictionary<string, float> overrides = new();
 
@@ -26,7 +27,7 @@ public class LumenstoneSettings : ModSettings
         Scribe_Values.Look(ref vitalite, "vitalite", true);
         Scribe_Values.Look(ref pyrinthHeat, "pyrinthHeat", true);
         Scribe_Values.Look(ref overridePyrinth, "overridePyrinth");
-        Scribe_Values.Look(ref fixtureAnimation, "fixtureAnimation", true);
+        Scribe_Values.Look(ref advancedView, "advancedView");
         Scribe_Values.Look(ref settingsVersion, "settingsVersion");
         Scribe_Collections.Look(ref overrides, "overrides", LookMode.Value, LookMode.Value);
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -71,33 +72,36 @@ public class LumenstoneMod : Mod
         var edit = Tunables.Edit();
         var list = new Listing_Standard();
         list.Begin(area);
-        list.Label("Balance and effects require a restart, including for existing items. Generation affects future maps.");
-        list.Label("Availability applies immediately. Existing items, buildings and blueprints remain usable.");
-        bool animation = edit.Animation;
-        list.CheckboxLabeled("Fixture animation", ref animation,
-            "Allow fixtures to show pulses, glints and fireflies. Each fixture's animation starts off and is switched on with its button. Turning this off removes the button and stops every fixture's animation. It changes nothing else a fixture does.");
-        edit.Animation = animation;
+        list.Label("Lumen_Settings_BalanceNote".Translate());
+        list.Label("Lumen_Settings_EffectNote".Translate());
+        list.Label("Lumen_Settings_AvailabilityNote".Translate());
+        bool advanced = Settings.advancedView, wasAdvanced = advanced;
+        list.CheckboxLabeled("Lumen_Settings_Advanced".Translate(), ref advanced, "Lumen_Settings_AdvancedDesc".Translate());
+        if (advanced != wasAdvanced) { Settings.advancedView = advanced; selectedItem = null; scroll = Vector2.zero; }
         var groups = Tunables.Tabs;
         var tabs = list.GetRect(32 * ((groups.Count + 3) / 4));
         for (int i = 0; i < groups.Count; i++)
-            if (Widgets.ButtonText(new Rect(tabs.x + i % 4 * tabs.width / 4, tabs.y + i / 4 * 32, tabs.width / 4 - 4, 30), groups[i].Name))
+            if (Widgets.ButtonText(new Rect(tabs.x + i % 4 * tabs.width / 4, tabs.y + i / 4 * 32, tabs.width / 4 - 4, 30), groups[i].Label))
             { selectedStone = groups[i].Name; selectedItem = null; scroll = Vector2.zero; }
         list.Gap();
         var tab = groups.FirstOrDefault(t => t.Name == selectedStone);
         if (tab == null) { list.End(); return; }
-        if (list.ButtonText("Reset " + selectedStone + " to active mod list"))
+        if (list.ButtonText("Lumen_Settings_ResetTab".Translate(tab.Label)))
         { edit.Reset(tab); buffers.Clear(); }
         tab.Header?.Invoke(list);
-        var sections = tab.Sections(edit.OverridePyrinth);
+        // The simple view says when it is hiding values the player or a preset has set.
+        int hidden = advanced ? 0 : tab.HiddenOverrides(edit.OverridePyrinth);
+        if (hidden > 0) list.Label("Lumen_Settings_AdvancedHidden".Translate(hidden));
+        var sections = tab.Sections(edit.OverridePyrinth, advanced);
         if (sections.Count == 0) { list.End(); return; }
         if (!sections.Contains(selectedItem)) selectedItem = sections[0];
-        if (list.ButtonText("Section: " + selectedItem))
+        if (list.ButtonText("Lumen_Settings_Section".Translate(selectedItem)))
             Find.WindowStack.Add(new FloatMenu(sections.Select(section => new FloatMenuOption(section,
                 () => { selectedItem = section; scroll = Vector2.zero; })).ToList()));
-        list.Label("Checked balance overrides use your value; Reset restores the loaded mod list. Enter percentages as percentages.");
+        list.Label("Lumen_Settings_OverrideNote".Translate());
         float top = list.CurHeight;
         list.End();
-        var entries = tab.Rows(selectedItem, edit.OverridePyrinth);
+        var entries = tab.Rows(selectedItem, edit.OverridePyrinth, advanced);
         var outer = new Rect(area.x, area.y + top, area.width, Mathf.Max(40, area.height - top));
         var inner = new Rect(0, 0, outer.width - 20, entries.Count * 66);
         Widgets.BeginScrollView(outer, ref scroll, inner);
@@ -133,9 +137,9 @@ public class LumenstoneMod : Mod
                 edit.Set(entry.Key, display / scale);
             }
             else Widgets.Label(new Rect(row.xMax - 205, row.y, 110, 28), display.ToString("0.###"));
-            if (Widgets.ButtonText(new Rect(row.xMax - 88, row.y, 88, 28), "Reset"))
+            if (Widgets.ButtonText(new Rect(row.xMax - 88, row.y, 88, 28), "Lumen_Settings_Reset".Translate()))
             { edit.Set(entry.Key, null); buffers.Remove(entry.Key); }
-            list.Label("Mod list: " + (entry.Default * scale).ToString("0.###") + entry.Limit.Unit);
+            list.Label("Lumen_Settings_ModList".Translate((entry.Default * scale).ToString("0.###") + entry.Limit.Unit));
             list.Gap(10);
         }
         list.End();
@@ -164,7 +168,19 @@ public static class Startup
             if (pair.Item1 == "KM_LumenPyrinthColumn")
                 target.costList = source.costList?.ConvertAll(item => new ThingDefCountClass(item.thingDef, item.count));
         }
-        new Harmony("kylemhb.lumenstones").PatchAll(Assembly.GetExecutingAssembly());
+        // One class at a time: a target a game update renamed costs only that patch's feature, and settings still start.
+        var harmony = new Harmony("kylemhb.lumenstones");
+        foreach (var type in AccessTools.GetTypesFromAssembly(Assembly.GetExecutingAssembly()))
+        {
+            // As PatchAll does: Harmony runs any method named Prepare, Cleanup or TargetMethod as a patch helper,
+            // so ritual and job classes with their own Cleanup must not reach the processor.
+            if (!type.HasHarmonyAttribute()) continue;
+            try { harmony.CreateClassProcessor(type).Patch(); }
+            catch (Exception e)
+            {
+                Log.Error("[Lumen Stones] " + type.Name + " could not be patched; its feature is inactive until the mod is updated.\n" + e);
+            }
+        }
         // Capture after other mods' startup patches, not from upstream XML or saved fallback values.
         LongEventHandler.ExecuteWhenFinished(Tunables.Initialize);
     }

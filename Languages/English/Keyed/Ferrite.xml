@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ferrite_Radius>Maintenance radius</Lumen_Ferrite_Radius>
+	<Lumen_Ferrite_Interval>Ticks between repair pulses</Lumen_Ferrite_Interval>
+	<Lumen_Ferrite_BudgetSetting>Shared condition budget per pulse (%)</Lumen_Ferrite_BudgetSetting>
+	<Lumen_Ferrite_BudgetRule>Each pulse shares one condition budget equally among the damaged targets assigned to this source, so more targets mend more slowly. Fractional HP carries between pulses. Only the strongest covering Ferrite source repairs a target; overlap adds no repair. Works during combat.</Lumen_Ferrite_BudgetRule>
+	<Lumen_Ferrite_Mends>Mends</Lumen_Ferrite_Mends>
+	<Lumen_Ferrite_MendsSelf>itself and worn gear</Lumen_Ferrite_MendsSelf>
+	<Lumen_Ferrite_MendsSelfDesc>While worn or wielded, mends this item and the wearer's worn apparel and equipped weapons, including tainted apparel without removing the taint. Needs no Solar energy.</Lumen_Ferrite_MendsSelfDesc>
+	<Lumen_Ferrite_RadiusDesc>Works through walls.</Lumen_Ferrite_RadiusDesc>
+	<Lumen_Ferrite_MendsFree>Mends for free</Lumen_Ferrite_MendsFree>
+	<Lumen_Ferrite_Buildings>buildings</Lumen_Ferrite_Buildings>
+	<Lumen_Ferrite_BuildingsDesc>Player-owned repairable buildings and walls.</Lumen_Ferrite_BuildingsDesc>
+	<Lumen_Ferrite_MendsItems>Mends items</Lumen_Ferrite_MendsItems>
+	<Lumen_Ferrite_LooseItems>loose items</Lumen_Ferrite_LooseItems>
+	<Lumen_Ferrite_LooseItemsDesc>Mends non-rotting items on the ground, in stockpiles and on shelves.</Lumen_Ferrite_LooseItemsDesc>
+	<Lumen_Ferrite_MendsGear>Mends worn gear</Lumen_Ferrite_MendsGear>
+	<Lumen_Ferrite_ColonistGear>colonists' gear</Lumen_Ferrite_ColonistGear>
+	<Lumen_Ferrite_ColonistGearDesc>Mends the worn apparel and equipped weapons of colonists, slaves and prisoners, keeping corpse-apparel taint. Enemy gear is never repaired.</Lumen_Ferrite_ColonistGearDesc>
+	<Lumen_Ferrite_SolarPerHp>Solar energy per HP</Lumen_Ferrite_SolarPerHp>
+	<Lumen_Ferrite_SolarPerHpDesc>Paid for each hit point restored to an item.</Lumen_Ferrite_SolarPerHpDesc>
+	<Lumen_Ferrite_Budget>Condition budget per pulse</Lumen_Ferrite_Budget>
+	<Lumen_Ferrite_BudgetDesc>A share of each target's maximum hit points.</Lumen_Ferrite_BudgetDesc>
+	<Lumen_Ferrite_SolarPerHpSetting>Solar energy per HP of item or gear repaired</Lumen_Ferrite_SolarPerHpSetting>
+</LanguageData>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SanguiniteBlade_Section>剥皮刃</Lumen_SanguiniteBlade_Section>
+	<Lumen_SanguiniteBlade_MaxStacks>最大出血层数</Lumen_SanguiniteBlade_MaxStacks>
+	<Lumen_SanguiniteBlade_StackTicks>出血层持续时间（刻）</Lumen_SanguiniteBlade_StackTicks>
+	<Lumen_SanguiniteBlade_Bleed>每层出血的出血速率</Lumen_SanguiniteBlade_Bleed>
+</LanguageData>

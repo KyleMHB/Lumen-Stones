@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementSickness.label>调谐不适</KM_AttunementSickness.label>
+	<KM_AttunementSickness.description>新苏醒的晶体正在融入身体。大约一天内会感到疼痛，行动变慢。</KM_AttunementSickness.description>
+	<KM_GlaciteImplant.label>冰晶石植入物</KM_GlaciteImplant.label>
+	<KM_GlaciteImplant.labelNoun>一个冰晶石植入物</KM_GlaciteImplant.labelNoun>
+	<KM_GlaciteImplant.description>一块位于心脏旁的冰晶石碎片。它能让身体在酷热中保持舒适，但会让寒冷更难忍受。</KM_GlaciteImplant.description>
+	<KM_VerditeImplant.label>翠绿石植入物</KM_VerditeImplant.label>
+	<KM_VerditeImplant.labelNoun>一个翠绿石植入物</KM_VerditeImplant.labelNoun>
+	<KM_VerditeImplant.description>一块位于胃旁的翠绿石碎片。它将阳光储存在一个供养身体的储备中。晒太阳会填满储备，没有阳光则会耗尽。</KM_VerditeImplant.description>
+	<KM_SunlightReserve.label>阳光储备</KM_SunlightReserve.label>
+	<KM_SunlightReserve.description>储存在翠绿石植入物中的阳光。晴天几小时就能充满，雨天和雾天更慢，翠绿石补光下为一半速度。没有阳光时大约一天半耗尽。</KM_SunlightReserve.description>
+	<KM_SunlightReserve.stages.0.label>缺乏阳光</KM_SunlightReserve.stages.0.label>
+	<KM_SunlightReserve.stages.0.extraTooltip>晶体已经暗了下来。身体渴求着光。</KM_SunlightReserve.stages.0.extraTooltip>
+	<KM_SunlightReserve.stages.1.label>衰退中</KM_SunlightReserve.stages.1.label>
+	<KM_SunlightReserve.stages.1.extraTooltip>储存的光快要耗尽了。</KM_SunlightReserve.stages.1.extraTooltip>
+	<KM_SunlightReserve.stages.2.label>阳光滋养</KM_SunlightReserve.stages.2.label>
+	<KM_SunlightReserve.stages.2.extraTooltip>储存在翠绿石晶体中的阳光正在供养身体。</KM_SunlightReserve.stages.2.extraTooltip>
+	<KM_VitaliteImplant.label>生命石植入物</KM_VitaliteImplant.label>
+	<KM_VitaliteImplant.labelNoun>一个生命石植入物</KM_VitaliteImplant.labelNoun>
+	<KM_VitaliteImplant.description>一块位于心脏旁的生命石碎片。伤口愈合更快，疾病也能更早被击退，代价是生育力。没有Biotech时，则会使身体疲劳。</KM_VitaliteImplant.description>
+	<KM_SereniteImplant.label>宁静石植入物</KM_SereniteImplant.label>
+	<KM_SereniteImplant.labelNoun>一个宁静石植入物</KM_SereniteImplant.labelNoun>
+	<KM_SereniteImplant.description>一块位于心脏旁的宁静石碎片。它能稳定心神、提升心情，但会减缓身体和工作速度。</KM_SereniteImplant.description>
+	<KM_AegiteImplant.label>庇护石植入物</KM_AegiteImplant.label>
+	<KM_AegiteImplant.labelNoun>一个庇护石植入物</KM_AegiteImplant.labelNoun>
+	<KM_AegiteImplant.description>一块位于心脏旁的庇护石碎片。身体几乎不会被烧伤，能抵御食物中毒和毒素，但更容易疲劳。</KM_AegiteImplant.description>
+	<KM_FerriteImplant.label>铁晶石植入物</KM_FerriteImplant.label>
+	<KM_FerriteImplant.labelNoun>一个铁晶石植入物</KM_FerriteImplant.labelNoun>
+	<KM_FerriteImplant.description>一块位于脊椎旁的铁晶石碎片。皮肤会变硬以抵挡刀刃和打击，穿戴的衣物也会缓慢修复，但身体会变得沉重。</KM_FerriteImplant.description>
+	<KM_FerriteArm.label>铁晶石手臂</KM_FerriteArm.label>
+	<KM_FerriteArm.labelNoun>一条铁晶石手臂</KM_FerriteArm.labelNoun>
+	<KM_FerriteArm.description>一条由铁晶石晶体生长而成的手臂。上面的伤口会自行愈合。</KM_FerriteArm.description>
+	<KM_FerriteArm.comps.1.tools.0.label>拳头</KM_FerriteArm.comps.1.tools.0.label>
+	<KM_FerriteLeg.label>铁晶石腿</KM_FerriteLeg.label>
+	<KM_FerriteLeg.labelNoun>一条铁晶石腿</KM_FerriteLeg.labelNoun>
+	<KM_FerriteLeg.description>一条由铁晶石晶体生长而成的腿。上面的伤口会自行愈合。</KM_FerriteLeg.description>
+	<KM_VitaliteHeart.label>生命石心脏</KM_VitaliteHeart.label>
+	<KM_VitaliteHeart.labelNoun>一颗生命石心脏</KM_VitaliteHeart.labelNoun>
+	<KM_VitaliteHeart.description>一颗由生命石晶体生长而成的心脏。它帮助身体对抗疾病。</KM_VitaliteHeart.description>
+	<KM_AegiteEye.label>庇护石眼</KM_AegiteEye.label>
+	<KM_AegiteEye.labelNoun>一只庇护石眼</KM_AegiteEye.labelNoun>
+	<KM_AegiteEye.description>一只由庇护石晶体生长而成的眼睛。它不会被太阳闪光致盲。</KM_AegiteEye.description>
+</LanguageData>

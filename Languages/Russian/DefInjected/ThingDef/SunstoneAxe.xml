@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SunstoneAxe.label>Топор из солнечного камня</KM_SunstoneAxe.label>
+	<KM_SunstoneAxe.description>Топор с янтарно-цитриновым лезвием из солнечного камня. Каждый крепкий удар выпускает часть дневного света, запасённого в лезвии.\n\nУдар в ближнем бою, нанёсший урон, может ослепить вспышкой и ненадолго оглушить цель, а по аномальным сущностям и мутантам рубит на 50% глубже. Изготавливается из 100 солнечного камня и 20 стали после исследования длинных клинков, ремесло 6.</KM_SunstoneAxe.description>
+	<KM_SunstoneAxe.tools.0.label>рукоять</KM_SunstoneAxe.tools.0.label>
+	<KM_SunstoneAxe.tools.1.label>лезвие</KM_SunstoneAxe.tools.1.label>
+</LanguageData>

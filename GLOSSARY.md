@@ -34,7 +34,7 @@ An enclosed room containing a Lumenstone altar and at least one Lumenstone fixtu
 The weighted contribution of nearby Lumenstone fixture categories to a Lumenstone altar's ceremony quality and Lumenstone yield, at full strength in a shared enclosed roofed room and half strength outdoors.
 
 **Glacite**:
-A blue cooling infused Lumenstone adapted from Epochs - Pyrinth. The starter stone: its infusion needs no reagent.
+A blue cooling infused Lumenstone, inspired by Epochs - Pyrinth. The starter stone: its infusion needs no reagent.
 _Avoid_: Crynth, its retired internal name.
 
 **Verdite**:
@@ -93,6 +93,10 @@ The nocturnal turning of 25 Sunstone into 25 Lunite, startable between 20:00 and
 **Active-effect gate**:
 The single rule, per fixture, that decides whether its active effect may run and who pays: toggled on, not interrupted, and paid from its network's energy account. With Sunstone off, Solar active effects are free; Warp ones never are. A fixture with a continuous drain is polled by its network every pass.
 _Avoid_: Solar toggle logic, powered check.
+
+**Effect switch**:
+A global mod setting, keyed `<Tab>.effect.<id>`, that turns one effect off for everything, including fixtures already built, worn gear and implants. It differs from availability, which only blocks new content, and from the per-building Solar or Warp active effect button. Most apply at once; those that change definitions need a restart.
+_Avoid_: effect toggle, which reads like the building button.
 
 **Energy account**:
 The per-map ledger behind each network (Solar or Warp) that holds the depletion state and takes payments per event or continuously. The network decides only where stored energy lives and how a withdrawal is spread across its collectors and batteries.
@@ -199,3 +203,20 @@ _Avoid_: Mixed battery, portable vessel.
 **Sunstone cell**:
 The Solar-only carried cell made without Ideology, with two Sunstone crystals. With Ideology the Twinstone cell replaces it.
 _Avoid_: Sunstone battery, which suggests the Sunstone vessel and obelisk.
+
+## Artwork process
+
+These terms apply from 2026-11-12 ([ADR 0001](docs/adr/0001-artwork-approval-is-the-release-contract.md)). Earlier records often say "selected" for what is now approved; read them as written.
+
+**Candidate**:
+A generated or edited image offered to the user for a choice. Rules and measurements are reported beside it.
+
+**Selected**:
+A candidate the user has chosen to keep refining. Nothing about it is protected yet.
+
+**Approved**:
+Final. The user's approval binds the source image, its recipe and the export they were shown. Its design pixels never change afterwards unless the user names the piece for a redo.
+_Avoid_: accepted, signed off, final selection.
+
+**Derived file**:
+A file computed from an approved export by recipe, such as a mirrored view, a charge frame or a UI icon. It adds no new pixels, so it needs no separate approval. A view with new pixels is a candidate.

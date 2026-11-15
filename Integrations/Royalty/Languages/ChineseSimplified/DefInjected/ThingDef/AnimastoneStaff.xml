@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AnimastoneStaff.label>灵魂石法杖</KM_AnimastoneStaff.label>
+	<KM_AnimastoneStaff.description>一根以灵魂石为顶的木制专注法杖。它会替施法者承担一部分心灵施法的负担。\n\n作为棍棒很差，但持握时获得的神经热降低20%，神经热上限提高15。造成伤害的近战命中可以短暂眩晕目标，几率随持有者的心灵敏感度增加。不需要太阳能。研究灵魂调谐后，使用60灵魂石和20木材制作，需要6级手工。</KM_AnimastoneStaff.description>
+	<KM_AnimastoneStaff.tools.0.label>杖身</KM_AnimastoneStaff.tools.0.label>
+	<KM_AnimastoneStaff.tools.1.label>锤头</KM_AnimastoneStaff.tools.1.label>
+</LanguageData>

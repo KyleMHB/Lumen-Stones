@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementCircle.comps.0.label>{PAWN_labelShort}的医疗技能</KM_AttunementCircle.comps.0.label>
+	<KM_AttunementCircle.comps.0.labelAbstract>调谐者的医疗技能</KM_AttunementCircle.comps.0.labelAbstract>
+	<KM_AttunementCircle.comps.1.label>参与者</KM_AttunementCircle.comps.1.label>
+	<KM_AttunementCircle.outcomeChances.0.label>差</KM_AttunementCircle.outcomeChances.0.label>
+	<KM_AttunementCircle.outcomeChances.0.description>晶体仍在沉睡。没有部件苏醒，冷却结束后可以再次尝试。</KM_AttunementCircle.outcomeChances.0.description>
+	<KM_AttunementCircle.outcomeChances.1.label>成功</KM_AttunementCircle.outcomeChances.1.label>
+	<KM_AttunementCircle.outcomeChances.1.description>一个休眠部件苏醒了。</KM_AttunementCircle.outcomeChances.1.description>
+	<KM_AttunementCircle.outcomeChances.2.label>良好</KM_AttunementCircle.outcomeChances.2.label>
+	<KM_AttunementCircle.outcomeChances.2.description>两个休眠部件苏醒了。</KM_AttunementCircle.outcomeChances.2.description>
+	<KM_AttunementCircle.outcomeChances.3.label>卓越</KM_AttunementCircle.outcomeChances.3.label>
+	<KM_AttunementCircle.outcomeChances.3.description>三个休眠部件顺利苏醒，没有调谐不适。</KM_AttunementCircle.outcomeChances.3.description>
+	<KM_AttunementCircle.description>在流明仪式圈举行的仪式，用于唤醒休眠的光明植入物和义肢。调谐者的医疗技能和参与者决定唤醒数量。</KM_AttunementCircle.description>
+	<KM_AttunementAltar.outcomeChances.0.label>差</KM_AttunementAltar.outcomeChances.0.label>
+	<KM_AttunementAltar.outcomeChances.0.description>晶体仍在沉睡。没有部件苏醒，冷却结束后可以再次尝试。</KM_AttunementAltar.outcomeChances.0.description>
+	<KM_AttunementAltar.outcomeChances.1.label>成功</KM_AttunementAltar.outcomeChances.1.label>
+	<KM_AttunementAltar.outcomeChances.1.description>一个休眠部件苏醒了。</KM_AttunementAltar.outcomeChances.1.description>
+	<KM_AttunementAltar.outcomeChances.2.label>良好</KM_AttunementAltar.outcomeChances.2.label>
+	<KM_AttunementAltar.outcomeChances.2.description>两个休眠部件苏醒了。</KM_AttunementAltar.outcomeChances.2.description>
+	<KM_AttunementAltar.outcomeChances.3.label>卓越</KM_AttunementAltar.outcomeChances.3.label>
+	<KM_AttunementAltar.outcomeChances.3.description>三个休眠部件顺利苏醒，没有调谐不适。</KM_AttunementAltar.outcomeChances.3.description>
+	<KM_AttunementAltar.description>在流明石祭坛举行的仪式，用于唤醒休眠的光明植入物和义肢。调谐者的医疗技能、参与者、房间和流明石装置决定唤醒数量。</KM_AttunementAltar.description>
+	<KM_AttunementAltar.comps.0.label>{PAWN_labelShort}的医疗技能</KM_AttunementAltar.comps.0.label>
+	<KM_AttunementAltar.comps.0.labelAbstract>调谐者的医疗技能</KM_AttunementAltar.comps.0.labelAbstract>
+	<KM_AttunementAltar.comps.1.label>参与者</KM_AttunementAltar.comps.1.label>
+	<KM_AttunementAltar.comps.2.label>房间印象</KM_AttunementAltar.comps.2.label>
+	<KM_AttunementAltar.comps.3.label>流明石装置</KM_AttunementAltar.comps.3.label>
+	<KM_Binding.outcomeChances.0.label>差</KM_Binding.outcomeChances.0.label>
+	<KM_Binding.outcomeChances.0.description>晶体仍在沉睡。没有部件苏醒，冷却结束后可以再次尝试。</KM_Binding.outcomeChances.0.description>
+	<KM_Binding.outcomeChances.1.label>成功</KM_Binding.outcomeChances.1.label>
+	<KM_Binding.outcomeChances.1.description>一个休眠部件苏醒了。</KM_Binding.outcomeChances.1.description>
+	<KM_Binding.outcomeChances.2.label>良好</KM_Binding.outcomeChances.2.label>
+	<KM_Binding.outcomeChances.2.description>两个休眠部件苏醒了。</KM_Binding.outcomeChances.2.description>
+	<KM_Binding.outcomeChances.3.label>卓越</KM_Binding.outcomeChances.3.label>
+	<KM_Binding.outcomeChances.3.description>三个休眠部件顺利苏醒，没有调谐不适。</KM_Binding.outcomeChances.3.description>
+	<KM_Binding.description>在献祭祭坛举行的仪式，用于唤醒休眠的黑暗植入物和义肢。调谐者的医疗技能、参与者、房间和暗石装置决定唤醒数量。</KM_Binding.description>
+	<KM_Binding.comps.0.label>{PAWN_labelShort}的医疗技能</KM_Binding.comps.0.label>
+	<KM_Binding.comps.0.labelAbstract>调谐者的医疗技能</KM_Binding.comps.0.labelAbstract>
+	<KM_Binding.comps.1.label>参与者</KM_Binding.comps.1.label>
+	<KM_Binding.comps.2.label>房间印象</KM_Binding.comps.2.label>
+	<KM_Binding.comps.3.label>暗石装置</KM_Binding.comps.3.label>
+</LanguageData>

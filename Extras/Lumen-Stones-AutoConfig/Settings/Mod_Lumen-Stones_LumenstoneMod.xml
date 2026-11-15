@@ -4,6 +4,25 @@
     <settingsVersion>1</settingsVersion>
     <overridePyrinth>false</overridePyrinth>
     <!-- Availability only: leave all balance values to the active mod list. -->
+    <!-- Effect switches are keyed <Tab>.effect.<id>, 1 on and 0 off, and default on, so this preset leaves them out.
+         To switch one off, add its key with value 0, for example Ferrite.effect.repairGear. The full list of ids is in
+         docs/stone-settings.md under Effect switches:
+         Glacite: fixtureCooling, coolerRefrigeration, coolerFreezing, bladeFrost
+         Vitalite: roomImmunity, roomHealing, roomInfection, bedBonuses, cleanliness, circlet
+         Serenite: roomComfort, roomMood, sleep, pendant
+         Verdite: growth, workSpeed, harvestYield, plantLight, scytheFarming, scytheLifeSteal, bracer, chew
+         Aegite: filthCleaning, fireSuppression, shieldArmor, shieldFireImmunity, charm
+         Ferrite: repairBuildings, repairItems, repairGear, warhammerStun, warhammerMending
+         Sunstone: axeBane, axeBlindStun, flare, projectorInterception, projectorCrushing, stabilizer
+         Lumenstone: ritualSupport, staff
+         Pyrinth: columnHeat, columnFocus
+         Animastone: focus, roomHeatRecovery, roomFocusGain, clusterFocus, pylonHeatRecovery, pylonGrowth, circlet, staffStats, staffStun
+         DarkStone: ritualSupport, crystallize, harvest, ritualKnife, seed
+         Sanguinite: bleeding, scars, regrowDigits, regrowSmallParts, regrowOrgans, hemorrhage, wielderBleed
+         Dreadstone: subjugation, dread, siphon, arbalestDread, cudgel, collar
+         Hollowstone: painWard, breakSteadiness, workHusks, glaive
+         Implants: apparelMending, partHealing, scarMending, dreadAura, mood, relief -->
+
     <overrides>
       <keys>
         <li>Firefly.enabled</li>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cudgel_Section>恐惧石棍棒</Lumen_Cudgel_Section>
+	<Lumen_Cudgel_AgonyCap>最大痛苦层数</Lumen_Cudgel_AgonyCap>
+	<Lumen_Cudgel_AgonyTicks>最后一击后的痛苦持续时间（刻）</Lumen_Cudgel_AgonyTicks>
+	<Lumen_Collar_Section>恐惧石项圈</Lumen_Collar_Section>
+	<Lumen_Collar_Suppression>佩戴时奴隶压制下降速度（%）</Lumen_Collar_Suppression>
+	<Lumen_Collar_BreakFactor>佩戴时奴隶叛乱罕见倍率</Lumen_Collar_BreakFactor>
+	<Lumen_Knife_Section>暗石仪式匕首</Lumen_Knife_Section>
+	<Lumen_Knife_BlightCap>最大灵魂枯萎层数</Lumen_Knife_BlightCap>
+	<Lumen_Knife_BlightTicks>最后一击后的灵魂枯萎持续时间（刻）</Lumen_Knife_BlightTicks>
+	<Lumen_Knife_HarvestShare>处决获得的扭曲能量（成功收割的%）</Lumen_Knife_HarvestShare>
+	<Lumen_Setting_LeaderQuality>主持者持握时的仪式品质加成（%）</Lumen_Setting_LeaderQuality>
+	<Lumen_Staff_Section>流明石法杖</Lumen_Staff_Section>
+	<Lumen_Weapon_Off>已在模组设置中关闭</Lumen_Weapon_Off>
+	<Lumen_Weapon_Equipped>已装备</Lumen_Weapon_Equipped>
+	<Lumen_Weapon_NotEquipped>未装备</Lumen_Weapon_NotEquipped>
+	<Lumen_Weapon_Tooltip>仪式主持者必须持握对应石材的武器。</Lumen_Weapon_Tooltip>
+</LanguageData>

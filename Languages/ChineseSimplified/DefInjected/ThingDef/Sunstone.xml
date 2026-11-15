@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Sunstone.label>太阳石</KM_Sunstone.label>
+	<KM_Sunstone.description>浸入黄金的流明石吸收了黄金的温暖，并将其转向日光。它吸收阳光，在需要时再释放出来。\n\n一种琥珀黄水晶色的晶体，带有炽烈的太阳金色核心，在流明仪式圈由流明石和黄金灌注而成。收集器将日光转化为太阳能，由容器和方尖碑储存，供其他灌注石材的主动效果使用。</KM_Sunstone.description>
+	<KM_SunstoneCollector.label>太阳石收集器</KM_SunstoneCollector.label>
+	<KM_SunstoneCollector.description>一朵敞开的太阳石晶体花饰，以一定角度尽可能多地接纳天空。\n\n为地图的太阳能网络收集日光作为太阳能，恶劣天气或屋顶下更少，夜间没有。自身可储存少量电量，并将盈余送往网络中的电池。被摧毁或拆除时电量会丢失，被打包后重新安装则保留。</KM_SunstoneCollector.description>
+	<KM_SunstoneArray.label>太阳石阵列</KM_SunstoneArray.label>
+	<KM_SunstoneArray.description>一顶宽大的太阳石棱镜冠。晴天时让人难以直视。\n\n为地图的太阳能网络收集日光作为太阳能，恶劣天气或屋顶下更少，夜间没有。自身可储存少量电量，并将盈余送往网络中的电池。被摧毁或拆除时电量会丢失，被打包后重新安装则保留。</KM_SunstoneArray.description>
+	<KM_SunstoneVessel.label>太阳石容器</KM_SunstoneVessel.label>
+	<KM_SunstoneVessel.description>一簇太阳石晶体，将白天的光保存到夜里。它越满越亮。\n\n为整张地图储存太阳能，无论离收集器多远。它越满越亮。被摧毁或拆除时电量会丢失，被打包后重新安装则保留。</KM_SunstoneVessel.description>
+	<KM_SunstoneObelisk.label>太阳石方尖碑</KM_SunstoneObelisk.label>
+	<KM_SunstoneObelisk.description>一块高耸的太阳石晶体。充满时能整夜照亮基地。\n\n为整张地图储存太阳能，无论离收集器多远。它越满越亮。被摧毁或拆除时电量会丢失，被打包后重新安装则保留。</KM_SunstoneObelisk.description>
+</LanguageData>

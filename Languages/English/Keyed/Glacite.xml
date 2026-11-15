@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Section_SolarEnergy>Solar energy</Lumen_Section_SolarEnergy>
+	<Lumen_Glacite_FreezerDrain>Solar energy per day while cooling between the two limits</Lumen_Glacite_FreezerDrain>
+	<Lumen_Glacite_ActiveCutoff>Active temperature cutoff (C)</Lumen_Glacite_ActiveCutoff>
+	<Lumen_Glacite_CoolsTo>Cools to</Lumen_Glacite_CoolsTo>
+	<Lumen_Glacite_CoolsToDesc>Absorbs heat on its own, without fuel, electricity or an exhaust vent. A larger room or hotter weather may need more than one cooler.</Lumen_Glacite_CoolsToDesc>
+	<Lumen_Glacite_CoolsToActive>Cools to with active effect</Lumen_Glacite_CoolsToActive>
+	<Lumen_Glacite_CoolsToActiveDesc>Keeps cooling below its own limit, down to this temperature.</Lumen_Glacite_CoolsToActiveDesc>
+	<Lumen_Info_SolarPerDay>Solar energy per day</Lumen_Info_SolarPerDay>
+	<Lumen_Glacite_SolarPerDayDesc>Spent only while the air is between the two limits.</Lumen_Glacite_SolarPerDayDesc>
+	<Lumen_Glacite_Cooling>Cooling: {0}</Lumen_Glacite_Cooling>
+	<Lumen_Glacite_NotRunning>active effect not running</Lumen_Glacite_NotRunning>
+	<Lumen_Glacite_CoolingTo>Cooling to {0}</Lumen_Glacite_CoolingTo>
+	<Lumen_Glacite_CoolingToIdle>Cooling to {0}, idle</Lumen_Glacite_CoolingToIdle>
+	<Lumen_Glacite_PassiveCutoff>Passive temperature cutoff (C)</Lumen_Glacite_PassiveCutoff>
+</LanguageData>

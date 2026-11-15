@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Aegite.label>Эгит</KM_Aegite.label>
+	<KM_Aegite.description>Люменит, пропитанный серебром, перенимает старую славу серебра как символа чистоты. Превращённый в обереги, он глушит пламя и не даёт оседать грязи.\n\nКристалл цвета шампанского с бело-золотой сердцевиной, получаемый из люменита у люменового ритуального круга. Его обереги постепенно счищают грязь, а при солнечной энергии тушат огонь.</KM_Aegite.description>
+	<KM_LumenAegiteColumn.label>Эгитовая охранная колонна</KM_LumenAegiteColumn.label>
+	<KM_LumenAegiteColumn.description>Эгитовая колонна цвета шампанского и белого золота — самый малый из оберегов.\n\nОберег, счищающий грязь вокруг себя сквозь стены. С солнечной энергией вместо этого тушит огонь. На цель действует только сильнейший накрывающий её оберег. Без топлива.</KM_LumenAegiteColumn.description>
+	<KM_LumenAegiteColumn.comps.3.effect>тушение огня</KM_LumenAegiteColumn.comps.3.effect>
+	<KM_AegiteLamp.label>Эгитовая лампа</KM_AegiteLamp.label>
+	<KM_AegiteLamp.description>Эгитовая лампа цвета шампанского. Кристалл слишком мал, чтобы что-то оберегать.\n\nТолько освещает, без тушения огня, уборки и искр оберега. Без тепла, топлива и электричества.</KM_AegiteLamp.description>
+	<KM_AegiteWallLamp.label>Эгитовая настенная лампа</KM_AegiteWallLamp.label>
+	<KM_AegiteWallLamp.description>Эгитовая настенная лампа цвета шампанского. Кристалл слишком мал, чтобы что-то оберегать.\n\nТолько освещает, без тушения огня, уборки и искр оберега. Без тепла, топлива и электричества.</KM_AegiteWallLamp.description>
+	<KM_AegitePylon.label>Эгитовый пилон-страж</KM_AegitePylon.label>
+	<KM_AegitePylon.description>Высокий эгитовый страж, сильнейший из оберегов.\n\nОберег, счищающий грязь вокруг себя сквозь стены. С солнечной энергией вместо этого тушит огонь. На цель действует только сильнейший накрывающий её оберег. Без топлива.</KM_AegitePylon.description>
+	<KM_AegitePylon.comps.2.effect>тушение огня</KM_AegitePylon.comps.2.effect>
+	<KM_AegiteCluster.label>Эгитовая охранная друза</KM_AegiteCluster.label>
+	<KM_AegiteCluster.description>Тренога из эгитовых кристаллов, вокруг которой земля на удивление чиста.\n\nОберег, счищающий грязь вокруг себя сквозь стены. С солнечной энергией вместо этого тушит огонь. На цель действует только сильнейший накрывающий её оберег. Без топлива.</KM_AegiteCluster.description>
+	<KM_AegiteCluster.comps.2.effect>тушение огня</KM_AegiteCluster.comps.2.effect>
+</LanguageData>

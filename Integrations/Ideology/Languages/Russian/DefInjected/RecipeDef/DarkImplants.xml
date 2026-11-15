@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_MakeSanguiniteImplant.label>изготовить: сангвинитовый имплант</KM_MakeSanguiniteImplant.label>
+	<KM_MakeSanguiniteImplant.description>Сделать сангвинитовый имплант из сангвинита и компонента.</KM_MakeSanguiniteImplant.description>
+	<KM_MakeSanguiniteImplant.jobString>Изготавливает: сангвинитовый имплант.</KM_MakeSanguiniteImplant.jobString>
+	<KM_InstallSanguiniteImplant.label>установить: сангвинитовый имплант</KM_InstallSanguiniteImplant.label>
+	<KM_InstallSanguiniteImplant.description>Установить: сангвинитовый имплант. Спит, пока его не пробудит связывание.</KM_InstallSanguiniteImplant.description>
+	<KM_InstallSanguiniteImplant.jobString>Устанавливает: сангвинитовый имплант.</KM_InstallSanguiniteImplant.jobString>
+	<KM_RemoveSanguiniteImplant.label>удалить: сангвинитовый имплант</KM_RemoveSanguiniteImplant.label>
+	<KM_RemoveSanguiniteImplant.description>Удалить: сангвинитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный тёмный камень.</KM_RemoveSanguiniteImplant.description>
+	<KM_RemoveSanguiniteImplant.jobString>Удаляет: сангвинитовый имплант.</KM_RemoveSanguiniteImplant.jobString>
+	<KM_MakeDreadstoneImplant.label>изготовить: имплант из камня ужаса</KM_MakeDreadstoneImplant.label>
+	<KM_MakeDreadstoneImplant.description>Сделать имплант из камня ужаса из камня ужаса и компонента.</KM_MakeDreadstoneImplant.description>
+	<KM_MakeDreadstoneImplant.jobString>Изготавливает: имплант из камня ужаса.</KM_MakeDreadstoneImplant.jobString>
+	<KM_InstallDreadstoneImplant.label>установить: имплант из камня ужаса</KM_InstallDreadstoneImplant.label>
+	<KM_InstallDreadstoneImplant.description>Установить: имплант из камня ужаса. Спит, пока его не пробудит связывание.</KM_InstallDreadstoneImplant.description>
+	<KM_InstallDreadstoneImplant.jobString>Устанавливает: имплант из камня ужаса.</KM_InstallDreadstoneImplant.jobString>
+	<KM_RemoveDreadstoneImplant.label>удалить: имплант из камня ужаса</KM_RemoveDreadstoneImplant.label>
+	<KM_RemoveDreadstoneImplant.description>Удалить: имплант из камня ужаса. Спящий имплант извлекается целым; активный рассыпается в необработанный тёмный камень.</KM_RemoveDreadstoneImplant.description>
+	<KM_RemoveDreadstoneImplant.jobString>Удаляет: имплант из камня ужаса.</KM_RemoveDreadstoneImplant.jobString>
+	<KM_MakeHollowstoneImplant.label>изготовить: имплант из пустокамня</KM_MakeHollowstoneImplant.label>
+	<KM_MakeHollowstoneImplant.description>Сделать имплант из пустокамня из пустокамня и компонента.</KM_MakeHollowstoneImplant.description>
+	<KM_MakeHollowstoneImplant.jobString>Изготавливает: имплант из пустокамня.</KM_MakeHollowstoneImplant.jobString>
+	<KM_InstallHollowstoneImplant.label>установить: имплант из пустокамня</KM_InstallHollowstoneImplant.label>
+	<KM_InstallHollowstoneImplant.description>Установить: имплант из пустокамня. Спит, пока его не пробудит связывание.</KM_InstallHollowstoneImplant.description>
+	<KM_InstallHollowstoneImplant.jobString>Устанавливает: имплант из пустокамня.</KM_InstallHollowstoneImplant.jobString>
+	<KM_RemoveHollowstoneImplant.label>удалить: имплант из пустокамня</KM_RemoveHollowstoneImplant.label>
+	<KM_RemoveHollowstoneImplant.description>Удалить: имплант из пустокамня. Спящий имплант извлекается целым; активный рассыпается в необработанный тёмный камень.</KM_RemoveHollowstoneImplant.description>
+	<KM_RemoveHollowstoneImplant.jobString>Удаляет: имплант из пустокамня.</KM_RemoveHollowstoneImplant.jobString>
+	<KM_MakeHollowstoneArm.label>изготовить: рука из пустокамня</KM_MakeHollowstoneArm.label>
+	<KM_MakeHollowstoneArm.description>Вырастить рука из пустокамня из пустокамня и компонента.</KM_MakeHollowstoneArm.description>
+	<KM_MakeHollowstoneArm.jobString>Изготавливает: рука из пустокамня.</KM_MakeHollowstoneArm.jobString>
+	<KM_InstallHollowstoneArm.label>установить: рука из пустокамня</KM_InstallHollowstoneArm.label>
+	<KM_InstallHollowstoneArm.description>Установить: рука из пустокамня. До пробуждения связыванием работает как простой протез.</KM_InstallHollowstoneArm.description>
+	<KM_InstallHollowstoneArm.jobString>Устанавливает: рука из пустокамня.</KM_InstallHollowstoneArm.jobString>
+	<KM_MakeHollowstoneLeg.label>изготовить: нога из пустокамня</KM_MakeHollowstoneLeg.label>
+	<KM_MakeHollowstoneLeg.description>Вырастить нога из пустокамня из пустокамня и компонента.</KM_MakeHollowstoneLeg.description>
+	<KM_MakeHollowstoneLeg.jobString>Изготавливает: нога из пустокамня.</KM_MakeHollowstoneLeg.jobString>
+	<KM_InstallHollowstoneLeg.label>установить: нога из пустокамня</KM_InstallHollowstoneLeg.label>
+	<KM_InstallHollowstoneLeg.description>Установить: нога из пустокамня. До пробуждения связыванием работает как простой протез.</KM_InstallHollowstoneLeg.description>
+	<KM_InstallHollowstoneLeg.jobString>Устанавливает: нога из пустокамня.</KM_InstallHollowstoneLeg.jobString>
+	<KM_MakeDreadstoneJaw.label>изготовить: челюсть из камня ужаса</KM_MakeDreadstoneJaw.label>
+	<KM_MakeDreadstoneJaw.description>Вырастить челюсть из камня ужаса из камня ужаса и компонента.</KM_MakeDreadstoneJaw.description>
+	<KM_MakeDreadstoneJaw.jobString>Изготавливает: челюсть из камня ужаса.</KM_MakeDreadstoneJaw.jobString>
+	<KM_InstallDreadstoneJaw.label>установить: челюсть из камня ужаса</KM_InstallDreadstoneJaw.label>
+	<KM_InstallDreadstoneJaw.description>Установить: челюсть из камня ужаса. До пробуждения связыванием работает как простой протез.</KM_InstallDreadstoneJaw.description>
+	<KM_InstallDreadstoneJaw.jobString>Устанавливает: челюсть из камня ужаса.</KM_InstallDreadstoneJaw.jobString>
+	<KM_MakeSanguiniteHeart.label>изготовить: сангвинитовое сердце</KM_MakeSanguiniteHeart.label>
+	<KM_MakeSanguiniteHeart.description>Вырастить сангвинитовое сердце из сангвинита и компонента.</KM_MakeSanguiniteHeart.description>
+	<KM_MakeSanguiniteHeart.jobString>Изготавливает: сангвинитовое сердце.</KM_MakeSanguiniteHeart.jobString>
+	<KM_InstallSanguiniteHeart.label>установить: сангвинитовое сердце</KM_InstallSanguiniteHeart.label>
+	<KM_InstallSanguiniteHeart.description>Установить: сангвинитовое сердце. До пробуждения связыванием работает как простой протез.</KM_InstallSanguiniteHeart.description>
+	<KM_InstallSanguiniteHeart.jobString>Устанавливает: сангвинитовое сердце.</KM_InstallSanguiniteHeart.jobString>
+	<KM_MakeTwinstoneCell.label>изготовить элемент из камня-близнеца</KM_MakeTwinstoneCell.label>
+	<KM_MakeTwinstoneCell.description>Запечатать солнечный камень и кровавик в элемент из камня-близнеца.</KM_MakeTwinstoneCell.description>
+	<KM_MakeTwinstoneCell.jobString>Изготавливает элемент из камня-близнеца.</KM_MakeTwinstoneCell.jobString>
+</LanguageData>

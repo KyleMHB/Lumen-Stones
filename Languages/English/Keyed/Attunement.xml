@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Attunement_Name>Attunement</Lumen_Attunement_Name>
+	<Lumen_Binding_Name>Binding</Lumen_Binding_Name>
+	<Lumen_Attunement_NeedsAltar>Requires a player-owned Sacrificial altar.</Lumen_Attunement_NeedsAltar>
+	<Lumen_Attunement_Underway>Another Attunement is already underway in this settlement.</Lumen_Attunement_Underway>
+	<Lumen_Binding_Underway>Another Binding is already underway in this settlement.</Lumen_Binding_Underway>
+	<Lumen_Attunement_ResearchFallback>attunement</Lumen_Attunement_ResearchFallback>
+	<Lumen_Attunement_NeedsRecipient>Requires a colonist, prisoner or slave with a dormant light implant or prosthetic.</Lumen_Attunement_NeedsRecipient>
+	<Lumen_Binding_NeedsRecipient>Requires a colonist, prisoner or slave with a dormant dark implant or prosthetic.</Lumen_Binding_NeedsRecipient>
+	<Lumen_Attunement_NothingWoke>Nothing woke in {0}. The parts stay dormant and can be tried again.</Lumen_Attunement_NothingWoke>
+	<Lumen_Attunement_WokeOne>{0}'s {1} is now active.</Lumen_Attunement_WokeOne>
+	<Lumen_Attunement_WokeMany>{0}'s {1} are now active.</Lumen_Attunement_WokeMany>
+	<Lumen_Attunement_Desc>Wake dormant light implants and prosthetics. An attuner works on a colonist, prisoner or slave. The attuner's Medicine skill, participants and ritual support raise quality. A poor outcome wakes nothing, a successful one wakes 1 part, good wakes 2 and exceptional wakes 3 without attunement sickness. Each settlement recovers for {0} days.</Lumen_Attunement_Desc>
+	<Lumen_Binding_Desc>Wake dormant dark implants and prosthetics. An attuner works on a colonist, prisoner or slave. The attuner's Medicine skill, participants and ritual support raise quality. A poor outcome wakes nothing, a successful one wakes 1 part, good wakes 2 and exceptional wakes 3 without attunement sickness. Each settlement recovers for {0} days.</Lumen_Binding_Desc>
+	<Lumen_Binding_SeedNote>A dormant dreadstone seed can be bound at any time. Waking only the seed starts no recovery and causes no sickness.</Lumen_Binding_SeedNote>
+	<Lumen_Attunement_JobLabel>Attune a part</Lumen_Attunement_JobLabel>
+	<Lumen_Attunement_JobDesc>An attuner and the recipient spend {0} hours at this circle to wake one dormant light implant or prosthetic, with attunement sickness afterwards. Each settlement recovers for {1} days.</Lumen_Attunement_JobDesc>
+	<Lumen_Attunement_RecipientRole>Must be a colonist, prisoner or slave with a dormant light part.</Lumen_Attunement_RecipientRole>
+	<Lumen_Binding_RecipientRole>Must be a colonist, prisoner or slave with a dormant dark part.</Lumen_Binding_RecipientRole>
+	<Lumen_Attunement_NotAttuner>Cannot be the attuner.</Lumen_Attunement_NotAttuner>
+	<Lumen_Attunement_Recovers>Attunement in this settlement now recovers for {0} days.</Lumen_Attunement_Recovers>
+	<Lumen_Binding_Recovers>Binding in this settlement now recovers for {0} days.</Lumen_Binding_Recovers>
+	<Lumen_Attunement_AttunerOption>{0} ({1} {2})</Lumen_Attunement_AttunerOption>
+	<Lumen_Attunement_NoAttuner>No colonist can attune {0}.</Lumen_Attunement_NoAttuner>
+</LanguageData>

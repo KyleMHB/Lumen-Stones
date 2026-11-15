@@ -39,6 +39,12 @@
       <buildingTags><li>Production</li></buildingTags>
     </building>
     <placeWorkers><li>PlaceWorker_PreventInteractionSpotOverlap</li></placeWorkers>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+    </comps>
   </ThingDef>
 
   <WorkGiverDef>

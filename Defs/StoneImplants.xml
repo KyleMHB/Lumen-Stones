@@ -5,7 +5,7 @@
   <ResearchProjectDef>
     <defName>KM_LumenAttunement</defName>
     <label>Lumen attunement</label>
-    <description>Shape infused Lumenstone into implants and crystal prosthetics, and wake them with Attunement. Unlocks light implant and prosthetic bills at the Lumen ritual circle, the Attunement ritual and, without Ideology, the attunement job at the circle.</description>
+    <description>Shape infused Lumenstone into implants and crystal prosthetics, and wake them with Attunement. Unlocks light implant and prosthetic bills at the Lumen ritual circle, the Attunement ritual at a Lumenstone altar and, without Ideology, the attunement job at the circle.</description>
     <baseCost>1500</baseCost>
     <techLevel>Neolithic</techLevel>
     <prerequisites><li>KM_VitaliteRestoration</li></prerequisites>

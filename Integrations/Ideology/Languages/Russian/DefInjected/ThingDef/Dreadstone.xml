@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Dreadstone.label>Камень ужаса</KM_Dreadstone.label>
+	<KM_Dreadstone.description>Тёмный камень, очищенный, чтобы отнимать волю. Заключённые рядом с ним перестают замышлять побег, а враги в его поле зрения теряют самообладание.\n\nОбсидианово-чёрный кристалл с тлеющей кроваво-оранжевой сердцевиной, очищенный из тёмного камня на жертвенном алтаре. Его светильники тратят энергию варпа, чтобы подчинять заключённых и рабов и пугать врагов.</KM_Dreadstone.description>
+	<KM_LumenDreadstoneColumn.label>Колонна из камня ужаса</KM_LumenDreadstoneColumn.label>
+	<KM_LumenDreadstoneColumn.description>Опорная колонна с вкраплениями камня ужаса. Заключённые рядом с ней с каждым днём чуть раньше отказываются от побега.\n\nДаёт тусклый индиговый свет. Энергия варпа: подтачивает сопротивление и волю заключённых и рабов колонии в той же комнате и делает побеги и восстания рабов реже.</KM_LumenDreadstoneColumn.description>
+	<KM_LumenDreadstoneColumn.comps.3.effect>подчинение заключённых и рабов</KM_LumenDreadstoneColumn.comps.3.effect>
+	<KM_DreadstoneLamp.label>Лампа из камня ужаса</KM_DreadstoneLamp.label>
+	<KM_DreadstoneLamp.description>Кристалл камня ужаса на каменном постаменте.\n\nДаёт тусклый индиговый свет, и больше ничего.</KM_DreadstoneLamp.description>
+	<KM_DreadstoneWallLamp.label>Настенная лампа из камня ужаса</KM_DreadstoneWallLamp.label>
+	<KM_DreadstoneWallLamp.description>Кристалл камня ужаса на настенном кронштейне.\n\nДаёт тусклый индиговый свет, и больше ничего.</KM_DreadstoneWallLamp.description>
+	<KM_DreadstoneCluster.label>Друза камня ужаса</KM_DreadstoneCluster.label>
+	<KM_DreadstoneCluster.description>Группа кристаллов камня ужаса в низком резном основании. Налётчики, увидевшие её, с трудом вспоминают, зачем пришли.\n\nДаёт индиговый свет. Энергия варпа: ослабляет враждебных гуманоидов в поле зрения. Механоиды и животные не затрагиваются.</KM_DreadstoneCluster.description>
+	<KM_DreadstoneCluster.comps.2.effect>ослабление враждебных гуманоидов</KM_DreadstoneCluster.comps.2.effect>
+	<KM_DreadstonePylon.label>Пилон из камня ужаса</KM_DreadstonePylon.label>
+	<KM_DreadstonePylon.description>Высокий столб камня ужаса на резном пьедестале. Он забирает немного у каждого врага, умершего в его поле зрения.\n\nДаёт индиговый свет. Энергия варпа: подтачивает заключённых и рабов в той же комнате быстрее колонны, ослабляет враждебных гуманоидов в поле зрения сильнее друзы и превращает смерти ослабленных врагов в энергию варпа.</KM_DreadstonePylon.description>
+	<KM_DreadstonePylon.comps.2.effect>подчинение, ужас и Похищение смерти</KM_DreadstonePylon.comps.2.effect>
+	<KM_DreadstoneArbalest.label>Арбалет из камня ужаса</KM_DreadstoneArbalest.label>
+	<KM_DreadstoneArbalest.description>Быстрый лёгкий лук с обсидиановыми плечами. Любой, в кого попал его болт, на время теряет самообладание.\n\nЕго болты на десять секунд повергают попавшего гуманоида в ужас, а если этот враг умирает, немного энергии варпа возвращается в батареи. Стрельба не тратит энергию варпа. Изготавливается из 100 камня ужаса и 20 стали после исследований большого лука и «Подчинение камнем ужаса», ремесло 6.</KM_DreadstoneArbalest.description>
+	<KM_DreadstoneArbalest.tools.0.label>плечо</KM_DreadstoneArbalest.tools.0.label>
+	<KM_Bolt_Dread.label>Болт из камня ужаса</KM_Bolt_Dread.label>
+</LanguageData>

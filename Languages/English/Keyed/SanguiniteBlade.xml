@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SanguiniteBlade_Section>Flensing Blade</Lumen_SanguiniteBlade_Section>
+	<Lumen_SanguiniteBlade_MaxStacks>Maximum Hemorrhage stacks</Lumen_SanguiniteBlade_MaxStacks>
+	<Lumen_SanguiniteBlade_StackTicks>Hemorrhage stack duration (ticks)</Lumen_SanguiniteBlade_StackTicks>
+	<Lumen_SanguiniteBlade_Bleed>Bleed rate per Hemorrhage stack</Lumen_SanguiniteBlade_Bleed>
+</LanguageData>

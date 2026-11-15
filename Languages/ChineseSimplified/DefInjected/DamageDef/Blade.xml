@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteFrost.label>冰晶石霜冻</KM_GlaciteFrost.label>
+	<KM_GlaciteFrost.deathMessage>{0}被冰晶石霜冻杀死了。</KM_GlaciteFrost.deathMessage>
+</LanguageData>

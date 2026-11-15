@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Husk_Section>Work husks</Lumen_Husk_Section>
+	<Lumen_Husk_RaiseCost>Warp energy to raise a husk</Lumen_Husk_RaiseCost>
+	<Lumen_Husk_CostPerDay>Warp energy per husk per day</Lumen_Husk_CostPerDay>
+	<Lumen_Husk_Cooldown>Raise cooldown (days)</Lumen_Husk_Cooldown>
+	<Lumen_Husk_NeedsAltar>Requires a player-owned Sacrificial altar and Ideology.</Lumen_Husk_NeedsAltar>
+	<Lumen_Husk_NeedsAnomaly>Requires Anomaly.</Lumen_Husk_NeedsAnomaly>
+	<Lumen_SwitchedOff>Switched off in mod settings.</Lumen_SwitchedOff>
+	<Lumen_Husk_SacrificeUnderway>Another sacrifice is already underway in this settlement.</Lumen_Husk_SacrificeUnderway>
+	<Lumen_Husk_NeedsPylon>Requires a powered Hollowstone pylon switched on and with no husk.</Lumen_Husk_NeedsPylon>
+	<Lumen_RequiresWarp>Requires {0} Warp energy.</Lumen_RequiresWarp>
+	<Lumen_Husk_None>Work husk: none</Lumen_Husk_None>
+	<Lumen_Husk_Bound>Work husk: {0}</Lumen_Husk_Bound>
+	<Lumen_Husk_Collapsed>Work husk: {0} (collapsed)</Lumen_Husk_Collapsed>
+	<Lumen_Husk_Rebind>Rebind a husk</Lumen_Husk_Rebind>
+	<Lumen_Husk_RebindDesc>Bind a collapsed work husk with no pylon to this one. It wakes once the pylon is powered.</Lumen_Husk_RebindDesc>
+	<Lumen_Husk_NoneToBind>No collapsed husk without a pylon</Lumen_Husk_NoneToBind>
+	<Lumen_Husk_PylonNeedsWarp>This pylon needs Warp energy and its active effect switched on.</Lumen_Husk_PylonNeedsWarp>
+	<Lumen_Husk_Rose>{0} rose as a work husk and was bound to a Hollowstone pylon.</Lumen_Husk_Rose>
+	<Lumen_Husk_DidNotRise>The body did not rise. {0} Warp energy was spent.</Lumen_Husk_DidNotRise>
+</LanguageData>

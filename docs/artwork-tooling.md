@@ -21,7 +21,7 @@ Before starting an artwork task:
 1. Inspect `git branch --show-current` and `git status --short`. Record the task's permitted paths and baseline commit. Coordinate exclusive editing of those paths with other active chats; recheck the branch and index before committing. If another chat needs the same files or index, serialize the work or use an authorized separate worktree.
 2. Resolve the interpreter before running image commands: `$artPython = git config --get lumen.artworkPython`, then `& $artPython -c "from PIL import Image; print(Image.__version__)"`. If configuration is absent, select a Python with Pillow and run the hook installer below. Use that interpreter consistently for checks, exports and tests.
 3. Open the specific task or artwork ticket first, then the current furnishing requirements and the selected object's provenance. Search within those files using section names or narrow patterns; follow additional links only for the active operation. Bound each read so required sections are returned intact, and retrieve any omitted text before proceeding. Avoid repository-wide content searches to answer a question the ticket already locates.
-4. For generation, follow [capture and attempt recording](#generation-capture-and-attempts). For an unregistered layered candidate, run [candidate validation](#candidate-validation) in addition to the production check.
+4. Follow the art guide's [three steps](rimworld-art-guide.md#the-three-steps). Capture and attempt recording is optional, used only when a brief asks.
 
 Use Python 3.12 or later with the development-only image dependency:
 
@@ -30,6 +30,10 @@ python -m pip install -r tools/requirements-artwork.txt
 ```
 
 Codex's bundled Python already has the required Pillow version on this workstation. Use its full executable path in place of `python` if the shell's default Python differs. The hook installer records the chosen executable in local Git configuration; no personal runtime path is committed.
+
+## Shared mask tooling
+
+Editor, gallery, review queue operations and recipe export now use `E:/Coding/Rimworld/RimWorldMaskEditor`. Existing `tools/mask-editor.py`, `mask_gallery.py`, `mask_review.py` and `export-layered-artwork.py` are compatibility entry points. Artwork, recipes, review history and Lumen-only historical gallery rules remain in this repository; the latter are in `artwork/mask-editor.json`. For another mod use the shared editor's `--project` option and its [mask guide](E:/Coding/Templates/Steam/rimworld/mask-editor-guide.md).
 
 ## Paint an existing mask
 
@@ -44,6 +48,8 @@ When handing a mask to the user for review or manual finishing, mark the exact c
 & $artPython tools/mask_review.py add Textures/Things/Building/Misc/GlaciteCooler.png --note 'Inspect the housing edge'
 & $artPython tools/mask_review.py list
 ```
+
+For a bulk review, `mask_review.py sheet [--current] [--output work/NAME.png]` renders every pending mask as colour, mask, dark tint and light tint rows (the editor's tint values). When the user approves from the sheet, record it in their words with `mask_review.py approve-all --words '<their words>' [--except PATH ...]`; it saves each review against the mask as installed (changed pixels 0), exactly as an editor save would.
 
 For a colour PNG with a nonstandard mask name, add `--mask path/to/mask.png`. Review items may be under `work/`; candidate exports there are not production textures. The gallery also offers **Mark for review** and **Clear request** buttons; clearing a new request preserves any earlier saved reviews. Saving a mask with either Save or Ctrl+S records it as **MASK REVIEWED**. Each save records its time, image and mask paths, previous and saved mask hashes, changed-pixel count when available, and whether a recipe was updated. Before-and-after mask snapshots are kept under ignored `work/mask-review-history/`. Records persist in `artwork/mask-reviews.json`; use `list` to inspect them before continuing the user's work. A saved review is not design or in-game approval. `clear PATH` removes the complete record, so preserve reviewed records unless removal is requested.
 
@@ -122,6 +128,14 @@ The contact sheet includes every registered view and a separate native build-ico
 
 The checker returns a nonzero exit code for failures. It writes the sheet and JSON model report only after the checks pass.
 
+### Family progression cards
+
+```powershell
+& (git config --get lumen.artworkPython) tools/family_cards.py [Family ...]
+```
+
+This writes one card per stone family to `work/contact-sheets/<family>-fixtures.png`. Each piece shows its art from before the 2026-11-12 refresh, the design step before its final design, and the current texture. Outline-only commits are not steps, so a piece redesigned once shows only original and final. When a later commit only changes outlines, add it to `OUTLINE_ONLY` in the script. The cards are rendered with the shared contact-sheet tool from the Templates checkout beside this workspace.
+
 ## Layered colour and material exports
 
 Use `python tools/export-layered-artwork.py SOURCE/master.json --output work/ARTWORK/export` for an explicit bottom-to-top RGBA layer stack. The manifest declares each layer's construction-tint ownership, a source crop, output canvas and target box, plus `sourceRepair` and `alphaHandling`. Colour and visible housing contribution share one uniform transform and reduction; fixed layers occlude housing before its red-channel coverage is exported. Masks have opaque alpha and zero green/blue. The exporter rejects undeclared source/alpha handling and records both declarations in `export.json`; it does not remove backgrounds, expand contours or sharpen alpha.
@@ -148,11 +162,13 @@ When an accepted recipe-built texture is integrated into production, add an opti
 
 ### Generation capture and attempts
 
-Before each image call, save its exact tool arguments as `work/TASK/request.json`, using saved `referenced_image_paths`. The ledger hashes those references. Record the request before spending the call:
+Optional: use this only when a brief asks for an attempt record. Before each image call, save its exact tool arguments as `work/TASK/request.json`, using saved `referenced_image_paths`. The ledger hashes those references. Record the request before spending the call:
 
 ```powershell
-& $artPython tools/artwork-attempt.py begin --ledger work/TASK/attempts --layer bowl --request work/TASK/request.json
+& $artPython tools/artwork-attempt.py begin --ledger work/TASK/attempts --layer bowl --request work/TASK/request.json --rendering-recipe work/TASK/master.json
 ```
+
+For fixture calls, `begin` calculates the final-canvas border width and its proportion of the framed object height from the recipe, appends the rendering contract to the prompt and saves the updated exact request. Read that saved JSON after `begin` and pass its arguments to imagegen. Repeat this on every correction; the previous appended contract is replaced rather than duplicated. `--non-fixture` is the explicit alternative for captures outside fixture rendering. Capture changes the request only; it never paints, thickens or otherwise edits an image.
 
 For the built-in tool, return its result through `generatedImage(result)` to display it and obtain the local saved path. Copy that local PNG with the ledger's finish command; base64 is unnecessary. If capture fails, recover the existing result before making another generation call. Record human-readable inspection findings and a stable defect identifier when a defect remains:
 
@@ -181,6 +197,8 @@ For separate-layer recipes, declare `reviewJoins` as named `[left, top, right, b
 }
 ```
 
+List names in `candidateChecks.requiredReviewJoins` to make them mandatory: a required name missing from `reviewJoins` is a mechanical failure, not a warning.
+
 Both `prepare-candidate` and `check-candidate` generate labelled 3x nearest-neighbour join views under neutral, brown and dark tints, with 12 output pixels of context padding. `candidate-check.json` lists their paths and output bounds in `joinViews`. Ownership polygon regions retain their automatic join views. A multi-layer recipe with neither kind of region warns that named joins are missing. Reinspect these views after any split, placement, scale or framing change; a passing report does not verify correct front/rear assignment.
 
 The output must be a directory inside `work/`. Named ownership regions also receive zoomed tinted join views. The command returns nonzero on a mechanical failure and leaves the exports and `candidate-check.json` for diagnosis. It does not promote or deploy the candidate. Separate export and check commands remain available:
@@ -195,21 +213,67 @@ Use `candidateChecks.mode: "new-design"` for a design with no approved baseline.
 
 For a flattened concept whose material ownership is unresolved, declare `materialOwnership: "unresolved"` and keep the source fixed-colour in the manifest. The exporter's zero mask can be checked for encoding and repeatability, but the report explicitly marks material ownership unavailable; it is not a fixture/crystal partition and must not be shipped as one.
 
+Specifically, use `layers: [{"path": "source.png", "constructionTint": false}]` and put `materialOwnership` inside `candidateChecks`. Start without old `ownership`, `paintedMask` or `paintedColor` fields. A placeholder filename or prose warning does not make stale ownership valid. For a redesign of an existing object, keep replacement-mode baseline/consumer checks; `new-design` is for an object without an approved baseline. Describe changed framing as an intended design change before exporting, rather than fitting expected bounds to a surprising result.
+
 The manifest's `candidateChecks` declares:
 
 - `baseline.color` and `baseline.mask`: each has a repository-relative `path` and expected `sha256`.
 - `definition` and `drawSize`: the consuming ThingDef and expected `[width,height]`.
-- `boundsTolerance`, `maxOpaqueSpread`, `minSourceSize`, `minSourcePixelsPerOutputPixel`: explicit task limits. The generated-layer pilot uses 8, 8, 1024 and 1 respectively. Density is `1 / (layerScale * exportScale)`; it includes both uniform reductions. Meaningful source and projected visible sizes are reported at alpha above 8 as diagnostics. These sizes do not prove visual detail or correct material ownership.
+- `boundsTolerance`, `maxOpaqueSpread`, `minSourceSize`, `minSourcePixelsPerOutputPixel`: explicit task limits. Use `minSourceSize: 1` and density at least 1 unless the task justifies a higher requirement before generation. Density is `1 / (layerScale * exportScale)`; it includes both uniform reductions. A short portrait-canvas dimension alone does not establish inadequate source detail. Meaningful source and projected visible sizes are reported at alpha above 8 as diagnostics; these sizes do not prove visual detail or correct material ownership.
 
 For ownership layers, the neutrality blocker uses alpha-weighted mean RGB spread only inside the declared polygons, limited by `maxOpaqueSpread`. The exactly-255 sample is evidence only. Whole-layer `constructionTint` stacks retain their existing opaque-spread gate.
 
 The opaque spread gate reports its sample count and fraction of visible pixels. Alpha histograms and alpha-weighted mean spread supplement it; a small exactly-255 sample does not establish neutrality of the remaining surface. An empty opaque sample fails the literal opaque-spread gate. These measurements never alter source alpha, colour or mask.
 
-`passed` means no mechanical errors; `readyForTintReview` additionally requires resolved material ownership. An unresolved flattened concept can pass encoding checks without being ready for tint review. Inspect the exported-pixel diagnostics: bright neutral pixels with little tint coverage and strongly coloured pixels with substantial coverage. Exact RGB, alpha and coverage thresholds are recorded in `candidate-check.json`; they warn without changing any pixels. CPU views do not establish in-game acceptance.
+`passed` and `mechanicalPassed` mean no export/placement/preservation errors. `outline` measures the actual export using `candidateChecks.drawSize` and `outlineKind` (default `building`; use `weapon` or `resource` for those assets). `outlinePassed` reports whether it meets the rule; it is shown to the user and never blocks anything. `readyForTintReview` additionally requires resolved material ownership. `readyForProduction` requires those mechanical/ownership checks and a consuming definition; it describes technical readiness, not human visual acceptance. The CLI prints these verdicts separately. Concepts can return success for mechanical checks; use `--require-production-ready` on either candidate command to require all technical gates before integration. A family wrapper that runs several candidate commands must return nonzero when any child fails and offer the same gate, as `artwork/design-sources/darkstone-family-refresh-2026-11-12/prepare.py --production` does. `game-scale.png` compares the candidate and baseline at a common 64 pixels per cell; enlarged previews supplement it.
+
+There is no outline gate and no outline exception record. `check`, `check --staged`, the staged artwork hook and deployment never measure outlines. The user's approval of a piece is final ([art guide](rimworld-art-guide.md#current-furnishing-requirements)); a candidate's outline figures inform that choice and nothing after it.
+
+For a three-way comparison, add `previewReference` under `candidateChecks`. Supply a repository-relative path to the reference's exported colour PNG and its actual draw size in cells. Choose the matching directional view where applicable.
+
+```json
+"previewReference": {
+  "path": "Textures/Things/Building/Serenite/Cluster.png",
+  "drawSize": [1.3288, 1]
+}
+```
+
+`prepare-candidate` and `check-candidate` append the reference to `game-scale.png` at 64 pixels per cell using its own draw size. The reference is used for visual comparison only.
+
+Inspect the exported-pixel diagnostics: bright neutral pixels with little tint coverage and strongly coloured pixels with substantial coverage. Exact RGB, alpha and coverage thresholds are recorded in `candidate-check.json`; they warn without changing any pixels. CPU views do not establish in-game acceptance.
 
 Alpha evidence includes bounds above 0, 1, 8 and 128. If a side moves more than `alphaDebrisTolerance` (default 8 source pixels) between alpha above 0 and above 8, the checker warns for inspection. These thresholds are diagnostic only; raw alpha above 0 still drives framing gates. No source or mask is cleaned automatically. Any cleanup must be declared as source repair and re-exported.
 
 The former minimum layer scale of 0.9 has been replaced by sampling-density evidence and final framing checks. The Vitalite crystal scale of 0.69 is not itself a failure. Follow the [framing contract](rimworld-art-guide.md#numeric-framing-for-separate-generation) for future work. Candidate checks are explicit and separate from the production pre-commit check; they do not register a master or approve appearance.
+
+### Shared-cup recipes
+
+When new artwork must keep the identical shared wall cup, place the new crystal on the cup reference's canvas, then run:
+
+```powershell
+& $artPython tools/artwork_shared_cup.py artwork/design-sources/dreadstone-wall-lamp-shared-cup-2026-11-11/cup-parts.json work/TASK/crystal-placed.png work/TASK/layers
+```
+
+It verifies the cup reference hash and writes rear cup → crystal → front rim layers plus `composed.png`, restoring the front rim RGBA-exactly so the rear arms never clip over the crystal. Merge its printed `recipe` fields into the recipe and its `candidateChecks` fields (`requiredReviewJoins: ["cup-crystal"]`) into `candidateChecks`; the `cup-crystal` join preview is then required. Inspect that preview: the check cannot judge perspective or fit. A whole-generated torch, such as the approved Dark Stone wall torch, stays a single-image recipe.
+
+### Protected-region checks
+
+For a local edit that promises exact preservation, add `preservation` inside `candidateChecks` before generation:
+
+```json
+"preservation": {
+  "reference": {"path": "work/TASK/reference.png", "sha256": "REFERENCE_SHA256"},
+  "editableMask": {"path": "work/TASK/editable.png", "sha256": "MASK_SHA256"}
+}
+```
+
+Paths are repository-relative. Both images must match the candidate's exported canvas exactly. The edit mask is an `L`-mode PNG containing only 0 (protected) and 255 (editable), with at least one protected pixel. Include the intended join and antialiasing margin in the edit region before the call. This permission mask is separate from construction-tint ownership.
+
+When alignment is needed, prepare the reference through a declared recipe/transform first and pin its exported hash. The checker performs no automatic registration, resizing or tolerance adjustment. A uniform export can be used for game-scale comparisons; preservation of full-resolution source pixels needs a separate candidate recipe that retains that resolution.
+
+`prepare-candidate` and `check-candidate` check both input hashes and compare every RGBA channel outside the edit mask, including alpha and RGB beneath transparent pixels. The report's `preservation` field records protected-pixel count, changed-pixel count and the exclusive-right/bottom bounds of any drift. Any protected change fails validation; mismatched canvases, fractional masks and empty protected regions also fail. Inputs and candidate artwork remain unchanged.
+
+Restore protected components through declared recipe inputs and inspect the join, or obtain a new selection that explicitly includes the changed features. A visually similar repaint does not establish exact preservation. Earlier concepts without this declaration receive their existing checks; the tool does not infer a protected region from prose or pixel colour.
 
 ### Icon sets before gameplay definitions
 
@@ -221,19 +285,34 @@ For stone implants, run `& (git config --get lumen.artworkPython) tools/export-i
 
 - `python tools/artwork.py silhouettes [--output DIR]` writes one flat single-colour silhouette sheet per fixture type (Column, Pylon, Cluster, Lamp, WallLamp, Stack, Equipment) to `work/silhouettes/`. Use the relevant sheet when identity is uncertain and comparison would help.
 - `python tools/artwork_measure.py` regenerates `artwork/style-measurements.json`; see [artwork measurements](artwork-measurements.md).
-- `check` also reports diagnostic family measurements: outline weight, hue gap and opaque specks. Thresholds and optional exceptions live in `artwork/family-checks.json`. Findings and stale exceptions do not fail the check or require a redraw; judge the artwork at game size.
+- `python tools/artwork.py outline SPRITE... --draw-height CELLS [--kind building|resource|weapon]` measures sprites against the guide's [outline rule](rimworld-art-guide.md#measuring-an-outline) and exits non-zero when one misses it. It is a report for the user, never a reason to change approved art, and it changes no pixels (the former `--redraw` outline pass was removed on 2026-11-12). It does not yet separate thin parts (rule 9), so a spiky piece can measure in range and still read heavy; check `game-scale.png`. How it measures:
+  - RimWorld stretches the canvas to the draw size, so the tool first enlarges the axis with fewer pixels per cell by repeating pixels (no blending), then works on that grid. It never resamples with blending, which would merge the line into the alpha edge. Alpha above half is the silhouette.
+  - Width: at each black silhouette-edge pixel, the distance to the nearest non-black pixel inside the silhouette, × 64 ÷ pixels per cell; the median is reported. This is perpendicular to the edge, so slanted crystal tips are not over-counted. Target source pixels = width × pixels per cell ÷ 64, per axis.
+  - Evenness: 90th minus 10th percentile of those widths. Coverage: share of row and column scans whose first opaque pixel is black; 98 percent passes, allowing for antialiasing.
+  - Dark shares: pixels below 0.35, of the fill (every non-black pixel) and of all opaque pixels.
+  - Clipping: a side where the silhouette touches the canvas edge is reported as clipped, and its edge pixels are left out of the width and evenness figures, so a framing cut does not read as an uneven line.
+- `python tools/artwork.py outline-layer RECIPE --draw-size W,H --kind ROLE --output work/PIECE/outline [--target PX] [--max-add PX] [--from-mask]` (or `--png TEXTURE.png`) adds an [outside stroke](rimworld-art-guide.md#outline-layer): on every new candidate, and on an approved piece the user named. It writes `baseline/` (the recipe re-exported; for an approved piece, check that it matches the approved texture), `outline-mask.png` and `outline-preview.png` for editing, `export/` (the colour with the stroke under it, plus the unchanged mask) and `outline-layer.json` with the before and after figures, the stroke width and the canvas cut. A piece left as drawn or for a redo gets the report without `export/`. It refuses output outside `work/`.
+- `python tools/artwork.py outline-lineup --output SHEET.png LABEL=PATH@W,H...` shows sprites side by side at game scale (64 px per cell, enlarged ×3 without smoothing) under neutral, slate and wood construction tints, using each sprite's `_m` mask.
+- `check` also reports diagnostic family measurements: outline weight, hue gap and opaque specks. The outline weight here compares stones with Serenite and predates the outline rule; use `outline` for the rule. Thresholds and optional exceptions live in `artwork/family-checks.json`. Findings and stale exceptions do not fail the check or require a redraw; judge the artwork at game size.
 - A pylon that is not 1x1 needs an entry in the registry's `pylonFootprintExceptions` (definition name to size, for example `"KM_SerenitePylon": "(2,1)"`). Ticket 10 adds the first one.
 - `python tools/rotate_weapon.py SOURCE OUTPUT` rotates a melee weapon to horizontal, tip right, on a square canvas that keeps the original pivot. Recompute draw size (1.2 times canvas over 256) and `uiIconScale`, and update the registry canvas and hash.
 
-## Approved master for the next artwork task
+## Record the current selection
 
-1. Copy [master-template.json](../artwork/master-template.json) into the task's local work directory and fill in identity, geometry/counts, materials, camera, protected features and permitted edits before generation.
-2. Use the closest approved registry object as the style reference. Keep the candidate master and reusable layers under the task's `work/` directory while the design is being settled.
-3. Review the master at game scale, including the map and icon paths where relevant. Obtain the design acceptance required by the task; a hash is not a substitute for visual acceptance.
-4. Record the accepted source path, SHA-256, approver and date, then add or update the object in `artwork/objects.json`. Declare every required direction and its canvas/mask encoding. Set a visible-icon height range from the accepted framing, not a universal default copied from the template.
-5. Derive and review the directions against that master. Run the check/review-sheet command before staging. A changed master hash blocks the check until the approved record is intentionally updated.
+There are two levels ([ADR 0001](adr/0001-artwork-approval-is-the-release-contract.md)). A **selected** design is still being refined and nothing protects it. An **approved** design is final: its design pixels never change unless the user names it for a redo. In the turn the user chooses, say which you are recording, for example "Recording this as approved (final)". If their words leave it unclear, ask. Record approval only in the turn the user gives it, using their words; never infer it from earlier messages or another agent's notes.
 
-The existing six masters record the user's 2026-10-29 visual acceptance. The template's placeholder hash cannot pass. Pyrinth's master is a read-only upstream reference; optional presence does not authorize editing the installed Workshop mod. Ticket 06 remains deferred.
+**Selected:** one line in `ARTWORK.md` naming the source image. Nothing else.
+
+**Approved**, in the same turn:
+
+1. Copy the export into `Textures/`. Keep the source image and recipe in `artwork/design-sources/PIECE/`.
+2. In `artwork/objects.json`, set the object's `approvedMaster`: texture path, SHA-256, the user's words as `approvedBy`, and the date as `approvedOn`. For a new object, start from [master-template.json](../artwork/master-template.json) and link its recipe under `recipes`.
+3. Add or replace one line in `ARTWORK.md`: piece, date, the user's words, what is still pending (mask, views, in-game review).
+4. Run `python tools/artwork.py check`. From then on it fails if that texture changes without a new approval.
+
+An optional `acceptance.json` beside the source may hold lineage. Keep superseded sources rather than deleting them.
+
+**After approval** only these are added: the mask, which the user finishes in the mask editor (see the [mask review queue](#mask-review-queue)), and files computed from the approved export by recipe (crop, scale, mirror), such as other views and charge frames. A view with new pixels, or any change of framing or colour, is a new candidate. Hashes for masks, other views and resource stacks are not checked yet; the [follow-up spec](../.scratch/artwork-approval-gate/spec.md) adds them.
 
 ## Stage an explicit deployment
 
@@ -248,7 +327,7 @@ python tools/deploy.py stage --plan artwork/deploy-plan.example.json --destinati
 
 Use a fresh staging directory. Staging reads the existing installation, checks the package ID and writes local candidates, `review.diff` and `manifest.json`. Inspect the exact file list and changes. The manifest records source, installed-baseline and candidate hashes separately. A field-selected candidate can intentionally differ from the full source file.
 
-Before applying, finish the applicable visual review and run the artwork check if the source changed. Then:
+Before applying, finish the applicable visual review and run the artwork check if the source changed. A failing approved-master hash means approved art changed: stop and report it. Then:
 
 ```powershell
 python tools/deploy.py deploy work/deployments/my-reviewed-change/manifest.json

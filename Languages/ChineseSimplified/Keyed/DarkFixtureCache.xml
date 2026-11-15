@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Info_WarpRule>这是扭曲能量主动效果：只有在装置的扭曲能量主动效果开启且地图上有扭曲能量时才会运行。</Lumen_Info_WarpRule>
+	<Lumen_DarkInfo_SanguiniteRule>治疗在同一房间床上休息的殖民者、奴隶和囚犯。每名病人只由范围内最强的血晶石装置治疗，仿生部件永远不会受影响。</Lumen_DarkInfo_SanguiniteRule>
+	<Lumen_DarkInfo_TreatmentReach>治疗范围</Lumen_DarkInfo_TreatmentReach>
+	<Lumen_DarkInfo_BleedingRate>出血速率</Lumen_DarkInfo_BleedingRate>
+	<Lumen_DarkInfo_BleedingRateDesc>伤口保持未包扎并继续出血，只是更慢。</Lumen_DarkInfo_BleedingRateDesc>
+	<Lumen_DarkInfo_BleedCost>每名出血病人消耗的扭曲能量</Lumen_DarkInfo_BleedCost>
+	<Lumen_DarkInfo_Every>{0}，每{1}</Lumen_DarkInfo_Every>
+	<Lumen_DarkInfo_HealsScars>治愈疤痕</Lumen_DarkInfo_HealsScars>
+	<Lumen_DarkInfo_SurfaceScars>表层疤痕</Lumen_DarkInfo_SurfaceScars>
+	<Lumen_DarkInfo_EveryScar>所有疤痕</Lumen_DarkInfo_EveryScar>
+	<Lumen_DarkInfo_ScarDesc>每轮治愈一处疤痕，每处消耗{0}扭曲能量。</Lumen_DarkInfo_ScarDesc>
+	<Lumen_DarkInfo_Regrows>再生</Lumen_DarkInfo_Regrows>
+	<Lumen_DarkInfo_RegrowDigits>手指和脚趾</Lumen_DarkInfo_RegrowDigits>
+	<Lumen_DarkInfo_RegrowAll>小部件和器官</Lumen_DarkInfo_RegrowAll>
+	<Lumen_DarkInfo_RegrowDesc>再生费用逐步支付，当病人离开床或扭曲能量耗尽时暂停。手指和脚趾需要{0}天和{1}扭曲能量；眼睛、耳朵、鼻子和下颌需要{2}天和{3}；内脏器官需要{4}天和{5}。</Lumen_DarkInfo_RegrowDesc>
+	<Lumen_DarkInfo_DreadstoneReach>只有覆盖范围内最强的恐惧石装置生效。</Lumen_DarkInfo_DreadstoneReach>
+	<Lumen_DarkInfo_Reach>范围</Lumen_DarkInfo_Reach>
+	<Lumen_DarkInfo_SubjugationRule>作用于同一房间内殖民地的囚犯和奴隶。</Lumen_DarkInfo_SubjugationRule>
+	<Lumen_DarkInfo_Resistance>每日失去的抵抗</Lumen_DarkInfo_Resistance>
+	<Lumen_DarkInfo_Will>每日失去的意志</Lumen_DarkInfo_Will>
+	<Lumen_DarkInfo_Suppression>每日奴隶压制</Lumen_DarkInfo_Suppression>
+	<Lumen_DarkInfo_Breaks>越狱和叛乱</Lumen_DarkInfo_Breaks>
+	<Lumen_DarkInfo_Rarer>罕见{0}倍</Lumen_DarkInfo_Rarer>
+	<Lumen_DarkInfo_PerPawnPerDay>每名小人每日的扭曲能量</Lumen_DarkInfo_PerPawnPerDay>
+	<Lumen_DarkInfo_DreadRule>作用于视线内的敌对类人生物。机械体和动物免疫。范围内没有敌人时不会消耗。</Lumen_DarkInfo_DreadRule>
+	<Lumen_DarkInfo_SiphonRule>被削弱的敌人死亡时，其市场价值的{0}会转化为扭曲能量返还。</Lumen_DarkInfo_SiphonRule>
+	<Lumen_DarkInfo_DreadOnHostiles>对敌人施加恐惧</Lumen_DarkInfo_DreadOnHostiles>
+	<Lumen_DarkInfo_PerHostile>每名敌人消耗的扭曲能量</Lumen_DarkInfo_PerHostile>
+	<Lumen_DarkInfo_HollowstoneRule>作用于同一房间内的殖民者和奴隶。劳役躯壳不受影响。只有范围内最强的空虚石装置生效。</Lumen_DarkInfo_HollowstoneRule>
+	<Lumen_DarkInfo_Ward>守护</Lumen_DarkInfo_Ward>
+</LanguageData>

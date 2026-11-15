@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneFlare_Section>Вспышка из солнечного камня</Lumen_SunstoneFlare_Section>
+	<Lumen_SunstoneFlare_Radius>Радиус вспышки (клеток)</Lumen_SunstoneFlare_Radius>
+	<Lumen_SunstoneFlare_Burn>Урон ожогом аномальным сущностям и мутантам</Lumen_SunstoneFlare_Burn>
+	<Lumen_SunstoneFlare_Throw>Бросить вспышку из солнечного камня</Lumen_SunstoneFlare_Throw>
+	<Lumen_SunstoneFlare_CannotThrow>Сейчас нельзя бросить вспышку.</Lumen_SunstoneFlare_CannotThrow>
+	<Lumen_SunstoneFlare_Take>Взять вспышки из солнечного камня ({0})</Lumen_SunstoneFlare_Take>
+</LanguageData>

@@ -1,14 +1,10 @@
 # Credits and license
 
-Lumen Stones is released under the GNU General Public License v3.0 ([LICENSE](LICENSE)). The third-party material below keeps its own license: the Glacite adaptation notice is in [Licenses/Glacite-CC-BY-4.0.txt](Licenses/Glacite-CC-BY-4.0.txt) and the Bionic Icons notice in [Licenses/BionicIcons-MIT.txt](Licenses/BionicIcons-MIT.txt).
+Lumen Stones is released under the GNU General Public License v3.0 ([LICENSE](LICENSE)). The Bionic Icons material below keeps its own license; its notice is in [Licenses/BionicIcons-MIT.txt](Licenses/BionicIcons-MIT.txt).
 
 ## Glacite
 
-Glacite is adapted from [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) by DetVisor. [Original source repository](https://github.com/DetVisor/EpochsPyrinth).
-
-The adapted lamp, pylon and weapon definitions replace heating with cooling, add frost damage and use new identifiers. The adaptation also changes ore availability and construction costs. Glacite's earlier blue sprites were generated from Pyrinth's originals; all current Glacite artwork is newly generated for Lumen Stones and no longer derives from Pyrinth sprites. Provenance for the current artwork is under [artwork/design-sources](artwork/design-sources/), and the retired generation record is in [ARTWORK.md](ARTWORK.md).
-
-Pyrinth is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). Glacite's adapted definitions retain that license. Lumen Stones bundles no Pyrinth artwork. Credit DetVisor, link to the original and the license, and identify changes when sharing adaptations. No endorsement by DetVisor is implied.
+Credit to DetVisor for [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) ([source repository](https://github.com/DetVisor/EpochsPyrinth)), which inspired Glacite. Current Glacite artwork provenance is under [artwork/design-sources](artwork/design-sources/). No endorsement by DetVisor is implied.
 
 ## Columns and fireflies
 

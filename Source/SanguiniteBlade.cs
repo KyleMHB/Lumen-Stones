@@ -9,11 +9,16 @@ public static class SanguiniteBlade
 {
     public static int MaxStacks = 3;
 
-    internal static void DeclareTunables(TunableScope s) =>
-        s.In("Flensing Blade").Add("Sanguinite.hemorrhageMaxStacks", "Maximum Hemorrhage stacks", MaxStacks, v => MaxStacks = (int)v, Limit.Integer(1, 10));
-    public const int StackTicks = 600;
+    internal static void DeclareTunables(TunableScope s)
+    {
+        var blade = s.In("Lumen_SanguiniteBlade_Section".Translate()).PerItem();
+        blade.Add("Sanguinite.hemorrhageMaxStacks", "Lumen_SanguiniteBlade_MaxStacks".Translate(), MaxStacks, v => MaxStacks = (int)v, Limit.Integer(1, 10));
+        blade.Add("Sanguinite.hemorrhageTicks", "Lumen_SanguiniteBlade_StackTicks".Translate(), StackTicks, v => StackTicks = (int)v, Limit.Integer(1, 60000));
+        blade.Add("Sanguinite.hemorrhageBleed", "Lumen_SanguiniteBlade_Bleed".Translate(), BleedPerStack, v => BleedPerStack = v, Limit.Number(0, 10));
+    }
+    public static int StackTicks = 600;
     // Bleed rate of one stack, a little under a fresh cut of the same size.
-    public const float BleedPerStack = 0.04f;
+    public static float BleedPerStack = 0.04f;
 
     private static ThingDef def;
     public static ThingDef Def => def ??= DefDatabase<ThingDef>.GetNamed("KM_SanguiniteBlade");
@@ -60,7 +65,7 @@ public static class SanguiniteBladeHit
 {
     public static void Postfix(Thing __instance, DamageInfo dinfo, DamageWorker.DamageResult __result)
     {
-        if (dinfo.Weapon != SanguiniteBlade.Def || __result.totalDamageDealt <= 0 ||
+        if (dinfo.Weapon != SanguiniteBlade.Def || __result.totalDamageDealt <= 0 || !Effects.SanguiniteHemorrhage.On ||
             __instance is not Pawn { Dead: false } victim || !victim.RaceProps.IsFlesh || !victim.health.CanBleed) return;
         if (victim.health.hediffSet.GetFirstHediffOfDef(SanguiniteBlade.Hemorrhage) is not Hediff_Hemorrhage hediff)
         {

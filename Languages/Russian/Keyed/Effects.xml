@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Effect_Glacite_fixtureCooling>Охлаждение от ламп, пилонов и колонн (пассивное)</Lumen_Effect_Glacite_fixtureCooling>
+	<Lumen_Effect_Glacite_coolerRefrigeration>Охлаждение охладителем (пассивное)</Lumen_Effect_Glacite_coolerRefrigeration>
+	<Lumen_Effect_Glacite_coolerFreezing>Заморозка охладителем (активный эффект, солнце)</Lumen_Effect_Glacite_coolerFreezing>
+	<Lumen_Effect_Glacite_bladeFrost>Холод гляцитового двуручного меча (предмет)</Lumen_Effect_Glacite_bladeFrost>
+	<Lumen_Effect_Vitalite_roomImmunity>Иммунитет в комнате (пассивный)</Lumen_Effect_Vitalite_roomImmunity>
+	<Lumen_Effect_Vitalite_roomHealing>Лечение в комнате (активный эффект, солнце)</Lumen_Effect_Vitalite_roomHealing>
+	<Lumen_Effect_Vitalite_roomInfection>Защита от заражения в комнате (активный эффект, солнце)</Lumen_Effect_Vitalite_roomInfection>
+	<Lumen_Effect_Vitalite_bedBonuses>Бонусы для лежащего в кровати (пассивный и активный эффект, солнце)</Lumen_Effect_Vitalite_bedBonuses>
+	<Lumen_Effect_Vitalite_cleanliness>Чистота светильников и кроватей (пассивная)</Lumen_Effect_Vitalite_cleanliness>
+	<Lumen_Effect_Vitalite_circlet>Виталитовый обруч (предмет)</Lumen_Effect_Vitalite_circlet>
+	<Lumen_Effect_Serenite_roomComfort>Комфорт в комнате (пассивный)</Lumen_Effect_Serenite_roomComfort>
+	<Lumen_Effect_Serenite_roomMood>Настроение в комнате (пассивное)</Lumen_Effect_Serenite_roomMood>
+	<Lumen_Effect_Serenite_sleep>Восстановление во сне и память об отдыхе (активный эффект, солнце)</Lumen_Effect_Serenite_sleep>
+	<Lumen_Effect_Serenite_pendant>Серенитовый кулон (предмет)</Lumen_Effect_Serenite_pendant>
+	<Lumen_Effect_Verdite_growth>Рост растений (пассивный)</Lumen_Effect_Verdite_growth>
+	<Lumen_Effect_Verdite_workSpeed>Скорость работы с растениями (пассивная)</Lumen_Effect_Verdite_workSpeed>
+	<Lumen_Effect_Verdite_harvestYield>Урожайность (пассивная)</Lumen_Effect_Verdite_harvestYield>
+	<Lumen_Effect_Verdite_plantLight>Свет для растений (активный эффект, солнце)</Lumen_Effect_Verdite_plantLight>
+	<Lumen_Effect_Verdite_scytheFarming>Бонус вердитовой косы к земледелию (предмет)</Lumen_Effect_Verdite_scytheFarming>
+	<Lumen_Effect_Verdite_scytheLifeSteal>Вампиризм вердитовой косы (предмет)</Lumen_Effect_Verdite_scytheLifeSteal>
+	<Lumen_Effect_Verdite_bracer>Питание от наруча живой лозы (предмет)</Lumen_Effect_Verdite_bracer>
+	<Lumen_Effect_Verdite_chew>Вердитовая жвачка (предмет)</Lumen_Effect_Verdite_chew>
+	<Lumen_Effect_Aegite_filthCleaning>Очистка грязи (пассивная)</Lumen_Effect_Aegite_filthCleaning>
+	<Lumen_Effect_Aegite_fireSuppression>Тушение огня (активный эффект, солнце)</Lumen_Effect_Aegite_fireSuppression>
+	<Lumen_Effect_Aegite_shieldArmor>Броня эгитового щита (предмет)</Lumen_Effect_Aegite_shieldArmor>
+	<Lumen_Effect_Aegite_shieldFireImmunity>Огнестойкость эгитового щита (предмет)</Lumen_Effect_Aegite_shieldFireImmunity>
+	<Lumen_Effect_Aegite_charm>Эгитовый оберег-щит (предмет)</Lumen_Effect_Aegite_charm>
+	<Lumen_Effect_Ferrite_repairBuildings>Ремонт построек (пассивный)</Lumen_Effect_Ferrite_repairBuildings>
+	<Lumen_Effect_Ferrite_repairItems>Ремонт лежащих предметов (активный эффект, солнце)</Lumen_Effect_Ferrite_repairItems>
+	<Lumen_Effect_Ferrite_repairGear>Ремонт надетого снаряжения (активный эффект, солнце)</Lumen_Effect_Ferrite_repairGear>
+	<Lumen_Effect_Ferrite_warhammerStun>Оглушение ферритовым боевым молотом (предмет)</Lumen_Effect_Ferrite_warhammerStun>
+	<Lumen_Effect_Ferrite_warhammerMending>Починка ферритовым боевым молотом (предмет)</Lumen_Effect_Ferrite_warhammerMending>
+	<Lumen_Effect_Sunstone_axeBane>Урон топора из солнечного камня по аномальным сущностям (предмет)</Lumen_Effect_Sunstone_axeBane>
+	<Lumen_Effect_Sunstone_axeBlindStun>Ослепление и оглушение топором из солнечного камня (предмет)</Lumen_Effect_Sunstone_axeBlindStun>
+	<Lumen_Effect_Sunstone_flare>Ослепление, оглушение и ожог вспышкой из солнечного камня (предмет)</Lumen_Effect_Sunstone_flare>
+	<Lumen_Effect_Sunstone_projectorInterception>Купол щитового проектора (активный эффект, солнце)</Lumen_Effect_Sunstone_projectorInterception>
+	<Lumen_Effect_Sunstone_projectorCrushing>Щитовой проектор давит десантные капсулы и заражения</Lumen_Effect_Sunstone_projectorCrushing>
+	<Lumen_Effect_Sunstone_stabilizer>Лунитовый стабилизатор поддерживает работу светильника при прерываниях</Lumen_Effect_Sunstone_stabilizer>
+	<Lumen_Effect_Lumenstone_ritualSupport>Ритуальная поддержка от светильников (пассивная)</Lumen_Effect_Lumenstone_ritualSupport>
+	<Lumen_Effect_Lumenstone_staff>Характеристики посоха из люменита и ритуальный бонус (предмет)</Lumen_Effect_Lumenstone_staff>
+	<Lumen_Effect_Pyrinth_columnHeat>Нагрев от пиринтовой колонны (пассивный)</Lumen_Effect_Pyrinth_columnHeat>
+	<Lumen_Effect_Pyrinth_columnFocus>Фокус медитации у пиринтовой колонны (пассивный)</Lumen_Effect_Pyrinth_columnFocus>
+	<Lumen_Effect_Animastone_focus>Фокус медитации (пассивный)</Lumen_Effect_Animastone_focus>
+	<Lumen_Effect_Animastone_roomHeatRecovery>Восстановление нейронагрева в комнате (пассивное)</Lumen_Effect_Animastone_roomHeatRecovery>
+	<Lumen_Effect_Animastone_roomFocusGain>Прирост пси-фокуса в комнате (пассивный)</Lumen_Effect_Animastone_roomFocusGain>
+	<Lumen_Effect_Animastone_clusterFocus>Усиление фокуса от друзы (активный эффект, солнце)</Lumen_Effect_Animastone_clusterFocus>
+	<Lumen_Effect_Animastone_pylonHeatRecovery>Восстановление нейронагрева от пилона (активный эффект, солнце)</Lumen_Effect_Animastone_pylonHeatRecovery>
+	<Lumen_Effect_Animastone_pylonGrowth>Рост травы анима от пилона (активный эффект, солнце)</Lumen_Effect_Animastone_pylonGrowth>
+	<Lumen_Effect_Animastone_circlet>Обруч из анимакамня (предмет)</Lumen_Effect_Animastone_circlet>
+	<Lumen_Effect_Animastone_staffStats>Нейронагрев посоха из анимакамня (предмет)</Lumen_Effect_Animastone_staffStats>
+	<Lumen_Effect_Animastone_staffStun>Оглушение посохом из анимакамня (предмет)</Lumen_Effect_Animastone_staffStun>
+	<Lumen_Effect_DarkStone_ritualSupport>Ритуальная поддержка от светильников (пассивная)</Lumen_Effect_DarkStone_ritualSupport>
+	<Lumen_Effect_DarkStone_crystallize>Ритуал кристаллизации тёмного камня</Lumen_Effect_DarkStone_crystallize>
+	<Lumen_Effect_DarkStone_harvest>Ритуал сбора энергии варпа</Lumen_Effect_DarkStone_harvest>
+	<Lumen_Effect_DarkStone_ritualKnife>Ритуальный нож из тёмного камня (предмет)</Lumen_Effect_DarkStone_ritualKnife>
+	<Lumen_Effect_DarkStone_seed>Рост семени камня ужаса и связывание</Lumen_Effect_DarkStone_seed>
+	<Lumen_Effect_Sanguinite_bleeding>Снижение кровотечения (активный эффект, варп)</Lumen_Effect_Sanguinite_bleeding>
+	<Lumen_Effect_Sanguinite_scars>Лечение шрамов (активный эффект, варп)</Lumen_Effect_Sanguinite_scars>
+	<Lumen_Effect_Sanguinite_regrowDigits>Отращивание пальцев рук и ног (активный эффект, варп)</Lumen_Effect_Sanguinite_regrowDigits>
+	<Lumen_Effect_Sanguinite_regrowSmallParts>Отращивание глаз, ушей, носов и челюстей (активный эффект, варп)</Lumen_Effect_Sanguinite_regrowSmallParts>
+	<Lumen_Effect_Sanguinite_regrowOrgans>Отращивание внутренних органов (активный эффект, варп)</Lumen_Effect_Sanguinite_regrowOrgans>
+	<Lumen_Effect_Sanguinite_hemorrhage>Кровотечение от свежевального клинка (предмет)</Lumen_Effect_Sanguinite_hemorrhage>
+	<Lumen_Effect_Sanguinite_wielderBleed>Замедленное кровотечение владельца свежевального клинка (предмет)</Lumen_Effect_Sanguinite_wielderBleed>
+	<Lumen_Effect_Dreadstone_subjugation>Подчинение заключённых и рабов (активный эффект, варп)</Lumen_Effect_Dreadstone_subjugation>
+	<Lumen_Effect_Dreadstone_dread>Ужас на врагах (активный эффект, варп)</Lumen_Effect_Dreadstone_dread>
+	<Lumen_Effect_Dreadstone_siphon>Похищение смерти (активный эффект, варп)</Lumen_Effect_Dreadstone_siphon>
+	<Lumen_Effect_Dreadstone_arbalestDread>Ужас от арбалета из камня ужаса (предмет)</Lumen_Effect_Dreadstone_arbalestDread>
+	<Lumen_Effect_Dreadstone_cudgel>Агония от дубины из камня ужаса (предмет)</Lumen_Effect_Dreadstone_cudgel>
+	<Lumen_Effect_Dreadstone_collar>Подавление ошейником из камня ужаса (предмет)</Lumen_Effect_Dreadstone_collar>
+	<Lumen_Effect_Hollowstone_painWard>Защита от боли (активный эффект, варп)</Lumen_Effect_Hollowstone_painWard>
+	<Lumen_Effect_Hollowstone_breakSteadiness>Устойчивость к срывам (активный эффект, варп)</Lumen_Effect_Hollowstone_breakSteadiness>
+	<Lumen_Effect_Hollowstone_workHusks>Ритуал поднятия рабочей оболочки</Lumen_Effect_Hollowstone_workHusks>
+	<Lumen_Effect_Hollowstone_glaive>Облегчение боли глефой из пустокамня (предмет)</Lumen_Effect_Hollowstone_glaive>
+	<Lumen_Effect_Implants_apparelMending>Починка одежды ферритовым имплантом</Lumen_Effect_Implants_apparelMending>
+	<Lumen_Effect_Implants_partHealing>Заживление ран рук и ног ферритом</Lumen_Effect_Implants_partHealing>
+	<Lumen_Effect_Implants_scarMending>Заживление шрамов сангвинитовым имплантом</Lumen_Effect_Implants_scarMending>
+	<Lumen_Effect_Implants_dreadAura>Аура ужаса от импланта и челюсти из камня ужаса</Lumen_Effect_Implants_dreadAura>
+	<Lumen_Effect_Implants_mood>Настроение от импланта (спокойствие серенита)</Lumen_Effect_Implants_mood>
+	<Lumen_Effect_Implants_relief>Смягчение недостатков энергией (тратит солнечную энергию или энергию варпа)</Lumen_Effect_Implants_relief>
+	<Lumen_Effect_Off>Выключено в настройках мода</Lumen_Effect_Off>
+</LanguageData>

@@ -15,9 +15,9 @@ public static class VerditeScythe
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var scythe = s.In("Verdite scythe");
-        scythe.Add("KM_VerditeScythe.farming", "Plant work speed and harvest yield bonus (%)", FarmingBonus, v => FarmingBonus = v, Limit.Percent(10));
-        scythe.Add("KM_VerditeScythe.lifeSteal", "Actual melee damage converted to healing (%)", LifeStealFraction, v => LifeStealFraction = v, Limit.Percent());
+        var scythe = s.In("Lumen_VerditeScythe_Section".Translate()).PerItem();
+        scythe.Add("KM_VerditeScythe.farming", "Lumen_VerditeScythe_Farming".Translate(), FarmingBonus, v => FarmingBonus = v, Limit.Percent(10));
+        scythe.Add("KM_VerditeScythe.lifeSteal", "Lumen_VerditeScythe_LifeSteal".Translate(), LifeStealFraction, v => LifeStealFraction = v, Limit.Percent());
     }
 }
 
@@ -27,7 +27,7 @@ public static class VerditeLifeSteal
     public static void Prefix(Thing __instance, DamageInfo dinfo, out Pawn __state)
     {
         // Capture eligibility before damage: lethal strikes still hit a living target.
-        __state = __instance is Pawn victim && !victim.Dead && victim.RaceProps.IsFlesh &&
+        __state = Effects.VerditeScytheLifeSteal.On && __instance is Pawn victim && !victim.Dead && victim.RaceProps.IsFlesh &&
             dinfo.Instigator is Pawn wielder && VerditeScythe.Equipped(wielder) &&
             dinfo.Weapon == wielder.equipment.Primary.def ? wielder : null;
     }

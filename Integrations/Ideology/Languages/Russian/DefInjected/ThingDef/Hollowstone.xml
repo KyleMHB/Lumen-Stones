@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Hollowstone.label>Пустокамень</KM_Hollowstone.label>
+	<KM_Hollowstone.description>Тёмный камень, очищенный, чтобы забирать боль и страх. Ничего не отдаёт взамен — поэтому рядом с ним спокойно и слегка пусто.\n\nКристалл цвета выбеленной кости с бездонно-бирюзовой полой сердцевиной, очищенный из тёмного камня на жертвенном алтаре. Его светильники тратят энергию варпа, чтобы притуплять боль и укреплять разум.</KM_Hollowstone.description>
+	<KM_LumenHollowstoneColumn.label>Колонна из пустокамня</KM_LumenHollowstoneColumn.label>
+	<KM_LumenHollowstoneColumn.description>Опорная колонна с вкраплениями пустокамня.\n\nДаёт бледный свет цвета слоновой кости. Энергия варпа: притупляет боль колонистов и рабов в той же комнате. Рабочие оболочки не затрагиваются. Учитывается только сильнейший светильник из пустокамня.</KM_LumenHollowstoneColumn.description>
+	<KM_LumenHollowstoneColumn.comps.3.effect>притупление боли и укрепление разума</KM_LumenHollowstoneColumn.comps.3.effect>
+	<KM_HollowstoneLamp.label>Лампа из пустокамня</KM_HollowstoneLamp.label>
+	<KM_HollowstoneLamp.description>Кристалл пустокамня на каменном постаменте.\n\nДаёт тусклый цвета слоновой кости свет, и больше ничего.</KM_HollowstoneLamp.description>
+	<KM_HollowstoneWallLamp.label>Настенная лампа из пустокамня</KM_HollowstoneWallLamp.label>
+	<KM_HollowstoneWallLamp.description>Кристалл пустокамня на настенном кронштейне.\n\nДаёт тусклый цвета слоновой кости свет, и больше ничего.</KM_HollowstoneWallLamp.description>
+	<KM_HollowstoneCluster.label>Друза пустокамня</KM_HollowstoneCluster.label>
+	<KM_HollowstoneCluster.description>Группа кристаллов пустокамня в низком резном основании. Ссоры рядом с ней обычно сходят на нет.\n\nДаёт свет цвета слоновой кости. Энергия варпа: притупляет боль колонистов и рабов в той же комнате. Рабочие оболочки не затрагиваются. Учитывается только сильнейший светильник из пустокамня. Также укрепляет разум против срывов.</KM_HollowstoneCluster.description>
+	<KM_HollowstoneCluster.comps.2.effect>притупление боли и укрепление разума</KM_HollowstoneCluster.comps.2.effect>
+	<KM_HollowstonePylon.label>Пилон из пустокамня</KM_HollowstonePylon.label>
+	<KM_HollowstonePylon.description>Высокий столб пустокамня на резном пьедестале. Работающие рядом перестают жаловаться на раны.\n\nДаёт свет цвета слоновой кости. Энергия варпа: притупляет боль колонистов и рабов в той же комнате. Рабочие оболочки не затрагиваются. Учитывается только сильнейший светильник из пустокамня. Также укрепляет разум против срывов.</KM_HollowstonePylon.description>
+	<KM_HollowstonePylon.comps.3.effect>притупление боли и укрепление разума</KM_HollowstonePylon.comps.3.effect>
+	<KM_HollowstoneGlaive.label>Глефа из пустокамня</KM_HollowstoneGlaive.label>
+	<KM_HollowstoneGlaive.description>Медленная тяжёлая глефа с лезвием из пустокамня цвета кости. Её владелец продолжает сражаться, когда давно должен был упасть.\n\nВладелец чувствует половину боли и выдерживает на четверть больше до болевого шока. Не тратит энергию варпа. Изготавливается из 100 пустокамня и 20 стали после исследований длинных клинков и «Служение пустокамня», ремесло 6.</KM_HollowstoneGlaive.description>
+	<KM_HollowstoneGlaive.tools.0.label>рукоять</KM_HollowstoneGlaive.tools.0.label>
+	<KM_HollowstoneGlaive.tools.1.label>лезвие</KM_HollowstoneGlaive.tools.1.label>
+</LanguageData>

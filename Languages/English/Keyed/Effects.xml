@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Effect_Glacite_fixtureCooling>Lamp, pylon and column cooling (passive)</Lumen_Effect_Glacite_fixtureCooling>
+	<Lumen_Effect_Glacite_coolerRefrigeration>Cooler refrigeration (passive)</Lumen_Effect_Glacite_coolerRefrigeration>
+	<Lumen_Effect_Glacite_coolerFreezing>Cooler freezing (Solar active effect)</Lumen_Effect_Glacite_coolerFreezing>
+	<Lumen_Effect_Glacite_bladeFrost>Glacite greatsword chill (item)</Lumen_Effect_Glacite_bladeFrost>
+	<Lumen_Effect_Vitalite_roomImmunity>Room immunity (passive)</Lumen_Effect_Vitalite_roomImmunity>
+	<Lumen_Effect_Vitalite_roomHealing>Room healing (Solar active effect)</Lumen_Effect_Vitalite_roomHealing>
+	<Lumen_Effect_Vitalite_roomInfection>Room infection prevention (Solar active effect)</Lumen_Effect_Vitalite_roomInfection>
+	<Lumen_Effect_Vitalite_bedBonuses>Bed occupant bonuses (passive and Solar active effect)</Lumen_Effect_Vitalite_bedBonuses>
+	<Lumen_Effect_Vitalite_cleanliness>Fixture and bed cleanliness (passive)</Lumen_Effect_Vitalite_cleanliness>
+	<Lumen_Effect_Vitalite_circlet>Vitalite circlet (item)</Lumen_Effect_Vitalite_circlet>
+	<Lumen_Effect_Serenite_roomComfort>Room comfort (passive)</Lumen_Effect_Serenite_roomComfort>
+	<Lumen_Effect_Serenite_roomMood>Room mood (passive)</Lumen_Effect_Serenite_roomMood>
+	<Lumen_Effect_Serenite_sleep>Sleep restoration and rested memory (Solar active effect)</Lumen_Effect_Serenite_sleep>
+	<Lumen_Effect_Serenite_pendant>Serenite pendant (item)</Lumen_Effect_Serenite_pendant>
+	<Lumen_Effect_Verdite_growth>Plant growth (passive)</Lumen_Effect_Verdite_growth>
+	<Lumen_Effect_Verdite_workSpeed>Plant work speed (passive)</Lumen_Effect_Verdite_workSpeed>
+	<Lumen_Effect_Verdite_harvestYield>Harvest yield (passive)</Lumen_Effect_Verdite_harvestYield>
+	<Lumen_Effect_Verdite_plantLight>Plant-capable light (Solar active effect)</Lumen_Effect_Verdite_plantLight>
+	<Lumen_Effect_Verdite_scytheFarming>Verdite scythe farming bonus (item)</Lumen_Effect_Verdite_scytheFarming>
+	<Lumen_Effect_Verdite_scytheLifeSteal>Verdite scythe life steal (item)</Lumen_Effect_Verdite_scytheLifeSteal>
+	<Lumen_Effect_Verdite_bracer>Living vine bracer sustenance (item)</Lumen_Effect_Verdite_bracer>
+	<Lumen_Effect_Verdite_chew>Verdite chew (item)</Lumen_Effect_Verdite_chew>
+	<Lumen_Effect_Aegite_filthCleaning>Filth cleaning (passive)</Lumen_Effect_Aegite_filthCleaning>
+	<Lumen_Effect_Aegite_fireSuppression>Fire suppression (Solar active effect)</Lumen_Effect_Aegite_fireSuppression>
+	<Lumen_Effect_Aegite_shieldArmor>Aegite shield armor (item)</Lumen_Effect_Aegite_shieldArmor>
+	<Lumen_Effect_Aegite_shieldFireImmunity>Aegite shield fire immunity (item)</Lumen_Effect_Aegite_shieldFireImmunity>
+	<Lumen_Effect_Aegite_charm>Aegite shield charm (item)</Lumen_Effect_Aegite_charm>
+	<Lumen_Effect_Ferrite_repairBuildings>Building repair (passive)</Lumen_Effect_Ferrite_repairBuildings>
+	<Lumen_Effect_Ferrite_repairItems>Loose item repair (Solar active effect)</Lumen_Effect_Ferrite_repairItems>
+	<Lumen_Effect_Ferrite_repairGear>Worn gear repair (Solar active effect)</Lumen_Effect_Ferrite_repairGear>
+	<Lumen_Effect_Ferrite_warhammerStun>Ferrite warhammer stun (item)</Lumen_Effect_Ferrite_warhammerStun>
+	<Lumen_Effect_Ferrite_warhammerMending>Ferrite warhammer mending (item)</Lumen_Effect_Ferrite_warhammerMending>
+	<Lumen_Effect_Sunstone_axeBane>Sunstone axe damage against Anomaly entities (item)</Lumen_Effect_Sunstone_axeBane>
+	<Lumen_Effect_Sunstone_axeBlindStun>Sunstone axe blind and stun (item)</Lumen_Effect_Sunstone_axeBlindStun>
+	<Lumen_Effect_Sunstone_flare>Sunstone flare blind, stun and burn (item)</Lumen_Effect_Sunstone_flare>
+	<Lumen_Effect_Sunstone_projectorInterception>Shield projector dome (Solar active effect)</Lumen_Effect_Sunstone_projectorInterception>
+	<Lumen_Effect_Sunstone_projectorCrushing>Shield projector crushes drop pods and infestations</Lumen_Effect_Sunstone_projectorCrushing>
+	<Lumen_Effect_Sunstone_stabilizer>Lunite stabilizer keeps a fixture running through interruptions</Lumen_Effect_Sunstone_stabilizer>
+	<Lumen_Effect_Lumenstone_ritualSupport>Ritual support from fixtures (passive)</Lumen_Effect_Lumenstone_ritualSupport>
+	<Lumen_Effect_Lumenstone_staff>Lumenstone staff stats and ritual bonus (item)</Lumen_Effect_Lumenstone_staff>
+	<Lumen_Effect_Pyrinth_columnHeat>Pyrinth column heat (passive)</Lumen_Effect_Pyrinth_columnHeat>
+	<Lumen_Effect_Pyrinth_columnFocus>Pyrinth column meditation focus (passive)</Lumen_Effect_Pyrinth_columnFocus>
+	<Lumen_Effect_Animastone_focus>Meditation focus (passive)</Lumen_Effect_Animastone_focus>
+	<Lumen_Effect_Animastone_roomHeatRecovery>Room neural heat recovery (passive)</Lumen_Effect_Animastone_roomHeatRecovery>
+	<Lumen_Effect_Animastone_roomFocusGain>Room psyfocus gain (passive)</Lumen_Effect_Animastone_roomFocusGain>
+	<Lumen_Effect_Animastone_clusterFocus>Cluster focus boost (Solar active effect)</Lumen_Effect_Animastone_clusterFocus>
+	<Lumen_Effect_Animastone_pylonHeatRecovery>Pylon neural heat recovery (Solar active effect)</Lumen_Effect_Animastone_pylonHeatRecovery>
+	<Lumen_Effect_Animastone_pylonGrowth>Pylon anima grass growth (Solar active effect)</Lumen_Effect_Animastone_pylonGrowth>
+	<Lumen_Effect_Animastone_circlet>Animastone circlet (item)</Lumen_Effect_Animastone_circlet>
+	<Lumen_Effect_Animastone_staffStats>Animastone staff neural heat (item)</Lumen_Effect_Animastone_staffStats>
+	<Lumen_Effect_Animastone_staffStun>Animastone staff stun (item)</Lumen_Effect_Animastone_staffStun>
+	<Lumen_Effect_DarkStone_ritualSupport>Ritual support from fixtures (passive)</Lumen_Effect_DarkStone_ritualSupport>
+	<Lumen_Effect_DarkStone_crystallize>Crystallize Dark Stone ritual</Lumen_Effect_DarkStone_crystallize>
+	<Lumen_Effect_DarkStone_harvest>Harvest Warp Energy ritual</Lumen_Effect_DarkStone_harvest>
+	<Lumen_Effect_DarkStone_ritualKnife>Dark Stone ritual knife (item)</Lumen_Effect_DarkStone_ritualKnife>
+	<Lumen_Effect_DarkStone_seed>Dreadstone seed growth and Binding</Lumen_Effect_DarkStone_seed>
+	<Lumen_Effect_Sanguinite_bleeding>Bleeding reduction (Warp active effect)</Lumen_Effect_Sanguinite_bleeding>
+	<Lumen_Effect_Sanguinite_scars>Scar healing (Warp active effect)</Lumen_Effect_Sanguinite_scars>
+	<Lumen_Effect_Sanguinite_regrowDigits>Regrowing fingers and toes (Warp active effect)</Lumen_Effect_Sanguinite_regrowDigits>
+	<Lumen_Effect_Sanguinite_regrowSmallParts>Regrowing eyes, ears, noses and jaws (Warp active effect)</Lumen_Effect_Sanguinite_regrowSmallParts>
+	<Lumen_Effect_Sanguinite_regrowOrgans>Regrowing internal organs (Warp active effect)</Lumen_Effect_Sanguinite_regrowOrgans>
+	<Lumen_Effect_Sanguinite_hemorrhage>Flensing Blade hemorrhage (item)</Lumen_Effect_Sanguinite_hemorrhage>
+	<Lumen_Effect_Sanguinite_wielderBleed>Flensing Blade slower wielder bleeding (item)</Lumen_Effect_Sanguinite_wielderBleed>
+	<Lumen_Effect_Dreadstone_subjugation>Subjugation of prisoners and slaves (Warp active effect)</Lumen_Effect_Dreadstone_subjugation>
+	<Lumen_Effect_Dreadstone_dread>Dread on hostiles (Warp active effect)</Lumen_Effect_Dreadstone_dread>
+	<Lumen_Effect_Dreadstone_siphon>Death Siphon (Warp active effect)</Lumen_Effect_Dreadstone_siphon>
+	<Lumen_Effect_Dreadstone_arbalestDread>Dreadstone Arbalest Dread (item)</Lumen_Effect_Dreadstone_arbalestDread>
+	<Lumen_Effect_Dreadstone_cudgel>Dreadstone cudgel agony (item)</Lumen_Effect_Dreadstone_cudgel>
+	<Lumen_Effect_Dreadstone_collar>Dreadstone collar suppression (item)</Lumen_Effect_Dreadstone_collar>
+	<Lumen_Effect_Hollowstone_painWard>Pain ward (Warp active effect)</Lumen_Effect_Hollowstone_painWard>
+	<Lumen_Effect_Hollowstone_breakSteadiness>Mental break steadiness (Warp active effect)</Lumen_Effect_Hollowstone_breakSteadiness>
+	<Lumen_Effect_Hollowstone_workHusks>Raise a work husk ritual</Lumen_Effect_Hollowstone_workHusks>
+	<Lumen_Effect_Hollowstone_glaive>Hollowstone Glaive pain relief (item)</Lumen_Effect_Hollowstone_glaive>
+	<Lumen_Effect_Implants_apparelMending>Ferrite implant apparel mending</Lumen_Effect_Implants_apparelMending>
+	<Lumen_Effect_Implants_partHealing>Ferrite arm and leg injury healing</Lumen_Effect_Implants_partHealing>
+	<Lumen_Effect_Implants_scarMending>Sanguinite implant scar mending</Lumen_Effect_Implants_scarMending>
+	<Lumen_Effect_Implants_dreadAura>Dreadstone implant and jaw Dread aura</Lumen_Effect_Implants_dreadAura>
+	<Lumen_Effect_Implants_mood>Implant mood (Serenite implant calm)</Lumen_Effect_Implants_mood>
+	<Lumen_Effect_Implants_relief>Energy relief of drawbacks (draws Solar or Warp energy)</Lumen_Effect_Implants_relief>
+	<Lumen_Effect_Off>Off in mod settings</Lumen_Effect_Off>
+</LanguageData>

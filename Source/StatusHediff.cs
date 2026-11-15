@@ -11,6 +11,20 @@ public class Hediff_Status : HediffWithComps
     public string bracket, note;
 
     public override string LabelInBrackets => bracket;
+
+    private static HediffDef ward;
+    private static bool lookedForWard;
+    private static HediffDef Ward
+    {
+        get
+        {
+            if (!lookedForWard) { ward = DefDatabase<HediffDef>.GetNamedSilentFail("KM_HollowstoneWard"); lookedForWard = true; }
+            return ward;
+        }
+    }
+
+    // The Hollowstone ward drops whichever half its effect switches turn off.
+    public override HediffStage CurStage => def == Ward ? HollowstoneRules.WardStage(base.CurStage) : base.CurStage;
     public override string TipStringExtra => note;
 
     public override void ExposeData()
@@ -41,8 +55,8 @@ public class Hediff_Status : HediffWithComps
     {
         var text = new StringBuilder();
         if (stage == null) return "";
-        if (stage.painFactor != 1f) text.AppendLine("Pain taken: " + stage.painFactor.ToStringPercent("0"));
-        if (stage.totalBleedFactor != 1f) text.AppendLine("Bleeding: " + stage.totalBleedFactor.ToStringPercent("0"));
+        if (stage.painFactor != 1f) text.AppendLine("Lumen_Status_PainTaken".Translate(stage.painFactor.ToStringPercent("0")));
+        if (stage.totalBleedFactor != 1f) text.AppendLine("Lumen_Status_Bleeding".Translate(stage.totalBleedFactor.ToStringPercent("0")));
         if (stage.capMods != null)
             foreach (var mod in stage.capMods)
                 if (mod.postFactor != 1f) text.AppendLine(mod.capacity.LabelCap + ": " + mod.postFactor.ToStringPercent("0"));

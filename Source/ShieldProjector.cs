@@ -15,17 +15,19 @@ public static class BastionRules
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var projector = s.In("Aegite shield projector");
+        var projector = s.In("Lumen_Projector_Section".Translate());
         var props = DefDatabase<ThingDef>.GetNamed("KM_AegiteShieldProjector").GetCompProperties<CompProperties_AegiteShieldProjector>();
-        projector.Add("KM_AegiteShieldProjector.radius", "Dome radius (tiles)", props.radius, v => props.radius = v, Limit.Number(1, 40));
-        projector.Add("KM_AegiteShieldProjector.hitPoints", "Dome hit points", props.hitPoints, v => props.hitPoints = (int)v, Limit.Integer(1));
-        projector.Add("KM_AegiteShieldProjector.upkeep", "Solar energy per day while up", UpkeepPerDay, v => UpkeepPerDay = v);
-        projector.Add("KM_AegiteShieldProjector.solarPerHp", "Solar energy per hit point recharged", SolarPerHp, v => SolarPerHp = v);
-        projector.Add("KM_AegiteShieldProjector.crushCost", "Hit points spent crushing a hostile drop pod or infestation", CrushHpCost,
+        projector.Add("KM_AegiteShieldProjector.radius", "Lumen_Projector_RadiusSetting".Translate(), props.radius, v => props.radius = v, Limit.Number(1, 40));
+        projector.Add("KM_AegiteShieldProjector.hitPoints", "Lumen_Projector_HitPointsSetting".Translate(), props.hitPoints, v => props.hitPoints = (int)v, Limit.Integer(1));
+        projector.Add("KM_AegiteShieldProjector.upkeep", "Lumen_Projector_Upkeep".Translate(), UpkeepPerDay, v => UpkeepPerDay = v);
+        projector.Add("KM_AegiteShieldProjector.solarPerHp", "Lumen_Projector_SolarPerHpSetting".Translate(), SolarPerHp, v => SolarPerHp = v);
+        projector.Add("KM_AegiteShieldProjector.rechargeTicks", "Lumen_Projector_RechargeTicks".Translate(), props.rechargeHitPointsIntervalTicks,
+            v => props.rechargeHitPointsIntervalTicks = (int)v, Limit.Integer(1, 60000));
+        projector.Add("KM_AegiteShieldProjector.crushCost", "Lumen_Projector_CrushCost".Translate(), CrushHpCost,
             v => CrushHpCost = v);
-        projector.Add("KM_AegiteShieldProjector.rebootTicks", "Reboot time after breaking (ticks)", props.chargeDurationTicks,
+        projector.Add("KM_AegiteShieldProjector.rebootTicks", "Lumen_Projector_RebootTicks".Translate(), props.chargeDurationTicks,
             v => props.chargeDurationTicks = (int)v, Limit.Integer(1));
-        projector.Add("KM_AegiteShieldProjector.empTicks", "Time disarmed by EMP (ticks)", props.disarmedByEmpForTicks,
+        projector.Add("KM_AegiteShieldProjector.empTicks", "Lumen_Projector_EmpTicks".Translate(), props.disarmedByEmpForTicks,
             v => props.disarmedByEmpForTicks = (int)v, Limit.Integer(1));
     }
 }
@@ -37,15 +39,14 @@ public class CompProperties_AegiteShieldProjector : CompProperties_ProjectileInt
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
         var rows = new InfoStats()
-            .Add("Dome radius", InfoStats.Tiles(radius), "Stops hostile ground projectiles, mortar shells and orbital bombardments fired from outside it. Colonists shoot out freely.")
-            .Add("Shield hit points", hitPoints.ToString("0"), "Reduced by what the dome stops. At 0 it shuts down and reboots for " + (chargeDurationTicks / (float)GenDate.TicksPerDay).ToString("0.##") + " days, then recharges gradually.")
-            .Add("Crushes", "hostile drop pods and infestations", "A hostile raid drop pod or tunneling infestation that lands inside the dome is crushed, costing " + BastionRules.CrushHpCost.ToString("0") +
-                " shield hit points. Pawns inside a pod die and their gear is destroyed. Refugee, trade, resource and quest pods are not affected.")
-            .Add("EMP", "disarms briefly", "Keeps its hit points.");
+            .Add(Effects.ProjectorInterception, "Lumen_Projector_Radius".Translate(), InfoStats.Tiles(radius), "Lumen_Projector_RadiusDesc".Translate())
+            .Add("Lumen_Projector_HitPoints".Translate(), hitPoints.ToString("0"), "Lumen_Projector_HitPointsDesc".Translate((chargeDurationTicks / (float)GenDate.TicksPerDay).ToString("0.##"), InfoStats.Seconds(rechargeHitPointsIntervalTicks)))
+            .Add(Effects.ProjectorCrushing, "Lumen_Projector_Crushes".Translate(), "Lumen_Projector_CrushesValue".Translate(), "Lumen_Projector_CrushesDesc".Translate(BastionRules.CrushHpCost.ToString("0")))
+            .Add("Lumen_Projector_Emp".Translate(), "Lumen_Projector_EmpValue".Translate(), "Lumen_Projector_EmpDesc".Translate());
         if (SolarRules.Enabled)
         {
-            rows.Add("Solar energy per day", BastionRules.UpkeepPerDay.ToString("0"), "Spent while the dome is up." + InfoStats.SolarRule)
-                .Add("Solar energy per hit point", BastionRules.SolarPerHp.ToString("0.##"), "Spent for each shield hit point recharged. Pair it with a Lunite stabilizer to keep it up through solar flares.");
+            rows.Add("Lumen_Info_SolarPerDay".Translate(), BastionRules.UpkeepPerDay.ToString("0"), "Lumen_Projector_UpkeepDesc".Translate() + InfoStats.SolarRule)
+                .Add("Lumen_Projector_SolarPerHp".Translate(), BastionRules.SolarPerHp.ToString("0.##"), "Lumen_Projector_SolarPerHpDesc".Translate());
         }
         return rows.Rows;
     }
@@ -58,14 +59,14 @@ public class CompAegiteShieldProjector : CompProjectileInterceptor, IActiveEffec
     private CompSolarToggle toggle;
     public CompSolarToggle Toggle => toggle ??= parent.GetComp<CompSolarToggle>();
 
-    public float DrainPerTick => currentHitPoints > 0 ? BastionRules.UpkeepPerDay / GenDate.TicksPerDay : 0;
+    public float DrainPerTick => currentHitPoints > 0 && Effects.ProjectorInterception.On ? BastionRules.UpkeepPerDay / GenDate.TicksPerDay : 0;
 
-    // Read by the Active postfix. Losing power or toggling off drops the dome without starting a reboot.
-    public bool Allowed => Toggle.Active && Toggle.Powered;
+    // Read by the Active postfix. Losing power, toggling off or switching the dome off in settings drops it without a reboot.
+    public bool Allowed => Effects.ProjectorInterception.On && Toggle.Active && Toggle.Powered;
 
     // Vanilla asks once per recharge interval. One point costs Solar energy, and none is gained without it.
     protected override int HitPointsPerInterval =>
-        currentHitPoints < HitPointsMax && Toggle.Active && Toggle.Account.TryDraw(BastionRules.SolarPerHp) ? 1 : 0;
+        currentHitPoints < HitPointsMax && Effects.ProjectorInterception.On && Toggle.Active && Toggle.Account.TryDraw(BastionRules.SolarPerHp) ? 1 : 0;
 
     private static readonly System.Reflection.FieldInfo startedCharging = AccessTools.Field(typeof(CompProjectileInterceptor), "startedChargingTick");
 
@@ -96,6 +97,7 @@ public static class AegiteDome
     // The covering dome with the most shield left pays. Domes at 0, rebooting or offline do not count.
     public static CompAegiteShieldProjector Covering(Map map, IntVec3 cell)
     {
+        if (!Effects.ProjectorCrushing.On) return null;
         CompAegiteShieldProjector best = null;
         var domes = map.listerThings.ThingsInGroup(ThingRequestGroup.ProjectileInterceptor);
         for (int i = 0; i < domes.Count; i++)
@@ -104,10 +106,11 @@ public static class AegiteDome
         return best;
     }
 
-    public static void Announce(CompAegiteShieldProjector dome, IntVec3 cell, string what)
+    // whatKey names a Keyed noun phrase such as "a hostile drop pod".
+    public static void Announce(CompAegiteShieldProjector dome, IntVec3 cell, string whatKey)
     {
         FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(), dome.parent.Map, 2f);
-        Messages.Message("The Aegite shield dome crushed " + what + (dome.currentHitPoints <= 0 ? " and broke." : "."), dome.parent,
+        Messages.Message((dome.currentHitPoints <= 0 ? "Lumen_Projector_CrushedBroke" : "Lumen_Projector_Crushed").Translate(whatKey.Translate()), dome.parent,
             MessageTypeDefOf.PositiveEvent);
     }
 }
@@ -137,7 +140,7 @@ public static class AegiteDomeCrushesPods
             }
             else if (!thing.Destroyed) thing.Destroy();
         }
-        AegiteDome.Announce(dome, __instance.Position, "a hostile drop pod");
+        AegiteDome.Announce(dome, __instance.Position, "Lumen_Projector_DropPod");
     }
 }
 
@@ -151,6 +154,6 @@ public static class AegiteDomeCrushesInfestations
         dome.Spend(BastionRules.CrushHpCost);
         __instance.spawnHive = false;
         __instance.insectsPoints = 0f;
-        AegiteDome.Announce(dome, loc, "a tunneling infestation");
+        AegiteDome.Announce(dome, loc, "Lumen_Projector_Infestation");
     }
 }

@@ -63,6 +63,8 @@
     <label>Sunstone collector</label>
     <description>An open rosette of Sunstone crystals, angled to catch as much sky as it can.\n\nGathers daylight as Solar energy for the map's Solar network, less in bad weather or under a roof and none at night. Holds some charge itself and sends the surplus to the network's batteries. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.204)</drawOffset>
       <texPath>Things/Building/Misc/SunstoneCollector</texPath>
       <drawSize>(1.5,1.5)</drawSize>
     </graphicData>
@@ -92,6 +94,8 @@
     <label>Sunstone array</label>
     <description>A wide crown of Sunstone prisms. On a clear day it is hard to look at.\n\nGathers daylight as Solar energy for the map's Solar network, less in bad weather or under a roof and none at night. Holds some charge itself and sends the surplus to the network's batteries. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.05)</drawOffset>
       <texPath>Things/Building/Misc/SunstoneArray</texPath>
       <drawSize>(2.5,2.5)</drawSize>
     </graphicData>
@@ -120,6 +124,8 @@
     <label>Sunstone vessel</label>
     <description>A cluster of Sunstone crystals that holds the day's light into the night. It glows brighter as it fills.\n\nStores Solar energy for the whole map, however far it is from the collectors. It glows brighter as it fills. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.116)</drawOffset>
       <texPath>Things/Building/Misc/SunstoneVessel</texPath>
       <drawSize>(1.5,1.5)</drawSize>
     </graphicData>
@@ -149,6 +155,8 @@
     <label>Sunstone obelisk</label>
     <description>A towering Sunstone crystal. A full one lights the base all night.\n\nStores Solar energy for the whole map, however far it is from the collectors. It glows brighter as it fills. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.101)</drawOffset>
       <texPath>Things/Building/Misc/SunstoneObelisk</texPath>
       <drawSize>(2.5,2.5)</drawSize>
     </graphicData>

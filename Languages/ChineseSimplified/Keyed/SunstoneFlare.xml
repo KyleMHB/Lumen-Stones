@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneFlare_Section>太阳石照明弹</Lumen_SunstoneFlare_Section>
+	<Lumen_SunstoneFlare_Radius>闪光半径（格）</Lumen_SunstoneFlare_Radius>
+	<Lumen_SunstoneFlare_Burn>对异象实体和变异体的灼烧伤害</Lumen_SunstoneFlare_Burn>
+	<Lumen_SunstoneFlare_Throw>投掷太阳石照明弹</Lumen_SunstoneFlare_Throw>
+	<Lumen_SunstoneFlare_CannotThrow>现在无法投掷照明弹。</Lumen_SunstoneFlare_CannotThrow>
+	<Lumen_SunstoneFlare_Take>携带太阳石照明弹（{0}）</Lumen_SunstoneFlare_Take>
+</LanguageData>

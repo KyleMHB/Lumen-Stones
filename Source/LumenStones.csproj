@@ -11,6 +11,7 @@
     <OutputPath>..\Assemblies\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="$(RimWorldPath)\System.*.dll;$(RimWorldPath)\Assembly-CSharp.dll;$(RimWorldPath)\UnityStubs.dll;$(RimWorldPath)\Waylith.UnityCompat.dll;$(RimWorldPath)\Waylith.dll;$(RimWorldPath)\Brutal.Core.Numerics.dll;$(RimWorldPath)\Brutal.Core.Common.dll;$(RimWorldPath)\netstandard.dll" Exclude="$(RimWorldPath)\System.IO.Compression.Native.dll">

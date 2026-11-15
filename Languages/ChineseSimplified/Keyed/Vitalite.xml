@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Vitalite_HealingContribution>治疗贡献（%）</Lumen_Vitalite_HealingContribution>
+	<Lumen_Vitalite_ImmunityContribution>免疫贡献（%）</Lumen_Vitalite_ImmunityContribution>
+	<Lumen_Vitalite_InfectionContribution>感染预防（%）</Lumen_Vitalite_InfectionContribution>
+	<Lumen_Vitalite_PatientRule>作用于同一封闭且有屋顶房间内卧床休息的病人。</Lumen_Vitalite_PatientRule>
+	<Lumen_Vitalite_PatientDrain>每帮助一名受伤病人，每日消耗{0}太阳能。</Lumen_Vitalite_PatientDrain>
+	<Lumen_Vitalite_SupportWeightDesc>该装置在生命石房间支援中所占的份额。</Lumen_Vitalite_SupportWeightDesc>
+	<Lumen_Vitalite_Immunity>满支援时的免疫</Lumen_Vitalite_Immunity>
+	<Lumen_Info_ScalesWithSupport>随房间支援度变化。</Lumen_Info_ScalesWithSupport>
+	<Lumen_Vitalite_Healing>满支援时的治疗</Lumen_Vitalite_Healing>
+	<Lumen_Info_ScalesWithActiveSupport>随主动效果开启的装置的房间支援度变化。</Lumen_Info_ScalesWithActiveSupport>
+	<Lumen_Vitalite_Infection>满支援时的感染预防</Lumen_Vitalite_Infection>
+	<Lumen_Vitalite_InfectionDesc>降低新伤口被感染的几率。不影响已有的感染。</Lumen_Vitalite_InfectionDesc>
+	<Lumen_Vitalite_BedRule>作用于在这张床上休息的人。房间支援会叠加在其上。</Lumen_Vitalite_BedRule>
+	<Lumen_Vitalite_OccupantImmunity>使用者免疫</Lumen_Vitalite_OccupantImmunity>
+	<Lumen_Vitalite_OccupantHealing>使用者治疗</Lumen_Vitalite_OccupantHealing>
+	<Lumen_Vitalite_OccupantHealingDesc>作用于受伤的使用者。</Lumen_Vitalite_OccupantHealingDesc>
+	<Lumen_Vitalite_OccupantInfection>使用者感染预防</Lumen_Vitalite_OccupantInfection>
+	<Lumen_Vitalite_OccupantInfectionDesc>与房间预防效果以乘法叠加。</Lumen_Vitalite_OccupantInfectionDesc>
+	<Lumen_Vitalite_Inspect>房间支援：{0}。免疫 +{1}，治疗 +{2}，感染预防{3}</Lumen_Vitalite_Inspect>
+	<Lumen_Info_Missing>缺少：{0}</Lumen_Info_Missing>
+	<Lumen_Vitalite_Occupant>{0}：免疫 +{1}，治疗 +{2}，感染几率 -{3}</Lumen_Vitalite_Occupant>
+	<Lumen_Vitalite_Support>生命石支援：+{0}</Lumen_Vitalite_Support>
+	<Lumen_Vitalite_ImmunityGain>免疫获取：+{0}</Lumen_Vitalite_ImmunityGain>
+	<Lumen_Vitalite_WoundHealing>伤口愈合：+{0}</Lumen_Vitalite_WoundHealing>
+	<Lumen_Vitalite_InfectionChance>感染几率：-{0}</Lumen_Vitalite_InfectionChance>
+	<Lumen_Vitalite_NeedsInjury>治疗和感染预防需要有伤势且有太阳能供能。</Lumen_Vitalite_NeedsInjury>
+	<Lumen_Vitalite_PatientDrainSetting>每名受治疗的受伤病人每日消耗的太阳能</Lumen_Vitalite_PatientDrainSetting>
+	<Lumen_Vitalite_HealingCap>房间治疗上限（%）</Lumen_Vitalite_HealingCap>
+	<Lumen_Vitalite_ImmunityCap>房间免疫上限（%）</Lumen_Vitalite_ImmunityCap>
+	<Lumen_Vitalite_InfectionCap>房间感染预防上限（%）</Lumen_Vitalite_InfectionCap>
+</LanguageData>

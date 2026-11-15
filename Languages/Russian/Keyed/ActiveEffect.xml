@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_ActiveEffect_SolarOff>Если выключено, работает только пассивный эффект.</Lumen_ActiveEffect_SolarOff>
+	<Lumen_ActiveEffect_WarpOff>Если выключено, светильник только светит.</Lumen_ActiveEffect_WarpOff>
+	<Lumen_ActiveEffect_ToggledOff>Выключено</Lumen_ActiveEffect_ToggledOff>
+	<Lumen_ActiveEffect_Interrupted>Прервано ({0})</Lumen_ActiveEffect_Interrupted>
+	<Lumen_ActiveEffect_Powered>Работает</Lumen_ActiveEffect_Powered>
+	<Lumen_ActiveEffect_NoSolar>Нет солнечной энергии</Lumen_ActiveEffect_NoSolar>
+	<Lumen_ActiveEffect_NoWarp>Нет энергии варпа</Lumen_ActiveEffect_NoWarp>
+	<Lumen_ActiveEffect_SolarStatus>Активный эффект (солнечная энергия): {0}</Lumen_ActiveEffect_SolarStatus>
+	<Lumen_ActiveEffect_WarpStatus>Активный эффект (энергия варпа): {0}</Lumen_ActiveEffect_WarpStatus>
+	<Lumen_ActiveEffect_Stabilized>Стабилизирован: лунитовый стабилизатор</Lumen_ActiveEffect_Stabilized>
+	<Lumen_ActiveEffect_SolarLabel>Активный эффект (солнце)</Lumen_ActiveEffect_SolarLabel>
+	<Lumen_ActiveEffect_WarpLabel>Активный эффект (варп)</Lumen_ActiveEffect_WarpLabel>
+	<Lumen_ActiveEffect_SolarDesc>Тратить солнечную энергию на {0}.</Lumen_ActiveEffect_SolarDesc>
+	<Lumen_ActiveEffect_WarpDesc>Тратить энергию варпа на {0}.</Lumen_ActiveEffect_WarpDesc>
+	<Lumen_ActiveEffect_DefaultEffect>свой активный эффект</Lumen_ActiveEffect_DefaultEffect>
+</LanguageData>

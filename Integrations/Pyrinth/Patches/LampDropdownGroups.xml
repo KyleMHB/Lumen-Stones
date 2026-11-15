@@ -8,4 +8,10 @@
     <xpath>/Defs/ThingDef[defName="DV_PyrinthWallLamp"]</xpath>
     <value><designatorDropdown>KM_LumenWallLamps</designatorDropdown></value>
   </Operation>
+  <!-- Pyrinth labels its brazier "pyrinth pylon"; it is Royalty-only, so a missing node is not an error. -->
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>/Defs/ThingDef[defName="DV_PyrinthBrazier"]</xpath>
+    <value><designatorDropdown>KM_LumenPylons</designatorDropdown></value>
+  </Operation>
 </Patch>

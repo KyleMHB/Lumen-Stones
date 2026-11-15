@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CrystallizeDarkStone.roles.0.label>仪式主持者</KM_CrystallizeDarkStone.roles.0.label>
+	<KM_CrystallizeDarkStone.roles.1.label>受害者</KM_CrystallizeDarkStone.roles.1.label>
+	<KM_CrystallizeDarkStone.roles.1.missingDesc>一名囚犯、奴隶或殖民者</KM_CrystallizeDarkStone.roles.1.missingDesc>
+	<KM_CrystallizeDarkStone.stages.0.failTriggers.0.desc>无法到达受害者。</KM_CrystallizeDarkStone.stages.0.failTriggers.0.desc>
+	<KM_CrystallizeDarkStone.stages.0.failTriggers.1.desc>主持者在睡觉</KM_CrystallizeDarkStone.stages.0.failTriggers.1.desc>
+	<KM_CrystallizeDarkStone.stages.3.failTriggers.0.desc>祭品已不再是死的</KM_CrystallizeDarkStone.stages.3.failTriggers.0.desc>
+	<KM_HarvestWarpEnergy.roles.0.label>仪式主持者</KM_HarvestWarpEnergy.roles.0.label>
+	<KM_HarvestWarpEnergy.roles.1.label>受害者</KM_HarvestWarpEnergy.roles.1.label>
+	<KM_HarvestWarpEnergy.roles.1.missingDesc>一名囚犯、奴隶或殖民者</KM_HarvestWarpEnergy.roles.1.missingDesc>
+	<KM_HarvestWarpEnergy.stages.0.failTriggers.0.desc>无法到达受害者。</KM_HarvestWarpEnergy.stages.0.failTriggers.0.desc>
+	<KM_HarvestWarpEnergy.stages.0.failTriggers.1.desc>主持者在睡觉</KM_HarvestWarpEnergy.stages.0.failTriggers.1.desc>
+	<KM_HarvestWarpEnergy.stages.3.failTriggers.0.desc>祭品已不再是死的</KM_HarvestWarpEnergy.stages.3.failTriggers.0.desc>
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementCircle.label>Настройка</KM_AttunementCircle.label>
+	<KM_AttunementCircle.description>Церемония у люменового ритуального круга, пробуждающая спящие светлые импланты и протезы.</KM_AttunementCircle.description>
+	<KM_AttunementAltar.label>Настройка</KM_AttunementAltar.label>
+	<KM_AttunementAltar.description>Церемония у люменитового алтаря, пробуждающая спящие светлые импланты и протезы.</KM_AttunementAltar.description>
+	<KM_Binding.label>Связывание</KM_Binding.label>
+	<KM_Binding.description>Церемония на жертвенном алтаре, пробуждающая спящие тёмные импланты и протезы.</KM_Binding.description>
+</LanguageData>

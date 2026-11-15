@@ -16,8 +16,8 @@ public abstract class CompProperties_Fixture : CompProperties
     public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
     {
         foreach (var error in base.ConfigErrors(parentDef)) yield return error;
-        if (category == FixtureCategory.None && IsFixture(parentDef)) yield return "a support fixture needs a category";
-        if (category == FixtureCategory.None && weight > 0) yield return "a weight needs a category";
+        if (category == FixtureCategory.None && IsFixture(parentDef)) yield return "a support fixture needs a category"; // not translated
+        if (category == FixtureCategory.None && weight > 0) yield return "a weight needs a category"; // not translated
     }
 }
 
@@ -27,19 +27,19 @@ public abstract class CompRoomFixture : ThingComp
     protected abstract SupportStone Stone { get; }
     internal CompProperties_Fixture Fixture => (CompProperties_Fixture)props;
 
-    public override void PostSpawnSetup(bool respawningAfterLoad) => parent.Map.GetComponent<RoomSupportCache>().Register(Stone, this);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => map.GetComponent<RoomSupportCache>().Unregister(Stone, this);
+    public override void PostSpawnSetup(bool respawningAfterLoad) => MapState.Of<RoomSupportCache>(parent.Map).Register(Stone, this);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => MapState.Of<RoomSupportCache>(map).Unregister(Stone, this);
 }
 
 // One stone's support: its category names and tunables. Room stones read the map cache; ritual stones scan around their altar.
 public sealed class SupportStone
 {
-    public static readonly SupportStone Vitalite = new("Vitalite", SupportKind.Room, true, 20f, "column", "lamp", "pylon", "restorative cluster");
-    public static readonly SupportStone Serenite = new("Serenite", SupportKind.Room, true, 10f, "column", "lamp", "sanctuary shrine", "soothing cluster");
-    public static readonly SupportStone Animastone = new("Animastone", SupportKind.Room, false, 0f, "column", "lamp", "pylon", "cluster");
-    public static readonly SupportStone Lumenstone = new("Lumenstone", SupportKind.Ritual, false, 0f, "column", "lamp", "pylon", "cluster",
+    public static readonly SupportStone Vitalite = new("Vitalite", SupportKind.Room, true, 20f, "Lumen_Category_Column", "Lumen_Category_Lamp", "Lumen_Category_Pylon", "Lumen_Category_RestorativeCluster");
+    public static readonly SupportStone Serenite = new("Serenite", SupportKind.Room, true, 10f, "Lumen_Category_Column", "Lumen_Category_Lamp", "Lumen_Category_SanctuaryShrine", "Lumen_Category_SoothingCluster");
+    public static readonly SupportStone Animastone = new("Animastone", SupportKind.Room, false, 0f, "Lumen_Category_Column", "Lumen_Category_Lamp", "Lumen_Category_Pylon", "Lumen_Category_Cluster");
+    public static readonly SupportStone Lumenstone = new("Lumenstone", SupportKind.Ritual, false, 0f, "Lumen_Category_Column", "Lumen_Category_Lamp", "Lumen_Category_Pylon", "Lumen_Category_Cluster",
         () => SupportEffect.LumenstoneQuality, () => SupportEffect.LumenstoneYield);
-    public static readonly SupportStone DarkStone = new("Dark Stone", SupportKind.Ritual, false, 0f, "column", "lamp", "pylon", "cluster",
+    public static readonly SupportStone DarkStone = new("Dark Stone", SupportKind.Ritual, false, 0f, "Lumen_Category_Column", "Lumen_Category_Lamp", "Lumen_Category_Pylon", "Lumen_Category_Cluster",
         () => SupportEffect.DarkStoneQuality, () => SupportEffect.DarkStoneYield);
 
     private readonly string name;
@@ -63,7 +63,7 @@ public sealed class SupportStone
     public SupportKind Kind { get; }
     // Whether any of the stone's effects reads only running fixtures.
     internal bool TracksActive { get; }
-    public string Label(FixtureCategory category) => labels[(int)category];
+    public string Label(FixtureCategory category) => labels[(int)category].Translate();
     // Ritual stones: how far from the altar a fixture still counts.
     public float Radius { get; set; } = 8f;
     // Solar energy per day for each occupant with an active effect: an injured patient in bed (Vitalite), a sleeper (Serenite).
@@ -76,30 +76,38 @@ public sealed class SupportStone
 // One capped effect of a stone's support. Cap is the tunable, at its shipped default.
 public sealed class SupportEffect
 {
-    public static readonly SupportEffect VitaliteHealing = new(SupportStone.Vitalite, 0.25f, true);
-    public static readonly SupportEffect VitaliteImmunity = new(SupportStone.Vitalite, 0.10f, false);
-    public static readonly SupportEffect VitaliteInfection = new(SupportStone.Vitalite, 0.10f, true);
-    public static readonly SupportEffect SereniteSleep = new(SupportStone.Serenite, 0.20f, true);
-    public static readonly SupportEffect SereniteComfort = new(SupportStone.Serenite, 0.20f, false);
-    public static readonly SupportEffect SereniteMood = new(SupportStone.Serenite, 5f, false);
-    public static readonly SupportEffect AnimastoneHeatRecovery = new(SupportStone.Animastone, 0.5f, false);
-    public static readonly SupportEffect AnimastoneFocusGain = new(SupportStone.Animastone, 0.25f, false);
-    public static readonly SupportEffect LumenstoneQuality = new(SupportStone.Lumenstone, 0.20f, false);
-    public static readonly SupportEffect LumenstoneYield = new(SupportStone.Lumenstone, 0.40f, false);
-    public static readonly SupportEffect DarkStoneQuality = new(SupportStone.DarkStone, 0.20f, false);
-    public static readonly SupportEffect DarkStoneYield = new(SupportStone.DarkStone, 0.40f, false);
+    public static readonly SupportEffect VitaliteHealing = new(SupportStone.Vitalite, 0.25f, true, () => Effects.VitaliteRoomHealing);
+    public static readonly SupportEffect VitaliteImmunity = new(SupportStone.Vitalite, 0.10f, false, () => Effects.VitaliteRoomImmunity);
+    public static readonly SupportEffect VitaliteInfection = new(SupportStone.Vitalite, 0.10f, true, () => Effects.VitaliteRoomInfection);
+    public static readonly SupportEffect SereniteSleep = new(SupportStone.Serenite, 0.20f, true, () => Effects.SereniteSleep);
+    public static readonly SupportEffect SereniteComfort = new(SupportStone.Serenite, 0.20f, false, () => Effects.SereniteRoomComfort);
+    public static readonly SupportEffect SereniteMood = new(SupportStone.Serenite, 5f, false, () => Effects.SereniteRoomMood);
+    public static readonly SupportEffect AnimastoneHeatRecovery = new(SupportStone.Animastone, 0.5f, false, () => Effects.AnimastoneRoomHeat);
+    public static readonly SupportEffect AnimastoneFocusGain = new(SupportStone.Animastone, 0.25f, false, () => Effects.AnimastoneRoomFocus);
+    public static readonly SupportEffect LumenstoneQuality = new(SupportStone.Lumenstone, 0.20f, false, () => Effects.LumenstoneRitualSupport);
+    public static readonly SupportEffect LumenstoneYield = new(SupportStone.Lumenstone, 0.40f, false, () => Effects.LumenstoneRitualSupport);
+    public static readonly SupportEffect DarkStoneQuality = new(SupportStone.DarkStone, 0.20f, false, () => Effects.DarkRitualSupport);
+    public static readonly SupportEffect DarkStoneYield = new(SupportStone.DarkStone, 0.40f, false, () => Effects.DarkRitualSupport);
 
-    private SupportEffect(SupportStone stone, float cap, bool active)
+    private readonly Func<EffectSwitch> effectSwitch;
+
+    private SupportEffect(SupportStone stone, float cap, bool active, Func<EffectSwitch> effectSwitch)
     {
         Stone = stone;
         Cap = cap;
         Active = active;
+        this.effectSwitch = effectSwitch;
     }
 
     public SupportStone Stone { get; }
     // Reads the fraction of fixtures whose active effect is running, rather than of all fixtures.
     public bool Active { get; }
+    // The tunable cap, whether or not the effect is switched on.
     public float Cap { get; set; }
+    public EffectSwitch Switch => effectSwitch();
+    public bool On => Switch.On;
+    // The cap the effect applies: nothing while it is switched off.
+    public float Value => On ? Cap : 0f;
 }
 
 // A stone's support at one place. Passive counts every fixture. Active counts only running fixtures while Solar is metered,
@@ -132,7 +140,7 @@ public readonly struct SupportReading
     public float Bonus(SupportEffect effect)
     {
         if (Stone != null && effect.Stone != Stone) throw new ArgumentException(effect.Stone + " effect read from " + Stone + " support");
-        return (effect.Active ? Active : Passive) * effect.Cap;
+        return (effect.Active ? Active : Passive) * effect.Value;
     }
 
     public string Missing()
@@ -158,7 +166,7 @@ public static class FixtureSupport
     public static SupportReading Of(SupportStone stone, Room room)
     {
         if (stone.Kind != SupportKind.Room) throw new ArgumentException(stone + " is a ritual stone; read it at its altar");
-        return room?.Map == null ? SupportReading.Empty(stone) : room.Map.GetComponent<RoomSupportCache>().Read(stone, room);
+        return room?.Map == null ? SupportReading.Empty(stone) : MapState.Of<RoomSupportCache>(room.Map).Read(stone, room);
     }
 
     // A room stone reads the room of the thing. A ritual stone reads around the thing, which must be its altar,
@@ -197,6 +205,8 @@ public static class FixtureSupport
     public static PawnBonus Bonus(Pawn pawn, SupportEffect effect)
     {
         var stone = effect.Stone;
+        // Vitalite's own bed bonuses still apply when a room effect is off, so its formula decides for itself.
+        if (stone != SupportStone.Vitalite && !effect.On) return default;
         if (stone == SupportStone.Vitalite) return VitaliteBonus(pawn, effect);
         if (stone == SupportStone.Serenite) return SereniteBonus(pawn, effect);
         if (stone == SupportStone.Animastone) return AnimastoneBonus(pawn, effect);
@@ -209,10 +219,11 @@ public static class FixtureSupport
         var reading = Of(SupportStone.Vitalite, room);
         var props = bed?.TryGetComp<CompVitalite>()?.Props;
         bool isBed = props != null && props.category == FixtureCategory.None;
+        bool bedOn = isBed && Effects.VitaliteBedBonuses.On;
         return SupportCore.Vitalite(reading.Passive, reading.Active, Enclosed(room),
-            isBed ? props.healingBonus : 0, isBed ? props.immunityBonus : 0, isBed ? props.infectionPrevention : 0,
+            bedOn ? props.healingBonus : 0, bedOn ? props.immunityBonus : 0, bedOn ? props.infectionPrevention : 0,
             !isBed || (bed.TryGetComp<CompSolarToggle>()?.Permitted ?? true),
-            SupportEffect.VitaliteHealing.Cap, SupportEffect.VitaliteImmunity.Cap, SupportEffect.VitaliteInfection.Cap);
+            SupportEffect.VitaliteHealing.Value, SupportEffect.VitaliteImmunity.Value, SupportEffect.VitaliteInfection.Value);
     }
 
     private static PawnBonus VitaliteBonus(Pawn pawn, SupportEffect effect)
@@ -242,7 +253,7 @@ public static class FixtureSupport
             if (!ActiveEffectKind.Solar.Metered) support = Of(SupportStone.Serenite, pawn.GetRoom()).Active;
             else support = RoomSupportCache.Sleeper(pawn) is { powered: true } sleeper ? sleeper.primary : 0;
         }
-        return new PawnBonus(support, support * effect.Cap);
+        return new PawnBonus(support, support * effect.Value);
     }
 
     // The job check drops a pawn as soon as it stops meditating, rather than at the next cache interval.
@@ -250,6 +261,6 @@ public static class FixtureSupport
     {
         if (pawn.CurJobDef != JobDefOf.Meditate) return default;
         float support = RoomSupportCache.Meditator(pawn)?.primary ?? 0;
-        return new PawnBonus(support, support * effect.Cap);
+        return new PawnBonus(support, support * effect.Value);
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cudgel_Section>Dreadstone cudgel</Lumen_Cudgel_Section>
+	<Lumen_Cudgel_AgonyCap>Maximum agony stacks</Lumen_Cudgel_AgonyCap>
+	<Lumen_Cudgel_AgonyTicks>Agony duration after the last hit (ticks)</Lumen_Cudgel_AgonyTicks>
+	<Lumen_Collar_Section>Dreadstone collar</Lumen_Collar_Section>
+	<Lumen_Collar_Suppression>Slave suppression fall rate while worn (%)</Lumen_Collar_Suppression>
+	<Lumen_Collar_BreakFactor>Slave rebellion rarity multiplier while worn</Lumen_Collar_BreakFactor>
+	<Lumen_Knife_Section>Dark Stone ritual knife</Lumen_Knife_Section>
+	<Lumen_Knife_BlightCap>Maximum soul blight stacks</Lumen_Knife_BlightCap>
+	<Lumen_Knife_BlightTicks>Soul blight duration after the last hit (ticks)</Lumen_Knife_BlightTicks>
+	<Lumen_Knife_HarvestShare>Warp energy from an execution (% of a successful Harvest)</Lumen_Knife_HarvestShare>
+	<Lumen_Setting_LeaderQuality>Ritual quality bonus when the leader wields it (%)</Lumen_Setting_LeaderQuality>
+	<Lumen_Staff_Section>Lumenstone staff</Lumen_Staff_Section>
+	<Lumen_Weapon_Off>off in mod settings</Lumen_Weapon_Off>
+	<Lumen_Weapon_Equipped>equipped</Lumen_Weapon_Equipped>
+	<Lumen_Weapon_NotEquipped>not equipped</Lumen_Weapon_NotEquipped>
+	<Lumen_Weapon_Tooltip>The ritual leader must wield the matching stone weapon.</Lumen_Weapon_Tooltip>
+</LanguageData>

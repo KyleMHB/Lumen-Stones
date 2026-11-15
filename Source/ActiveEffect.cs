@@ -30,11 +30,11 @@ internal interface IDrainHost
 public sealed class ActiveEffectKind
 {
     public static readonly ActiveEffectKind Solar = new(ActiveEffectNetworks.Solar, "Solar", SolarRules.ToggledSignal, "UI/Commands/SolarActiveEffect",
-        "When off, only the passive effect works.", () => SolarRules.Enabled, () => SolarRules.Hysteresis, () => SolarRules.Visible,
+        "Lumen_ActiveEffect_SolarOff", () => SolarRules.Enabled, () => SolarRules.Hysteresis, () => SolarRules.Visible,
         map => SolarNetwork.For(map).Account);
 
     public static readonly ActiveEffectKind Warp = new(ActiveEffectNetworks.Warp, "Warp", WarpRules.ToggledSignal, "UI/Commands/WarpActiveEffect",
-        "When off, the fixture only gives light.", () => true, () => WarpRules.Hysteresis, () => true,
+        "Lumen_ActiveEffect_WarpOff", () => true, () => WarpRules.Hysteresis, () => true,
         map => WarpEnergyNetwork.For(map).Account);
 
     private readonly Func<bool> metered, visible;
@@ -60,12 +60,15 @@ public sealed class ActiveEffectKind
     public string Noun { get; }
     public string ToggledSignal { get; }
     public string IconPath { get; }
+    // Keyed.
     public string OffDescription { get; }
     public bool Metered => metered();
     public float ResumeAt => resumeAt();
     public bool Visible => visible();
     public string PoweredSignal => Noun + "Powered";
     public Texture2D Icon => icon ??= ContentFinder<Texture2D>.Get(IconPath);
+    // The Solar or the Warp form of a Keyed text.
+    public string Pick(string solarKey, string warpKey) => (Network == ActiveEffectNetworks.Solar ? solarKey : warpKey).Translate();
     public EnergyAccount For(Map map) => account(map);
 }
 
@@ -138,9 +141,9 @@ public sealed class EnergyAccount
 
 public abstract class CompProperties_ActiveEffect : CompProperties
 {
-    public string effect = "its active effect";
+    [MustTranslate] public string effect;
     // Replaces the default description when an effect needs a warning.
-    public string description;
+    [MustTranslate] public string description;
 }
 
 public class CompProperties_SolarToggle : CompProperties_ActiveEffect
@@ -190,10 +193,10 @@ public abstract class CompActiveEffect : ThingComp, IDrainHost
 
     public string Status => ActiveEffectCore.Status(on, Blocked, Account.Ledger) switch
     {
-        GateState.ToggledOff => "Toggled off",
-        GateState.Interrupted => "Interrupted (" + ActiveEffectInterruption.BlockedReason(parent, Kind.Network) + ")",
-        GateState.Powered => "Powered",
-        _ => "No " + Kind.Noun + " energy"
+        GateState.ToggledOff => "Lumen_ActiveEffect_ToggledOff".Translate(),
+        GateState.Interrupted => "Lumen_ActiveEffect_Interrupted".Translate(ActiveEffectInterruption.BlockedReason(parent, Kind.Network)),
+        GateState.Powered => "Lumen_ActiveEffect_Powered".Translate(),
+        _ => Kind.Pick("Lumen_ActiveEffect_NoSolar", "Lumen_ActiveEffect_NoWarp")
     };
 
     bool IDrainHost.Running => Running;
@@ -231,8 +234,8 @@ public abstract class CompActiveEffect : ThingComp, IDrainHost
     public override string CompInspectStringExtra()
     {
         if (!Kind.Visible || !parent.Spawned) return null;
-        string text = Kind.Noun + " active effect: " + Status;
-        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\nStabilized by: Lunite stabilizer" : text;
+        string text = Kind.Pick("Lumen_ActiveEffect_SolarStatus", "Lumen_ActiveEffect_WarpStatus").Formatted(Status).ToString();
+        return LuniteLinkTracker.For(parent.Map).StabilizerOf(parent) != null ? text + "\n" + "Lumen_ActiveEffect_Stabilized".Translate() : text;
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -240,8 +243,9 @@ public abstract class CompActiveEffect : ThingComp, IDrainHost
         if (!Kind.Visible) yield break;
         yield return new Command_Toggle
         {
-            defaultLabel = Kind.Noun + " active effect",
-            defaultDesc = Props.description ?? "Spend " + Kind.Noun + " energy on " + Props.effect + ". " + Kind.OffDescription,
+            defaultLabel = Kind.Pick("Lumen_ActiveEffect_SolarLabel", "Lumen_ActiveEffect_WarpLabel"),
+            defaultDesc = Props.description ?? Kind.Pick("Lumen_ActiveEffect_SolarDesc", "Lumen_ActiveEffect_WarpDesc")
+                .Formatted(Props.effect ?? "Lumen_ActiveEffect_DefaultEffect".Translate()) + " " + Kind.OffDescription.Translate(),
             icon = Kind.Icon,
             isActive = () => on,
             toggleAction = () => { on = !on; parent.BroadcastCompSignal(Kind.ToggledSignal); }

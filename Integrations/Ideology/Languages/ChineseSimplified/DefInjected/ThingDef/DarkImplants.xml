@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteImplant.label>血晶石植入物</KM_SanguiniteImplant.label>
+	<KM_SanguiniteImplant.description>一块嵌在心脏旁的血晶石碎片。经束缚唤醒后，伤口出血大大减少，旧疤痕也会慢慢愈合，但身体总是饥饿。</KM_SanguiniteImplant.description>
+	<KM_DreadstoneImplant.label>恐惧石植入物</KM_DreadstoneImplant.label>
+	<KM_DreadstoneImplant.description>一块嵌在心脏旁的恐惧石碎片。经束缚唤醒后，宿主被征召或战斗时，附近的敌人会感到恐惧，但其他人会觉得宿主冷漠难处。</KM_DreadstoneImplant.description>
+	<KM_HollowstoneImplant.label>空虚石植入物</KM_HollowstoneImplant.label>
+	<KM_HollowstoneImplant.description>一块嵌在心脏旁的空虚石碎片。经束缚唤醒后，疼痛消退，心神稳定，但几乎再没有什么能带来快乐。</KM_HollowstoneImplant.description>
+	<KM_HollowstoneArm.label>空虚石手臂</KM_HollowstoneArm.label>
+	<KM_HollowstoneArm.description>一条由空虚石晶体生长而成的手臂。经束缚唤醒后，它远比天生手臂强壮，永远不会疼痛，但会削弱娱乐的乐趣。</KM_HollowstoneArm.description>
+	<KM_HollowstoneLeg.label>空虚石腿</KM_HollowstoneLeg.label>
+	<KM_HollowstoneLeg.description>一条由空虚石晶体生长而成的腿。经束缚唤醒后，它远比天生的腿强壮，永远不会疼痛，但会削弱娱乐的乐趣。</KM_HollowstoneLeg.description>
+	<KM_DreadstoneJaw.label>恐惧石下颌</KM_DreadstoneJaw.label>
+	<KM_DreadstoneJaw.description>一副由恐惧石晶体生长而成的下颌。经束缚唤醒后，它远比天生的下颌强壮，战斗中靠近宿主的敌人会感到恐惧，但其他人会觉得宿主冷漠难处。</KM_DreadstoneJaw.description>
+	<KM_SanguiniteHeart.label>血晶石心脏</KM_SanguiniteHeart.label>
+	<KM_SanguiniteHeart.description>一颗由血晶石晶体生长而成的心脏。经束缚唤醒后，它远比天生心脏跳动有力，并能减缓出血，但身体需要更多食物。</KM_SanguiniteHeart.description>
+	<KM_TwinstoneCell.label>双生石电池</KM_TwinstoneCell.label>
+	<KM_TwinstoneCell.description>一个由太阳石和血石组成的密封电池，以两个独立的能量池储存太阳能和扭曲能量，供离家的植入者使用。它从家乡定居点的剩余能量中缓慢充能，在其他任何地方都能缓解其所在地图或商队中所有植入者的副作用。</KM_TwinstoneCell.description>
+</LanguageData>

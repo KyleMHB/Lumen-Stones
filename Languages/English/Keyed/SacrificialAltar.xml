@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Altar_Crystallize>Crystallize Dark Stone</Lumen_Altar_Crystallize>
+	<Lumen_Altar_CrystallizeInput>Lumenstone input</Lumen_Altar_CrystallizeInput>
+	<Lumen_Altar_CrystallizePoor>Poor outcome conversion share (%)</Lumen_Altar_CrystallizePoor>
+	<Lumen_Altar_CrystallizeSuccess>Successful outcome conversion share (%)</Lumen_Altar_CrystallizeSuccess>
+	<Lumen_Altar_CrystallizeExceptional>Exceptional outcome conversion share (%)</Lumen_Altar_CrystallizeExceptional>
+	<Lumen_Setting_CooldownDays>Cooldown (days)</Lumen_Setting_CooldownDays>
+	<Lumen_Altar_Harvest>Harvest Warp Energy</Lumen_Altar_Harvest>
+	<Lumen_Altar_HarvestPoor>Poor outcome Warp energy</Lumen_Altar_HarvestPoor>
+	<Lumen_Altar_HarvestSuccess>Successful outcome Warp energy</Lumen_Altar_HarvestSuccess>
+	<Lumen_Altar_HarvestExceptional>Exceptional outcome Warp energy</Lumen_Altar_HarvestExceptional>
+	<Lumen_Altar_LinkSection>Link and victims</Lumen_Altar_LinkSection>
+	<Lumen_Altar_LinkRadius>Altar to battery link radius (tiles)</Lumen_Altar_LinkRadius>
+	<Lumen_Altar_StatusSlave>Slave victim factor multiplier</Lumen_Altar_StatusSlave>
+	<Lumen_Altar_StatusColonist>Colonist victim factor multiplier</Lumen_Altar_StatusColonist>
+	<Lumen_Section_RitualSupport>Ritual support</Lumen_Section_RitualSupport>
+	<Lumen_Setting_SupportQualityCap>Fixture support quality bonus at full support (%)</Lumen_Setting_SupportQualityCap>
+	<Lumen_Altar_SupportYieldCap>Fixture support conversion and harvest bonus at full support (%)</Lumen_Altar_SupportYieldCap>
+	<Lumen_Setting_SupportRadius>Fixture support radius (tiles)</Lumen_Setting_SupportRadius>
+	<Lumen_Altar_Building>Sacrificial altar</Lumen_Altar_Building>
+	<Lumen_Setting_LumenstoneQuantity>Lumenstone quantity</Lumen_Setting_LumenstoneQuantity>
+	<Lumen_Setting_StoneBlockQuantity>Stone block quantity</Lumen_Setting_StoneBlockQuantity>
+	<Lumen_Altar_VictimLow>Victim factor at value 0</Lumen_Altar_VictimLow>
+	<Lumen_Altar_VictimMidValue>Value of the middle point (market value x status)</Lumen_Altar_VictimMidValue>
+	<Lumen_Altar_VictimMid>Victim factor at the middle point</Lumen_Altar_VictimMid>
+	<Lumen_Altar_VictimHighValue>Value of the top point (market value x status)</Lumen_Altar_VictimHighValue>
+	<Lumen_Altar_VictimHigh>Victim factor at and above the top point</Lumen_Altar_VictimHigh>
+	<Lumen_Altar_NeedsBattery>Requires a Bloodstone battery within {0} tiles of the altar.</Lumen_Altar_NeedsBattery>
+	<Lumen_Altar_NeedsLumenstone>Requires {0} accessible, unforbidden Lumenstone.</Lumen_Altar_NeedsLumenstone>
+	<Lumen_Altar_CrystallizeOff>Crystallize Dark Stone: off in mod settings.</Lumen_Altar_CrystallizeOff>
+	<Lumen_Altar_CrystallizeReady>Crystallize Dark Stone ready.</Lumen_Altar_CrystallizeReady>
+	<Lumen_Altar_HarvestOff>Harvest Warp Energy: off in mod settings.</Lumen_Altar_HarvestOff>
+	<Lumen_Altar_HarvestReady>Harvest Warp Energy ready.</Lumen_Altar_HarvestReady>
+	<Lumen_Altar_Batteries>Batteries in range: {0} ({1} spare capacity)</Lumen_Altar_Batteries>
+	<Lumen_Altar_Fixtures>Dark Stone fixtures: {0}</Lumen_Altar_Fixtures>
+	<Lumen_Altar_HarvestDesc>Sacrifice a prisoner, slave or colonist to charge Bloodstone batteries within {0} tiles. Output is {1}/{2}/{3} Warp energy by outcome, scaled by the victim's value and status. Space in range: {4}; any excess is lost. Recovers for {5} hours.</Lumen_Altar_HarvestDesc>
+	<Lumen_Altar_CrystallizeDesc>Sacrifice a prisoner, slave or colonist to convert {0} Lumenstone into Dark Stone by outcome and victim. Unconverted Lumenstone is returned. Recovers for {1} days.</Lumen_Altar_CrystallizeDesc>
+	<Lumen_Altar_SupportDesc>{0}. Dark Stone fixtures within {1} tiles in this room raise quality and output.</Lumen_Altar_SupportDesc>
+	<Lumen_Altar_Raise>Raise a work husk</Lumen_Altar_Raise>
+	<Lumen_Altar_RaiseDesc>Sacrifice a prisoner, slave or colonist to raise them as a work husk bound to a Hollowstone pylon. Costs {0} Warp energy, refunded if the ceremony is cancelled. The husk costs {1} Warp energy a day. Recovers for {2} hours.</Lumen_Altar_RaiseDesc>
+	<Lumen_Altar_VictimRole>Must be a prisoner, slave or colonist.</Lumen_Altar_VictimRole>
+	<Lumen_Altar_NotLeader>Cannot be the ceremony leader.</Lumen_Altar_NotLeader>
+	<Lumen_Altar_SupportNote>(nearby Dark Stone fixtures: +{0})</Lumen_Altar_SupportNote>
+	<Lumen_Altar_CrystallizeResult>The ceremony turned {0} of {1} Lumenstone into Dark Stone and returned {2} Lumenstone{3}. Crystallizing now recovers for {4} days.</Lumen_Altar_CrystallizeResult>
+	<Lumen_Altar_HarvestResult>The ceremony harvested {0} Warp energy: {1} stored in batteries and {2} lost{3}. Harvesting now recovers for {4} hours.</Lumen_Altar_HarvestResult>
+	<Lumen_Altar_Free>{0} free</Lumen_Altar_Free>
+	<Lumen_Altar_FreeTooltip>Spare capacity in Bloodstone batteries within {0} tiles. A harvest larger than this loses the excess, and still goes ahead.</Lumen_Altar_FreeTooltip>
+</LanguageData>

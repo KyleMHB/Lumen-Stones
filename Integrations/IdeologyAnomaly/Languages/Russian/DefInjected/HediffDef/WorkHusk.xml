@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_WorkHusk.label>рабочая оболочка</KM_WorkHusk.label>
+	<KM_WorkHusk.description>Тело, которое движется на энергии варпа. Не чувствует боли. Без энергии падает, а когда энергия возвращается, встаёт.</KM_WorkHusk.description>
+	<KM_WorkHusk.stages.0.label>привязана</KM_WorkHusk.stages.0.label>
+	<KM_WorkHusk.stages.1.label>рухнула</KM_WorkHusk.stages.1.label>
+</LanguageData>

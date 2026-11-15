@@ -3,7 +3,7 @@
   <ThingDef ParentName="ApparelBase">
     <defName>KM_VerditeBracer</defName>
     <label>living vine bracer</label>
-    <description>A Verdite crystal bracer wrapped in living vines. While worn in the utility slot, reduces hunger rate by 33 percentage points, even in darkness. It competes with shields and pendants.</description>
+    <description>A Verdite crystal bracer bound in living vines that feed on the wearer's warmth instead of their stomach. Whoever wears it finds they need far less to eat.\n\nWhile worn in the utility slot, reduces hunger rate by 33 percentage points. Shares the belt slot with the Aegite shield, Aegite shield charm and Serenite pendant. Crafted at a smithy from 100 Verdite and 20 steel after Verdite growth, with Crafting 6.</description>
     <graphicData>
       <texPath>Things/Item/Equipment/Misc/LivingVineBracer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -62,7 +62,7 @@
   <ThingDef ParentName="ApparelBase">
     <defName>KM_VitaliteCirclet</defName>
     <label>Vitalite circlet</label>
-    <description>A steel circlet set with pale Vitalite. While worn, adds 15 percentage points to immunity gain speed and 10 percentage points to medical tend quality.</description>
+    <description>A steel circlet set with pale Vitalite that rests against the brow. Healers who wear one say their hands feel steadier.\n\nWhile worn, adds 15 percentage points to immunity gain speed and 10 percentage points to medical tend quality. It needs no Solar energy. Crafted at a smithy from 100 Vitalite and 20 steel after Vitalite restoration, with Crafting 6.</description>
     <graphicData>
       <texPath>Things/Item/Equipment/Apparel/VitaliteCirclet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -121,7 +121,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
     <defName>KM_LumenstoneStaff</defName>
     <label>Lumenstone staff</label>
-    <description>A steel quarterstaff with a Lumenstone striking core. Adds 15 percentage points to social impact and conversion power, and 8 to melee dodge before the native dodge curve. A ritual leader wielding it adds 10 percentage points to Lumenstone ritual quality.</description>
+    <description>A steel quarterstaff with a Lumenstone striking core. Its faint light draws listeners in, and its swing is harder to read than it looks.\n\nWhile equipped, adds 15 percentage points to social impact and 8 to melee dodge before the native dodge curve. With Ideology, it also adds 15 percentage points to conversion power, and a ritual leader wielding it adds 10 percentage points to Lumenstone ritual quality. Crafted from 100 Lumenstone and 20 steel after Smithing, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <smeltable>false</smeltable>
@@ -130,6 +130,8 @@
       <Mass>1.5</Mass>
     </statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/LumenstoneStaff</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.2,1.2)</drawSize>

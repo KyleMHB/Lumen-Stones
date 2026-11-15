@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_VerditeChewed.label>Жевал вердит</KM_VerditeChewed.label>
+	<KM_VerditeChewed.description>Разжёванные кристаллы вердита вдвое замедляют голод. Их острые края ранят дёсны, из-за чего труднее говорить и общаться.</KM_VerditeChewed.description>
+	<KM_VerditeChewed.stages.0.label>кровоточащие дёсны</KM_VerditeChewed.stages.0.label>
+</LanguageData>

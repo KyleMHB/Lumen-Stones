@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Twinstone_Solar>太阳能：{0} / {1}</Lumen_Twinstone_Solar>
+	<Lumen_Twinstone_Warp>扭曲能量：{0} / {1}</Lumen_Twinstone_Warp>
+	<Lumen_Twinstone_Charging>正从本定居点的网络充能。</Lumen_Twinstone_Charging>
+	<Lumen_Twinstone_NoPawns>这里没有需要供能的植入者。</Lumen_Twinstone_NoPawns>
+	<Lumen_Twinstone_SolarLastsOne>太阳能可供{1}个部件使用{0}天</Lumen_Twinstone_SolarLastsOne>
+	<Lumen_Twinstone_SolarLastsMany>太阳能可供{1}个部件使用{0}天</Lumen_Twinstone_SolarLastsMany>
+	<Lumen_Twinstone_WarpLastsOne>扭曲能量可供{1}个部件使用{0}天</Lumen_Twinstone_WarpLastsOne>
+	<Lumen_Twinstone_WarpLastsMany>扭曲能量可供{1}个部件使用{0}天</Lumen_Twinstone_WarpLastsMany>
+</LanguageData>

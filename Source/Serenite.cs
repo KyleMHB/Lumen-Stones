@@ -12,18 +12,18 @@ public class CompProperties_Serenite : CompProperties_Fixture, ITunableProps
     public CompProperties_Serenite() => compClass = typeof(CompSerenite);
 
     public void DeclareTunables(TunableScope s, Def owner) =>
-        s.Add(owner.defName + ".support", "Category room contribution (%)", weight, v => weight = v, Limit.Percent());
+        s.Add(owner.defName + ".support", "Lumen_Setting_CategoryContribution".Translate(), weight, v => weight = v, Limit.Percent());
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string room = "Scales with room support. Applies to pawns in the same enclosed room.";
-        string drain = SolarRules.Enabled ? $" Costs {SupportStone.Serenite.OccupantDrain:0.##} Solar energy a day for each sleeper." : "";
+        string room = "Lumen_Serenite_RoomRule".Translate();
+        string drain = SolarRules.Enabled ? " " + "Lumen_Serenite_SleeperDrain".Translate(SupportStone.Serenite.OccupantDrain.ToString("0.##")) : "";
         return new InfoStats()
-            .Add("Support weight", weight.ToStringPercent(), "This fixture's share of Serenite room support. " + InfoStats.SupportRule)
-            .Add("Comfort at full support", "+" + SupportEffect.SereniteComfort.Cap.ToString("0.00"), "Added to the comfort of existing beds and seats. " + room)
-            .Add("Mood at full support", "+" + SupportEffect.SereniteMood.Cap.ToString("0.#"), "A mood bonus while in the room. " + room)
-            .Add(InfoStats.Solar("Sleep restoration at full support"), InfoStats.Plus(SupportEffect.SereniteSleep.Cap),
-                "Faster rest while sleeping, and a rested mood memory for a while after waking. Scales with the room support of fixtures whose active effect is on." + InfoStats.SolarRule + drain)
+            .Add("Lumen_Info_SupportWeight".Translate(), weight.ToStringPercent(), "Lumen_Serenite_SupportWeightDesc".Translate() + " " + InfoStats.SupportRule)
+            .Add(Effects.SereniteRoomComfort, "Lumen_Serenite_Comfort".Translate(), "+" + SupportEffect.SereniteComfort.Cap.ToString("0.00"), "Lumen_Serenite_ComfortDesc".Translate() + " " + room)
+            .Add(Effects.SereniteRoomMood, "Lumen_Serenite_Mood".Translate(), "+" + SupportEffect.SereniteMood.Cap.ToString("0.#"), "Lumen_Serenite_MoodDesc".Translate() + " " + room)
+            .Add(Effects.SereniteSleep, InfoStats.Solar("Lumen_Serenite_Sleep".Translate()), InfoStats.Plus(SupportEffect.SereniteSleep.Cap),
+                "Lumen_Serenite_SleepDesc".Translate() + InfoStats.SolarRule + drain)
             .Rows;
     }
 }
@@ -37,21 +37,8 @@ public class CompSerenite : CompRoomFixture
     public override string CompInspectStringExtra()
     {
         var reading = FixtureSupport.Of(SupportStone.Serenite, parent);
-        return $"Room support: {reading.Passive.ToStringPercent()}. Comfort +{reading.Bonus(SupportEffect.SereniteComfort):0.00}, mood +{reading.Bonus(SupportEffect.SereniteMood):0.0}, sleep restoration +{reading.Bonus(SupportEffect.SereniteSleep).ToStringPercent()}";
-    }
-
-    public override void CompTick()
-    {
-        if (!parent.Spawned || !parent.IsHashIntervalTick(300) || parent.Position.Fogged(parent.Map) || !CompAnimationToggle.On(parent)) return;
-        var mote = FixtureMotes.Make("KM_Mote_SerenitePulse", parent.Map);
-        if (mote == null) return;
-        mote.exactPosition = parent.DrawPos + parent.def.graphicData.drawOffset;
-        mote.exactPosition.y = AltitudeLayer.MoteOverhead.AltitudeFor();
-        mote.Scale = 0.08f;
-        mote.instanceColor = new Color(0.78f, 0.62f, 1f);
-        mote.airTimeLeft = 1.8f;
-        mote.SetVelocity(0, 0.12f);
-        GenSpawn.Spawn(mote, parent.Position, parent.Map);
+        return "Lumen_Serenite_Inspect".Translate(reading.Passive.ToStringPercent(), reading.Bonus(SupportEffect.SereniteComfort).ToString("0.00"),
+            reading.Bonus(SupportEffect.SereniteMood).ToString("0.0"), reading.Bonus(SupportEffect.SereniteSleep).ToStringPercent());
     }
 }
 
@@ -76,7 +63,7 @@ public class StatPart_Serenite : StatPart
     public override string ExplanationPart(StatRequest req)
     {
         float bonus = Bonus(req);
-        return bonus > 0 ? "Serenite room support: +" + (comfort ? bonus.ToString("0.00") : bonus.ToStringPercent()) : null;
+        return bonus > 0 ? "Lumen_Serenite_RoomSupport".Translate(comfort ? bonus.ToString("0.00") : bonus.ToStringPercent()).ToString() : null;
     }
 }
 
@@ -104,6 +91,7 @@ public class SereniteSleepState : MapComponent
 
     public override void MapComponentTick()
     {
+        if (supportedSleepers.Count == 0) return;
         for (int i = supportedSleepers.Count - 1; i >= 0; i--)
         {
             var pawn = supportedSleepers[i];
@@ -122,24 +110,28 @@ public class SereniteSleepState : MapComponent
 [HarmonyPatch(typeof(Toils_LayDown), "ApplyBedRelatedEffects")]
 public static class SereniteSupportedSleep
 {
-    public static void Postfix(Pawn p, Building_Bed bed, bool asleep, bool gainRest)
+    // Runs for every sleeping pawn. A supported sleep only has to be noticed once before the pawn wakes, so it is
+    // sampled once a second, and only on maps that have a Serenite fixture. __4 is the tick delta.
+    public static void Postfix(Pawn p, Building_Bed bed, bool asleep, bool gainRest, int __4)
     {
-        if (asleep && gainRest && bed != null && FixtureSupport.Bonus(p, SupportEffect.SereniteSleep).Support > 0)
-            p.Map.GetComponent<SereniteSleepState>().ObserveSleep(p);
+        if (!asleep || !gainRest || bed == null || !p.IsHashIntervalTick(60, __4)) return;
+        if (MapState.Of<RoomSupportCache>(p.Map)?.Any(SupportStone.Serenite) != true) return;
+        if (FixtureSupport.Bonus(p, SupportEffect.SereniteSleep).Support > 0)
+            MapState.Of<SereniteSleepState>(p.Map).ObserveSleep(p);
     }
 }
 
 public static class SereniteTunables
 {
     internal static void DeclareSolarTunables(TunableScope s) =>
-        s.In("Solar energy").Add("Serenite.sleeperSolarDrain", "Solar energy per day for each supported sleeper", SupportStone.Serenite.OccupantDrain,
+        s.In("Lumen_Section_SolarEnergy".Translate()).Add("Serenite.sleeperSolarDrain", "Lumen_Serenite_SleeperDrainSetting".Translate(), SupportStone.Serenite.OccupantDrain,
             v => SupportStone.Serenite.OccupantDrain = v);
 
     internal static void DeclareRoomTunables(TunableScope s)
     {
-        var room = s.In("Room support");
-        room.Add("Serenite.sleepCap", "Sleep restoration cap (%)", SupportEffect.SereniteSleep.Cap, v => SupportEffect.SereniteSleep.Cap = v, Limit.Percent(10));
-        room.Add("Serenite.comfortCap", "Bed/seat Comfort cap", SupportEffect.SereniteComfort.Cap, v => SupportEffect.SereniteComfort.Cap = v, Limit.Number(max: 10));
-        room.Add("Serenite.moodCap", "Room Mood cap", SupportEffect.SereniteMood.Cap, v => SupportEffect.SereniteMood.Cap = v, Limit.Number(max: 100));
+        var room = s.In("Lumen_Section_RoomSupport".Translate());
+        room.Add("Serenite.sleepCap", "Lumen_Serenite_SleepCap".Translate(), SupportEffect.SereniteSleep.Cap, v => SupportEffect.SereniteSleep.Cap = v, Limit.Percent(10));
+        room.Add("Serenite.comfortCap", "Lumen_Serenite_ComfortCap".Translate(), SupportEffect.SereniteComfort.Cap, v => SupportEffect.SereniteComfort.Cap = v, Limit.Number(max: 10));
+        room.Add("Serenite.moodCap", "Lumen_Serenite_MoodCap".Translate(), SupportEffect.SereniteMood.Cap, v => SupportEffect.SereniteMood.Cap = v, Limit.Number(max: 100));
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Attunement_Name>调谐</Lumen_Attunement_Name>
+	<Lumen_Binding_Name>束缚</Lumen_Binding_Name>
+	<Lumen_Attunement_NeedsAltar>需要一座玩家拥有的献祭祭坛。</Lumen_Attunement_NeedsAltar>
+	<Lumen_Attunement_Underway>本定居点已有一场调谐正在进行。</Lumen_Attunement_Underway>
+	<Lumen_Binding_Underway>本定居点已有一场束缚正在进行。</Lumen_Binding_Underway>
+	<Lumen_Attunement_ResearchFallback>调谐</Lumen_Attunement_ResearchFallback>
+	<Lumen_Attunement_NeedsRecipient>需要一名带有休眠光明植入物或义肢的殖民者、囚犯或奴隶。</Lumen_Attunement_NeedsRecipient>
+	<Lumen_Binding_NeedsRecipient>需要一名带有休眠黑暗植入物或义肢的殖民者、囚犯或奴隶。</Lumen_Binding_NeedsRecipient>
+	<Lumen_Attunement_NothingWoke>{0}身上没有任何部件苏醒。这些部件仍处于休眠状态，可以再次尝试。</Lumen_Attunement_NothingWoke>
+	<Lumen_Attunement_WokeOne>{0}的{1}现已激活。</Lumen_Attunement_WokeOne>
+	<Lumen_Attunement_WokeMany>{0}的{1}现已激活。</Lumen_Attunement_WokeMany>
+	<Lumen_Attunement_Desc>唤醒休眠的光明植入物和义肢。调谐者为一名殖民者、囚犯或奴隶施术。调谐者的医疗技能、参与者和仪式支援会提高品质。结果差时不会唤醒任何部件，成功唤醒1个部件，良好唤醒2个，卓越唤醒3个且不会产生调谐不适。每个定居点需恢复{0}天。</Lumen_Attunement_Desc>
+	<Lumen_Binding_Desc>唤醒休眠的黑暗植入物和义肢。调谐者为一名殖民者、囚犯或奴隶施术。调谐者的医疗技能、参与者和仪式支援会提高品质。结果差时不会唤醒任何部件，成功唤醒1个部件，良好唤醒2个，卓越唤醒3个且不会产生调谐不适。每个定居点需恢复{0}天。</Lumen_Binding_Desc>
+	<Lumen_Binding_SeedNote>休眠的恐惧石种子随时可以被束缚。只唤醒种子不会开始恢复期，也不会导致不适。</Lumen_Binding_SeedNote>
+	<Lumen_Attunement_JobLabel>调谐一个部件</Lumen_Attunement_JobLabel>
+	<Lumen_Attunement_JobDesc>调谐者和接受者在此圆环处花费{0}小时，唤醒一个休眠的光明植入物或义肢，之后会产生调谐不适。每个定居点需恢复{1}天。</Lumen_Attunement_JobDesc>
+	<Lumen_Attunement_RecipientRole>必须是带有休眠光明部件的殖民者、囚犯或奴隶。</Lumen_Attunement_RecipientRole>
+	<Lumen_Binding_RecipientRole>必须是带有休眠黑暗部件的殖民者、囚犯或奴隶。</Lumen_Binding_RecipientRole>
+	<Lumen_Attunement_NotAttuner>不能是调谐者。</Lumen_Attunement_NotAttuner>
+	<Lumen_Attunement_Recovers>本定居点的调谐现在需恢复{0}天。</Lumen_Attunement_Recovers>
+	<Lumen_Binding_Recovers>本定居点的束缚现在需恢复{0}天。</Lumen_Binding_Recovers>
+	<Lumen_Attunement_AttunerOption>{0}（{1} {2}）</Lumen_Attunement_AttunerOption>
+	<Lumen_Attunement_NoAttuner>没有殖民者能为{0}进行调谐。</Lumen_Attunement_NoAttuner>
+</LanguageData>

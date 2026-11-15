@@ -60,6 +60,8 @@
     <label>Bloodstone vessel</label>
     <description>A small Bloodstone vessel, warm as skin.\n\nStores Warp energy harvested at a nearby Sacrificial altar. Stored energy is lost if it is destroyed or deconstructed. It cannot be moved, and loses no charge over time.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.067)</drawOffset>
       <texPath>Things/Building/Dark/BloodstoneVessel</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
@@ -93,7 +95,8 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(2.4,2.4)</drawSize>
-      <drawOffset>(0,0,0.5)</drawOffset>
+      <!-- 0.22 puts the base 0.1 cell above the footprint's south edge, level with the 1x1 fixtures beside it. -->
+      <drawOffset>(0,0,0.22)</drawOffset>
     </graphicData>
     <size>(2,2)</size>
     <statBases>

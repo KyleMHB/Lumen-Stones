@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementCircle.comps.0.label>навык медицины ({PAWN_labelShort})</KM_AttunementCircle.comps.0.label>
+	<KM_AttunementCircle.comps.0.labelAbstract>навык медицины настройщика</KM_AttunementCircle.comps.0.labelAbstract>
+	<KM_AttunementCircle.comps.1.label>участники</KM_AttunementCircle.comps.1.label>
+	<KM_AttunementCircle.outcomeChances.0.label>плохо</KM_AttunementCircle.outcomeChances.0.label>
+	<KM_AttunementCircle.outcomeChances.0.description>Кристалл не проснулся. Ничего не пробудилось; попробовать снова можно после перезарядки.</KM_AttunementCircle.outcomeChances.0.description>
+	<KM_AttunementCircle.outcomeChances.1.label>успешно</KM_AttunementCircle.outcomeChances.1.label>
+	<KM_AttunementCircle.outcomeChances.1.description>Пробудилась одна спящая часть.</KM_AttunementCircle.outcomeChances.1.description>
+	<KM_AttunementCircle.outcomeChances.2.label>хорошо</KM_AttunementCircle.outcomeChances.2.label>
+	<KM_AttunementCircle.outcomeChances.2.description>Пробудились две спящие части.</KM_AttunementCircle.outcomeChances.2.description>
+	<KM_AttunementCircle.outcomeChances.3.label>исключительно</KM_AttunementCircle.outcomeChances.3.label>
+	<KM_AttunementCircle.outcomeChances.3.description>Чисто пробудились три спящие части, без недомогания от настройки.</KM_AttunementCircle.outcomeChances.3.description>
+	<KM_AttunementCircle.description>Церемония у люменового ритуального круга, пробуждающая спящие светлые импланты и протезы. Сколько пробудится, решают навык медицины настройщика и участники.</KM_AttunementCircle.description>
+	<KM_AttunementAltar.outcomeChances.0.label>плохо</KM_AttunementAltar.outcomeChances.0.label>
+	<KM_AttunementAltar.outcomeChances.0.description>Кристалл не проснулся. Ничего не пробудилось; попробовать снова можно после перезарядки.</KM_AttunementAltar.outcomeChances.0.description>
+	<KM_AttunementAltar.outcomeChances.1.label>успешно</KM_AttunementAltar.outcomeChances.1.label>
+	<KM_AttunementAltar.outcomeChances.1.description>Пробудилась одна спящая часть.</KM_AttunementAltar.outcomeChances.1.description>
+	<KM_AttunementAltar.outcomeChances.2.label>хорошо</KM_AttunementAltar.outcomeChances.2.label>
+	<KM_AttunementAltar.outcomeChances.2.description>Пробудились две спящие части.</KM_AttunementAltar.outcomeChances.2.description>
+	<KM_AttunementAltar.outcomeChances.3.label>исключительно</KM_AttunementAltar.outcomeChances.3.label>
+	<KM_AttunementAltar.outcomeChances.3.description>Чисто пробудились три спящие части, без недомогания от настройки.</KM_AttunementAltar.outcomeChances.3.description>
+	<KM_AttunementAltar.description>Церемония у люменитового алтаря, пробуждающая спящие светлые импланты и протезы. Сколько пробудится, решают навык медицины настройщика, участники, комната и люменитовые светильники.</KM_AttunementAltar.description>
+	<KM_AttunementAltar.comps.0.label>навык медицины ({PAWN_labelShort})</KM_AttunementAltar.comps.0.label>
+	<KM_AttunementAltar.comps.0.labelAbstract>навык медицины настройщика</KM_AttunementAltar.comps.0.labelAbstract>
+	<KM_AttunementAltar.comps.1.label>участники</KM_AttunementAltar.comps.1.label>
+	<KM_AttunementAltar.comps.2.label>впечатляющность комнаты</KM_AttunementAltar.comps.2.label>
+	<KM_AttunementAltar.comps.3.label>люменитовые светильники</KM_AttunementAltar.comps.3.label>
+	<KM_Binding.outcomeChances.0.label>плохо</KM_Binding.outcomeChances.0.label>
+	<KM_Binding.outcomeChances.0.description>Кристалл не проснулся. Ничего не пробудилось; попробовать снова можно после перезарядки.</KM_Binding.outcomeChances.0.description>
+	<KM_Binding.outcomeChances.1.label>успешно</KM_Binding.outcomeChances.1.label>
+	<KM_Binding.outcomeChances.1.description>Пробудилась одна спящая часть.</KM_Binding.outcomeChances.1.description>
+	<KM_Binding.outcomeChances.2.label>хорошо</KM_Binding.outcomeChances.2.label>
+	<KM_Binding.outcomeChances.2.description>Пробудились две спящие части.</KM_Binding.outcomeChances.2.description>
+	<KM_Binding.outcomeChances.3.label>исключительно</KM_Binding.outcomeChances.3.label>
+	<KM_Binding.outcomeChances.3.description>Чисто пробудились три спящие части, без недомогания от настройки.</KM_Binding.outcomeChances.3.description>
+	<KM_Binding.description>Церемония на жертвенном алтаре, пробуждающая спящие тёмные импланты и протезы. Сколько пробудится, решают навык медицины настройщика, участники, комната и светильники из тёмного камня.</KM_Binding.description>
+	<KM_Binding.comps.0.label>навык медицины ({PAWN_labelShort})</KM_Binding.comps.0.label>
+	<KM_Binding.comps.0.labelAbstract>навык медицины настройщика</KM_Binding.comps.0.labelAbstract>
+	<KM_Binding.comps.1.label>участники</KM_Binding.comps.1.label>
+	<KM_Binding.comps.2.label>впечатляющность комнаты</KM_Binding.comps.2.label>
+	<KM_Binding.comps.3.label>светильники из тёмного камня</KM_Binding.comps.3.label>
+</LanguageData>

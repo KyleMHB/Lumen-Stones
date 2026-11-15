@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_WorkHusk.label>рабочая оболочка</KM_WorkHusk.label>
+	<KM_WorkHusk.description>Принесённый в жертву человек, опустошённый пустокамнем и движимый энергией варпа. Внутри не осталось ничего, что могло бы возразить.\n\nПривязана к пилону из пустокамня. Без отдыха переносит грузы и убирает, может быть призвана сражаться голыми руками и падает, если её пилон теряет энергию.</KM_WorkHusk.description>
+	<KM_WorkHusk.deathLetter>Одна из ваших рабочих оболочек пала.</KM_WorkHusk.deathLetter>
+	<KM_WorkHusk.deathLetterExtra>Её пилон свободен для новой привязки.</KM_WorkHusk.deathLetterExtra>
+	<KM_WorkHusk.tools.0.label>левый кулак</KM_WorkHusk.tools.0.label>
+	<KM_WorkHusk.tools.1.label>правый кулак</KM_WorkHusk.tools.1.label>
+</LanguageData>

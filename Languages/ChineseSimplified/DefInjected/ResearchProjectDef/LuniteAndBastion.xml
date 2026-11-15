@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteStabilization.label>月石稳定</KM_LuniteStabilization.label>
+	<KM_LuniteStabilization.description>学习将太阳石浸入月光，并把成品放在装置旁，让它在天象异常时仍能运作。\n\n解锁在流明仪式圈和流明石祭坛进行月石转化，以及月石稳定器。</KM_LuniteStabilization.description>
+	<KM_AegiteBastion.label>庇护石堡垒</KM_AegiteBastion.label>
+	<KM_AegiteBastion.description>学习将庇护石守护与日光本身相连，并将其升起为覆盖整个殖民地的护罩。\n\n解锁庇护石护盾投射器，它能阻挡敌方弹药、迫击炮弹和轰炸，并碾碎降落在其中的敌方空投舱和虫巢。</KM_AegiteBastion.description>
+</LanguageData>

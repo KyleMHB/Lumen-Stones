@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-  <Operation Class="PatchOperationAdd">
+  <Operation Class="PatchOperationConditional">
     <xpath>Defs/StatDef[defName="InjuryHealingFactor"]/parts</xpath>
-    <value><li Class="LumenStones.StatPart_Vitalite" /></value>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="InjuryHealingFactor"]/parts</xpath><value><li Class="LumenStones.StatPart_Vitalite" /></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="InjuryHealingFactor"]</xpath><value><parts><li Class="LumenStones.StatPart_Vitalite" /></parts></value></nomatch>
   </Operation>
-  <Operation Class="PatchOperationAdd">
+  <Operation Class="PatchOperationConditional">
     <xpath>Defs/StatDef[defName="ImmunityGainSpeed"]/parts</xpath>
-    <value><li Class="LumenStones.StatPart_Vitalite"><immunity>true</immunity></li></value>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="ImmunityGainSpeed"]/parts</xpath><value><li Class="LumenStones.StatPart_Vitalite"><immunity>true</immunity></li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="ImmunityGainSpeed"]</xpath><value><parts><li Class="LumenStones.StatPart_Vitalite"><immunity>true</immunity></li></parts></value></nomatch>
   </Operation>
 </Patch>

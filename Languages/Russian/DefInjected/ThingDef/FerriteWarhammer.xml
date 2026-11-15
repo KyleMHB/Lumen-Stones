@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_FerriteWarhammer.label>Ферритовый боевой молот</KM_FerriteWarhammer.label>
+	<KM_FerriteWarhammer.description>Серебристо-сланцевый молот с медным кристаллическим бойком. Вмятины на рукояти и бойке постепенно заполняются — как и у владельца.\n\nЕго дробящие удары могут оглушать живых. Пока он экипирован, медленно чинит себя, а также одежду и оружие владельца без затрат солнечной энергии. Более сильный ферритовый ремонт поблизости имеет приоритет. Изготавливается из 100 феррита и 20 стали после исследования длинных клинков, ремесло 6.</KM_FerriteWarhammer.description>
+	<KM_FerriteWarhammer.tools.0.label>рукоять</KM_FerriteWarhammer.tools.0.label>
+	<KM_FerriteWarhammer.tools.1.label>боёк</KM_FerriteWarhammer.tools.1.label>
+</LanguageData>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Vitalite_HealingContribution>Healing contribution (%)</Lumen_Vitalite_HealingContribution>
+	<Lumen_Vitalite_ImmunityContribution>Immunity contribution (%)</Lumen_Vitalite_ImmunityContribution>
+	<Lumen_Vitalite_InfectionContribution>Infection prevention (%)</Lumen_Vitalite_InfectionContribution>
+	<Lumen_Vitalite_PatientRule>Applies to patients resting in bed in the same enclosed, roofed room.</Lumen_Vitalite_PatientRule>
+	<Lumen_Vitalite_PatientDrain>Costs {0} Solar energy a day for each injured patient helped.</Lumen_Vitalite_PatientDrain>
+	<Lumen_Vitalite_SupportWeightDesc>This fixture's share of Vitalite room support.</Lumen_Vitalite_SupportWeightDesc>
+	<Lumen_Vitalite_Immunity>Immunity at full support</Lumen_Vitalite_Immunity>
+	<Lumen_Info_ScalesWithSupport>Scales with room support.</Lumen_Info_ScalesWithSupport>
+	<Lumen_Vitalite_Healing>Healing at full support</Lumen_Vitalite_Healing>
+	<Lumen_Info_ScalesWithActiveSupport>Scales with the room support of fixtures whose active effect is on.</Lumen_Info_ScalesWithActiveSupport>
+	<Lumen_Vitalite_Infection>Infection prevention at full support</Lumen_Vitalite_Infection>
+	<Lumen_Vitalite_InfectionDesc>Lowers the chance a new wound becomes infected. Existing infections are unaffected.</Lumen_Vitalite_InfectionDesc>
+	<Lumen_Vitalite_BedRule>Applies to this bed's resting occupant. Room support adds to it.</Lumen_Vitalite_BedRule>
+	<Lumen_Vitalite_OccupantImmunity>Occupant immunity</Lumen_Vitalite_OccupantImmunity>
+	<Lumen_Vitalite_OccupantHealing>Occupant healing</Lumen_Vitalite_OccupantHealing>
+	<Lumen_Vitalite_OccupantHealingDesc>Applies to an injured occupant.</Lumen_Vitalite_OccupantHealingDesc>
+	<Lumen_Vitalite_OccupantInfection>Occupant infection prevention</Lumen_Vitalite_OccupantInfection>
+	<Lumen_Vitalite_OccupantInfectionDesc>Combines with room prevention multiplicatively.</Lumen_Vitalite_OccupantInfectionDesc>
+	<Lumen_Vitalite_Inspect>Room support: {0}. Immunity +{1}, healing +{2}, infection prevention {3}</Lumen_Vitalite_Inspect>
+	<Lumen_Info_Missing>Missing: {0}</Lumen_Info_Missing>
+	<Lumen_Vitalite_Occupant>{0}: immunity +{1}, healing +{2}, infection chance -{3}</Lumen_Vitalite_Occupant>
+	<Lumen_Vitalite_Support>Vitalite support: +{0}</Lumen_Vitalite_Support>
+	<Lumen_Vitalite_ImmunityGain>Immunity gain: +{0}</Lumen_Vitalite_ImmunityGain>
+	<Lumen_Vitalite_WoundHealing>Wound healing: +{0}</Lumen_Vitalite_WoundHealing>
+	<Lumen_Vitalite_InfectionChance>Infection chance: -{0}</Lumen_Vitalite_InfectionChance>
+	<Lumen_Vitalite_NeedsInjury>Healing and infection prevention need an injury and powered Solar energy.</Lumen_Vitalite_NeedsInjury>
+	<Lumen_Vitalite_PatientDrainSetting>Solar energy per day for each injured patient treated</Lumen_Vitalite_PatientDrainSetting>
+	<Lumen_Vitalite_HealingCap>Room healing cap (%)</Lumen_Vitalite_HealingCap>
+	<Lumen_Vitalite_ImmunityCap>Room immunity cap (%)</Lumen_Vitalite_ImmunityCap>
+	<Lumen_Vitalite_InfectionCap>Room infection prevention cap (%)</Lumen_Vitalite_InfectionCap>
+</LanguageData>

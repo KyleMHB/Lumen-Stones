@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Hollowstone_Section>Подавление боли</Lumen_Hollowstone_Section>
+	<Lumen_Hollowstone_WardCost>Энергия варпа в день на каждую охваченную пешку</Lumen_Hollowstone_WardCost>
+	<Lumen_Hollowstone_WardNote>Тратит {0} энергии варпа в день, пока под защитой.</Lumen_Hollowstone_WardNote>
+</LanguageData>

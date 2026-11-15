@@ -4,7 +4,7 @@
   <author>KyleMHB</author>
   <packageId>kylemhb.lumenstones</packageId>
   <supportedVersions><li>1.7</li></supportedVersions>
-  <modVersion>1.0.0</modVersion>
+  <modVersion>2.0.0</modVersion>
   <url>https://github.com/KyleMHB/Lumen-Stones</url>
   <modDependencies>
     <li>
@@ -36,9 +36,9 @@ Glacite cools rooms. Its coolers keep a fridge at 4 C on their own, and with Sol
 
 With Ideology, a life offered in place of a reagent corrupts Lumenstone into Dark Stone, which works only by taking. Sacrifice at a Sacrificial altar turns Lumenstone into Dark Stone and harvests Warp energy. Bloodstone stores it, and Sanguinite, Dreadstone and Hollowstone spend it on regrowth, subjugation and endurance. With Anomaly, Hollowstone can bind a work husk.
 
-Stones also make weapons, gear, implants and crystal prosthetics. Firefly columns add animated green light, and Epochs - Pyrinth, if installed, adds warm orange columns.
+Stones also make weapons, gear, implants and crystal prosthetics. Firefly columns add soft green light, and Epochs - Pyrinth, if installed, adds warm orange columns.
 
 To start, gather Lumenstone from rare veins, surface stacks or traders. Research Stonecutting, build a Lumen ritual circle and infuse 10 Lumenstone with a reagent into 10 of any researched stone. Glacite needs no reagent.
 
-Configure availability, effects and costs in Mod options. Requires Harmony. Glacite is adapted from Epochs - Pyrinth by DetVisor.</description>
+Configure availability, effects and costs in Mod options. Requires Harmony. Glacite was inspired by Epochs - Pyrinth by DetVisor.</description>
 </ModMetaData>

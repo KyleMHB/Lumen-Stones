@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_DarkStone.label>暗石</KM_DarkStone.label>
+	<KM_DarkStone.description>在一场献祭中在场并从中夺取了某些东西的流明石。它有自己的光，但释放的少于吸收的。\n\n一种烟紫色晶体，带有日食般的炭黑色核心，在献祭中由流明石凝结而成。它从不自然生成，也无法交易。在献祭祭坛可精炼为血石、血晶石、恐惧石和空虚石。</KM_DarkStone.description>
+	<KM_SacrificialAltar.label>献祭祭坛</KM_SacrificialAltar.label>
+	<KM_SacrificialAltar.description>一块雕有荆棘的石板，用于黑暗仪式。荆棘没有别的用处，只是让石板看起来像它的用途。\n\n献祭一名囚犯、奴隶或殖民者，将流明石凝结为暗石，或将扭曲能量收割进附近的血石电池。它的清单可将暗石精炼为各种黑暗石材，在此举行仪式时清单会暂停。</KM_SacrificialAltar.description>
+</LanguageData>

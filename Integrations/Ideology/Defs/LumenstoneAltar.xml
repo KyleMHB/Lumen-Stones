@@ -19,6 +19,8 @@
     <description>A round stone altar crowned with raw Lumenstone and inlaid with gold. A good room and good company help the stone answer.\n\nHosts the Lumenstone ritual at full yield, and its room's impressiveness and nearby Lumenstone fixtures raise the ritual's quality and yield. It also works every infusion bill of a Lumen ritual circle, and bills pause while a ceremony runs here.</description>
     <thingClass>LumenStones.Building_LumenstoneAltar</thingClass>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.208)</drawOffset>
       <texPath>Things/Building/Lumenstone/LumenstoneAltar</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
@@ -59,6 +61,12 @@
       <li>LumenStones.PlaceWorker_LumenstoneSupportRing</li>
     </placeWorkers>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>7</glowRadius>
+        <glowColor>(215,230,245,0)</glowColor>
+      </li>
+    </comps>
   </ThingDef>
 
   <WorkGiverDef>

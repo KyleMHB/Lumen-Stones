@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_DreadstoneSeed.label>恐惧石种子</KM_DreadstoneSeed.label>
+	<KM_DreadstoneSeed.labelNoun>一颗恐惧石种子</KM_DreadstoneSeed.labelNoun>
+	<KM_DreadstoneSeed.description>一根埋在胸口的恐惧石尖桩。一旦被束缚，它会在几天内穿透身体生长，让身体活着只是为了吞噬它。没有什么能减轻它带来的痛苦，也没有什么能将它取出。如果它完成生长，剩下的只有暗石。</KM_DreadstoneSeed.description>
+	<KM_DreadstoneSeed.stages.0.label>嵌入</KM_DreadstoneSeed.stages.0.label>
+	<KM_DreadstoneSeed.stages.0.extraTooltip>一根恐惧石尖桩埋在胸口。它刚刚开始扎根。</KM_DreadstoneSeed.stages.0.extraTooltip>
+	<KM_DreadstoneSeed.stages.1.label>扎根</KM_DreadstoneSeed.stages.1.label>
+	<KM_DreadstoneSeed.stages.1.extraTooltip>晶体细丝已经蔓延进肋骨和肺部。疼痛每小时都在加剧。</KM_DreadstoneSeed.stages.1.extraTooltip>
+	<KM_DreadstoneSeed.stages.2.label>撕裂</KM_DreadstoneSeed.stages.2.label>
+	<KM_DreadstoneSeed.stages.2.extraTooltip>晶体正穿过器官生长，撕扯着肌肉。它不会让身体衰竭。</KM_DreadstoneSeed.stages.2.extraTooltip>
+	<KM_DreadstoneSeed.stages.3.label>吞噬</KM_DreadstoneSeed.stages.3.label>
+	<KM_DreadstoneSeed.stages.3.extraTooltip>躯干的大部分现在都是晶体了。恐惧石让小人活着，只是为了吞噬更多。</KM_DreadstoneSeed.stages.3.extraTooltip>
+</LanguageData>

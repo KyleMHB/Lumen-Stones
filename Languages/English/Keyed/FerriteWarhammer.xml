@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_FerriteWarhammer_Section>Ferrite warhammer</Lumen_FerriteWarhammer_Section>
+	<Lumen_FerriteWarhammer_StunChance>Stun chance on damaging melee hits (%)</Lumen_FerriteWarhammer_StunChance>
+	<Lumen_FerriteWarhammer_Repair>Condition mended per pulse (% of maximum hit points)</Lumen_FerriteWarhammer_Repair>
+</LanguageData>

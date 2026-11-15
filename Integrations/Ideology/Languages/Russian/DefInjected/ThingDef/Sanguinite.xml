@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Sanguinite.label>Сангвинит</KM_Sanguinite.label>
+	<KM_Sanguinite.description>Сангвинит восполняет то, чего не хватает телу, и камню всё равно, чью плоть он использует.\n\nАртериально-алый кристалл с рубиново-скарлатной сердцевиной, очищенный из тёмного камня на жертвенном алтаре. Его светильники тратят энергию варпа на лечение пациентов в кровати.</KM_Sanguinite.description>
+	<KM_LumenSanguiniteColumn.label>Сангвинитовая колонна</KM_LumenSanguiniteColumn.label>
+	<KM_LumenSanguiniteColumn.description>Опорная колонна с вкраплениями сангвинита. Пациенты рядом кровоточат так, будто у них полно времени.\n\nДаёт тусклый багровый свет. Энергия варпа: замедляет кровотечение, лечит шрамы и отращивает утраченные части у пациентов, отдыхающих в кровати в той же комнате. Пациента лечит только сильнейший сангвинитовый светильник. Бионика не затрагивается.</KM_LumenSanguiniteColumn.description>
+	<KM_LumenSanguiniteColumn.comps.3.effect>лечение пациентов в кровати</KM_LumenSanguiniteColumn.comps.3.effect>
+	<KM_SanguiniteLamp.label>Сангвинитовая лампа</KM_SanguiniteLamp.label>
+	<KM_SanguiniteLamp.description>Кристалл сангвинита на каменном постаменте.\n\nДаёт тусклый багровый свет, и больше ничего.</KM_SanguiniteLamp.description>
+	<KM_SanguiniteWallLamp.label>Сангвинитовая настенная лампа</KM_SanguiniteWallLamp.label>
+	<KM_SanguiniteWallLamp.description>Кристалл сангвинита на настенном кронштейне.\n\nДаёт тусклый багровый свет, и больше ничего.</KM_SanguiniteWallLamp.description>
+	<KM_SanguiniteCluster.label>Сангвинитовая друза</KM_SanguiniteCluster.label>
+	<KM_SanguiniteCluster.description>Группа кристаллов сангвинита в низком резном основании. Утраченные глаза отрастают обычно нужного цвета.\n\nДаёт багровый свет. Энергия варпа: замедляет кровотечение, лечит шрамы и отращивает утраченные части у пациентов, отдыхающих в кровати в той же комнате. Пациента лечит только сильнейший сангвинитовый светильник. Бионика не затрагивается.</KM_SanguiniteCluster.description>
+	<KM_SanguiniteCluster.comps.2.effect>лечение пациентов в кровати</KM_SanguiniteCluster.comps.2.effect>
+	<KM_SanguinitePylon.label>Сангвинитовый пилон</KM_SanguinitePylon.label>
+	<KM_SanguinitePylon.description>Высокий столб сангвинита на резном пьедестале. Дайте ему неделю — и он вырастит пациенту новую почку.\n\nДаёт багровый свет. Энергия варпа: замедляет кровотечение, лечит шрамы и отращивает утраченные части у пациентов, отдыхающих в кровати в той же комнате. Пациента лечит только сильнейший сангвинитовый светильник. Бионика не затрагивается.</KM_SanguinitePylon.description>
+	<KM_SanguinitePylon.comps.2.effect>лечение пациентов в кровати</KM_SanguinitePylon.comps.2.effect>
+	<KM_SanguiniteBlade.label>Сангвинитовый свежевальный клинок</KM_SanguiniteBlade.label>
+	<KM_SanguiniteBlade.description>Быстрый лёгкий клинок с сангвинитовой кромкой. Пускает кровь всему, что режет, и успокаивает кровь владельца.\n\nКаждый удар с уроном по живой цели открывает кровоизлияние, которое складывается до трёх раз и проходит примерно за десять секунд. Владелец кровоточит вдвое медленнее. Не тратит энергию варпа. Изготавливается из 100 сангвинита и 20 стали после исследований длинных клинков и «Сангвинитовое плотеремесло», ремесло 6.</KM_SanguiniteBlade.description>
+	<KM_SanguiniteBlade.tools.0.label>рукоять</KM_SanguiniteBlade.tools.0.label>
+	<KM_SanguiniteBlade.tools.1.label>лезвие</KM_SanguiniteBlade.tools.1.label>
+</LanguageData>

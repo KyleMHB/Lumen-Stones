@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Dreadstone.label>恐惧石</KM_Dreadstone.label>
+	<KM_Dreadstone.description>精炼到能夺取意志的暗石。关押在它附近的囚犯会放弃逃跑计划，视线内的敌人会失去胆量。\n\n一种黑曜石般漆黑的晶体，带有闷燃的血橙色核心，在献祭祭坛由暗石精炼而成。它的装置消耗扭曲能量来压制囚犯和奴隶，并震慑敌人。</KM_Dreadstone.description>
+	<KM_LumenDreadstoneColumn.label>恐惧石柱</KM_LumenDreadstoneColumn.label>
+	<KM_LumenDreadstoneColumn.description>一根镶嵌着恐惧石的屋顶支柱。关押在它附近的囚犯每天都会更早一点放弃逃跑。\n\n发出昏暗的靛蓝色光。扭曲能量：削弱同一房间内殖民地囚犯和奴隶的抵抗和意志，并让越狱和奴隶叛乱更罕见。</KM_LumenDreadstoneColumn.description>
+	<KM_LumenDreadstoneColumn.comps.3.effect>压制囚犯和奴隶</KM_LumenDreadstoneColumn.comps.3.effect>
+	<KM_DreadstoneLamp.label>恐惧石灯</KM_DreadstoneLamp.label>
+	<KM_DreadstoneLamp.description>一块立在石座上的恐惧石晶体。\n\n发出昏暗的靛蓝色光，除此之外别无他用。</KM_DreadstoneLamp.description>
+	<KM_DreadstoneWallLamp.label>恐惧石壁灯</KM_DreadstoneWallLamp.label>
+	<KM_DreadstoneWallLamp.description>一块装在墙架上的恐惧石晶体。\n\n发出昏暗的靛蓝色光，除此之外别无他用。</KM_DreadstoneWallLamp.description>
+	<KM_DreadstoneCluster.label>恐惧石晶簇</KM_DreadstoneCluster.label>
+	<KM_DreadstoneCluster.description>一组安放在低矮雕花底座中的恐惧石晶体。看见它的袭击者很难记起自己为何而来。\n\n发出靛蓝色光。扭曲能量：削弱视线内的敌对类人生物。机械体和动物不受影响。</KM_DreadstoneCluster.description>
+	<KM_DreadstoneCluster.comps.2.effect>削弱敌对类人生物</KM_DreadstoneCluster.comps.2.effect>
+	<KM_DreadstonePylon.label>恐惧石塔</KM_DreadstonePylon.label>
+	<KM_DreadstonePylon.description>一根立在雕花基座上的高大恐惧石柱。在它视线内死去的每个敌人都会被它夺走一点东西。\n\n发出靛蓝色光。扭曲能量：比柱更快地削弱同一房间内的囚犯和奴隶，比晶簇更强地削弱视线内的敌对类人生物，并将被削弱敌人的死亡转化为扭曲能量。</KM_DreadstonePylon.description>
+	<KM_DreadstonePylon.comps.2.effect>压制、恐惧和死亡汲取</KM_DreadstonePylon.comps.2.effect>
+	<KM_DreadstoneArbalest.label>恐惧石弩炮</KM_DreadstoneArbalest.label>
+	<KM_DreadstoneArbalest.description>一把带有黑曜石弓臂的快速轻弓。被它的弩箭射中的人会失去胆量一段时间。\n\n它的弩箭会让被击中的类人生物陷入恐惧十秒，如果该敌人死亡，少量扭曲能量会返还电池。射击不消耗扭曲能量。研究大弓和恐惧石压制后，使用100恐惧石和20钢铁制作，需要6级手工。</KM_DreadstoneArbalest.description>
+	<KM_DreadstoneArbalest.tools.0.label>弓臂</KM_DreadstoneArbalest.tools.0.label>
+	<KM_Bolt_Dread.label>恐惧石弩箭</KM_Bolt_Dread.label>
+</LanguageData>

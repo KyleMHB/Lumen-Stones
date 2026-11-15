@@ -3,6 +3,7 @@
   <ThingDef Name="LumenstoneColumnBase" ParentName="BuildingBase" Abstract="True">
     <thingClass>Building</thingClass>
     <designationCategory>Structure</designationCategory>
+    <designatorDropdown>KM_LumenColumns</designatorDropdown>
     <uiIconScale>1.2</uiIconScale>
     <!-- ponytail: fixed priority also covers foreground trees; position-based occlusion needs a separate rendering change. -->
     <altitudeLayer>BuildingOnTop</altitudeLayer>
@@ -43,7 +44,6 @@
     </graphicData>
     <comps>
       <li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(155,225,100,0)</glowColor></li>
-      <li Class="LumenStones.CompProperties_Fireflies"><column>true</column></li>
     </comps>
   </ThingDef>
 </Defs>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneAxe_Section>Топор из солнечного камня</Lumen_SunstoneAxe_Section>
+	<Lumen_SunstoneAxe_Bane>Множитель урона в ближнем бою по аномальным сущностям и мутантам</Lumen_SunstoneAxe_Bane>
+	<Lumen_SunstoneAxe_ProcChance>Шанс ослепления и оглушения при нанесении урона в ближнем бою (%)</Lumen_SunstoneAxe_ProcChance>
+	<Lumen_SunstoneAxe_ProcChanceUnnatural>Шанс ослепления и оглушения против аномальных сущностей и мутантов (%)</Lumen_SunstoneAxe_ProcChanceUnnatural>
+	<Lumen_SunstoneAxe_BlindTicks>Длительность солнечной слепоты (тиков)</Lumen_SunstoneAxe_BlindTicks>
+	<Lumen_SunstoneAxe_StunTicks>Длительность оглушения вспышкой (тиков)</Lumen_SunstoneAxe_StunTicks>
+</LanguageData>

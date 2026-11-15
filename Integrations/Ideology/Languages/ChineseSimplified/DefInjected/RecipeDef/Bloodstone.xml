@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_InfuseBloodstone.label>精炼血石</KM_InfuseBloodstone.label>
+	<KM_InfuseBloodstone.description>将10暗石精炼为10血石。</KM_InfuseBloodstone.description>
+	<KM_InfuseBloodstone.jobString>正在精炼血石。</KM_InfuseBloodstone.jobString>
+</LanguageData>

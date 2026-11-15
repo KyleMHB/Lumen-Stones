@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Hollowstone_Section>Pain suppression</Lumen_Hollowstone_Section>
+	<Lumen_Hollowstone_WardCost>Warp energy per covered pawn per day</Lumen_Hollowstone_WardCost>
+	<Lumen_Hollowstone_WardNote>Costs {0} Warp energy a day while covered.</Lumen_Hollowstone_WardNote>
+</LanguageData>

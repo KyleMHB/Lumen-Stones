@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Solar_Section>Solar network</Lumen_Solar_Section>
+	<Lumen_Solar_CollectorOutput>Collector output per day at full sun</Lumen_Solar_CollectorOutput>
+	<Lumen_Solar_ArrayOutput>Array output per day at full sun</Lumen_Solar_ArrayOutput>
+	<Lumen_Solar_VesselCapacity>Vessel capacity</Lumen_Solar_VesselCapacity>
+	<Lumen_Solar_ObeliskCapacity>Obelisk capacity</Lumen_Solar_ObeliskCapacity>
+	<Lumen_Solar_Hysteresis>Stored energy needed to recover from depletion</Lumen_Solar_Hysteresis>
+	<Lumen_Solar_WeatherFog>Fog</Lumen_Solar_WeatherFog>
+	<Lumen_Solar_WeatherRain>Rain and gentle snow</Lumen_Solar_WeatherRain>
+	<Lumen_Solar_WeatherThunder>Thunderstorms</Lumen_Solar_WeatherThunder>
+	<Lumen_Solar_WeatherHard>Foggy rain and hard snow</Lumen_Solar_WeatherHard>
+	<Lumen_Solar_WeatherFactor>{0} output factor (%)</Lumen_Solar_WeatherFactor>
+	<Lumen_Solar_NetworkRule>Every Sunstone collector and battery on a map shares one Solar network, however far apart. Charge is lost if it is destroyed or deconstructed, and kept if it is minified and reinstalled.</Lumen_Solar_NetworkRule>
+	<Lumen_Solar_Capacity>Solar energy capacity</Lumen_Solar_Capacity>
+	<Lumen_Solar_OutputDesc>Under a clear midday sky. Less in fog, rain and storms, at dawn and dusk, and under a roof, and none at night. Surplus fills the network's batteries.</Lumen_Solar_OutputDesc>
+	<Lumen_Solar_Generating>Generating {0} a day now (up to {1})</Lumen_Solar_Generating>
+	<Lumen_Solar_Interrupted>Interrupted: {0}</Lumen_Solar_Interrupted>
+</LanguageData>

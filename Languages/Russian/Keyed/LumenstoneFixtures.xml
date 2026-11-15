@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Fixtures_CategoryContribution>Вклад категории в ритуальную поддержку (%)</Lumen_Fixtures_CategoryContribution>
+	<Lumen_Fixtures_RuleLight>Светильники в той же комнате, что и люменитовый алтарь, и в пределах досягаемости повышают качество и выход его ритуала. В закрытой комнате с крышей поддержка полная, на улице — половинная. Каждая категория светильников учитывается один раз, по наибольшему весу; напольные и настенные лампы — одна категория.</Lumen_Fixtures_RuleLight>
+	<Lumen_Fixtures_RuleDark>Светильники в той же комнате, что и жертвенный алтарь, и в пределах досягаемости повышают качество и выход его ритуала. В закрытой комнате с крышей поддержка полная, на улице — половинная. Каждая категория светильников учитывается один раз, по наибольшему весу; напольные и настенные лампы — одна категория.</Lumen_Fixtures_RuleDark>
+	<Lumen_Fixtures_Weight>Вес ритуальной поддержки</Lumen_Fixtures_Weight>
+	<Lumen_Fixtures_Reach>Радиус ритуальной поддержки</Lumen_Fixtures_Reach>
+	<Lumen_Fixtures_Quality>Качество ритуала при полной поддержке</Lumen_Fixtures_Quality>
+	<Lumen_Fixtures_YieldDark>Превращение и сбор при полной поддержке</Lumen_Fixtures_YieldDark>
+	<Lumen_Fixtures_YieldLight>Выход ритуала при полной поддержке</Lumen_Fixtures_YieldLight>
+	<Lumen_Fixtures_NoAltarDark>Нет жертвенного алтаря в радиусе</Lumen_Fixtures_NoAltarDark>
+	<Lumen_Fixtures_NoAltarLight>Нет люменитового алтаря в радиусе</Lumen_Fixtures_NoAltarLight>
+	<Lumen_Fixtures_Enclosed>закрытая комната с крышей</Lumen_Fixtures_Enclosed>
+	<Lumen_Fixtures_Outdoors>на улице или без крыши, половинная сила</Lumen_Fixtures_Outdoors>
+	<Lumen_Fixtures_Describe>Ритуальная поддержка {0} ({1}): качество +{2}, выход +{3}</Lumen_Fixtures_Describe>
+	<Lumen_Ritual_QualityDesc>{0}: +{1} к качеству</Lumen_Ritual_QualityDesc>
+	<Lumen_Fixtures_SupportCount>поддержка {0}</Lumen_Fixtures_SupportCount>
+	<Lumen_Fixtures_Tooltip>Светильники из подходящего камня в этой комнате в пределах {0} клеток. Полная сила в закрытой комнате с крышей, половинная — на улице.</Lumen_Fixtures_Tooltip>
+</LanguageData>

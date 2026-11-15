@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_FerriteWarhammer_Section>Ферритовый боевой молот</Lumen_FerriteWarhammer_Section>
+	<Lumen_FerriteWarhammer_StunChance>Шанс оглушения при нанесении урона в ближнем бою (%)</Lumen_FerriteWarhammer_StunChance>
+	<Lumen_FerriteWarhammer_Repair>Прочность за импульс (% от максимальной)</Lumen_FerriteWarhammer_Repair>
+</LanguageData>

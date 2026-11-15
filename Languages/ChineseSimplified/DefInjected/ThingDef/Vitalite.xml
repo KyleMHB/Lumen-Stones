@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Vitalite.label>生命石</KM_Vitalite.label>
+	<KM_Vitalite.description>浸入草药的流明石吸收了愈血草的疗愈之力。建在病房里，它能帮助病人抵御疾病。\n\n一种珍珠白色的晶体，带有淡玫瑰色核心，在流明仪式圈由流明石灌注而成。用于建造复苏装置。生命石没有温度效果，也不会清除污物。</KM_Vitalite.description>
+	<KM_LumenVitaliteColumn.label>生命石柱</KM_LumenVitaliteColumn.label>
+	<KM_LumenVitaliteColumn.description>一根支撑屋顶的生命石晶体，夹在圆形柱帽之间。\n\n支援同一封闭房间内卧床休息的病人：房间支援会提升免疫，有太阳能时还会提升治疗和感染预防。每种装置类型只计算一次。增加清洁度但不清除污物。不需要燃料或电力。</KM_LumenVitaliteColumn.description>
+	<KM_LumenVitaliteColumn.comps.3.effect>治疗和感染预防</KM_LumenVitaliteColumn.comps.3.effect>
+	<KM_VitaliteLamp.label>生命石灯</KM_VitaliteLamp.label>
+	<KM_VitaliteLamp.description>一块立在石座上、带有玫瑰色核心的生命石晶体。它的光对疲惫的眼睛很柔和。\n\n照亮房间。支援同一封闭房间内卧床休息的病人：房间支援会提升免疫，有太阳能时还会提升治疗和感染预防。每种装置类型只计算一次。增加清洁度但不清除污物。不需要燃料或电力。</KM_VitaliteLamp.description>
+	<KM_VitaliteLamp.comps.2.effect>治疗和感染预防</KM_VitaliteLamp.comps.2.effect>
+	<KM_VitaliteWallLamp.label>生命石壁灯</KM_VitaliteWallLamp.label>
+	<KM_VitaliteWallLamp.description>一块挂在墙上的生命石晶体，不会挡住床和担架。\n\n支援同一封闭房间内卧床休息的病人：房间支援会提升免疫，有太阳能时还会提升治疗和感染预防。每种装置类型只计算一次。增加清洁度但不清除污物。不需要燃料或电力。</KM_VitaliteWallLamp.description>
+	<KM_VitaliteWallLamp.comps.2.effect>治疗和感染预防</KM_VitaliteWallLamp.comps.2.effect>
+	<KM_VitalitePylon.label>生命石塔</KM_VitalitePylon.label>
+	<KM_VitalitePylon.description>一根立在圆形底座上、裸露在外的短生命石柱。能走动的病人经过时常会把手搭在上面。\n\n支援同一封闭房间内卧床休息的病人：房间支援会提升免疫，有太阳能时还会提升治疗和感染预防。每种装置类型只计算一次。增加清洁度但不清除污物。不需要燃料或电力。</KM_VitalitePylon.description>
+	<KM_VitalitePylon.comps.2.effect>治疗和感染预防</KM_VitalitePylon.comps.2.effect>
+	<KM_VitaliteCluster.label>生命石复苏晶簇</KM_VitaliteCluster.label>
+	<KM_VitaliteCluster.description>一组安放在低矮圆形底座中的生命石晶体。\n\n支援同一封闭房间内卧床休息的病人：房间支援会提升免疫，有太阳能时还会提升治疗和感染预防。每种装置类型只计算一次。增加清洁度但不清除污物。不需要燃料或电力。</KM_VitaliteCluster.description>
+	<KM_VitaliteCluster.comps.2.effect>治疗和感染预防</KM_VitaliteCluster.comps.2.effect>
+	<KM_VitaliteSlabBed.label>生命石镶嵌床</KM_VitaliteSlabBed.label>
+	<KM_VitaliteSlabBed.description>一张石板床，带有生命石床头板和金色饰带，专为病房打造。\n\n提升躺在上面休息者的免疫，有太阳能时还会提升治疗和感染预防。房间支援会叠加在其上。医生和药物仍然有用。排序略高于医院病床，因此病人会优先选择它而不是普通床。</KM_VitaliteSlabBed.description>
+	<KM_VitaliteSlabBed.comps.1.effect>治疗和感染预防</KM_VitaliteSlabBed.comps.1.effect>
+	<KM_VitaliteCasket.label>生命石床</KM_VitaliteCasket.label>
+	<KM_VitaliteCasket.description>一张完全由多面生命石切割而成的床，连晶体枕头也是。它耗费大量石材，病人很快就能离开它。\n\n大幅提升躺在上面休息者的免疫，有太阳能时还会提升治疗和感染预防。房间支援会叠加在其上。排序高于医院病床，护理质量、休息、免疫和手术效果更好，因此病人会首选它。不能替代护理或药物，不能治愈永久疤痕、恢复缺失肢体或复活死者。</KM_VitaliteCasket.description>
+	<KM_VitaliteCasket.comps.1.effect>治疗和感染预防</KM_VitaliteCasket.comps.1.effect>
+</LanguageData>

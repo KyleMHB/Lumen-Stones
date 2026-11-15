@@ -8,7 +8,7 @@ Lumen Stones for RimWorld 1.7 turns those stones into lamps, columns, pylons, fu
 - **Sunstone** gathers daylight as Solar energy, which powers each stone's stronger active effect.
 - With Royalty, **Animastone** improves meditation.
 - With Ideology, sacrifice yields Dark Stone and Warp energy. **Bloodstone** stores the energy, and **Sanguinite**, **Dreadstone** and **Hollowstone** spend it on regrowth, subjugation and endurance.
-- Firefly columns add animated green light, and [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) adds optional warm orange columns.
+- Firefly columns add soft green light, and [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) adds optional warm orange columns.
 
 ## Balance
 
@@ -26,7 +26,7 @@ Every stone has a price and a ceiling:
 
 1. Install and enable [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077).
 2. Copy the built mod into `RimWorld/Mods/Lumen-Stones`. `About`, `Defs`, `Textures`, `Assemblies` and `LoadFolders.xml` must be directly inside that folder.
-3. Enable Lumen Stones after Harmony, then restart RimWorld.
+3. Enable Lumen Stones after Harmony, then restart RimWorld. Start or load a save you intend to keep it in: the mod stores map data, health conditions and Ideology rituals in the save, so it can't be removed from a save later.
 4. Optionally enable [Epochs - Pyrinth](https://steamcommunity.com/sharedfiles/filedetails/?id=3336544632) before Lumen Stones for pyrinth columns. Neither Pyrinth nor DLC is required for the core mod.
 
 Every stone starts as Lumenstone. Mine it from rare veins, find it on the surface or buy it from traders at a high price. With Ideology, the Lumenstone ritual turns stone chunks into more. Research Stonecutting, build a Lumen ritual circle and infuse 10 Lumenstone with a simple reagent into 10 of any researched stone.
@@ -61,7 +61,7 @@ Released under the **GNU General Public License v3.0**. See [`LICENSE`](LICENSE)
 
 Commercial use is allowed under GPLv3. Distributed modified versions must remain under GPLv3 and make corresponding source available as required by the license.
 
-Glacite's definitions adapted from Epochs - Pyrinth retain Creative Commons Attribution 4.0 International; see [Licenses/Glacite-CC-BY-4.0.txt](Licenses/Glacite-CC-BY-4.0.txt). Icon artwork derived from Bionic Icons includes its MIT notice in [Licenses/BionicIcons-MIT.txt](Licenses/BionicIcons-MIT.txt). See [CREDITS.md](CREDITS.md) for attribution.
+Icon artwork derived from Bionic Icons includes its MIT notice in [Licenses/BionicIcons-MIT.txt](Licenses/BionicIcons-MIT.txt). See [CREDITS.md](CREDITS.md) for attribution.
 
 ## Links
 

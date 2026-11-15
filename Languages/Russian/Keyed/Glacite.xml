@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Section_SolarEnergy>Солнечная энергия</Lumen_Section_SolarEnergy>
+	<Lumen_Glacite_FreezerDrain>Солнечная энергия в день при охлаждении между двумя пределами</Lumen_Glacite_FreezerDrain>
+	<Lumen_Glacite_ActiveCutoff>Активный температурный предел (C)</Lumen_Glacite_ActiveCutoff>
+	<Lumen_Glacite_CoolsTo>Охлаждает до</Lumen_Glacite_CoolsTo>
+	<Lumen_Glacite_CoolsToDesc>Поглощает тепло сам по себе, без топлива, электричества и вытяжки. Для большой комнаты или жаркой погоды может понадобиться несколько охладителей.</Lumen_Glacite_CoolsToDesc>
+	<Lumen_Glacite_CoolsToActive>Охлаждает до (с активным эффектом)</Lumen_Glacite_CoolsToActive>
+	<Lumen_Glacite_CoolsToActiveDesc>Продолжает охлаждать ниже своего предела, вплоть до этой температуры.</Lumen_Glacite_CoolsToActiveDesc>
+	<Lumen_Info_SolarPerDay>Солнечная энергия в день</Lumen_Info_SolarPerDay>
+	<Lumen_Glacite_SolarPerDayDesc>Тратится, только пока температура воздуха между двумя пределами.</Lumen_Glacite_SolarPerDayDesc>
+	<Lumen_Glacite_Cooling>Охлаждение: {0}</Lumen_Glacite_Cooling>
+	<Lumen_Glacite_NotRunning>активный эффект не работает</Lumen_Glacite_NotRunning>
+	<Lumen_Glacite_CoolingTo>Охлаждает до {0}</Lumen_Glacite_CoolingTo>
+	<Lumen_Glacite_CoolingToIdle>Охлаждает до {0}, простаивает</Lumen_Glacite_CoolingToIdle>
+	<Lumen_Glacite_PassiveCutoff>Пассивный температурный предел (C)</Lumen_Glacite_PassiveCutoff>
+</LanguageData>

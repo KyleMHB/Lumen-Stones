@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_MakePyrinthImplant.label>изготовить: пиринтовый имплант</KM_MakePyrinthImplant.label>
+	<KM_MakePyrinthImplant.description>Сделать пиринтовый имплант из пиринта и компонента.</KM_MakePyrinthImplant.description>
+	<KM_MakePyrinthImplant.jobString>Изготавливает: пиринтовый имплант.</KM_MakePyrinthImplant.jobString>
+	<KM_InstallPyrinthImplant.label>установить: пиринтовый имплант</KM_InstallPyrinthImplant.label>
+	<KM_InstallPyrinthImplant.description>Установить: пиринтовый имплант. Спит, пока его не пробудит настройка.</KM_InstallPyrinthImplant.description>
+	<KM_InstallPyrinthImplant.jobString>Устанавливает: пиринтовый имплант.</KM_InstallPyrinthImplant.jobString>
+	<KM_RemovePyrinthImplant.label>удалить: пиринтовый имплант</KM_RemovePyrinthImplant.label>
+	<KM_RemovePyrinthImplant.description>Удалить: пиринтовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemovePyrinthImplant.description>
+	<KM_RemovePyrinthImplant.jobString>Удаляет: пиринтовый имплант.</KM_RemovePyrinthImplant.jobString>
+</LanguageData>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_ActiveEffect_SolarOff>When off, only the passive effect works.</Lumen_ActiveEffect_SolarOff>
+	<Lumen_ActiveEffect_WarpOff>When off, the fixture only gives light.</Lumen_ActiveEffect_WarpOff>
+	<Lumen_ActiveEffect_ToggledOff>Toggled off</Lumen_ActiveEffect_ToggledOff>
+	<Lumen_ActiveEffect_Interrupted>Interrupted ({0})</Lumen_ActiveEffect_Interrupted>
+	<Lumen_ActiveEffect_Powered>Powered</Lumen_ActiveEffect_Powered>
+	<Lumen_ActiveEffect_NoSolar>No Solar energy</Lumen_ActiveEffect_NoSolar>
+	<Lumen_ActiveEffect_NoWarp>No Warp energy</Lumen_ActiveEffect_NoWarp>
+	<Lumen_ActiveEffect_SolarStatus>Solar active effect: {0}</Lumen_ActiveEffect_SolarStatus>
+	<Lumen_ActiveEffect_WarpStatus>Warp active effect: {0}</Lumen_ActiveEffect_WarpStatus>
+	<Lumen_ActiveEffect_Stabilized>Stabilized by: Lunite stabilizer</Lumen_ActiveEffect_Stabilized>
+	<Lumen_ActiveEffect_SolarLabel>Solar active effect</Lumen_ActiveEffect_SolarLabel>
+	<Lumen_ActiveEffect_WarpLabel>Warp active effect</Lumen_ActiveEffect_WarpLabel>
+	<Lumen_ActiveEffect_SolarDesc>Spend Solar energy on {0}.</Lumen_ActiveEffect_SolarDesc>
+	<Lumen_ActiveEffect_WarpDesc>Spend Warp energy on {0}.</Lumen_ActiveEffect_WarpDesc>
+	<Lumen_ActiveEffect_DefaultEffect>its active effect</Lumen_ActiveEffect_DefaultEffect>
+</LanguageData>

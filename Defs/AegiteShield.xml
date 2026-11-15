@@ -3,7 +3,7 @@
   <ThingDef ParentName="ApparelBase">
     <defName>KM_AegiteShield</defName>
     <label>Aegite shield</label>
-    <description>A pale shield with a champagne-gold crystal boss. Fire won't take hold of anyone carrying it, which makes it popular with whoever has to fight near burning buildings.\n\nWorn in the utility slot alongside either a melee or ranged weapon. Adds 25 percentage points to sharp and blunt armour. While worn, the wearer cannot catch fire; it does not extinguish an existing attached fire. Shares the belt slot with other belts and the Aegite shield charm. Crafted at a smithy from 100 Aegite and 20 steel after Long blades, which follows Smithing, with Crafting 6.</description>
+    <description>A pale shield with a champagne-gold crystal boss. Fire won't take hold of anyone carrying it, which makes it popular with whoever has to fight near burning buildings.\n\nWorn in the utility slot alongside either a melee or ranged weapon, except the two-handed Glacite greatsword. Adds 25 percentage points to sharp and blunt armour. While worn, the wearer cannot catch fire; it does not extinguish an existing attached fire. Shares the belt slot with other belts and the Aegite shield charm. Crafted at a smithy from 100 Aegite and 20 steel after Long blades, which follows Smithing, with Crafting 6.</description>
     <graphicData><texPath>Things/Item/Equipment/Shield/AegiteShield</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <techLevel>Medieval</techLevel>
     <statBases>

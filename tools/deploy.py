@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 from artwork import ROOT, digest, inside
 
-RUNTIME_FOLDERS = {"About", "Defs", "Textures", "Assemblies", "Integrations", "Patches", "Extras"}
+RUNTIME_FOLDERS = {"About", "Defs", "Textures", "Assemblies", "Integrations", "Patches", "Extras", "Languages"}
 RUNTIME_FILES = {"LoadFolders.xml", "LICENSE", "README.md", "CHANGELOG.md", "CREDITS.md"}
 
 
@@ -57,6 +57,17 @@ def patch_xml(source_bytes, installed_bytes, selectors):
     return ET.tostring(installed, encoding="utf-8", xml_declaration=True) + b"\n"
 
 
+def origin(source, entry):
+    """The file an entry deploys: the source mod's own path, or with `from` a test candidate under work/
+    (an outline batch's export, say) that replaces the installed file without touching the source mod."""
+    if not entry.get("from"):
+        return runtime_path(source, entry["path"])
+    path = inside(source, entry["from"])
+    if not path.is_relative_to(source / "work"):
+        raise ValueError(f"A plan's `from` must be under work/: {entry['from']}")
+    return path
+
+
 def stage(source, destination, plan, output):
     source, destination, output = source.resolve(), destination.resolve(), output.resolve()
     validate_destination(source, destination)
@@ -70,7 +81,7 @@ def stage(source, destination, plan, output):
     files, differences = [], []
     for entry in entries:
         relative = entry["path"]
-        source_path, installed_path = runtime_path(source, relative), runtime_path(destination, relative)
+        source_path, installed_path = origin(source, entry), runtime_path(destination, relative)
         source_bytes = source_path.read_bytes()
         installed_bytes = installed_path.read_bytes() if installed_path.is_file() else None
         selectors = entry.get("xmlSelectors")
@@ -84,7 +95,7 @@ def stage(source, destination, plan, output):
         candidate_path = inside(output / "candidate", relative)
         candidate_path.parent.mkdir(parents=True, exist_ok=True)
         candidate_path.write_bytes(candidate)
-        files.append({"path": relative, "mode": "xml-fields" if selectors else "copy",
+        files.append({"path": relative, "from": entry.get("from"), "mode": "xml-fields" if selectors else "copy",
                       "xmlSelectors": selectors, "sourceHash": digest(source_path),
                       "baselineHash": file_hash(installed_path), "candidateHash": digest(candidate_path)})
         if relative.endswith((".xml", ".md")):
@@ -116,7 +127,7 @@ def deploy(manifest_path):
     # Verify every input before making any installed change.
     for entry in manifest["files"]:
         relative = entry["path"]
-        if digest(runtime_path(source, relative)) != entry["sourceHash"]:
+        if digest(origin(source, entry)) != entry["sourceHash"]:
             raise ValueError(f"Source changed after staging: {relative}")
         if file_hash(runtime_path(destination, relative)) != entry["baselineHash"]:
             raise ValueError(f"Installed file changed after staging: {relative}")
@@ -163,6 +174,26 @@ def verify(manifest_path):
     return len(manifest["files"])
 
 
+def restore(manifest_path):
+    """Put back the installed files a deployment replaced, from its `before/` copies. Refuses when an installed
+    file no longer matches what the deployment wrote, so a later deploy is never overwritten."""
+    manifest_path = manifest_path.resolve()
+    manifest = verify(manifest_path) and json.loads(manifest_path.read_text(encoding="utf-8"))
+    destination = Path(manifest["destination"])
+    for entry in manifest["files"]:
+        target = runtime_path(destination, entry["path"])
+        if entry["baselineHash"] is None:
+            target.unlink(missing_ok=True)
+            continue
+        shutil.copy2(inside(manifest_path.parent / "before", entry["path"]), target)
+        if digest(target) != entry["baselineHash"]:
+            raise ValueError(f"Restore verification failed: {entry['path']}")
+    manifest["status"] = "restored"
+    manifest["restoredUtc"] = datetime.now(timezone.utc).isoformat()
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return len(manifest["files"])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -170,7 +201,7 @@ def main():
     staging.add_argument("--plan", required=True, type=Path)
     staging.add_argument("--destination", required=True, type=Path)
     staging.add_argument("--output", required=True, type=Path)
-    for name in ("deploy", "verify"):
+    for name in ("deploy", "verify", "restore"):
         commands.add_parser(name).add_argument("manifest", type=Path)
     args = parser.parse_args()
     try:
@@ -182,6 +213,9 @@ def main():
             manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
             if Path(manifest["sourceRoot"]).resolve() != ROOT:
                 raise ValueError("Use the deployment tool from the manifest's source workspace")
+            if args.command == "restore":
+                print(f"PASS: {restore(args.manifest)} installed files restored to their baseline")
+                return 0
             count = deploy(args.manifest) if args.command == "deploy" else verify(args.manifest)
             print(f"PASS: {count} installed files verified against reviewed candidates")
         return 0

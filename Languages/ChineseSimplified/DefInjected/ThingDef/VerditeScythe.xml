@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_VerditeScythe.label>翠绿石镰刀</KM_VerditeScythe.label>
+	<KM_VerditeScythe.description>一把装在深色长柄上的弧形橄榄石色刀刃。它能干净利落地割下谷物，而它本来也只为此而生。\n\n装备时，种植工作速度和收获产量+15%，此加成与附近翠绿石装置的加成取较高者，而非相加。对活体有机目标造成的近战伤害会按护甲后实际伤害的3%治疗持有者的非永久伤势。建筑、尸体和机械目标不提供治疗。研究长剑后，使用100翠绿石和20钢铁制作，需要6级手工。</KM_VerditeScythe.description>
+	<KM_VerditeScythe.tools.0.label>柄</KM_VerditeScythe.tools.0.label>
+	<KM_VerditeScythe.tools.1.label>刃</KM_VerditeScythe.tools.1.label>
+</LanguageData>

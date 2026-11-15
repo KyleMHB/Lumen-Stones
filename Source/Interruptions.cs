@@ -22,12 +22,12 @@ public static class ActiveEffectInterruption
 
     private static readonly List<(Func<Map, string> rule, ActiveEffectNetworks networks)> rules = new()
     {
-        ((Func<Map, string>)(map => map.gameConditionManager.ConditionIsActive(SolarFlareDef) ? "solar flare" : null),
+        ((Func<Map, string>)(map => map.gameConditionManager.ConditionIsActive(SolarFlareDef) ? "Lumen_Interruption_SolarFlare".Translate().ToString() : null),
             ActiveEffectNetworks.Solar | ActiveEffectNetworks.Warp)
     };
 
     internal static void DeclareTunables(TunableScope s) =>
-        s.In("Interruptions").Add(StoneTabs.Interruptions, "Pause active effects and Solar collection during solar flares");
+        s.In("Lumen_Interruption_Section".Translate()).Add(StoneTabs.Interruptions, "Lumen_Interruption_Setting".Translate());
 
     // Master switch from the settings window. Interruptions also need Sunstone, since Lunite is the only counterplay.
     private static bool SettingEnabled => SolarRules.Enabled && StoneTabs.Interruptions.On;
@@ -48,7 +48,7 @@ public static class ActiveEffectInterruption
         if (map == null) return null;
         if (map != lastMap)
         {
-            lastCache = map.GetComponent<InterruptionCache>();
+            lastCache = MapState.Of<InterruptionCache>(map);
             lastMap = map;
         }
         var cache = lastCache;
@@ -94,5 +94,9 @@ public class InterruptionCache : MapComponent
     public int bucket = -1, version = -1;
     public string solar, warp;
     public InterruptionCache(Map map) : base(map) { }
-    public override void MapRemoved() => ActiveEffectInterruption.Forget(map);
+    public override void MapRemoved()
+    {
+        ActiveEffectInterruption.Forget(map);
+        MapState.Forget();
+    }
 }

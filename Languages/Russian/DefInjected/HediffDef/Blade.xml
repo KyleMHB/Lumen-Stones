@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteChill.label>Гляцитовый холод</KM_GlaciteChill.label>
+	<KM_GlaciteChill.description>Холод гляцитового клинка сковал плоть, замедляя движения и делая руки неловкими. Новые удары усиливают его, а проходит он меньше чем за минуту.</KM_GlaciteChill.description>
+	<KM_GlaciteChill.stages.0.label>озноб</KM_GlaciteChill.stages.0.label>
+	<KM_GlaciteChill.stages.1.label>онемение</KM_GlaciteChill.stages.1.label>
+	<KM_GlaciteChill.stages.2.label>окоченение</KM_GlaciteChill.stages.2.label>
+</LanguageData>

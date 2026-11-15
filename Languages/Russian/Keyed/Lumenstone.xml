@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_FaintLight_Label>Слабый свет</Lumen_FaintLight_Label>
+	<Lumen_FaintLight_Text>Ваши колонисты что-то здесь чувствуют — слабое притяжение, будто свет, заключённый в камне. Где-то на этой карте что-то ждёт, чтобы его нашли.</Lumen_FaintLight_Text>
+	<Lumen_Lumenstone_Veins>Жилы</Lumen_Lumenstone_Veins>
+	<Lumen_Lumenstone_VeinFrequency>Частота жил</Lumen_Lumenstone_VeinFrequency>
+	<Lumen_Lumenstone_VeinSizeMin>Минимальный размер жилы</Lumen_Lumenstone_VeinSizeMin>
+	<Lumen_Lumenstone_VeinSizeMax>Максимальный размер жилы</Lumen_Lumenstone_VeinSizeMax>
+	<Lumen_Lumenstone_VeinYield>Добыча с клетки</Lumen_Lumenstone_VeinYield>
+	<Lumen_Lumenstone_Surface>Поверхность</Lumen_Lumenstone_Surface>
+	<Lumen_Lumenstone_SurfaceChance>Шанс на карту (%)</Lumen_Lumenstone_SurfaceChance>
+	<Lumen_Lumenstone_StacksMin>Минимум стопок</Lumen_Lumenstone_StacksMin>
+	<Lumen_Lumenstone_StacksMax>Максимум стопок</Lumen_Lumenstone_StacksMax>
+	<Lumen_Lumenstone_StackSizeMin>Минимальный размер стопки</Lumen_Lumenstone_StackSizeMin>
+	<Lumen_Lumenstone_StackSizeMax>Максимальный размер стопки</Lumen_Lumenstone_StackSizeMax>
+	<Lumen_Lumenstone_Traders>Торговцы</Lumen_Lumenstone_Traders>
+	<Lumen_Lumenstone_StockChance>Шанс наличия в товарах (%)</Lumen_Lumenstone_StockChance>
+	<Lumen_Lumenstone_StockMin>Минимальный запас</Lumen_Lumenstone_StockMin>
+	<Lumen_Lumenstone_StockMax>Максимальный запас</Lumen_Lumenstone_StockMax>
+	<Lumen_Lumenstone_MarketValue>Рыночная стоимость (торговцы просят примерно в семь раз больше)</Lumen_Lumenstone_MarketValue>
+</LanguageData>

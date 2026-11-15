@@ -14,8 +14,8 @@ public class CompProperties_LuniteStabilizer : CompProperties
     {
         if (!SolarRules.Enabled) return new List<StatDrawEntry>();
         return new InfoStats()
-            .Add("Stabilizes", "1 active fixture", "Links to one Solar or Warp active-effect fixture, toggled on or off. Collectors and arrays cannot be linked. Draws no energy.")
-            .Add("Link radius", InfoStats.Tiles(LuniteRules.LinkRadius), "Measured to the nearest cell of the fixture. Links are matched across the whole map, closest pairs first, so the build order does not matter.")
+            .Add(Effects.LuniteStabilizer, "Lumen_LuniteStabilizer_Stabilizes".Translate(), "Lumen_LuniteStabilizer_StabilizesValue".Translate(), "Lumen_LuniteStabilizer_StabilizesDesc".Translate())
+            .Add("Lumen_LuniteStabilizer_LinkRadius".Translate(), InfoStats.Tiles(LuniteRules.LinkRadius), "Lumen_LuniteStabilizer_LinkRadiusDesc".Translate())
             .Rows;
     }
 }
@@ -28,8 +28,9 @@ public class CompLuniteStabilizer : ThingComp
     public override string CompInspectStringExtra()
     {
         if (!parent.Spawned) return null;
+        if (!Effects.LuniteStabilizer.On) return "Lumen_LuniteStabilizer_Stabilizing".Translate(EffectSwitch.OffText.ToLower());
         var fixture = LuniteLinkTracker.For(parent.Map).FixtureOf(parent);
-        return "Stabilizing: " + (fixture?.LabelCap ?? "nothing in range");
+        return "Lumen_LuniteStabilizer_Stabilizing".Translate(fixture?.LabelCap ?? "Lumen_LuniteStabilizer_NothingInRange".Translate());
     }
 
     public override void PostDrawExtraSelectionOverlays()
@@ -55,7 +56,7 @@ public class LuniteLinkTracker : MapComponent
 
     public LuniteLinkTracker(Map map) : base(map) { }
 
-    public static LuniteLinkTracker For(Map map) => map.GetComponent<LuniteLinkTracker>();
+    public static LuniteLinkTracker For(Map map) => MapState.Of<LuniteLinkTracker>(map);
 
     public void Register(Thing stabilizer, bool add) { if (add ? stabilizers.Add(stabilizer) : stabilizers.Remove(stabilizer)) dirty = true; }
     public void RegisterFixture(Thing fixture, bool add) { if (add ? fixtures.Add(fixture) : fixtures.Remove(fixture)) dirty = true; }
@@ -63,7 +64,7 @@ public class LuniteLinkTracker : MapComponent
     public Thing FixtureOf(Thing stabilizer) { Rebuild(); return fixtureOf.GetValueOrDefault(stabilizer); }
     public Thing StabilizerOf(Thing fixture) { Rebuild(); return stabilizerOf.GetValueOrDefault(fixture); }
 
-    public static bool IsStabilized(Thing fixture) => fixture.Map != null && For(fixture.Map).StabilizerOf(fixture) != null;
+    public static bool IsStabilized(Thing fixture) => Effects.LuniteStabilizer.On && fixture.Map != null && For(fixture.Map).StabilizerOf(fixture) != null;
 
     private void Rebuild()
     {

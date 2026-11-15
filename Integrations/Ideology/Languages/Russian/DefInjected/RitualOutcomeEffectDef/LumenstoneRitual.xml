@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenstoneRitual.comps.0.label>Посох из люменита</KM_LumenstoneRitual.comps.0.label>
+	<KM_LumenstoneRitual.comps.1.label>социальное влияние ({PAWN_labelShort})</KM_LumenstoneRitual.comps.1.label>
+	<KM_LumenstoneRitual.comps.1.labelAbstract>социальное влияние ведущего</KM_LumenstoneRitual.comps.1.labelAbstract>
+	<KM_LumenstoneRitual.comps.2.label>участники</KM_LumenstoneRitual.comps.2.label>
+	<KM_LumenstoneRitual.outcomeChances.0.label>плохо</KM_LumenstoneRitual.outcomeChances.0.label>
+	<KM_LumenstoneRitual.outcomeChances.0.description>Обломки почти не отдали света. Церемония даёт наименьшее количество люменита.</KM_LumenstoneRitual.outcomeChances.0.description>
+	<KM_LumenstoneRitual.outcomeChances.1.label>успешно</KM_LumenstoneRitual.outcomeChances.1.label>
+	<KM_LumenstoneRitual.outcomeChances.1.description>Обломки посветлели и прояснились. Церемония даёт хорошее количество люменита.</KM_LumenstoneRitual.outcomeChances.1.description>
+	<KM_LumenstoneRitual.outcomeChances.2.label>исключительно</KM_LumenstoneRitual.outcomeChances.2.label>
+	<KM_LumenstoneRitual.outcomeChances.2.description>Обломки вспыхнули белым. Церемония даёт наибольшее количество люменита.</KM_LumenstoneRitual.outcomeChances.2.description>
+	<KM_LumenstoneRitual.description>Церемония у люменового ритуального круга, извлекающая люменит из обычных каменных обломков. Выход зависит от качества и участия и ниже, чем у люменитового алтаря. Перед следующей церемонией поселение должно восстановиться.</KM_LumenstoneRitual.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.0.label>плохо</KM_LumenstoneAltarRitual.outcomeChances.0.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.0.description>Обломки почти не отдали света. Церемония даёт наименьшее количество люменита.</KM_LumenstoneAltarRitual.outcomeChances.0.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.1.label>успешно</KM_LumenstoneAltarRitual.outcomeChances.1.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.1.description>Обломки посветлели и прояснились. Церемония даёт хорошее количество люменита.</KM_LumenstoneAltarRitual.outcomeChances.1.description>
+	<KM_LumenstoneAltarRitual.outcomeChances.2.label>исключительно</KM_LumenstoneAltarRitual.outcomeChances.2.label>
+	<KM_LumenstoneAltarRitual.outcomeChances.2.description>Обломки вспыхнули белым. Церемония даёт наибольшее количество люменита.</KM_LumenstoneAltarRitual.outcomeChances.2.description>
+	<KM_LumenstoneAltarRitual.description>Церемония у люменитового алтаря, извлекающая люменит из обычных каменных обломков. Выход зависит от качества, участия и люменитовых светильников рядом. Перед следующей церемонией поселение должно восстановиться.</KM_LumenstoneAltarRitual.description>
+	<KM_LumenstoneAltarRitual.comps.0.label>Посох из люменита</KM_LumenstoneAltarRitual.comps.0.label>
+	<KM_LumenstoneAltarRitual.comps.1.label>социальное влияние ({PAWN_labelShort})</KM_LumenstoneAltarRitual.comps.1.label>
+	<KM_LumenstoneAltarRitual.comps.1.labelAbstract>социальное влияние ведущего</KM_LumenstoneAltarRitual.comps.1.labelAbstract>
+	<KM_LumenstoneAltarRitual.comps.2.label>участники</KM_LumenstoneAltarRitual.comps.2.label>
+	<KM_LumenstoneAltarRitual.comps.3.label>впечатляющность комнаты</KM_LumenstoneAltarRitual.comps.3.label>
+	<KM_LumenstoneAltarRitual.comps.4.label>люменитовые светильники</KM_LumenstoneAltarRitual.comps.4.label>
+</LanguageData>

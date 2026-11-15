@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SereniteRoom.stages.0.label>Серенитовое спокойствие</KM_SereniteRoom.stages.0.label>
+	<KM_SereniteRoom.stages.0.description>Лавандовые кристаллы приносят немного покоя в эту закрытую комнату.</KM_SereniteRoom.stages.0.description>
+	<KM_SereniteRested.stages.0.label>Отдохнул у серенита</KM_SereniteRested.stages.0.label>
+	<KM_SereniteRested.stages.0.description>Я проснулся отдохнувшим после сна рядом с успокаивающим серенитом.</KM_SereniteRested.stages.0.description>
+</LanguageData>

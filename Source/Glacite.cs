@@ -10,7 +10,7 @@ public static class GlaciteSolar
     public static float FreezerDrain = 40f;
 
     internal static void DeclareTunables(TunableScope s) =>
-        s.In("Solar energy").Add("Glacite.freezerSolarDrain", "Solar energy per day while cooling between the two limits", FreezerDrain, v => FreezerDrain = v);
+        s.In("Lumen_Section_SolarEnergy".Translate()).Add("Glacite.freezerSolarDrain", "Lumen_Glacite_FreezerDrain".Translate(), FreezerDrain, v => FreezerDrain = v);
 }
 
 // The native heat pusher reads one cutoff per def. This one cools to passiveCutoff on its own, and down to
@@ -20,19 +20,19 @@ public class CompProperties_GlaciteCooler : CompProperties_HeatPusher, ITunableP
     public float passiveCutoff = 4f;
     public CompProperties_GlaciteCooler() => compClass = typeof(CompGlaciteCooler);
 
-    public string CutoffLabel => "Active temperature cutoff (C)";
+    public string CutoffLabel => "Lumen_Glacite_ActiveCutoff".Translate();
 
     // The registry's heat rows come first, so this follows the active cutoff.
     public void DeclareTunables(TunableScope s, Def owner) =>
-        s.Add(owner.defName + ".passiveCutoff", "Passive temperature cutoff (C)", passiveCutoff, v => passiveCutoff = v, Limit.Number(-273.15f, 1000));
+        s.Add(owner.defName + ".passiveCutoff", "Lumen_Glacite_PassiveCutoff".Translate(), passiveCutoff, v => passiveCutoff = v, Limit.Number(-273.15f, 1000));
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
         foreach (var row in base.SpecialDisplayStats(req)) yield return row;
         var rows = new InfoStats()
-            .Add("Cools to", passiveCutoff.ToStringTemperature("F0"), "Absorbs heat on its own, without fuel, electricity or an exhaust vent. A larger room or hotter weather may need more than one cooler.")
-            .Add(InfoStats.Solar("Cools to with active effect"), heatPushMinTemperature.ToStringTemperature("F0"), "Keeps cooling below its own limit, down to this temperature." + InfoStats.SolarRule);
-        if (SolarRules.Enabled) rows.Add("Solar energy per day", GlaciteSolar.FreezerDrain.ToString("0.##"), "Spent only while the air is between the two limits.");
+            .Add(Effects.GlaciteRefrigeration, "Lumen_Glacite_CoolsTo".Translate(), passiveCutoff.ToStringTemperature("F0"), "Lumen_Glacite_CoolsToDesc".Translate())
+            .Add(Effects.GlaciteFreezing, InfoStats.Solar("Lumen_Glacite_CoolsToActive".Translate()), heatPushMinTemperature.ToStringTemperature("F0"), "Lumen_Glacite_CoolsToActiveDesc".Translate() + InfoStats.SolarRule);
+        if (SolarRules.Enabled) rows.Add("Lumen_Info_SolarPerDay".Translate(), GlaciteSolar.FreezerDrain.ToString("0.##"), "Lumen_Glacite_SolarPerDayDesc".Translate());
         foreach (var row in rows.Rows) yield return row;
     }
 }
@@ -43,11 +43,16 @@ public class CompGlaciteCooler : CompHeatPusher, IActiveEffectDrain
     private CompProperties_GlaciteCooler Cooler => (CompProperties_GlaciteCooler)props;
     private CompSolarToggle Toggle => toggle ??= parent.GetComp<CompSolarToggle>();
 
-    private bool InBand(float temperature) => temperature <= Cooler.passiveCutoff && temperature > Cooler.heatPushMinTemperature;
+    private static bool Refrigerating => Effects.GlaciteRefrigeration.On;
 
-    public float DrainPerTick => InBand(parent.AmbientTemperature) ? GlaciteSolar.FreezerDrain / GenDate.TicksPerDay : 0;
+    // The range the active effect pays for: below the passive limit, or everything above the active limit when
+    // refrigeration is switched off.
+    private bool InBand(float temperature) => temperature > Cooler.heatPushMinTemperature &&
+        (Refrigerating ? temperature <= Cooler.passiveCutoff : temperature < Cooler.heatPushMaxTemperature);
 
-    private bool ActiveEffect => Toggle.Powered;
+    public float DrainPerTick => Effects.GlaciteFreezing.On && InBand(parent.AmbientTemperature) ? GlaciteSolar.FreezerDrain / GenDate.TicksPerDay : 0;
+
+    private bool ActiveEffect => Effects.GlaciteFreezing.On && Toggle.Powered;
 
     public override bool ShouldPushHeatNow
     {
@@ -56,10 +61,13 @@ public class CompGlaciteCooler : CompHeatPusher, IActiveEffectDrain
             if (!parent.SpawnedOrAnyParentSpawned || !enabled) return false;
             float temperature = parent.AmbientTemperature;
             if (temperature >= Cooler.heatPushMaxTemperature) return false;
-            return temperature > Cooler.passiveCutoff || temperature > Cooler.heatPushMinTemperature && ActiveEffect;
+            return Refrigerating && temperature > Cooler.passiveCutoff || temperature > Cooler.heatPushMinTemperature && ActiveEffect;
         }
     }
 
-    public override string CompInspectStringExtra() =>
-        "Cooling to " + (ActiveEffect ? Cooler.heatPushMinTemperature : Cooler.passiveCutoff).ToStringTemperature("F0") + (ShouldPushHeatNow ? "" : ", idle");
+    public override string CompInspectStringExtra()
+    {
+        if (!Refrigerating && !ActiveEffect) return "Lumen_Glacite_Cooling".Translate(Effects.GlaciteFreezing.On ? "Lumen_Glacite_NotRunning".Translate().ToString() : EffectSwitch.OffText.ToLower());
+        return (ShouldPushHeatNow ? "Lumen_Glacite_CoolingTo" : "Lumen_Glacite_CoolingToIdle").Translate((ActiveEffect ? Cooler.heatPushMinTemperature : Cooler.passiveCutoff).ToStringTemperature("F0"));
+    }
 }

@@ -48,6 +48,8 @@
     <label>Lunite stabilizer</label>
     <description>A small Lunite crystal on a plinth. It is calm in a way the things around it are not.\n\nLinks to one Solar or Warp active-effect fixture within 4 tiles, switched on or off, and keeps that fixture's active effect running through solar flares and other interruptions while network energy lasts. Draws no energy itself. It cannot link to Sunstone collectors or arrays.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.039)</drawOffset>
       <texPath>Things/Building/Misc/LuniteStabilizer</texPath>
       <drawSize>(1.25,1.25)</drawSize>
     </graphicData>
@@ -131,6 +133,8 @@
     <label>Aegite shield projector</label>
     <description>A champagne-gold crystal ring held between two plinths. When it wakes, the air around the colony takes on a faint shimmer.\n\nProjects a 10-tile dome that stops incoming hostile ground projectiles, mortar shells and orbital bombardments, while colonists shoot out freely. It also crushes hostile raid drop pods and tunneling infestations that land inside, at a cost to the dome. Spends Solar energy while up and for each point of shield recharged. When broken it reboots for a day. EMP disarms it briefly. Paused by solar flares unless a Lunite stabilizer is linked to it.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.129)</drawOffset>
       <texPath>Things/Building/Aegite/ShieldProjector</texPath>
       <drawSize>(2.5,2.5)</drawSize>
     </graphicData>

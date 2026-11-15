@@ -191,7 +191,24 @@ def check(root, registry_path="artwork/objects.json", game_root=None, pyrinth_ro
                 raise ValueError("Pylon must use BuildingOnTop altitude")
         except (ValueError, KeyError) as exc:
             errors.append(f"{name}: {exc}")
-    for name, wood_cost in registry.get("fixedWoodTorches", {}).items():
+    # Plinth lamps take any stone, but their art has no material mask, so Building_PlinthLamp keeps them untinted.
+    for name, cost in registry.get("stonePlinthLamps", {}).items():
+        try:
+            if name not in defs:
+                raise ValueError("Missing ThingDef")
+            if value(defs, name, "thingClass") != "LumenStones.Building_PlinthLamp":
+                raise ValueError("Plinth lamp must use LumenStones.Building_PlinthLamp so stuff does not tint its art")
+            categories = defs[name].find("stuffCategories")
+            if categories is None or [li.text for li in categories.findall("li")] != ["Stony"]:
+                raise ValueError("Plinth lamp must take Stony stuff only")
+            if value(defs, name, "costStuffCount", None) != str(cost):
+                raise ValueError(f"Plinth lamp must cost {cost} stone")
+            if value(defs, name, "costList/BlocksGranite", None) is not None:
+                raise ValueError("Plinth lamp still has a fixed granite cost")
+        except (ValueError, KeyError) as exc:
+            errors.append(f"{name}: {exc}")
+    fixed_materials = [(name, "WoodLog", cost) for name, cost in registry.get("fixedWoodTorches", {}).items()]
+    for name, resource, cost in fixed_materials:
         try:
             if name not in defs:
                 raise ValueError("Missing ThingDef")
@@ -199,8 +216,8 @@ def check(root, registry_path="artwork/objects.json", game_root=None, pyrinth_ro
                 raise ValueError("Fixed-material torch still has stuff categories")
             if value(defs, name, "costStuffCount", None) is not None:
                 raise ValueError("Fixed-material torch still has selectable stuff cost")
-            if value(defs, name, "costList/WoodLog", None) != str(wood_cost):
-                raise ValueError(f"Fixed-material torch must require {wood_cost} WoodLog")
+            if value(defs, name, f"costList/{resource}", None) != str(cost):
+                raise ValueError(f"Fixed-material lamp must require {cost} {resource}")
         except (ValueError, KeyError) as exc:
             errors.append(f"{name}: {exc}")
     if (Path(root) / CONFIG).exists():
@@ -228,13 +245,16 @@ def check(root, registry_path="artwork/objects.json", game_root=None, pyrinth_ro
                         defs[name] = node
                 patch = ET.parse(inside(root, obj["patch"])).getroot()
                 for operation in patch.findall(".//operations/li"):
+                    if operation.get("Class") != "PatchOperationReplace":
+                        continue
                     xpath = operation.findtext("xpath")
-                    targets = upstream.findall(xpath.removeprefix("Defs/"))
+                    targets = upstream.findall(xpath.lstrip("/").removeprefix("Defs/"))
                     if len(targets) != 1:
                         raise ValueError(f"Patch target expected once: {xpath}")
                     replacement = operation.find("value")[0]
                     targets[0].text = replacement.text
-                asset_root = pyrinth / "Textures"
+                    targets[0][:] = list(replacement)
+                asset_root = root / "Textures" if obj.get("localTextures") else pyrinth / "Textures"
             if name not in defs:
                 raise ValueError("Missing ThingDef")
             for field in ("identity", "geometry", "materials", "camera", "protected", "allowedEdits"):
@@ -280,6 +300,10 @@ def check(root, registry_path="artwork/objects.json", game_root=None, pyrinth_ro
                             raise ValueError(f"Transparent exclusion in {mask_path.name}; encode coverage in red")
                         if any(mask.getchannel(ch).getextrema() != (0, 0) for ch in ("G", "B")):
                             raise ValueError(f"Unexpected second tint channel: {mask_path.name}")
+                    # A blank mask silently drops construction tint; only a recorded fixed-colour choice allows it.
+                    if mask.getchannel("R").getextrema()[1] == 0 and not obj.get("fixedColour"):
+                        raise ValueError(f"Blank mask {mask_path.name}: paint the tinted parts, or set "
+                                         "\"fixedColour\": true in objects.json with the user's decision")
                 if direction in recipes:
                     checkRecipe(root, recipes[direction], color_path, mask_path)
                     notes.append(f"{name} / {direction}: recipe verified")
@@ -372,15 +396,31 @@ def check(root, registry_path="artwork/objects.json", game_root=None, pyrinth_ro
 
 
 def main():
+    if sys.argv[1:2] == ["outline"]:
+        from artwork_outline import main as outline
+        return outline(sys.argv[2:])
+    if sys.argv[1:2] == ["outline-layer"]:
+        from artwork_outline_layer import main as outlineLayer
+        return outlineLayer(sys.argv[2:])
+    if sys.argv[1:2] == ["outline-layer-deployed"]:
+        from artwork_outline_batch import main as outlineBatch
+        return outlineBatch(sys.argv[2:])
+    if sys.argv[1:2] == ["outline-lineup"]:
+        from artwork_outline_layer import lineupMain
+        return lineupMain(sys.argv[2:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["check", "check-candidate", "prepare-candidate", "silhouettes"])
     parser.add_argument("manifest", nargs="?", type=Path)
     parser.add_argument("--output", type=Path, help="Candidate or silhouette sheet directory")
     parser.add_argument("--staged", action="store_true", help="Check the Git index, not unstaged files")
+    parser.add_argument("--require-production-ready", action="store_true",
+                        help="Candidate commands: fail unless export, ownership and consumer checks pass")
     parser.add_argument("--preview", type=Path, help="Write the contact sheet and model report here")
     parser.add_argument("--game-root")
     parser.add_argument("--pyrinth-root")
     args = parser.parse_args()
+    if args.require_production_ready and args.command not in ("check-candidate", "prepare-candidate"):
+        parser.error("--require-production-ready belongs to candidate commands")
     if args.command in ("check-candidate", "prepare-candidate"):
         if not args.manifest or not args.output or args.staged or args.preview:
             parser.error("Candidate commands need MANIFEST and --output; use a working-tree candidate")
@@ -407,8 +447,16 @@ def main():
                 print("UNAVAILABLE:", unavailable)
             for error in report["errors"]:
                 print("FAIL:", error)
+            print("Export checks:", "PASS" if report["mechanicalPassed"] else "FAIL")
+            if report["outline"]:
+                outline = report["outline"]
+                print("Outline (report only):", "meets rule" if report["outlinePassed"] else "misses rule",
+                      f"width {outline['widthPx']}px; rule {outline['target']['low']}..{outline['target']['high']}px")
+            else:
+                print("Outline (report only): unavailable")
+            print("Production readiness:", "PASS" if report["readyForProduction"] else "NOT READY")
             print("Report:", args.output / "candidate-check.json")
-            return 0 if report["passed"] else 1
+            return 0 if (report["readyForProduction"] if args.require_production_ready else report["passed"]) else 1
         if args.staged:
             scratch = ROOT / "work"
             scratch.mkdir(exist_ok=True)

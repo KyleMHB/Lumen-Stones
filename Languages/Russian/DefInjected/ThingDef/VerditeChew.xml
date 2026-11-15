@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_VerditeChew.label>Вердитовая жвачка</KM_VerditeChew.label>
+	<KM_VerditeChew.description>Деревянная миска вердитовых кристаллов, сваренных до мягкости. Странник по имени Dusk так часто спрашивал, можно ли их есть, что кто-то наконец их сварил. В голодные годы фермеры клянутся этой жвачкой — сквозь окровавленные зубы.\n\nНе даёт питательности, но вдвое снижает скорость голода на два дня. Острые кристаллы ранят дёсны, что ухудшает настроение, речь и социальное влияние, пока длится эффект. Новая порция сбрасывает длительность.</KM_VerditeChew.description>
+	<KM_VerditeChew.ingestible.ingestCommandString>Съесть {0}</KM_VerditeChew.ingestible.ingestCommandString>
+	<KM_VerditeChew.ingestible.ingestReportString>Ест {0}.</KM_VerditeChew.ingestible.ingestReportString>
+</LanguageData>

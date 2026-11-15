@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_LuniteStabilizer_Stabilizes>稳定</Lumen_LuniteStabilizer_Stabilizes>
+	<Lumen_LuniteStabilizer_StabilizesValue>1个主动效果装置</Lumen_LuniteStabilizer_StabilizesValue>
+	<Lumen_LuniteStabilizer_StabilizesDesc>连接到一个太阳能或扭曲能量主动效果装置，无论其开启与否。收集器和阵列无法被连接。不消耗能量。</Lumen_LuniteStabilizer_StabilizesDesc>
+	<Lumen_LuniteStabilizer_LinkRadius>连接半径</Lumen_LuniteStabilizer_LinkRadius>
+	<Lumen_LuniteStabilizer_LinkRadiusDesc>测量到装置最近的格子。连接在整张地图范围内匹配，距离最近的配对优先，因此建造顺序无关紧要。</Lumen_LuniteStabilizer_LinkRadiusDesc>
+	<Lumen_LuniteStabilizer_Stabilizing>稳定中：{0}</Lumen_LuniteStabilizer_Stabilizing>
+	<Lumen_LuniteStabilizer_NothingInRange>范围内没有目标</Lumen_LuniteStabilizer_NothingInRange>
+</LanguageData>

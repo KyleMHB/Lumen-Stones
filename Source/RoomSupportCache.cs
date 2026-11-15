@@ -53,6 +53,8 @@ public class RoomSupportCache : MapComponent
 
     public void Register(SupportStone stone, CompRoomFixture comp) { tables[stone].Fixtures.Add(comp); dirty = true; }
     public void Unregister(SupportStone stone, CompRoomFixture comp) { tables[stone].Fixtures.Remove(comp); dirty = true; }
+    // Whether the map has any fixture or bed of the stone, so per-pawn hooks can leave early on maps without one.
+    public bool Any(SupportStone stone) => tables[stone].Fixtures.Count > 0;
 
     // Highest weight of each category in the room, or nothing when the room is not enclosed and roofed.
     internal SupportReading Read(SupportStone stone, Room room)
@@ -65,11 +67,11 @@ public class RoomSupportCache : MapComponent
     }
 
     // Cached state for a patient (Vitalite) or sleeper (Serenite), or null when the pawn has no active treatment.
-    internal static Occupant Patient(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().patients.GetValueOrDefault(pawn);
-    internal static Occupant Sleeper(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().sleepers.GetValueOrDefault(pawn);
+    internal static Occupant Patient(Pawn pawn) => MapState.Of<RoomSupportCache>(pawn.Map)?.patients.GetValueOrDefault(pawn);
+    internal static Occupant Sleeper(Pawn pawn) => MapState.Of<RoomSupportCache>(pawn.Map)?.sleepers.GetValueOrDefault(pawn);
     // Cached state for a pawn meditating with Animastone support, or null. Primary is room support, and secondary is
     // the extra neural heat recovery from a powered fixture in range.
-    internal static Occupant Meditator(Pawn pawn) => pawn.Map?.GetComponent<RoomSupportCache>().meditators.GetValueOrDefault(pawn);
+    internal static Occupant Meditator(Pawn pawn) => MapState.Of<RoomSupportCache>(pawn.Map)?.meditators.GetValueOrDefault(pawn);
 
     // Extra neural heat recovery from a powered Animastone pylon in range, on top of room support.
     public static float ActiveHeatRecovery(Pawn pawn) => pawn.CurJobDef == JobDefOf.Meditate ? Meditator(pawn)?.secondary ?? 0 : 0;
@@ -77,7 +79,7 @@ public class RoomSupportCache : MapComponent
     // Highest growth bonus from a powered Animastone fixture whose active radius covers the thing.
     public static float ActiveGrowth(Thing thing)
     {
-        var powered = thing.Map.GetComponent<RoomSupportCache>().poweredGrowth;
+        var powered = MapState.Of<RoomSupportCache>(thing.Map).poweredGrowth;
         float best = 0;
         for (int i = 0; i < powered.Count; i++)
         {
@@ -137,7 +139,8 @@ public class RoomSupportCache : MapComponent
         foreach (var room in vitalite.RunningRooms) foreach (var bed in room.ContainedBeds) FindPatients(bed);
         foreach (var comp in vitalite.Fixtures)
             if (comp.Fixture.category == FixtureCategory.None && comp.parent is Building_Bed bed) FindPatients(bed);
-        foreach (var room in tables[SupportStone.Serenite].RunningRooms) foreach (var bed in room.ContainedBeds) FindSleepers(bed);
+        if (SupportEffect.SereniteSleep.On)
+            foreach (var room in tables[SupportStone.Serenite].RunningRooms) foreach (var bed in room.ContainedBeds) FindSleepers(bed);
 
         Sweep(patients, SupportStone.Vitalite.OccupantDrain);
         Sweep(sleepers, SupportStone.Serenite.OccupantDrain);
@@ -210,13 +213,18 @@ public class RoomSupportCache : MapComponent
             comp.poweredNow = false;
             if (props.activeRadius <= 0 || !comp.parent.Spawned) continue;
             if (comp.parent.GetComp<CompSolarToggle>() is { Permitted: false }) continue;
+            // A fixture whose active effects are all switched off neither runs nor pays.
+            bool focus = props.activeFocusBonus > 0 && Effects.AnimastoneClusterFocus.On;
+            bool heat = props.activeHeatRecovery > 0 && Effects.AnimastonePylonHeat.On;
+            bool growth = props.activeGrowth > 0 && Effects.AnimastonePylonGrowth.On;
+            if (!focus && !heat && !growth) continue;
             FindMeditators(comp.parent.Position, props.activeRadius);
             if (found.Count == 0) continue;
             float cost = props.activeDrain / GenDate.TicksPerDay * Interval;
             if (!SolarNetwork.For(map).Account.TryDrawContinuous(cost)) continue;
             comp.poweredNow = true;
-            if (props.activeGrowth > 0) poweredGrowth.Add(comp);
-            if (props.activeHeatRecovery <= 0) continue;
+            if (growth) poweredGrowth.Add(comp);
+            if (!heat) continue;
             foreach (var pawn in found)
             {
                 var occupant = Entry(meditators, pawn);

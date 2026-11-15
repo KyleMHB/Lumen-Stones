@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Seed_Section>Dreadstone seed</Lumen_Seed_Section>
+	<Lumen_Seed_CrystalCost>Dreadstone per seed crystal</Lumen_Seed_CrystalCost>
+	<Lumen_Seed_RecipeDesc>Shape {0} Dreadstone into a dreadstone seed crystal.</Lumen_Seed_RecipeDesc>
+	<Lumen_Seed_Days>Days to full growth</Lumen_Seed_Days>
+	<Lumen_Seed_MaxPain>Maximum seed pain (%)</Lumen_Seed_MaxPain>
+	<Lumen_Seed_CutStart>Mean hours between cuts when bound</Lumen_Seed_CutStart>
+	<Lumen_Seed_CutEnd>Mean hours between cuts in the last stage</Lumen_Seed_CutEnd>
+	<Lumen_Seed_CutSeverity>Cut damage multiplier</Lumen_Seed_CutSeverity>
+	<Lumen_Seed_BaseYield>Dark Stone at full growth, before the victim factor</Lumen_Seed_BaseYield>
+	<Lumen_Seed_Dormant>dormant</Lumen_Seed_Dormant>
+	<Lumen_Seed_DormantTip>Dormant: it waits to be bound by Binding at a Sacrificial altar.</Lumen_Seed_DormantTip>
+	<Lumen_Seed_GrowthTip>Growth: {0}. It consumes the body in {1} unless the pawn dies first.</Lumen_Seed_GrowthTip>
+	<Lumen_Seed_LetterText>{PAWN_labelShort} has a stake of dreadstone buried in {PAWN_possessive} chest. It will keep {PAWN_objective} alive while it grows through {PAWN_objective}. Nothing will stop the pain.</Lumen_Seed_LetterText>
+	<Lumen_Seed_CutLabel>Dreadstone cut</Lumen_Seed_CutLabel>
+	<Lumen_Seed_CutText>The dreadstone seed tore through {PAWN_labelShort}'s {PART}. It will keep cutting as it grows. Tend the wounds or {PAWN_objective} will bleed out before it finishes.</Lumen_Seed_CutText>
+	<Lumen_Seed_ConsumedLabel>Consumed</Lumen_Seed_ConsumedLabel>
+	<Lumen_Seed_ConsumedText>The dreadstone has taken everything it can from {0}. All that remains is {1} Dark Stone.</Lumen_Seed_ConsumedText>
+</LanguageData>

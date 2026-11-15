@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AegiteShield_Section>Эгитовый оберег-щит</Lumen_AegiteShield_Section>
+	<Lumen_AegiteShield_ResetTicks>Тиков до восстановления после пробития</Lumen_AegiteShield_ResetTicks>
+	<Lumen_AegiteShield_FireImmune>Эгитовый щит: владелец не может загореться.</Lumen_AegiteShield_FireImmune>
+	<Lumen_AegiteShield_EnergyMax>Максимальная энергия щита</Lumen_AegiteShield_EnergyMax>
+	<Lumen_AegiteShield_RechargeRate>Скорость восстановления энергии в секунду</Lumen_AegiteShield_RechargeRate>
+</LanguageData>

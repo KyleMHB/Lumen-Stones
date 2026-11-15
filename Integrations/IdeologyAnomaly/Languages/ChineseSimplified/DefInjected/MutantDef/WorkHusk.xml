@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_WorkHusk.label>劳役躯壳</KM_WorkHusk.label>
+	<KM_WorkHusk.description>一个被献祭的人，被空虚石掏空，靠扭曲能量维持行动。它的内心已经什么都不剩，无从反抗。\n\n绑定到一座空虚石塔。它不知疲倦地搬运和清洁，可以被征召赤手空拳作战，塔失去能量时会瘫倒。</KM_WorkHusk.description>
+	<KM_WorkHusk.deathLetter>你的一具劳役躯壳倒下了。</KM_WorkHusk.deathLetter>
+	<KM_WorkHusk.deathLetterExtra>它的塔可以绑定另一具躯壳了。</KM_WorkHusk.deathLetterExtra>
+	<KM_WorkHusk.tools.0.label>左拳</KM_WorkHusk.tools.0.label>
+	<KM_WorkHusk.tools.1.label>右拳</KM_WorkHusk.tools.1.label>
+</LanguageData>

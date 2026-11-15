@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Lunite.label>月石</KM_Lunite.label>
+	<KM_Lunite.description>浸入月光的太阳石失去了热量，保留了光芒。它变得稳定，在周围一切都在动摇时依然岿然不动。\n\n一种淡银蓝色的晶体，带有深邃的月夜靛蓝色核心，于夜间在流明仪式圈或流明石祭坛由太阳石转化而来。用于制作月石稳定器。无法开采、发现或购买。</KM_Lunite.description>
+	<KM_LuniteStabilizer.label>月石稳定器</KM_LuniteStabilizer.label>
+	<KM_LuniteStabilizer.description>一块放在底座上的小月石晶体。它有一种周围事物所没有的平静。\n\n连接到4格范围内一个太阳能或扭曲能量主动效果装置（无论开启与否），在网络能量充足时，让该装置的主动效果在太阳耀斑和其他中断期间保持运行。自身不消耗能量。无法连接太阳石收集器或阵列。</KM_LuniteStabilizer.description>
+	<KM_AegiteShieldCharm.label>庇护石护盾护符</KM_AegiteShieldCharm.label>
+	<KM_AegiteShieldCharm.description>一块系在皮绳上的香槟金色晶体，发出微弱的嗡鸣。它会展开一层薄薄的个人护盾，抵挡来袭的射击。\n\n穿戴在工具栏位的个人护盾。它能阻挡来袭的远程弹药和弹片，但不能阻挡近战攻击或高温。与护盾腰带一样，它会阻止穿戴者向外射击，破碎后缓慢充能，被EMP击中会立即关闭。不需要太阳能，也不受中断影响。与庇护石盾牌共享腰带栏位。研究庇护石守护和长剑后，在锻造台使用100庇护石和20钢铁制作，需要6级手工。</KM_AegiteShieldCharm.description>
+	<KM_AegiteShieldProjector.label>庇护石护盾投射器</KM_AegiteShieldProjector.label>
+	<KM_AegiteShieldProjector.description>一个夹在两座底座之间的香槟金色晶体环。当它苏醒时，殖民地周围的空气会泛起淡淡的微光。\n\n投射一个10格的护罩，阻挡来袭的敌方地面弹药、迫击炮弹和轨道轰炸，同时殖民者可以自由向外射击。它还会碾碎降落在其中的敌方袭击空投舱和钻地虫巢，但会消耗护罩耐久。护罩开启时以及每恢复一点护盾耐久都会消耗太阳能。破碎后需重启一天。EMP会使其短暂瘫痪。除非连接了月石稳定器，否则会在太阳耀斑期间暂停。</KM_AegiteShieldProjector.description>
+	<KM_AegiteShieldProjector.comps.1.effect>弹药与空投舱护罩</KM_AegiteShieldProjector.comps.1.effect>
+</LanguageData>

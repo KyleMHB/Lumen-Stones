@@ -2,6 +2,7 @@
 
 import argparse
 import colorsys
+import hashlib
 import json
 import random
 from pathlib import Path
@@ -9,7 +10,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_FONT = Path(r"E:\Coding\Rimworld\EverythingHasQualityReforked\artifacts\steam-page-mockup\RimWordFont.ttf")
+DEFAULT_FONT = Path(r"E:\Coding\Rimworld\Configurable Quality\artifacts\steam-page-mockup\RimWordFont.ttf")
 OUT = ROOT / "docs/images/workshop"
 BACKGROUND = "#10232f"
 CREAM = "#f5eedc"
@@ -190,13 +191,27 @@ def cover_text(canvas, font_path, text, box, color, facets=None, seed=0):
     canvas.alpha_composite(ink, (left, top))
 
 
-def fixture_master(folder):
-    folder = ROOT / "artwork/design-sources" / folder
-    recipe = json.loads((folder / "master.json").read_text())
-    return Image.open(folder / "source.png").convert("RGBA").crop(recipe["crop"])
+PREVIEW_SOURCES = []
 
 
-def icon(font_path):
+def fixture_master(texture):
+    """Return the high-resolution source crop of a texture's registered recipe.
+
+    Resolving through artwork/objects.json keeps the cover on the current approved
+    art after a redo, without enlarging the small runtime export."""
+    objects = json.loads((ROOT / "artwork/objects.json").read_text())
+    objects = objects if isinstance(objects, list) else objects["objects"]
+    recipes = next(entry["recipes"] for entry in objects if entry.get("texture") == texture)
+    manifest = ROOT / (recipes.get("single") or recipes["south"])
+    recipe = json.loads(manifest.read_text())
+    source = manifest.parent / recipe["layers"][0]["path"]
+    PREVIEW_SOURCES.extend((manifest, source))
+    return Image.open(source).convert("RGBA").crop(recipe["crop"])
+
+
+def icon(font_path, wide=False):
+    if wide:
+        return preview_image(font_path)
     image = Image.new("RGBA", (1254, 1254), "#001426")
     cover_text(image, font_path, "LUMEN", (64, 46, 1190, 271), "#fff2df", [
         ["#fff9ee", "#fff1df", "#f7eadc"],
@@ -209,12 +224,12 @@ def icon(font_path):
         ["#f5a91c", "#ffbd35", "#ffd366", "#eea217"],
     ], seed=29)
     cover_text(image, font_path, "STONES THAT DO THINGS", (62, 597, 1205, 656), "#fff0db")
-    for folder, box in [
-        ("glacite-cooler", (146, 733, 392, 979)),
-        ("vitalite-cluster-banded", (496, 733, 772, 979)),
-        ("verdite-pylon-redesign", (928, 717, 1073, 979)),
+    for texture, box in [
+        ("Things/Building/Misc/GlaciteCooler", (146, 733, 392, 979)),
+        ("Things/Building/Vitalite/Cluster", (496, 733, 772, 979)),
+        ("Things/Building/Verdite/Pylon", (928, 717, 1073, 979)),
     ]:
-        sprite(image, fixture_master(folder), box)
+        sprite(image, fixture_master(texture), box)
     for text, box, color in [
         ("COOL", (151, 999, 377, 1055), "#5cdbfa"),
         ("HEAL", (525, 999, 742, 1055), "#f6a8d1"),
@@ -230,19 +245,64 @@ def icon(font_path):
     return image.convert("RGB")
 
 
+def preview_image(font_path):
+    # Steam's landscape thumbnail needs its own layout; the mod icon stays square.
+    image = Image.new("RGBA", (1280, 720), "#001426")
+    cover_text(image, font_path, "LUMEN", (330, 150, 950, 310), "#fff2df", [
+        ["#fff9ee", "#fff1df", "#f7eadc"],
+        ["#f4f1ed", "#e2e9f2", "#d9e3f0"],
+        ["#ccd9eb", "#b8cce5", "#e6ecf5"],
+    ], seed=11)
+    cover_text(image, font_path, "STONES", (330, 340, 950, 500), "#ffbd27", [
+        ["#fff0ad", "#ffe187", "#ffdb72"],
+        ["#ffd25d", "#ffc439", "#ffb825"],
+        ["#f5a91c", "#ffbd35", "#ffd366"],
+    ], seed=29)
+    sprite(image, fixture_master("Things/Building/Misc/GlacitePylon/GlacitePylon"), (35, 80, 285, 650))
+    sprite(image, fixture_master("Things/Building/Verdite/Pylon"), (995, 80, 1245, 650))
+    cover_text(image, font_path, "COOL / HEAL / GROW / AND MORE", (305, 565, 975, 610), "#fff0db")
+    return image.convert("RGB")
+
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def render_preview(font_path=DEFAULT_FONT):
+    """Write the landscape Workshop preview from current art and record its inputs."""
+    PREVIEW_SOURCES.clear()
+    preview = icon(font_path, wide=True)
+    outputs = [OUT / "lumen-stones-workshop-icon.png", ROOT / "About/Preview.png"]
+    for path in outputs:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        preview.save(path, optimize=True)
+        print(path, preview.size, path.stat().st_size)
+    record_path = ROOT / "artwork/workshop/lumen-stones-crystal-cover.json"
+    record = json.loads(record_path.read_text())
+    record["workshopPreviewRevision"]["sourceHashes"] = {
+        path.relative_to(ROOT).as_posix(): sha256(path)
+        for path in dict.fromkeys([Path(__file__).resolve(), *PREVIEW_SOURCES])}
+    for path in outputs:
+        record["outputHashes"][path.relative_to(ROOT).as_posix()] = sha256(path)
+    record_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    return preview
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--font", type=Path, default=DEFAULT_FONT)
     parser.add_argument("--icon-only", action="store_true", help="Update the preview and mod icon without rendering the gallery cover")
+    parser.add_argument("--preview-only", action="store_true", help="Update only About/Preview.png and its Workshop copy")
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
+    render_preview(args.font)
+    if args.preview_only:
+        raise SystemExit
     master = icon(args.font)
     master.save(ROOT / "artwork/workshop/lumen-stones-typeset-cover-master.png", optimize=True)
-    preview = master.resize((512, 512), Image.Resampling.LANCZOS)
+    mod_icon = master.resize((512, 512), Image.Resampling.LANCZOS)
     outputs = [(OUT / "lumen-stones-workshop-cover.png", master),
-               (OUT / "lumen-stones-workshop-icon.png", preview),
-               (ROOT / "About/Preview.png", preview),
-               (ROOT / "About/ModIcon.png", preview)]
+               (ROOT / "About/ModIcon.png", mod_icon)]
     if not args.icon_only:
         outputs.append((OUT / "lumen-stones-gallery-cover.png", gallery(args.font)))
     for path, rendered in outputs:

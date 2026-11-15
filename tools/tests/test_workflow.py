@@ -39,7 +39,8 @@ class WorkflowTests(unittest.TestCase):
         (self.root / "Textures/Things").mkdir(parents=True)
         for direction in artwork.DIRECTIONS:
             color = Image.new("RGBA", (64, 64))
-            ImageDraw.Draw(color).rectangle((16, 2, 47, 61), fill=(200, 150, 160, 255))
+            ImageDraw.Draw(color).rectangle((16, 2, 47, 61), fill=(200, 150, 160, 255),
+                                            outline=(0, 0, 0, 255), width=1)
             color.save(self.root / f"Textures/Things/Bed_{direction}.png")
             Image.new("RGBA", (64, 64), (255, 0, 0, 255)).save(
                 self.root / f"Textures/Things/Bed_{direction}m.png")
@@ -66,7 +67,7 @@ class WorkflowTests(unittest.TestCase):
     def linkRecipe(self):
         tools = self.root / "tools"
         tools.mkdir(exist_ok=True)
-        shutil.copy2(artwork.ROOT / "tools/export-layered-artwork.py", tools / "export-layered-artwork.py")
+        shutil.copy2(Path(artwork.loadExporter(artwork.ROOT).__file__), tools / "export-layered-artwork.py")
         source = self.root / "artwork/source.png"
         shutil.copy2(self.root / "Textures/Things/Bed_north.png", source)
         manifest = dict(sourceSize=[64, 64], crop=[0, 0, 64, 64], canvas=[64, 64], targetBox=[0, 0, 64, 64],
@@ -176,7 +177,8 @@ class WorkflowTests(unittest.TestCase):
     def test_real_hook_uses_staged_content_and_rejects_staged_bad_mask(self):
         tools = self.root / "tools"
         self.linkRecipe()
-        for module in ("check.py", "artwork.py", "artwork_family.py", "artwork_measure.py", "artwork_silhouettes.py"):
+        for module in ("check.py", "artwork.py", "artwork_family.py", "artwork_measure.py", "artwork_silhouettes.py",
+                       "artwork_candidate.py", "artwork_outline.py"):
             shutil.copy2(artwork.ROOT / "tools" / module, tools / module)
         (tools / "tests").mkdir()
         hooks = self.root / ".githooks"

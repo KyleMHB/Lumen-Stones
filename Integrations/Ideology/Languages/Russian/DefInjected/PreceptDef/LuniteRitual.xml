@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteRitual.label>ритуал лунита</KM_LuniteRitual.label>
+	<KM_LuniteRitual.description>Часовая ночная церемония у люменового ритуального круга, превращающая солнечный камень в лунит. Начать можно только между 20:00 и 04:00. Отменённая церемония возвращает солнечный камень.</KM_LuniteRitual.description>
+	<KM_LuniteAltarRitual.label>ритуал лунита</KM_LuniteAltarRitual.label>
+	<KM_LuniteAltarRitual.description>Часовая ночная церемония у люменитового алтаря, превращающая солнечный камень в лунит. Начать можно только между 20:00 и 04:00. Отменённая церемония возвращает солнечный камень.</KM_LuniteAltarRitual.description>
+</LanguageData>

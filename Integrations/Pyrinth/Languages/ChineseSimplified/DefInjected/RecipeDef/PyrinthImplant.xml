@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_MakePyrinthImplant.label>制作炎晶石植入物</KM_MakePyrinthImplant.label>
+	<KM_MakePyrinthImplant.description>将炎晶石和一个零部件制成炎晶石植入物。</KM_MakePyrinthImplant.description>
+	<KM_MakePyrinthImplant.jobString>正在制作炎晶石植入物。</KM_MakePyrinthImplant.jobString>
+	<KM_InstallPyrinthImplant.label>安装炎晶石植入物</KM_InstallPyrinthImplant.label>
+	<KM_InstallPyrinthImplant.description>安装炎晶石植入物。在通过调谐唤醒前保持休眠。</KM_InstallPyrinthImplant.description>
+	<KM_InstallPyrinthImplant.jobString>正在安装炎晶石植入物。</KM_InstallPyrinthImplant.jobString>
+	<KM_RemovePyrinthImplant.label>移除炎晶石植入物</KM_RemovePyrinthImplant.label>
+	<KM_RemovePyrinthImplant.description>移除炎晶石植入物。休眠的植入物可完整取出；已激活的则会碎成原生流明石。</KM_RemovePyrinthImplant.description>
+	<KM_RemovePyrinthImplant.jobString>正在移除炎晶石植入物。</KM_RemovePyrinthImplant.jobString>
+</LanguageData>

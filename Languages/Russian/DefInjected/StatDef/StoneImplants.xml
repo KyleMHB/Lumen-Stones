@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_RecreationGain.label>прирост отдыха</KM_RecreationGain.label>
+	<KM_RecreationGain.description>Множитель того, сколько отдыха человек получает из любого источника.</KM_RecreationGain.description>
+</LanguageData>

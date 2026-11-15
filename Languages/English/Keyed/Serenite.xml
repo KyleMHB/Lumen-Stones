@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Setting_CategoryContribution>Category room contribution (%)</Lumen_Setting_CategoryContribution>
+	<Lumen_Serenite_RoomRule>Scales with room support. Applies to pawns in the same enclosed room.</Lumen_Serenite_RoomRule>
+	<Lumen_Serenite_SleeperDrain>Costs {0} Solar energy a day for each sleeper.</Lumen_Serenite_SleeperDrain>
+	<Lumen_Info_SupportWeight>Support weight</Lumen_Info_SupportWeight>
+	<Lumen_Serenite_SupportWeightDesc>This fixture's share of Serenite room support.</Lumen_Serenite_SupportWeightDesc>
+	<Lumen_Serenite_Comfort>Comfort at full support</Lumen_Serenite_Comfort>
+	<Lumen_Serenite_ComfortDesc>Added to the comfort of existing beds and seats.</Lumen_Serenite_ComfortDesc>
+	<Lumen_Serenite_Mood>Mood at full support</Lumen_Serenite_Mood>
+	<Lumen_Serenite_MoodDesc>A mood bonus while in the room.</Lumen_Serenite_MoodDesc>
+	<Lumen_Serenite_Sleep>Sleep restoration at full support</Lumen_Serenite_Sleep>
+	<Lumen_Serenite_SleepDesc>Faster rest while sleeping, and a rested mood memory for a while after waking. Scales with the room support of fixtures whose active effect is on.</Lumen_Serenite_SleepDesc>
+	<Lumen_Serenite_Inspect>Room support: {0}. Comfort +{1}, mood +{2}, sleep restoration +{3}</Lumen_Serenite_Inspect>
+	<Lumen_Serenite_RoomSupport>Serenite room support: +{0}</Lumen_Serenite_RoomSupport>
+	<Lumen_Section_RoomSupport>Room support</Lumen_Section_RoomSupport>
+	<Lumen_Serenite_SleeperDrainSetting>Solar energy per day for each supported sleeper</Lumen_Serenite_SleeperDrainSetting>
+	<Lumen_Serenite_SleepCap>Sleep restoration cap (%)</Lumen_Serenite_SleepCap>
+	<Lumen_Serenite_ComfortCap>Bed/seat Comfort cap</Lumen_Serenite_ComfortCap>
+	<Lumen_Serenite_MoodCap>Room Mood cap</Lumen_Serenite_MoodCap>
+</LanguageData>

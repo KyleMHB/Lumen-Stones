@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneAxe_Section>Sunstone axe</Lumen_SunstoneAxe_Section>
+	<Lumen_SunstoneAxe_Bane>Melee damage multiplier against Anomaly entities and mutants</Lumen_SunstoneAxe_Bane>
+	<Lumen_SunstoneAxe_ProcChance>Blind and stun chance on damaging melee hits (%)</Lumen_SunstoneAxe_ProcChance>
+	<Lumen_SunstoneAxe_ProcChanceUnnatural>Blind and stun chance against Anomaly entities and mutants (%)</Lumen_SunstoneAxe_ProcChanceUnnatural>
+	<Lumen_SunstoneAxe_BlindTicks>Solar blindness duration (ticks)</Lumen_SunstoneAxe_BlindTicks>
+	<Lumen_SunstoneAxe_StunTicks>Flash stun duration (ticks)</Lumen_SunstoneAxe_StunTicks>
+</LanguageData>

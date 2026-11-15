@@ -14,16 +14,54 @@ public class GenStep_LumenstoneSurface : GenStep_ScatterThings
     public IntRange stackSize = new(5, 15);
 
     // The base step splits a total into near-full stacks, which would make these finds far too large.
+    // Ore lumps scatter earlier in map generation, so veins are already on the map here.
     public override void Generate(Map map, GenStepParams parms)
     {
-        if (ShouldSkipMap(map) || !Rand.Chance(chance)) return;
-        int count = stacks.RandomInRange;
-        for (int i = 0; i < count && TryFindScatterCell(map, out var cell); i++)
+        bool veins = map.listerThings.ThingsOfDef(DefDatabase<ThingDef>.GetNamed("KM_MineableLumenstone")).Count > 0;
+        int placed = PlaceSurfaceStacks(map, parms);
+        if (veins || placed > 0) MapState.Of<LumenstoneHint>(map)?.Arm();
+    }
+
+    private int PlaceSurfaceStacks(Map map, GenStepParams parms)
+    {
+        if (ShouldSkipMap(map) || !Rand.Chance(chance)) return 0;
+        int count = stacks.RandomInRange, placed = 0;
+        for (int i = 0; i < count && TryFindScatterCell(map, out var cell); i++, placed++)
         {
             ScatterAt(cell, map, parms, stackSize.RandomInRange);
             usedSpots.Add(cell);
         }
         usedSpots.Clear();
+        return placed;
+    }
+}
+
+// Lumenstone is rare, so a map with veins or surface stacks says so once, an hour after play starts on it, without saying where.
+public class LumenstoneHint : MapComponent
+{
+    private const int Delay = GenDate.TicksPerHour;
+    private bool armed;
+    private int sendAt = -1;
+
+    public LumenstoneHint(Map map) : base(map) { }
+
+    public void Arm() => armed = true;
+
+    public override void MapComponentTick()
+    {
+        if (!armed) return;
+        int now = Find.TickManager.TicksGame;
+        if (sendAt < 0) { sendAt = now + Delay; return; }
+        if (now < sendAt) return;
+        armed = false;
+        Find.LetterStack.ReceiveLetter("Lumen_FaintLight_Label".Translate(), "Lumen_FaintLight_Text".Translate(),
+            LetterDefOf.NeutralEvent);
+    }
+
+    public override void ExposeData()
+    {
+        Scribe_Values.Look(ref armed, "lumenstoneHintArmed");
+        Scribe_Values.Look(ref sendAt, "lumenstoneHintAt", -1);
     }
 }
 
@@ -49,34 +87,34 @@ public static class LumenstoneSupply
     {
         var stone = DefDatabase<ThingDef>.GetNamed("KM_Lumenstone");
         var rock = DefDatabase<ThingDef>.GetNamed("KM_MineableLumenstone").building;
-        var veins = s.In("Veins");
-        veins.Add("Lumenstone.veinFrequency", "Vein frequency", rock.mineableScatterCommonality, v => rock.mineableScatterCommonality = v);
-        veins.Add("Lumenstone.veinSizeMin", "Minimum vein size", rock.mineableScatterLumpSizeRange.min,
+        var veins = s.In("Lumen_Lumenstone_Veins".Translate());
+        veins.Add("Lumenstone.veinFrequency", "Lumen_Lumenstone_VeinFrequency".Translate(), rock.mineableScatterCommonality, v => rock.mineableScatterCommonality = v);
+        veins.Add("Lumenstone.veinSizeMin", "Lumen_Lumenstone_VeinSizeMin".Translate(), rock.mineableScatterLumpSizeRange.min,
             v => rock.mineableScatterLumpSizeRange.min = (int)v, Limit.Integer(1));
-        veins.Add("Lumenstone.veinSizeMax", "Maximum vein size", rock.mineableScatterLumpSizeRange.max,
+        veins.Add("Lumenstone.veinSizeMax", "Lumen_Lumenstone_VeinSizeMax".Translate(), rock.mineableScatterLumpSizeRange.max,
             v => rock.mineableScatterLumpSizeRange.max = (int)v, Limit.Integer(1));
-        veins.Add("Lumenstone.veinYield", "Mining yield per cell", rock.mineableYield, v => rock.mineableYield = (int)v, Limit.Integer(1));
+        veins.Add("Lumenstone.veinYield", "Lumen_Lumenstone_VeinYield".Translate(), rock.mineableYield, v => rock.mineableYield = (int)v, Limit.Integer(1));
 
         var surface = (GenStep_LumenstoneSurface)DefDatabase<GenStepDef>.GetNamed("KM_LumenstoneSurface").genStep;
-        var ground = s.In("Surface");
-        ground.Add("Lumenstone.surfaceChance", "Chance per map (%)", surface.chance, v => surface.chance = v, Limit.Percent());
-        ground.Add("Lumenstone.surfaceStacksMin", "Minimum stacks", surface.stacks.min, v => surface.stacks.min = (int)v, Limit.Integer());
-        ground.Add("Lumenstone.surfaceStacksMax", "Maximum stacks", surface.stacks.max, v => surface.stacks.max = (int)v, Limit.Integer());
-        ground.Add("Lumenstone.surfaceCountMin", "Minimum stack size", surface.stackSize.min, v => surface.stackSize.min = (int)v, Limit.Integer(1));
-        ground.Add("Lumenstone.surfaceCountMax", "Maximum stack size", surface.stackSize.max, v => surface.stackSize.max = (int)v, Limit.Integer(1));
+        var ground = s.In("Lumen_Lumenstone_Surface".Translate());
+        ground.Add("Lumenstone.surfaceChance", "Lumen_Lumenstone_SurfaceChance".Translate(), surface.chance, v => surface.chance = v, Limit.Percent());
+        ground.Add("Lumenstone.surfaceStacksMin", "Lumen_Lumenstone_StacksMin".Translate(), surface.stacks.min, v => surface.stacks.min = (int)v, Limit.Integer());
+        ground.Add("Lumenstone.surfaceStacksMax", "Lumen_Lumenstone_StacksMax".Translate(), surface.stacks.max, v => surface.stacks.max = (int)v, Limit.Integer());
+        ground.Add("Lumenstone.surfaceCountMin", "Lumen_Lumenstone_StackSizeMin".Translate(), surface.stackSize.min, v => surface.stackSize.min = (int)v, Limit.Integer(1));
+        ground.Add("Lumenstone.surfaceCountMax", "Lumen_Lumenstone_StackSizeMax".Translate(), surface.stackSize.max, v => surface.stackSize.max = (int)v, Limit.Integer(1));
 
         var stocks = DefDatabase<TraderKindDef>.AllDefsListForReading.SelectMany(t => t.stockGenerators.OfType<StockGenerator_Lumenstone>()).ToList();
-        var traders = s.In("Traders");
+        var traders = s.In("Lumen_Lumenstone_Traders".Translate());
         if (stocks.Count > 0)
         {
-            traders.Add("Lumenstone.traderChance", "Stock chance (%)", stocks[0].stockChance,
+            traders.Add("Lumenstone.traderChance", "Lumen_Lumenstone_StockChance".Translate(), stocks[0].stockChance,
                 v => stocks.ForEach(stock => stock.stockChance = v), Limit.Percent());
-            traders.Add("Lumenstone.traderCountMin", "Minimum stock", stocks[0].countRange.min,
+            traders.Add("Lumenstone.traderCountMin", "Lumen_Lumenstone_StockMin".Translate(), stocks[0].countRange.min,
                 v => stocks.ForEach(stock => stock.countRange.min = (int)v), Limit.Integer(1));
-            traders.Add("Lumenstone.traderCountMax", "Maximum stock", stocks[0].countRange.max,
+            traders.Add("Lumenstone.traderCountMax", "Lumen_Lumenstone_StockMax".Translate(), stocks[0].countRange.max,
                 v => stocks.ForEach(stock => stock.countRange.max = (int)v), Limit.Integer(1));
         }
-        traders.Add("Lumenstone.marketValue", "Market value (traders charge about seven times this)", stone.BaseMarketValue,
+        traders.Add("Lumenstone.marketValue", "Lumen_Lumenstone_MarketValue".Translate(), stone.BaseMarketValue,
             v => stone.SetStatBaseValue(StatDefOf.MarketValue, v), Limit.Number(0.01f));
 
         s.AfterApply(() =>

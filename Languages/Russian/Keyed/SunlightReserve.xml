@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sunlight_Unrelieved>без смягчения</Lumen_Sunlight_Unrelieved>
+	<Lumen_Sunlight_Gaining>Набирает солнечный свет: {0} в час.</Lumen_Sunlight_Gaining>
+	<Lumen_Sunlight_Losing>Без солнечного света: теряет {0} в час.</Lumen_Sunlight_Losing>
+	<Lumen_Sunlight_Relieved>Солнечная энергия смягчает голод на {0}.</Lumen_Sunlight_Relieved>
+	<Lumen_Sunlight_UnrelievedDesc>Без смягчения: солнечная энергия не поступает, поэтому голод в полную силу.</Lumen_Sunlight_UnrelievedDesc>
+</LanguageData>

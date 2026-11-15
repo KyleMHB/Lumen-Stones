@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Husk_Section>劳役躯壳</Lumen_Husk_Section>
+	<Lumen_Husk_RaiseCost>唤起一具躯壳所需的扭曲能量</Lumen_Husk_RaiseCost>
+	<Lumen_Husk_CostPerDay>每具躯壳每日的扭曲能量</Lumen_Husk_CostPerDay>
+	<Lumen_Husk_Cooldown>唤起冷却时间（天）</Lumen_Husk_Cooldown>
+	<Lumen_Husk_NeedsAltar>需要一座玩家拥有的献祭祭坛，以及Ideology。</Lumen_Husk_NeedsAltar>
+	<Lumen_Husk_NeedsAnomaly>需要Anomaly。</Lumen_Husk_NeedsAnomaly>
+	<Lumen_SwitchedOff>已在模组设置中关闭。</Lumen_SwitchedOff>
+	<Lumen_Husk_SacrificeUnderway>本定居点已有一场献祭正在进行。</Lumen_Husk_SacrificeUnderway>
+	<Lumen_Husk_NeedsPylon>需要一座已供能、已开启且没有躯壳的空虚石塔。</Lumen_Husk_NeedsPylon>
+	<Lumen_RequiresWarp>需要{0}扭曲能量。</Lumen_RequiresWarp>
+	<Lumen_Husk_None>劳役躯壳：无</Lumen_Husk_None>
+	<Lumen_Husk_Bound>劳役躯壳：{0}</Lumen_Husk_Bound>
+	<Lumen_Husk_Collapsed>劳役躯壳：{0}（已瘫倒）</Lumen_Husk_Collapsed>
+	<Lumen_Husk_Rebind>重新绑定躯壳</Lumen_Husk_Rebind>
+	<Lumen_Husk_RebindDesc>将一具没有塔的已瘫倒劳役躯壳绑定到这座塔。塔供能后它就会苏醒。</Lumen_Husk_RebindDesc>
+	<Lumen_Husk_NoneToBind>没有无塔的已瘫倒躯壳</Lumen_Husk_NoneToBind>
+	<Lumen_Husk_PylonNeedsWarp>这座塔需要扭曲能量并开启其主动效果。</Lumen_Husk_PylonNeedsWarp>
+	<Lumen_Husk_Rose>{0}作为劳役躯壳站了起来，并被绑定到一座空虚石塔。</Lumen_Husk_Rose>
+	<Lumen_Husk_DidNotRise>尸体没有站起来。已消耗{0}扭曲能量。</Lumen_Husk_DidNotRise>
+</LanguageData>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Implant_SharedSection>通用规则</Lumen_Implant_SharedSection>
+	<Lumen_Implant_ProstheticCost>义肢的石材消耗</Lumen_Implant_ProstheticCost>
+	<Lumen_Implant_ImplantCost>植入物的石材消耗</Lumen_Implant_ImplantCost>
+	<Lumen_Implant_DormantEfficiency>休眠义肢效率（%）</Lumen_Implant_DormantEfficiency>
+	<Lumen_Implant_AttunementCooldown>调谐冷却时间（天）</Lumen_Implant_AttunementCooldown>
+	<Lumen_Implant_BindingCooldown>束缚冷却时间（天）</Lumen_Implant_BindingCooldown>
+	<Lumen_Implant_Drain>每个激活部件每日消耗的太阳能或扭曲能量</Lumen_Implant_Drain>
+	<Lumen_Implant_Relief>支付能量时副作用的减轻程度（%）</Lumen_Implant_Relief>
+	<Lumen_Implant_Paired>同时拥有光明和黑暗植入物时的收益（%）</Lumen_Implant_Paired>
+	<Lumen_Implant_CellsSection>便携电池</Lumen_Implant_CellsSection>
+	<Lumen_Implant_CellCapacity>每个能量池的容量（太阳石和双生石电池）</Lumen_Implant_CellCapacity>
+	<Lumen_Implant_ChargeAbove>只从网络中高于此比例的部分充电（%）</Lumen_Implant_ChargeAbove>
+	<Lumen_Implant_Efficiency>部件效率（%）</Lumen_Implant_Efficiency>
+	<Lumen_Implant_Benefit>收益</Lumen_Implant_Benefit>
+	<Lumen_Implant_HoursToFill>阳光储备：充满所需的晴天小时数</Lumen_Implant_HoursToFill>
+	<Lumen_Implant_DaysToDrain>阳光储备：无阳光时耗尽所需天数</Lumen_Implant_DaysToDrain>
+	<Lumen_Implant_StartReserve>苏醒时的阳光储备（%）</Lumen_Implant_StartReserve>
+	<Lumen_Implant_OverlightRate>翠绿石补光下的充能速度（晴天的%）</Lumen_Implant_OverlightRate>
+	<Lumen_Implant_HungerWhile>{0}时的饥饿（%）</Lumen_Implant_HungerWhile>
+	<Lumen_Implant_Drawback>副作用</Lumen_Implant_Drawback>
+	<Lumen_Implant_DrawbackNoBiotech>无Biotech时的副作用</Lumen_Implant_DrawbackNoBiotech>
+	<Lumen_Implant_DreadRadius>恐惧半径（格）</Lumen_Implant_DreadRadius>
+	<Lumen_Implant_DaysPerScar>治愈一处疤痕所需天数</Lumen_Implant_DaysPerScar>
+	<Lumen_Implant_ApparelRepair>每日修复的衣物耐久</Lumen_Implant_ApparelRepair>
+	<Lumen_Implant_PartHealing>每日治愈该部位的伤势</Lumen_Implant_PartHealing>
+	<Lumen_Implant_Mood>收益：心情</Lumen_Implant_Mood>
+	<Lumen_Implant_Light>光明</Lumen_Implant_Light>
+	<Lumen_Implant_Dark>黑暗</Lumen_Implant_Dark>
+	<Lumen_Implant_WokenByAttunement>在流明仪式圈或流明石祭坛进行调谐</Lumen_Implant_WokenByAttunement>
+	<Lumen_Implant_WokenByBinding>在献祭祭坛进行束缚</Lumen_Implant_WokenByBinding>
+	<Lumen_Implant_DormantImplant>休眠：在通过{0}唤醒前没有效果。</Lumen_Implant_DormantImplant>
+	<Lumen_Implant_DormantProsthetic>休眠：在通过{0}唤醒前仅作为普通义肢使用。</Lumen_Implant_DormantProsthetic>
+	<Lumen_Implant_RelievedSolar>太阳能使副作用减轻{0}。</Lumen_Implant_RelievedSolar>
+	<Lumen_Implant_RelievedWarp>扭曲能量使副作用减轻{0}。</Lumen_Implant_RelievedWarp>
+	<Lumen_Implant_UnrelievedSolar>未缓解：没有太阳能送达，副作用处于最大强度。</Lumen_Implant_UnrelievedSolar>
+	<Lumen_Implant_UnrelievedWarp>未缓解：没有扭曲能量送达，副作用处于最大强度。</Lumen_Implant_UnrelievedWarp>
+	<Lumen_Implant_PairedNote>与另一侧的植入物配对：收益为{0}。</Lumen_Implant_PairedNote>
+	<Lumen_Implant_HasLight>已有光明植入物：{0}</Lumen_Implant_HasLight>
+	<Lumen_Implant_HasDark>已有黑暗植入物：{0}</Lumen_Implant_HasDark>
+	<Lumen_Implant_SetAsideLight>{0}已有光明植入物。该植入物已被放在一旁。</Lumen_Implant_SetAsideLight>
+	<Lumen_Implant_SetAsideDark>{0}已有黑暗植入物。该植入物已被放在一旁。</Lumen_Implant_SetAsideDark>
+</LanguageData>

@@ -11,19 +11,20 @@ public static class AegiteShield
 
     internal static void DeclareCharmTunables(TunableScope s)
     {
-        var charm = s.In("Aegite shield charm");
+        var charm = s.In("Lumen_AegiteShield_Section".Translate()).PerItem();
         var charmDef = DefDatabase<ThingDef>.GetNamed("KM_AegiteShieldCharm");
         var shield = charmDef.GetCompProperties<CompProperties_Shield>();
-        charm.Add("KM_AegiteShieldCharm.energyMax", "Maximum shield energy", charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldEnergyMax),
+        charm.Add("KM_AegiteShieldCharm.energyMax", "Lumen_AegiteShield_EnergyMax".Translate(), charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldEnergyMax),
             v => charmDef.SetStatBaseValue(StatDefOf.EnergyShieldEnergyMax, v), Limit.Number(0.01f, 10));
-        charm.Add("KM_AegiteShieldCharm.rechargeRate", "Energy recharge rate per second", charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldRechargeRate),
+        charm.Add("KM_AegiteShieldCharm.rechargeRate", "Lumen_AegiteShield_RechargeRate".Translate(), charmDef.GetStatValueAbstract(StatDefOf.EnergyShieldRechargeRate),
             v => charmDef.SetStatBaseValue(StatDefOf.EnergyShieldRechargeRate, v), Limit.Number(0.001f, 10));
-        charm.Add("KM_AegiteShieldCharm.resetTicks", "Ticks to reset after breaking", shield.startingTicksToReset,
+        charm.Add("KM_AegiteShieldCharm.resetTicks", "Lumen_AegiteShield_ResetTicks".Translate(), shield.startingTicksToReset,
             v => shield.startingTicksToReset = (int)v, Limit.Integer(1, 60000));
     }
     // Read by the FlammableNow patch, so it compares a def reference, not a name.
     public static bool Worn(Pawn pawn)
     {
+        if (!Effects.AegiteShieldFire.On) return false;
         var worn = pawn.apparel?.WornApparel;
         if (worn == null) return false;
         for (int i = 0; i < worn.Count; i++)
@@ -40,7 +41,7 @@ public class StatPart_AegiteFireImmunity : StatPart
     }
 
     public override string ExplanationPart(StatRequest req) =>
-        req.Thing is Pawn pawn && AegiteShield.Worn(pawn) ? "Aegite shield: cannot catch fire while worn." : null;
+        req.Thing is Pawn pawn && AegiteShield.Worn(pawn) ? "Lumen_AegiteShield_FireImmune".Translate().ToString() : null;
 }
 
 [HarmonyPatch(typeof(Thing), nameof(Thing.FlammableNow), MethodType.Getter)]

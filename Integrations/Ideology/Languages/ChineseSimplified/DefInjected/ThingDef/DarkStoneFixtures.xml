@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenDarkStoneColumn.label>暗石柱</KM_LumenDarkStoneColumn.label>
+	<KM_LumenDarkStoneColumn.description>一根镶嵌着原生暗石的屋顶支柱。它发出的光似乎让房间更暗了。\n\n发出昏暗的紫靛色光。提高同一房间内献祭祭坛的献祭品质，转化更多暗石、收割更多扭曲能量。每种装置类型只计算一次。不需要燃料、电力或扭曲能量。</KM_LumenDarkStoneColumn.description>
+	<KM_DarkStoneLamp.label>暗石灯</KM_DarkStoneLamp.label>
+	<KM_DarkStoneLamp.description>一块立在石座上的原生暗石晶体。\n\n发出昏暗的紫靛色光。提高同一房间内献祭祭坛的献祭品质，转化更多暗石、收割更多扭曲能量。每种装置类型只计算一次。不需要燃料、电力或扭曲能量。</KM_DarkStoneLamp.description>
+	<KM_DarkStoneWallLamp.label>暗石壁灯</KM_DarkStoneWallLamp.label>
+	<KM_DarkStoneWallLamp.description>一块装在墙架上的原生暗石晶体。\n\n发出昏暗的紫靛色光。提高同一房间内献祭祭坛的献祭品质，转化更多暗石、收割更多扭曲能量。每种装置类型只计算一次。不需要燃料、电力或扭曲能量。</KM_DarkStoneWallLamp.description>
+	<KM_DarkStonePylon.label>暗石塔</KM_DarkStonePylon.label>
+	<KM_DarkStonePylon.description>一根立在雕花基座上的高大原生暗石柱。殖民者总会找理由绕开它走。\n\n发出昏暗的紫靛色光。提高同一房间内献祭祭坛的献祭品质，转化更多暗石、收割更多扭曲能量。每种装置类型只计算一次。不需要燃料、电力或扭曲能量。</KM_DarkStonePylon.description>
+	<KM_DarkStoneCluster.label>暗石晶簇</KM_DarkStoneCluster.label>
+	<KM_DarkStoneCluster.description>一组安放在低矮雕花底座中的原生暗石晶体。\n\n发出昏暗的紫靛色光。提高同一房间内献祭祭坛的献祭品质，转化更多暗石、收割更多扭曲能量。每种装置类型只计算一次。不需要燃料、电力或扭曲能量。</KM_DarkStoneCluster.description>
+</LanguageData>

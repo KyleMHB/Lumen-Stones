@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_LuniteStabilizer_Stabilizes>Stabilizes</Lumen_LuniteStabilizer_Stabilizes>
+	<Lumen_LuniteStabilizer_StabilizesValue>1 active fixture</Lumen_LuniteStabilizer_StabilizesValue>
+	<Lumen_LuniteStabilizer_StabilizesDesc>Links to one Solar or Warp active-effect fixture, toggled on or off. Collectors and arrays cannot be linked. Draws no energy.</Lumen_LuniteStabilizer_StabilizesDesc>
+	<Lumen_LuniteStabilizer_LinkRadius>Link radius</Lumen_LuniteStabilizer_LinkRadius>
+	<Lumen_LuniteStabilizer_LinkRadiusDesc>Measured to the nearest cell of the fixture. Links are matched across the whole map, closest pairs first, so the build order does not matter.</Lumen_LuniteStabilizer_LinkRadiusDesc>
+	<Lumen_LuniteStabilizer_Stabilizing>Stabilizing: {0}</Lumen_LuniteStabilizer_Stabilizing>
+	<Lumen_LuniteStabilizer_NothingInRange>nothing in range</Lumen_LuniteStabilizer_NothingInRange>
+</LanguageData>

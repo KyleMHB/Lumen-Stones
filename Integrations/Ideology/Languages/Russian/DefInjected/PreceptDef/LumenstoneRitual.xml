@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenstoneRitual.label>ритуал люменита</KM_LumenstoneRitual.label>
+	<KM_LumenstoneRitual.description>Двухчасовая церемония у люменового ритуального круга, извлекающая люменит из обычных каменных обломков. Выход зависит от качества и участия; перед следующей церемонией поселение должно восстановиться. Отменённая церемония возвращает обломки.</KM_LumenstoneRitual.description>
+	<KM_LumenstoneAltarRitual.label>ритуал люменита</KM_LumenstoneAltarRitual.label>
+	<KM_LumenstoneAltarRitual.description>Двухчасовая церемония у люменитового алтаря, извлекающая люменит из обычных каменных обломков. Выход зависит от качества, участия и люменитовых светильников рядом; перед следующей церемонией поселение должно восстановиться. Отменённая церемония возвращает обломки.</KM_LumenstoneAltarRitual.description>
+</LanguageData>

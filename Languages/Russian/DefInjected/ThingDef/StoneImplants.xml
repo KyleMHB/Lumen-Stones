@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteImplant.label>Гляцитовый имплант</KM_GlaciteImplant.label>
+	<KM_GlaciteImplant.description>Осколок гляцита у сердца. После пробуждения настройкой помогает телу переносить сильную жару, но холод становится тяжелее.</KM_GlaciteImplant.description>
+	<KM_VerditeImplant.label>Вердитовый имплант</KM_VerditeImplant.label>
+	<KM_VerditeImplant.description>Осколок вердита у желудка. После пробуждения настройкой запасает солнечный свет и питает им тело, так что носителю нужно меньше еды. Носитель, надолго лишённый солнца, голодает сильнее обычного.</KM_VerditeImplant.description>
+	<KM_VitaliteImplant.label>Виталитовый имплант</KM_VitaliteImplant.label>
+	<KM_VitaliteImplant.description>Осколок виталита у сердца. После пробуждения настройкой раны заживают быстрее, а болезни отступают раньше, но тело отводит силы от деторождения. Без Biotech вместо этого утомляет тело.</KM_VitaliteImplant.description>
+	<KM_SereniteImplant.label>Серенитовый имплант</KM_SereniteImplant.label>
+	<KM_SereniteImplant.description>Осколок серенита у сердца. После пробуждения настройкой успокаивает разум и поднимает настроение, но замедляет тело и работу.</KM_SereniteImplant.description>
+	<KM_AegiteImplant.label>Эгитовый имплант</KM_AegiteImplant.label>
+	<KM_AegiteImplant.description>Осколок эгита у сердца. После пробуждения настройкой тело почти не горит, не боится пищевого отравления и сопротивляется токсинам, но быстрее устаёт.</KM_AegiteImplant.description>
+	<KM_FerriteImplant.label>Ферритовый имплант</KM_FerriteImplant.label>
+	<KM_FerriteImplant.description>Осколок феррита у позвоночника. После пробуждения настройкой кожа твердеет против клинков и ударов, а надетая одежда медленно чинится, но тело становится тяжёлым.</KM_FerriteImplant.description>
+	<KM_FerriteArm.label>Ферритовая рука</KM_FerriteArm.label>
+	<KM_FerriteArm.description>Рука из выращенного кристалла феррита. После пробуждения настройкой сильнее естественной руки, а раны на ней затягиваются сами.</KM_FerriteArm.description>
+	<KM_FerriteLeg.label>Ферритовая нога</KM_FerriteLeg.label>
+	<KM_FerriteLeg.description>Нога из выращенного кристалла феррита. После пробуждения настройкой сильнее естественной ноги, а раны на ней затягиваются сами.</KM_FerriteLeg.description>
+	<KM_VitaliteHeart.label>Виталитовое сердце</KM_VitaliteHeart.label>
+	<KM_VitaliteHeart.description>Сердце из выращенного кристалла виталита. После пробуждения настройкой бьётся сильнее естественного и помогает телу бороться с болезнями.</KM_VitaliteHeart.description>
+	<KM_AegiteEye.label>Эгитовый глаз</KM_AegiteEye.label>
+	<KM_AegiteEye.description>Глаз из выращенного кристалла эгита. После пробуждения настройкой видит лучше естественного, и солнечные вспышки его не ослепляют.</KM_AegiteEye.description>
+	<KM_SunstoneCell.label>Элемент из солнечного камня</KM_SunstoneCell.label>
+	<KM_SunstoneCell.description>Запечатанный элемент из двух кристаллов солнечного камня, хранящий солнечную энергию для пешек с имплантами вдали от дома. Медленно заряжается от свободной энергии родного поселения, а в любом другом месте смягчает недостатки светлых имплантов у всех пешек на своей карте или в своём караване.</KM_SunstoneCell.description>
+</LanguageData>

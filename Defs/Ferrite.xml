@@ -24,20 +24,6 @@
     <smeltable>false</smeltable>
     <allowedArchonexusCount>80</allowedArchonexusCount>
   </ThingDef>
-  <ThingDef ParentName="MoteBase">
-    <defName>KM_Mote_FerritePulse</defName>
-    <thingClass>MoteThrown</thingClass>
-    <graphicData>
-      <texPath>Things/Mote/FerritePulse</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <mote>
-      <fadeInTime>0.1</fadeInTime>
-      <solidTime>.15</solidTime>
-      <fadeOutTime>.35</fadeOutTime>
-    </mote>
-  </ThingDef>
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenFerriteColumn</defName>
     <label>Ferrite maintenance column</label>
@@ -109,6 +95,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_FerriteFixtureBase">
     <defName>KM_FerriteLamp</defName>
+    <uiIconScale>1.8158</uiIconScale>
     <label>Ferrite lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2803</uiOrder>
@@ -118,10 +105,16 @@
     <description>A slate-silver and copper Ferrite lamp.\n\nProvides visual illumination only, without maintenance or forge sparks. No heat, fuel or electricity.</description>
     <graphicData>
       <texPath>Things/Building/Ferrite/Lamp</texPath>
-      <drawSize>(1,1)</drawSize>
+      <!-- 2026-11-14 size pass: matches the other floor lamps' 0.6 cell height; offset keeps the foot in place. -->
+      <drawSize>(0.76,0.76)</drawSize>
+      <drawOffset>(0,0,-0.094)</drawOffset>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Ferrite>10</KM_Ferrite>
     </costList>
     <statBases>
@@ -129,7 +122,6 @@
       <Flammability>0</Flammability>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(210,190,175,0)</glowColor>
@@ -186,18 +178,22 @@
   </ThingDef>
   <ThingDef ParentName="KM_FerriteFixtureBase">
     <defName>KM_FerriteCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Ferrite maintenance cluster</label>
     <uiOrder>2823</uiOrder>
     <description>A cluster of Ferrite crystals. Things left beside it come back in better shape.\n\nSlowly repairs player-owned buildings and walls around it for free, through walls and during combat. No fuel. With Solar energy it also repairs damaged items stored or lying nearby.</description>
+    <uiIconScale>1.1111</uiIconScale>
     <graphicData>
       <texPath>Things/Building/Ferrite/Cluster</texPath>
-      <drawSize>(1,1)</drawSize>
+      <!-- 2026-11-14 size pass: keeps the visible cluster near the other families' size; offset puts the base 0.1 cell above the footprint edge. -->
+      <drawSize>(0.9,0.9)</drawSize>
+      <drawOffset>(0,0,-0.087)</drawOffset>
     </graphicData>
     <costList>
       <KM_Ferrite>35</KM_Ferrite>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
       <Flammability>0</Flammability>
     </statBases>
@@ -232,6 +228,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_FerriteFixtureBase">
     <defName>KM_FerritePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Ferrite maintenance pylon</label>
     <uiOrder>2822</uiOrder>
@@ -248,7 +245,7 @@
     <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories>
     <costStuffCount>40</costStuffCount>
     <statBases>
-      <MaxHitPoints>300</MaxHitPoints><WorkToBuild>1800</WorkToBuild><Beauty>25</Beauty><Flammability>0</Flammability>
+      <MaxHitPoints>300</MaxHitPoints><WorkToBuild>3500</WorkToBuild><Beauty>25</Beauty><Flammability>0</Flammability>
     </statBases>
     <researchPrerequisites><li>KM_FerriteForging</li></researchPrerequisites>
     <comps>

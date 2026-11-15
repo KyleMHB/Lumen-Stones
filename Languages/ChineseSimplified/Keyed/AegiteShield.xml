@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AegiteShield_Section>庇护石护盾护符</Lumen_AegiteShield_Section>
+	<Lumen_AegiteShield_ResetTicks>破碎后重置所需刻数</Lumen_AegiteShield_ResetTicks>
+	<Lumen_AegiteShield_FireImmune>庇护石盾牌：佩戴时不会着火。</Lumen_AegiteShield_FireImmune>
+	<Lumen_AegiteShield_EnergyMax>最大护盾能量</Lumen_AegiteShield_EnergyMax>
+	<Lumen_AegiteShield_RechargeRate>每秒能量恢复速度</Lumen_AegiteShield_RechargeRate>
+</LanguageData>

@@ -19,6 +19,81 @@ public static class ConstructionVisibility
     }
 }
 
+// 1.7.5000: a dropdown entry selects its designator directly and never runs Designator_Build.ProcessInput,
+// which is where the material menu opens. Our stuff-made fixtures route through it so stuff stays choosable.
+[HarmonyPatch(typeof(Designator_Dropdown), "GetDesignatorSelectAction")]
+public static class FixtureDropdownStuffMenu
+{
+    public static void Postfix(Designator_Dropdown __instance, Event ev, Designator des, ref Action __result)
+    {
+        if (des is not Designator_Build build || !build.PlacingDef.MadeFromStuff) return;
+        if (build.PlacingDef.designatorDropdown?.defName.StartsWith("KM_Lumen") != true) return;
+        __result = () =>
+        {
+            __instance.SetActiveDesignator(des, true);
+            des.ProcessInput(ev);
+        };
+    }
+}
+
+// A Lumen dropdown button names its group ("lumenstone pylons"), not whichever variant is active,
+// so players can tell other stone families are inside it.
+[HarmonyPatch(typeof(Designator_Dropdown), "Label", MethodType.Getter)]
+public static class FixtureDropdownLabel
+{
+    public static void Postfix(Designator_Dropdown __instance, ref string __result)
+    {
+        foreach (var element in __instance.Elements)
+        {
+            var group = (element as Designator_Place)?.PlacingDef?.designatorDropdown;
+            if (group == null) continue;
+            if (group.defName.StartsWith("KM_Lumen")) __result = group.label;
+            return;
+        }
+    }
+}
+
+// Names the variant whose icon a Lumen dropdown button always shows.
+public class DropdownFace : DefModExtension
+{
+    public ThingDef face;
+
+    // The visible face designator of a Lumen dropdown, or null to keep vanilla's active-variant icon.
+    public static Designator For(Designator_Dropdown dropdown)
+    {
+        var elements = dropdown.Elements;
+        if (elements.Count == 0) return null;
+        var face = ((elements[0] as Designator_Place)?.PlacingDef?.designatorDropdown)?.GetModExtension<DropdownFace>()?.face;
+        if (face == null) return null;
+        foreach (var element in elements)
+            if (element is Designator_Place place && place.PlacingDef == face) return element.Visible ? element : null;
+        return null;
+    }
+}
+
+// 1.7.5000: Designator_Dropdown.DrawIcon and IconDrawColor delegate to the active designator.
+[HarmonyPatch(typeof(Designator_Dropdown), nameof(Designator_Dropdown.DrawIcon))]
+public static class FixtureDropdownIcon
+{
+    public static bool Prefix(Designator_Dropdown __instance, Rect rect, Material buttonMat, GizmoRenderParms parms)
+    {
+        var face = DropdownFace.For(__instance);
+        if (face == null) return true;
+        face.DrawIcon(rect, buttonMat, parms);
+        return false;
+    }
+}
+
+[HarmonyPatch(typeof(Designator_Dropdown), "IconDrawColor", MethodType.Getter)]
+public static class FixtureDropdownIconColor
+{
+    public static void Postfix(Designator_Dropdown __instance, ref Color __result)
+    {
+        var face = DropdownFace.For(__instance);
+        if (face != null) __result = face.IconDrawColor;
+    }
+}
+
 [HarmonyPatch(typeof(RecipeDef), "AvailableNow", MethodType.Getter)]
 public static class RecipeAvailability
 {

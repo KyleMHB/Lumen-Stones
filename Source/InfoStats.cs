@@ -24,25 +24,29 @@ public class InfoStats
         return this;
     }
 
+    // A row whose effect has a switch: while it is off, the row says so instead of showing the value.
+    public InfoStats Add(EffectSwitch effect, string label, string value, string report) =>
+        Add(label, effect == null || effect.On ? value : EffectSwitch.OffText, report);
+
     public IEnumerable<StatDrawEntry> Rows => rows;
 
-    public const string SupportRule = "Each fixture category counts once in an enclosed room, at its highest weight. Floor and wall lamps share the lamp category, and duplicates add nothing. Support is capped at 100%.";
+    public static string SupportRule => "Lumen_Info_SupportRule".Translate();
 
     // With Sunstone off, active effects are free and always on, and nothing about Solar energy is shown.
-    public static string Solar(string label) => SolarRules.Enabled ? label + " (Solar)" : label;
+    public static string Solar(string label) => SolarRules.Enabled ? "Lumen_Info_SolarLabel".Translate(label).ToString() : label;
     public static string SolarRule => SolarRules.Enabled
-        ? " This is a Solar active effect: it runs only while the fixture's Solar active effect is toggled on and the map has Solar energy."
+        ? " " + "Lumen_Info_SolarRule".Translate()
         : "";
 
-    public static string Seconds(int ticks) => (ticks / 60f).ToString("0.#") + " s";
-    public static string Tiles(float radius) => radius.ToString("0.#") + " tiles";
+    public static string Seconds(int ticks) => "Lumen_Info_Seconds".Translate((ticks / 60f).ToString("0.#"));
+    public static string Tiles(float radius) => "Lumen_Info_Tiles".Translate(radius.ToString("0.#"));
     public static string Plus(float fraction) => "+" + fraction.ToStringPercent("0.#");
 
     // A hediff stage's effects in one line, so tiered effects follow their XML.
     public static string Stage(HediffStage stage)
     {
         var parts = new List<string>();
-        if (stage.painFactor != 1f) parts.Add("pain x" + stage.painFactor.ToStringPercent("0"));
+        if (stage.painFactor != 1f) parts.Add("Lumen_Info_PainFactor".Translate(stage.painFactor.ToStringPercent("0")));
         if (stage.capMods != null)
             foreach (var mod in stage.capMods)
                 if (mod.offset != 0) parts.Add(mod.capacity.label + " " + mod.offset.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));

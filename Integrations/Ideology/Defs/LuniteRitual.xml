@@ -40,7 +40,7 @@
     <ritualBehavior>KM_LuniteRitual</ritualBehavior>
     <ritualOutcomeEffect>KM_LuniteRitual</ritualOutcomeEffect>
     <shortDescOverride>Lunite ritual</shortDescOverride>
-    <iconPathOverride>UI/Icons/LumenstoneRitual</iconPathOverride>
+    <iconPathOverride>UI/Icons/LuniteRitual</iconPathOverride>
   </RitualPatternDef>
   <RitualPatternDef ParentName="KM_LunitePatternBase">
     <defName>KM_LuniteRitual</defName>
@@ -52,7 +52,7 @@
   </RitualPatternDef>
   <PreceptDef Name="KM_LunitePreceptBase" ParentName="KM_LumenstonePreceptBase" Abstract="True">
     <label>Lunite ritual</label>
-    <iconPath>UI/Icons/LumenstoneRitual</iconPath>
+    <iconPath>UI/Icons/LuniteRitual</iconPath>
   </PreceptDef>
   <PreceptDef ParentName="KM_LunitePreceptBase">
     <defName>KM_LuniteRitual</defName>

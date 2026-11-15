@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AttunementCircle.label>调谐</KM_AttunementCircle.label>
+	<KM_AttunementCircle.description>在流明仪式圈举行的仪式，用于唤醒休眠的光明植入物和义肢。</KM_AttunementCircle.description>
+	<KM_AttunementAltar.label>调谐</KM_AttunementAltar.label>
+	<KM_AttunementAltar.description>在流明石祭坛举行的仪式，用于唤醒休眠的光明植入物和义肢。</KM_AttunementAltar.description>
+	<KM_Binding.label>束缚</KM_Binding.label>
+	<KM_Binding.description>在献祭祭坛举行的仪式，用于唤醒休眠的黑暗植入物和义肢。</KM_Binding.description>
+</LanguageData>

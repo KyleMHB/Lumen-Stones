@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteBlade.label>冰晶石巨剑</KM_GlaciteBlade.label>
+	<KM_GlaciteBlade.description>一块又长又宽的冰晶石晶体镶嵌在铁制剑柄上，需双手挥舞。刀刃冷得足以灼伤裸露的皮肤，因此要装在带衬里的剑鞘中携带。\n\n每次击伤活体血肉都会使其发冷，减缓行动，并削弱近战攻击与闪避。连续攻击会将寒意加深为麻木，再到冻僵，一分钟内消退。无法与盾牌同时使用。研究长剑后，使用100冰晶石和20钢铁制作，需要6级手工。</KM_GlaciteBlade.description>
+	<KM_GlaciteBlade.tools.0.label>柄</KM_GlaciteBlade.tools.0.label>
+	<KM_GlaciteBlade.tools.1.label>尖端</KM_GlaciteBlade.tools.1.label>
+	<KM_GlaciteBlade.tools.2.label>刃</KM_GlaciteBlade.tools.2.label>
+</LanguageData>

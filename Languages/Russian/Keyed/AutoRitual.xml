@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AutoRitual_On>Автозапуск включён: как только всё готово, церемония начинается с ведущим и до двух других колонистов, которые бодрствуют, здоровы и не выполняют приказов. ПКМ — выключить.</Lumen_AutoRitual_On>
+	<Lumen_AutoRitual_Off>ПКМ — запускать эту церемонию автоматически, когда она готова.</Lumen_AutoRitual_Off>
+	<Lumen_AutoRitual_Stop>Не запускать автоматически: {0}</Lumen_AutoRitual_Stop>
+	<Lumen_AutoRitual_Start>Автоматически запускать при готовности: {0}</Lumen_AutoRitual_Start>
+	<Lumen_AutoRitual_TurnedOff>Автозапуск выключен: {0}.</Lumen_AutoRitual_TurnedOff>
+	<Lumen_AutoRitual_TurnedOn>Автозапуск включён: {0}.</Lumen_AutoRitual_TurnedOn>
+	<Lumen_AutoRitual_Lumenstone>ритуал люменита</Lumen_AutoRitual_Lumenstone>
+	<Lumen_AutoRitual_Lunite>ритуал лунита</Lumen_AutoRitual_Lunite>
+	<Lumen_AutoRitual_Started>Автоматически начат {0}: {1}.</Lumen_AutoRitual_Started>
+</LanguageData>

@@ -10,6 +10,8 @@
     <smeltable>false</smeltable>
     <statBases><WorkToMake>5000</WorkToMake><Mass>2</Mass></statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/VerditeScythe</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.3875,1.3875)</drawSize>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_FaintLight_Label>微光</Lumen_FaintLight_Label>
+	<Lumen_FaintLight_Text>你的殖民者在这里感觉到了什么，一种微弱的牵引，就像被困在石头里的光。这张地图上的某处，有东西正等待被发现。</Lumen_FaintLight_Text>
+	<Lumen_Lumenstone_Veins>矿脉</Lumen_Lumenstone_Veins>
+	<Lumen_Lumenstone_VeinFrequency>矿脉频率</Lumen_Lumenstone_VeinFrequency>
+	<Lumen_Lumenstone_VeinSizeMin>最小矿脉大小</Lumen_Lumenstone_VeinSizeMin>
+	<Lumen_Lumenstone_VeinSizeMax>最大矿脉大小</Lumen_Lumenstone_VeinSizeMax>
+	<Lumen_Lumenstone_VeinYield>每格采矿产量</Lumen_Lumenstone_VeinYield>
+	<Lumen_Lumenstone_Surface>地表</Lumen_Lumenstone_Surface>
+	<Lumen_Lumenstone_SurfaceChance>每张地图的几率（%）</Lumen_Lumenstone_SurfaceChance>
+	<Lumen_Lumenstone_StacksMin>最少堆数</Lumen_Lumenstone_StacksMin>
+	<Lumen_Lumenstone_StacksMax>最多堆数</Lumen_Lumenstone_StacksMax>
+	<Lumen_Lumenstone_StackSizeMin>最小堆叠数量</Lumen_Lumenstone_StackSizeMin>
+	<Lumen_Lumenstone_StackSizeMax>最大堆叠数量</Lumen_Lumenstone_StackSizeMax>
+	<Lumen_Lumenstone_Traders>商人</Lumen_Lumenstone_Traders>
+	<Lumen_Lumenstone_StockChance>进货几率（%）</Lumen_Lumenstone_StockChance>
+	<Lumen_Lumenstone_StockMin>最少库存</Lumen_Lumenstone_StockMin>
+	<Lumen_Lumenstone_StockMax>最多库存</Lumen_Lumenstone_StockMax>
+	<Lumen_Lumenstone_MarketValue>市场价值（商人约按此价格的七倍出售）</Lumen_Lumenstone_MarketValue>
+</LanguageData>

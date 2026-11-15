@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_InfuseGlacite.jobString>Пропитывает люменит.</KM_InfuseGlacite.jobString>
+	<KM_InfuseGlacite.label>пропитать гляцит</KM_InfuseGlacite.label>
+	<KM_InfuseGlacite.description>Превратить 10 люменита в 10 гляцита.</KM_InfuseGlacite.description>
+	<KM_InfuseVitalite.jobString>Пропитывает люменит.</KM_InfuseVitalite.jobString>
+	<KM_InfuseVitalite.label>пропитать виталит</KM_InfuseVitalite.label>
+	<KM_InfuseVitalite.description>Превратить 10 люменита и 1 травяное лекарство в 10 виталита.</KM_InfuseVitalite.description>
+	<KM_InfuseSerenite.jobString>Пропитывает люменит.</KM_InfuseSerenite.jobString>
+	<KM_InfuseSerenite.label>пропитать серенит</KM_InfuseSerenite.label>
+	<KM_InfuseSerenite.description>Превратить 10 люменита и 2 косяка дымолиста в 10 серенита.</KM_InfuseSerenite.description>
+	<KM_InfuseVerdite.jobString>Пропитывает люменит.</KM_InfuseVerdite.jobString>
+	<KM_InfuseVerdite.label>пропитать вердит</KM_InfuseVerdite.label>
+	<KM_InfuseVerdite.description>Превратить 10 люменита и 20 сена в 10 вердита.</KM_InfuseVerdite.description>
+	<KM_InfuseAegite.jobString>Пропитывает люменит.</KM_InfuseAegite.jobString>
+	<KM_InfuseAegite.label>пропитать эгит</KM_InfuseAegite.label>
+	<KM_InfuseAegite.description>Превратить 10 люменита и 20 серебра в 10 эгита.</KM_InfuseAegite.description>
+	<KM_InfuseFerrite.jobString>Пропитывает люменит.</KM_InfuseFerrite.jobString>
+	<KM_InfuseFerrite.label>пропитать феррит</KM_InfuseFerrite.label>
+	<KM_InfuseFerrite.description>Превратить 10 люменита и 10 стали в 10 феррита.</KM_InfuseFerrite.description>
+	<KM_InfuseSunstone.jobString>Пропитывает люменит.</KM_InfuseSunstone.jobString>
+	<KM_InfuseSunstone.label>пропитать солнечный камень</KM_InfuseSunstone.label>
+	<KM_InfuseSunstone.description>Превратить 10 люменита и 2 золота в 10 солнечного камня.</KM_InfuseSunstone.description>
+</LanguageData>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Altar_Crystallize>Кристаллизовать тёмный камень</Lumen_Altar_Crystallize>
+	<Lumen_Altar_CrystallizeInput>Расход люменита</Lumen_Altar_CrystallizeInput>
+	<Lumen_Altar_CrystallizePoor>Доля превращения при плохом исходе (%)</Lumen_Altar_CrystallizePoor>
+	<Lumen_Altar_CrystallizeSuccess>Доля превращения при успехе (%)</Lumen_Altar_CrystallizeSuccess>
+	<Lumen_Altar_CrystallizeExceptional>Доля превращения при исключительном исходе (%)</Lumen_Altar_CrystallizeExceptional>
+	<Lumen_Setting_CooldownDays>Перезарядка (дн.)</Lumen_Setting_CooldownDays>
+	<Lumen_Altar_Harvest>Собрать энергию варпа</Lumen_Altar_Harvest>
+	<Lumen_Altar_HarvestPoor>Энергия варпа при плохом исходе</Lumen_Altar_HarvestPoor>
+	<Lumen_Altar_HarvestSuccess>Энергия варпа при успехе</Lumen_Altar_HarvestSuccess>
+	<Lumen_Altar_HarvestExceptional>Энергия варпа при исключительном исходе</Lumen_Altar_HarvestExceptional>
+	<Lumen_Altar_LinkSection>Связь и жертвы</Lumen_Altar_LinkSection>
+	<Lumen_Altar_LinkRadius>Радиус связи алтаря с батареями (клеток)</Lumen_Altar_LinkRadius>
+	<Lumen_Altar_StatusSlave>Множитель жертвы-раба</Lumen_Altar_StatusSlave>
+	<Lumen_Altar_StatusColonist>Множитель жертвы-колониста</Lumen_Altar_StatusColonist>
+	<Lumen_Section_RitualSupport>Ритуальная поддержка</Lumen_Section_RitualSupport>
+	<Lumen_Setting_SupportQualityCap>Бонус к качеству от светильников при полной поддержке (%)</Lumen_Setting_SupportQualityCap>
+	<Lumen_Altar_SupportYieldCap>Бонус к превращению и сбору от светильников при полной поддержке (%)</Lumen_Altar_SupportYieldCap>
+	<Lumen_Setting_SupportRadius>Радиус поддержки светильников (клеток)</Lumen_Setting_SupportRadius>
+	<Lumen_Altar_Building>Жертвенный алтарь</Lumen_Altar_Building>
+	<Lumen_Setting_LumenstoneQuantity>Количество люменита</Lumen_Setting_LumenstoneQuantity>
+	<Lumen_Setting_StoneBlockQuantity>Количество каменных блоков</Lumen_Setting_StoneBlockQuantity>
+	<Lumen_Altar_VictimLow>Множитель жертвы при стоимости 0</Lumen_Altar_VictimLow>
+	<Lumen_Altar_VictimMidValue>Стоимость в средней точке (рыночная стоимость x статус)</Lumen_Altar_VictimMidValue>
+	<Lumen_Altar_VictimMid>Множитель жертвы в средней точке</Lumen_Altar_VictimMid>
+	<Lumen_Altar_VictimHighValue>Стоимость в верхней точке (рыночная стоимость x статус)</Lumen_Altar_VictimHighValue>
+	<Lumen_Altar_VictimHigh>Множитель жертвы в верхней точке и выше</Lumen_Altar_VictimHigh>
+	<Lumen_Altar_NeedsBattery>Нужна батарея из кровавика в пределах {0} клеток от алтаря.</Lumen_Altar_NeedsBattery>
+	<Lumen_Altar_NeedsLumenstone>Нужно {0} доступного незапрещённого люменита.</Lumen_Altar_NeedsLumenstone>
+	<Lumen_Altar_CrystallizeOff>Кристаллизация тёмного камня: выключено в настройках мода.</Lumen_Altar_CrystallizeOff>
+	<Lumen_Altar_CrystallizeReady>Кристаллизация тёмного камня готова.</Lumen_Altar_CrystallizeReady>
+	<Lumen_Altar_HarvestOff>Сбор энергии варпа: выключено в настройках мода.</Lumen_Altar_HarvestOff>
+	<Lumen_Altar_HarvestReady>Сбор энергии варпа готов.</Lumen_Altar_HarvestReady>
+	<Lumen_Altar_Batteries>Батарей в радиусе: {0} (свободно {1})</Lumen_Altar_Batteries>
+	<Lumen_Altar_Fixtures>Светильники из тёмного камня: {0}</Lumen_Altar_Fixtures>
+	<Lumen_Altar_HarvestDesc>Принести в жертву заключённого, раба или колониста, чтобы зарядить батареи из кровавика в пределах {0} клеток. Даёт {1}/{2}/{3} энергии варпа в зависимости от исхода, с поправкой на стоимость и статус жертвы. Свободно в радиусе: {4}; излишек теряется. Восстановление {5} ч.</Lumen_Altar_HarvestDesc>
+	<Lumen_Altar_CrystallizeDesc>Принести в жертву заключённого, раба или колониста, чтобы превратить {0} люменита в тёмный камень в зависимости от исхода и жертвы. Непревращённый люменит возвращается. Восстановление {1} дн.</Lumen_Altar_CrystallizeDesc>
+	<Lumen_Altar_SupportDesc>{0}. Светильники из тёмного камня в этой комнате в пределах {1} клеток повышают качество и выход.</Lumen_Altar_SupportDesc>
+	<Lumen_Altar_Raise>Поднять рабочую оболочку</Lumen_Altar_Raise>
+	<Lumen_Altar_RaiseDesc>Принести в жертву заключённого, раба или колониста, чтобы поднять его рабочей оболочкой, привязанной к пилону из пустокамня. Стоит {0} энергии варпа, возвращается при отмене церемонии. Оболочка тратит {1} энергии варпа в день. Восстановление {2} ч.</Lumen_Altar_RaiseDesc>
+	<Lumen_Altar_VictimRole>Должен быть заключённым, рабом или колонистом.</Lumen_Altar_VictimRole>
+	<Lumen_Altar_NotLeader>Не может быть ведущим церемонии.</Lumen_Altar_NotLeader>
+	<Lumen_Altar_SupportNote>(светильники из тёмного камня рядом: +{0})</Lumen_Altar_SupportNote>
+	<Lumen_Altar_CrystallizeResult>Церемония превратила {0} из {1} люменита в тёмный камень и вернула {2} люменита{3}. Кристаллизация теперь восстанавливается {4} дн.</Lumen_Altar_CrystallizeResult>
+	<Lumen_Altar_HarvestResult>Церемония собрала {0} энергии варпа: {1} запасено в батареях, {2} потеряно{3}. Сбор теперь восстанавливается {4} ч.</Lumen_Altar_HarvestResult>
+	<Lumen_Altar_Free>свободно {0}</Lumen_Altar_Free>
+	<Lumen_Altar_FreeTooltip>Свободная ёмкость батарей из кровавика в пределах {0} клеток. Излишек при сборе теряется, но ритуал всё равно проводится.</Lumen_Altar_FreeTooltip>
+</LanguageData>

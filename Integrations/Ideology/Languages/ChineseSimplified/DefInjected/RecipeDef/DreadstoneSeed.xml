@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CraftDreadstoneSeedCrystal.label>塑造恐惧石种子晶体</KM_CraftDreadstoneSeedCrystal.label>
+	<KM_CraftDreadstoneSeedCrystal.description>将5恐惧石塑造成一颗恐惧石种子晶体。</KM_CraftDreadstoneSeedCrystal.description>
+	<KM_CraftDreadstoneSeedCrystal.jobString>正在塑造恐惧石种子晶体。</KM_CraftDreadstoneSeedCrystal.jobString>
+	<KM_ImplantDreadstoneSeed.label>钉入恐惧石种子</KM_ImplantDreadstoneSeed.label>
+	<KM_ImplantDreadstoneSeed.description>将一根锋利的恐惧石种子晶体尖桩钉入胸口。它不会致死。它会扎根、让身体活着并开始生长。在献祭祭坛通过束缚仪式被束缚前，它保持休眠。</KM_ImplantDreadstoneSeed.description>
+	<KM_ImplantDreadstoneSeed.jobString>正在将恐惧石种子钉入TargetA的胸口。</KM_ImplantDreadstoneSeed.jobString>
+</LanguageData>

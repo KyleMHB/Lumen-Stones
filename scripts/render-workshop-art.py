@@ -7,6 +7,8 @@ No upstream images, game assets or fonts are copied into the output directory.
 """
 from pathlib import Path
 import math
+import os
+import time
 import json
 import argparse
 import re
@@ -23,7 +25,7 @@ W = 1272
 BG, INK, MUTED, GOLD = "#273b43", "#f5eedc", "#c2c3bd", "#edc76c"
 BLUE, ROSE, GREEN, ORANGE = "#8ed5ff", "#f5bdcd", "#c3e58b", "#ffbd79"
 FONT = Path("C:/Windows/Fonts")
-TITLE_FONT = Path(r"E:\Coding\Rimworld\EverythingHasQualityReforked\artifacts\steam-page-mockup\RimWordFont.ttf")
+TITLE_FONT = Path(r"E:\Coding\Rimworld\Configurable Quality\artifacts\steam-page-mockup\RimWordFont.ttf")
 RENDERED = []
 # Workshop-only use of the current design recipes; no runtime textures or masks are changed.
 DESIGN_ART = {
@@ -69,8 +71,8 @@ def stone_portrait(path):
     return None
 
 
-def sprite(path, box, rotation=0, max_scale=1.5, bottom=False):
-    global draw
+def art(path):
+    """Return the cropped map graphic and its native pixels per world cell."""
     portrait = stone_portrait(path)
     source = ROOT / "Textures" / (path + ".png")
     if not source.is_file() and path in DESIGN_ART:
@@ -82,11 +84,23 @@ def sprite(path, box, rotation=0, max_scale=1.5, bottom=False):
     # Preserve that presentation, especially the narrow lamp and tall pylon.
     ratio = 1 if portrait else ASPECTS.get(path, im.width / im.height) / (im.width / im.height)
     im = im.resize((max(1, round(im.width * ratio)), im.height), Image.Resampling.LANCZOS)
-    im = im.crop(im.getbbox())
+    native_ppc = im.height / DRAW_HEIGHTS.get(path, 1)
+    return im.crop(im.getbbox()), native_ppc
+
+
+def cells(path):
+    im, native_ppc = art(path)
+    return im.width / native_ppc, im.height / native_ppc
+
+
+def sprite(path, box, rotation=0, max_scale=1.5, bottom=False, ppc=None):
+    """Fit a sprite in box, or draw it at ppc screen pixels per world cell."""
+    global draw
+    im, native_ppc = art(path)
     if rotation:
         im = im.rotate(rotation, resample=Image.Resampling.BICUBIC, expand=True)
         im = im.crop(im.getbbox())
-    scale = min(box[2] / im.width, box[3] / im.height, max_scale)
+    scale = ppc / native_ppc if ppc else min(box[2] / im.width, box[3] / im.height, max_scale)
     im = im.resize((round(im.width * scale), round(im.height * scale)), Image.Resampling.LANCZOS)
     x, y = int(box[0] + (box[2] - im.width) / 2), int(box[1] + (box[3] - im.height) / 2)
     if bottom:
@@ -102,7 +116,17 @@ def sprite(path, box, rotation=0, max_scale=1.5, bottom=False):
 
 def save(name):
     path = OUT / (name + ".png")
-    canvas.save(path, optimize=True)
+    temporary = path.with_suffix(".tmp.png")
+    canvas.save(temporary, optimize=True)
+    # An image viewer open on the folder can briefly lock a slide on Windows; retry the swap.
+    for attempt in range(20):
+        try:
+            os.replace(temporary, path)
+            break
+        except OSError:
+            if attempt == 19:
+                raise
+            time.sleep(0.25)
     RENDERED.append(path)
 
 
@@ -127,7 +151,7 @@ def field(name, path, default=""):
     return found if found is not None else field(node.get("ParentName"), path, default)
 
 
-ASPECTS = {}
+ASPECTS, DRAW_HEIGHTS = {}, {}
 for key in DEFS:
     tex = field(key, "graphicData/texPath")
     size = field(key, "graphicData/drawSize", "1")
@@ -136,6 +160,25 @@ for key in DEFS:
     if tex:
         for suffix in ("", "_north", "_south", "_east", "_west", "/" + tex.split("/")[-1] + "_a"):
             ASPECTS[tex + suffix] = ratio
+            DRAW_HEIGHTS[tex + suffix] = values[-1]
+
+
+def world_row(paths, available, height, min_slot=224, gap=48, max_size=280, compression=0.6):
+    """Per-piece pixels per cell for a row, ordered by in-game size.
+
+    Displayed size grows with in-game size raised to `compression`, so a wall lamp never
+    outgrows a shrine, yet a lamp beside a tall pylon stays readable.
+    """
+    extents = [cells(path) for path in paths]
+    factors = [max(w, h) ** (compression - 1) for w, h in extents]
+    scale = min(max_size / max(max(w, h) ** compression for w, h in extents),
+                min(height / (h * f) for (w, h), f in zip(extents, factors)))
+    slot = lambda w, f: max(w * scale * f + gap, min_slot)
+    while sum(slot(w, f) for (w, h), f in zip(extents, factors)) > available:
+        scale *= 0.98
+    slots = [slot(w, f) for (w, h), f in zip(extents, factors)]
+    extra = (available - sum(slots)) / len(slots)
+    return [scale * f for f in factors], [s + extra for s in slots]
 
 
 def cost(name):
@@ -477,6 +520,10 @@ def catalog(items, accent, filename):
     if args.style == "plain":
         special = [item for item in furnishings if any(part in item[0] for part in ("Bed", "Casket", "Altar")) or item[0] == "KM_LumenCircle"]
         furnishings = [item for item in furnishings if item not in special]
+    # Shared fixture order on every slide; Glacite's cooler takes the cluster's place, other buildings follow.
+    # WallLamp is matched before Lamp, but ordered after it.
+    order = (("Column", 0), ("Pylon", 1), ("Cluster", 2), ("Cooler", 2), ("WallLamp", 4), ("Lamp", 3))
+    furnishings.sort(key=lambda item: next((r for part, r in order if part in item[0]), 5))
     heading_color = "#b7c0c2" if args.style == "quiet" else (INK if args.style == "balanced" else ("#74572e" if args.style == "archive" else GOLD))
     members=special+equipment+implants
     cards = args.style == "plain"
@@ -486,19 +533,20 @@ def catalog(items, accent, filename):
         card((28,260,right,752 if members else 1052))
     text(64,284 if cards else 276,"Furnishings",48,heading_color,title=True)
     available = 1256 if cards or group == "sanguinite" else 1792
-    width = available/max(len(furnishings),5)
-    left = 32 if cards else (1320 if group == "sanguinite" else 1920)/2-width*len(furnishings)/2
+    # Fewer than five pieces keep five-piece slot widths rather than stretching across the card.
+    used = available*min(len(furnishings),5)/5 if furnishings else 0
+    ppcs, slots = world_row([item[1] for item in furnishings], used, 280 if cards else 270) if furnishings else ([], [])
+    left = (32 if cards else (1320 if group == "sanguinite" else 1920)/2-used/2) + (available-used)/2*cards
     for i,(name,path,item_title,body,note) in enumerate(furnishings):
-        x = left+i*width
-        # The low-resolution firefly column must reach the same display height as Pyrinth.
-        bounds = sprite(path,(x+24,360,width-48,280),bottom=True,max_scale=4 if group == "fireflies" else 1.5) if cards else sprite(path,(x+24,375,width-48,270))
+        x, width = left+sum(slots[:i]), slots[i]
+        bounds = sprite(path,(x+24,360,width-48,280),bottom=True,ppc=ppcs[i]) if cards else sprite(path,(x+24,375,width-48,270),ppc=ppcs[i])
         if name == "KM_LumenFireflyColumn":
             sx,sy,sw,sh=bounds
             for light in range(7):
                 lx=sx+sw/2+math.sin(light*2.094395)*sw*.22
                 ly=sy+sh/2+(light-3)*sh*.084
                 draw.ellipse((lx-2,ly-2,lx+2,ly+2),fill="#d9ff1f")
-        item_label(x+width/2,656 if cards else 668,family_label(item_title,group),width-18,STYLES[args.style]["labels"])
+        item_label(x+width/2,656 if cards else 668,family_label(item_title,group),width-32,STYLES[args.style]["labels"],size=38)
     if cards:
         stone_effects(group)
     elif group == "sanguinite":
@@ -946,6 +994,92 @@ def features_image():
     save("lumen-stones-features")
 
 
+def place(im, box, max_scale=1.5):
+    """Fit an already loaded RGBA image into box, centred."""
+    global draw
+    im = im.crop(im.getbbox())
+    scale = min(box[2] / im.width, box[3] / im.height, max_scale)
+    im = im.resize((round(im.width * scale), round(im.height * scale)), Image.Resampling.LANCZOS)
+    canvas.alpha_composite(im, (int(box[0] + (box[2] - im.width) / 2), int(box[1] + (box[3] - im.height) / 2)))
+    draw = ImageDraw.Draw(canvas)
+
+
+def fit_titles(titles, size):
+    """Draw card headings at one shared size that fits every card. titles: (cx, y, value, width)."""
+    while any(draw.textlength(value.upper().replace("O", "o"), font=font(size, True)) > width for _, _, value, width in titles):
+        size -= 1
+    for cx, y, value, _ in titles:
+        text(cx, y, value, size, GOLD, title=True, center=True)
+
+
+def ritual_yields():
+    """Read the ritual's default yields from the source, so the image follows tuning changes."""
+    source = (ROOT / "Source/LumenstoneRitual.cs").read_text(encoding="utf-8")
+    number = lambda name: float(re.search(name + r"\s*=\s*([\d.]+)", source).group(1))
+    poor, best, factor = number("PoorYield"), number("ExceptionalYield"), number("CircleYieldFactor")
+    circle = lambda v: math.floor(v * factor + 0.001)
+    return (circle(poor), circle(best)), (int(poor), int(best)), int(number("ChunkCost")), number("CooldownDays")
+
+
+def getting_started_image():
+    """The first-Lumenstone loop: find some, build the circle, then grow the supply with rituals."""
+    global canvas,draw,W
+    W=1600
+    canvas=Image.new("RGBA",(W,1080),"#10232f")
+    draw=ImageDraw.Draw(canvas)
+    text(800,60,"Getting started",100,INK,title=True,center=True)
+    draw.rectangle((0,200,1599,206),fill=GOLD)
+    circle_yield, altar_yield, chunks, cooldown = ritual_yields()
+    circle_cost = DEFS["KM_LumenCircle"].findtext("costList/KM_Lumenstone")
+    research = DEFS["KM_LumenCircle"].findtext("researchPrerequisites/li")
+
+    card((24,236,664,846))
+    card((750,236,1150,846))
+    card((1236,236,1576,846))
+    fit_titles([(344,272,"Find your first stone",600),(950,272,"Build the circle",360),(1406,272,"Grow it",300)],44)
+    draw.line((344,350,344,810),fill="#33474f",width=2)
+    atlas = Image.open(ROOT/"Textures/Things/Building/Linked/Lumenstone_Atlas.png").convert("RGBA")
+    tile = atlas.width // 4  # The bottom-left atlas cell is the unlinked, single-cell vein.
+    lumenstone = Image.open(stone_portrait("Things/Item/Resource/Lumenstone/Lumenstone_a")).convert("RGBA")
+    for cx,heading,art,lines in [
+        # The cell's top edge carries a sliver of the tile above it; skip that band.
+        (184,"Explore",atlas.crop((0,3*tile+tile//8,tile,4*tile)),["Mine veins","Find surface stacks"]),
+        (504,"Wait",lumenstone,["Traders","Quest rewards"]),
+    ]:
+        text(cx,362,heading,40,INK,center=True)
+        place(art,(cx-90,430,180,150))
+        for i,line in enumerate(lines):
+            text(cx,612+i*46,line,32,MUTED,center=True)
+    text(184,730,"A letter tells you",27,BLUE,center=True)
+    text(184,766,"when a map has some",27,BLUE,center=True)
+
+    arrow(672,541)
+    intro_art("KM_LumenCircle",(800,350,300,260))
+    text(950,650,"Research "+research,32,INK,center=True)
+    text(950,700,circle_cost+" Lumenstone",36,GOLD,center=True)
+    text(950,750,"+ stone blocks",30,MUTED,center=True)
+
+    arrow(1158,541)
+    grey = lumenstone.convert("LA").convert("RGBA")  # A greyed portrait stands in for an ordinary stone chunk.
+    grey = Image.merge("RGBA",(*(c.point(lambda v: int(v*0.62)) for c in grey.split()[:3]),grey.getchannel("A")))
+    place(grey,(1256,380,110,100))
+    draw.line((1374,430,1420,430),fill=GOLD,width=4)
+    draw.polygon(((1438,430),(1420,419),(1420,441)),fill=GOLD)
+    place(lumenstone,(1446,370,110,120))
+    text(1406,520,f"{chunks} stone chunks",32,INK,center=True)
+    text(1406,584,f"{circle_yield[0]}–{circle_yield[1]} at the circle",30,MUTED,center=True)
+    text(1406,630,f"{altar_yield[0]}–{altar_yield[1]} at an altar",30,MUTED,center=True)
+    text(1406,694,f"Every {cooldown:g} days",34,GOLD,center=True)
+    text(1406,764,"Requires Ideology",28,ROSE,center=True)
+
+    # The loop returns from the ritual to the circle it runs at.
+    draw.line(((1406,846),(1406,922),(950,922),(950,866)),fill=GOLD,width=5,joint="curve")
+    draw.polygon(((950,850),(937,872),(963,872)),fill=GOLD)
+    text(1178,940,"Rituals refill your supply",34,GOLD,center=True)
+    text(800,1010,"Without Ideology, every Lumenstone is found, mined or bought.",32,MUTED,center=True)
+    save("lumen-stones-getting-started")
+
+
 def percent(value):
     return f"{float(value) * 100:g}%"
 
@@ -1023,18 +1157,34 @@ def new_defence_slides():
     save("gallery-18-aegite-bastion")
 
 
+def architect_slide():
+    gallery_base("A tidier build menu", "Five fixture groups, with stone variants inside each button", GOLD, 19)
+    groups = ET.parse(ROOT / "Defs/LampDropdownGroups.xml").getroot()
+    for index, group in enumerate(groups):
+        left = 28 + index * 378
+        card((left, 280, left + 352, 850))
+        face = group.findtext("modExtensions/li/face")
+        sprite(local_texture(face), (left + 66, 325, 220, 220), max_scale=3)
+        label = group.findtext("label").removeprefix("lumenstone ").capitalize()
+        item_label(left + 176, 590, label, 320, size=42)
+        draw.polygon(((left + 163, 680), (left + 189, 680), (left + 176, 695)), fill=GOLD)
+        text(left + 176, 740, "Structure" if "Columns" in group.findtext("defName") else "Furniture", 32, MUTED, center=True)
+    intro_copy(64, 905, "Pick a stone variant, then its building material where needed. Research and mod settings determine which variants appear.", 1792, 38, limit=1040)
+    save("gallery-19-architect-groups")
+
+
 SHARED = {"Resources.xml", "NewEquipment.xml", "StoneImplants.xml", "DarkImplants.xml",
           "VerditeChew.xml", "SunstoneFlare.xml", "DreadstoneSeed.xml", "PyrinthImplant.xml", "LuniteAndBastion.xml"}
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--family", choices=[*GROUPS, "overview", "intro", "description", "description-wide", "features", "dark-path", "all"], default="sanguinite",
-                    help="Render one template only; use all after the layout is approved.")
+parser.add_argument("--family", choices=[*GROUPS, "overview", "intro", "description", "description-wide", "features", "getting-started", "dark-path", "menus", "preview", "gallery", "all"], default="gallery",
+                    help="Render one template; gallery (the default) renders everything the Workshop page shows: every gallery-* slide, gallery-order.txt, the description-body images and About/Preview.png. all also renders the unused square description image.")
 parser.add_argument("--style", choices=STYLES, default="plain")
 parser.add_argument("--output", type=Path, default=OUT)
 args = parser.parse_args()
 OUT = args.output
 OUT.mkdir(parents=True,exist_ok=True)
 for group, files in GROUPS.items():
-    if args.family not in (group, "all"):
+    if args.family not in (group, "gallery", "all"):
         continue
     items = []
     for folder in (ROOT / "Defs", ROOT / "Integrations"):
@@ -1063,25 +1213,43 @@ for group, files in GROUPS.items():
         print(group, len(items))
 
 
-if args.family in ("all", "overview"):
+if args.family in ("overview", "gallery", "all"):
     overview()
-if args.family in ("intro", "all"):
+if args.family in ("intro", "gallery", "all"):
     intro_slides()
     dark_path_slide()
     family_order = [f"gallery-{index+2:02}-{group}.png" for index,group in enumerate(GROUPS)]
     family_order.insert(family_order.index("gallery-08-ferrite.png"), "gallery-18-aegite-bastion.png")
     family_order.insert(family_order.index("gallery-10-animastone.png"), "gallery-17-lunite.png")
-    (OUT / "gallery-order.txt").write_text("\n".join(INTRO_NAMES + ["gallery-01-stone-lineage.png"] + family_order) + "\n", encoding="utf-8")
+    (OUT / "gallery-order.txt").write_text("\n".join(INTRO_NAMES + ["gallery-01-stone-lineage.png", "gallery-19-architect-groups.png"] + family_order) + "\n", encoding="utf-8")
     new_defence_slides()
+
+if args.family in ("menus", "gallery", "all"):
+    architect_slide()
 
 if args.family in ("description", "all"):
     description_image()
 
-if args.family in ("description-wide", "all"):
+# The description body embeds these with gallery-intro-07-the-dark-path.png.
+if args.family in ("description-wide", "gallery", "all"):
     description_wide_image()
 
-if args.family in ("features", "all"):
+if args.family in ("features", "gallery", "all"):
     features_image()
+
+if args.family in ("getting-started", "gallery", "all"):
+    getting_started_image()
 
 if args.family == "dark-path":
     dark_path_slide()
+
+if args.family in ("preview", "gallery", "all"):
+    if OUT.resolve() == (ROOT / "docs/images/workshop").resolve():
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("render_workshop_cover", Path(__file__).with_name("render-workshop-cover.py"))
+        cover = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cover)
+        cover.render_preview()
+    else:
+        # The preview has a fixed About/ destination; keep trial renders out of it.
+        print("Skipped About/Preview.png for a non-default --output")

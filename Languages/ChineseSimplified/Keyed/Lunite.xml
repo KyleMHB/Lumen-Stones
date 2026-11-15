@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Lunite_Section>月石</Lumen_Lunite_Section>
+	<Lumen_Lunite_SunstoneCost>每次转化消耗的太阳石</Lumen_Lunite_SunstoneCost>
+	<Lumen_Lunite_Yield>每次转化产出的月石</Lumen_Lunite_Yield>
+	<Lumen_Lunite_Cooldown>转化后的冷却时间（天）</Lumen_Lunite_Cooldown>
+	<Lumen_Lunite_NightStart>转化时间窗口开始（时）</Lumen_Lunite_NightStart>
+	<Lumen_Lunite_NightEnd>转化时间窗口结束（时）</Lumen_Lunite_NightEnd>
+	<Lumen_Lunite_StabilizerSection>月石稳定器</Lumen_Lunite_StabilizerSection>
+	<Lumen_Lunite_LinkRadius>连接半径（格）</Lumen_Lunite_LinkRadius>
+	<Lumen_Lunite_Window>{0}至{1}</Lumen_Lunite_Window>
+	<Lumen_Lunite_NeedsSunstone>需要启用太阳石内容。</Lumen_Lunite_NeedsSunstone>
+	<Lumen_Lunite_NeedsHostIdeology>需要一座玩家拥有的流明仪式圈或流明石祭坛。</Lumen_Lunite_NeedsHostIdeology>
+	<Lumen_Lunite_NeedsCircle>需要一座玩家拥有的流明仪式圈。</Lumen_Lunite_NeedsCircle>
+	<Lumen_NeedsResearch>需要{0}研究。</Lumen_NeedsResearch>
+	<Lumen_Lunite_OnlyBetween>只能在{0}之间开始。</Lumen_Lunite_OnlyBetween>
+	<Lumen_Lunite_Underway>本定居点已有一场仪式正在进行。</Lumen_Lunite_Underway>
+	<Lumen_Lunite_NeedsSunstoneStock>需要{0}个可到达且未被禁用的太阳石。</Lumen_Lunite_NeedsSunstoneStock>
+	<Lumen_Lunite_Summary>将{0}太阳石转化为{1}月石。只能在{2}之间开始，可能在黎明后才完成。只有成功时才会消耗太阳石。每个定居点需恢复{3}天。</Lumen_Lunite_Summary>
+	<Lumen_Lunite_RitualDesc>约1小时的仪式：在原版仪式对话框中选择参与者。</Lumen_Lunite_RitualDesc>
+	<Lumen_Lunite_Convert>转化月石</Lumen_Lunite_Convert>
+	<Lumen_Lunite_JobDesc>一名殖民者在圆环处工作{0}小时。</Lumen_Lunite_JobDesc>
+	<Lumen_Lunite_NoColonist>没有殖民者能在圆环处工作。</Lumen_Lunite_NoColonist>
+	<Lumen_Lunite_CouldNotStart>月石转化无法开始：{0}</Lumen_Lunite_CouldNotStart>
+	<Lumen_Lunite_SunstoneGone>太阳石已不可用。</Lumen_Lunite_SunstoneGone>
+	<Lumen_Lunite_Converted>已将{0}太阳石转化为{1}月石。</Lumen_Lunite_Converted>
+	<Lumen_Lunite_Result>仪式产出了{0}{1}。本定居点的月石转化现在需恢复{2}天。</Lumen_Lunite_Result>
+</LanguageData>

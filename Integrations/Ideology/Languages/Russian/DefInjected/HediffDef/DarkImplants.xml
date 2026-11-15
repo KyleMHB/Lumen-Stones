@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteImplant.label>Сангвинитовый имплант</KM_SanguiniteImplant.label>
+	<KM_SanguiniteImplant.labelNoun>сангвинитовый имплант</KM_SanguiniteImplant.labelNoun>
+	<KM_SanguiniteImplant.description>Осколок сангвинита у сердца. Раны кровоточат гораздо меньше, а старые шрамы медленно заживают, но тело вечно голодно.</KM_SanguiniteImplant.description>
+	<KM_DreadstoneImplant.label>Имплант из камня ужаса</KM_DreadstoneImplant.label>
+	<KM_DreadstoneImplant.labelNoun>имплант из камня ужаса</KM_DreadstoneImplant.labelNoun>
+	<KM_DreadstoneImplant.description>Осколок камня ужаса у сердца. Враги рядом с носителем чувствуют ужас, пока тот призван или сражается, но остальным носитель кажется холодной компанией.</KM_DreadstoneImplant.description>
+	<KM_HollowstoneImplant.label>Имплант из пустокамня</KM_HollowstoneImplant.label>
+	<KM_HollowstoneImplant.labelNoun>имплант из пустокамня</KM_HollowstoneImplant.labelNoun>
+	<KM_HollowstoneImplant.description>Осколок пустокамня у сердца. Боль уходит и разум держится твёрдо, но мало что теперь приносит радость.</KM_HollowstoneImplant.description>
+	<KM_HollowstoneArm.label>Рука из пустокамня</KM_HollowstoneArm.label>
+	<KM_HollowstoneArm.labelNoun>рука из пустокамня</KM_HollowstoneArm.labelNoun>
+	<KM_HollowstoneArm.description>Рука из выращенного кристалла пустокамня. Никогда не болит, но притупляет удовольствие от отдыха.</KM_HollowstoneArm.description>
+	<KM_HollowstoneArm.comps.1.tools.0.label>кулак</KM_HollowstoneArm.comps.1.tools.0.label>
+	<KM_HollowstoneLeg.label>Нога из пустокамня</KM_HollowstoneLeg.label>
+	<KM_HollowstoneLeg.labelNoun>нога из пустокамня</KM_HollowstoneLeg.labelNoun>
+	<KM_HollowstoneLeg.description>Нога из выращенного кристалла пустокамня. Никогда не болит, но притупляет удовольствие от отдыха.</KM_HollowstoneLeg.description>
+	<KM_DreadstoneJaw.label>Челюсть из камня ужаса</KM_DreadstoneJaw.label>
+	<KM_DreadstoneJaw.labelNoun>челюсть из камня ужаса</KM_DreadstoneJaw.labelNoun>
+	<KM_DreadstoneJaw.description>Челюсть из выращенного кристалла камня ужаса. Враги рядом с носителем в бою чувствуют ужас, но остальным носитель кажется холодной компанией.</KM_DreadstoneJaw.description>
+	<KM_SanguiniteHeart.label>Сангвинитовое сердце</KM_SanguiniteHeart.label>
+	<KM_SanguiniteHeart.labelNoun>сангвинитовое сердце</KM_SanguiniteHeart.labelNoun>
+	<KM_SanguiniteHeart.description>Сердце из выращенного кристалла сангвинита. Замедляет кровотечение, но телу нужно больше еды.</KM_SanguiniteHeart.description>
+</LanguageData>

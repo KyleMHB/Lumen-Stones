@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Category_Column>柱</Lumen_Category_Column>
+	<Lumen_Category_Lamp>灯</Lumen_Category_Lamp>
+	<Lumen_Category_Pylon>塔</Lumen_Category_Pylon>
+	<Lumen_Category_Cluster>晶簇</Lumen_Category_Cluster>
+	<Lumen_Category_RestorativeCluster>复苏晶簇</Lumen_Category_RestorativeCluster>
+	<Lumen_Category_SanctuaryShrine>庇护神龛</Lumen_Category_SanctuaryShrine>
+	<Lumen_Category_SoothingCluster>抚慰晶簇</Lumen_Category_SoothingCluster>
+</LanguageData>

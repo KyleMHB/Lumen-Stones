@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Implant_SharedSection>Общие правила</Lumen_Implant_SharedSection>
+	<Lumen_Implant_ProstheticCost>Камня на протез</Lumen_Implant_ProstheticCost>
+	<Lumen_Implant_ImplantCost>Камня на имплант</Lumen_Implant_ImplantCost>
+	<Lumen_Implant_DormantEfficiency>Эффективность спящего протеза (%)</Lumen_Implant_DormantEfficiency>
+	<Lumen_Implant_AttunementCooldown>Перезарядка настройки (дн.)</Lumen_Implant_AttunementCooldown>
+	<Lumen_Implant_BindingCooldown>Перезарядка связывания (дн.)</Lumen_Implant_BindingCooldown>
+	<Lumen_Implant_Drain>Солнечная энергия или энергия варпа в день на активную часть</Lumen_Implant_Drain>
+	<Lumen_Implant_Relief>Смягчение недостатка при оплате энергией (%)</Lumen_Implant_Relief>
+	<Lumen_Implant_Paired>Польза при светлом и тёмном импланте одновременно (%)</Lumen_Implant_Paired>
+	<Lumen_Implant_CellsSection>Переносные элементы</Lumen_Implant_CellsSection>
+	<Lumen_Implant_CellCapacity>Ёмкость каждого запаса (элементы из солнечного камня и камня-близнеца)</Lumen_Implant_CellCapacity>
+	<Lumen_Implant_ChargeAbove>Заряжается только от части сети выше этой доли (%)</Lumen_Implant_ChargeAbove>
+	<Lumen_Implant_Efficiency>Эффективность части (%)</Lumen_Implant_Efficiency>
+	<Lumen_Implant_Benefit>Польза</Lumen_Implant_Benefit>
+	<Lumen_Implant_HoursToFill>Запас солнечного света: часов ясного солнца до заполнения</Lumen_Implant_HoursToFill>
+	<Lumen_Implant_DaysToDrain>Запас солнечного света: дней без солнца до опустошения</Lumen_Implant_DaysToDrain>
+	<Lumen_Implant_StartReserve>Запас солнечного света при пробуждении (%)</Lumen_Implant_StartReserve>
+	<Lumen_Implant_OverlightRate>Скорость заполнения под вердитовым досветом (% от ясного солнца)</Lumen_Implant_OverlightRate>
+	<Lumen_Implant_HungerWhile>Голод в состоянии «{0}» (%)</Lumen_Implant_HungerWhile>
+	<Lumen_Implant_Drawback>Недостаток</Lumen_Implant_Drawback>
+	<Lumen_Implant_DrawbackNoBiotech>Недостаток без Biotech</Lumen_Implant_DrawbackNoBiotech>
+	<Lumen_Implant_DreadRadius>Радиус ужаса (клеток)</Lumen_Implant_DreadRadius>
+	<Lumen_Implant_DaysPerScar>Дней на заживление шрама</Lumen_Implant_DaysPerScar>
+	<Lumen_Implant_ApparelRepair>Прочности одежды восстанавливается в день</Lumen_Implant_ApparelRepair>
+	<Lumen_Implant_PartHealing>Заживление раны на части в день</Lumen_Implant_PartHealing>
+	<Lumen_Implant_Mood>Польза: настроение</Lumen_Implant_Mood>
+	<Lumen_Implant_Light>светлый</Lumen_Implant_Light>
+	<Lumen_Implant_Dark>тёмный</Lumen_Implant_Dark>
+	<Lumen_Implant_WokenByAttunement>настройкой у люменового ритуального круга или люменитового алтаря</Lumen_Implant_WokenByAttunement>
+	<Lumen_Implant_WokenByBinding>связыванием на жертвенном алтаре</Lumen_Implant_WokenByBinding>
+	<Lumen_Implant_DormantImplant>Спит: не действует, пока не будет пробуждён {0}.</Lumen_Implant_DormantImplant>
+	<Lumen_Implant_DormantProsthetic>Спит: работает как простой протез, пока не будет пробуждён {0}.</Lumen_Implant_DormantProsthetic>
+	<Lumen_Implant_RelievedSolar>Солнечная энергия смягчает недостаток на {0}.</Lumen_Implant_RelievedSolar>
+	<Lumen_Implant_RelievedWarp>Энергия варпа смягчает недостаток на {0}.</Lumen_Implant_RelievedWarp>
+	<Lumen_Implant_UnrelievedSolar>Без смягчения: солнечная энергия не поступает, поэтому недостаток в полную силу.</Lumen_Implant_UnrelievedSolar>
+	<Lumen_Implant_UnrelievedWarp>Без смягчения: энергия варпа не поступает, поэтому недостаток в полную силу.</Lumen_Implant_UnrelievedWarp>
+	<Lumen_Implant_PairedNote>В паре с имплантом другой стороны: польза {0}.</Lumen_Implant_PairedNote>
+	<Lumen_Implant_HasLight>уже есть светлый имплант: {0}</Lumen_Implant_HasLight>
+	<Lumen_Implant_HasDark>уже есть тёмный имплант: {0}</Lumen_Implant_HasDark>
+	<Lumen_Implant_SetAsideLight>У {0} уже есть светлый имплант. Имплант отложен.</Lumen_Implant_SetAsideLight>
+	<Lumen_Implant_SetAsideDark>У {0} уже есть тёмный имплант. Имплант отложен.</Lumen_Implant_SetAsideDark>
+</LanguageData>

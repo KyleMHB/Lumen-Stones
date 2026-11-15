@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Attunement_Name>Настройка</Lumen_Attunement_Name>
+	<Lumen_Binding_Name>Связывание</Lumen_Binding_Name>
+	<Lumen_Attunement_NeedsAltar>Нужен жертвенный алтарь игрока.</Lumen_Attunement_NeedsAltar>
+	<Lumen_Attunement_Underway>В этом поселении уже идёт другая настройка.</Lumen_Attunement_Underway>
+	<Lumen_Binding_Underway>В этом поселении уже идёт другое связывание.</Lumen_Binding_Underway>
+	<Lumen_Attunement_ResearchFallback>настройка</Lumen_Attunement_ResearchFallback>
+	<Lumen_Attunement_NeedsRecipient>Нужен колонист, заключённый или раб со спящим светлым имплантом или протезом.</Lumen_Attunement_NeedsRecipient>
+	<Lumen_Binding_NeedsRecipient>Нужен колонист, заключённый или раб со спящим тёмным имплантом или протезом.</Lumen_Binding_NeedsRecipient>
+	<Lumen_Attunement_NothingWoke>У {0} ничего не пробудилось. Части остаются спящими, можно попробовать снова.</Lumen_Attunement_NothingWoke>
+	<Lumen_Attunement_WokeOne>{1} ({0}) теперь активен.</Lumen_Attunement_WokeOne>
+	<Lumen_Attunement_WokeMany>{1} ({0}) теперь активны.</Lumen_Attunement_WokeMany>
+	<Lumen_Attunement_Desc>Пробуждает спящие светлые импланты и протезы. Настройщик работает с колонистом, заключённым или рабом. Навык медицины настройщика, участники и ритуальная поддержка повышают качество. Плохой исход ничего не пробуждает, успешный — 1 часть, хороший — 2, исключительный — 3 без недомогания от настройки. Каждое поселение восстанавливается {0} дн.</Lumen_Attunement_Desc>
+	<Lumen_Binding_Desc>Пробуждает спящие тёмные импланты и протезы. Настройщик работает с колонистом, заключённым или рабом. Навык медицины настройщика, участники и ритуальная поддержка повышают качество. Плохой исход ничего не пробуждает, успешный — 1 часть, хороший — 2, исключительный — 3 без недомогания от настройки. Каждое поселение восстанавливается {0} дн.</Lumen_Binding_Desc>
+	<Lumen_Binding_SeedNote>Спящее семя камня ужаса можно связать в любое время. Пробуждение одного семени не запускает восстановление и не вызывает недомогания.</Lumen_Binding_SeedNote>
+	<Lumen_Attunement_JobLabel>Настроить часть</Lumen_Attunement_JobLabel>
+	<Lumen_Attunement_JobDesc>Настройщик и получатель проводят у круга {0} ч., чтобы пробудить один спящий светлый имплант или протез; после этого возникает недомогание от настройки. Каждое поселение восстанавливается {1} дн.</Lumen_Attunement_JobDesc>
+	<Lumen_Attunement_RecipientRole>Должен быть колонистом, заключённым или рабом со спящей светлой частью.</Lumen_Attunement_RecipientRole>
+	<Lumen_Binding_RecipientRole>Должен быть колонистом, заключённым или рабом со спящей тёмной частью.</Lumen_Binding_RecipientRole>
+	<Lumen_Attunement_NotAttuner>Не может быть настройщиком.</Lumen_Attunement_NotAttuner>
+	<Lumen_Attunement_Recovers>Настройка в этом поселении теперь восстанавливается {0} дн.</Lumen_Attunement_Recovers>
+	<Lumen_Binding_Recovers>Связывание в этом поселении теперь восстанавливается {0} дн.</Lumen_Binding_Recovers>
+	<Lumen_Attunement_AttunerOption>{0} ({1} {2})</Lumen_Attunement_AttunerOption>
+	<Lumen_Attunement_NoAttuner>Никто из колонистов не может провести настройку для {0}.</Lumen_Attunement_NoAttuner>
+</LanguageData>

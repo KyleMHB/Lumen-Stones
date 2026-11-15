@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CrystallizeDarkStone.comps.0.label>Ритуальный нож из тёмного камня</KM_CrystallizeDarkStone.comps.0.label>
+	<KM_CrystallizeDarkStone.comps.1.label>социальное влияние ({PAWN_labelShort})</KM_CrystallizeDarkStone.comps.1.label>
+	<KM_CrystallizeDarkStone.comps.1.labelAbstract>социальное влияние ведущего</KM_CrystallizeDarkStone.comps.1.labelAbstract>
+	<KM_CrystallizeDarkStone.comps.2.label>участники</KM_CrystallizeDarkStone.comps.2.label>
+	<KM_CrystallizeDarkStone.comps.3.label>впечатляющность комнаты</KM_CrystallizeDarkStone.comps.3.label>
+	<KM_CrystallizeDarkStone.comps.4.label>светильники из тёмного камня</KM_CrystallizeDarkStone.comps.4.label>
+	<KM_CrystallizeDarkStone.description>Жертвоприношение, кристаллизующее люменит в тёмный камень. Сколько превратится, решают качество, стоимость и статус жертвы; остальное возвращается. Перед следующим таким жертвоприношением поселение должно восстановиться.</KM_CrystallizeDarkStone.description>
+	<KM_CrystallizeDarkStone.outcomeChances.0.label>плохо</KM_CrystallizeDarkStone.outcomeChances.0.label>
+	<KM_CrystallizeDarkStone.outcomeChances.0.description>Камень сопротивлялся. Кристаллизуется немного люменита.</KM_CrystallizeDarkStone.outcomeChances.0.description>
+	<KM_CrystallizeDarkStone.outcomeChances.1.label>успешно</KM_CrystallizeDarkStone.outcomeChances.1.label>
+	<KM_CrystallizeDarkStone.outcomeChances.1.description>Камень потемнел и выдержал. Кристаллизуется хорошая доля люменита.</KM_CrystallizeDarkStone.outcomeChances.1.description>
+	<KM_CrystallizeDarkStone.outcomeChances.2.label>исключительно</KM_CrystallizeDarkStone.outcomeChances.2.label>
+	<KM_CrystallizeDarkStone.outcomeChances.2.description>Камень напился вдоволь. Кристаллизуется большая часть люменита.</KM_CrystallizeDarkStone.outcomeChances.2.description>
+	<KM_HarvestWarpEnergy.description>Жертвоприношение, собирающее энергию варпа в батареи из кровавика рядом с алтарём. Сколько соберётся, решают качество, стоимость и статус жертвы; всё сверх свободной ёмкости батарей теряется.</KM_HarvestWarpEnergy.description>
+	<KM_HarvestWarpEnergy.comps.0.label>Ритуальный нож из тёмного камня</KM_HarvestWarpEnergy.comps.0.label>
+	<KM_HarvestWarpEnergy.comps.1.label>социальное влияние ({PAWN_labelShort})</KM_HarvestWarpEnergy.comps.1.label>
+	<KM_HarvestWarpEnergy.comps.1.labelAbstract>социальное влияние ведущего</KM_HarvestWarpEnergy.comps.1.labelAbstract>
+	<KM_HarvestWarpEnergy.comps.2.label>участники</KM_HarvestWarpEnergy.comps.2.label>
+	<KM_HarvestWarpEnergy.comps.3.label>впечатляющность комнаты</KM_HarvestWarpEnergy.comps.3.label>
+	<KM_HarvestWarpEnergy.comps.4.label>светильники из тёмного камня</KM_HarvestWarpEnergy.comps.4.label>
+	<KM_HarvestWarpEnergy.comps.5.label>Место в батареях</KM_HarvestWarpEnergy.comps.5.label>
+	<KM_HarvestWarpEnergy.outcomeChances.0.label>плохо</KM_HarvestWarpEnergy.outcomeChances.0.label>
+	<KM_HarvestWarpEnergy.outcomeChances.0.description>Жизнь утекала медленно. Сбор скудный.</KM_HarvestWarpEnergy.outcomeChances.0.description>
+	<KM_HarvestWarpEnergy.outcomeChances.1.label>успешно</KM_HarvestWarpEnergy.outcomeChances.1.label>
+	<KM_HarvestWarpEnergy.outcomeChances.1.description>Жизнь хлынула в камень. Сбор хороший.</KM_HarvestWarpEnergy.outcomeChances.1.description>
+	<KM_HarvestWarpEnergy.outcomeChances.2.label>исключительно</KM_HarvestWarpEnergy.outcomeChances.2.label>
+	<KM_HarvestWarpEnergy.outcomeChances.2.description>Алтарь выпил всё. Сбор отличный.</KM_HarvestWarpEnergy.outcomeChances.2.description>
+</LanguageData>

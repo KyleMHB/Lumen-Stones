@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenCircle.label>流明仪式圈</KM_LumenCircle.label>
+	<KM_LumenCircle.description>一块嵌入地面的扁平圆形原生流明石板。在流明石底座上灌注比在裸地上更顺利。\n\n将流明石灌注为已研究的石材。灌注没有冷却时间，在此举行仪式时清单会暂停。有Ideology时，圆环还能举行一场较小的流明石仪式，将普通石块转化为流明石。它不受房间或流明石装置的加成；流明石祭坛则会。</KM_LumenCircle.description>
+</LanguageData>

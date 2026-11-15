@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Bloodstone.label>血石</KM_Bloodstone.label>
+	<KM_Bloodstone.description>精炼到能留住所取之物的暗石。每块晶体都保存着被赋予的生命，只有当另一块石头汲取时才会释放出来。\n\n一种凝血石榴色的晶体，带有品红紫色核心，在献祭祭坛由暗石精炼而成。用于建造储存扭曲能量的电池。</KM_Bloodstone.description>
+	<KM_BloodstoneVessel.label>血石容器</KM_BloodstoneVessel.label>
+	<KM_BloodstoneVessel.description>一个小小的血石容器，像皮肤一样温热。\n\n储存在附近献祭祭坛收割的扭曲能量。被摧毁或拆除时，储存的能量会丢失。它无法被移动，也不会随时间损失电量。</KM_BloodstoneVessel.description>
+	<KM_BloodstoneObelisk.label>血石方尖碑</KM_BloodstoneObelisk.label>
+	<KM_BloodstoneObelisk.description>一座高大的血石方尖碑。充满时，附近的地面能感觉到缓慢的脉动。\n\n储存在附近献祭祭坛收割的扭曲能量。被摧毁或拆除时，储存的能量会丢失。它无法被移动，也不会随时间损失电量。</KM_BloodstoneObelisk.description>
+</LanguageData>

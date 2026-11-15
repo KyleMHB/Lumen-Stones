@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Fixtures_CategoryContribution>类别仪式支援贡献（%）</Lumen_Fixtures_CategoryContribution>
+	<Lumen_Fixtures_RuleLight>与流明石祭坛位于同一房间且在范围内的装置会提高其仪式的品质和产量。在封闭且有屋顶的房间中支援度为全额，在室外为一半。每种装置类别只按其最高权重计算一次，落地灯和壁灯同属灯类。</Lumen_Fixtures_RuleLight>
+	<Lumen_Fixtures_RuleDark>与献祭祭坛位于同一房间且在范围内的装置会提高其仪式的品质和产量。在封闭且有屋顶的房间中支援度为全额，在室外为一半。每种装置类别只按其最高权重计算一次，落地灯和壁灯同属灯类。</Lumen_Fixtures_RuleDark>
+	<Lumen_Fixtures_Weight>仪式支援权重</Lumen_Fixtures_Weight>
+	<Lumen_Fixtures_Reach>仪式支援范围</Lumen_Fixtures_Reach>
+	<Lumen_Fixtures_Quality>满支援时的仪式品质</Lumen_Fixtures_Quality>
+	<Lumen_Fixtures_YieldDark>满支援时的转化和收割</Lumen_Fixtures_YieldDark>
+	<Lumen_Fixtures_YieldLight>满支援时的仪式产量</Lumen_Fixtures_YieldLight>
+	<Lumen_Fixtures_NoAltarDark>范围内没有献祭祭坛</Lumen_Fixtures_NoAltarDark>
+	<Lumen_Fixtures_NoAltarLight>范围内没有流明石祭坛</Lumen_Fixtures_NoAltarLight>
+	<Lumen_Fixtures_Enclosed>封闭且有屋顶的房间</Lumen_Fixtures_Enclosed>
+	<Lumen_Fixtures_Outdoors>室外或无屋顶，强度减半</Lumen_Fixtures_Outdoors>
+	<Lumen_Fixtures_Describe>仪式支援{0}（{1}）：品质 +{2}，产量 +{3}</Lumen_Fixtures_Describe>
+	<Lumen_Ritual_QualityDesc>{0}：品质 +{1}</Lumen_Ritual_QualityDesc>
+	<Lumen_Fixtures_SupportCount>{0}支援</Lumen_Fixtures_SupportCount>
+	<Lumen_Fixtures_Tooltip>此房间内{0}格范围内对应石材的装置。在封闭且有屋顶的房间中为全额强度，在室外为一半。</Lumen_Fixtures_Tooltip>
+</LanguageData>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Info_WarpRule>This is a Warp active effect: it runs only while the fixture's Warp active effect is toggled on and the map has Warp energy.</Lumen_Info_WarpRule>
+	<Lumen_DarkInfo_SanguiniteRule>Treats colonists, slaves and prisoners resting in a bed in the same room. Only the strongest Sanguinite fixture in reach treats a patient, and bionics are never touched.</Lumen_DarkInfo_SanguiniteRule>
+	<Lumen_DarkInfo_TreatmentReach>Treatment reach</Lumen_DarkInfo_TreatmentReach>
+	<Lumen_DarkInfo_BleedingRate>Bleeding rate</Lumen_DarkInfo_BleedingRate>
+	<Lumen_DarkInfo_BleedingRateDesc>Wounds stay untended and keep bleeding, only slower.</Lumen_DarkInfo_BleedingRateDesc>
+	<Lumen_DarkInfo_BleedCost>Warp energy per bleeding patient</Lumen_DarkInfo_BleedCost>
+	<Lumen_DarkInfo_Every>{0} every {1}</Lumen_DarkInfo_Every>
+	<Lumen_DarkInfo_HealsScars>Heals scars</Lumen_DarkInfo_HealsScars>
+	<Lumen_DarkInfo_SurfaceScars>surface scars</Lumen_DarkInfo_SurfaceScars>
+	<Lumen_DarkInfo_EveryScar>every scar</Lumen_DarkInfo_EveryScar>
+	<Lumen_DarkInfo_ScarDesc>One scar per pass, for {0} Warp energy each.</Lumen_DarkInfo_ScarDesc>
+	<Lumen_DarkInfo_Regrows>Regrows</Lumen_DarkInfo_Regrows>
+	<Lumen_DarkInfo_RegrowDigits>fingers and toes</Lumen_DarkInfo_RegrowDigits>
+	<Lumen_DarkInfo_RegrowAll>small parts and organs</Lumen_DarkInfo_RegrowAll>
+	<Lumen_DarkInfo_RegrowDesc>Regrowth is paid gradually and pauses when the patient leaves bed or Warp energy runs out. Fingers and toes take {0} day and {1} Warp energy; eyes, ears, noses and jaws {2} days and {3}; internal organs {4} days and {5}.</Lumen_DarkInfo_RegrowDesc>
+	<Lumen_DarkInfo_DreadstoneReach>Only the strongest covering Dreadstone fixture counts.</Lumen_DarkInfo_DreadstoneReach>
+	<Lumen_DarkInfo_Reach>Reach</Lumen_DarkInfo_Reach>
+	<Lumen_DarkInfo_SubjugationRule>Applies to the colony's prisoners and slaves in the same room.</Lumen_DarkInfo_SubjugationRule>
+	<Lumen_DarkInfo_Resistance>Resistance lost per day</Lumen_DarkInfo_Resistance>
+	<Lumen_DarkInfo_Will>Will lost per day</Lumen_DarkInfo_Will>
+	<Lumen_DarkInfo_Suppression>Slave suppression per day</Lumen_DarkInfo_Suppression>
+	<Lumen_DarkInfo_Breaks>Prison breaks and rebellions</Lumen_DarkInfo_Breaks>
+	<Lumen_DarkInfo_Rarer>{0}x rarer</Lumen_DarkInfo_Rarer>
+	<Lumen_DarkInfo_PerPawnPerDay>Warp energy per pawn per day</Lumen_DarkInfo_PerPawnPerDay>
+	<Lumen_DarkInfo_DreadRule>Applies to hostile humanlikes in line of sight. Mechanoids and animals are immune. Nothing is spent with no hostiles in reach.</Lumen_DarkInfo_DreadRule>
+	<Lumen_DarkInfo_SiphonRule>When a weakened enemy dies, {0} of its market value returns as Warp energy.</Lumen_DarkInfo_SiphonRule>
+	<Lumen_DarkInfo_DreadOnHostiles>Dread on hostiles</Lumen_DarkInfo_DreadOnHostiles>
+	<Lumen_DarkInfo_PerHostile>Warp energy per hostile</Lumen_DarkInfo_PerHostile>
+	<Lumen_DarkInfo_HollowstoneRule>Applies to colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture in reach counts.</Lumen_DarkInfo_HollowstoneRule>
+	<Lumen_DarkInfo_Ward>Ward</Lumen_DarkInfo_Ward>
+</LanguageData>

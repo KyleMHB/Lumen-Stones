@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_RaiseWorkHusk.roles.0.label>仪式主持者</KM_RaiseWorkHusk.roles.0.label>
+	<KM_RaiseWorkHusk.roles.1.label>受害者</KM_RaiseWorkHusk.roles.1.label>
+	<KM_RaiseWorkHusk.roles.1.missingDesc>一名囚犯、奴隶或殖民者</KM_RaiseWorkHusk.roles.1.missingDesc>
+	<KM_RaiseWorkHusk.stages.0.failTriggers.0.desc>无法到达受害者。</KM_RaiseWorkHusk.stages.0.failTriggers.0.desc>
+	<KM_RaiseWorkHusk.stages.0.failTriggers.1.desc>主持者在睡觉</KM_RaiseWorkHusk.stages.0.failTriggers.1.desc>
+	<KM_RaiseWorkHusk.stages.3.failTriggers.0.desc>祭品已不再是死的</KM_RaiseWorkHusk.stages.3.failTriggers.0.desc>
+</LanguageData>

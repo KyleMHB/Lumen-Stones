@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Verdite_SupportRadius>Agricultural support radius</Lumen_Verdite_SupportRadius>
+	<Lumen_Verdite_GrowthBonus>Plant growth bonus (%)</Lumen_Verdite_GrowthBonus>
+	<Lumen_Verdite_WorkBonus>PlantWorkSpeed bonus (%)</Lumen_Verdite_WorkBonus>
+	<Lumen_Verdite_YieldBonus>PlantHarvestYield bonus (%)</Lumen_Verdite_YieldBonus>
+	<Lumen_Verdite_Rule>Applies to plants and farmers within the green ring, indoors or outdoors. Only the strongest Verdite source applies to each benefit, and a Verdite scythe counts as a source.</Lumen_Verdite_Rule>
+	<Lumen_Verdite_FarmingRadius>Farming radius</Lumen_Verdite_FarmingRadius>
+	<Lumen_Verdite_PlantGrowth>Plant growth</Lumen_Verdite_PlantGrowth>
+	<Lumen_Verdite_PlantWorkSpeed>Plant work speed</Lumen_Verdite_PlantWorkSpeed>
+	<Lumen_Verdite_PlantHarvestYield>Plant harvest yield</Lumen_Verdite_PlantHarvestYield>
+	<Lumen_Verdite_StrongestSupport>Strongest Verdite support: +{0}</Lumen_Verdite_StrongestSupport>
+	<Lumen_Verdite_StrongestGrowth>Strongest Verdite growth support: +{0}</Lumen_Verdite_StrongestGrowth>
+</LanguageData>

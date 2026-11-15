@@ -55,6 +55,7 @@
 
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenSanguiniteColumn</defName>
+    <tickerType>Never</tickerType>
     <label>Sanguinite column</label>
     <uiOrder>2039</uiOrder>
     <researchPrerequisites>
@@ -65,8 +66,11 @@
       <KM_Sanguinite>15</KM_Sanguinite>
     </costList>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.266)</drawOffset>
       <texPath>Lumenstone/SanguiniteColumn</texPath>
-      <drawSize>(1.1667,1.4583)</drawSize>
+      <!-- wider by 25% (user, 2026-11-14: column width pass). -->
+      <drawSize>(1.4584,1.4583)</drawSize>
     </graphicData>
     <statBases>
       <Flammability>0</Flammability>
@@ -80,7 +84,7 @@
       <li Class="LumenStones.CompProperties_DarkFixture"><stone>Sanguinite</stone><tier>1</tier></li>
       <li Class="LumenStones.CompProperties_WarpToggle"><effect>treating patients in bed</effect></li>
     </comps>
-    <uiIconScale>0.9</uiIconScale>
+    <uiIconScale>0.72</uiIconScale>
   </ThingDef>
 
   <ThingDef Name="KM_SanguiniteFixtureBase" ParentName="KM_DarkStoneFixtureBase" Abstract="True">
@@ -91,23 +95,27 @@
 
   <ThingDef ParentName="KM_SanguiniteFixtureBase">
     <defName>KM_SanguiniteLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Sanguinite lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2807</uiOrder>
-    <description>A Sanguinite crystal on a wooden post.\n\nGives dim crimson light and nothing else.</description>
+    <description>A Sanguinite crystal on a stone plinth.\n\nGives dim crimson light and nothing else.</description>
     <graphicData>
       <texPath>Things/Building/Sanguinite/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Sanguinite>10</KM_Sanguinite>
     </costList>
     <statBases>
       <Beauty>8</Beauty>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(200,60,75,0)</glowColor>
@@ -164,11 +172,14 @@
 
   <ThingDef ParentName="KM_SanguiniteFixtureBase">
     <defName>KM_SanguiniteCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Sanguinite cluster</label>
     <uiOrder>2826</uiOrder>
     <rotatable>true</rotatable>
     <description>A group of Sanguinite crystals in a low carved housing. Lost eyes come back the right colour, usually.\n\nGives crimson light. Warp energy: slows bleeding, heals scars and regrows missing parts of patients resting in bed in the same room. Only the strongest Sanguinite fixture treats a patient. Bionics are never touched.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.103)</drawOffset>
       <texPath>Things/Building/Sanguinite/Cluster</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawRotated>false</drawRotated>
@@ -183,7 +194,7 @@
       <KM_Sanguinite>35</KM_Sanguinite>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
     </statBases>
     <comps>
@@ -198,6 +209,7 @@
 
   <ThingDef ParentName="KM_SanguiniteFixtureBase">
     <defName>KM_SanguinitePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Sanguinite pylon</label>
     <uiOrder>2827</uiOrder>
@@ -206,7 +218,8 @@
     <graphicData>
       <texPath>Things/Building/Sanguinite/Pylon</texPath>
       <drawSize>(2.2,2.2)</drawSize>
-      <drawOffset>(0,0,0.56)</drawOffset>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.631)</drawOffset>
     </graphicData>
     <uiIconScale>0.5</uiIconScale>
     <stuffCategories>
@@ -218,7 +231,7 @@
       <KM_Sanguinite>25</KM_Sanguinite>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>30</Beauty>
     </statBases>
     <comps>
@@ -254,6 +267,8 @@
     <smeltable>false</smeltable>
     <statBases><WorkToMake>5000</WorkToMake><Mass>1.2</Mass></statBases>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/SanguiniteFlensingBlade</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.2,1.2)</drawSize>

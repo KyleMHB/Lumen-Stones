@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteImplant.label>血晶石植入物</KM_SanguiniteImplant.label>
+	<KM_SanguiniteImplant.labelNoun>一个血晶石植入物</KM_SanguiniteImplant.labelNoun>
+	<KM_SanguiniteImplant.description>一块位于心脏旁的血晶石碎片。伤口出血大大减少，旧疤痕也会慢慢愈合，但身体总是饥饿。</KM_SanguiniteImplant.description>
+	<KM_DreadstoneImplant.label>恐惧石植入物</KM_DreadstoneImplant.label>
+	<KM_DreadstoneImplant.labelNoun>一个恐惧石植入物</KM_DreadstoneImplant.labelNoun>
+	<KM_DreadstoneImplant.description>一块位于心脏旁的恐惧石碎片。宿主被征召或战斗时，附近的敌人会感到恐惧，但其他人会觉得宿主冷漠难处。</KM_DreadstoneImplant.description>
+	<KM_HollowstoneImplant.label>空虚石植入物</KM_HollowstoneImplant.label>
+	<KM_HollowstoneImplant.labelNoun>一个空虚石植入物</KM_HollowstoneImplant.labelNoun>
+	<KM_HollowstoneImplant.description>一块位于心脏旁的空虚石碎片。疼痛消退，心神稳定，但几乎再没有什么能带来快乐。</KM_HollowstoneImplant.description>
+	<KM_HollowstoneArm.label>空虚石手臂</KM_HollowstoneArm.label>
+	<KM_HollowstoneArm.labelNoun>一条空虚石手臂</KM_HollowstoneArm.labelNoun>
+	<KM_HollowstoneArm.description>一条由空虚石晶体生长而成的手臂。它永远不会疼痛，但会削弱娱乐的乐趣。</KM_HollowstoneArm.description>
+	<KM_HollowstoneArm.comps.1.tools.0.label>拳头</KM_HollowstoneArm.comps.1.tools.0.label>
+	<KM_HollowstoneLeg.label>空虚石腿</KM_HollowstoneLeg.label>
+	<KM_HollowstoneLeg.labelNoun>一条空虚石腿</KM_HollowstoneLeg.labelNoun>
+	<KM_HollowstoneLeg.description>一条由空虚石晶体生长而成的腿。它永远不会疼痛，但会削弱娱乐的乐趣。</KM_HollowstoneLeg.description>
+	<KM_DreadstoneJaw.label>恐惧石下颌</KM_DreadstoneJaw.label>
+	<KM_DreadstoneJaw.labelNoun>一副恐惧石下颌</KM_DreadstoneJaw.labelNoun>
+	<KM_DreadstoneJaw.description>一副由恐惧石晶体生长而成的下颌。战斗中靠近宿主的敌人会感到恐惧，但其他人会觉得宿主冷漠难处。</KM_DreadstoneJaw.description>
+	<KM_SanguiniteHeart.label>血晶石心脏</KM_SanguiniteHeart.label>
+	<KM_SanguiniteHeart.labelNoun>一颗血晶石心脏</KM_SanguiniteHeart.labelNoun>
+	<KM_SanguiniteHeart.description>一颗由血晶石晶体生长而成的心脏。它能减缓出血，但身体需要更多食物。</KM_SanguiniteHeart.description>
+</LanguageData>

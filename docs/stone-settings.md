@@ -4,9 +4,45 @@ Open Options > Mod options > Lumen Stones. Select Lumenstone or a stone, then a 
 
 Every balance control starts with the value from the active mod list. Checking an override stores a value; Reset removes it. Resetting a stone removes its overrides, including saved settings for temporarily absent Pyrinth content. Saved column visibility and Pyrinth heat settings migrate without disabling the rest of a stone's content. Saved overrides for removed keys are ignored.
 
-**Fixture animation**, at the top of the window, allows the pulses, glints and fireflies of fixtures. It is on by default and applies immediately. Each fixture's own animation starts off and is switched on with its **Fixture animation** button. Turning the setting off removes that button and stops every fixture's animation without changing each fixture's switch. Animation never changes what a fixture does.
-
 Disabling a stone or item blocks new construction, crafting and its infusion recipe. Lumenstone itself has no off toggle. Existing blueprints can still finish and existing furnishings keep their effects. No definitions or placed things are deleted.
+
+## Effect switches
+
+Each stone's tab starts with an **Effects** section: one switch per effect, all on by default. Turning a switch off stops that effect for everything, including fixtures already built, worn gear and implants. It is separate from availability, which only blocks new content, and from a building's **Solar** or **Warp active effect** button, which is per building.
+
+- **Most switches apply at once.** The effect does nothing and costs nothing. Its fixtures drop out of the energy drain for it, hediffs it applies lapse on their own timers, and info card rows for it read "Off in mod settings".
+- **Switches marked restart required** change definitions at startup: equipped stats, hediff stages, heat, meditation focus and the charm's shield. They take effect after a restart, and on existing items too.
+- **Rituals that are switched off are hidden.** Crystallize Dark Stone, Harvest Warp Energy and Raise a work husk disappear from the altar. A ceremony already under way finishes.
+- Room support effects read 0 while off, but their fixtures still count for any other effect that shares the categories.
+- Ferrite repairs buildings, loose items and worn gear under three separate switches. A switched-off kind takes no share of a pulse's budget, so the rest mend at the same speed.
+- Hollowstone's pain ward and mental break steadiness are separate switches. With pain relief off, columns ward nobody.
+- A switched-off Dreadstone seed holds still: no growth, no cuts, and Binding no longer offers a dormant one.
+
+Keys are `<Tab>.effect.<id>`, 1 for on and 0 for off. The tab's reset clears them.
+
+| Tab | Effect switch ids |
+| --- | --- |
+| Glacite | `fixtureCooling` (restart), `coolerRefrigeration`, `coolerFreezing`, `bladeFrost` (the greatsword's chill) |
+| Vitalite | `roomImmunity`, `roomHealing`, `roomInfection`, `bedBonuses`, `cleanliness` (restart), `circlet` (restart) |
+| Serenite | `roomComfort`, `roomMood`, `sleep`, `pendant` (restart) |
+| Verdite | `growth`, `workSpeed`, `harvestYield`, `plantLight`, `scytheFarming`, `scytheLifeSteal`, `bracer` (restart), `chew` (restart) |
+| Aegite | `filthCleaning`, `fireSuppression`, `shieldArmor` (restart), `shieldFireImmunity`, `charm` (restart) |
+| Ferrite | `repairBuildings`, `repairItems`, `repairGear`, `warhammerStun`, `warhammerMending` |
+| Sunstone | `axeBane`, `axeBlindStun`, `flare`, `projectorInterception`, `projectorCrushing`, `stabilizer` |
+| Lumenstone | `ritualSupport`, `staff` (restart) |
+| Pyrinth | `columnHeat` (restart), `columnFocus` (restart) |
+| Animastone | `focus` (restart), `roomHeatRecovery`, `roomFocusGain`, `clusterFocus`, `pylonHeatRecovery`, `pylonGrowth`, `circlet` (restart), `staffStats` (restart), `staffStun` |
+| DarkStone | `ritualSupport`, `crystallize`, `harvest`, `ritualKnife`, `seed` |
+| Sanguinite | `bleeding`, `scars`, `regrowDigits`, `regrowSmallParts`, `regrowOrgans`, `hemorrhage`, `wielderBleed` (restart) |
+| Dreadstone | `subjugation`, `dread`, `siphon`, `arbalestDread`, `cudgel`, `collar` |
+| Hollowstone | `painWard`, `breakSteadiness`, `workHusks` (Anomaly), `glaive` (restart) |
+| Implants | `apparelMending`, `partHealing`, `scarMending`, `dreadAura`, `mood`, `relief` |
+
+Turning `Implants.effect.relief` off stops every part drawing Solar or Warp energy and leaves drawbacks at full strength, without the `(unrelieved)` label.
+
+## Hediff and thought values
+
+Effects defined in a hediff's stages or a thought's mood have rows too, using the same field names as implant parts: `<HediffDef>.<stageIndex>.<field>` (for example `KM_HollowstoneWard.2.pain` or `KM_Dread.1.capFactor.Moving`), and `<ThoughtDef>.mood.<stageIndex>` plus `<ThoughtDef>.days` for memories. They cover `KM_GlaciteChill`, `KM_VerditeSustenance`, `KM_VerditeChewed`, `KM_SanguiniteTreatment`, `KM_FlensingWielder`, `KM_Dread`, `KM_DreadAgony`, `KM_SoulBlight`, `KM_HollowstoneWard` and `KM_GlaiveWielder`, and the moods of `KM_SereniteRested`, `KM_VerditeBleedingGums`, `KM_WarpSacrifice`, `KM_WarpSacrificeApproved`, `KM_SoulBlightMemory`, `KM_DreadstoneTorture` and `KM_DreadstoneCollarWorn`. They need a restart.
 
 Base Epochs - Pyrinth settings are available only when that mod and its definitions are loaded. Its balance and availability remain unchanged until **Override Epochs - Pyrinth balance** is enabled. The Lumen Stones Pyrinth column and the Pyrinth infusion toggle work regardless of that switch. Pyrinth deposits and deep drilling are patched to zero, and no setting restores them. Pyrinth add-ons are excluded.
 
@@ -49,7 +85,10 @@ With Ideology, the Dark Stone tab holds the Sacrificial altar, its rituals and t
 - **Batteries:** `KM_BloodstoneVessel` and `KM_BloodstoneObelisk` have the usual availability, light, cost and material settings, plus `.capacity` (Warp energy, default 100 and 400).
 - **Dreadstone seed:** `DarkSeed.crystalCost` (Dreadstone per seed crystal, default 5), `.days` (days from Binding to full growth, 4), `.maxPain` (cap on the seed's own pain, 72%, under the 80% shock threshold), `.cutIntervalStart` and `.cutIntervalEnd` (mean hours between cuts, 12 when bound falling to 4 in the last stage), `.cutSeverity` (cut damage multiplier, 1) and `.baseYield` (12). The yield is `baseYield x victim factor`, at least 1, using the Crystallize victim factor at the moment of death. The seed crystal follows the Dreadstone availability toggle. A dormant seed can be bound without the Dark attunement research or the Binding cooldown, and waking only a seed starts no cooldown.
 
-Moral cost has no settings. The thought `KM_WarpSacrifice` is -4 mood for 6 days, and can be edited in the definition.
+- **Victim factor curve:** `DarkStone.victimLow` (0.5 at value 0), `.victimMidValue` and `.victimMid` (1.0 at 1000), `.victimHighValue` and `.victimHigh` (1.25 at 2000 and above). Value is market value times status.
+- **Dark Stone ritual knife:** `KM_DarkStoneRitualKnife.blightCap` (3 soul blight stacks) and `.blightTicks` (180000), `.harvestShare` (10% of a successful Harvest from an execution) and `.quality` (+10% ritual quality when the leader wields it).
+
+Moral cost: `KM_WarpSacrifice.mood.0` (-4) and `KM_WarpSacrifice.days` (6), with the same rows for `KM_WarpSacrificeApproved`.
 
 ## Sanguinite
 
@@ -60,7 +99,7 @@ With Ideology, Sanguinite fixtures treat patients resting in a bed in the same r
 - **Pylon:** slows bleeding to 30%, heals every scar and also regrows internal organs. Nothing regrows limbs.
 - **Costs:** `Sanguinite.bleedCost` (1 per bleeding patient per pass; unpaid, bleeding isn't slowed), `.scarCost` (5), `.digitCost` (5), `.smallPartCost` (20) and `.organCost` (100). A regrowth is paid gradually over `.digitDays` (1), `.smallPartDays` (3) and `.organDays` (7), and the part returns when it's paid off. Progress pauses and is kept when the patient leaves bed or Warp energy runs out.
 - **Safety:** bionics and the parts under them are never regrown or removed. Eyes and eye scars are skipped when the patient's ideoligion approves of blindness.
-- **Flensing Blade:** `KM_SanguiniteBlade` is fast and light, with a cut of 14 every 1.4 seconds against a gladius's 16 and a longsword's 23 every 2 seconds. Each damaging hit on a living, bleeding-capable target adds a Hemorrhage stack, up to `Sanguinite.hemorrhageMaxStacks` (3), and each stack fades after about ten seconds. The wielder bleeds at half rate only while it's equipped. It costs no Warp energy and has the usual damage, cost and material settings.
+- **Flensing Blade:** `KM_SanguiniteBlade` is fast and light, with a cut of 14 every 1.4 seconds against a gladius's 16 and a longsword's 23 every 2 seconds. Each damaging hit on a living, bleeding-capable target adds a Hemorrhage stack, up to `Sanguinite.hemorrhageMaxStacks` (3), and each stack fades after `Sanguinite.hemorrhageTicks` (600 ticks) and bleeds `Sanguinite.hemorrhageBleed` (0.04) a day per stack. The wielder bleeds at half rate only while it's equipped. It costs no Warp energy and has the usual damage, cost and material settings.
 - **Items:** `KM_Sanguinite`, `KM_LumenSanguiniteColumn`, `KM_SanguiniteLamp`, `KM_SanguiniteWallLamp`, `KM_SanguiniteCluster` and `KM_SanguinitePylon` have the usual availability, light, cost and material settings. `Sanguinite.enabled` is the stone's availability toggle.
 
 ## Dreadstone
@@ -71,15 +110,16 @@ With Ideology, Dreadstone fixtures spend Warp energy to hold prisoners and slave
 - **Cluster and pylon, Dread:** hostile humanlikes in line of sight within reach get the Dread hediff, which lowers Moving, Consciousness and shooting accuracy by 15%, 10% and 15% for a cluster and 25%, 15% and 25% for a pylon. Each hostile costs `Dreadstone.dreadCostPerPass` (1) Warp energy each 250-tick pass, so an idle cluster costs nothing. Mechanoids and animals are immune.
 - **Death Siphon:** when a pawn marked by a pylon or the Arbalest dies, `Dreadstone.siphonFraction` (1%) of its market value goes to any battery on the map. Energy with no spare capacity is lost. A cluster alone refunds nothing.
 - **Dreadstone Arbalest:** `KM_DreadstoneArbalest` is a lighter, faster bow than the greatbow (range 26, damage 12, warmup and cooldown 1.3 seconds). Its bolts apply Cluster-strength Dread for `Dreadstone.arbalestDreadSeconds` (10) with the siphon mark. It costs no Warp energy to fire.
+- **Dreadstone cudgel and collar:** `KM_DreadstoneCudgel.agonyCap` (4 agony stacks) and `.agonyTicks` (1500). `KM_DreadstoneCollar.suppression` (75% suppression fall rate) and `.breakFactor` (rebellions 2x rarer) apply to a collared slave not covered by subjugation. Both items have availability, cost and material settings.
 - **Items:** `KM_Dreadstone`, `KM_LumenDreadstoneColumn`, `KM_DreadstoneLamp`, `KM_DreadstoneWallLamp`, `KM_DreadstoneCluster`, `KM_DreadstonePylon` and the arbalest have the usual availability, light, cost and material settings. `Dreadstone.enabled` is the stone's availability toggle.
 
 ## Hollowstone
 
 With Ideology, Hollowstone fixtures spend Warp energy to dull pain and steady minds. Each needs Warp energy and its **Warp active effect** on, and lamps only give light. Colonists and slaves in the same room as a fixture, within `Hollowstone.radius` tiles (default 8), get the Hollowstone ward hediff. Only the strongest covering fixture counts, and the ward clears soon after a pawn leaves reach or power is lost.
 
-- **Column:** pain is multiplied by 0.75.
-- **Cluster:** pain is multiplied by 0.5 and the mental break threshold is 5 percentage points lower.
-- **Pylon:** pain is multiplied by 0.25 and the mental break threshold is 10 percentage points lower.
+- **Column:** pain is multiplied by 0.9.
+- **Cluster:** pain is multiplied by 0.8 and the mental break threshold is 5 percentage points lower.
+- **Pylon:** pain is multiplied by 0.65 and the mental break threshold is 10 percentage points lower.
 - **Cost:** `Hollowstone.wardCostPerDay` (1 Warp energy per covered pawn per day). Nothing is spent for pawns out of reach. Nothing blocks breaks outright.
 - **Work husks:** with Ideology and Anomaly, the Sacrificial altar has a third ritual, **Raise a work husk**. It sacrifices a living prisoner, slave or colonist and raises them as a work husk bound to a Hollowstone pylon with no husk. It costs `Hollowstone.raiseCost` (50 Warp energy), refunded if the ceremony is cancelled or the victim is not raised, and recovers for `Hollowstone.raiseCooldown` days (0.25). A bound husk costs `Hollowstone.huskCostPerDay` (10) Warp energy a day. It hauls and cleans, can be drafted to fight unarmed, keeps what it wore, and feels no pain. If its pylon is destroyed, switched off or unpowered, it collapses without dying and wakes when power returns. A collapsed husk with no pylon can be bound to a free pylon from the pylon's **Rebind a husk** button. Without Anomaly none of this appears.
 - **Hollowstone Glaive:** `KM_HollowstoneGlaive` is a slow, heavy blade (cut 28 every 2.8 seconds). While equipped it gives the wielder half pain and +25% pain shock threshold. It costs no Warp energy and has the usual damage, cost, material and equipped stat settings.
@@ -95,10 +135,11 @@ Sunstone collects daylight as Solar energy. Collectors and arrays gather it into
 - **Weather:** `Sunstone.weather0` to `.weather3` are the output factors for fog (70%), rain and gentle snow (60%), thunderstorms (50%), and foggy rain and hard snow (40%). Other weather is full sun.
 - **Items:** every Sunstone item has the usual availability, light, cost and material settings. Light settings are the radius at full glow: collectors and arrays dim to half at night, and batteries grow from about 40% to full as they fill.
 - **Sunstone axe:** `KM_SunstoneAxe.baneMultiplier` (damage multiplier against Anomaly entities and mutants, default 1.5), `.procChance` (25%) and `.procChanceUnnatural` (50%) for the blind and stun proc, `.blindTicks` (300) and `.stunTicks` (60), plus the usual damage and cost settings.
+- **Sunstone flare:** `KM_SunstoneFlare.radius` (2.9 tiles), `.blindTicks` (300), `.stunTicks` (60) and `.burn` (15 burn damage to Anomaly entities and mutants), with availability and recipe settings.
 
 - **Interruptions:** `Interruptions.enabled` (default on) lets map events pause active effects. A solar flare stops every Solar and Warp active effect and Sunstone collection; stored energy, passive effects, implants, prosthetics and worn gear are unaffected. A fixture linked to a Lunite stabilizer keeps running. With Sunstone off there are no interruptions.
-- **Lunite:** `Lunite.sunstoneCost` (25 Sunstone) and `.yield` (25 Lunite) per conversion, and `.cooldownDays` (5, started only by a successful conversion). A conversion can only start between 20:00 and 04:00. `Lunite.linkRadius` (4 tiles) is how far a Lunite stabilizer reaches, measured to the fixture's nearest cell.
-- **Aegite shield projector:** `KM_AegiteShieldProjector.radius` (10 tiles), `.hitPoints` (500), `.upkeep` (150 Solar energy per day while up), `.solarPerHp` (0.5 per hit point recharged), `.crushCost` (150 hit points per crushed hostile drop pod or infestation), `.rebootTicks` (60000 after breaking) and `.empTicks` (1500). Recharge speed is fixed at 1 hit point per 240 ticks.
+- **Lunite:** `Lunite.sunstoneCost` (25 Sunstone) and `.yield` (25 Lunite) per conversion, and `.cooldownDays` (5, started only by a successful conversion). A conversion can only start between `Lunite.nightStart` (20:00) and `Lunite.nightEnd` (04:00), in hours; a window that starts after it ends runs over midnight. `Lunite.linkRadius` (4 tiles) is how far a Lunite stabilizer reaches, measured to the fixture's nearest cell.
+- **Aegite shield projector:** `KM_AegiteShieldProjector.radius` (10 tiles), `.hitPoints` (500), `.upkeep` (150 Solar energy per day while up), `.solarPerHp` (0.5 per hit point recharged), `.crushCost` (150 hit points per crushed hostile drop pod or infestation), `.rebootTicks` (60000 after breaking), `.empTicks` (1500) and `.rechargeTicks` (240 ticks per recharged hit point).
 
 When stored energy falls below 0.01, or a continuous drain cannot be paid, the network is depleted: every draw fails until stored energy reaches `Sunstone.solarHysteresis`.
 
@@ -113,7 +154,9 @@ Active-effect costs live with the stones that use them:
 
 Passive effects always count every fixture. Active room bonuses count only fixtures whose toggle is on. A Vitalite bed's toggle controls only its own occupant bonus.
 
-## Ferrite warhammer and Aegite defences
+## Glacite greatsword, Ferrite warhammer and Aegite defences
+
+- **Glacite greatsword:** `KM_GlaciteBlade` keeps its defName from the one-handed Glacite blade, so saved blades and bills carry over. It is a slow, heavy two-handed blade in the Hollowstone glaive's class: cut 28 and stab 24 every 2.8 seconds, handle 10 every 2.4 seconds, 3.5 kg. It deals no frostbite. Each damaging hit on a living flesh target adds `KM_GlaciteChill.severityPerHit` (0.35, divided by body sizes above 1) of Glacite chill, capped at 1, which wears off at `KM_GlaciteChill.severityPerDay` (25 a day, about 40 seconds from full). Chilled (from 0) is 90% Moving and 95% Manipulation, numbed (0.4) 80% and 90%, frozen stiff (0.75) 70% and 85%; the stage rows are `KM_GlaciteChill.<stage>.capFactor.<capacity>`. The `Glacite.effect.bladeFrost` switch turns the chill off without a restart. Under Vanilla Expanded Framework shields it can't be used with a shield, because it doesn't set `usableWithShields`. It also excludes the Aegite shield both ways: `EquipmentUtility.CanEquip` refuses either item while the other is held, and the apparel optimizer scores the shield at -1000 for a greatsword wielder. A pawn that already holds both from an older save keeps them until one is removed. This rule has no setting.
 
 - **Ferrite warhammer:** `KM_FerriteWarhammer.stunChance` (20%) and `.stunTicks` (120) for the stun on damaging melee hits, and `.repairBudget` (0.0225% of maximum hit points per pulse, every 300 ticks) for the free mending of the hammer and the wielder's worn apparel and weapons. Replaces the old Aegite warhammer; the settings keys were renamed with it.
 - **Aegite shield:** replaces the old Ferrite shield, with the usual availability, cost and material settings.
@@ -137,7 +180,7 @@ The Implants tab holds the stone implants, crystal prosthetics and the portable 
 - **Shared rules:** `Implants.stoneCost` (infused stone per implant, default 3) and `Prosthetics.stoneCost` (4), each plus one component. `Prosthetics.dormantEfficiency` (80%) is a dormant prosthetic's efficiency, including the parts it carries. `Implants.attunementCooldownDays` and, with Ideology, `Implants.bindingCooldownDays` (3 each) are per settlement and separate from the Lumenstone ritual and Crystallize.
 - **Energy relief:** each active implant and each active dark prosthetic draws `Implants.drainPerDay` (3) Solar energy (light) or Warp energy (dark) on a home map. While paid, its drawback is reduced by `Implants.reliefFactor` (25%); when refused, the label shows `(unrelieved)`. Light prosthetics have no drawback and draw nothing. With Sunstone disabled, Solar draws are free.
 - **Pairing:** with an active light and an active dark implant, both benefits use `Implants.pairedBenefitFactor` (80%). Drawbacks stay in full.
-- **Portable cells:** without Ideology, the Sunstone cell holds Solar energy only. With Ideology the Twinstone cell replaces its bill and adds a Warp pool for dark parts. `Twinstone.capacity` (60 per pool, about ten days for two implants) applies to both. Away from a home map a cell feeds every implanted pawn on its map or in its caravan. At home it charges from the part of each network above half its capacity.
+- **Portable cells:** without Ideology, the Sunstone cell holds Solar energy only. With Ideology the Twinstone cell replaces its bill and adds a Warp pool for dark parts. `Twinstone.capacity` (60 per pool, about ten days for two implants) applies to both. Away from a home map a cell feeds every implanted pawn on its map or in its caravan. At home it charges from the part of each network above `Twinstone.chargeAbove` (50%) of its capacity. The cells follow the Sunstone availability switch.
 - **Each part:** one section per implant and prosthetic lists every benefit and drawback value it sets (for example `KM_GlaciteImplant.benefit.offset.ComfyTemperatureMax`), plus `.efficiency` for prosthetics and perk values such as `.dreadRadius`, `.daysPerScar`, `.apparelRepair`, `.partHealing` and `.mood`. Relief and pairing scale each value's distance from neutral, so a +20 offset at 75% is +15. Vitalite's sterility with Biotech is strict: it can't be relieved, so it draws no energy.
 - **Verdite sunlight reserve:** the Verdite implant keeps a sunlight reserve hediff, starting at `.startReserve` (50%) when woken. Unroofed daylight fills it in `.hoursToFill` (4) hours of clear sun, scaled by sky glow and the Sunstone weather factors; a lit Verdite overlight fills it at `.overlightRate` (50%); a world caravan fills it in daylight. Otherwise it empties over `.daysToDrain` (1.5). Its stages set hunger: sun-fed (50% and up) `.hunger.sunfed` (60%), fading (15% to 50%) `.hunger.fading` (85%), sun-starved (below 15%) `.hunger.sunstarved` (130%). Only the sun-starved stage draws Solar energy for relief.
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LuniteRitual.description>Ночная церемония, вымачивающая солнечный камень в лунном свете и превращающая его в лунит. Качество не влияет на выход. Перед следующим превращением поселение должно восстановиться.</KM_LuniteRitual.description>
+	<KM_LuniteRitual.comps.0.label>участники</KM_LuniteRitual.comps.0.label>
+	<KM_LuniteRitual.outcomeChances.0.label>плохо</KM_LuniteRitual.outcomeChances.0.label>
+	<KM_LuniteRitual.outcomeChances.0.description>Лунный свет был слабым. Церемония всё равно даёт полный выход лунита.</KM_LuniteRitual.outcomeChances.0.description>
+	<KM_LuniteRitual.outcomeChances.1.label>успешно</KM_LuniteRitual.outcomeChances.1.label>
+	<KM_LuniteRitual.outcomeChances.1.description>Солнечный камень побледнел и прояснился. Церемония даёт полный выход лунита.</KM_LuniteRitual.outcomeChances.1.description>
+	<KM_LuniteRitual.outcomeChances.2.label>исключительно</KM_LuniteRitual.outcomeChances.2.label>
+	<KM_LuniteRitual.outcomeChances.2.description>Солнечный камень разом посеребрел. Церемония даёт полный выход лунита.</KM_LuniteRitual.outcomeChances.2.description>
+</LanguageData>

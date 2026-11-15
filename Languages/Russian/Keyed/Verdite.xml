@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Verdite_SupportRadius>Радиус поддержки земледелия</Lumen_Verdite_SupportRadius>
+	<Lumen_Verdite_GrowthBonus>Бонус к росту растений (%)</Lumen_Verdite_GrowthBonus>
+	<Lumen_Verdite_WorkBonus>Бонус к скорости работы с растениями (%)</Lumen_Verdite_WorkBonus>
+	<Lumen_Verdite_YieldBonus>Бонус к урожайности (%)</Lumen_Verdite_YieldBonus>
+	<Lumen_Verdite_Rule>Действует на растения и земледельцев внутри зелёного кольца, в помещении и на улице. Каждый бонус даёт только сильнейший вердитовый источник; вердитовая коса тоже считается источником.</Lumen_Verdite_Rule>
+	<Lumen_Verdite_FarmingRadius>Радиус земледелия</Lumen_Verdite_FarmingRadius>
+	<Lumen_Verdite_PlantGrowth>Рост растений</Lumen_Verdite_PlantGrowth>
+	<Lumen_Verdite_PlantWorkSpeed>Скорость работы с растениями</Lumen_Verdite_PlantWorkSpeed>
+	<Lumen_Verdite_PlantHarvestYield>Урожайность</Lumen_Verdite_PlantHarvestYield>
+	<Lumen_Verdite_StrongestSupport>Сильнейшая поддержка вердитом: +{0}</Lumen_Verdite_StrongestSupport>
+	<Lumen_Verdite_StrongestGrowth>Сильнейшая поддержка роста вердитом: +{0}</Lumen_Verdite_StrongestGrowth>
+</LanguageData>

@@ -10,14 +10,9 @@
     <thingCategories><li>ResourcesRaw</li></thingCategories>
     <burnableByRecipe>false</burnableByRecipe><smeltable>false</smeltable><allowedArchonexusCount>80</allowedArchonexusCount>
   </ThingDef>
-  <ThingDef ParentName="MoteBase">
-    <defName>KM_Mote_VitalitePulse</defName><thingClass>MoteThrown</thingClass>
-    <graphicData><texPath>Things/Mote/VitalitePulse</texPath><shaderType>MoteGlow</shaderType></graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <mote><fadeInTime>0.1</fadeInTime><solidTime>0.3</solidTime><fadeOutTime>0.6</fadeOutTime></mote>
-  </ThingDef>
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenVitaliteColumn</defName><label>Vitalite column</label><uiOrder>2044</uiOrder>
+    <tickerType>Never</tickerType>
     <researchPrerequisites><li>Stonecutting</li></researchPrerequisites>
     <description>A roof-supporting Vitalite crystal between rounded caps.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
     <costList><KM_Vitalite>15</KM_Vitalite></costList>
@@ -32,7 +27,7 @@
   <ThingDef Name="KM_VitaliteFixtureBase" ParentName="BuildingBase" Abstract="True">
     <thingClass>Building</thingClass><techLevel>Medieval</techLevel><designationCategory>Furniture</designationCategory>
     <passability>PassThroughOnly</passability><pathCost>14</pathCost><fillPercent>0.15</fillPercent>
-    <tickerType>Normal</tickerType><rotatable>false</rotatable>
+    <tickerType>Never</tickerType><rotatable>false</rotatable>
     <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>500</WorkToBuild><Mass>5</Mass><Flammability>0</Flammability><Beauty>5</Beauty></statBases>
     <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType><drawSize>(1,1)</drawSize></graphicData>
     <building><isInert>true</isInert></building>
@@ -40,26 +35,30 @@
   </ThingDef>
   <ThingDef ParentName="KM_VitaliteFixtureBase">
   <defName>KM_VitaliteLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
   <label>Vitalite lamp</label>
   <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
   <uiOrder>2803</uiOrder>
   <researchPrerequisites>
     <li>Stonecutting</li>
   </researchPrerequisites>
-  <description>A rose-cored Vitalite crystal on a stand. Its light is easy on tired eyes.\n\nLights a room. Supports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
+  <description>A rose-cored Vitalite crystal on a stone plinth. Its light is easy on tired eyes.\n\nLights a room. Supports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
   <graphicData>
     <texPath>Things/Building/Vitalite/Lamp</texPath>
     <drawSize>(1,1)</drawSize>
   </graphicData>
+  <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+  <stuffCategories>
+    <li>Stony</li>
+  </stuffCategories>
+  <costStuffCount>5</costStuffCount>
   <costList>
-      <WoodLog>5</WoodLog>
     <KM_Vitalite>10</KM_Vitalite>
   </costList>
   <statBases>
     <Cleanliness>0.5</Cleanliness>
   </statBases>
   <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
     <li Class="CompProperties_Glower">
       <glowRadius>10</glowRadius>
       <glowColor>(245,210,220,0)</glowColor>
@@ -88,6 +87,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_VitaliteFixtureBase">
     <defName>KM_VitalitePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType><label>Vitalite pylon</label><uiOrder>2822</uiOrder>
     <size>(1,1)</size>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
@@ -104,9 +104,11 @@
     </comps>
   </ThingDef>
   <ThingDef ParentName="KM_VitaliteFixtureBase">
-    <defName>KM_VitaliteCluster</defName><label>Vitalite restorative cluster</label><uiOrder>2823</uiOrder>
+    <defName>KM_VitaliteCluster</defName><designatorDropdown>KM_LumenClusters</designatorDropdown><label>Vitalite restorative cluster</label><uiOrder>2823</uiOrder>
     <description>A group of Vitalite crystals in a low rounded housing.\n\nSupports patients resting in bed in the same enclosed room: room support raises immunity, and with Solar energy also healing and infection prevention. Each fixture type counts once. Adds cleanliness without removing filth. No fuel or electricity.</description>
-    <graphicData><texPath>Things/Building/Vitalite/Cluster</texPath><drawSize>(1,1.12)</drawSize></graphicData>
+    <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.057)</drawOffset><texPath>Things/Building/Vitalite/Cluster</texPath><drawSize>(1,1.12)</drawSize></graphicData>
     <stuffCategories><li>Metallic</li><li>Stony</li></stuffCategories><costStuffCount>30</costStuffCount><costList><KM_Vitalite>35</KM_Vitalite></costList>
     <statBases><Cleanliness>4</Cleanliness><WorkToBuild>1200</WorkToBuild></statBases>
     <researchPrerequisites><li>KM_VitaliteRestoration</li></researchPrerequisites>
@@ -117,7 +119,7 @@
     </comps>
   </ThingDef>
   <ThingDef Name="KM_VitaliteBedBase" ParentName="BedWithQualityBase" Abstract="True">
-    <thingClass>Building_Bed</thingClass><techLevel>Medieval</techLevel><tickerType>Normal</tickerType>
+    <thingClass>Building_Bed</thingClass><techLevel>Medieval</techLevel>
     <!-- BedBase's facility preview requires a facility component; these beds have no links. -->
     <placeWorkers Inherit="False" />
     <size>(1,2)</size><rotatable>true</rotatable>

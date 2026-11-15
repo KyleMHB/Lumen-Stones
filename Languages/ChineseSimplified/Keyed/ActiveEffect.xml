@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_ActiveEffect_SolarOff>关闭时，只有被动效果生效。</Lumen_ActiveEffect_SolarOff>
+	<Lumen_ActiveEffect_WarpOff>关闭时，该装置只提供照明。</Lumen_ActiveEffect_WarpOff>
+	<Lumen_ActiveEffect_ToggledOff>已关闭</Lumen_ActiveEffect_ToggledOff>
+	<Lumen_ActiveEffect_Interrupted>已中断（{0}）</Lumen_ActiveEffect_Interrupted>
+	<Lumen_ActiveEffect_Powered>已供能</Lumen_ActiveEffect_Powered>
+	<Lumen_ActiveEffect_NoSolar>没有太阳能</Lumen_ActiveEffect_NoSolar>
+	<Lumen_ActiveEffect_NoWarp>没有扭曲能量</Lumen_ActiveEffect_NoWarp>
+	<Lumen_ActiveEffect_SolarStatus>太阳能主动效果：{0}</Lumen_ActiveEffect_SolarStatus>
+	<Lumen_ActiveEffect_WarpStatus>扭曲能量主动效果：{0}</Lumen_ActiveEffect_WarpStatus>
+	<Lumen_ActiveEffect_Stabilized>稳定来源：月石稳定器</Lumen_ActiveEffect_Stabilized>
+	<Lumen_ActiveEffect_SolarLabel>太阳能主动效果</Lumen_ActiveEffect_SolarLabel>
+	<Lumen_ActiveEffect_WarpLabel>扭曲能量主动效果</Lumen_ActiveEffect_WarpLabel>
+	<Lumen_ActiveEffect_SolarDesc>消耗太阳能用于{0}。</Lumen_ActiveEffect_SolarDesc>
+	<Lumen_ActiveEffect_WarpDesc>消耗扭曲能量用于{0}。</Lumen_ActiveEffect_WarpDesc>
+	<Lumen_ActiveEffect_DefaultEffect>其主动效果</Lumen_ActiveEffect_DefaultEffect>
+</LanguageData>

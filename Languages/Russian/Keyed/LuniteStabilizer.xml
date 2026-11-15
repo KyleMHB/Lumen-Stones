@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_LuniteStabilizer_Stabilizes>Стабилизирует</Lumen_LuniteStabilizer_Stabilizes>
+	<Lumen_LuniteStabilizer_StabilizesValue>1 активный светильник</Lumen_LuniteStabilizer_StabilizesValue>
+	<Lumen_LuniteStabilizer_StabilizesDesc>Связывается с одним светильником с активным эффектом солнца или варпа, включённым или нет. Сборщики и массивы связать нельзя. Не потребляет энергию.</Lumen_LuniteStabilizer_StabilizesDesc>
+	<Lumen_LuniteStabilizer_LinkRadius>Радиус связи</Lumen_LuniteStabilizer_LinkRadius>
+	<Lumen_LuniteStabilizer_LinkRadiusDesc>Измеряется до ближайшей клетки светильника. Связи подбираются по всей карте, сначала ближайшие пары, поэтому порядок строительства не важен.</Lumen_LuniteStabilizer_LinkRadiusDesc>
+	<Lumen_LuniteStabilizer_Stabilizing>Стабилизирует: {0}</Lumen_LuniteStabilizer_Stabilizing>
+	<Lumen_LuniteStabilizer_NothingInRange>в радиусе ничего нет</Lumen_LuniteStabilizer_NothingInRange>
+</LanguageData>

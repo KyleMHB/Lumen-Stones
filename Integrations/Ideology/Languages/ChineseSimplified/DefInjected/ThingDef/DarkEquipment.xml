@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_DreadstoneCudgel.label>恐惧石棍棒</KM_DreadstoneCudgel.label>
+	<KM_DreadstoneCudgel.description>一根带有恐惧石棍头的缓慢擒拿棍棒。它的打击远比应有的更痛，被它擒获的人永远不会忘记。\n\n每次造成伤害的命中会对活体类人生物增加25%疼痛，最多四层，在最后一击后持续25秒。疼痛免疫仍然有效。在其痛苦下被击倒或俘获的受害者会记住这次折磨五天。它仍会造成钝伤。研究恐惧石压制后，使用100恐惧石和20钢铁制作，需要6级手工。</KM_DreadstoneCudgel.description>
+	<KM_DreadstoneCudgel.tools.0.label>锤头</KM_DreadstoneCudgel.tools.0.label>
+	<KM_DreadstoneCollar.label>恐惧石项圈</KM_DreadstoneCollar.label>
+	<KM_DreadstoneCollar.description>一副冰冷地贴在喉咙上的恐惧石镣铐。戴着它的奴隶较少想到逃跑。\n\n由玩家的奴隶佩戴。压制下降速度降低25%（包括在商队中），地图上的叛乱罕见两倍。更强的柱或塔压制优先生效。佩戴时心情-3。研究恐惧石压制后，在锻造台使用100恐惧石和20钢铁制作，需要6级手工。</KM_DreadstoneCollar.description>
+	<KM_DarkStoneRitualKnife.label>暗石仪式匕首</KM_DarkStoneRitualKnife.label>
+	<KM_DarkStoneRitualKnife.description>一把带有烟紫色晶体尖端的快速仪式匕首。它为祭坛而造，割得比血肉更深。\n\n由主持者持握时，献祭品质增加10个百分点，扭曲能量收割增加15%。处决囚犯会将普通献祭收割量的10%存入可用的血石电池。每次对活体类人生物造成伤害的刺击会夺走5%意识并使心情-4，最多三层，在最后一击后持续三天。研究扭曲献祭后，使用100暗石和20钢铁制作，需要6级手工。</KM_DarkStoneRitualKnife.description>
+	<KM_DarkStoneRitualKnife.tools.0.label>尖端</KM_DarkStoneRitualKnife.tools.0.label>
+</LanguageData>

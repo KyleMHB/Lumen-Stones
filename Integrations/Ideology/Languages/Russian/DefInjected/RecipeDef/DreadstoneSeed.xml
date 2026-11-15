@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_CraftDreadstoneSeedCrystal.label>придать форму кристалла-семени</KM_CraftDreadstoneSeedCrystal.label>
+	<KM_CraftDreadstoneSeedCrystal.description>Придать 5 камня ужаса форму кристалла-семени.</KM_CraftDreadstoneSeedCrystal.description>
+	<KM_CraftDreadstoneSeedCrystal.jobString>Придаёт форму кристалла-семени.</KM_CraftDreadstoneSeedCrystal.jobString>
+	<KM_ImplantDreadstoneSeed.label>вбить семя камня ужаса</KM_ImplantDreadstoneSeed.label>
+	<KM_ImplantDreadstoneSeed.description>Вбить в грудь острый кол из кристалла-семени камня ужаса. Он не убивает. Он укореняется, держит тело живым и начинает расти. Спит, пока его не свяжут на жертвенном алтаре.</KM_ImplantDreadstoneSeed.description>
+	<KM_ImplantDreadstoneSeed.jobString>вбивает семя камня ужаса в грудь: TargetA.</KM_ImplantDreadstoneSeed.jobString>
+</LanguageData>

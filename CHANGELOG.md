@@ -22,13 +22,6 @@ Version 2.0. This release does not work with existing saves. Start a new colony.
 
 - Removed rough stone chunks, their cutting recipes and Glacite veins, deep drilling and rubble.
 
-### Internal
-
-- Added named join close-ups for separate-layer artwork and required renewed visual inspection after split or placement changes.
-- Added ownership polygons for artwork masks and documented when to use polygons or separate material layers.
-- Added `prepare-candidate` to export artwork, check it and create labelled CPU tint views with zoomed material joins.
-- Added production recipe checks that compare fresh exports with registered texture pixels, including staged pre-commit checks. Views without a recipe report that limitation.
-
 ## 2026-10-31
 
 ### Added
@@ -102,11 +95,6 @@ Version 2.0. This release does not work with existing saves. Start a new colony.
 - Restored native draw layers for Vitalite beds and low furnishings.
 - Raised columns and pylons above tree canopies and kept crystal wall torches below the tall fixtures.
 - Removed stray material tint from the inlaid bed's crystal pillow and insets in all four views and its menu icon.
-
-### Internal
-
-- Added artwork checks, approved-master records and material/icon review sheets.
-- Added staged deployments with XML field selection, backups and hash verification, plus a local pre-commit artwork guardrail.
 
 ## 2026-10-28
 

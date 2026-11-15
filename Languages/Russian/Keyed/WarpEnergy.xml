@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Warp_BatteryRule>Все батареи из кровавика на карте образуют одну сеть варпа. Запасённая энергия теряется при разрушении или разборе батареи. Её нельзя перенести, и заряд со временем не убывает.</Lumen_Warp_BatteryRule>
+	<Lumen_Warp_Capacity>Ёмкость энергии варпа</Lumen_Warp_Capacity>
+	<Lumen_Warp_AltarReach>Досягаемость жертвенного алтаря</Lumen_Warp_AltarReach>
+	<Lumen_Warp_AltarReachDesc>Жертва для сбора энергии варпа заряжает только батареи в этих пределах от алтаря.</Lumen_Warp_AltarReachDesc>
+	<Lumen_Warp_Stored>Энергия варпа: {0} / {1}</Lumen_Warp_Stored>
+	<Lumen_Warp_AltarInRange>Жертвенный алтарь в радиусе: {0}</Lumen_Warp_AltarInRange>
+	<Lumen_Yes>да</Lumen_Yes>
+	<Lumen_No>нет</Lumen_No>
+	<Lumen_Warp_Network>Сеть: {0} / {1}</Lumen_Warp_Network>
+	<Lumen_Warp_Depleted>Истощено. Активные эффекты возобновятся при запасе {0}.</Lumen_Warp_Depleted>
+	<Lumen_Warp_Section>Сеть варпа</Lumen_Warp_Section>
+	<Lumen_Warp_Hysteresis>Запас энергии варпа, нужный для выхода из истощения</Lumen_Warp_Hysteresis>
+</LanguageData>

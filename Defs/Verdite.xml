@@ -24,21 +24,6 @@
     <smeltable>false</smeltable>
     <allowedArchonexusCount>80</allowedArchonexusCount>
   </ThingDef>
-  <ThingDef ParentName="MoteBase">
-    <defName>KM_Mote_VerditePulse</defName>
-    <thingClass>MoteThrown</thingClass>
-    <graphicData>
-      <texPath>Things/Mote/VerditePulse</texPath>
-      <shaderType>MoteGlow</shaderType>
-    </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
-    <mote>
-      <fadeInTime>0.1</fadeInTime>
-      <solidTime>0.3</solidTime>
-      <fadeOutTime>0.6</fadeOutTime>
-      <acceleration>(0,0,-0.18)</acceleration>
-    </mote>
-  </ThingDef>
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenVerditeColumn</defName>
     <label>Verdite column</label>
@@ -108,19 +93,24 @@
   </ThingDef>
   <ThingDef ParentName="KM_VerditeFixtureBase">
     <defName>KM_VerditeLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Verdite lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2803</uiOrder>
     <researchPrerequisites>
       <li>Stonecutting</li>
     </researchPrerequisites>
-    <description>A peridot Verdite lamp on a slim post. Moths like it.\n\nProvides ordinary visual illumination only, with no agricultural support, plant-capable light or pollen. No heat, fuel or electricity.</description>
+    <description>A peridot Verdite lamp on a stone plinth. Moths like it.\n\nProvides ordinary visual illumination only, with no agricultural support, plant-capable light or pollen. No heat, fuel or electricity.</description>
     <graphicData>
       <texPath>Things/Building/Verdite/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Verdite>10</KM_Verdite>
     </costList>
     <statBases>
@@ -128,7 +118,6 @@
       <Flammability>0</Flammability>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(190,245,140,0)</glowColor>
@@ -185,6 +174,7 @@
   </ThingDef>
   <ThingDef ParentName="KM_VerditeFixtureBase">
     <defName>KM_VerditePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Verdite spire pylon</label>
     <uiOrder>2822</uiOrder>
@@ -200,7 +190,7 @@
       <KM_Verdite>60</KM_Verdite>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>25</Beauty>
       <Flammability>0</Flammability>
     </statBases>
@@ -238,18 +228,19 @@
   </ThingDef>
   <ThingDef ParentName="KM_VerditeFixtureBase">
     <defName>KM_VerditeCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Verdite spire cluster</label>
     <uiOrder>2823</uiOrder>
     <description>A small stand of Verdite spires, left without a housing so they can keep growing. They don't, but it seems to help.\n\nSpeeds plant growth and farm work around it, indoors or outdoors. Only the strongest Verdite source applies. With Solar energy, a separate plant-capable light follows the daily sun-lamp schedule. Green ring: farming support; gold ring: plant-capable light.</description>
     <graphicData>
       <texPath>Things/Building/Verdite/Cluster</texPath>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(1,1)</drawSize>
     </graphicData>
     <costList>
       <KM_Verdite>35</KM_Verdite>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
       <Flammability>0</Flammability>
     </statBases>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Setting_StunTicks>Длительность оглушения (тиков)</Lumen_Setting_StunTicks>
+	<Lumen_Setting_FixtureRadius>Радиус светильника (клеток)</Lumen_Setting_FixtureRadius>
+	<Lumen_Section_Effects>Эффекты</Lumen_Section_Effects>
+	<Lumen_Section_Availability>Доступность</Lumen_Section_Availability>
+	<Lumen_Section_General>Общее</Lumen_Section_General>
+	<Lumen_Effect_RestartRequired>{0} (нужен перезапуск)</Lumen_Effect_RestartRequired>
+	<Lumen_Tab_Allow>Разрешить новое содержимое: {0}</Lumen_Tab_Allow>
+	<Lumen_Tab_AllowSunstone>Разрешить новое содержимое солнечного камня и требовать солнечную энергию для активных эффектов</Lumen_Tab_AllowSunstone>
+	<Lumen_Pyrinth_Override>Переопределить баланс Epochs - Pyrinth (нужен перезапуск)</Lumen_Pyrinth_Override>
+	<Lumen_Pyrinth_Present>Только базовое содержимое пиринта. Дополнения сохраняют свои настройки.</Lumen_Pyrinth_Present>
+	<Lumen_Pyrinth_Missing>Epochs - Pyrinth не загружен. Его колонна и внешние параметры появятся, когда будут доступны его определения.</Lumen_Pyrinth_Missing>
+	<Lumen_DarklightMode_Off>Выкл. (обычный свет)</Lumen_DarklightMode_Off>
+	<Lumen_DarklightMode_Auto>Авто (по идеологии)</Lumen_DarklightMode_Auto>
+	<Lumen_DarklightMode_Always>Всегда тёмный свет</Lumen_DarklightMode_Always>
+	<Lumen_DarklightMode_Desc>Режим света по умолчанию для новых светильников игрока и банок со светлячками. Существующие светильники сохраняют выбранный режим.</Lumen_DarklightMode_Desc>
+	<Lumen_Tab_Lumenstone>Люменит</Lumen_Tab_Lumenstone>
+	<Lumen_Tab_Firefly>Светлячки</Lumen_Tab_Firefly>
+	<Lumen_Tab_Glacite>Гляцит</Lumen_Tab_Glacite>
+	<Lumen_Tab_Vitalite>Виталит</Lumen_Tab_Vitalite>
+	<Lumen_Tab_Serenite>Серенит</Lumen_Tab_Serenite>
+	<Lumen_Tab_Verdite>Вердит</Lumen_Tab_Verdite>
+	<Lumen_Tab_Aegite>Эгит</Lumen_Tab_Aegite>
+	<Lumen_Tab_Ferrite>Феррит</Lumen_Tab_Ferrite>
+	<Lumen_Tab_Sunstone>Солнечный камень</Lumen_Tab_Sunstone>
+	<Lumen_Tab_Pyrinth>Пиринт</Lumen_Tab_Pyrinth>
+	<Lumen_Tab_Darklight>Тёмный свет</Lumen_Tab_Darklight>
+	<Lumen_Tab_Animastone>Анимакамень</Lumen_Tab_Animastone>
+	<Lumen_Tab_DarkStone>Тёмный камень</Lumen_Tab_DarkStone>
+	<Lumen_Tab_Sanguinite>Сангвинит</Lumen_Tab_Sanguinite>
+	<Lumen_Tab_Dreadstone>Камень ужаса</Lumen_Tab_Dreadstone>
+	<Lumen_Tab_Hollowstone>Пустокамень</Lumen_Tab_Hollowstone>
+	<Lumen_Tab_Implants>Импланты</Lumen_Tab_Implants>
+	<Lumen_Settings_BalanceNote>Значения баланса требуют перезапуска, в том числе для существующих предметов. Настройки генерации влияют на будущие карты.</Lumen_Settings_BalanceNote>
+	<Lumen_Settings_EffectNote>Переключатели эффектов действуют сразу, кроме помеченных как требующие перезапуска. Выключение эффекта останавливает его и на существующих предметах.</Lumen_Settings_EffectNote>
+	<Lumen_Settings_AvailabilityNote>Доступность меняется сразу. Существующие предметы, постройки и чертежи остаются в строю.</Lumen_Settings_AvailabilityNote>
+	<Lumen_Settings_ResetTab>Сбросить «{0}» к значениям текущего списка модов</Lumen_Settings_ResetTab>
+	<Lumen_Settings_Section>Раздел: {0}</Lumen_Settings_Section>
+	<Lumen_Settings_OverrideNote>Отмеченные переопределения используют ваше значение; «Сброс» возвращает значение загруженного списка модов. Проценты вводите в процентах.</Lumen_Settings_OverrideNote>
+	<Lumen_Settings_Reset>Сброс</Lumen_Settings_Reset>
+	<Lumen_Settings_ModList>Список модов: {0}</Lumen_Settings_ModList>
+	<Lumen_Stage_Percent>{0}: {1} (%)</Lumen_Stage_Percent>
+	<Lumen_Stage_PainFactor>множитель боли</Lumen_Stage_PainFactor>
+	<Lumen_Stage_PainOffset>смещение боли</Lumen_Stage_PainOffset>
+	<Lumen_Stage_BleedingFactor>множитель кровотечения</Lumen_Stage_BleedingFactor>
+	<Lumen_Stage_HungerFactor>множитель голода</Lumen_Stage_HungerFactor>
+	<Lumen_Stage_HungerOffset>смещение голода</Lumen_Stage_HungerOffset>
+	<Lumen_Stage_RestFallFactor>множитель падения отдыха</Lumen_Stage_RestFallFactor>
+	<Lumen_Stage_FertilityFactor>множитель фертильности</Lumen_Stage_FertilityFactor>
+	<Lumen_Stage_FoodPoisoningFactor>множитель шанса пищевого отравления</Lumen_Stage_FoodPoisoningFactor>
+	<Lumen_Stage_Offset>{0}: смещение «{1}»</Lumen_Stage_Offset>
+	<Lumen_Stage_OffsetPercent>{0}: смещение «{1}» (%)</Lumen_Stage_OffsetPercent>
+	<Lumen_Stage_FactorPercent>{0}: множитель «{1}» (%)</Lumen_Stage_FactorPercent>
+	<Lumen_Stage_Number>Стадия {0}</Lumen_Stage_Number>
+	<Lumen_Stage_Mood>Настроение: {0}</Lumen_Stage_Mood>
+	<Lumen_Stage_MemoryDays>Длительность воспоминания (дн.): {0}</Lumen_Stage_MemoryDays>
+	<Lumen_Section_Moods>Настроения</Lumen_Section_Moods>
+	<Lumen_Setting_WearsOffPerDay>Спадает в день (тяжесть)</Lumen_Setting_WearsOffPerDay>
+	<Lumen_Setting_AllowItem>Разрешить новое: {0}</Lumen_Setting_AllowItem>
+	<Lumen_Setting_AllowDeposits>Разрешить новые залежи: {0}</Lumen_Setting_AllowDeposits>
+	<Lumen_Setting_EquippedOffset>{0}: смещение при экипировке</Lumen_Setting_EquippedOffset>
+	<Lumen_Setting_LightRadius>Радиус света</Lumen_Setting_LightRadius>
+	<Lumen_Setting_CoolingStrength>Сила охлаждения (тепло/сек.)</Lumen_Setting_CoolingStrength>
+	<Lumen_Setting_HeatingStrength>Сила нагрева (тепло/сек.)</Lumen_Setting_HeatingStrength>
+	<Lumen_Setting_TemperatureCutoff>Температурный предел (C)</Lumen_Setting_TemperatureCutoff>
+	<Lumen_Setting_Quantity>{0}: количество</Lumen_Setting_Quantity>
+	<Lumen_Setting_StuffQuantity>Количество строительного материала</Lumen_Setting_StuffQuantity>
+	<Lumen_Setting_ToolDamage>{0}: урон</Lumen_Setting_ToolDamage>
+	<Lumen_Setting_ExtraDamage>{0}: урон «{1}»</Lumen_Setting_ExtraDamage>
+	<Lumen_Setting_ExtraDamageChance>{0}: шанс «{1}» (%)</Lumen_Setting_ExtraDamageChance>
+	<Lumen_Section_Acquisition>Получение</Lumen_Section_Acquisition>
+	<Lumen_Setting_SizeMin>Минимальный размер залежи</Lumen_Setting_SizeMin>
+	<Lumen_Setting_SizeMax>Максимальный размер залежи</Lumen_Setting_SizeMax>
+	<Lumen_Setting_MiningYield>Добыча</Lumen_Setting_MiningYield>
+	<Lumen_Setting_RecipeQuantity>{0}: количество (рецепт)</Lumen_Setting_RecipeQuantity>
+	<Lumen_Settings_Advanced>Показать расширенные настройки</Lumen_Settings_Advanced>
+	<Lumen_Settings_AdvancedDesc>Дополнительно показывает собственные значения каждого предмета: стоимость, урон, радиус света, вес поддержки, количество в рецептах, а также значения его эффектов здоровья и настроений. Скрытые значения продолжают действовать.</Lumen_Settings_AdvancedDesc>
+	<Lumen_Settings_AdvancedHidden>На этой вкладке задано расширенных значений: {0}. Включите расширенные настройки, чтобы увидеть или изменить их.</Lumen_Settings_AdvancedHidden>
+</LanguageData>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AegiteShield_Section>Aegite shield charm</Lumen_AegiteShield_Section>
+	<Lumen_AegiteShield_ResetTicks>Ticks to reset after breaking</Lumen_AegiteShield_ResetTicks>
+	<Lumen_AegiteShield_FireImmune>Aegite shield: cannot catch fire while worn.</Lumen_AegiteShield_FireImmune>
+	<Lumen_AegiteShield_EnergyMax>Maximum shield energy</Lumen_AegiteShield_EnergyMax>
+	<Lumen_AegiteShield_RechargeRate>Energy recharge rate per second</Lumen_AegiteShield_RechargeRate>
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Dread.label>恐惧</KM_Dread.label>
+	<KM_Dread.description>恐惧石压迫着这个心灵。持续期间，移动、感知和瞄准都会被削弱。</KM_Dread.description>
+	<KM_Dread.stages.0.label>晶簇</KM_Dread.stages.0.label>
+	<KM_Dread.stages.1.label>塔</KM_Dread.stages.1.label>
+	<KM_DreadstoneSubjugated.label>恐惧石压制</KM_DreadstoneSubjugated.label>
+	<KM_DreadstoneSubjugated.description>一座恐惧石装置正在削弱这名囚犯或奴隶。悬停查看其速率。</KM_DreadstoneSubjugated.description>
+</LanguageData>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Dreadstone_ReachSection>范围与消耗</Lumen_Dreadstone_ReachSection>
+	<Lumen_Dreadstone_SubjugationSection>压制</Lumen_Dreadstone_SubjugationSection>
+	<Lumen_Dreadstone_DreadSection>恐惧与死亡汲取</Lumen_Dreadstone_DreadSection>
+	<Lumen_Dreadstone_SubjugationCost>每名受覆盖的囚犯或奴隶每日消耗的扭曲能量</Lumen_Dreadstone_SubjugationCost>
+	<Lumen_Dreadstone_Resistance>每日失去的抵抗（柱）</Lumen_Dreadstone_Resistance>
+	<Lumen_Dreadstone_Will>每日失去的意志（柱）</Lumen_Dreadstone_Will>
+	<Lumen_Dreadstone_Suppression>每日获得的奴隶压制（柱，%）</Lumen_Dreadstone_Suppression>
+	<Lumen_Dreadstone_PylonErosion>塔的侵蚀倍率</Lumen_Dreadstone_PylonErosion>
+	<Lumen_Dreadstone_BreakFactor>越狱和叛乱的罕见倍率</Lumen_Dreadstone_BreakFactor>
+	<Lumen_Dreadstone_DreadCost>每轮每名敌人消耗的扭曲能量</Lumen_Dreadstone_DreadCost>
+	<Lumen_Dreadstone_Siphon>被标记者死亡时以扭曲能量返还的市场价值（%）</Lumen_Dreadstone_Siphon>
+	<Lumen_Dreadstone_ArbalestSeconds>弩炮恐惧持续时间（秒）</Lumen_Dreadstone_ArbalestSeconds>
+	<Lumen_Dreadstone_DreadNote>在范围内时每轮消耗{0}扭曲能量。</Lumen_Dreadstone_DreadNote>
+	<Lumen_Dreadstone_SiphonNote>若带着标记死亡，其价值的{0}会以扭曲能量返还。</Lumen_Dreadstone_SiphonNote>
+	<Lumen_Dreadstone_ResistanceNote>抵抗：每日 -{0}</Lumen_Dreadstone_ResistanceNote>
+	<Lumen_Dreadstone_WillNote>意志：每日 -{0}</Lumen_Dreadstone_WillNote>
+	<Lumen_Dreadstone_SuppressionNote>压制：每日 +{0}</Lumen_Dreadstone_SuppressionNote>
+	<Lumen_Dreadstone_BreakNote>越狱和叛乱罕见{0}倍（囚犯标签页会显示结果）。</Lumen_Dreadstone_BreakNote>
+	<Lumen_Dreadstone_CostNote>每日消耗{0}扭曲能量。</Lumen_Dreadstone_CostNote>
+</LanguageData>

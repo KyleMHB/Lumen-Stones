@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Lunite_Section>Лунит</Lumen_Lunite_Section>
+	<Lumen_Lunite_SunstoneCost>Солнечного камня за превращение</Lumen_Lunite_SunstoneCost>
+	<Lumen_Lunite_Yield>Лунита за превращение</Lumen_Lunite_Yield>
+	<Lumen_Lunite_Cooldown>Перезарядка после превращения (дн.)</Lumen_Lunite_Cooldown>
+	<Lumen_Lunite_NightStart>Начало окна превращения (час)</Lumen_Lunite_NightStart>
+	<Lumen_Lunite_NightEnd>Конец окна превращения (час)</Lumen_Lunite_NightEnd>
+	<Lumen_Lunite_StabilizerSection>Лунитовый стабилизатор</Lumen_Lunite_StabilizerSection>
+	<Lumen_Lunite_LinkRadius>Радиус связи (клеток)</Lumen_Lunite_LinkRadius>
+	<Lumen_Lunite_Window>{0} и {1}</Lumen_Lunite_Window>
+	<Lumen_Lunite_NeedsSunstone>Требуется включённое содержимое солнечного камня.</Lumen_Lunite_NeedsSunstone>
+	<Lumen_Lunite_NeedsHostIdeology>Нужен люменовый ритуальный круг или люменитовый алтарь игрока.</Lumen_Lunite_NeedsHostIdeology>
+	<Lumen_Lunite_NeedsCircle>Нужен люменовый ритуальный круг игрока.</Lumen_Lunite_NeedsCircle>
+	<Lumen_NeedsResearch>Требуется исследование «{0}».</Lumen_NeedsResearch>
+	<Lumen_Lunite_OnlyBetween>Можно начать только между {0}.</Lumen_Lunite_OnlyBetween>
+	<Lumen_Lunite_Underway>В этом поселении уже идёт ритуал.</Lumen_Lunite_Underway>
+	<Lumen_Lunite_NeedsSunstoneStock>Нужно {0} доступного незапрещённого солнечного камня.</Lumen_Lunite_NeedsSunstoneStock>
+	<Lumen_Lunite_Summary>Превращает {0} солнечного камня в {1} лунита. Начинается только между {2} и может закончиться после рассвета. Солнечный камень тратится только при успехе. Каждое поселение восстанавливается {3} дн.</Lumen_Lunite_Summary>
+	<Lumen_Lunite_RitualDesc>Церемония примерно на 1 час: участники выбираются в стандартном окне ритуала.</Lumen_Lunite_RitualDesc>
+	<Lumen_Lunite_Convert>Превратить в лунит</Lumen_Lunite_Convert>
+	<Lumen_Lunite_JobDesc>Один колонист работает у круга {0} ч.</Lumen_Lunite_JobDesc>
+	<Lumen_Lunite_NoColonist>Никто из колонистов не может работать у круга.</Lumen_Lunite_NoColonist>
+	<Lumen_Lunite_CouldNotStart>Превращение в лунит не удалось начать: {0}</Lumen_Lunite_CouldNotStart>
+	<Lumen_Lunite_SunstoneGone>Солнечный камень больше недоступен.</Lumen_Lunite_SunstoneGone>
+	<Lumen_Lunite_Converted>Превращено: {0} солнечного камня в {1} лунита.</Lumen_Lunite_Converted>
+	<Lumen_Lunite_Result>Церемония дала {1}: {0}. Превращение в лунит в этом поселении теперь восстанавливается {2} дн.</Lumen_Lunite_Result>
+</LanguageData>

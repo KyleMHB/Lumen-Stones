@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Seed_Section>Семя камня ужаса</Lumen_Seed_Section>
+	<Lumen_Seed_CrystalCost>Камня ужаса на кристалл-семя</Lumen_Seed_CrystalCost>
+	<Lumen_Seed_RecipeDesc>Придать {0} камня ужаса форму кристалла-семени.</Lumen_Seed_RecipeDesc>
+	<Lumen_Seed_Days>Дней до полного роста</Lumen_Seed_Days>
+	<Lumen_Seed_MaxPain>Максимальная боль от семени (%)</Lumen_Seed_MaxPain>
+	<Lumen_Seed_CutStart>Среднее время между порезами после связывания (ч.)</Lumen_Seed_CutStart>
+	<Lumen_Seed_CutEnd>Среднее время между порезами на последней стадии (ч.)</Lumen_Seed_CutEnd>
+	<Lumen_Seed_CutSeverity>Множитель урона порезов</Lumen_Seed_CutSeverity>
+	<Lumen_Seed_BaseYield>Тёмного камня при полном росте, до множителя жертвы</Lumen_Seed_BaseYield>
+	<Lumen_Seed_Dormant>спящее</Lumen_Seed_Dormant>
+	<Lumen_Seed_DormantTip>Спящее: ждёт связывания на жертвенном алтаре.</Lumen_Seed_DormantTip>
+	<Lumen_Seed_GrowthTip>Рост: {0}. Оно поглотит тело через {1}, если пешка не умрёт раньше.</Lumen_Seed_GrowthTip>
+	<Lumen_Seed_LetterText>В груди {PAWN_labelShort} засел кол из камня ужаса, и {PAWN_possessive} тело его кормит. Он будет держать {PAWN_objective} в живых, пока прорастает сквозь {PAWN_objective}. Ничто не остановит боль.</Lumen_Seed_LetterText>
+	<Lumen_Seed_CutLabel>Порез камнем ужаса</Lumen_Seed_CutLabel>
+	<Lumen_Seed_CutText>Семя камня ужаса прорвало {PART} у {PAWN_labelShort}. Оно будет резать и дальше, пока растёт. Обработайте раны, иначе {PAWN_objective} истечёт кровью раньше, чем оно закончит.</Lumen_Seed_CutText>
+	<Lumen_Seed_ConsumedLabel>Поглощён</Lumen_Seed_ConsumedLabel>
+	<Lumen_Seed_ConsumedText>Камень ужаса забрал у {0} всё, что мог. Осталось лишь {1} тёмного камня.</Lumen_Seed_ConsumedText>
+</LanguageData>

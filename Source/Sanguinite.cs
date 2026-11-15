@@ -13,20 +13,20 @@ public static class SanguiniteRules
 
     internal static void DeclareTunables(TunableScope s)
     {
-        var reach = s.In("Treatment");
-        var costs = s.In("Warp energy costs");
-        var times = s.In("Regrowth time");
-        reach.Add("Sanguinite.radius", "Treatment radius (tiles)", Radius, v => Radius = v, Limit.Number(1, 100));
-        costs.Add("Sanguinite.bleedCost", "Slowed bleeding, per bleeding patient per pass", BleedCost, v => BleedCost = v);
-        costs.Add("Sanguinite.scarCost", "Scar", ScarCost, v => ScarCost = v);
-        costs.Add("Sanguinite.digitCost", "Digit", DigitCost, v => DigitCost = v, Limit.Number(0.01f));
-        costs.Add("Sanguinite.smallPartCost", "Small part (eye, ear, nose, jaw)", SmallPartCost, v => SmallPartCost = v, Limit.Number(0.01f));
-        costs.Add("Sanguinite.organCost", "Internal organ", OrganCost, v => OrganCost = v, Limit.Number(0.01f));
-        times.Add("Sanguinite.digitDays", "Digit (days)", DigitDays, v => DigitDays = v, Limit.Number(0.1f));
-        times.Add("Sanguinite.smallPartDays", "Small part (days)", SmallPartDays, v => SmallPartDays = v, Limit.Number(0.1f));
+        var reach = s.In("Lumen_Sanguinite_Treatment".Translate());
+        var costs = s.In("Lumen_Sanguinite_Costs".Translate());
+        var times = s.In("Lumen_Sanguinite_Times".Translate());
+        reach.Add("Sanguinite.radius", "Lumen_Sanguinite_Radius".Translate(), Radius, v => Radius = v, Limit.Number(1, 100));
+        costs.Add("Sanguinite.bleedCost", "Lumen_Sanguinite_BleedCost".Translate(), BleedCost, v => BleedCost = v);
+        costs.Add("Sanguinite.scarCost", "Lumen_Sanguinite_Scar".Translate(), ScarCost, v => ScarCost = v);
+        costs.Add("Sanguinite.digitCost", "Lumen_Sanguinite_Digit".Translate(), DigitCost, v => DigitCost = v, Limit.Number(0.01f));
+        costs.Add("Sanguinite.smallPartCost", "Lumen_Sanguinite_SmallPart".Translate(), SmallPartCost, v => SmallPartCost = v, Limit.Number(0.01f));
+        costs.Add("Sanguinite.organCost", "Lumen_Sanguinite_Organ".Translate(), OrganCost, v => OrganCost = v, Limit.Number(0.01f));
+        times.Add("Sanguinite.digitDays", "Lumen_Sanguinite_DigitDays".Translate(), DigitDays, v => DigitDays = v, Limit.Number(0.1f));
+        times.Add("Sanguinite.smallPartDays", "Lumen_Sanguinite_SmallPartDays".Translate(), SmallPartDays, v => SmallPartDays = v, Limit.Number(0.1f));
         // Declared between the regrowth times, as it always was, so the apply order is unchanged.
         SanguiniteBlade.DeclareTunables(s);
-        times.Add("Sanguinite.organDays", "Internal organ (days)", OrganDays, v => OrganDays = v, Limit.Number(0.1f));
+        times.Add("Sanguinite.organDays", "Lumen_Sanguinite_OrganDays".Translate(), OrganDays, v => OrganDays = v, Limit.Number(0.1f));
     }
 
     public static float BleedCost = 1f, ScarCost = 5f, DigitCost = 5f, SmallPartCost = 20f, OrganCost = 100f;
@@ -57,6 +57,15 @@ public static class SanguiniteRules
 
     // Column regrows digits, cluster adds the small parts, pylon adds internal organs. Nothing regrows limbs.
     public static bool Allows(int tier, PartClass kind) => kind != PartClass.Limb && (tier >= 3 || (tier == 2 ? kind <= PartClass.Small : tier == 1 && kind == PartClass.Digit));
+
+    // Each class of regrowth has its own effect switch. Limbs never regrow.
+    public static bool RegrowthOn(PartClass kind) => kind switch
+    {
+        PartClass.Digit => Effects.SanguiniteDigits.On,
+        PartClass.Small => Effects.SanguiniteSmallParts.On,
+        PartClass.Organ => Effects.SanguiniteOrgans.On,
+        _ => false
+    };
 
     public static float Cost(PartClass kind) => kind switch
     {
@@ -115,7 +124,7 @@ public class Hediff_SanguiniteRegrowth : Hediff
         var part = target;
         pawn.health.RemoveHediff(this);
         pawn.health.RestorePart(part);
-        Messages.Message(pawn.LabelShortCap + "'s " + part.Label + " has regrown.", pawn, MessageTypeDefOf.PositiveEvent);
+        Messages.Message("Lumen_Sanguinite_Regrown".Translate(pawn.LabelShortCap, part.Label), pawn, MessageTypeDefOf.PositiveEvent);
     }
 }
 
@@ -135,9 +144,11 @@ public class SanguiniteTreatment : MapComponent
         Pass(map.mapPawns.SlavesOfColonySpawned, cache, warp);
     }
 
+    private static bool AnyRegrowthOn => Effects.SanguiniteDigits.On || Effects.SanguiniteSmallParts.On || Effects.SanguiniteOrgans.On;
+
     private void Pass(List<Pawn> pawns, DarkFixtureCache cache, WarpEnergyNetwork warp)
     {
-        bool active = cache.AnyActive(DarkStoneKind.Sanguinite);
+        bool active = cache.AnyActive(DarkStoneKind.Sanguinite) && (Effects.SanguiniteBleeding.On || Effects.SanguiniteScars.On || AnyRegrowthOn);
         for (int i = pawns.Count - 1; i >= 0; i--)
         {
             var pawn = pawns[i];
@@ -165,27 +176,34 @@ public class SanguiniteTreatment : MapComponent
 
     private static void Treat(Pawn pawn, int tier, WarpEnergyNetwork warp)
     {
-        // Slowing a bleeding patient costs Warp energy each pass. Unpaid, the treatment drops to a stage with no bleed factor.
-        bool paid = pawn.health.hediffSet.BleedRateTotal <= 0.001f || warp.TryConsumeContinuous(SanguiniteRules.BleedCost);
-        Hediff_Status.Apply(pawn, SanguiniteRules.Treatment, tier == 3 ? "pylon" : tier == 2 ? "cluster" : "column", Describe(tier),
+        // Slowing a bleeding patient costs Warp energy each pass. Unpaid or switched off, the treatment drops to a stage with no bleed factor.
+        bool bleeding = Effects.SanguiniteBleeding.On;
+        bool paid = bleeding && (pawn.health.hediffSet.BleedRateTotal <= 0.001f || warp.TryConsumeContinuous(SanguiniteRules.BleedCost));
+        Hediff_Status.Apply(pawn, SanguiniteRules.Treatment, (tier == 3 ? "Lumen_Category_Pylon" : tier == 2 ? "Lumen_Category_Cluster" : "Lumen_Category_Column").Translate(), Describe(tier),
             WarpRules.PassInterval + 50, paid ? tier : 0f);
         if (pawn.health.hediffSet.GetFirstHediffOfDef(SanguiniteRules.Regrowth) is Hediff_SanguiniteRegrowth regrowth)
         {
-            if (SanguiniteRules.Allows(tier, regrowth.kind)) regrowth.Advance(warp);
+            // A switched-off class pauses its regrowth and keeps the progress.
+            if (SanguiniteRules.Allows(tier, regrowth.kind) && SanguiniteRules.RegrowthOn(regrowth.kind)) regrowth.Advance(warp);
             return;
         }
-        if (HealScar(pawn, tier, warp)) return;
-        StartRegrowth(pawn, tier);
+        if (Effects.SanguiniteScars.On && HealScar(pawn, tier, warp)) return;
+        if (AnyRegrowthOn) StartRegrowth(pawn, tier);
     }
 
     private static string Describe(int tier)
     {
         var text = new System.Text.StringBuilder();
-        text.AppendLine("Bleeding slowed to " + SanguiniteRules.BleedFactor(tier).ToStringPercent("0") + " for " +
-            SanguiniteRules.BleedCost.ToString("0.##") + " Warp energy per pass while bleeding.");
-        text.AppendLine("Heals one permanent scar per pass for " + SanguiniteRules.ScarCost.ToString("0.##") + " Warp energy" + (tier == 1 ? " (surface scars only)." : "."));
-        text.Append("Regrows " + (tier == 1 ? "digits" : tier == 2 ? "digits and small parts" : "digits, small parts and internal organs") + ".");
-        return text.ToString();
+        if (Effects.SanguiniteBleeding.On)
+            text.AppendLine("Lumen_Sanguinite_BleedNote".Translate(SanguiniteRules.BleedFactor(tier).ToStringPercent("0"), SanguiniteRules.BleedCost.ToString("0.##")));
+        if (Effects.SanguiniteScars.On)
+            text.AppendLine((tier == 1 ? "Lumen_Sanguinite_ScarNoteSurface" : "Lumen_Sanguinite_ScarNote").Translate(SanguiniteRules.ScarCost.ToString("0.##")));
+        var parts = new List<string>();
+        if (Effects.SanguiniteDigits.On) parts.Add("Lumen_Sanguinite_Digits".Translate());
+        if (tier >= 2 && Effects.SanguiniteSmallParts.On) parts.Add("Lumen_Sanguinite_SmallParts".Translate());
+        if (tier >= 3 && Effects.SanguiniteOrgans.On) parts.Add("Lumen_Sanguinite_Organs".Translate());
+        if (parts.Count > 0) text.Append("Lumen_Sanguinite_Regrows".Translate(parts.ToCommaList(true)));
+        return text.ToString().TrimEndNewlines();
     }
 
     private static bool HealScar(Pawn pawn, int tier, WarpEnergyNetwork warp)
@@ -212,7 +230,8 @@ public class SanguiniteTreatment : MapComponent
         foreach (var missing in pawn.health.hediffSet.GetMissingPartsCommonAncestors())
         {
             var part = missing.Part;
-            if (!SanguiniteRules.Regrowable(pawn, part) || !SanguiniteRules.Allows(tier, SanguiniteRules.Classify(part))) continue;
+            if (!SanguiniteRules.Regrowable(pawn, part) || !SanguiniteRules.Allows(tier, SanguiniteRules.Classify(part)) ||
+                !SanguiniteRules.RegrowthOn(SanguiniteRules.Classify(part))) continue;
             if (best == null || SanguiniteRules.Classify(part) < SanguiniteRules.Classify(best)) best = part;
         }
         if (best == null) return;

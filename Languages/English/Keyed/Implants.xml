@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Implant_SharedSection>Shared rules</Lumen_Implant_SharedSection>
+	<Lumen_Implant_ProstheticCost>Prosthetic stone cost</Lumen_Implant_ProstheticCost>
+	<Lumen_Implant_ImplantCost>Implant stone cost</Lumen_Implant_ImplantCost>
+	<Lumen_Implant_DormantEfficiency>Dormant prosthetic efficiency (%)</Lumen_Implant_DormantEfficiency>
+	<Lumen_Implant_AttunementCooldown>Attunement cooldown (days)</Lumen_Implant_AttunementCooldown>
+	<Lumen_Implant_BindingCooldown>Binding cooldown (days)</Lumen_Implant_BindingCooldown>
+	<Lumen_Implant_Drain>Solar or Warp energy per active part per day</Lumen_Implant_Drain>
+	<Lumen_Implant_Relief>Drawback reduction while energy is paid (%)</Lumen_Implant_Relief>
+	<Lumen_Implant_Paired>Benefit with both a light and a dark implant (%)</Lumen_Implant_Paired>
+	<Lumen_Implant_CellsSection>Portable cells</Lumen_Implant_CellsSection>
+	<Lumen_Implant_CellCapacity>Capacity of each pool (Sunstone and Twinstone cells)</Lumen_Implant_CellCapacity>
+	<Lumen_Implant_ChargeAbove>Charges only from the part of a network above this share (%)</Lumen_Implant_ChargeAbove>
+	<Lumen_Implant_Efficiency>Part efficiency (%)</Lumen_Implant_Efficiency>
+	<Lumen_Implant_Benefit>Benefit</Lumen_Implant_Benefit>
+	<Lumen_Implant_HoursToFill>Sunlight reserve: hours of clear sun to fill</Lumen_Implant_HoursToFill>
+	<Lumen_Implant_DaysToDrain>Sunlight reserve: days without sun to empty</Lumen_Implant_DaysToDrain>
+	<Lumen_Implant_StartReserve>Sunlight reserve on waking (%)</Lumen_Implant_StartReserve>
+	<Lumen_Implant_OverlightRate>Fill rate under Verdite overlight (% of clear sun)</Lumen_Implant_OverlightRate>
+	<Lumen_Implant_HungerWhile>Hunger while {0} (%)</Lumen_Implant_HungerWhile>
+	<Lumen_Implant_Drawback>Drawback</Lumen_Implant_Drawback>
+	<Lumen_Implant_DrawbackNoBiotech>Drawback without Biotech</Lumen_Implant_DrawbackNoBiotech>
+	<Lumen_Implant_DreadRadius>Dread radius (tiles)</Lumen_Implant_DreadRadius>
+	<Lumen_Implant_DaysPerScar>Days to heal a scar</Lumen_Implant_DaysPerScar>
+	<Lumen_Implant_ApparelRepair>Apparel hit points repaired per day</Lumen_Implant_ApparelRepair>
+	<Lumen_Implant_PartHealing>Injury healed on the part per day</Lumen_Implant_PartHealing>
+	<Lumen_Implant_Mood>Benefit: mood</Lumen_Implant_Mood>
+	<Lumen_Implant_Light>light</Lumen_Implant_Light>
+	<Lumen_Implant_Dark>dark</Lumen_Implant_Dark>
+	<Lumen_Implant_WokenByAttunement>Attunement at a Lumen ritual circle or Lumenstone altar</Lumen_Implant_WokenByAttunement>
+	<Lumen_Implant_WokenByBinding>Binding at a Sacrificial altar</Lumen_Implant_WokenByBinding>
+	<Lumen_Implant_DormantImplant>Dormant: no effect until woken by {0}.</Lumen_Implant_DormantImplant>
+	<Lumen_Implant_DormantProsthetic>Dormant: works as a simple prosthetic until woken by {0}.</Lumen_Implant_DormantProsthetic>
+	<Lumen_Implant_RelievedSolar>Solar energy reduces the drawback by {0}.</Lumen_Implant_RelievedSolar>
+	<Lumen_Implant_RelievedWarp>Warp energy reduces the drawback by {0}.</Lumen_Implant_RelievedWarp>
+	<Lumen_Implant_UnrelievedSolar>Unrelieved: no Solar energy reached it, so the drawback is at full strength.</Lumen_Implant_UnrelievedSolar>
+	<Lumen_Implant_UnrelievedWarp>Unrelieved: no Warp energy reached it, so the drawback is at full strength.</Lumen_Implant_UnrelievedWarp>
+	<Lumen_Implant_PairedNote>Paired with an implant of the other side: benefits at {0}.</Lumen_Implant_PairedNote>
+	<Lumen_Implant_HasLight>already has a light implant: {0}</Lumen_Implant_HasLight>
+	<Lumen_Implant_HasDark>already has a dark implant: {0}</Lumen_Implant_HasDark>
+	<Lumen_Implant_SetAsideLight>{0} already has a light implant. The implant was set aside.</Lumen_Implant_SetAsideLight>
+	<Lumen_Implant_SetAsideDark>{0} already has a dark implant. The implant was set aside.</Lumen_Implant_SetAsideDark>
+</LanguageData>

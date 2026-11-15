@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenstoneRitual.label>流明石仪式</KM_LumenstoneRitual.label>
+	<KM_LumenstoneRitual.description>在流明仪式圈举行的两小时仪式，从普通石块中提取流明石。品质和参与人数决定产量，每个定居点需要恢复后才能举行下一次仪式。取消的仪式会返还石块。</KM_LumenstoneRitual.description>
+	<KM_LumenstoneAltarRitual.label>流明石仪式</KM_LumenstoneAltarRitual.label>
+	<KM_LumenstoneAltarRitual.description>在流明石祭坛举行的两小时仪式，从普通石块中提取流明石。品质、参与人数和附近的流明石装置决定产量，每个定居点需要恢复后才能举行下一次仪式。取消的仪式会返还石块。</KM_LumenstoneAltarRitual.description>
+</LanguageData>

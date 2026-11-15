@@ -26,7 +26,7 @@ class CandidateTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "tools").mkdir()
-        shutil.copy2(TOOLS / "export-layered-artwork.py", self.root / "tools")
+        shutil.copy2(Path(artwork.loadExporter(artwork.ROOT).__file__), self.root / "tools/export-layered-artwork.py")
         (self.root / "Defs").mkdir()
         (self.root / "Defs/Test.xml").write_text(
             '<Defs><ThingDef><defName>Test</defName><graphicData><drawSize>(1,1.12)</drawSize></graphicData></ThingDef></Defs>')
@@ -60,6 +60,21 @@ class CandidateTests(unittest.TestCase):
         self.assertFalse(report["passed"])
         self.assertIn("Candidate mask", " ".join(report["errors"]))
         self.assertEqual(before, (self.output / "mask.png").read_bytes())
+
+    def test_game_scale_reference_uses_its_own_draw_size(self):
+        report = checkCandidate(self.root, self.path, self.output)
+        with Image.open(self.output / report["gameScalePreview"]) as preview:
+            self.assertEqual(preview.size, (360, 132))
+
+        Image.new("RGBA", (8, 8), (220, 70, 90, 255)).save(self.root / "reference.png")
+        self.manifest["candidateChecks"]["previewReference"] = dict(path="reference.png", drawSize=[3, 2])
+        self.path.write_text(json.dumps(self.manifest))
+        report = checkCandidate(self.root, self.path, self.output)
+        self.assertTrue(report["passed"], report["errors"])
+        with Image.open(self.output / report["gameScalePreview"]) as preview:
+            self.assertEqual(preview.size, (672, 188))
+            self.assertEqual(preview.getpixel((464, 40)), (220, 70, 90))
+            self.assertEqual(preview.getpixel((655, 167)), (220, 70, 90))
 
     def test_explicit_baseline_scale_preserves_normalized_placement(self):
         Image.new("RGBA", (16,16), (180,180,180,255)).save(self.root / "layer.png")

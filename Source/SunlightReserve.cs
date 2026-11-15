@@ -64,7 +64,7 @@ public class Hediff_SunlightReserve : HediffWithComps
         }
     }
 
-    public override string LabelInBrackets => base.LabelInBrackets + ", " + Severity.ToStringPercent("0") + (Starved && !relieved ? ", unrelieved" : "");
+    public override string LabelInBrackets => base.LabelInBrackets + ", " + Severity.ToStringPercent("0") + (Starved && !relieved ? ", " + "Lumen_Sunlight_Unrelieved".Translate() : "");
 
     public override string TipStringExtra
     {
@@ -72,11 +72,11 @@ public class Hediff_SunlightReserve : HediffWithComps
         {
             var tuning = Tuning;
             string text = rate > 0
-                ? "Gaining sunlight: " + (rate * GenDate.TicksPerHour).ToStringPercent("0.#") + " an hour."
-                : "Without sunlight: losing " + (GenDate.TicksPerHour / (tuning.daysToDrain * GenDate.TicksPerDay)).ToStringPercent("0.#") + " an hour.";
+                ? "Lumen_Sunlight_Gaining".Translate((rate * GenDate.TicksPerHour).ToStringPercent("0.#")).ToString()
+                : "Lumen_Sunlight_Losing".Translate((GenDate.TicksPerHour / (tuning.daysToDrain * GenDate.TicksPerDay)).ToStringPercent("0.#")).ToString();
             if (Starved)
-                text += relieved ? "\nSolar energy reduces the hunger by " + ImplantRules.ReliefFactor.ToStringPercent("0") + "."
-                    : "\nUnrelieved: no Solar energy reached it, so the hunger is at full strength.";
+                text += "\n" + (relieved ? "Lumen_Sunlight_Relieved".Translate(ImplantRules.ReliefFactor.ToStringPercent("0"))
+                    : "Lumen_Sunlight_UnrelievedDesc".Translate());
             return text;
         }
     }
@@ -127,7 +127,7 @@ public class Hediff_SunlightReserve : HediffWithComps
         var map = pawn.Map;
         if (map.glowGrid.GroundGlowAt(pawn.Position, ignoreCavePlants: true, ignoreSky: true) < 1f) return false;
         // Overlights are only on Verdite fixtures, so the registered fixtures are enough.
-        foreach (var fixture in map.GetComponent<VerditeField>().fixtures)
+        foreach (var fixture in MapState.Of<VerditeField>(map).fixtures)
         {
             if (fixture.parent.GetComp<CompOverlight>() is not { Glows: true } light) continue;
             float radius = ((CompProperties_Overlight)light.props).overlightRadius;

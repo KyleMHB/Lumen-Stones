@@ -44,30 +44,30 @@ public class CompTwinstone : ThingComp
 
     public override string CompInspectStringExtra()
     {
-        string text = "Solar energy: " + solar.ToString("0.#") + " / " + Props.capacity.ToString("0");
-        if (HasWarp) text += "\nWarp energy: " + warp.ToString("0.#") + " / " + Props.capacity.ToString("0");
+        string text = "Lumen_Twinstone_Solar".Translate(solar.ToString("0.#"), Props.capacity.ToString("0"));
+        if (HasWarp) text += "\n" + "Lumen_Twinstone_Warp".Translate(warp.ToString("0.#"), Props.capacity.ToString("0"));
         var map = parent.MapHeld;
-        if (map != null && map.IsPlayerHome) return text + "\nCharging from this settlement's networks.";
+        if (map != null && map.IsPlayerHome) return text + "\n" + "Lumen_Twinstone_Charging".Translate();
         // Cells drain one after another, so the estimate pools every cell that feeds the same pawns.
         var (light, dark, solarPool, warpPool) = TwinstoneCell.Demand(parent);
-        if (light == 0 && dark == 0) return text + "\nNo implanted pawns to feed here.";
-        if (light > 0) text += "\nSolar lasts " + (solarPool / (light * ImplantRules.DrainPerDay)).ToString("0.#") + " days for " + light + " part" + (light == 1 ? "" : "s");
-        if (dark > 0 && HasWarp) text += "\nWarp lasts " + (warpPool / (dark * ImplantRules.DrainPerDay)).ToString("0.#") + " days for " + dark + " part" + (dark == 1 ? "" : "s");
+        if (light == 0 && dark == 0) return text + "\n" + "Lumen_Twinstone_NoPawns".Translate();
+        if (light > 0) text += "\n" + (light == 1 ? "Lumen_Twinstone_SolarLastsOne" : "Lumen_Twinstone_SolarLastsMany").Translate((solarPool / (light * ImplantRules.DrainPerDay)).ToString("0.#"), light);
+        if (dark > 0 && HasWarp) text += "\n" + (dark == 1 ? "Lumen_Twinstone_WarpLastsOne" : "Lumen_Twinstone_WarpLastsMany").Translate((warpPool / (dark * ImplantRules.DrainPerDay)).ToString("0.#"), dark);
         return text;
     }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         if (!Prefs.DevMode) yield break;
-        yield return new Command_Action { defaultLabel = "DEV: fill", action = () => { solar = Props.capacity; if (HasWarp) warp = Props.capacity; } };
-        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => solar = warp = 0 };
+        yield return new Command_Action { defaultLabel = "DEV: fill", action = () => { solar = Props.capacity; if (HasWarp) warp = Props.capacity; } }; // not translated
+        yield return new Command_Action { defaultLabel = "DEV: empty", action = () => solar = warp = 0 }; // not translated
     }
 }
 
 public static class TwinstoneCell
 {
     // Low priority: a cell only charges from the part of a network above this share of its capacity.
-    public const float ChargeAbove = 0.5f;
+    public static float ChargeAbove = 0.5f;
     public const int ChargeOffset = 175;
 
     private static List<ThingDef> defs;

@@ -15,32 +15,32 @@ public class CompProperties_Animastone : CompProperties_Fixture, ITunableProps
     public void DeclareTunables(TunableScope s, Def owner)
     {
         string name = owner.defName;
-        s.Add(name + ".support", "Category room contribution (%)", weight, v => weight = v, Limit.Percent());
+        s.Add(name + ".support", "Lumen_Setting_CategoryContribution".Translate(), weight, v => weight = v, Limit.Percent());
         if (activeRadius <= 0) return;
-        s.Add(name + ".activeRadius", "Solar active effect radius (tiles)", activeRadius, v => activeRadius = v, Limit.Number(1, 50));
-        s.Add(name + ".activeDrain", "Solar energy per day while a pawn meditates in range", activeDrain, v => activeDrain = v);
+        s.Add(name + ".activeRadius", "Lumen_Animastone_ActiveRadiusSetting".Translate(), activeRadius, v => activeRadius = v, Limit.Number(1, 50));
+        s.Add(name + ".activeDrain", "Lumen_Animastone_ActiveDrain".Translate(), activeDrain, v => activeDrain = v);
         if (activeFocusBonus > 0)
-            s.Add(name + ".activeFocus", "Active focus strength bonus (%)", activeFocusBonus, v => activeFocusBonus = v, Limit.Percent());
+            s.Add(name + ".activeFocus", "Lumen_Animastone_ActiveFocus".Translate(), activeFocusBonus, v => activeFocusBonus = v, Limit.Percent());
         if (activeHeatRecovery > 0)
-            s.Add(name + ".activeHeatRecovery", "Active neural heat recovery bonus (%)", activeHeatRecovery, v => activeHeatRecovery = v, Limit.Percent(10));
+            s.Add(name + ".activeHeatRecovery", "Lumen_Animastone_ActiveHeat".Translate(), activeHeatRecovery, v => activeHeatRecovery = v, Limit.Percent(10));
         if (activeGrowth > 0)
-            s.Add(name + ".activeGrowth", "Active anima grass growth offset (%)", activeGrowth, v => activeGrowth = v, Limit.Percent(10));
+            s.Add(name + ".activeGrowth", "Lumen_Animastone_ActiveGrowth".Translate(), activeGrowth, v => activeGrowth = v, Limit.Percent(10));
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string meditating = "Scales with room support. Applies only while a pawn meditates in the same enclosed room.";
+        string meditating = "Lumen_Animastone_MeditatingRule".Translate();
         var rows = new InfoStats()
-            .Add("Support weight", weight.ToStringPercent(), "This fixture's share of Animastone room support. " + InfoStats.SupportRule)
-            .Add("Neural heat recovery at full support", InfoStats.Plus(SupportEffect.AnimastoneHeatRecovery.Cap), meditating)
-            .Add("Psyfocus gain at full support", InfoStats.Plus(SupportEffect.AnimastoneFocusGain.Cap), meditating);
+            .Add("Lumen_Info_SupportWeight".Translate(), weight.ToStringPercent(), "Lumen_Animastone_SupportWeightDesc".Translate() + " " + InfoStats.SupportRule)
+            .Add(Effects.AnimastoneRoomHeat, "Lumen_Animastone_HeatRecovery".Translate(), InfoStats.Plus(SupportEffect.AnimastoneHeatRecovery.Cap), meditating)
+            .Add(Effects.AnimastoneRoomFocus, "Lumen_Animastone_FocusGain".Translate(), InfoStats.Plus(SupportEffect.AnimastoneFocusGain.Cap), meditating);
         if (activeRadius <= 0) return rows.Rows;
-        string active = $"Applies while a pawn meditates within {InfoStats.Tiles(activeRadius)}, indoors or outdoors." + InfoStats.SolarRule +
-            (SolarRules.Enabled ? $" Costs {activeDrain:0.##} Solar energy a day while running." : "");
-        rows.Add(InfoStats.Solar("Active effect radius"), InfoStats.Tiles(activeRadius), active);
-        if (activeFocusBonus > 0) rows.Add(InfoStats.Solar("Meditation focus strength"), InfoStats.Plus(activeFocusBonus), active);
-        if (activeHeatRecovery > 0) rows.Add(InfoStats.Solar("Extra neural heat recovery"), InfoStats.Plus(activeHeatRecovery), active);
-        if (activeGrowth > 0) rows.Add(InfoStats.Solar("Anima grass growth"), InfoStats.Plus(activeGrowth), "Speeds anima grass growth around an anima tree in range. " + active);
+        string active = "Lumen_Animastone_ActiveRule".Translate(InfoStats.Tiles(activeRadius)) + InfoStats.SolarRule +
+            (SolarRules.Enabled ? " " + "Lumen_Animastone_ActiveCost".Translate(activeDrain.ToString("0.##")).ToString() : "");
+        rows.Add(InfoStats.Solar("Lumen_Animastone_ActiveRadius".Translate()), InfoStats.Tiles(activeRadius), active);
+        if (activeFocusBonus > 0) rows.Add(Effects.AnimastoneClusterFocus, InfoStats.Solar("Lumen_Animastone_FocusStrength".Translate()), InfoStats.Plus(activeFocusBonus), active);
+        if (activeHeatRecovery > 0) rows.Add(Effects.AnimastonePylonHeat, InfoStats.Solar("Lumen_Animastone_ExtraHeat".Translate()), InfoStats.Plus(activeHeatRecovery), active);
+        if (activeGrowth > 0) rows.Add(Effects.AnimastonePylonGrowth, InfoStats.Solar("Lumen_Animastone_GrassGrowth".Translate()), InfoStats.Plus(activeGrowth), "Lumen_Animastone_GrassGrowthDesc".Translate() + " " + active);
         return rows.Rows;
     }
 }
@@ -57,9 +57,10 @@ public class CompAnimastone : CompRoomFixture
     public override string CompInspectStringExtra()
     {
         var reading = FixtureSupport.Of(SupportStone.Animastone, parent);
-        string text = $"Room support: {reading.Passive.ToStringPercent()}. While meditating: neural heat recovery +{reading.Bonus(SupportEffect.AnimastoneHeatRecovery).ToStringPercent()}, psyfocus gain +{reading.Bonus(SupportEffect.AnimastoneFocusGain).ToStringPercent()}";
+        string text = "Lumen_Animastone_Inspect".Translate(reading.Passive.ToStringPercent(), reading.Bonus(SupportEffect.AnimastoneHeatRecovery).ToStringPercent(),
+            reading.Bonus(SupportEffect.AnimastoneFocusGain).ToStringPercent());
         if (Props.activeRadius > 0)
-            text += "\nActive effect: " + (poweredNow ? "running" : "idle, no one meditating in range");
+            text += "\n" + (poweredNow ? "Lumen_Animastone_ActiveRunning" : "Lumen_Animastone_ActiveIdle").Translate();
         return text;
     }
 }
@@ -69,10 +70,10 @@ public class CompAnimastone : CompRoomFixture
 public class FocusStrengthOffset_AnimastoneActive : FocusStrengthOffset
 {
     public override float GetOffset(Thing parent, Pawn user = null) =>
-        parent.TryGetComp<CompAnimastone>() is { poweredNow: true } comp ? comp.Props.activeFocusBonus : 0;
+        Effects.AnimastoneClusterFocus.On && parent.TryGetComp<CompAnimastone>() is { poweredNow: true } comp ? comp.Props.activeFocusBonus : 0;
 
     public override string GetExplanation(Thing parent) =>
-        GetOffset(parent) > 0 ? "Animastone Solar active effect: +" + GetOffset(parent).ToStringPercent() : null;
+        GetOffset(parent) > 0 ? "Lumen_Animastone_ActiveOffset".Translate(GetOffset(parent).ToStringPercent()).ToString() : null;
 }
 
 // Speeds anima grass growth from meditation at a tree within range of a powered Animastone pylon.
@@ -85,7 +86,7 @@ public class StatPart_AnimastoneGrowth : StatPart
     public override string ExplanationPart(StatRequest req)
     {
         float bonus = Bonus(req);
-        return bonus > 0 ? "Powered Animastone pylon: +" + bonus.ToStringPercent() : null;
+        return bonus > 0 ? "Lumen_Animastone_PoweredPylon".Translate(bonus.ToStringPercent()).ToString() : null;
     }
 }
 
@@ -103,7 +104,7 @@ public class StatPart_Animastone : StatPart
     public override string ExplanationPart(StatRequest req)
     {
         float bonus = Bonus(req);
-        return bonus > 0 ? "Animastone room support: +" + bonus.ToStringPercent() : null;
+        return bonus > 0 ? "Lumen_Animastone_RoomSupport".Translate(bonus.ToStringPercent()).ToString() : null;
     }
 }
 
@@ -118,13 +119,13 @@ public static class AnimastoneTunables
         foreach (string name in fixtures)
         {
             var def = DefDatabase<ThingDef>.GetNamed(name);
-            s.In(def.LabelCap).Add(name + ".focus", "Meditation focus strength (%)", def.GetStatValueAbstract(focus),
+            s.In(def.LabelCap).PerItem().Add(name + ".focus", "Lumen_Animastone_FocusSetting".Translate(), def.GetStatValueAbstract(focus),
                 v => def.SetStatBaseValue(focus, v), Limit.Percent());
         }
-        var room = s.In("Room support");
-        room.Add("Animastone.heatRecoveryCap", "Neural heat recovery cap while meditating (%)", SupportEffect.AnimastoneHeatRecovery.Cap,
+        var room = s.In("Lumen_Section_RoomSupport".Translate());
+        room.Add("Animastone.heatRecoveryCap", "Lumen_Animastone_HeatCap".Translate(), SupportEffect.AnimastoneHeatRecovery.Cap,
             v => SupportEffect.AnimastoneHeatRecovery.Cap = v, Limit.Percent(10));
-        room.Add("Animastone.focusGainCap", "Psyfocus gain cap while meditating (%)", SupportEffect.AnimastoneFocusGain.Cap,
+        room.Add("Animastone.focusGainCap", "Lumen_Animastone_FocusCap".Translate(), SupportEffect.AnimastoneFocusGain.Cap,
             v => SupportEffect.AnimastoneFocusGain.Cap = v, Limit.Percent(10));
     }
 }

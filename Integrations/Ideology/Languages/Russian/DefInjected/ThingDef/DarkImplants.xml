@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteImplant.label>Сангвинитовый имплант</KM_SanguiniteImplant.label>
+	<KM_SanguiniteImplant.description>Осколок сангвинита у сердца. После пробуждения связыванием раны кровоточат гораздо меньше, а старые шрамы медленно заживают, но тело вечно голодно.</KM_SanguiniteImplant.description>
+	<KM_DreadstoneImplant.label>Имплант из камня ужаса</KM_DreadstoneImplant.label>
+	<KM_DreadstoneImplant.description>Осколок камня ужаса у сердца. После пробуждения связыванием враги рядом с носителем чувствуют ужас, пока тот призван или сражается, но остальным носитель кажется холодной компанией.</KM_DreadstoneImplant.description>
+	<KM_HollowstoneImplant.label>Имплант из пустокамня</KM_HollowstoneImplant.label>
+	<KM_HollowstoneImplant.description>Осколок пустокамня у сердца. После пробуждения связыванием боль уходит и разум держится твёрдо, но мало что теперь приносит радость.</KM_HollowstoneImplant.description>
+	<KM_HollowstoneArm.label>Рука из пустокамня</KM_HollowstoneArm.label>
+	<KM_HollowstoneArm.description>Рука из выращенного кристалла пустокамня. После пробуждения связыванием намного сильнее естественной и никогда не болит, но притупляет удовольствие от отдыха.</KM_HollowstoneArm.description>
+	<KM_HollowstoneLeg.label>Нога из пустокамня</KM_HollowstoneLeg.label>
+	<KM_HollowstoneLeg.description>Нога из выращенного кристалла пустокамня. После пробуждения связыванием намного сильнее естественной и никогда не болит, но притупляет удовольствие от отдыха.</KM_HollowstoneLeg.description>
+	<KM_DreadstoneJaw.label>Челюсть из камня ужаса</KM_DreadstoneJaw.label>
+	<KM_DreadstoneJaw.description>Челюсть из выращенного кристалла камня ужаса. После пробуждения связыванием намного сильнее естественной, а враги рядом с носителем в бою чувствуют ужас, но остальным носитель кажется холодной компанией.</KM_DreadstoneJaw.description>
+	<KM_SanguiniteHeart.label>Сангвинитовое сердце</KM_SanguiniteHeart.label>
+	<KM_SanguiniteHeart.description>Сердце из выращенного кристалла сангвинита. После пробуждения связыванием бьётся намного сильнее естественного и замедляет кровотечение, но телу нужно больше еды.</KM_SanguiniteHeart.description>
+	<KM_TwinstoneCell.label>Элемент из камня-близнеца</KM_TwinstoneCell.label>
+	<KM_TwinstoneCell.description>Запечатанный элемент из солнечного камня и кровавика, хранящий солнечную энергию и энергию варпа в двух отдельных запасах для пешек с имплантами вдали от дома. Медленно заряжается от свободной энергии родного поселения, а в любом другом месте смягчает недостатки у всех пешек с имплантами на своей карте или в своём караване.</KM_TwinstoneCell.description>
+</LanguageData>

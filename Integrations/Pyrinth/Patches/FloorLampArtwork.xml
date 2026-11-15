@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]/graphicData</xpath>
+        <value>
+          <graphicData>
+            <texPath>Things/Building/Pyrinth/Lamp</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(1,1)</drawSize>
+            <drawRotated>false</drawRotated>
+          </graphicData>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]/uiIconScale</xpath>
+        <value><uiIconScale>1.38</uiIconScale></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]/description</xpath>
+        <value><description>A compact Pyrinth crystal cluster on a stone plinth. Lights an area and produces a small amount of heat. Never needs refuelling.</description></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]</xpath>
+        <value><costList Inherit="False"><DV_Pyrinth>15</DV_Pyrinth><BlocksGranite>5</BlocksGranite></costList></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DV_PyrinthLamp"]/comps</xpath>
+        <value><li><compClass>LumenStones.CompFixedMaterial</compClass></li></value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

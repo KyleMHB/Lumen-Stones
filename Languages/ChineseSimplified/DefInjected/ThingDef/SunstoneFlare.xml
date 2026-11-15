@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SunstoneFlare.label>太阳石照明弹</KM_SunstoneFlare.label>
+	<KM_SunstoneFlare.description>一块手掌大小、即将迸裂的太阳石碎片。投掷后，它会在一次刺眼的闪光中释放出储存的日光。\n\n在小人的物品栏中携带一组，征召后使用“投掷太阳石照明弹”。他们会保持当前装备的武器，每次投掷消耗一枚。射程12，半径2.9。致盲五秒、眩晕一秒，不造成爆炸伤口。异象实体和变异体还会受到15点灼烧伤害。闪光也可能影响友军。研究太阳石引导后，在锻造台使用25太阳石一次制作五枚，需要6级手工。</KM_SunstoneFlare.description>
+	<KM_SunstoneFlare.verbs.0.label>投掷太阳石照明弹</KM_SunstoneFlare.verbs.0.label>
+	<KM_ThrownSunstoneFlare.label>太阳石照明弹</KM_ThrownSunstoneFlare.label>
+</LanguageData>

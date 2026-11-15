@@ -18,32 +18,32 @@ public class CompProperties_Ferrite : CompProperties, ITunableProps
     {
         string name = owner.defName;
         if (!personal)
-            s.Add(name + ".radius", "Maintenance radius", radius, v => radius = v, Limit.Number(max: 100));
-        s.Add(name + ".interval", "Ticks between repair pulses", interval, v => interval = (int)v, Limit.Integer(1));
-        s.Add(name + ".budget", "Shared condition budget per pulse (%)", repairBudget, v => repairBudget = v, Limit.Percent());
+            s.Add(name + ".radius", "Lumen_Ferrite_Radius".Translate(), radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".interval", "Lumen_Ferrite_Interval".Translate(), interval, v => interval = (int)v, Limit.Integer(1));
+        s.Add(name + ".budget", "Lumen_Ferrite_BudgetSetting".Translate(), repairBudget, v => repairBudget = v, Limit.Percent());
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string budget = "Each pulse shares one condition budget equally among the damaged targets assigned to this source, so more targets mend more slowly. " +
-            "Fractional HP carries between pulses. Only the strongest covering Ferrite source repairs a target; overlap adds no repair. Works during combat.";
+        string budget = "Lumen_Ferrite_BudgetRule".Translate();
         var rows = new InfoStats();
         if (personal)
-            rows.Add("Mends", "itself and worn gear", "While worn or wielded, mends this item and the wearer's worn apparel and equipped weapons, including tainted apparel without removing the taint. Needs no Solar energy. " + budget);
+            rows.Add(Effects.FerriteHammerMending, "Lumen_Ferrite_Mends".Translate(), "Lumen_Ferrite_MendsSelf".Translate(), "Lumen_Ferrite_MendsSelfDesc".Translate() + " " + budget);
         else
         {
-            rows.Add("Maintenance radius", InfoStats.Tiles(radius), "Works through walls. " + budget);
-            if (buildings) rows.Add("Mends for free", "buildings", "Player-owned repairable buildings and walls. " + budget);
-            var paid = new List<string>();
-            if (looseItems) paid.Add("non-rotting items on the ground, in stockpiles and on shelves");
-            if (wornEquipment) paid.Add("the worn apparel and equipped weapons of colonists, slaves and prisoners, keeping corpse-apparel taint");
-            if (paid.Count > 0)
-                rows.Add(InfoStats.Solar("Mends items"), paid.Count > 1 ? "items and gear" : "items",
-                    "Mends " + string.Join(", and ", paid) + ". Enemy gear is never repaired." + InfoStats.SolarRule + " " + budget);
-            if (paid.Count > 0 && SolarRules.Enabled) rows.Add("Solar energy per HP", FerriteSolar.CostPerHp.ToString("0.##"), "Paid for each hit point restored to an item.");
+            rows.Add("Lumen_Ferrite_Radius".Translate(), InfoStats.Tiles(radius), "Lumen_Ferrite_RadiusDesc".Translate() + " " + budget);
+            if (buildings) rows.Add(Effects.FerriteBuildings, "Lumen_Ferrite_MendsFree".Translate(), "Lumen_Ferrite_Buildings".Translate(), "Lumen_Ferrite_BuildingsDesc".Translate() + " " + budget);
+            if (looseItems)
+                rows.Add(Effects.FerriteItems, InfoStats.Solar("Lumen_Ferrite_MendsItems".Translate()), "Lumen_Ferrite_LooseItems".Translate(),
+                    "Lumen_Ferrite_LooseItemsDesc".Translate() + InfoStats.SolarRule + " " + budget);
+            if (wornEquipment)
+                rows.Add(Effects.FerriteGear, InfoStats.Solar("Lumen_Ferrite_MendsGear".Translate()), "Lumen_Ferrite_ColonistGear".Translate(),
+                    "Lumen_Ferrite_ColonistGearDesc".Translate() +
+                    InfoStats.SolarRule + " " + budget);
+            if ((looseItems || wornEquipment) && SolarRules.Enabled) rows.Add("Lumen_Ferrite_SolarPerHp".Translate(), FerriteSolar.CostPerHp.ToString("0.##"), "Lumen_Ferrite_SolarPerHpDesc".Translate());
         }
-        rows.Add("Pulse interval", InfoStats.Seconds(interval), budget)
-            .Add("Condition budget per pulse", (repairBudget * 100).ToString("0.####") + "%", "A share of each target's maximum hit points. " + budget);
+        rows.Add("Lumen_Aegite_PulseInterval".Translate(), InfoStats.Seconds(interval), budget)
+            .Add("Lumen_Ferrite_Budget".Translate(), (repairBudget * 100).ToString("0.####") + "%", "Lumen_Ferrite_BudgetDesc".Translate() + " " + budget);
         return rows.Rows;
     }
 }
@@ -67,7 +67,7 @@ public static class FerriteSolar
     public static float CostPerHp = 0.5f;
 
     internal static void DeclareTunables(TunableScope s) =>
-        s.In("Solar energy").Add("Ferrite.solarCostPerHp", "Solar energy per HP of item or gear repaired", CostPerHp, v => CostPerHp = v);
+        s.In("Lumen_Section_SolarEnergy".Translate()).Add("Ferrite.solarCostPerHp", "Lumen_Ferrite_SolarPerHpSetting".Translate(), CostPerHp, v => CostPerHp = v);
 }
 
 public class FerriteField : MapComponent
@@ -82,19 +82,24 @@ public class FerriteField : MapComponent
         target.HitPoints > 0 && target.HitPoints < target.MaxHitPoints &&
         (target.TryGetComp<CompRottable>() is not { } rot || rot.Stage == RotStage.Fresh);
 
+    // Each kind of target has its own effect switch. A switched-off kind is never assigned, so it takes no share of a budget.
     public static bool Supports(CompFerrite fixture, Thing target)
     {
         if (fixture.Props.personal)
-            return fixture.Wearer is { Spawned: true } wearer &&
+            return Effects.FerriteHammerMending.On && fixture.Wearer is { Spawned: true } wearer &&
                 (target.ParentHolder is Pawn_ApparelTracker worn && worn.pawn == wearer ||
                  target.ParentHolder is Pawn_EquipmentTracker held && held.pawn == wearer && target.def.IsWeapon);
-        if (target is Building) return fixture.Props.buildings && target.Spawned &&
+        if (target is Building) return fixture.Props.buildings && Effects.FerriteBuildings.On && target.Spawned &&
             target.Faction == Faction.OfPlayer && target.def.building.repairable;
-        if (target.Spawned) return fixture.Props.looseItems && target.def.category == ThingCategory.Item;
-        if (!fixture.Props.wornEquipment) return false;
+        if (target.Spawned) return fixture.Props.looseItems && Effects.FerriteItems.On && target.def.category == ThingCategory.Item;
+        if (!fixture.Props.wornEquipment || !Effects.FerriteGear.On) return false;
         return target.ParentHolder is Pawn_ApparelTracker apparel && apparel.pawn.Spawned && OurPawn(apparel.pawn) ||
             target.ParentHolder is Pawn_EquipmentTracker equipment && equipment.pawn.Spawned && OurPawn(equipment.pawn) && target.def.IsWeapon;
     }
+
+    // Whether any switched-on effect could still repair the target, so credits for switched-off kinds are dropped.
+    private static bool KindOn(Thing target) => target is Building ? Effects.FerriteBuildings.On
+        : target.Spawned ? Effects.FerriteItems.On : Effects.FerriteGear.On || Effects.FerriteHammerMending.On;
 
     // Colonists, slaves and prisoners. Enemy gear is never repaired.
     public static bool OurPawn(Pawn pawn) => pawn.Faction == Faction.OfPlayer || pawn.IsPrisonerOfColony || pawn.IsSlaveOfColony;
@@ -170,13 +175,14 @@ public class FerriteField : MapComponent
     {
         // Assignment includes every source, not only sources whose pulse is due. This
         // prevents duplicate or slower installations from supplying extra service.
+        if (!fixture.AnyKindOn) return;
         IEnumerable<Thing> candidates = fixture.Props.personal ? WornGear(fixture.Wearer) : ThingsInRadius(fixture);
-        if (fixture.Props.wornEquipment && !fixture.Props.personal)
+        if (fixture.Props.wornEquipment && !fixture.Props.personal && Effects.FerriteGear.On)
             candidates = candidates.Concat(map.mapPawns.AllPawnsSpawned.Where(OurPawn).SelectMany(WornGear));
         var targets = candidates.Where(Damaged).Distinct().Where(t => Owner(t) == fixture).ToList();
         if (targets.Count == 0) return;
         double share = (double)fixture.Props.repairBudget / targets.Count;
-        int now = Find.TickManager.TicksGame, effects = 0;
+        int now = Find.TickManager.TicksGame;
         foreach (var target in targets)
         {
             if (!byTarget.TryGetValue(target, out var credit))
@@ -196,7 +202,6 @@ public class FerriteField : MapComponent
             target.HitPoints += repair;
             credit.hitPoints -= repair;
             if (target.HitPoints == target.MaxHitPoints) credit.hitPoints = 0;
-            if (effects++ < 2) fixture.Spark(target.PositionHeld, 0.08f);
         }
     }
 
@@ -217,14 +222,14 @@ public class FerriteField : MapComponent
         // relying on building spawn notifications or an apparel tick implementation.
         // Scan only on the shared pulse tick; this runs for every pawn's apparel.
         int now = Find.TickManager.TicksGame;
-        if (now % PersonalPulseCheck == 0)
+        if (now % PersonalPulseCheck == 0 && Effects.FerriteHammerMending.On)
             foreach (var source in PersonalSources)
                 if (now % source.Props.interval == 0) Pulse(source);
         if (now % 600 != 0) return;
         credits.RemoveAll(c =>
         {
             bool remove = c.target == null || c.target.Destroyed || c.target.MapHeld != map ||
-                c.target.HitPoints >= c.target.MaxHitPoints && now >= c.nextServiceTick;
+                c.target.HitPoints >= c.target.MaxHitPoints && now >= c.nextServiceTick || !KindOn(c.target);
             if (remove && c.target != null) byTarget.Remove(c.target);
             return remove;
         });
@@ -236,6 +241,10 @@ public class CompFerrite : ThingComp
     public CompProperties_Ferrite Props => (CompProperties_Ferrite)props;
     public Pawn Wearer => parent is Apparel apparel ? apparel.Wearer : (parent.ParentHolder as Pawn_EquipmentTracker)?.pawn;
     public bool Active => Props.personal ? Wearer?.Spawned == true : parent.Spawned;
+
+    // Whether any of the kinds this source repairs is switched on.
+    public bool AnyKindOn => Props.personal ? Effects.FerriteHammerMending.On
+        : Props.buildings && Effects.FerriteBuildings.On || Props.looseItems && Effects.FerriteItems.On || Props.wornEquipment && Effects.FerriteGear.On;
 
     private int payTick = -1;
     private bool payOk;
@@ -256,33 +265,17 @@ public class CompFerrite : ThingComp
     public bool TryPay(float amount) => parent.GetComp<CompSolarToggle>()?.TryPay(amount) ?? true;
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
-        if (!Props.personal) parent.Map.GetComponent<FerriteField>().fixtures.Add(this);
+        if (!Props.personal) MapState.Of<FerriteField>(parent.Map).fixtures.Add(this);
     }
     public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
-        if (!Props.personal) map.GetComponent<FerriteField>().fixtures.Remove(this);
+        if (!Props.personal) MapState.Of<FerriteField>(map).fixtures.Remove(this);
     }
 
     public override void CompTick()
     {
         if (Props.personal || !parent.Spawned) return;
-        if (parent.IsHashIntervalTick(600)) Spark(parent.Position, 0.055f);
-        if (parent.IsHashIntervalTick(Props.interval)) parent.Map.GetComponent<FerriteField>().Pulse(this);
-    }
-
-    public void Spark(IntVec3 cell, float scale)
-    {
-        var map = parent.MapHeld;
-        if (cell.Fogged(map) || !CompAnimationToggle.On(parent)) return;
-        var mote = FixtureMotes.Make("KM_Mote_FerritePulse", map);
-        if (mote == null) return;
-        mote.exactPosition = cell.ToVector3Shifted();
-        mote.exactPosition.y = AltitudeLayer.MoteOverhead.AltitudeFor();
-        mote.Scale = scale;
-        mote.instanceColor = new Color(1f, 0.56f, 0.25f);
-        mote.airTimeLeft = 0.4f;
-        mote.SetVelocity(45f + parent.thingIDNumber % 90, 0.12f);
-        GenSpawn.Spawn(mote, cell, map);
+        if (parent.IsHashIntervalTick(Props.interval)) MapState.Of<FerriteField>(parent.Map).Pulse(this);
     }
 
 }

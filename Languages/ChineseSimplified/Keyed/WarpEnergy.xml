@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Warp_BatteryRule>地图上所有血石电池共享一个扭曲能量网络。电池被摧毁或拆除时，储存的能量会丢失。它无法被移动，也不会随时间损失电量。</Lumen_Warp_BatteryRule>
+	<Lumen_Warp_Capacity>扭曲能量容量</Lumen_Warp_Capacity>
+	<Lumen_Warp_AltarReach>献祭祭坛范围</Lumen_Warp_AltarReach>
+	<Lumen_Warp_AltarReachDesc>收割扭曲能量的献祭只会为距离祭坛此范围内的电池充能。</Lumen_Warp_AltarReachDesc>
+	<Lumen_Warp_Stored>扭曲能量：{0} / {1}</Lumen_Warp_Stored>
+	<Lumen_Warp_AltarInRange>范围内有献祭祭坛：{0}</Lumen_Warp_AltarInRange>
+	<Lumen_Yes>是</Lumen_Yes>
+	<Lumen_No>否</Lumen_No>
+	<Lumen_Warp_Network>网络：{0} / {1}</Lumen_Warp_Network>
+	<Lumen_Warp_Depleted>已耗尽。储存达到{0}时恢复主动效果。</Lumen_Warp_Depleted>
+	<Lumen_Warp_Section>扭曲能量网络</Lumen_Warp_Section>
+	<Lumen_Warp_Hysteresis>从耗尽中恢复所需储存的扭曲能量</Lumen_Warp_Hysteresis>
+</LanguageData>

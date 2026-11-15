@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_FaintLight_Label>Faint light</Lumen_FaintLight_Label>
+	<Lumen_FaintLight_Text>Your colonists feel something here, a faint pull like light held in stone. Somewhere on this map, something is waiting to be found.</Lumen_FaintLight_Text>
+	<Lumen_Lumenstone_Veins>Veins</Lumen_Lumenstone_Veins>
+	<Lumen_Lumenstone_VeinFrequency>Vein frequency</Lumen_Lumenstone_VeinFrequency>
+	<Lumen_Lumenstone_VeinSizeMin>Minimum vein size</Lumen_Lumenstone_VeinSizeMin>
+	<Lumen_Lumenstone_VeinSizeMax>Maximum vein size</Lumen_Lumenstone_VeinSizeMax>
+	<Lumen_Lumenstone_VeinYield>Mining yield per cell</Lumen_Lumenstone_VeinYield>
+	<Lumen_Lumenstone_Surface>Surface</Lumen_Lumenstone_Surface>
+	<Lumen_Lumenstone_SurfaceChance>Chance per map (%)</Lumen_Lumenstone_SurfaceChance>
+	<Lumen_Lumenstone_StacksMin>Minimum stacks</Lumen_Lumenstone_StacksMin>
+	<Lumen_Lumenstone_StacksMax>Maximum stacks</Lumen_Lumenstone_StacksMax>
+	<Lumen_Lumenstone_StackSizeMin>Minimum stack size</Lumen_Lumenstone_StackSizeMin>
+	<Lumen_Lumenstone_StackSizeMax>Maximum stack size</Lumen_Lumenstone_StackSizeMax>
+	<Lumen_Lumenstone_Traders>Traders</Lumen_Lumenstone_Traders>
+	<Lumen_Lumenstone_StockChance>Stock chance (%)</Lumen_Lumenstone_StockChance>
+	<Lumen_Lumenstone_StockMin>Minimum stock</Lumen_Lumenstone_StockMin>
+	<Lumen_Lumenstone_StockMax>Maximum stock</Lumen_Lumenstone_StockMax>
+	<Lumen_Lumenstone_MarketValue>Market value (traders charge about seven times this)</Lumen_Lumenstone_MarketValue>
+</LanguageData>

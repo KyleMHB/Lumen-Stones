@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenstoneColumn.label>流明石柱</KM_LumenstoneColumn.label>
+	<KM_LumenstoneColumn.description>一根镶嵌着原生流明石的屋顶支柱。它发出淡白蓝色的光。\n\n发出淡白蓝色的光。有Ideology时，会提高同一房间内祭坛举行的流明石仪式的品质和产量。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenstoneColumn.description>
+	<KM_LumenstoneLamp.label>流明石灯</KM_LumenstoneLamp.label>
+	<KM_LumenstoneLamp.description>一块立在石座上的原生流明石晶体。它发出淡白蓝色的光。\n\n发出淡白蓝色的光。有Ideology时，会提高同一房间内祭坛举行的流明石仪式的品质和产量。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenstoneLamp.description>
+	<KM_LumenstoneWallLamp.label>流明石壁灯</KM_LumenstoneWallLamp.label>
+	<KM_LumenstoneWallLamp.description>一块装在墙架上的原生流明石晶体。它发出淡白蓝色的光。\n\n发出淡白蓝色的光。有Ideology时，会提高同一房间内祭坛举行的流明石仪式的品质和产量。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenstoneWallLamp.description>
+	<KM_LumenstonePylon.label>流明石塔</KM_LumenstonePylon.label>
+	<KM_LumenstonePylon.description>一根立在雕花基座上的高大原生流明石柱。完整的大块石柱很少见，大多数殖民地宁愿把它切开，也不会拿来展示。\n\n发出淡白蓝色的光。有Ideology时，会提高同一房间内祭坛举行的流明石仪式的品质和产量。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenstonePylon.description>
+	<KM_LumenstoneCluster.label>流明石晶簇</KM_LumenstoneCluster.label>
+	<KM_LumenstoneCluster.description>一组原生流明石晶体，安放在低矮的雕花底座中，保持着生长时的样子。\n\n发出淡白蓝色的光。有Ideology时，会提高同一房间内祭坛举行的流明石仪式的品质和产量。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenstoneCluster.description>
+</LanguageData>

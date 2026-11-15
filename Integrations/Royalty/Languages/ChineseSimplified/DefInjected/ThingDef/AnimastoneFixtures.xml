@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_LumenAnimastoneColumn.label>灵魂石柱</KM_LumenAnimastoneColumn.label>
+	<KM_LumenAnimastoneColumn.description>一根海沫青绿色的灵魂石柱。靠近时，能听到它在听觉边缘嗡鸣。\n\n部落或贵族出身的心灵施法者可以对着它冥想。小人在同一封闭房间内冥想时，房间支援会加快神经热恢复和心灵专注获取。每种装置类型只计算一次。</KM_LumenAnimastoneColumn.description>
+	<KM_AnimastoneLamp.label>灵魂石灯</KM_AnimastoneLamp.label>
+	<KM_AnimastoneLamp.description>一盏海沫青绿色的灵魂石灯。\n\n部落或贵族出身的心灵施法者可以对着它冥想。小人在同一封闭房间内冥想时，房间支援会加快神经热恢复和心灵专注获取。每种装置类型只计算一次。</KM_AnimastoneLamp.description>
+	<KM_AnimastoneWallLamp.label>灵魂石壁灯</KM_AnimastoneWallLamp.label>
+	<KM_AnimastoneWallLamp.description>一盏海沫青绿色的灵魂石壁灯。\n\n部落或贵族出身的心灵施法者可以对着它冥想。小人在同一封闭房间内冥想时，房间支援会加快神经热恢复和心灵专注获取。每种装置类型只计算一次。</KM_AnimastoneWallLamp.description>
+	<KM_AnimastonePylon.label>灵魂石塔</KM_AnimastonePylon.label>
+	<KM_AnimastonePylon.description>一座高耸的原生灵魂石晶体纪念碑。它的嗡鸣是灵魂石装置中最强的。\n\n部落或贵族出身的心灵施法者可以对着它冥想。小人在同一封闭房间内冥想时，房间支援会加快神经热恢复和心灵专注获取。每种装置类型只计算一次。有太阳能时，附近冥想的小人神经热恢复更快，范围内的灵魂树长出灵魂草更快。</KM_AnimastonePylon.description>
+	<KM_AnimastonePylon.comps.3.effect>小人在附近冥想时加快神经热恢复和灵魂草生长</KM_AnimastonePylon.comps.3.effect>
+	<KM_AnimastoneCluster.label>灵魂石晶簇</KM_AnimastoneCluster.label>
+	<KM_AnimastoneCluster.description>一簇海沫青绿色的灵魂石，在有人坐到旁边之前一直很安静。\n\n部落或贵族出身的心灵施法者可以对着它冥想。小人在同一封闭房间内冥想时，房间支援会加快神经热恢复和心灵专注获取。每种装置类型只计算一次。有太阳能时，会提高附近冥想小人的专注强度。</KM_AnimastoneCluster.description>
+	<KM_AnimastoneCluster.comps.3.effect>小人在附近冥想时提高冥想专注强度</KM_AnimastoneCluster.comps.3.effect>
+</LanguageData>

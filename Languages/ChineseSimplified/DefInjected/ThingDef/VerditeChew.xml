@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_VerditeChew.label>翠绿石嚼块</KM_VerditeChew.label>
+	<KM_VerditeChew.description>一木碗煮到能嚼动的翠绿石晶体。一位名叫Dusk的流浪者反复问这些晶体能不能吃，终于有人把它们煮了。如今在荒年里，农夫们满嘴是血地对它赞不绝口。\n\n它不提供营养，但能在两天内将饥饿速度减半。锋利的晶体会让牙龈出血，在效果持续期间影响心情、说话和社交影响。再吃一份会重置持续时间。</KM_VerditeChew.description>
+	<KM_VerditeChew.ingestible.ingestCommandString>吃{0}</KM_VerditeChew.ingestible.ingestCommandString>
+	<KM_VerditeChew.ingestible.ingestReportString>正在吃{0}。</KM_VerditeChew.ingestible.ingestReportString>
+</LanguageData>

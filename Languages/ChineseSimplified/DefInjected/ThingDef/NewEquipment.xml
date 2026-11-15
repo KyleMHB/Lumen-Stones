@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_VerditeBracer.label>活藤护腕</KM_VerditeBracer.label>
+	<KM_VerditeBracer.description>一个由活藤缠绕的翠绿石晶体护腕，藤蔓以穿戴者的体温而非胃里的食物为食。佩戴者会发现自己需要吃的东西少得多。\n\n穿戴在工具栏位时，饥饿速度降低33个百分点。与庇护石盾牌、庇护石盾牌护符和宁静石吊坠共享腰带栏位。研究翠绿石生长后，在锻造台使用100翠绿石和20钢铁制作，需要6级手工。</KM_VerditeBracer.description>
+	<KM_VitaliteCirclet.label>生命石头环</KM_VitaliteCirclet.label>
+	<KM_VitaliteCirclet.description>一顶镶有淡色生命石的钢制头环，贴在额前。戴上它的医者说，他们的手更稳了。\n\n佩戴时，免疫获取速度增加15个百分点，医疗护理质量增加10个百分点。不需要太阳能。研究生命石复苏后，在锻造台使用100生命石和20钢铁制作，需要6级手工。</KM_VitaliteCirclet.description>
+	<KM_LumenstoneStaff.label>流明石法杖</KM_LumenstoneStaff.label>
+	<KM_LumenstoneStaff.description>一根带有流明石击打核心的钢制长棍。它微弱的光会吸引听众，而它的挥击比看上去更难预判。\n\n装备时，社交影响增加15个百分点，近战闪避在原版闪避曲线之前增加8。有Ideology时，还会使转化能力增加15个百分点，持握它的仪式主持者会使流明石仪式品质增加10个百分点。研究锻造后，使用100流明石和20钢铁制作，需要6级手工。</KM_LumenstoneStaff.description>
+	<KM_LumenstoneStaff.tools.0.label>锤头</KM_LumenstoneStaff.tools.0.label>
+</LanguageData>

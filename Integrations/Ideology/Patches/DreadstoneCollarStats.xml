@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="SlaveSuppressionFallRate"]/parts</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="SlaveSuppressionFallRate"]/parts</xpath><value><li Class="LumenStones.StatPart_DreadstoneCollar" /></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/StatDef[defName="SlaveSuppressionFallRate"]</xpath><value><parts><li Class="LumenStones.StatPart_DreadstoneCollar" /></parts></value></nomatch>
+  </Operation>
+</Patch>

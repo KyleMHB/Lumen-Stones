@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Ritual_Section>Ритуал</Lumen_Ritual_Section>
+	<Lumen_Ritual_PoorYield>Выход при плохом исходе</Lumen_Ritual_PoorYield>
+	<Lumen_Ritual_SuccessYield>Выход при успехе</Lumen_Ritual_SuccessYield>
+	<Lumen_Ritual_ExceptionalYield>Выход при исключительном исходе</Lumen_Ritual_ExceptionalYield>
+	<Lumen_Ritual_CircleYield>Выход у люменового ритуального круга (% от выхода алтаря)</Lumen_Ritual_CircleYield>
+	<Lumen_Ritual_SupportYieldCap>Бонус к выходу от светильников при полной поддержке (%)</Lumen_Ritual_SupportYieldCap>
+	<Lumen_Ritual_ChunkCost>Расход каменных обломков</Lumen_Ritual_ChunkCost>
+	<Lumen_Ritual_Altar>Люменитовый алтарь</Lumen_Ritual_Altar>
+	<Lumen_Ritual_GoldQuantity>Количество золота</Lumen_Ritual_GoldQuantity>
+	<Lumen_Ritual_CircleSection>Ритуальный круг</Lumen_Ritual_CircleSection>
+	<Lumen_Ritual_NeedsHost>Нужен люменовый ритуальный круг или люменитовый алтарь игрока, а также Ideology.</Lumen_Ritual_NeedsHost>
+	<Lumen_Ritual_Underway>В этом поселении уже идёт другой ритуал люменита.</Lumen_Ritual_Underway>
+	<Lumen_Ritual_NeedsChunks>Нужно {0} доступных незапрещённых каменных обломков.</Lumen_Ritual_NeedsChunks>
+	<Lumen_Ritual_Ready>Ритуал люменита готов.</Lumen_Ritual_Ready>
+	<Lumen_Ritual_Fixtures>Люменитовые светильники: {0}</Lumen_Ritual_Fixtures>
+	<Lumen_Ritual_Label>ритуал люменита</Lumen_Ritual_Label>
+	<Lumen_Ritual_Desc>Участники выбираются в стандартном окне ритуала. Церемония длится 5000 тиков и расходует {0} каменных обломков. В зависимости от качества даёт {1}/{2}/{3} люменита с поправкой на участие (один: 50%, двое: 75%, ведущий и ещё двое: 100%). Каждое поселение восстанавливается {4} дн.</Lumen_Ritual_Desc>
+	<Lumen_Ritual_CircleNote>Круг даёт {0} от выхода люменита у алтаря и ничего не получает от комнаты или люменитовых светильников.</Lumen_Ritual_CircleNote>
+	<Lumen_Ritual_AltarNote>{0}. Люменитовые светильники в этой комнате в пределах {1} клеток повышают качество и выход.</Lumen_Ritual_AltarNote>
+	<Lumen_Ritual_Circle>Люменовый ритуальный круг</Lumen_Ritual_Circle>
+	<Lumen_Ritual_Result>Церемония дала {1}: {0}{2}. Ритуалы люменита в этом поселении теперь восстанавливаются {3} дн.</Lumen_Ritual_Result>
+	<Lumen_Ritual_ResultSupport>(светильники рядом: +{0})</Lumen_Ritual_ResultSupport>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Twinstone_Solar>Solar energy: {0} / {1}</Lumen_Twinstone_Solar>
+	<Lumen_Twinstone_Warp>Warp energy: {0} / {1}</Lumen_Twinstone_Warp>
+	<Lumen_Twinstone_Charging>Charging from this settlement's networks.</Lumen_Twinstone_Charging>
+	<Lumen_Twinstone_NoPawns>No implanted pawns to feed here.</Lumen_Twinstone_NoPawns>
+	<Lumen_Twinstone_SolarLastsOne>Solar lasts {0} days for {1} part</Lumen_Twinstone_SolarLastsOne>
+	<Lumen_Twinstone_SolarLastsMany>Solar lasts {0} days for {1} parts</Lumen_Twinstone_SolarLastsMany>
+	<Lumen_Twinstone_WarpLastsOne>Warp lasts {0} days for {1} part</Lumen_Twinstone_WarpLastsOne>
+	<Lumen_Twinstone_WarpLastsMany>Warp lasts {0} days for {1} parts</Lumen_Twinstone_WarpLastsMany>
+</LanguageData>

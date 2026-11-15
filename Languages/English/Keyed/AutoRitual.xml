@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_AutoRitual_On>Auto-start is on: whenever it is ready, the ceremony begins with a leader and up to two others from colonists who are awake, healthy and not under orders. Right-click to turn it off.</Lumen_AutoRitual_On>
+	<Lumen_AutoRitual_Off>Right-click to auto-start this ceremony whenever it is ready.</Lumen_AutoRitual_Off>
+	<Lumen_AutoRitual_Stop>Stop auto-starting the {0}</Lumen_AutoRitual_Stop>
+	<Lumen_AutoRitual_Start>Auto-start the {0} when ready</Lumen_AutoRitual_Start>
+	<Lumen_AutoRitual_TurnedOff>Auto-start off: {0}.</Lumen_AutoRitual_TurnedOff>
+	<Lumen_AutoRitual_TurnedOn>Auto-start on: {0}.</Lumen_AutoRitual_TurnedOn>
+	<Lumen_AutoRitual_Lumenstone>Lumenstone ritual</Lumen_AutoRitual_Lumenstone>
+	<Lumen_AutoRitual_Lunite>Lunite ritual</Lumen_AutoRitual_Lunite>
+	<Lumen_AutoRitual_Started>Auto-started the {0} at the {1}.</Lumen_AutoRitual_Started>
+</LanguageData>

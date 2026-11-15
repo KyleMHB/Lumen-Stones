@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_GlaciteBlade.label>Гляцитовый двуручный меч</KM_GlaciteBlade.label>
+	<KM_GlaciteBlade.description>Длинный широкий гляцитовый кристалл в железной рукояти, которым бьют двумя руками. Клинок так холоден, что обжигает голую кожу, поэтому его носят в подбитых ножнах.\n\nКаждый удар, ранящий живую плоть, охлаждает её, замедляя движения и ослабляя удары и уклонение в ближнем бою. Новые удары усиливают холод до онемения, а затем до окоченения; проходит он меньше чем за минуту. Им нельзя сражаться вместе со щитом. Изготавливается из 100 гляцита и 20 стали после исследования длинных клинков, ремесло 6.</KM_GlaciteBlade.description>
+	<KM_GlaciteBlade.tools.0.label>рукоять</KM_GlaciteBlade.tools.0.label>
+	<KM_GlaciteBlade.tools.1.label>острие</KM_GlaciteBlade.tools.1.label>
+	<KM_GlaciteBlade.tools.2.label>лезвие</KM_GlaciteBlade.tools.2.label>
+</LanguageData>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Serenite.label>宁静石</KM_Serenite.label>
+	<KM_Serenite.description>浸入烟叶的流明石保留了平静，去掉了迷雾。有宁静石的房间里没人会匆忙。\n\n一种柔和的薰衣草色晶体，带有深紫水晶色的核心，在流明仪式圈由流明石灌注而成。它能布置宁静的封闭房间。</KM_Serenite.description>
+	<KM_LumenSereniteColumn.label>宁静石柱</KM_LumenSereniteColumn.label>
+	<KM_LumenSereniteColumn.description>一根薰衣草色的宁静石柱。\n\n在封闭房间中提供宁静支援：房间支援会为床和座椅增加舒适度、为在场者提升心情，有太阳能时还能加快睡眠恢复。每种装置类型只计算一次。不需要燃料或电力。</KM_LumenSereniteColumn.description>
+	<KM_LumenSereniteColumn.comps.3.effect>睡眠恢复</KM_LumenSereniteColumn.comps.3.effect>
+	<KM_SereniteLamp.label>宁静石灯</KM_SereniteLamp.label>
+	<KM_SereniteLamp.description>一盏薰衣草色的宁静石灯。它的光线低沉而均匀，很适合卧室。\n\n在封闭房间中提供宁静支援：房间支援会为床和座椅增加舒适度、为在场者提升心情，有太阳能时还能加快睡眠恢复。每种装置类型只计算一次。不需要燃料或电力。</KM_SereniteLamp.description>
+	<KM_SereniteLamp.comps.2.effect>睡眠恢复</KM_SereniteLamp.comps.2.effect>
+	<KM_SereniteWallLamp.label>宁静石壁灯</KM_SereniteWallLamp.label>
+	<KM_SereniteWallLamp.description>一盏薰衣草色的宁静石壁灯。\n\n在封闭房间中提供宁静支援：房间支援会为床和座椅增加舒适度、为在场者提升心情，有太阳能时还能加快睡眠恢复。每种装置类型只计算一次。不需要燃料或电力。</KM_SereniteWallLamp.description>
+	<KM_SereniteWallLamp.comps.2.effect>睡眠恢复</KM_SereniteWallLamp.comps.2.effect>
+	<KM_SerenitePylon.label>宁静石庇护神龛</KM_SerenitePylon.label>
+	<KM_SerenitePylon.description>一座低矮的双格神龛，角形托架上放着三块精炼宁静石晶体。有它的卧室让人感到安稳。\n\n适合卧室。在封闭房间中提供宁静支援：房间支援会为床和座椅增加舒适度、为在场者提升心情，有太阳能时还能加快睡眠恢复。每种装置类型只计算一次。不需要燃料或电力。</KM_SerenitePylon.description>
+	<KM_SerenitePylon.comps.2.effect>睡眠恢复</KM_SerenitePylon.comps.2.effect>
+	<KM_SereniteCluster.label>宁静石抚慰晶簇</KM_SereniteCluster.label>
+	<KM_SereniteCluster.description>一簇宁静石晶体。\n\n在封闭房间中提供宁静支援：房间支援会为床和座椅增加舒适度、为在场者提升心情，有太阳能时还能加快睡眠恢复。每种装置类型只计算一次。不需要燃料或电力。</KM_SereniteCluster.description>
+	<KM_SereniteCluster.comps.2.effect>睡眠恢复</KM_SereniteCluster.comps.2.effect>
+</LanguageData>

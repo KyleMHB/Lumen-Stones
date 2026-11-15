@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_WorkHusk.label>劳役躯壳</KM_WorkHusk.label>
+	<KM_WorkHusk.description>一具靠扭曲能量维持行动的躯体。它感觉不到疼痛。失去能量时会瘫倒，能量恢复时会苏醒。</KM_WorkHusk.description>
+	<KM_WorkHusk.stages.0.label>已绑定</KM_WorkHusk.stages.0.label>
+	<KM_WorkHusk.stages.1.label>已瘫倒</KM_WorkHusk.stages.1.label>
+</LanguageData>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Overlight_SolarPerSchedule>每个光照周期的太阳能</Lumen_Overlight_SolarPerSchedule>
+	<Lumen_Overlight_Rule>一圈独立的金色植物光照，遵循每日日光灯时间表。植物仍保有通常的光照、温度和生长需求。装置普通的绿光始终开启。</Lumen_Overlight_Rule>
+	<Lumen_Overlight_Radius>植物光照半径</Lumen_Overlight_Radius>
+	<Lumen_Overlight_Hours>植物光照时段</Lumen_Overlight_Hours>
+	<Lumen_Overlight_HoursValue>{0}至{1}</Lumen_Overlight_HoursValue>
+	<Lumen_Overlight_SolarPerDayDesc>光照开启时均匀消耗。</Lumen_Overlight_SolarPerDayDesc>
+	<Lumen_Overlight_Status>植物光照：{0}</Lumen_Overlight_Status>
+	<Lumen_Overlight_Darklight>暗光：始终开启；植物光照已禁用</Lumen_Overlight_Darklight>
+	<Lumen_Overlight_On>开启</Lumen_Overlight_On>
+	<Lumen_Overlight_OffUntil>关闭，直到{0}</Lumen_Overlight_OffUntil>
+	<Lumen_Overlight_NotRunning>关闭，主动效果未运行</Lumen_Overlight_NotRunning>
+	<Lumen_Overlight_RadiusSetting>植物光照半径</Lumen_Overlight_RadiusSetting>
+</LanguageData>

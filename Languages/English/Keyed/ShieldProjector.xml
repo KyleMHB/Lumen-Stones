@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Projector_Section>Aegite shield projector</Lumen_Projector_Section>
+	<Lumen_Projector_RadiusSetting>Dome radius (tiles)</Lumen_Projector_RadiusSetting>
+	<Lumen_Projector_HitPointsSetting>Dome hit points</Lumen_Projector_HitPointsSetting>
+	<Lumen_Projector_Upkeep>Solar energy per day while up</Lumen_Projector_Upkeep>
+	<Lumen_Projector_SolarPerHpSetting>Solar energy per hit point recharged</Lumen_Projector_SolarPerHpSetting>
+	<Lumen_Projector_RechargeTicks>Ticks between recharged hit points</Lumen_Projector_RechargeTicks>
+	<Lumen_Projector_CrushCost>Hit points spent crushing a hostile drop pod or infestation</Lumen_Projector_CrushCost>
+	<Lumen_Projector_RebootTicks>Reboot time after breaking (ticks)</Lumen_Projector_RebootTicks>
+	<Lumen_Projector_EmpTicks>Time disarmed by EMP (ticks)</Lumen_Projector_EmpTicks>
+	<Lumen_Projector_Radius>Dome radius</Lumen_Projector_Radius>
+	<Lumen_Projector_RadiusDesc>Stops hostile ground projectiles, mortar shells and orbital bombardments fired from outside it. Colonists shoot out freely.</Lumen_Projector_RadiusDesc>
+	<Lumen_Projector_HitPoints>Shield hit points</Lumen_Projector_HitPoints>
+	<Lumen_Projector_HitPointsDesc>Reduced by what the dome stops. At 0 it shuts down and reboots for {0} days, then recharges every {1}.</Lumen_Projector_HitPointsDesc>
+	<Lumen_Projector_Crushes>Crushes</Lumen_Projector_Crushes>
+	<Lumen_Projector_CrushesValue>hostile drop pods and infestations</Lumen_Projector_CrushesValue>
+	<Lumen_Projector_CrushesDesc>A hostile raid drop pod or tunneling infestation that lands inside the dome is crushed, costing {0} shield hit points. Pawns inside a pod die and their gear is destroyed. Refugee, trade, resource and quest pods are not affected.</Lumen_Projector_CrushesDesc>
+	<Lumen_Projector_Emp>EMP</Lumen_Projector_Emp>
+	<Lumen_Projector_EmpValue>disarms briefly</Lumen_Projector_EmpValue>
+	<Lumen_Projector_EmpDesc>Keeps its hit points.</Lumen_Projector_EmpDesc>
+	<Lumen_Projector_UpkeepDesc>Spent while the dome is up.</Lumen_Projector_UpkeepDesc>
+	<Lumen_Projector_SolarPerHp>Solar energy per hit point</Lumen_Projector_SolarPerHp>
+	<Lumen_Projector_SolarPerHpDesc>Spent for each shield hit point recharged. Pair it with a Lunite stabilizer to keep it up through solar flares.</Lumen_Projector_SolarPerHpDesc>
+	<Lumen_Projector_Crushed>The Aegite shield dome crushed {0}.</Lumen_Projector_Crushed>
+	<Lumen_Projector_CrushedBroke>The Aegite shield dome crushed {0} and broke.</Lumen_Projector_CrushedBroke>
+	<Lumen_Projector_DropPod>a hostile drop pod</Lumen_Projector_DropPod>
+	<Lumen_Projector_Infestation>a tunneling infestation</Lumen_Projector_Infestation>
+</LanguageData>

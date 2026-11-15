@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Attunement.stages.0.failTriggers.0.desc>无法到达接受者。</KM_Attunement.stages.0.failTriggers.0.desc>
+	<KM_Attunement.stages.0.failTriggers.1.desc>调谐者在睡觉</KM_Attunement.stages.0.failTriggers.1.desc>
+	<KM_Attunement.roles.0.label>调谐者</KM_Attunement.roles.0.label>
+	<KM_Attunement.roles.1.label>接受者</KM_Attunement.roles.1.label>
+	<KM_Attunement.roles.1.missingDesc>带有休眠光明部件的殖民者、囚犯或奴隶</KM_Attunement.roles.1.missingDesc>
+	<KM_Binding.stages.0.failTriggers.0.desc>无法到达接受者。</KM_Binding.stages.0.failTriggers.0.desc>
+	<KM_Binding.stages.0.failTriggers.1.desc>调谐者在睡觉</KM_Binding.stages.0.failTriggers.1.desc>
+	<KM_Binding.roles.0.label>调谐者</KM_Binding.roles.0.label>
+	<KM_Binding.roles.1.label>接受者</KM_Binding.roles.1.label>
+	<KM_Binding.roles.1.missingDesc>带有休眠黑暗部件的殖民者、囚犯或奴隶</KM_Binding.roles.1.missingDesc>
+</LanguageData>

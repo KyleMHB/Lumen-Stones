@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Hollowstone.label>空虚石</KM_Hollowstone.label>
+	<KM_Hollowstone.description>精炼到能带走疼痛和恐惧的暗石。它不会为此回馈任何东西，所以靠近它的人会感到平静又略带空虚。\n\n一种漂白骨象牙色的晶体，带有深渊青色的空心核心，在献祭祭坛由暗石精炼而成。它的装置消耗扭曲能量来减轻疼痛、稳定心神。</KM_Hollowstone.description>
+	<KM_LumenHollowstoneColumn.label>空虚石柱</KM_LumenHollowstoneColumn.label>
+	<KM_LumenHollowstoneColumn.description>一根镶嵌着空虚石的屋顶支柱。\n\n发出淡象牙色光。扭曲能量：为同一房间内的殖民者和奴隶减轻疼痛。劳役躯壳不受影响。只有最强的空虚石装置生效。</KM_LumenHollowstoneColumn.description>
+	<KM_LumenHollowstoneColumn.comps.3.effect>减轻疼痛、稳定心神</KM_LumenHollowstoneColumn.comps.3.effect>
+	<KM_HollowstoneLamp.label>空虚石灯</KM_HollowstoneLamp.label>
+	<KM_HollowstoneLamp.description>一块立在石座上的空虚石晶体。\n\n发出昏暗的象牙色光，除此之外别无他用。</KM_HollowstoneLamp.description>
+	<KM_HollowstoneWallLamp.label>空虚石壁灯</KM_HollowstoneWallLamp.label>
+	<KM_HollowstoneWallLamp.description>一块装在墙架上的空虚石晶体。\n\n发出昏暗的象牙色光，除此之外别无他用。</KM_HollowstoneWallLamp.description>
+	<KM_HollowstoneCluster.label>空虚石晶簇</KM_HollowstoneCluster.label>
+	<KM_HollowstoneCluster.description>一组安放在低矮雕花底座中的空虚石晶体。它附近的争吵往往会不了了之。\n\n发出象牙色光。扭曲能量：为同一房间内的殖民者和奴隶减轻疼痛。劳役躯壳不受影响。只有最强的空虚石装置生效。它还能稳定心神，抵御精神崩溃。</KM_HollowstoneCluster.description>
+	<KM_HollowstoneCluster.comps.2.effect>减轻疼痛、稳定心神</KM_HollowstoneCluster.comps.2.effect>
+	<KM_HollowstonePylon.label>空虚石塔</KM_HollowstonePylon.label>
+	<KM_HollowstonePylon.description>一根立在雕花基座上的高大空虚石柱。在它附近工作的人不再抱怨自己的伤。\n\n发出象牙色光。扭曲能量：为同一房间内的殖民者和奴隶减轻疼痛。劳役躯壳不受影响。只有最强的空虚石装置生效。它还能稳定心神，抵御精神崩溃。</KM_HollowstonePylon.description>
+	<KM_HollowstonePylon.comps.3.effect>减轻疼痛、稳定心神</KM_HollowstonePylon.comps.3.effect>
+	<KM_HollowstoneGlaive.label>空虚石长柄刀</KM_HollowstoneGlaive.label>
+	<KM_HollowstoneGlaive.description>一把带有骨象牙色空虚石刃的沉重慢速长柄刀。持有者在早该倒下之后仍能继续战斗。\n\n持有者只感受到一半的疼痛，并能多承受四分之一的疼痛才会休克。不消耗扭曲能量。研究长剑和空虚石奴役后，使用100空虚石和20钢铁制作，需要6级手工。</KM_HollowstoneGlaive.description>
+	<KM_HollowstoneGlaive.tools.0.label>柄</KM_HollowstoneGlaive.tools.0.label>
+	<KM_HollowstoneGlaive.tools.1.label>刃</KM_HollowstoneGlaive.tools.1.label>
+</LanguageData>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Verdite.label>翠绿石</KM_Verdite.label>
+	<KM_Verdite.description>浸入干草的流明石吸收了绿意。作物会像向着太阳那样向它倾斜。\n\n一种春日橄榄石色的晶体，带有阳光般的金黄绿色核心，在流明仪式圈由流明石灌注而成。它的装置在室内外都能支援农业。</KM_Verdite.description>
+	<KM_LumenVerditeColumn.label>翠绿石柱</KM_LumenVerditeColumn.label>
+	<KM_LumenVerditeColumn.description>一根橄榄石色的柱子，石根环抱着底座。\n\n在室内或室外加快周围植物的生长和农活速度。只有最强的翠绿石来源生效。提供普通照明，而非植物光照。不需要燃料或电力。</KM_LumenVerditeColumn.description>
+	<KM_VerditeLamp.label>翠绿石灯</KM_VerditeLamp.label>
+	<KM_VerditeLamp.description>一盏立在石座上的橄榄石色翠绿石灯。飞蛾很喜欢它。\n\n仅提供普通照明，没有农业支援、植物光照或花粉效果。不发热，不需要燃料或电力。</KM_VerditeLamp.description>
+	<KM_VerditeWallLamp.label>翠绿石壁灯</KM_VerditeWallLamp.label>
+	<KM_VerditeWallLamp.description>一盏橄榄石色的翠绿石壁灯。\n\n仅提供普通照明，没有农业支援、植物光照或花粉效果。不发热，不需要燃料或电力。</KM_VerditeWallLamp.description>
+	<KM_VerditePylon.label>翠绿石尖塔</KM_VerditePylon.label>
+	<KM_VerditePylon.description>一座生长而非雕凿而成的翠绿石尖塔，由石叶和石根支撑直立。它会散发出一种边缘世界上没有任何植物产生的淡淡花粉。\n\n在室内或室外加快周围植物的生长和农活速度。只有最强的翠绿石来源生效。有太阳能时，一圈独立的植物光照会遵循每日日光灯时间表。绿色光环：农业支援；金色光环：植物光照。</KM_VerditePylon.description>
+	<KM_VerditePylon.comps.2.effect>植物光照</KM_VerditePylon.comps.2.effect>
+	<KM_VerditeCluster.label>翠绿石尖晶簇</KM_VerditeCluster.label>
+	<KM_VerditeCluster.description>一小丛翠绿石尖晶，没有外壳，好让它们继续生长。它们并没有长，但似乎有些帮助。\n\n在室内或室外加快周围植物的生长和农活速度。只有最强的翠绿石来源生效。有太阳能时，一圈独立的植物光照会遵循每日日光灯时间表。绿色光环：农业支援；金色光环：植物光照。</KM_VerditeCluster.description>
+	<KM_VerditeCluster.comps.2.effect>植物光照</KM_VerditeCluster.comps.2.effect>
+</LanguageData>

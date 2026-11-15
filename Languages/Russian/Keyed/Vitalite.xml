@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Vitalite_HealingContribution>Вклад в лечение (%)</Lumen_Vitalite_HealingContribution>
+	<Lumen_Vitalite_ImmunityContribution>Вклад в иммунитет (%)</Lumen_Vitalite_ImmunityContribution>
+	<Lumen_Vitalite_InfectionContribution>Защита от заражения (%)</Lumen_Vitalite_InfectionContribution>
+	<Lumen_Vitalite_PatientRule>Действует на пациентов, отдыхающих в кровати в той же закрытой комнате с крышей.</Lumen_Vitalite_PatientRule>
+	<Lumen_Vitalite_PatientDrain>Тратит {0} солнечной энергии в день на каждого раненого пациента, которому помогает.</Lumen_Vitalite_PatientDrain>
+	<Lumen_Vitalite_SupportWeightDesc>Доля этого светильника в поддержке комнаты виталитом.</Lumen_Vitalite_SupportWeightDesc>
+	<Lumen_Vitalite_Immunity>Иммунитет при полной поддержке</Lumen_Vitalite_Immunity>
+	<Lumen_Info_ScalesWithSupport>Зависит от поддержки комнаты.</Lumen_Info_ScalesWithSupport>
+	<Lumen_Vitalite_Healing>Лечение при полной поддержке</Lumen_Vitalite_Healing>
+	<Lumen_Info_ScalesWithActiveSupport>Зависит от поддержки комнаты светильниками с включённым активным эффектом.</Lumen_Info_ScalesWithActiveSupport>
+	<Lumen_Vitalite_Infection>Защита от заражения при полной поддержке</Lumen_Vitalite_Infection>
+	<Lumen_Vitalite_InfectionDesc>Снижает шанс заражения новой раны. На имеющиеся заражения не влияет.</Lumen_Vitalite_InfectionDesc>
+	<Lumen_Vitalite_BedRule>Действует на отдыхающего в этой кровати. Поддержка комнаты добавляется сверху.</Lumen_Vitalite_BedRule>
+	<Lumen_Vitalite_OccupantImmunity>Иммунитет лежащего</Lumen_Vitalite_OccupantImmunity>
+	<Lumen_Vitalite_OccupantHealing>Лечение лежащего</Lumen_Vitalite_OccupantHealing>
+	<Lumen_Vitalite_OccupantHealingDesc>Действует на раненого лежащего.</Lumen_Vitalite_OccupantHealingDesc>
+	<Lumen_Vitalite_OccupantInfection>Защита лежащего от заражения</Lumen_Vitalite_OccupantInfection>
+	<Lumen_Vitalite_OccupantInfectionDesc>Сочетается с защитой комнаты мультипликативно.</Lumen_Vitalite_OccupantInfectionDesc>
+	<Lumen_Vitalite_Inspect>Поддержка комнаты: {0}. Иммунитет +{1}, лечение +{2}, защита от заражения {3}</Lumen_Vitalite_Inspect>
+	<Lumen_Info_Missing>Не хватает: {0}</Lumen_Info_Missing>
+	<Lumen_Vitalite_Occupant>{0}: иммунитет +{1}, лечение +{2}, шанс заражения -{3}</Lumen_Vitalite_Occupant>
+	<Lumen_Vitalite_Support>Поддержка виталитом: +{0}</Lumen_Vitalite_Support>
+	<Lumen_Vitalite_ImmunityGain>Прирост иммунитета: +{0}</Lumen_Vitalite_ImmunityGain>
+	<Lumen_Vitalite_WoundHealing>Заживление ран: +{0}</Lumen_Vitalite_WoundHealing>
+	<Lumen_Vitalite_InfectionChance>Шанс заражения: -{0}</Lumen_Vitalite_InfectionChance>
+	<Lumen_Vitalite_NeedsInjury>Для лечения и защиты от заражения нужна рана и работающая солнечная энергия.</Lumen_Vitalite_NeedsInjury>
+	<Lumen_Vitalite_PatientDrainSetting>Солнечная энергия в день на каждого лечимого раненого пациента</Lumen_Vitalite_PatientDrainSetting>
+	<Lumen_Vitalite_HealingCap>Предел лечения в комнате (%)</Lumen_Vitalite_HealingCap>
+	<Lumen_Vitalite_ImmunityCap>Предел иммунитета в комнате (%)</Lumen_Vitalite_ImmunityCap>
+	<Lumen_Vitalite_InfectionCap>Предел защиты от заражения в комнате (%)</Lumen_Vitalite_InfectionCap>
+</LanguageData>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sunlight_Unrelieved>unrelieved</Lumen_Sunlight_Unrelieved>
+	<Lumen_Sunlight_Gaining>Gaining sunlight: {0} an hour.</Lumen_Sunlight_Gaining>
+	<Lumen_Sunlight_Losing>Without sunlight: losing {0} an hour.</Lumen_Sunlight_Losing>
+	<Lumen_Sunlight_Relieved>Solar energy reduces the hunger by {0}.</Lumen_Sunlight_Relieved>
+	<Lumen_Sunlight_UnrelievedDesc>Unrelieved: no Solar energy reached it, so the hunger is at full strength.</Lumen_Sunlight_UnrelievedDesc>
+</LanguageData>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Sunlight_Unrelieved>未缓解</Lumen_Sunlight_Unrelieved>
+	<Lumen_Sunlight_Gaining>吸收阳光：每小时{0}。</Lumen_Sunlight_Gaining>
+	<Lumen_Sunlight_Losing>无阳光：每小时损失{0}。</Lumen_Sunlight_Losing>
+	<Lumen_Sunlight_Relieved>太阳能使饥饿减轻{0}。</Lumen_Sunlight_Relieved>
+	<Lumen_Sunlight_UnrelievedDesc>未缓解：没有太阳能送达，饥饿处于最大强度。</Lumen_Sunlight_UnrelievedDesc>
+</LanguageData>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cooldown_Attunement>调谐正在恢复：剩余{0}（本定居点所有圆环和祭坛共享）。</Lumen_Cooldown_Attunement>
+	<Lumen_Cooldown_Binding>束缚正在恢复：剩余{0}（本定居点所有祭坛共享）。</Lumen_Cooldown_Binding>
+	<Lumen_Cooldown_LumenstoneRitual>流明石仪式正在恢复：剩余{0}（本定居点所有圆环和祭坛共享）。</Lumen_Cooldown_LumenstoneRitual>
+	<Lumen_Cooldown_Lunite>月石转化正在恢复：剩余{0}（本定居点所有圆环和祭坛共享）。</Lumen_Cooldown_Lunite>
+	<Lumen_Cooldown_Crystallize>凝结暗石正在恢复：剩余{0}（本定居点所有祭坛共享）。</Lumen_Cooldown_Crystallize>
+	<Lumen_Cooldown_Harvest>收割扭曲能量正在恢复：剩余{0}（本定居点所有祭坛共享）。</Lumen_Cooldown_Harvest>
+	<Lumen_Cooldown_RaiseHusk>唤起劳役躯壳正在恢复：剩余{0}（本定居点所有祭坛共享）。</Lumen_Cooldown_RaiseHusk>
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_SunstoneAxe_Section>太阳石斧</Lumen_SunstoneAxe_Section>
+	<Lumen_SunstoneAxe_Bane>对异象实体和变异体的近战伤害倍率</Lumen_SunstoneAxe_Bane>
+	<Lumen_SunstoneAxe_ProcChance>近战造成伤害时的致盲和眩晕几率（%）</Lumen_SunstoneAxe_ProcChance>
+	<Lumen_SunstoneAxe_ProcChanceUnnatural>对异象实体和变异体的致盲和眩晕几率（%）</Lumen_SunstoneAxe_ProcChanceUnnatural>
+	<Lumen_SunstoneAxe_BlindTicks>太阳致盲持续时间（刻）</Lumen_SunstoneAxe_BlindTicks>
+	<Lumen_SunstoneAxe_StunTicks>闪光眩晕持续时间（刻）</Lumen_SunstoneAxe_StunTicks>
+</LanguageData>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_MakeGlaciteImplant.label>изготовить гляцитовый имплант</KM_MakeGlaciteImplant.label>
+	<KM_MakeGlaciteImplant.description>Сделать гляцитовый имплант из гляцита и компонента.</KM_MakeGlaciteImplant.description>
+	<KM_MakeGlaciteImplant.jobString>Изготавливает гляцитовый имплант.</KM_MakeGlaciteImplant.jobString>
+	<KM_InstallGlaciteImplant.label>установить гляцитовый имплант</KM_InstallGlaciteImplant.label>
+	<KM_InstallGlaciteImplant.description>Установить гляцитовый имплант. Он спит, пока его не пробудит настройка.</KM_InstallGlaciteImplant.description>
+	<KM_InstallGlaciteImplant.jobString>Устанавливает гляцитовый имплант.</KM_InstallGlaciteImplant.jobString>
+	<KM_RemoveGlaciteImplant.label>удалить гляцитовый имплант</KM_RemoveGlaciteImplant.label>
+	<KM_RemoveGlaciteImplant.description>Удалить гляцитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveGlaciteImplant.description>
+	<KM_RemoveGlaciteImplant.jobString>Удаляет гляцитовый имплант.</KM_RemoveGlaciteImplant.jobString>
+	<KM_MakeVerditeImplant.label>изготовить вердитовый имплант</KM_MakeVerditeImplant.label>
+	<KM_MakeVerditeImplant.description>Сделать вердитовый имплант из вердита и компонента.</KM_MakeVerditeImplant.description>
+	<KM_MakeVerditeImplant.jobString>Изготавливает вердитовый имплант.</KM_MakeVerditeImplant.jobString>
+	<KM_InstallVerditeImplant.label>установить вердитовый имплант</KM_InstallVerditeImplant.label>
+	<KM_InstallVerditeImplant.description>Установить вердитовый имплант. Он спит, пока его не пробудит настройка.</KM_InstallVerditeImplant.description>
+	<KM_InstallVerditeImplant.jobString>Устанавливает вердитовый имплант.</KM_InstallVerditeImplant.jobString>
+	<KM_RemoveVerditeImplant.label>удалить вердитовый имплант</KM_RemoveVerditeImplant.label>
+	<KM_RemoveVerditeImplant.description>Удалить вердитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveVerditeImplant.description>
+	<KM_RemoveVerditeImplant.jobString>Удаляет вердитовый имплант.</KM_RemoveVerditeImplant.jobString>
+	<KM_MakeVitaliteImplant.label>изготовить виталитовый имплант</KM_MakeVitaliteImplant.label>
+	<KM_MakeVitaliteImplant.description>Сделать виталитовый имплант из виталита и компонента.</KM_MakeVitaliteImplant.description>
+	<KM_MakeVitaliteImplant.jobString>Изготавливает виталитовый имплант.</KM_MakeVitaliteImplant.jobString>
+	<KM_InstallVitaliteImplant.label>установить виталитовый имплант</KM_InstallVitaliteImplant.label>
+	<KM_InstallVitaliteImplant.description>Установить виталитовый имплант. Он спит, пока его не пробудит настройка.</KM_InstallVitaliteImplant.description>
+	<KM_InstallVitaliteImplant.jobString>Устанавливает виталитовый имплант.</KM_InstallVitaliteImplant.jobString>
+	<KM_RemoveVitaliteImplant.label>удалить виталитовый имплант</KM_RemoveVitaliteImplant.label>
+	<KM_RemoveVitaliteImplant.description>Удалить виталитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveVitaliteImplant.description>
+	<KM_RemoveVitaliteImplant.jobString>Удаляет виталитовый имплант.</KM_RemoveVitaliteImplant.jobString>
+	<KM_MakeSereniteImplant.label>изготовить: серенитовый имплант</KM_MakeSereniteImplant.label>
+	<KM_MakeSereniteImplant.description>Сделать серенитовый имплант из серенита и компонента.</KM_MakeSereniteImplant.description>
+	<KM_MakeSereniteImplant.jobString>Изготавливает: серенитовый имплант.</KM_MakeSereniteImplant.jobString>
+	<KM_InstallSereniteImplant.label>установить: серенитовый имплант</KM_InstallSereniteImplant.label>
+	<KM_InstallSereniteImplant.description>Установить: серенитовый имплант. Спит, пока его не пробудит настройка.</KM_InstallSereniteImplant.description>
+	<KM_InstallSereniteImplant.jobString>Устанавливает: серенитовый имплант.</KM_InstallSereniteImplant.jobString>
+	<KM_RemoveSereniteImplant.label>удалить: серенитовый имплант</KM_RemoveSereniteImplant.label>
+	<KM_RemoveSereniteImplant.description>Удалить: серенитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveSereniteImplant.description>
+	<KM_RemoveSereniteImplant.jobString>Удаляет: серенитовый имплант.</KM_RemoveSereniteImplant.jobString>
+	<KM_MakeAegiteImplant.label>изготовить: эгитовый имплант</KM_MakeAegiteImplant.label>
+	<KM_MakeAegiteImplant.description>Сделать эгитовый имплант из эгита и компонента.</KM_MakeAegiteImplant.description>
+	<KM_MakeAegiteImplant.jobString>Изготавливает: эгитовый имплант.</KM_MakeAegiteImplant.jobString>
+	<KM_InstallAegiteImplant.label>установить: эгитовый имплант</KM_InstallAegiteImplant.label>
+	<KM_InstallAegiteImplant.description>Установить: эгитовый имплант. Спит, пока его не пробудит настройка.</KM_InstallAegiteImplant.description>
+	<KM_InstallAegiteImplant.jobString>Устанавливает: эгитовый имплант.</KM_InstallAegiteImplant.jobString>
+	<KM_RemoveAegiteImplant.label>удалить: эгитовый имплант</KM_RemoveAegiteImplant.label>
+	<KM_RemoveAegiteImplant.description>Удалить: эгитовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveAegiteImplant.description>
+	<KM_RemoveAegiteImplant.jobString>Удаляет: эгитовый имплант.</KM_RemoveAegiteImplant.jobString>
+	<KM_MakeFerriteImplant.label>изготовить: ферритовый имплант</KM_MakeFerriteImplant.label>
+	<KM_MakeFerriteImplant.description>Сделать ферритовый имплант из феррита и компонента.</KM_MakeFerriteImplant.description>
+	<KM_MakeFerriteImplant.jobString>Изготавливает: ферритовый имплант.</KM_MakeFerriteImplant.jobString>
+	<KM_InstallFerriteImplant.label>установить: ферритовый имплант</KM_InstallFerriteImplant.label>
+	<KM_InstallFerriteImplant.description>Установить: ферритовый имплант. Спит, пока его не пробудит настройка.</KM_InstallFerriteImplant.description>
+	<KM_InstallFerriteImplant.jobString>Устанавливает: ферритовый имплант.</KM_InstallFerriteImplant.jobString>
+	<KM_RemoveFerriteImplant.label>удалить: ферритовый имплант</KM_RemoveFerriteImplant.label>
+	<KM_RemoveFerriteImplant.description>Удалить: ферритовый имплант. Спящий имплант извлекается целым; активный рассыпается в необработанный люменит.</KM_RemoveFerriteImplant.description>
+	<KM_RemoveFerriteImplant.jobString>Удаляет: ферритовый имплант.</KM_RemoveFerriteImplant.jobString>
+	<KM_MakeFerriteArm.label>изготовить: ферритовая рука</KM_MakeFerriteArm.label>
+	<KM_MakeFerriteArm.description>Вырастить ферритовая рука из феррита и компонента.</KM_MakeFerriteArm.description>
+	<KM_MakeFerriteArm.jobString>Изготавливает: ферритовая рука.</KM_MakeFerriteArm.jobString>
+	<KM_InstallFerriteArm.label>установить: ферритовая рука</KM_InstallFerriteArm.label>
+	<KM_InstallFerriteArm.description>Установить: ферритовая рука. До пробуждения настройкой работает как простой протез.</KM_InstallFerriteArm.description>
+	<KM_InstallFerriteArm.jobString>Устанавливает: ферритовая рука.</KM_InstallFerriteArm.jobString>
+	<KM_MakeFerriteLeg.label>изготовить: ферритовая нога</KM_MakeFerriteLeg.label>
+	<KM_MakeFerriteLeg.description>Вырастить ферритовая нога из феррита и компонента.</KM_MakeFerriteLeg.description>
+	<KM_MakeFerriteLeg.jobString>Изготавливает: ферритовая нога.</KM_MakeFerriteLeg.jobString>
+	<KM_InstallFerriteLeg.label>установить: ферритовая нога</KM_InstallFerriteLeg.label>
+	<KM_InstallFerriteLeg.description>Установить: ферритовая нога. До пробуждения настройкой работает как простой протез.</KM_InstallFerriteLeg.description>
+	<KM_InstallFerriteLeg.jobString>Устанавливает: ферритовая нога.</KM_InstallFerriteLeg.jobString>
+	<KM_MakeVitaliteHeart.label>изготовить: виталитовое сердце</KM_MakeVitaliteHeart.label>
+	<KM_MakeVitaliteHeart.description>Вырастить виталитовое сердце из виталита и компонента.</KM_MakeVitaliteHeart.description>
+	<KM_MakeVitaliteHeart.jobString>Изготавливает: виталитовое сердце.</KM_MakeVitaliteHeart.jobString>
+	<KM_InstallVitaliteHeart.label>установить: виталитовое сердце</KM_InstallVitaliteHeart.label>
+	<KM_InstallVitaliteHeart.description>Установить: виталитовое сердце. До пробуждения настройкой работает как простой протез.</KM_InstallVitaliteHeart.description>
+	<KM_InstallVitaliteHeart.jobString>Устанавливает: виталитовое сердце.</KM_InstallVitaliteHeart.jobString>
+	<KM_MakeAegiteEye.label>изготовить: эгитовый глаз</KM_MakeAegiteEye.label>
+	<KM_MakeAegiteEye.description>Вырастить эгитовый глаз из эгита и компонента.</KM_MakeAegiteEye.description>
+	<KM_MakeAegiteEye.jobString>Изготавливает: эгитовый глаз.</KM_MakeAegiteEye.jobString>
+	<KM_InstallAegiteEye.label>установить: эгитовый глаз</KM_InstallAegiteEye.label>
+	<KM_InstallAegiteEye.description>Установить: эгитовый глаз. До пробуждения настройкой работает как простой протез.</KM_InstallAegiteEye.description>
+	<KM_InstallAegiteEye.jobString>Устанавливает: эгитовый глаз.</KM_InstallAegiteEye.jobString>
+	<KM_MakeSunstoneCell.label>изготовить элемент из солнечного камня</KM_MakeSunstoneCell.label>
+	<KM_MakeSunstoneCell.description>Запечатать солнечный камень в элемент.</KM_MakeSunstoneCell.description>
+	<KM_MakeSunstoneCell.jobString>Изготавливает элемент из солнечного камня.</KM_MakeSunstoneCell.jobString>
+</LanguageData>

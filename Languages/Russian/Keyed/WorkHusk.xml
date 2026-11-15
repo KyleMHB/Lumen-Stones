@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Husk_Section>Рабочие оболочки</Lumen_Husk_Section>
+	<Lumen_Husk_RaiseCost>Энергия варпа на поднятие оболочки</Lumen_Husk_RaiseCost>
+	<Lumen_Husk_CostPerDay>Энергия варпа в день на оболочку</Lumen_Husk_CostPerDay>
+	<Lumen_Husk_Cooldown>Перезарядка поднятия (дн.)</Lumen_Husk_Cooldown>
+	<Lumen_Husk_NeedsAltar>Нужен жертвенный алтарь игрока и Ideology.</Lumen_Husk_NeedsAltar>
+	<Lumen_Husk_NeedsAnomaly>Требуется Anomaly.</Lumen_Husk_NeedsAnomaly>
+	<Lumen_SwitchedOff>Выключено в настройках мода.</Lumen_SwitchedOff>
+	<Lumen_Husk_SacrificeUnderway>В этом поселении уже идёт другое жертвоприношение.</Lumen_Husk_SacrificeUnderway>
+	<Lumen_Husk_NeedsPylon>Нужен работающий включённый пилон из пустокамня без оболочки.</Lumen_Husk_NeedsPylon>
+	<Lumen_RequiresWarp>Нужно {0} энергии варпа.</Lumen_RequiresWarp>
+	<Lumen_Husk_None>Рабочая оболочка: нет</Lumen_Husk_None>
+	<Lumen_Husk_Bound>Рабочая оболочка: {0}</Lumen_Husk_Bound>
+	<Lumen_Husk_Collapsed>Рабочая оболочка: {0} (рухнула)</Lumen_Husk_Collapsed>
+	<Lumen_Husk_Rebind>Перепривязать оболочку</Lumen_Husk_Rebind>
+	<Lumen_Husk_RebindDesc>Привязать к этому пилону рухнувшую рабочую оболочку без пилона. Она очнётся, когда пилон получит энергию.</Lumen_Husk_RebindDesc>
+	<Lumen_Husk_NoneToBind>Нет рухнувших оболочек без пилона</Lumen_Husk_NoneToBind>
+	<Lumen_Husk_PylonNeedsWarp>Этому пилону нужна энергия варпа и включённый активный эффект.</Lumen_Husk_PylonNeedsWarp>
+	<Lumen_Husk_Rose>{0} поднимается рабочей оболочкой и привязан к пилону из пустокамня.</Lumen_Husk_Rose>
+	<Lumen_Husk_DidNotRise>Тело не поднялось. Потрачено {0} энергии варпа.</Lumen_Husk_DidNotRise>
+</LanguageData>

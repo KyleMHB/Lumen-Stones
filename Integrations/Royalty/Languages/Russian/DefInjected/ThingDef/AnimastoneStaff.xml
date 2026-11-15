@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_AnimastoneStaff.label>Посох из анимакамня</KM_AnimastoneStaff.label>
+	<KM_AnimastoneStaff.description>Деревянный посох фокуса, увенчанный анимакамнем. Он принимает на себя часть напряжения от пси-способностей.\n\nКак дубина он плох, но в руках снижает получаемый нейронагрев на 20% и повышает предел нейронагрева на 15. Удар в ближнем бою с уроном может ненадолго оглушить цель, с шансом, растущим вместе с пси-чувствительностью владельца. Не требует солнечной энергии. Изготавливается из 60 анимакамня и 20 дерева после исследования «Настройка на аниму», ремесло 6.</KM_AnimastoneStaff.description>
+	<KM_AnimastoneStaff.tools.0.label>древко</KM_AnimastoneStaff.tools.0.label>
+	<KM_AnimastoneStaff.tools.1.label>боёк</KM_AnimastoneStaff.tools.1.label>
+</LanguageData>

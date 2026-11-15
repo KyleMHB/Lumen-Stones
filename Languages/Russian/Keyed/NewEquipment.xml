@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cudgel_Section>Дубина из камня ужаса</Lumen_Cudgel_Section>
+	<Lumen_Cudgel_AgonyCap>Максимум стаков агонии</Lumen_Cudgel_AgonyCap>
+	<Lumen_Cudgel_AgonyTicks>Длительность агонии после последнего удара (тиков)</Lumen_Cudgel_AgonyTicks>
+	<Lumen_Collar_Section>Ошейник из камня ужаса</Lumen_Collar_Section>
+	<Lumen_Collar_Suppression>Скорость падения подавления раба при ношении (%)</Lumen_Collar_Suppression>
+	<Lumen_Collar_BreakFactor>Множитель редкости восстаний рабов при ношении</Lumen_Collar_BreakFactor>
+	<Lumen_Knife_Section>Ритуальный нож из тёмного камня</Lumen_Knife_Section>
+	<Lumen_Knife_BlightCap>Максимум стаков увядания души</Lumen_Knife_BlightCap>
+	<Lumen_Knife_BlightTicks>Длительность увядания души после последнего удара (тиков)</Lumen_Knife_BlightTicks>
+	<Lumen_Knife_HarvestShare>Энергия варпа от казни (% от успешного сбора)</Lumen_Knife_HarvestShare>
+	<Lumen_Setting_LeaderQuality>Бонус к качеству ритуала, если ведущий держит его (%)</Lumen_Setting_LeaderQuality>
+	<Lumen_Staff_Section>Посох из люменита</Lumen_Staff_Section>
+	<Lumen_Weapon_Off>выключено в настройках мода</Lumen_Weapon_Off>
+	<Lumen_Weapon_Equipped>в руках</Lumen_Weapon_Equipped>
+	<Lumen_Weapon_NotEquipped>не в руках</Lumen_Weapon_NotEquipped>
+	<Lumen_Weapon_Tooltip>Ведущий ритуала должен держать оружие из подходящего камня.</Lumen_Weapon_Tooltip>
+</LanguageData>

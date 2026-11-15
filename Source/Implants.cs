@@ -24,7 +24,7 @@ public static class ImplantRules
     // The Implants tab: shared rules, the portable cells, then one section per implant or prosthetic.
     internal static void DeclareTunables(TunableScope s)
     {
-        var shared = s.In("Shared rules");
+        var shared = s.In("Lumen_Implant_SharedSection".Translate());
         var recipes = DefDatabase<RecipeDef>.AllDefsListForReading
             .Where(r => r.products?.Count == 1 && r.products[0].thingDef.GetModExtension<CrystalPartItem>() != null).ToList();
         if (recipes.Count == 0) return;
@@ -32,28 +32,35 @@ public static class ImplantRules
         {
             var matching = recipes.Where(r => r.products[0].thingDef.GetModExtension<CrystalPartItem>().prosthetic == prosthetic).ToList();
             if (matching.Count == 0) continue;
-            shared.Add(prosthetic ? "Prosthetics.stoneCost" : "Implants.stoneCost", (prosthetic ? "Prosthetic" : "Implant") + " stone cost",
+            shared.Add(prosthetic ? "Prosthetics.stoneCost" : "Implants.stoneCost", (prosthetic ? "Lumen_Implant_ProstheticCost" : "Lumen_Implant_ImplantCost").Translate(),
                 matching[0].ingredients[0].GetBaseCount(), v => matching.ForEach(r => r.ingredients[0].SetBaseCount(v)), Limit.Integer(1));
         }
-        shared.Add("Prosthetics.dormantEfficiency", "Dormant prosthetic efficiency (%)", DormantEfficiency,
+        shared.Add("Prosthetics.dormantEfficiency", "Lumen_Implant_DormantEfficiency".Translate(), DormantEfficiency,
             v => DormantEfficiency = v, Limit.Percent(5));
-        shared.Add("Implants.attunementCooldownDays", "Attunement cooldown (days)", AttunementCooldownDays,
+        shared.Add("Implants.attunementCooldownDays", "Lumen_Implant_AttunementCooldown".Translate(), AttunementCooldownDays,
             v => AttunementCooldownDays = v);
         if (ModsConfig.IdeologyActive)
-            shared.Add("Implants.bindingCooldownDays", "Binding cooldown (days)", BindingCooldownDays,
+            shared.Add("Implants.bindingCooldownDays", "Lumen_Implant_BindingCooldown".Translate(), BindingCooldownDays,
                 v => BindingCooldownDays = v);
-        shared.Add("Implants.drainPerDay", "Solar or Warp energy per active part per day", DrainPerDay,
+        shared.Add("Implants.drainPerDay", "Lumen_Implant_Drain".Translate(), DrainPerDay,
             v => DrainPerDay = v);
-        shared.Add("Implants.reliefFactor", "Drawback reduction while energy is paid (%)", ReliefFactor,
+        shared.Add("Implants.reliefFactor", "Lumen_Implant_Relief".Translate(), ReliefFactor,
             v => ReliefFactor = v, Limit.Percent());
-        shared.Add("Implants.pairedBenefitFactor", "Benefit with both a light and a dark implant (%)", PairedBenefitFactor,
+        shared.Add("Implants.pairedBenefitFactor", "Lumen_Implant_Paired".Translate(), PairedBenefitFactor,
             v => PairedBenefitFactor = v, Limit.Percent());
 
         // One capacity for both cells, so a Twinstone cell's Solar pool matches a Sunstone cell's.
         var cells = TwinstoneCell.Defs.Select(d => d.GetCompProperties<CompProperties_Twinstone>()).ToList();
         if (cells.Count > 0)
-            s.In("Portable cells").Add("Twinstone.capacity", "Capacity of each pool (Sunstone and Twinstone cells)", cells[0].capacity,
+        {
+            var portable = s.In("Lumen_Implant_CellsSection".Translate());
+            portable.Add("Twinstone.capacity", "Lumen_Implant_CellCapacity".Translate(), cells[0].capacity,
                 v => cells.ForEach(c => c.capacity = v), Limit.Number(1));
+            portable.Add("Twinstone.chargeAbove", "Lumen_Implant_ChargeAbove".Translate(), TwinstoneCell.ChargeAbove,
+                v => TwinstoneCell.ChargeAbove = v, Limit.Percent());
+        }
+        // The cells hold Sunstone's energy, so like implant parts they follow the Sunstone switch rather than having their own.
+        foreach (var cell in TwinstoneCell.Defs) s.Gate(cell.defName, "Sunstone");
 
         foreach (var recipe in recipes)
         {
@@ -64,78 +71,43 @@ public static class ImplantRules
             var hediff = DefDatabase<HediffDef>.AllDefsListForReading.FirstOrDefault(h => h.spawnThingOnRemoved == item);
             var props = hediff?.CompProps<HediffCompProperties_Attunement>();
             if (props == null) continue;
-            var part = s.In(hediff.LabelCap);
+            var part = s.In(hediff.LabelCap).PerItem();
             string key = hediff.defName;
             if (hediff.addedPartProps != null)
-                part.Add(key + ".efficiency", "Part efficiency (%)", hediff.addedPartProps.partEfficiency,
+                part.Add(key + ".efficiency", "Lumen_Implant_Efficiency".Translate(), hediff.addedPartProps.partEfficiency,
                     v => hediff.addedPartProps.partEfficiency = v, Limit.Percent(5));
-            DeclareStage(part, key + ".benefit", "Benefit", props.benefit);
+            StageTunables.Declare(part, key + ".benefit", "Lumen_Implant_Benefit".Translate(), props.benefit);
             if (props.reserve?.GetModExtension<SunlightReserveExtension>() is { } reserve)
             {
-                part.Add(key + ".hoursToFill", "Sunlight reserve: hours of clear sun to fill", reserve.hoursToFill, v => reserve.hoursToFill = v, Limit.Number(0.1f));
-                part.Add(key + ".daysToDrain", "Sunlight reserve: days without sun to empty", reserve.daysToDrain, v => reserve.daysToDrain = v, Limit.Number(0.1f));
-                part.Add(key + ".startReserve", "Sunlight reserve on waking (%)", reserve.startSeverity, v => reserve.startSeverity = v, Limit.Percent());
-                part.Add(key + ".overlightRate", "Fill rate under Verdite overlight (% of clear sun)", reserve.overlightRate, v => reserve.overlightRate = v, Limit.Percent());
+                part.Add(key + ".hoursToFill", "Lumen_Implant_HoursToFill".Translate(), reserve.hoursToFill, v => reserve.hoursToFill = v, Limit.Number(0.1f));
+                part.Add(key + ".daysToDrain", "Lumen_Implant_DaysToDrain".Translate(), reserve.daysToDrain, v => reserve.daysToDrain = v, Limit.Number(0.1f));
+                part.Add(key + ".startReserve", "Lumen_Implant_StartReserve".Translate(), reserve.startSeverity, v => reserve.startSeverity = v, Limit.Percent());
+                part.Add(key + ".overlightRate", "Lumen_Implant_OverlightRate".Translate(), reserve.overlightRate, v => reserve.overlightRate = v, Limit.Percent());
                 foreach (var stage in props.reserve.stages)
-                    part.Add(key + ".hunger." + stage.label.Replace(" ", "").Replace("-", ""), "Hunger while " + stage.label + " (%)", stage.hungerRateFactor,
+                    part.Add(key + ".hunger." + stage.label.Replace(" ", "").Replace("-", ""), "Lumen_Implant_HungerWhile".Translate(stage.label), stage.hungerRateFactor,
                         v => stage.hungerRateFactor = v, Limit.Percent(10));
             }
-            DeclareStage(part, key + ".drawback", "Drawback", props.drawback);
-            DeclareStage(part, key + ".drawbackNoBiotech", "Drawback without Biotech", ModsConfig.BiotechActive ? null : props.drawbackWithoutBiotech);
+            StageTunables.Declare(part, key + ".drawback", "Lumen_Implant_Drawback".Translate(), props.drawback);
+            StageTunables.Declare(part, key + ".drawbackNoBiotech", "Lumen_Implant_DrawbackNoBiotech".Translate(), ModsConfig.BiotechActive ? null : props.drawbackWithoutBiotech);
             if (hediff.CompProps<HediffCompProperties_DreadAura>() is { } dread)
-                part.Add(key + ".dreadRadius", "Dread radius (tiles)", dread.radius, v => dread.radius = v, Limit.Number(1, 50));
+                part.Add(key + ".dreadRadius", "Lumen_Implant_DreadRadius".Translate(), dread.radius, v => dread.radius = v, Limit.Number(1, 50));
             if (hediff.CompProps<HediffCompProperties_ScarMending>() is { } scars)
-                part.Add(key + ".daysPerScar", "Days to heal a scar", scars.daysPerScar, v => scars.daysPerScar = v, Limit.Number(0.1f));
+                part.Add(key + ".daysPerScar", "Lumen_Implant_DaysPerScar".Translate(), scars.daysPerScar, v => scars.daysPerScar = v, Limit.Number(0.1f));
             if (hediff.CompProps<HediffCompProperties_ApparelMending>() is { } apparel)
-                part.Add(key + ".apparelRepair", "Apparel hit points repaired per day", apparel.hitPointsPerDay, v => apparel.hitPointsPerDay = v);
+                part.Add(key + ".apparelRepair", "Lumen_Implant_ApparelRepair".Translate(), apparel.hitPointsPerDay, v => apparel.hitPointsPerDay = v);
             if (hediff.CompProps<HediffCompProperties_PartMending>() is { } mending)
-                part.Add(key + ".partHealing", "Injury healed on the part per day", mending.healPerDay, v => mending.healPerDay = v);
+                part.Add(key + ".partHealing", "Lumen_Implant_PartHealing".Translate(), mending.healPerDay, v => mending.healPerDay = v);
             var thought = DefDatabase<ThoughtDef>.AllDefsListForReading.FirstOrDefault(t => t.hediff == hediff && t.workerClass == typeof(ThoughtWorker_StoneImplant));
             if (thought != null)
             {
                 var stage = thought.stages[0];
-                part.Add(key + ".mood", "Benefit: mood", stage.baseMoodEffect, v => stage.baseMoodEffect = v, Limit.Number(-100, 100));
+                part.Add(key + ".mood", "Lumen_Implant_Mood".Translate(), stage.baseMoodEffect, v => stage.baseMoodEffect = v, Limit.Number(-100, 100));
             }
-        }
-    }
-
-    // Lists every effect the stage sets, so each implant's numbers can be tuned without knowing its fields.
-    private static void DeclareStage(TunableScope part, string key, string prefix, HediffStage stage)
-    {
-        if (stage == null) return;
-        void Factor(string name, string label, Func<float> get, Action<float> set)
-        {
-            if (get() != 1f) part.Add(key + "." + name, prefix + ": " + label + " (%)", get(), set, Limit.Percent(10));
-        }
-        Factor("pain", "pain factor", () => stage.painFactor, v => stage.painFactor = v);
-        Factor("bleeding", "bleeding factor", () => stage.totalBleedFactor, v => stage.totalBleedFactor = v);
-        Factor("hunger", "hunger factor", () => stage.hungerRateFactor, v => stage.hungerRateFactor = v);
-        Factor("restFall", "rest fall factor", () => stage.restFallFactor, v => stage.restFallFactor = v);
-        Factor("fertility", "fertility factor", () => stage.fertilityFactor, v => stage.fertilityFactor = v);
-        Factor("foodPoisoning", "food poisoning chance factor", () => stage.foodPoisoningChanceFactor, v => stage.foodPoisoningChanceFactor = v);
-        if (stage.statOffsets != null)
-            foreach (var mod in stage.statOffsets)
-            {
-                bool percent = mod.stat.toStringStyle.ToString().StartsWith("Percent");
-                part.Add(key + ".offset." + mod.stat.defName, prefix + ": " + mod.stat.label + " offset" + (percent ? " (%)" : ""), mod.value,
-                    v => mod.value = v, percent ? Limit.Percent(1000, -1000) : Limit.Number(-1000, 1000));
-            }
-        if (stage.statFactors != null)
-            foreach (var mod in stage.statFactors)
-                part.Add(key + ".factor." + mod.stat.defName, prefix + ": " + mod.stat.label + " factor (%)", mod.value, v => mod.value = v, Limit.Percent(10));
-        foreach (var mod in stage.capMods)
-        {
-            if (mod.offset != 0f)
-                part.Add(key + ".cap." + mod.capacity.defName, prefix + ": " + mod.capacity.label + " offset (%)", mod.offset,
-                    v => mod.offset = v, Limit.Percent(1, -1));
-            if (mod.postFactor != 1f)
-                part.Add(key + ".capFactor." + mod.capacity.defName, prefix + ": " + mod.capacity.label + " factor (%)", mod.postFactor,
-                    v => mod.postFactor = v, Limit.Percent(10));
         }
     }
 
     public static ThingDef RawStone(StoneSide side) => DefDatabase<ThingDef>.GetNamed(side == StoneSide.Light ? "KM_Lumenstone" : "KM_DarkStone");
-    public static string Label(StoneSide side) => side == StoneSide.Light ? "light" : "dark";
+    public static string Label(StoneSide side) => (side == StoneSide.Light ? "Lumen_Implant_Light" : "Lumen_Implant_Dark").Translate();
 
     public static IEnumerable<HediffComp_Attunement> Parts(Pawn pawn)
     {
@@ -272,7 +244,8 @@ public class HediffComp_Attunement : HediffComp
         bool changed = false;
         if (HasDrawback)
         {
-            bool paid = ImplantEnergy.TryDraw(Pawn, Props.side, ImplantRules.DrainPerDay * ImplantRules.PassInterval / GenDate.TicksPerDay);
+            // With relief switched off, nothing is drawn and the drawback stays at full strength.
+            bool paid = Effects.ImplantRelief.On && ImplantEnergy.TryDraw(Pawn, Props.side, ImplantRules.DrainPerDay * ImplantRules.PassInterval / GenDate.TicksPerDay);
             changed |= paid != relieved;
             relieved = paid;
         }
@@ -318,30 +291,31 @@ public class HediffComp_Attunement : HediffComp
                 into.capMods.Add(new PawnCapacityModifier { capacity = mod.capacity, offset = mod.offset * scale, postFactor = Scaled(mod.postFactor, scale) });
     }
 
-    public override string CompLabelInBracketsExtra => dormant ? "dormant" : HasDrawback && !relieved ? "unrelieved" : null;
+    public override string CompLabelInBracketsExtra => dormant ? "Lumen_Seed_Dormant".Translate().ToString()
+        : HasDrawback && !relieved && Effects.ImplantRelief.On ? "Lumen_Sunlight_Unrelieved".Translate().ToString() : null;
 
     public override string CompTipStringExtra
     {
         get
         {
             var text = new StringBuilder();
-            string ritual = Props.side == StoneSide.Light ? "Attunement at a Lumen ritual circle or Lumenstone altar" : "Binding at a Sacrificial altar";
+            string ritual = (Props.side == StoneSide.Light ? "Lumen_Implant_WokenByAttunement" : "Lumen_Implant_WokenByBinding").Translate();
             if (dormant)
             {
-                text.Append("Dormant: " + (IsImplant ? "no effect" : "works as a simple prosthetic") + " until woken by " + ritual + ".");
+                text.Append((IsImplant ? "Lumen_Implant_DormantImplant" : "Lumen_Implant_DormantProsthetic").Translate(ritual));
                 return text.ToString();
             }
-            if (HasDrawback)
+            if (HasDrawback && Effects.ImplantRelief.On)
             {
-                string energy = Props.side == StoneSide.Light ? "Solar" : "Warp";
+                bool solar = Props.side == StoneSide.Light;
                 text.Append(relieved
-                    ? energy + " energy reduces the drawback by " + ImplantRules.ReliefFactor.ToStringPercent("0") + "."
-                    : "Unrelieved: no " + energy + " energy reached it, so the drawback is at full strength.");
+                    ? (solar ? "Lumen_Implant_RelievedSolar" : "Lumen_Implant_RelievedWarp").Translate(ImplantRules.ReliefFactor.ToStringPercent("0"))
+                    : (solar ? "Lumen_Implant_UnrelievedSolar" : "Lumen_Implant_UnrelievedWarp").Translate());
             }
             if (paired)
             {
                 if (text.Length > 0) text.AppendLine();
-                text.Append("Paired with an implant of the other side: benefits at " + ImplantRules.PairedBenefitFactor.ToStringPercent("0") + ".");
+                text.Append("Lumen_Implant_PairedNote".Translate(ImplantRules.PairedBenefitFactor.ToStringPercent("0")));
             }
             return text.Length > 0 ? text.ToString() : null;
         }
@@ -352,7 +326,7 @@ public class HediffComp_Attunement : HediffComp
         if (!Prefs.DevMode) yield break;
         yield return new Command_Action
         {
-            defaultLabel = "DEV: " + (dormant ? "activate " : "make dormant ") + parent.LabelBase,
+            defaultLabel = "DEV: " + (dormant ? "activate " : "make dormant ") + parent.LabelBase, // not translated
             action = () => { if (dormant) Activate(); else MakeDormant(); }
         };
     }
@@ -386,7 +360,7 @@ public class Recipe_InstallStoneImplant : Recipe_InstallImplant
     public override AcceptanceReport AvailableReport(Thing thing, BodyPartRecord part = null)
     {
         if (thing is Pawn pawn && ImplantRules.ImplantOn(pawn, Side) is { } taken)
-            return "already has a " + ImplantRules.Label(Side) + " implant: " + taken.parent.LabelBase;
+            return (Side == StoneSide.Light ? "Lumen_Implant_HasLight" : "Lumen_Implant_HasDark").Translate(taken.parent.LabelBase).ToString();
         return base.AvailableReport(thing, part);
     }
 
@@ -397,7 +371,7 @@ public class Recipe_InstallStoneImplant : Recipe_InstallImplant
         {
             if (pawn.MapHeld != null && recipe.addsHediff.spawnThingOnRemoved != null)
                 GenPlace.TryPlaceThing(ThingMaker.MakeThing(recipe.addsHediff.spawnThingOnRemoved), billDoer?.Position ?? pawn.PositionHeld, pawn.MapHeld, ThingPlaceMode.Near);
-            Messages.Message(pawn.LabelShortCap + " already has a " + ImplantRules.Label(Side) + " implant. The implant was set aside.", pawn, MessageTypeDefOf.RejectInput);
+            Messages.Message((Side == StoneSide.Light ? "Lumen_Implant_SetAsideLight" : "Lumen_Implant_SetAsideDark").Translate(pawn.LabelShortCap), pawn, MessageTypeDefOf.RejectInput);
             return;
         }
         base.ApplyOnPawn(pawn, part, billDoer, ingredients, bill);
@@ -501,7 +475,8 @@ public static class RecreationGain
 public class ThoughtWorker_StoneImplant : ThoughtWorker
 {
     protected override ThoughtState CurrentStateInternal(Pawn p) =>
-        p.health.hediffSet.GetFirstHediffOfDef(def.hediff)?.TryGetComp<HediffComp_Attunement>() is { dormant: false } ? ThoughtState.ActiveAtStage(0) : ThoughtState.Inactive;
+        Effects.ImplantMood.On && p.health.hediffSet.GetFirstHediffOfDef(def.hediff)?.TryGetComp<HediffComp_Attunement>() is { dormant: false }
+            ? ThoughtState.ActiveAtStage(0) : ThoughtState.Inactive;
 }
 
 // The mood is a benefit, so it shares the paired factor.
@@ -543,9 +518,11 @@ public abstract class HediffComp_CrystalPerk : HediffComp
 
     public override void CompPostTickInterval(ref float severityAdjustment, int delta)
     {
-        if (Pawn.IsHashIntervalTick(ImplantRules.PassInterval, delta) && Attunement is { dormant: false }) Pass(Attunement.BenefitFactor);
+        if (Pawn.IsHashIntervalTick(ImplantRules.PassInterval, delta) && Switch.On && Attunement is { dormant: false }) Pass(Attunement.BenefitFactor);
     }
 
+    // The perk's effect switch, on the Implants tab.
+    protected abstract EffectSwitch Switch { get; }
     protected abstract void Pass(float benefit);
 }
 
@@ -561,6 +538,7 @@ public class HediffCompProperties_DreadAura : HediffCompProperties
 public class HediffComp_DreadAura : HediffComp_CrystalPerk
 {
     public HediffCompProperties_DreadAura Props => (HediffCompProperties_DreadAura)props;
+    protected override EffectSwitch Switch => Effects.ImplantDreadAura;
 
     protected override void Pass(float benefit)
     {
@@ -585,6 +563,7 @@ public class HediffComp_ScarMending : HediffComp_CrystalPerk
 {
     private float progress;
     public HediffCompProperties_ScarMending Props => (HediffCompProperties_ScarMending)props;
+    protected override EffectSwitch Switch => Effects.ImplantScarMending;
 
     public override void CompExposeData() => Scribe_Values.Look(ref progress, "scarProgress");
 
@@ -616,6 +595,7 @@ public class HediffComp_ApparelMending : HediffComp_CrystalPerk
 {
     private float progress;
     public HediffCompProperties_ApparelMending Props => (HediffCompProperties_ApparelMending)props;
+    protected override EffectSwitch Switch => Effects.ImplantApparelMending;
 
     public override void CompExposeData() => Scribe_Values.Look(ref progress, "apparelProgress");
 
@@ -646,6 +626,7 @@ public class HediffCompProperties_PartMending : HediffCompProperties
 public class HediffComp_PartMending : HediffComp_CrystalPerk
 {
     public HediffCompProperties_PartMending Props => (HediffCompProperties_PartMending)props;
+    protected override EffectSwitch Switch => Effects.ImplantPartHealing;
 
     protected override void Pass(float benefit)
     {

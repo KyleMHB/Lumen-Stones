@@ -7,5 +7,6 @@
     <li IfModActive="ludeon.rimworld.royalty">Integrations/Royalty</li>
     <li IfModActive="det.epochspyrinth">Integrations/Pyrinth</li>
     <li IfModActive="automatic.bionicicons">Integrations/BionicIcons</li>
+    <li IfModActive="ferny.betterarchitect">Integrations/BetterArchitect</li>
   </v1.7>
 </loadFolders>

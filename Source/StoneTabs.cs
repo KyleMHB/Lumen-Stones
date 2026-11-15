@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
@@ -23,7 +24,7 @@ public static class StoneTabs
     public static readonly TunableTab Verdite = new("Verdite", Allow("Verdite"));
     public static readonly TunableTab Aegite = new("Aegite", Allow("Aegite"));
     public static readonly TunableTab Ferrite = new("Ferrite", Allow("Ferrite"));
-    public static readonly TunableTab Sunstone = new("Sunstone", "Allow new Sunstone content, and require Solar energy for active effects");
+    public static readonly TunableTab Sunstone = new("Sunstone", () => "Lumen_Tab_AllowSunstone".Translate());
     public static readonly TunableTab Pyrinth = new("Pyrinth", Allow("Pyrinth"), header: PyrinthHeader,
         onReset: () => { Settings.pyrinth = Settings.pyrinthHeat = true; Settings.overridePyrinth = false; });
     public static readonly TunableTab Darklight = new("Darklight", header: DarklightHeader);
@@ -41,22 +42,21 @@ public static class StoneTabs
         Animastone, DarkStone, Sanguinite, Dreadstone, Hollowstone, Implants
     };
 
-    private static string Allow(string stone) => "Allow new " + stone + " content";
+    private static Func<string> Allow(string stone) => () => "Lumen_Tab_Allow".Translate(("Lumen_Tab_" + stone).Translate());
 
     private static void PyrinthHeader(Listing_Standard list)
     {
         var edit = Tunables.Edit();
         bool overridePyrinth = edit.OverridePyrinth;
-        list.CheckboxLabeled("Override Epochs - Pyrinth balance (restart required)", ref overridePyrinth);
+        list.CheckboxLabeled("Lumen_Pyrinth_Override".Translate(), ref overridePyrinth);
         edit.OverridePyrinth = overridePyrinth;
-        list.Label(StoneSettings.PyrinthPresent ? "Base Pyrinth content only. Add-ons keep their own settings." :
-            "Epochs - Pyrinth is not loaded. Its column and external controls appear when its definitions are present.");
+        list.Label((StoneSettings.PyrinthPresent ? "Lumen_Pyrinth_Present" : "Lumen_Pyrinth_Missing").Translate());
     }
 
     private static void DarklightHeader(Listing_Standard list)
     {
-        string[] modes = { "Off (Normal light)", "Auto (by Ideoligion)", "Always Darklight" };
-        list.Label("Default light mode for newly placed player fixtures and jars of fireflies. Existing fixtures keep their chosen mode.");
+        string[] modes = { "Lumen_DarklightMode_Off".Translate(), "Lumen_DarklightMode_Auto".Translate(), "Lumen_DarklightMode_Always".Translate() };
+        list.Label("Lumen_DarklightMode_Desc".Translate());
         if (list.ButtonText(modes[CompLumenDarklight.DefaultMode]))
             Find.WindowStack.Add(new FloatMenu(Enumerable.Range(0, modes.Length).Select(mode =>
                 new FloatMenuOption(modes[mode], () => Tunables.Edit().Set(DarklightMode.Key, mode))).ToList()));

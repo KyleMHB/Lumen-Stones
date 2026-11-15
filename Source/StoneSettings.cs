@@ -59,18 +59,18 @@ public static partial class StoneSettings
         Tunables.Scope(StoneTabs.Glacite).Things(false, "KM_Glacite", "KM_LumenGlaciteColumn", "KM_GlaciteLamp",
             "KM_GlaciteWallLamp", "KM_GlacitePylon", "KM_GlaciteCooler", "KM_GlaciteBlade");
         Tunables.Scope(StoneTabs.Vitalite).Things(false, "KM_Vitalite", "KM_LumenVitaliteColumn", "KM_VitaliteLamp",
-            "KM_VitaliteWallLamp", "KM_VitalitePylon", "KM_VitaliteCluster", "KM_VitaliteSlabBed", "KM_VitaliteCasket");
+            "KM_VitaliteWallLamp", "KM_VitalitePylon", "KM_VitaliteCluster", "KM_VitaliteSlabBed", "KM_VitaliteCasket", "KM_VitaliteCirclet");
         Tunables.Scope(StoneTabs.Serenite).Things(false, "KM_Serenite", "KM_LumenSereniteColumn", "KM_SereniteLamp",
             "KM_SereniteWallLamp", "KM_SerenitePylon", "KM_SereniteCluster", "KM_SerenitePendant");
         Tunables.Scope(StoneTabs.Verdite).Things(false, "KM_Verdite", "KM_LumenVerditeColumn", "KM_VerditeLamp",
-            "KM_VerditeWallLamp", "KM_VerditePylon", "KM_VerditeCluster", "KM_VerditeScythe");
+            "KM_VerditeWallLamp", "KM_VerditePylon", "KM_VerditeCluster", "KM_VerditeScythe", "KM_VerditeBracer", "KM_VerditeChew");
         Tunables.Scope(StoneTabs.Aegite).Things(false, "KM_Aegite", "KM_LumenAegiteColumn", "KM_AegiteLamp",
             "KM_AegiteWallLamp", "KM_AegitePylon", "KM_AegiteCluster", "KM_AegiteShield", "KM_AegiteShieldCharm");
         Tunables.Scope(StoneTabs.Ferrite).Things(false, "KM_Ferrite", "KM_LumenFerriteColumn", "KM_FerriteLamp",
             "KM_FerriteWallLamp", "KM_FerriteCluster", "KM_FerritePylon", "KM_FerriteWarhammer");
         var sunstone = Tunables.Scope(StoneTabs.Sunstone);
         sunstone.Things(false, "KM_Sunstone", "KM_SunstoneCollector", "KM_SunstoneArray", "KM_SunstoneVessel", "KM_SunstoneObelisk", "KM_SunstoneAxe",
-            "KM_Lunite", "KM_LuniteStabilizer", "KM_AegiteShieldProjector");
+            "KM_Lunite", "KM_LuniteStabilizer", "KM_AegiteShieldProjector", "KM_SunstoneFlare");
         SolarRules.DeclareTunables(sunstone);
         ActiveEffectInterruption.DeclareTunables(sunstone);
         LuniteRules.DeclareTunables(sunstone);
@@ -78,7 +78,7 @@ public static partial class StoneSettings
         AegiteShield.DeclareCharmTunables(Tunables.Scope(StoneTabs.Aegite));
         var lumenstone = Tunables.Scope(StoneTabs.Lumenstone);
         lumenstone.Things(false, "KM_LumenstoneColumn", "KM_LumenstoneLamp", "KM_LumenstoneWallLamp",
-            "KM_LumenstonePylon", "KM_LumenstoneCluster");
+            "KM_LumenstonePylon", "KM_LumenstoneCluster", "KM_LumenstoneStaff");
         LumenstoneSupply.DeclareTunables(lumenstone);
         LumenstoneRitual.DeclareTunables(lumenstone);
         // Animastone loads only with Royalty.
@@ -95,23 +95,37 @@ public static partial class StoneSettings
         {
             var darkStone = Tunables.Scope(StoneTabs.DarkStone);
             darkStone.Things(false, "KM_LumenDarkStoneColumn", "KM_DarkStoneLamp", "KM_DarkStoneWallLamp", "KM_DarkStonePylon",
-                "KM_DarkStoneCluster", "KM_BloodstoneVessel", "KM_BloodstoneObelisk");
+                "KM_DarkStoneCluster", "KM_BloodstoneVessel", "KM_BloodstoneObelisk", "KM_DarkStoneRitualKnife");
             AltarRules.DeclareTunables(darkStone);
             WarpRules.DeclareTunables(darkStone);
             AltarRules.DeclareSupportTunables(darkStone);
             DarkSeedRules.DeclareTunables(darkStone);
+            AltarRules.DeclareVictimTunables(darkStone);
+            NewEquipment.DeclareKnifeTunables(darkStone);
+            StageTunables.Hediff(darkStone, "KM_SoulBlight");
+            foreach (string thought in new[] { "KM_WarpSacrifice", "KM_WarpSacrificeApproved", "KM_SoulBlightMemory" })
+                StageTunables.Thought(darkStone, thought);
             var sanguinite = Tunables.Scope(StoneTabs.Sanguinite);
             sanguinite.Things(false, "KM_Sanguinite", "KM_LumenSanguiniteColumn", "KM_SanguiniteLamp", "KM_SanguiniteWallLamp",
                 "KM_SanguiniteCluster", "KM_SanguinitePylon", "KM_SanguiniteBlade");
             SanguiniteRules.DeclareTunables(sanguinite);
+            StageTunables.Hediff(sanguinite, "KM_SanguiniteTreatment");
+            StageTunables.Hediff(sanguinite, "KM_FlensingWielder");
             var dreadstone = Tunables.Scope(StoneTabs.Dreadstone);
             dreadstone.Things(false, "KM_Dreadstone", "KM_LumenDreadstoneColumn", "KM_DreadstoneLamp", "KM_DreadstoneWallLamp",
-                "KM_DreadstoneCluster", "KM_DreadstonePylon", "KM_DreadstoneArbalest");
+                "KM_DreadstoneCluster", "KM_DreadstonePylon", "KM_DreadstoneArbalest", "KM_DreadstoneCudgel", "KM_DreadstoneCollar");
             DreadstoneRules.DeclareTunables(dreadstone);
+            NewEquipment.DeclareDreadstoneTunables(dreadstone);
+            StageTunables.Hediff(dreadstone, "KM_Dread");
+            StageTunables.Hediff(dreadstone, "KM_DreadAgony");
+            foreach (string thought in new[] { "KM_DreadstoneTorture", "KM_DreadstoneCollarWorn" })
+                StageTunables.Thought(dreadstone, thought);
             var hollowstone = Tunables.Scope(StoneTabs.Hollowstone);
             hollowstone.Things(false, "KM_Hollowstone", "KM_LumenHollowstoneColumn", "KM_HollowstoneLamp", "KM_HollowstoneWallLamp",
                 "KM_HollowstoneCluster", "KM_HollowstonePylon", "KM_HollowstoneGlaive");
             HollowstoneRules.DeclareTunables(hollowstone);
+            StageTunables.Hediff(hollowstone, "KM_HollowstoneWard");
+            StageTunables.Hediff(hollowstone, "KM_GlaiveWielder");
         }
         var vitalite = Tunables.Scope(StoneTabs.Vitalite);
         var serenite = Tunables.Scope(StoneTabs.Serenite);
@@ -122,12 +136,22 @@ public static partial class StoneSettings
         VitaliteTunables.DeclareSolarTunables(vitalite);
         SereniteTunables.DeclareSolarTunables(serenite);
         GlaciteSolar.DeclareTunables(glacite);
+        GlaciteBlade.DeclareTunables(glacite);
         FerriteSolar.DeclareTunables(ferrite);
         AegiteSolar.DeclareTunables(aegite);
         SunstoneAxe.DeclareTunables(sunstone);
         FerriteWarhammer.DeclareTunables(ferrite);
         VerditeScythe.DeclareTunables(verdite);
+        StageTunables.Hediff(verdite, "KM_VerditeSustenance");
+        StageTunables.Hediff(verdite, "KM_VerditeChewed");
+        if (DefDatabase<HediffDef>.GetNamedSilentFail("KM_VerditeChewed") is { } chewed && chewed.CompProps<HediffCompProperties_SeverityPerDay>() is { } decay)
+            verdite.In(chewed.LabelCap).PerItem().Add("KM_VerditeChewed.severityPerDay", "Lumen_Setting_WearsOffPerDay".Translate(), -decay.severityPerDay,
+                v => decay.severityPerDay = -v, Limit.Number(0.01f, 100));
+        StageTunables.Thought(verdite, "KM_VerditeBleedingGums");
         SerenitePendantRules.DeclareTunables(serenite);
+        StageTunables.Thought(serenite, "KM_SereniteRested");
+        SunstoneFlareRules.DeclareTunables(sunstone);
+        NewEquipment.DeclareStaffTunables(lumenstone);
         if (PyrinthPresent)
         {
             var pyrinth = Tunables.Scope(StoneTabs.Pyrinth);
@@ -155,56 +179,58 @@ public static partial class StoneSettings
                 continue;
             }
             string section = def.LabelCap;
-            s.In("Availability").Add(enabled, "Allow new " + def.label + (def.building?.mineableThing != null ? " deposits" : ""), external);
-            var item = s.In(section);
+            s.In(Tunables.AvailabilitySection).Add(enabled, (def.building?.mineableThing != null ? "Lumen_Setting_AllowDeposits" : "Lumen_Setting_AllowItem").Translate(def.label), external);
+            var item = s.In(section).PerItem();
             if (def.equippedStatOffsets != null)
                 foreach (var offset in def.equippedStatOffsets)
-                    item.Add(name + ".equipped." + offset.stat.defName, offset.stat.LabelCap + " offset while equipped",
+                    item.Add(name + ".equipped." + offset.stat.defName, "Lumen_Setting_EquippedOffset".Translate(offset.stat.LabelCap),
                         offset.value, v => offset.value = v, Limit.Percent(10, -10), external);
             var glow = def.GetCompProperties<CompProperties_Glower>();
-            if (glow != null) item.Add(name + ".light", "Light radius", glow.glowRadius, v => glow.glowRadius = v, Limit.Number(max: 100), external);
+            if (glow != null) item.Add(name + ".light", "Lumen_Setting_LightRadius".Translate(), glow.glowRadius, v => glow.glowRadius = v, Limit.Number(max: 100), external);
             var heat = def.GetCompProperties<CompProperties_HeatPusher>();
             if (heat != null)
             {
                 bool cooling = heat.heatPerSecond < 0;
-                item.Add(name + ".heat", cooling ? "Cooling strength (heat / second)" : "Heating strength (heat / second)",
+                item.Add(name + ".heat", (cooling ? "Lumen_Setting_CoolingStrength" : "Lumen_Setting_HeatingStrength").Translate(),
                     Math.Abs(heat.heatPerSecond), v => heat.heatPerSecond = cooling ? -v : v, external: external);
-                item.Add(name + ".cutoff", (heat as IHeatCutoffLabel)?.CutoffLabel ?? "Temperature cutoff (C)",
+                item.Add(name + ".cutoff", (heat as IHeatCutoffLabel)?.CutoffLabel ?? "Lumen_Setting_TemperatureCutoff".Translate(),
                     cooling ? heat.heatPushMinTemperature : heat.heatPushMaxTemperature,
                     v => { if (cooling) heat.heatPushMinTemperature = v; else heat.heatPushMaxTemperature = v; }, Limit.Number(-273.15f, 1000), external);
             }
-            var comps = s.In(section, external);
+            var comps = s.In(section, external).PerItem();
             foreach (var comp in def.comps)
                 if (comp is ITunableProps own) own.DeclareTunables(comps, def);
             if (def.costList != null)
                 foreach (var cost in def.costList)
-                    item.Add(name + ".cost." + cost.thingDef.defName, cost.thingDef.LabelCap + " quantity", cost.count,
+                    item.Add(name + ".cost." + cost.thingDef.defName, "Lumen_Setting_Quantity".Translate(cost.thingDef.LabelCap), cost.count,
                         v => cost.count = (int)v, Limit.Integer(), external);
             if (def.costStuffCount > 0)
-                item.Add(name + ".stuff", "Construction material quantity", def.costStuffCount,
+                item.Add(name + ".stuff", "Lumen_Setting_StuffQuantity".Translate(), def.costStuffCount,
                     v => def.costStuffCount = (int)v, Limit.Integer(1), external);
             if (def.tools != null)
                 for (int i = 0; i < def.tools.Count; i++)
                 {
                     var tool = def.tools[i];
-                    item.Add(name + ".damage." + i, tool.label + " damage", tool.power, v => tool.power = v, external: external);
+                    item.Add(name + ".damage." + i, "Lumen_Setting_ToolDamage".Translate(tool.label), tool.power, v => tool.power = v, external: external);
                     if (tool.extraMeleeDamages == null) continue;
                     for (int j = 0; j < tool.extraMeleeDamages.Count; j++)
                     {
                         var extra = tool.extraMeleeDamages[j];
-                        item.Add(name + ".extraDamage." + i + "." + j, tool.label + " " + extra.def.label + " damage", extra.amount,
+                        item.Add(name + ".extraDamage." + i + "." + j, "Lumen_Setting_ExtraDamage".Translate(tool.label, extra.def.label), extra.amount,
                             v => extra.amount = v, external: external);
+                        item.Add(name + ".extraDamageChance." + i + "." + j, "Lumen_Setting_ExtraDamageChance".Translate(tool.label, extra.def.label), extra.chance,
+                            v => extra.chance = v, Limit.Percent(), external);
                     }
                 }
             var rock = def.building;
             if (rock?.mineableThing != null)
             {
-                var acquisition = s.In("Acquisition");
-                acquisition.Add(name + ".sizeMin", "Minimum deposit size", rock.mineableScatterLumpSizeRange.min,
+                var acquisition = s.In("Lumen_Section_Acquisition".Translate()).PerItem();
+                acquisition.Add(name + ".sizeMin", "Lumen_Setting_SizeMin".Translate(), rock.mineableScatterLumpSizeRange.min,
                     v => rock.mineableScatterLumpSizeRange.min = (int)v, Limit.Integer(1), external);
-                acquisition.Add(name + ".sizeMax", "Maximum deposit size", rock.mineableScatterLumpSizeRange.max,
+                acquisition.Add(name + ".sizeMax", "Lumen_Setting_SizeMax".Translate(), rock.mineableScatterLumpSizeRange.max,
                     v => rock.mineableScatterLumpSizeRange.max = (int)v, Limit.Integer(1), external);
-                acquisition.Add(name + ".yield", "Mining yield", rock.mineableYield, v => rock.mineableYield = (int)v,
+                acquisition.Add(name + ".yield", "Lumen_Setting_MiningYield".Translate(), rock.mineableYield, v => rock.mineableYield = (int)v,
                     Limit.Integer(1), external);
             }
             foreach (var recipe in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r => r.products?.Any(p => p.thingDef == def) == true))
@@ -244,7 +270,7 @@ public static partial class StoneSettings
             var ingredient = recipe.ingredients[i];
             string key = recipe.defName + ".ingredient." + i;
             if (Tunables.Has(key)) continue;
-            s.In(section).Add(key, ingredient.filter.Summary + " quantity (recipe)", ingredient.GetBaseCount(),
+            s.In(section).PerItem().Add(key, "Lumen_Setting_RecipeQuantity".Translate(ingredient.filter.Summary), ingredient.GetBaseCount(),
                 v => ingredient.SetBaseCount(v), external: external);
         }
     }

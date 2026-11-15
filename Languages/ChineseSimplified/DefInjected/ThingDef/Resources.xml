@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Lumenstone.label>流明石</KM_Lumenstone.label>
+	<KM_Lumenstone.description>一种稀有矿物，形成于缓慢冷却的深层岩石中，自身带有微弱的光。单独使用时几乎毫无作用。它的价值在于能吸收所灌注之物的特性，并将其保留下来。\n\n可从稀有矿脉开采、在地表发现，或从商人处高价购买。在流明仪式圈灌注可制成任何已研究的石材。商人不会收购它。</KM_Lumenstone.description>
+	<KM_MineableLumenstone.label>流明石矿床</KM_MineableLumenstone.label>
+	<KM_MineableLumenstone.description>岩石中的一道流明石矿层。矿工通常先看到它的光芒，才真正找到它。\n\n开采可获得原生流明石。矿床会发出微弱的光。</KM_MineableLumenstone.description>
+	<KM_Glacite.label>冰晶石</KM_Glacite.label>
+	<KM_Glacite.description>不灌注任何东西的流明石会沉入最寒冷的状态。它从空气中汲取温暖来维持淡蓝色的光，即使在盛夏也保持冰冷。\n\n在流明仪式圈不加试剂由流明石灌注而成。其碎片可用于照明房间、冷却食物储藏室，以及制作刀刃。</KM_Glacite.description>
+</LanguageData>

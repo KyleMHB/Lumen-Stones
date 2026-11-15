@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Attunement.stages.0.failTriggers.0.desc>Получатель недоступен.</KM_Attunement.stages.0.failTriggers.0.desc>
+	<KM_Attunement.stages.0.failTriggers.1.desc>настройщик спит</KM_Attunement.stages.0.failTriggers.1.desc>
+	<KM_Attunement.roles.0.label>настройщик</KM_Attunement.roles.0.label>
+	<KM_Attunement.roles.1.label>получатель</KM_Attunement.roles.1.label>
+	<KM_Attunement.roles.1.missingDesc>колонист, заключённый или раб со спящей светлой частью</KM_Attunement.roles.1.missingDesc>
+	<KM_Binding.stages.0.failTriggers.0.desc>Получатель недоступен.</KM_Binding.stages.0.failTriggers.0.desc>
+	<KM_Binding.stages.0.failTriggers.1.desc>настройщик спит</KM_Binding.stages.0.failTriggers.1.desc>
+	<KM_Binding.roles.0.label>настройщик</KM_Binding.roles.0.label>
+	<KM_Binding.roles.1.label>получатель</KM_Binding.roles.1.label>
+	<KM_Binding.roles.1.missingDesc>колонист, заключённый или раб со спящей тёмной частью</KM_Binding.roles.1.missingDesc>
+</LanguageData>

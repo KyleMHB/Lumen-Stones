@@ -19,8 +19,16 @@ public class CompProperties_LumenDarklight : CompProperties
 
 public class CompLumenDarklight : ThingComp
 {
-    private static readonly Action<CompGlower, ColorInt?> SetColor = AccessTools.MethodDelegate<Action<CompGlower, ColorInt?>>(
-        AccessTools.Method(typeof(CompGlower), "SetGlowColorInternal"));
+    // Null if a game update renamed the method. The lamp then resets to its def colour by the public setter.
+    private static readonly Action<CompGlower, ColorInt?> SetColor = ResolveSetColor();
+
+    private static Action<CompGlower, ColorInt?> ResolveSetColor()
+    {
+        var method = AccessTools.Method(typeof(CompGlower), "SetGlowColorInternal");
+        if (method != null) return AccessTools.MethodDelegate<Action<CompGlower, ColorInt?>>(method);
+        Log.Error("[Lumen Stones] CompGlower.SetGlowColorInternal changed; lamps leaving darklight keep an overridden colour until the mod is updated.");
+        return null;
+    }
     private bool darklight, initialized;
     private CompProperties_LumenDarklight Props => (CompProperties_LumenDarklight)props;
     private bool Enabled => !Props.external || LumenstoneMod.Settings.overridePyrinth;
@@ -46,12 +54,13 @@ public class CompLumenDarklight : ThingComp
                 ideo != null && IdeoUtility.IdeoPrefersDarkness(ideo));
             initialized = true;
         }
-        parent.Map.GetComponent<DarklightField>().fixtures[parent.thingIDNumber] = this;
+        // The field is missing only if a game update broke its glow-grid access. The lamp still lights without it.
+        if (MapState.Of<DarklightField>(parent.Map) is { } field) field.fixtures[parent.thingIDNumber] = this;
         SetDarklight(darklight);
     }
 
     public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) =>
-        map.GetComponent<DarklightField>().fixtures.Remove(parent.thingIDNumber);
+        MapState.Of<DarklightField>(map)?.fixtures.Remove(parent.thingIDNumber);
 
     public override void PostSwapMap() => PostSpawnSetup(true);
 
@@ -74,10 +83,11 @@ public class CompLumenDarklight : ThingComp
         {
             if (glower is CompOverlight) continue;
             if (Active) glower.GlowColor = Props.darklightColor ?? Fallback(glower.Props.glowColor);
-            else SetColor(glower, null);
+            else if (SetColor != null) SetColor(glower, null);
+            else glower.GlowColor = glower.Props.glowColor;
             if (parent.Spawned) glower.UpdateLit(parent.Map);
         }
-        if (parent.Spawned) parent.Map.GetComponent<DarklightField>().Invalidate();
+        if (parent.Spawned) MapState.Of<DarklightField>(parent.Map)?.Invalidate();
     }
 
     private static ColorInt Fallback(ColorInt normal)
@@ -154,10 +164,25 @@ public class DarklightField : MapComponent
     public readonly Dictionary<CompGlower, int> glowSlots = new();
     private readonly Dictionary<int, bool> cells = new();
     private int tick = -1;
-    private static readonly AccessTools.FieldRef<GlowGrid, NativeList<GlowLight>> Lights =
-        AccessTools.FieldRefAccess<GlowGrid, NativeList<GlowLight>>("lights");
-    private static readonly FieldInfo GlowPool = AccessTools.Field(typeof(GlowGrid), "glowPool");
-    private static readonly FieldInfo Pool = AccessTools.Field(GlowPool.FieldType, "pool");
+    private static AccessTools.FieldRef<GlowGrid, NativeList<GlowLight>> Lights;
+    private static FieldInfo GlowPool, Pool;
+    // False if a game update moved the glow grid's private fields. Darklight then falls back to the game's own colour
+    // test, which doesn't see Lumen darklight, and everything else keeps working.
+    public static readonly bool Ready = Resolve();
+
+    private static bool Resolve()
+    {
+        var lights = AccessTools.Field(typeof(GlowGrid), "lights");
+        GlowPool = AccessTools.Field(typeof(GlowGrid), "glowPool");
+        Pool = GlowPool == null ? null : AccessTools.Field(GlowPool.FieldType, "pool");
+        if (lights == null || Pool == null || lights.FieldType != typeof(NativeList<GlowLight>) || Pool.FieldType != typeof(NativeList<LocalGlowArea>))
+        {
+            Log.Error("[Lumen Stones] The glow grid changed; Lumen darklight is not recognised as darklight until the mod is updated.");
+            return false;
+        }
+        Lights = AccessTools.FieldRefAccess<GlowGrid, NativeList<GlowLight>>(lights);
+        return true;
+    }
 
     public DarklightField(Map map) : base(map) { }
     public void Invalidate() => cells.Clear();
@@ -191,9 +216,12 @@ public class DarklightField : MapComponent
 [HarmonyPatch(typeof(DarklightUtility), nameof(DarklightUtility.IsDarklightAt))]
 public static class ResolveLumenDarklight
 {
+    // The game answers by itself on a map with no Lumen light, and whenever the glow grid can't be read.
     public static bool Prefix(IntVec3 position, Map map, ref bool __result)
     {
-        __result = map.GetComponent<DarklightField>().IsDarklight(position);
+        var field = MapState.Of<DarklightField>(map);
+        if (field == null || !DarklightField.Ready || field.fixtures.Count == 0) return true;
+        __result = field.IsDarklight(position);
         return false;
     }
 }
@@ -206,7 +234,7 @@ public static class InvalidateDarklightCells
         __state = ___anyDirtyCell || ___anyDirtyLight;
     public static void Postfix(Map ___map, bool __state)
     {
-        if (__state) ___map.GetComponent<DarklightField>().Invalidate();
+        if (__state) MapState.Of<DarklightField>(___map)?.Invalidate();
     }
 }
 
@@ -215,8 +243,8 @@ public static class RememberGlowerSlot
 {
     public static void Postfix(CompGlower glower, int glowPoolIndex)
     {
-        if (glower.parent.GetComp<CompOverlight>() != null)
-            glower.parent.Map.GetComponent<DarklightField>().glowSlots[glower] = glowPoolIndex;
+        if (DarklightField.Ready && glower.parent.GetComp<CompOverlight>() != null && MapState.Of<DarklightField>(glower.parent.Map) is { } field)
+            field.glowSlots[glower] = glowPoolIndex;
     }
 }
 
@@ -225,8 +253,8 @@ public static class ResolveGlowerSlot
 {
     public static bool Prefix(GlowGrid __instance, CompGlower glower, Map ___map, ref int __result)
     {
-        var slots = ___map.GetComponent<DarklightField>().glowSlots;
-        if (!slots.TryGetValue(glower, out int slot)) return true;
+        var slots = MapState.Of<DarklightField>(___map)?.glowSlots;
+        if (slots == null || !slots.TryGetValue(glower, out int slot)) return true;
         var lights = DarklightField.GetLights(__instance);
         for (int i = 0; i < lights.Length; i++)
             if (lights[i].localGlowPoolIndex == slot) { __result = i; slots.Remove(glower); return false; }

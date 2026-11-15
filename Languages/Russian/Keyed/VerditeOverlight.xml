@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Overlight_SolarPerSchedule>Солнечная энергия за световой цикл</Lumen_Overlight_SolarPerSchedule>
+	<Lumen_Overlight_Rule>Отдельное золотое кольцо света для растений, работающее по ежедневному расписанию солнечной лампы. Растениям по-прежнему нужны обычные свет, температура и условия роста. Обычный зелёный свет светильника горит всегда.</Lumen_Overlight_Rule>
+	<Lumen_Overlight_Radius>Радиус света для растений</Lumen_Overlight_Radius>
+	<Lumen_Overlight_Hours>Часы света для растений</Lumen_Overlight_Hours>
+	<Lumen_Overlight_HoursValue>с {0} до {1}</Lumen_Overlight_HoursValue>
+	<Lumen_Overlight_SolarPerDayDesc>Тратится равномерно, пока свет горит.</Lumen_Overlight_SolarPerDayDesc>
+	<Lumen_Overlight_Status>Свет для растений: {0}</Lumen_Overlight_Status>
+	<Lumen_Overlight_Darklight>Тёмный свет: включён всегда; свет для растений отключён</Lumen_Overlight_Darklight>
+	<Lumen_Overlight_On>вкл.</Lumen_Overlight_On>
+	<Lumen_Overlight_OffUntil>выкл. до {0}</Lumen_Overlight_OffUntil>
+	<Lumen_Overlight_NotRunning>выкл., активный эффект не работает</Lumen_Overlight_NotRunning>
+	<Lumen_Overlight_RadiusSetting>Радиус освещения для растений</Lumen_Overlight_RadiusSetting>
+</LanguageData>

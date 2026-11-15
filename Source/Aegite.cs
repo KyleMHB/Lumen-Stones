@@ -15,24 +15,24 @@ public class CompProperties_Aegite : CompProperties, ITunableProps
     public void DeclareTunables(TunableScope s, Def owner)
     {
         string name = owner.defName;
-        s.Add(name + ".radius", "Ward radius", radius, v => radius = v, Limit.Number(max: 100));
-        s.Add(name + ".interval", "Ticks between ward pulses", interval, v => interval = (int)v, Limit.Integer(1));
-        s.Add(name + ".fireCount", "Maximum fires per pulse", fireCount, v => fireCount = (int)v, Limit.Integer());
-        s.Add(name + ".fireReduction", "Fire size reduction per service", fireReduction, v => fireReduction = v, Limit.Number(max: 10));
-        s.Add(name + ".filthLayers", "Maximum filth layers per pulse", filthLayers, v => filthLayers = (int)v, Limit.Integer());
+        s.Add(name + ".radius", "Lumen_Aegite_WardRadius".Translate(), radius, v => radius = v, Limit.Number(max: 100));
+        s.Add(name + ".interval", "Lumen_Aegite_Interval".Translate(), interval, v => interval = (int)v, Limit.Integer(1));
+        s.Add(name + ".fireCount", "Lumen_Aegite_FireCount".Translate(), fireCount, v => fireCount = (int)v, Limit.Integer());
+        s.Add(name + ".fireReduction", "Lumen_Aegite_FireReduction".Translate(), fireReduction, v => fireReduction = v, Limit.Number(max: 10));
+        s.Add(name + ".filthLayers", "Lumen_Aegite_FilthLayers".Translate(), filthLayers, v => filthLayers = (int)v, Limit.Integer());
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
     {
-        string ward = "Only the strongest covering ward tier services each fire or filth target, and among equal tiers only one ward does. Overlapping wards add nothing.";
-        string fire = "Each pulse suppresses owned fires instead of thinning filth." + InfoStats.SolarRule + " " + ward;
+        string ward = "Lumen_Aegite_WardRule".Translate();
+        string fire = "Lumen_Aegite_FireRule".Translate() + InfoStats.SolarRule + " " + ward;
         var rows = new InfoStats()
-            .Add("Ward radius", InfoStats.Tiles(radius), "Works indoors, outdoors and through walls. " + ward)
-            .Add("Pulse interval", InfoStats.Seconds(interval), ward)
-            .Add("Filth layers thinned per pulse", filthLayers.ToString(), "Used when there is no fire to suppress, or the Solar active effect can't run. " + ward)
-            .Add(InfoStats.Solar("fireTargets suppressed per pulse"), fireCount.ToString(), fire)
-            .Add(InfoStats.Solar("Fire size removed"), fireReduction.ToString("0.##"), fire);
-        if (SolarRules.Enabled) rows.Add("Solar energy per fire", AegiteSolar.CostPerFire.ToString("0.##"), fire);
+            .Add("Lumen_Aegite_WardRadius".Translate(), InfoStats.Tiles(radius), "Lumen_Aegite_WardRadiusDesc".Translate() + " " + ward)
+            .Add("Lumen_Aegite_PulseInterval".Translate(), InfoStats.Seconds(interval), ward)
+            .Add(Effects.AegiteFilth, "Lumen_Aegite_FilthThinned".Translate(), filthLayers.ToString(), "Lumen_Aegite_FilthThinnedDesc".Translate() + " " + ward)
+            .Add(Effects.AegiteFire, InfoStats.Solar("Lumen_Aegite_FiresSuppressed".Translate()), fireCount.ToString(), fire)
+            .Add(Effects.AegiteFire, InfoStats.Solar("Lumen_Aegite_FireSizeRemoved".Translate()), fireReduction.ToString("0.##"), fire);
+        if (SolarRules.Enabled) rows.Add("Lumen_Aegite_SolarPerFire".Translate(), AegiteSolar.CostPerFire.ToString("0.##"), fire);
         return rows.Rows;
     }
 }
@@ -42,7 +42,7 @@ public static class AegiteSolar
     public static float CostPerFire = 2f;
 
     internal static void DeclareTunables(TunableScope s) =>
-        s.In("Solar energy").Add("Aegite.solarCostPerFire", "Solar energy per fire suppressed", CostPerFire, v => CostPerFire = v);
+        s.In("Lumen_Section_SolarEnergy".Translate()).Add("Aegite.solarCostPerFire", "Lumen_Aegite_SolarPerFireSetting".Translate(), CostPerFire, v => CostPerFire = v);
 }
 
 public class AegiteField : MapComponent
@@ -70,16 +70,17 @@ public class CompAegite : ThingComp
     private static readonly List<Fire> fireTargets = new();
     private static readonly List<Filth> filthTargets = new();
 
-    public override void PostSpawnSetup(bool respawningAfterLoad) => parent.Map.GetComponent<AegiteField>().fixtures.Add(this);
-    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => map.GetComponent<AegiteField>().fixtures.Remove(this);
+    public override void PostSpawnSetup(bool respawningAfterLoad) => MapState.Of<AegiteField>(parent.Map).fixtures.Add(this);
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish) => MapState.Of<AegiteField>(map).fixtures.Remove(this);
 
     public override void CompTick()
     {
         if (!parent.Spawned) return;
-        if (parent.IsHashIntervalTick(480)) Glint(parent.Position, 0.06f);
         if (!parent.IsHashIntervalTick(Props.interval)) return;
+        bool fires = Effects.AegiteFire.On, filth = Effects.AegiteFilth.On;
+        if (!fires && !filth) return;
         var map = parent.Map;
-        var field = map.GetComponent<AegiteField>();
+        var field = MapState.Of<AegiteField>(map);
         // Ownership considers all covering fixtures, even those between pulses. A weaker
         // or equal-tier installation cannot fill the gaps in another ward's interval.
         // Only cells in the ward's radius can hold an owned target, so the map's fire and filth lists are never scanned.
@@ -93,8 +94,8 @@ public class CompAegite : ThingComp
             var things = map.thingGrid.ThingsListAtFast(cell);
             for (int j = 0; j < things.Count; j++)
             {
-                if (things[j] is Fire fire) { if (field.Owner(cell) == this) fireTargets.Add(fire); }
-                else if (things[j] is Filth filth && field.Owner(cell) == this) filthTargets.Add(filth);
+                if (things[j] is Fire fire) { if (fires && field.Owner(cell) == this) fireTargets.Add(fire); }
+                else if (filth && things[j] is Filth layer && field.Owner(cell) == this) filthTargets.Add(layer);
             }
         }
         // Each fire costs Solar energy. The ward services as many as it can pay for, and thins filth only if it paid for none.
@@ -107,10 +108,8 @@ public class CompAegite : ThingComp
             foreach (var fire in fireTargets)
             {
                 if (solar != null && !solar.TryPay(AegiteSolar.CostPerFire)) break;
-                var cell = fire.Position;
                 fire.fireSize -= Props.fireReduction;
                 if (fire.fireSize <= 0) fire.Destroy();
-                Glint(cell, 0.09f);
                 serviced++;
             }
             if (serviced > 0) return;
@@ -119,29 +118,13 @@ public class CompAegite : ThingComp
         filthTargets.SortBy(f => f.thingIDNumber);
         foreach (var target in filthTargets)
         {
-            var cell = target.Position;
             while (remaining > 0 && target.Spawned && !target.Destroyed)
             {
                 target.ThinFilth();
                 remaining--;
             }
-            Glint(cell, 0.09f);
             if (remaining == 0) break;
         }
-    }
-
-    private void Glint(IntVec3 cell, float scale)
-    {
-        if (cell.Fogged(parent.Map) || !CompAnimationToggle.On(parent)) return;
-        var mote = FixtureMotes.Make("KM_Mote_AegitePulse", parent.Map);
-        if (mote == null) return;
-        mote.exactPosition = cell.ToVector3Shifted();
-        mote.exactPosition.y = AltitudeLayer.MoteOverhead.AltitudeFor();
-        mote.Scale = scale;
-        mote.instanceColor = new Color(1f, 0.94f, 0.72f);
-        mote.airTimeLeft = 0.5f;
-        mote.SetVelocity(0, 0.04f);
-        GenSpawn.Spawn(mote, cell, parent.Map);
     }
 
 }

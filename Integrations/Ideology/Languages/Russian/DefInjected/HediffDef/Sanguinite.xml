@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SanguiniteRegrowth.label>Сангвинитовое отращивание</KM_SanguiniteRegrowth.label>
+	<KM_SanguiniteRegrowth.description>Утраченная часть отрастает под сангвинитовым лечением. Прогресс приостанавливается, если пациент встаёт с кровати или кончается энергия варпа, и сохраняется.</KM_SanguiniteRegrowth.description>
+	<KM_Hemorrhage.label>кровоизлияние</KM_Hemorrhage.label>
+	<KM_Hemorrhage.description>Рана от сангвинитового клинка кровоточит ещё несколько секунд. Новые удары углубляют её, до трёх раз.</KM_Hemorrhage.description>
+	<KM_SanguiniteTreatment.label>Сангвинитовое лечение</KM_SanguiniteTreatment.label>
+	<KM_SanguiniteTreatment.description>Сангвинитовый светильник лечит этого пациента, пока тот отдыхает в кровати. Наведите курсор, чтобы увидеть скорость.</KM_SanguiniteTreatment.description>
+	<KM_FlensingWielder.label>владелец свежевального клинка</KM_FlensingWielder.label>
+	<KM_FlensingWielder.description>Сангвинитовый клинок разжижает кровь владельца. Пока он в руках, кровотечение вдвое слабее.</KM_FlensingWielder.description>
+</LanguageData>

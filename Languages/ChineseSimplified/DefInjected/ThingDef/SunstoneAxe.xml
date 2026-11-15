@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_SunstoneAxe.label>太阳石斧</KM_SunstoneAxe.label>
+	<KM_SunstoneAxe.description>一把带有琥珀黄水晶色太阳石刃口的斧头。每次结实的命中都会释放出刃口储存的部分日光。\n\n造成伤害的近战命中可以闪光致盲并短暂眩晕目标，对异象实体和变异体的伤害提高50%。研究长剑后，使用100太阳石和20钢铁制作，需要6级手工。</KM_SunstoneAxe.description>
+	<KM_SunstoneAxe.tools.0.label>柄</KM_SunstoneAxe.tools.0.label>
+	<KM_SunstoneAxe.tools.1.label>刃</KM_SunstoneAxe.tools.1.label>
+</LanguageData>

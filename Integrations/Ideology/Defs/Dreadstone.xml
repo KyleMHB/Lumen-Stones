@@ -55,6 +55,7 @@
 
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenDreadstoneColumn</defName>
+    <tickerType>Never</tickerType>
     <label>Dreadstone column</label>
     <uiOrder>2040</uiOrder>
     <researchPrerequisites>
@@ -65,6 +66,8 @@
       <KM_Dreadstone>15</KM_Dreadstone>
     </costList>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.258)</drawOffset>
       <texPath>Lumenstone/DreadstoneColumn</texPath>
       <drawSize>(1.1667,1.4583)</drawSize>
     </graphicData>
@@ -91,23 +94,27 @@
 
   <ThingDef ParentName="KM_DreadstoneFixtureBase">
     <defName>KM_DreadstoneLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Dreadstone lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2809</uiOrder>
-    <description>A Dreadstone crystal on a wooden post.\n\nGives dim indigo light and nothing else.</description>
+    <description>A Dreadstone crystal on a stone plinth.\n\nGives dim indigo light and nothing else.</description>
     <graphicData>
       <texPath>Things/Building/Dreadstone/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Dreadstone>10</KM_Dreadstone>
     </costList>
     <statBases>
       <Beauty>8</Beauty>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(150,55,25,0)</glowColor>
@@ -164,12 +171,16 @@
 
   <ThingDef ParentName="KM_DreadstoneFixtureBase">
     <defName>KM_DreadstoneCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Dreadstone cluster</label>
     <uiOrder>2828</uiOrder>
     <description>A group of Dreadstone crystals in a low carved housing. Raiders who can see it have trouble remembering why they came.\n\nGives indigo light. Warp energy: weakens hostile humanlikes in its sight. Mechanoids and animals are unaffected.</description>
+    <uiIconScale>1.1111</uiIconScale>
     <graphicData>
       <texPath>Things/Building/Dreadstone/Cluster</texPath>
-      <drawSize>(1,1)</drawSize>
+      <!-- 2026-11-14 size pass: keeps the visible cluster near the other families' size; offset puts the base 0.1 cell above the footprint edge. -->
+      <drawSize>(0.9,0.9)</drawSize>
+      <drawOffset>(0,0,-0.103)</drawOffset>
     </graphicData>
     <stuffCategories>
       <li>Metallic</li>
@@ -180,7 +191,7 @@
       <KM_Dreadstone>35</KM_Dreadstone>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
     </statBases>
     <comps>
@@ -195,6 +206,7 @@
 
   <ThingDef ParentName="KM_DreadstoneFixtureBase">
     <defName>KM_DreadstonePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Dreadstone pylon</label>
     <uiOrder>2829</uiOrder>
@@ -203,7 +215,8 @@
     <graphicData>
       <texPath>Things/Building/Dreadstone/Pylon</texPath>
       <drawSize>(2.2,2.2)</drawSize>
-      <drawOffset>(0,0,0.56)</drawOffset>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.631)</drawOffset>
     </graphicData>
     <uiIconScale>0.5</uiIconScale>
     <stuffCategories>
@@ -215,7 +228,7 @@
       <KM_Dreadstone>25</KM_Dreadstone>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>30</Beauty>
     </statBases>
     <comps>
@@ -299,6 +312,8 @@
     <description>A fast, light bow with obsidian limbs. Anyone hit by one of its bolts loses their nerve for a while.\n\nIts bolts leave a hit humanlike dreadful for ten seconds, and if that enemy dies, a little Warp energy returns to the batteries. Firing costs no Warp energy. Crafted from 100 Dreadstone and 20 steel after Greatbow and Dreadstone subjugation, with Crafting 6.</description>
     <techLevel>Medieval</techLevel>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponRanged/DreadstoneArbalest</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.2,1.2)</drawSize>

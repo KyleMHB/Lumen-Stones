@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Cooldown_Attunement>Attunement is recharging: {0} remaining (shared by every circle and altar in this settlement).</Lumen_Cooldown_Attunement>
+	<Lumen_Cooldown_Binding>Binding is recharging: {0} remaining (shared by every altar in this settlement).</Lumen_Cooldown_Binding>
+	<Lumen_Cooldown_LumenstoneRitual>The Lumenstone ritual is recharging: {0} remaining (shared by every circle and altar in this settlement).</Lumen_Cooldown_LumenstoneRitual>
+	<Lumen_Cooldown_Lunite>Lunite conversion is recharging: {0} remaining (shared by every circle and altar in this settlement).</Lumen_Cooldown_Lunite>
+	<Lumen_Cooldown_Crystallize>Crystallize Dark Stone is recharging: {0} remaining (shared by every altar in this settlement).</Lumen_Cooldown_Crystallize>
+	<Lumen_Cooldown_Harvest>Harvest Warp Energy is recharging: {0} remaining (shared by every altar in this settlement).</Lumen_Cooldown_Harvest>
+	<Lumen_Cooldown_RaiseHusk>Raise a work husk is recharging: {0} remaining (shared by every altar in this settlement).</Lumen_Cooldown_RaiseHusk>
+</LanguageData>

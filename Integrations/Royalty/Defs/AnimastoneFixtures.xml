@@ -11,7 +11,8 @@
     <costList><KM_Animastone>15</KM_Animastone></costList>
     <graphicData>
       <texPath>Lumenstone/AnimastoneColumn</texPath>
-      <drawSize>(1.6,1.4583)</drawSize>
+      <!-- narrower by 15% (user, 2026-11-14: column width pass). -->
+      <drawSize>(1.36,1.4583)</drawSize>
     </graphicData>
     <statBases>
       <Flammability>0</Flammability>
@@ -32,7 +33,8 @@
         <weight>0.2</weight>
       </li>
     </comps>
-    <uiIconScale>0.90286</uiIconScale>
+    <!-- Keeps the icon size: it was height-limited at 1.6 wide; at 1.36 the width limits it. -->
+    <uiIconScale>0.8823</uiIconScale>
   </ThingDef>
 
   <ThingDef Name="KM_AnimastoneFixtureBase" ParentName="BuildingBase" Abstract="True">
@@ -70,6 +72,7 @@
 
   <ThingDef ParentName="KM_AnimastoneFixtureBase">
     <defName>KM_AnimastoneLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Animastone lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2803</uiOrder>
@@ -78,8 +81,12 @@
       <texPath>Things/Building/Animastone/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Animastone>10</KM_Animastone>
     </costList>
     <statBases>
@@ -88,7 +95,6 @@
       <MeditationFocusStrength>0.08</MeditationFocusStrength>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(127,216,192,0)</glowColor>
@@ -161,6 +167,7 @@
 
   <ThingDef ParentName="KM_AnimastoneFixtureBase">
     <defName>KM_AnimastonePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <drawerType>RealtimeOnly</drawerType>
     <label>Animastone pylon</label>
     <uiOrder>2822</uiOrder>
@@ -182,7 +189,7 @@
       <KM_Animastone>25</KM_Animastone>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>30</Beauty>
       <Flammability>0</Flammability>
       <MeditationFocusStrength>0.22</MeditationFocusStrength>
@@ -211,12 +218,16 @@
 
   <ThingDef ParentName="KM_AnimastoneFixtureBase">
     <defName>KM_AnimastoneCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Animastone cluster</label>
     <uiOrder>2823</uiOrder>
     <description>A seafoam-teal Animastone cluster, quiet until someone sits beside it.\n\nPsycasters of tribal or noble backgrounds can meditate to it. Room support speeds neural heat recovery and psyfocus gain while a pawn meditates in the same enclosed room. Each fixture type counts once. With Solar energy, it raises the focus strength of a pawn meditating nearby.</description>
+    <uiIconScale>0.7692</uiIconScale>
     <graphicData>
       <texPath>Things/Building/Animastone/Cluster</texPath>
-      <drawSize>(1,1)</drawSize>
+      <!-- 2026-11-14 size pass: keeps the visible cluster near the other families' size; offset puts the base 0.1 cell above the footprint edge. -->
+      <drawSize>(1.3,1.3)</drawSize>
+      <drawOffset>(0,0,0.027)</drawOffset>
     </graphicData>
     <stuffCategories>
       <li>Metallic</li>
@@ -227,7 +238,7 @@
       <KM_Animastone>35</KM_Animastone>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
       <Flammability>0</Flammability>
       <MeditationFocusStrength>0.18</MeditationFocusStrength>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Animastone_ActiveRadiusSetting>Solar active effect radius (tiles)</Lumen_Animastone_ActiveRadiusSetting>
+	<Lumen_Animastone_ActiveDrain>Solar energy per day while a pawn meditates in range</Lumen_Animastone_ActiveDrain>
+	<Lumen_Animastone_ActiveFocus>Active focus strength bonus (%)</Lumen_Animastone_ActiveFocus>
+	<Lumen_Animastone_ActiveHeat>Active neural heat recovery bonus (%)</Lumen_Animastone_ActiveHeat>
+	<Lumen_Animastone_ActiveGrowth>Active anima grass growth offset (%)</Lumen_Animastone_ActiveGrowth>
+	<Lumen_Animastone_MeditatingRule>Scales with room support. Applies only while a pawn meditates in the same enclosed room.</Lumen_Animastone_MeditatingRule>
+	<Lumen_Animastone_SupportWeightDesc>This fixture's share of Animastone room support.</Lumen_Animastone_SupportWeightDesc>
+	<Lumen_Animastone_HeatRecovery>Neural heat recovery at full support</Lumen_Animastone_HeatRecovery>
+	<Lumen_Animastone_FocusGain>Psyfocus gain at full support</Lumen_Animastone_FocusGain>
+	<Lumen_Animastone_ActiveRule>Applies while a pawn meditates within {0}, indoors or outdoors.</Lumen_Animastone_ActiveRule>
+	<Lumen_Animastone_ActiveCost>Costs {0} Solar energy a day while running.</Lumen_Animastone_ActiveCost>
+	<Lumen_Animastone_ActiveRadius>Active effect radius</Lumen_Animastone_ActiveRadius>
+	<Lumen_Animastone_FocusStrength>Meditation focus strength</Lumen_Animastone_FocusStrength>
+	<Lumen_Animastone_ExtraHeat>Extra neural heat recovery</Lumen_Animastone_ExtraHeat>
+	<Lumen_Animastone_GrassGrowth>Anima grass growth</Lumen_Animastone_GrassGrowth>
+	<Lumen_Animastone_GrassGrowthDesc>Speeds anima grass growth around an anima tree in range.</Lumen_Animastone_GrassGrowthDesc>
+	<Lumen_Animastone_Inspect>Room support: {0}. While meditating: neural heat recovery +{1}, psyfocus gain +{2}</Lumen_Animastone_Inspect>
+	<Lumen_Animastone_ActiveRunning>Active effect: running</Lumen_Animastone_ActiveRunning>
+	<Lumen_Animastone_ActiveIdle>Active effect: idle, no one meditating in range</Lumen_Animastone_ActiveIdle>
+	<Lumen_Animastone_ActiveOffset>Animastone Solar active effect: +{0}</Lumen_Animastone_ActiveOffset>
+	<Lumen_Animastone_PoweredPylon>Powered Animastone pylon: +{0}</Lumen_Animastone_PoweredPylon>
+	<Lumen_Animastone_RoomSupport>Animastone room support: +{0}</Lumen_Animastone_RoomSupport>
+	<Lumen_Animastone_FocusSetting>Meditation focus strength (%)</Lumen_Animastone_FocusSetting>
+	<Lumen_Animastone_HeatCap>Neural heat recovery cap while meditating (%)</Lumen_Animastone_HeatCap>
+	<Lumen_Animastone_FocusCap>Psyfocus gain cap while meditating (%)</Lumen_Animastone_FocusCap>
+</LanguageData>

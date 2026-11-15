@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_Serenite.label>Серенит</KM_Serenite.label>
+	<KM_Serenite.description>Люменит, пропитанный дымолистом, сохраняет спокойствие и отбрасывает дурман. В комнате с серенитом никто не торопится.\n\nМягкий лавандовый кристалл с глубокой аметистовой сердцевиной, получаемый из люменита у люменового ритуального круга. Обставляет спокойные закрытые комнаты.</KM_Serenite.description>
+	<KM_LumenSereniteColumn.label>Серенитовая колонна</KM_LumenSereniteColumn.label>
+	<KM_LumenSereniteColumn.description>Лавандовая серенитовая колонна.\n\nПоддерживает спокойствие в закрытой комнате: поддержка комнаты добавляет комфорт кроватям и сиденьям и настроение присутствующим, а с солнечной энергией — ещё и более быстрый сон. Каждый тип светильника учитывается один раз. Без топлива и электричества.</KM_LumenSereniteColumn.description>
+	<KM_LumenSereniteColumn.comps.3.effect>восстановление во сне</KM_LumenSereniteColumn.comps.3.effect>
+	<KM_SereniteLamp.label>Серенитовая лампа</KM_SereniteLamp.label>
+	<KM_SereniteLamp.description>Лавандовая серенитовая лампа. Её свет мягкий и ровный, как раз для спальни.\n\nПоддерживает спокойствие в закрытой комнате: поддержка комнаты добавляет комфорт кроватям и сиденьям и настроение присутствующим, а с солнечной энергией — ещё и более быстрый сон. Каждый тип светильника учитывается один раз. Без топлива и электричества.</KM_SereniteLamp.description>
+	<KM_SereniteLamp.comps.2.effect>восстановление во сне</KM_SereniteLamp.comps.2.effect>
+	<KM_SereniteWallLamp.label>Серенитовая настенная лампа</KM_SereniteWallLamp.label>
+	<KM_SereniteWallLamp.description>Лавандовая серенитовая настенная лампа.\n\nПоддерживает спокойствие в закрытой комнате: поддержка комнаты добавляет комфорт кроватям и сиденьям и настроение присутствующим, а с солнечной энергией — ещё и более быстрый сон. Каждый тип светильника учитывается один раз. Без топлива и электричества.</KM_SereniteWallLamp.description>
+	<KM_SereniteWallLamp.comps.2.effect>восстановление во сне</KM_SereniteWallLamp.comps.2.effect>
+	<KM_SerenitePylon.label>Серенитовое святилище</KM_SerenitePylon.label>
+	<KM_SerenitePylon.description>Низкое святилище на две клетки с тремя очищенными кристаллами серенита в рогатой подставке. Спальня с ним кажется обжитой и спокойной.\n\nПодходит для спальни. Поддерживает спокойствие в закрытой комнате: поддержка комнаты добавляет комфорт кроватям и сиденьям и настроение присутствующим, а с солнечной энергией — ещё и более быстрый сон. Каждый тип светильника учитывается один раз. Без топлива и электричества.</KM_SerenitePylon.description>
+	<KM_SerenitePylon.comps.2.effect>восстановление во сне</KM_SerenitePylon.comps.2.effect>
+	<KM_SereniteCluster.label>Серенитовая успокаивающая друза</KM_SereniteCluster.label>
+	<KM_SereniteCluster.description>Друза серенитовых кристаллов.\n\nПоддерживает спокойствие в закрытой комнате: поддержка комнаты добавляет комфорт кроватям и сиденьям и настроение присутствующим, а с солнечной энергией — ещё и более быстрый сон. Каждый тип светильника учитывается один раз. Без топлива и электричества.</KM_SereniteCluster.description>
+	<KM_SereniteCluster.comps.2.effect>восстановление во сне</KM_SereniteCluster.comps.2.effect>
+</LanguageData>

@@ -55,6 +55,7 @@
 
   <ThingDef ParentName="LumenstoneColumnBase">
     <defName>KM_LumenHollowstoneColumn</defName>
+    <tickerType>Never</tickerType>
     <label>Hollowstone column</label>
     <uiOrder>2041</uiOrder>
     <researchPrerequisites>
@@ -65,6 +66,8 @@
       <KM_Hollowstone>15</KM_Hollowstone>
     </costList>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.264)</drawOffset>
       <texPath>Lumenstone/HollowstoneColumn</texPath>
       <drawSize>(1.1667,1.4583)</drawSize>
     </graphicData>
@@ -91,23 +94,27 @@
 
   <ThingDef ParentName="KM_HollowstoneFixtureBase">
     <defName>KM_HollowstoneLamp</defName>
+    <uiIconScale>1.38</uiIconScale>
     <label>Hollowstone lamp</label>
     <designatorDropdown>KM_LumenFloorLamps</designatorDropdown>
     <uiOrder>2811</uiOrder>
-    <description>A Hollowstone crystal on a wooden post.\n\nGives dim ivory light and nothing else.</description>
+    <description>A Hollowstone crystal on a stone plinth.\n\nGives dim ivory light and nothing else.</description>
     <graphicData>
       <texPath>Things/Building/Hollowstone/Lamp</texPath>
       <drawSize>(1,1)</drawSize>
     </graphicData>
+    <thingClass>LumenStones.Building_PlinthLamp</thingClass>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
     <costList>
-      <WoodLog>5</WoodLog>
       <KM_Hollowstone>10</KM_Hollowstone>
     </costList>
     <statBases>
       <Beauty>8</Beauty>
     </statBases>
     <comps>
-      <li><compClass>LumenStones.CompFixedMaterial</compClass></li>
       <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(225,215,190,0)</glowColor>
@@ -164,11 +171,14 @@
 
   <ThingDef ParentName="KM_HollowstoneFixtureBase">
     <defName>KM_HollowstoneCluster</defName>
+    <designatorDropdown>KM_LumenClusters</designatorDropdown>
     <label>Hollowstone cluster</label>
     <uiOrder>2830</uiOrder>
     <rotatable>true</rotatable>
     <description>A group of Hollowstone crystals in a low carved housing. Arguments near it tend to fizzle out.\n\nGives ivory light. Warp energy: dulls pain for colonists and slaves in the same room. Work husks are not affected. Only the strongest Hollowstone fixture counts. It also steadies minds against mental breaks.</description>
     <graphicData>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,-0.093)</drawOffset>
       <texPath>Things/Building/Hollowstone/Cluster</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawRotated>false</drawRotated>
@@ -183,7 +193,7 @@
       <KM_Hollowstone>35</KM_Hollowstone>
     </costList>
     <statBases>
-      <WorkToBuild>1200</WorkToBuild>
+      <WorkToBuild>3000</WorkToBuild>
       <Beauty>18</Beauty>
     </statBases>
     <comps>
@@ -198,6 +208,7 @@
 
   <ThingDef ParentName="KM_HollowstoneFixtureBase">
     <defName>KM_HollowstonePylon</defName>
+    <designatorDropdown>KM_LumenPylons</designatorDropdown>
     <tickerType>Rare</tickerType>
     <drawerType>RealtimeOnly</drawerType>
     <label>Hollowstone pylon</label>
@@ -207,7 +218,8 @@
     <graphicData>
       <texPath>Things/Building/Hollowstone/Pylon</texPath>
       <drawSize>(2.2,2.2)</drawSize>
-      <drawOffset>(0,0,0.56)</drawOffset>
+      <!-- 2026-11-14: base 0.1 cell above the footprint's south edge, like every floor fixture. -->
+      <drawOffset>(0,0,0.631)</drawOffset>
     </graphicData>
     <uiIconScale>0.5</uiIconScale>
     <stuffCategories>
@@ -219,7 +231,7 @@
       <KM_Hollowstone>25</KM_Hollowstone>
     </costList>
     <statBases>
-      <WorkToBuild>1000</WorkToBuild>
+      <WorkToBuild>3500</WorkToBuild>
       <Beauty>30</Beauty>
     </statBases>
     <comps>
@@ -300,6 +312,8 @@
     <statBases><WorkToMake>6000</WorkToMake><Mass>3.5</Mass></statBases>
     <equippedStatOffsets><PainShockThreshold>0.25</PainShockThreshold></equippedStatOffsets>
     <graphicData>
+      <!-- Transparent keeps the antialiased edges that Cutout clips when the held sprite is shrunk and rotated. -->
+      <shaderType>Transparent</shaderType>
       <texPath>Things/Item/Equipment/WeaponMelee/HollowstoneGlaive</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1.2,1.2)</drawSize>

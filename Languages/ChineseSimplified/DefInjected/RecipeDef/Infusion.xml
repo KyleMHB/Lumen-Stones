@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KM_InfuseGlacite.jobString>正在灌注流明石。</KM_InfuseGlacite.jobString>
+	<KM_InfuseGlacite.label>灌注冰晶石</KM_InfuseGlacite.label>
+	<KM_InfuseGlacite.description>将10流明石灌注为10冰晶石。</KM_InfuseGlacite.description>
+	<KM_InfuseVitalite.jobString>正在灌注流明石。</KM_InfuseVitalite.jobString>
+	<KM_InfuseVitalite.label>灌注生命石</KM_InfuseVitalite.label>
+	<KM_InfuseVitalite.description>将10流明石和1份草药灌注为10生命石。</KM_InfuseVitalite.description>
+	<KM_InfuseSerenite.jobString>正在灌注流明石。</KM_InfuseSerenite.jobString>
+	<KM_InfuseSerenite.label>灌注宁静石</KM_InfuseSerenite.label>
+	<KM_InfuseSerenite.description>将10流明石和2支烟叶卷灌注为10宁静石。</KM_InfuseSerenite.description>
+	<KM_InfuseVerdite.jobString>正在灌注流明石。</KM_InfuseVerdite.jobString>
+	<KM_InfuseVerdite.label>灌注翠绿石</KM_InfuseVerdite.label>
+	<KM_InfuseVerdite.description>将10流明石和20干草灌注为10翠绿石。</KM_InfuseVerdite.description>
+	<KM_InfuseAegite.jobString>正在灌注流明石。</KM_InfuseAegite.jobString>
+	<KM_InfuseAegite.label>灌注庇护石</KM_InfuseAegite.label>
+	<KM_InfuseAegite.description>将10流明石和20白银灌注为10庇护石。</KM_InfuseAegite.description>
+	<KM_InfuseFerrite.jobString>正在灌注流明石。</KM_InfuseFerrite.jobString>
+	<KM_InfuseFerrite.label>灌注铁晶石</KM_InfuseFerrite.label>
+	<KM_InfuseFerrite.description>将10流明石和10钢铁灌注为10铁晶石。</KM_InfuseFerrite.description>
+	<KM_InfuseSunstone.jobString>正在灌注流明石。</KM_InfuseSunstone.jobString>
+	<KM_InfuseSunstone.label>灌注太阳石</KM_InfuseSunstone.label>
+	<KM_InfuseSunstone.description>将10流明石和2黄金灌注为10太阳石。</KM_InfuseSunstone.description>
+</LanguageData>

@@ -2,12 +2,19 @@
 import contextlib
 import io
 import json
+import math
 from pathlib import Path
 import tempfile
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 import artwork
+
+
+def checkOutline(path, drawSize, kind="building"):
+    """Outline measurement for the user's review. Report only: it never blocks export or production."""
+    from artwork_outline import measure
+    return measure(path, tuple(drawSize), None, kind)
 
 
 def alphaEvidence(image):
@@ -120,6 +127,37 @@ def checkCandidate(root, manifestPath, output):
         with Image.open(first / manifest["colorFilename"]) as color:
             candidateBounds = color.getchannel("A").getbbox()
             report["colorAlpha"] = alphaEvidence(color.convert("RGBA"))
+            if "preservation" in checks:
+                declaration = checks["preservation"]
+                evidence = report["preservation"] = {}
+                images = {}
+                for name in ("reference", "editableMask"):
+                    entry = declaration[name]
+                    path = artwork.inside(root, entry["path"])
+                    actual = artwork.digest(path)
+                    require(actual == entry["sha256"], f"Preservation {name} hash changed")
+                    with Image.open(path) as source:
+                        images[name] = source.copy()
+                    evidence[name] = {"path": entry["path"], "sha256": actual}
+                reference, editable = images["reference"], images["editableMask"]
+                sameSize = reference.size == editable.size == color.size
+                binaryMask = editable.mode == "L" and not any(editable.histogram()[1:255])
+                require(sameSize, "Preservation inputs must match the exported color canvas; align explicitly")
+                require(binaryMask, "Preservation editableMask must be L mode with only 0 and 255")
+                if sameSize and binaryMask:
+                    protected = ImageChops.invert(editable)
+                    evidence["protectedPixels"] = protected.histogram()[255]
+                    require(evidence["protectedPixels"] > 0, "Preservation mask leaves no protected pixels")
+                    difference = ImageChops.difference(reference.convert("RGBA"), color.convert("RGBA"))
+                    changed = Image.new("L", color.size)
+                    for channel in difference.split():
+                        changed = ImageChops.lighter(changed, channel)
+                    changed = changed.point(lambda value: 255 if value else 0)
+                    drift = ImageChops.multiply(changed, protected)
+                    evidence["changedProtectedPixels"] = drift.histogram()[255]
+                    evidence["changedBounds"] = drift.getbbox()
+                    require(evidence["changedProtectedPixels"] == 0,
+                            f"Protected RGBA pixels changed: {evidence['changedProtectedPixels']}")
         with Image.open(first / manifest["maskFilename"]) as mask:
             require(mask.mode == "RGBA", "Mask must be RGBA")
             report["maskChannels"] = {channel: mask.getchannel(channel).getextrema() for channel in "RGBA"}
@@ -164,10 +202,53 @@ def checkCandidate(root, manifestPath, output):
     difference = report["colorAlpha"]["lowAlphaBoundsDifference"]
     if difference is not None and difference > checks.get("alphaDebrisTolerance", 8):
         warnings.append("Inspect exported faint alpha outside substantial bounds")
+    for name in checks.get("requiredReviewJoins", []):
+        require(name in manifest.get("reviewJoins", {}), f"Required review join is not declared: {name}")
     report["passed"] = not errors
+    report["mechanicalPassed"] = report["passed"]
     report["readyForTintReview"] = report["passed"] and checks.get("materialOwnership") != "unresolved"
+    report["outline"] = None
+    if checks.get("drawSize"):
+        try:
+            report["outline"] = checkOutline(output / manifest["colorFilename"], checks["drawSize"],
+                                             checks.get("outlineKind", "building"))
+        except (ValueError, OSError) as exc:
+            warnings.append(f"Outline unavailable: {exc}")
+    else:
+        warnings.append("Outline unavailable: declare drawSize in candidateChecks")
+    # The outline measurement is shown to the user when they choose; it never blocks. Approval is final.
+    report["outlinePassed"] = bool(report["outline"] and report["outline"]["passed"])
+    report["readyForProduction"] = report["readyForTintReview"] and bool(checks.get("definition"))
     if all((output / manifest[key]).is_file() for key in ("colorFilename", "maskFilename")):
         writeTintViews(manifest, output, report, warnings)
+        if checks.get("drawSize"):
+            size = tuple(max(1, round(cells * 64)) for cells in checks["drawSize"])
+            entries = [("Candidate", output / manifest["colorFilename"], size)]
+            if "color" in baselinePaths:
+                entries.insert(0, ("Current", baselinePaths["color"], size))
+            if "previewReference" in checks:
+                reference = checks["previewReference"]
+                if not isinstance(reference, dict):
+                    raise ValueError("previewReference must contain path and drawSize")
+                drawSize = reference.get("drawSize")
+                if (not isinstance(drawSize, list) or len(drawSize) != 2
+                        or not all(type(cells) in (int, float) and math.isfinite(cells) and cells > 0
+                                   for cells in drawSize)):
+                    raise ValueError("previewReference.drawSize must contain two positive finite numbers")
+                referenceSize = tuple(max(1, round(cells * 64)) for cells in drawSize)
+                entries.append(("Reference", artwork.inside(root, reference["path"]), referenceSize))
+            columnWidth = max(180, max(width for _, _, (width, _) in entries) + 32)
+            height = max(height for _, _, (_, height) in entries)
+            sheet = Image.new("RGB", (columnWidth*len(entries), height+60), "#343941")
+            for index, (label, path, (width, spriteHeight)) in enumerate(entries):
+                x = index * columnWidth + (columnWidth-width)//2
+                y = 40 + (height-spriteHeight)//2
+                ImageDraw.Draw(sheet).text((index*columnWidth+8, 8), label + " / 64px per cell", fill="white")
+                with Image.open(path) as source:
+                    sprite = source.convert("RGBA").resize((width, spriteHeight), Image.Resampling.LANCZOS)
+                sheet.paste(sprite, (x, y), sprite)
+            sheet.save(output / "game-scale.png")
+            report["gameScalePreview"] = "game-scale.png"
 
     # Evidence lives beside existing exports; the candidate images are never written here.
     output.mkdir(parents=True, exist_ok=True)

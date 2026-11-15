@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<Lumen_Warp_BatteryRule>Every Bloodstone battery on a map shares one Warp network. Stored energy is lost if the battery is destroyed or deconstructed. It cannot be moved, and loses no charge over time.</Lumen_Warp_BatteryRule>
+	<Lumen_Warp_Capacity>Warp energy capacity</Lumen_Warp_Capacity>
+	<Lumen_Warp_AltarReach>Sacrificial altar reach</Lumen_Warp_AltarReach>
+	<Lumen_Warp_AltarReachDesc>A Harvest Warp Energy sacrifice fills only batteries within this distance of the altar.</Lumen_Warp_AltarReachDesc>
+	<Lumen_Warp_Stored>Warp energy: {0} / {1}</Lumen_Warp_Stored>
+	<Lumen_Warp_AltarInRange>Sacrificial altar in range: {0}</Lumen_Warp_AltarInRange>
+	<Lumen_Yes>yes</Lumen_Yes>
+	<Lumen_No>no</Lumen_No>
+	<Lumen_Warp_Network>Network: {0} / {1}</Lumen_Warp_Network>
+	<Lumen_Warp_Depleted>Depleted. Active effects resume at {0} stored.</Lumen_Warp_Depleted>
+	<Lumen_Warp_Section>Warp network</Lumen_Warp_Section>
+	<Lumen_Warp_Hysteresis>Stored Warp energy needed to recover from depletion</Lumen_Warp_Hysteresis>
+</LanguageData>
